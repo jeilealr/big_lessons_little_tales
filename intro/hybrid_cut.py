@@ -38,6 +38,7 @@ def main() -> None:
     CUT = args.cut
     silent = args.output.with_name(args.output.stem + "_silent.mp4")
     cut_frame = int(round(CUT * args.fps))
+    # Both sides are scaled to 1920x1080: concat refuses inputs of different sizes.
     # The Wan flash peaks at 7.10 s but never reaches full white (mean luma
     # ~182/255: the book and vortex still show at the edges), so a straight cut
     # jumps. Ramp the Wan side to pure white over the last few frames; the
@@ -45,8 +46,10 @@ def main() -> None:
     white_from = CUT - 0.17
     graph = (
         f"[0:v]trim=end_frame={cut_frame},setpts=PTS-STARTPTS,fps={args.fps},"
+        f"scale=1920:1080:flags=lanczos,setsar=1,"
         f"fade=t=out:st={white_from:.3f}:d=0.17:color=white[a];"
-        f"[1:v]fps={args.fps},trim=start={CUT},setpts=PTS-STARTPTS[b];"
+        f"[1:v]fps={args.fps},trim=start={CUT},setpts=PTS-STARTPTS,"
+        f"scale=1920:1080:flags=lanczos,setsar=1[b];"
         f"[a][b]concat=n=2:v=1:a=0,format=yuv420p[v]"
     )
     subprocess.run(
