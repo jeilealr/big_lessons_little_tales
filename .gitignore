@@ -1,0 +1,15 @@
+# generated intermediates and media
+work/
+*.mp4
+*.mov
+*.wav
+*.png
+*.jpg
+!docs/img/*.jpg
+!docs/img/*.png
+# python
+__pycache__/
+*.pyc
+# never commit weights or binaries
+*.safetensors
+*.pkl

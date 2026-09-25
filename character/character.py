@@ -1,0 +1,189 @@
+#!/usr/bin/env python3
+"""Consistent characters: text sheets + image anchors, and a LoRA dataset.
+
+The three techniques stack into one pipeline (docs/character-consistency.md):
+
+  1. Sheets   - a fixed description of the character and the set, pasted into
+                every prompt. Narrows drift; does not stop it on its own.
+  2. Anchors  - every shot starts from a real image of the character (Wan
+                image-to-video), so identity is exact at frame 0. One orbit
+                shot around the canonical still yields the other camera angles.
+  3. LoRA     - later: train on the stills step 2 produced, so the model knows
+                the character without an anchor. `dataset` prepares that.
+
+Stages, in order:
+  canonical  choose the reference still                      CPU, seconds
+  orbit      the camera circles the still (I2V)              GPU, ~2.5 h
+  angles     keep orbit frames as keyframes + contact sheet  CPU, seconds
+  shots      each shot starts from one keyframe (I2V)        GPU, ~2.5 h each
+  dataset    stills + captions for LoRA training             CPU, seconds
+  prompt     print the assembled prompt for a stage          no compute
+
+Each output gets a .json sidecar with the exact prompt, seed, source image and
+settings that produced it.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from twc import media, paths, wan  # noqa: E402
+
+
+def load_config(path: Path) -> dict:
+    import yaml
+
+    cfg = yaml.safe_load(path.read_text())
+    cfg["_workdir"] = paths.WORK / "characters" / cfg["name"]
+    return cfg
+
+
+def assemble(cfg: dict, action: str) -> str:
+    """Step 1: every prompt = the action + the character sheet + the set + style."""
+    return (f"{action.strip()} The fox is {cfg['character']}. "
+            f"The scene is {cfg['set']}. {cfg['style']}.")
+
+
+def sidecar(path: Path, **info) -> None:
+    info["created"] = time.strftime("%Y-%m-%d %H:%M:%S")
+    path.with_suffix(".json").write_text(json.dumps(info, indent=2, default=str))
+
+
+def stage_canonical(cfg: dict) -> None:
+    import cv2
+    from PIL import Image
+
+    c = cfg["canonical"]
+    clip = paths.CHANNEL / c["clip"]
+    frames = media.read_frames(clip)
+    if c.get("frame", "auto") == "auto":
+        lo, hi = c.get("window", [0, len(frames) - 1])
+        scores = {i: float(cv2.Laplacian(cv2.cvtColor(frames[i], cv2.COLOR_RGB2GRAY),
+                                         cv2.CV_64F).var())
+                  for i in range(lo, min(hi, len(frames) - 1) + 1)}
+        index = max(scores, key=scores.get)
+    else:
+        index, scores = int(c["frame"]), {}
+    out = cfg["_workdir"] / "canonical.png"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    Image.fromarray(frames[index]).save(out)
+    sidecar(out, stage="canonical", source_clip=str(clip), frame=index,
+            sharpness=scores.get(index), how="sharpest frame (variance of Laplacian) in window"
+            if scores else "frame given in config")
+    print(f"canonical: frame {index} of {clip.name} -> {out}")
+
+
+def _render(cfg: dict, stage: str, action: str, image_path: Path, seed: int, out: Path,
+            negative_extra: str = "") -> None:
+    from PIL import Image
+
+    r = cfg["render"]
+    prompt = assemble(cfg, action)
+    negative = cfg["negative"] + (", " + negative_extra if negative_extra else "")
+    print(f"[{stage}] {out.name}\n  from  {image_path}\n  seed  {seed}\n  prompt {prompt}",
+          flush=True)
+    pipe = wan.load("i2v", r["frames"])
+    print("  model loaded", flush=True)
+    frames = wan.generate(pipe, prompt, negative=negative, width=r["width"],
+                          height=r["height"], frames=r["frames"], steps=r["steps"],
+                          guidance=r["guidance"], guidance_2=r["guidance_2"], seed=seed,
+                          image=Image.open(image_path))
+    wan.save(frames, out)
+    sidecar(out, stage=stage, model=wan.MODELS["i2v"], start_image=str(image_path),
+            seed=seed, prompt=prompt, negative=negative, **r)
+    print(f"  saved {out}", flush=True)
+
+
+def stage_orbit(cfg: dict) -> None:
+    o = cfg["orbit"]
+    wd = cfg["_workdir"]
+    _render(cfg, "orbit", o["action"], wd / "canonical.png", o["seed"], wd / "orbit.mp4",
+            o.get("negative_extra", ""))
+
+
+def stage_angles(cfg: dict) -> None:
+    import cv2
+    import numpy as np
+    from PIL import Image
+
+    wd = cfg["_workdir"]
+    frames = media.read_frames(wd / "orbit.mp4")
+    tiles = []
+    for k, index in enumerate(cfg["orbit"]["angles"]):
+        index = min(index, len(frames) - 1)
+        out = wd / "angles" / f"angle_{k}.png"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        Image.fromarray(frames[index]).save(out)
+        sidecar(out, stage="angles", source_clip=str(wd / "orbit.mp4"), frame=index)
+        tile = cv2.resize(frames[index], (384, 216)).copy()
+        cv2.putText(tile, f"angle_{k} (f{index})", (8, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.7,
+                    (255, 255, 255), 2, cv2.LINE_AA)
+        tiles.append(tile)
+    Image.fromarray(np.concatenate(tiles, axis=1)).save(wd / "angles" / "contact_sheet.png")
+    print(f"angles: {len(tiles)} keyframes -> {wd / 'angles'}")
+
+
+def stage_shots(cfg: dict, only: list[str] | None) -> None:
+    wd = cfg["_workdir"]
+    for shot in cfg["shots"]:
+        if only and shot["name"] not in only:
+            continue
+        src = wd / ("canonical.png" if shot["from"] == "canonical"
+                    else f"angles/{shot['from']}.png")
+        _render(cfg, "shot", shot["action"], src, shot["seed"], wd / "shots" / f"{shot['name']}.mp4")
+
+
+def stage_dataset(cfg: dict, every: int) -> None:
+    """Step 3 preparation: stills of the character with captions, ready for a LoRA."""
+    import shutil
+
+    from PIL import Image
+
+    wd = cfg["_workdir"]
+    ds = wd / "dataset"
+    ds.mkdir(parents=True, exist_ok=True)
+    caption = f"{cfg['trigger']}, {cfg['character']}, {cfg['style']}"
+    items = [wd / "canonical.png"] + sorted((wd / "angles").glob("angle_*.png"))
+    n = 0
+    for src in items:
+        if src.is_file():
+            shutil.copy(src, ds / src.name)
+            (ds / src.name).with_suffix(".txt").write_text(caption)
+            n += 1
+    for clip in sorted((wd / "shots").glob("*.mp4")):
+        for i, frame in enumerate(media.read_frames(clip)[::every]):
+            name = f"{clip.stem}_{i:03d}.png"
+            Image.fromarray(frame).save(ds / name)
+            (ds / name).with_suffix(".txt").write_text(caption)
+            n += 1
+    print(f"dataset: {n} captioned stills -> {ds}")
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("stage", choices=["canonical", "orbit", "angles", "shots", "dataset", "prompt"])
+    ap.add_argument("--config", type=Path,
+                    default=Path(__file__).resolve().parent / "characters" / "fox.yaml")
+    ap.add_argument("--only", nargs="+", help="shots: render only these shot names")
+    ap.add_argument("--every", type=int, default=8, help="dataset: keep every Nth shot frame")
+    args = ap.parse_args()
+    cfg = load_config(args.config)
+
+    if args.stage == "prompt":
+        print("orbit:", assemble(cfg, cfg["orbit"]["action"]), "\n")
+        for s in cfg["shots"]:
+            print(f"{s['name']} (from {s['from']}):", assemble(cfg, s["action"]), "\n")
+        return
+    {"canonical": lambda: stage_canonical(cfg), "orbit": lambda: stage_orbit(cfg),
+     "angles": lambda: stage_angles(cfg), "shots": lambda: stage_shots(cfg, args.only),
+     "dataset": lambda: stage_dataset(cfg, args.every)}[args.stage]()
+
+
+if __name__ == "__main__":
+    main()

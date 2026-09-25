@@ -1,0 +1,66 @@
+# The felt fox. Everything that defines him lives in this file; the stages in
+# character.py only read it. See docs/character-consistency.md.
+name: fox
+trigger: twcfox        # the word that will stand for him in LoRA captions (step 3)
+
+# --- Step 1: the sheets. Pasted verbatim into every prompt, in every shot. ---
+character: >-
+  a small orange felt fox with a white felt chest edged in white running
+  stitches, black felt legs and paws, glossy black bead eyes, a small black
+  felt nose, pointed orange ears with white stitching along the inner edge,
+  and a bushy orange tail with a white felt tip
+set: >-
+  a tabletop miniature meadow made of felt: rolling mounds of light and dark
+  green felt, small white felt daisies, fluffy cotton-wool clouds in front of
+  a pale blue fabric backdrop
+style: >-
+  handmade felt stop-motion animation, everything made of soft wool felt with
+  visible fibres and small hand stitches, warm soft natural light, gentle
+  shallow depth of field, cosy children's picture-book mood, pastel colours,
+  smooth steady camera
+negative: >-
+  photorealistic, live action, real animal fur, plastic, glossy CGI, harsh
+  lighting, text, letters, watermark, subtitles, deformed, extra limbs, extra
+  animals, second fox, distorted face, flickering, jittery motion, blurry,
+  low quality, overexposed
+
+render:
+  width: 1280
+  height: 720
+  frames: 81          # Wan's native clip: 5 s at 16 fps
+  steps: 40
+  guidance: 3.5       # high-noise expert
+  guidance_2: 3.5     # low-noise expert
+
+# --- Step 2a: the canonical still -- the one image that defines the fox. ---
+# Taken from a shot we already liked; `auto` picks the sharpest frame in the
+# window, which tends to be the one with the least motion blur.
+canonical:
+  clip: Intro/felt_test_work/shots/1280x720_16fps_seed1234_s40/01_fox_meadow_81f.mp4
+  frame: auto
+  window: [16, 64]
+
+# --- Step 2b: one orbit around the still, to harvest other camera angles. ---
+orbit:
+  seed: 501
+  action: >-
+    The camera slowly orbits in a smooth half circle around the fox, which
+    stands still in the same pose on the felt meadow, keeping the fox centred
+    in frame. The fox does not walk away.
+  negative_extra: fox walking, fox running, fox leaving the frame, camera cut
+  angles: [0, 20, 40, 60, 80]     # orbit frames kept as keyframes
+
+# --- Step 2c: shots. Each starts from one harvested angle; one slow action. ---
+shots:
+  - name: fox_sits
+    from: angle_1
+    seed: 601
+    action: >-
+      The fox slowly sits down on the felt grass and curls its bushy tail
+      around its front paws.
+  - name: fox_looks_up
+    from: angle_3
+    seed: 602
+    action: >-
+      The fox slowly lifts its head and looks up at the cotton clouds drifting
+      overhead, then blinks.
