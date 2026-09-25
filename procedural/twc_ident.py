@@ -519,11 +519,13 @@ def render(t: float) -> np.ndarray:
     bloom = cv2.GaussianBlur(bright, (0, 0), 5) * 0.6 + cv2.GaussianBlur(bright, (0, 0), 16) * 0.8
     canvas += cv2.resize(bloom, (W, H), interpolation=cv2.INTER_LINEAR)
 
-    # the flash
+    canvas *= a.vignette
+
+    # The flash goes on after the vignette: it must be full-frame white, because
+    # the hybrid cut joins inside it. With the vignette on top, the edges of the
+    # first flash frame were grey (mean luma 206 after a 254 Wan frame).
     if after >= 0:
         canvas += math.exp(-after / 0.16) * 1.3
-
-    canvas *= a.vignette
     grain = np.random.default_rng(int(t * 1000)).standard_normal((H // 2, W // 2)).astype(np.float32)
     canvas += cv2.resize(grain, (W, H))[..., None] * 0.012
 

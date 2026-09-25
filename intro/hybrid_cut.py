@@ -44,18 +44,24 @@ def main() -> None:
     # jumps. Ramp the Wan side to pure white over the last few frames; the
     # procedural side starts at full white, so the join then happens inside white.
     white_from = CUT - 0.17
+    # Every frame gets an exact timestamp on a 1/fps grid (settb + setpts=N)
+    # before the concat, and the output is forced to constant fps. Without this,
+    # concat loses the rate after the trims and falls back to ffmpeg's default of
+    # 25 fps: the video was resampled 30 -> 25 -> 30, dropping one frame in six
+    # and repeating one in five (judder through the whole intro).
+    grid = f"settb=1/{args.fps},setpts=N"
     graph = (
         f"[0:v]trim=end_frame={cut_frame},setpts=PTS-STARTPTS,fps={args.fps},"
         f"scale=1920:1080:flags=lanczos,setsar=1,"
-        f"fade=t=out:st={white_from:.3f}:d=0.17:color=white[a];"
+        f"fade=t=out:st={white_from:.3f}:d=0.17:color=white,{grid}[a];"
         f"[1:v]fps={args.fps},trim=start={CUT},setpts=PTS-STARTPTS,"
-        f"scale=1920:1080:flags=lanczos,setsar=1[b];"
+        f"scale=1920:1080:flags=lanczos,setsar=1,{grid}[b];"
         f"[a][b]concat=n=2:v=1:a=0,format=yuv420p[v]"
     )
     subprocess.run(
         [media.locate_ffmpeg(), "-y", "-v", "error", "-i", str(args.wan), "-i", str(args.procedural),
-         "-filter_complex", graph, "-map", "[v]", "-c:v", "libx264", "-preset", "slow",
-         "-crf", "12", str(silent)],
+         "-filter_complex", graph, "-map", "[v]", "-r", str(args.fps), "-fps_mode", "cfr",
+         "-c:v", "libx264", "-preset", "slow", "-crf", "12", str(silent)],
         check=True)
     media.finish(concat_video=silent, audio_source=args.audio, output=args.output,
               target_duration=args.duration, source_duration=args.duration, final_width=1920,

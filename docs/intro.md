@@ -46,6 +46,16 @@ glowing centre, ends near white (peak luma 233 at 4.94 s). Less vortex energy.
 
 ![v4 open](img/intro_v4_open.jpg)
 
+Finished files: `Intro/Intro_channel_video_v4_white.mov` and `…_v4_open.mov`
+(logo lands at 6.0 s, ~4 s on screen). Verified: 300 frames, no repeated frames,
+luma continuous through the cut (white: 248 251 254 | 255 252 237).
+
+Two fixes made on the way, both also applied to the earlier hybrid:
+- the procedural flash is now applied after the vignette, so its first frame is
+  full-frame white (it had grey edges, mean luma 206 after a 254 Wan frame);
+- the hybrid cut now forces an exact 30 fps grid; before, a silent 25 fps
+  fallback made the whole video judder (one repeated frame in six).
+
 Lesson: **giving the model a destination helps**. An end frame of pure white made
 it build toward the flash instead of drifting, and produced the most energetic
 journey of any version.

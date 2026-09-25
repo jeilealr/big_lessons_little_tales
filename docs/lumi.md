@@ -47,5 +47,14 @@ $W python twc_video/character/character.py prompt      # anything, on a login no
   one directory per job *and task* (`lumi/env.sh`).
 - tqdm progress bars do not flush through `srun`; a job that looks silent may be
   computing: check `rocm-smi` with `srun --overlap --jobid=<id>`.
+- **Check deliverables for repeated frames**, not just duration. ffmpeg's `concat`
+  after `trim` can lose the frame rate and fall back to **25 fps**; a later 30 fps
+  step then resamples 30 -> 25 -> 30 (one frame in six dropped, one in five
+  repeated: judder through the whole video, while duration still reads 10.00 s).
+  Fixed in `intro/hybrid_cut.py` by `settb=1/30,setpts=N` on every branch plus
+  `-r 30 -fps_mode cfr`. Count exact repeats of consecutive frames to verify; the
+  only legitimate repeats are intentional holds and pure-white frames.
+- Measure luma across a cut **by frame index over the whole file**. `-ss` seeking is
+  not frame-exact and made a continuous join look like a 48-level step.
 - Clips longer than 81 frames need `pipe.vae.enable_tiling()` and cost
   quadratically; prefer 81 frames and retime with RIFE.
