@@ -29,3 +29,23 @@ A 10-second ident for The Webtoons Corner. Inputs: the approved stills in
 
 Changing where the logo lands is one number, `T`, plus a two-minute CPU
 re-render.
+
+## Intro v4 results (2026-09-25)
+
+Both clips: `1.png` + the same journey prompt, seed 20260925, 81 frames, 40 steps.
+
+**`white`** (end frame forced to a white card): the cover opens, pages erupt, a
+real **vortex of pages** forms with light at its eye, the camera dives into it,
+and the clip ends in true white (peak luma 251, white-out at 4.75 s). It did
+*not* wash out early: the white arrives only in the last half second.
+
+![v4 white](img/intro_v4_white.jpg)
+
+**`open`** (first frame only): cover lifts, pages fan, camera pushes into the
+glowing centre, ends near white (peak luma 233 at 4.94 s). Less vortex energy.
+
+![v4 open](img/intro_v4_open.jpg)
+
+Lesson: **giving the model a destination helps**. An end frame of pure white made
+it build toward the flash instead of drifting, and produced the most energetic
+journey of any version.

@@ -89,10 +89,20 @@ seen from new sides.
 from. The same trick works for a **location**: orbit the empty set once and
 you have the background from several angles.
 
-What can go wrong: the model may move the *fox* instead of the camera, or let
-him walk away. The prompt says he does not walk and the negative prompt lists
-"fox walking, fox leaving the frame"; check the contact sheet before using an
-angle.
+**What actually happened (first run):** identity held perfectly: same fox,
+same stitching, same set in all five keyframes. But the camera barely moved:
+about 30°, from three-quarter view to near profile, not a half circle.
+
+![orbit keyframes](img/fox_angles.jpg)
+
+Lessons:
+- From a still, Wan is **conservative with large camera moves** in a 5 s clip.
+- To get front and back views, **turn the character, not the camera**: *"the fox
+  slowly turns around to face the camera"* is a smaller, more natural motion.
+- Orbits **chain**: start the next orbit from `angle_4` to keep going round.
+- The model may also move the fox instead of the camera, or let him walk off;
+  the prompt says he does not walk and the negative prompt lists "fox walking,
+  fox leaving the frame". Always check the contact sheet before using an angle.
 
 ### 2c. Shots
 
@@ -125,4 +135,7 @@ up to ~4 on one node (host RAM is the limit, ~80–100 GB each).
 
 ## Results log
 
-- 2026-09-25: canonical still chosen (frame 28, sharpness 15.9). Orbit running.
+- 2026-09-25: canonical still chosen (frame 28, sharpness 15.9).
+- 2026-09-25: orbit done (seed 501, ~2 h 05 min at 40 steps). Identity perfect across
+  all five keyframes; angle change only ~30°. Shots `fox_sits` (from `angle_1`) and
+  `fox_looks_up` (from `angle_3`) submitted.
