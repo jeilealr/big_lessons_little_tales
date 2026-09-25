@@ -83,7 +83,88 @@ Writing a character sheet:
 - Materials, not photographic words: "needle-felted", "stitched", "wool".
 - One sheet per character, frozen. Change the *action*, never the sheet.
 
-(Sections 3 to 8 follow as each stage is validated on The Lion and the Mouse.)
+## 3. Design: characters and places as stills
+
+Before anything moves, every character and location gets **one canonical
+still**. Everything later starts from it.
+
+```bash
+W=twc_video/lumi/run_in_container.sh
+$W python twc_video/production/design.py prompt                     # see the prompts
+# GPU: design.py candidates -n 6                                    # ~2.5 min per still
+$W python twc_video/production/design.py pick --entities leo --seed 1003
+$W python twc_video/production/design.py reframe --entities milo    # small characters
+```
+
+**Same model for design and animation.** The candidates are drawn by Wan 2.2
+itself (a one-frame video), so the character that gets animated is exactly
+the one that was designed. A different image model would introduce a second
+interpretation of the sheet.
+
+**Characters are shot as model sheets**: whole body, three-quarter view,
+neutral pose, alone on a plain felt backdrop. The plain backdrop is not an
+aesthetic choice; it is what lets the character be cut out cleanly later.
+
+![Leo candidates](img/lm_leo_candidates.jpg)
+
+**How to pick.** The chosen still must agree with its own text sheet, because
+the sheet is pasted into every prompt forever after. For Leo, 1003 was picked
+over the more striking 1005 (a mane of felt balls): the sheet says "large
+fluffy mane", and a canonical that contradicts its sheet gets pulled back
+towards the text in every shot. If you prefer a candidate that contradicts the
+sheet, rewrite the sheet to match it; never keep both.
+
+What the model does not follow: it drew Leo's eyes black in all six
+candidates although the sheet says "warm brown stitched eyes", and it added a
+cream muzzle nobody asked for. Decide once whether to accept such changes (and
+edit the sheet) or to keep asking for them.
+
+**Small characters get reframed.** Milo is correctly tiny in his design shot,
+but that leaves too few pixels to animate or to train on. `reframe` crops
+around him (the box comes from the matting model), keeps 16:9, and upscales
+with Real-ESRGAN back to 1280x720. It asserts that the character is inside the
+crop and fills a sensible share of it; the first, unchecked version produced
+an image of empty floor, and nothing downstream would have noticed.
+
+![Milo, reframed](img/lm_milo_canonical.jpg)
+
+**Locations are empty plates**: the set with no characters, the centre left
+open as a stage. Pick for the story's needs, not for beauty alone: for Scene 1
+the clearing needs morning light and open grass in front of the tree where Leo
+can sleep.
+
+![Clearing candidates](img/lm_clearing_candidates.jpg)
+
+Picks for The Lion and the Mouse: Leo 1003, Milo 1001 (reframed), butterfly
+1004, clearing 1002, trap site 1004.
+
+## 4. Keyframes: the character, in the place, before anything moves
+
+Image-to-video keeps what is in the first frame. So each shot's first frame is
+composed: the character cut out of a pose still and placed into the location
+plate (`production/keyframe.py`).
+
+```bash
+$W python twc_video/production/keyframe.py --plate PLATE.png \
+    --char STILL.png:x=0.5,y=0.80,h=0.42 --out KEY.png   # x,y = where the feet go
+```
+
+- **Matting**: BiRefNet (MIT licence, revision pinned because it runs remote
+  code). A colour key was tried first; it cut a notch out of Milo's neck,
+  because his grey felt is close to the grey-green backdrop.
+- **Scale** is a fraction of frame height, so relative sizes stay fixed:
+  Milo is 1/6 of Leo in the story bible, so he is placed at 1/6 of Leo's height.
+- A soft **contact shadow** under the feet grounds the character; colours are
+  pulled a little towards the plate's light.
+
+![first composite](img/lm_keyframe_test.jpg)
+
+Known limit: the character keeps the flat studio light of the design shot,
+while the plate is backlit. That is acceptable in a *first frame*, because the
+video model relights the character as it animates; it would not be acceptable
+in a still.
+
+(Sections 5 to 8 follow as each stage is validated.)
 
 ## Sources
 

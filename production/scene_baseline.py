@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from twc import paths, wan  # noqa: E402
 
-RENDER = dict(width=1280, height=720, frames=81, steps=40, guidance=4.0, guidance_2=3.0)
+RENDER = dict(width=1280, height=720, frames=49, steps=40, guidance=4.0, guidance_2=3.0)
 
 
 def build_prompt(story: dict, n: int) -> tuple[str, str]:
@@ -38,8 +38,11 @@ def main() -> None:
     ap.add_argument("--story", default="lion_and_mouse")
     ap.add_argument("--scene", type=int, required=True)
     ap.add_argument("--seed", type=int, default=2026)
+    ap.add_argument("--frames", type=int, default=RENDER["frames"],
+                    help="4k+1; 49 = 3 s keeps the baseline inside one dev-g job")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
+    RENDER["frames"] = args.frames
     story = yaml.safe_load((paths.REPO / "stories" / args.story / "story.yaml").read_text())
     prompt, negative = build_prompt(story, args.scene)
     out = paths.WORK / "stories" / args.story / "scenes" / f"scene{args.scene:02d}_t2v_baseline.mp4"

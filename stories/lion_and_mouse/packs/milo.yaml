@@ -1,0 +1,25 @@
+# Milo's pose library. Description, style and negative prompt come from
+# ../story.yaml. His canonical is his design still reframed (cropped around him
+# and upscaled) so he fills the frame: in the design shot he is tiny, which is
+# right for the story but leaves too few pixels for poses and training.
+render:
+  frames: 49          # 3 s: one slow pose change per shot
+shots:
+  - name: milo_paws_together
+    from: canonical
+    seed: 801
+    action: >-
+      Milo slowly raises his tiny front paws and presses them together in front
+      of his chest, looking up with a sincere, hopeful face.
+  - name: milo_turns_side
+    from: canonical
+    seed: 802
+    action: >-
+      Milo slowly turns his whole body to one side until his profile faces the
+      camera, then holds still.
+  - name: milo_turns_away
+    from: canonical
+    seed: 803
+    action: >-
+      Milo slowly turns around until his back and his thin pink tail face the
+      camera, then holds still.
