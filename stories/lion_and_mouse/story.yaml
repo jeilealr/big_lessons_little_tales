@@ -1,0 +1,183 @@
+# The Lion and the Mouse -- a felt-animal fable.
+# The single source of truth for this story: style bible, characters,
+# locations, scenes. Tools read it; nothing about the story is hard-coded.
+title: The Lion and the Mouse
+slug: lion_and_mouse
+moral: >-
+  No act of kindness is ever wasted, and even the smallest friend can be a
+  great help.
+
+# ---------------------------------------------------------------- style bible
+# Appended to every prompt, verbatim, for every character, location and shot.
+style: >-
+  premium handcrafted stop-motion animation, everything made of soft wool felt
+  and needle-felted fabric with visible wool fibres and tiny stitched details,
+  rounded shapes, cosy children's storybook, soft warm lighting, shallow depth
+  of field, miniature diorama photography, gentle cinematic camera movement,
+  wholesome atmosphere, highly detailed wool texture
+negative: >-
+  plastic, realistic animal fur, photorealistic animals, scary expression,
+  angry face, sharp teeth, text, letters, logo, watermark, subtitles, modern
+  objects, people, deformed, extra limbs, extra tails, duplicate character,
+  flickering, jittery motion, blurry, low quality, overexposed
+
+# ---------------------------------------------------------------- characters
+# `sheet` is the frozen description (step 1 of docs/character-consistency.md):
+# pasted verbatim into every prompt the character appears in. Never reword it.
+characters:
+  leo:
+    name: Leo the lion
+    role: main
+    trigger: twcleo
+    sheet: >-
+      a large but lovable needle-felted lion with a golden-yellow felt body, a
+      round head, a large fluffy burnt-orange wool mane, small rounded ears,
+      warm brown stitched eyes, a dark brown triangular felt nose, a tiny
+      stitched smile, short rounded legs, oversized soft felt paws, and a long
+      golden tail with a brown wool tuft
+    personality: powerful but friendly; surprised or amused, never angry or scary
+    scale: about six times the height of Milo
+  milo:
+    name: Milo the mouse
+    role: main
+    trigger: twcmilo
+    sheet: >-
+      a tiny adorable needle-felted mouse with a soft light-grey felt body, a
+      cream-coloured belly, oversized round pink felt ears, tiny black stitched
+      eyes, a small pink triangular nose, a thin pink felt tail, tiny rounded
+      paws, and a sweet expressive face
+    personality: cheerful, curious, sincere, brave when it matters
+    scale: about one-sixth the height of Leo
+  butterfly:
+    name: the felt butterfly
+    role: secondary
+    sheet: >-
+      a tiny felt butterfly with soft pastel-blue wings edged in cream
+      stitching and a slim dark grey body
+    note: Milo chases it in scene 2; it can flutter through any forest shot
+
+# ---------------------------------------------------------------- locations
+# Each location gets a canonical empty "plate" (no characters) in design, so
+# every shot set there shares the same place.
+locations:
+  clearing:
+    name: the forest clearing with Leo's tree
+    sheet: >-
+      a sunny handmade felt forest clearing: a large felt tree with a thick
+      stitched brown trunk and layered green wool leaves, soft felt grass,
+      tiny colourful fabric flowers, small felt mushrooms, layered wool bushes,
+      sunlight filtering gently through the felt leaves, warm morning light
+    scenes: [1, 2, 3, 4, 5]
+  trap_site:
+    name: another part of the forest, where the net falls
+    sheet: >-
+      a quieter part of the handmade felt forest in the afternoon: tall wool
+      trees, stitched grey rocks, ferns made of layered green felt, a soft felt
+      path, warmer golden afternoon light
+    scenes: [6, 8, 9]
+  berry_patch:
+    name: Milo's berry patch
+    sheet: >-
+      a small corner of the felt forest with low felt bushes full of tiny round
+      red felt berries, clover made of green felt, a few fabric flowers, soft
+      afternoon light
+    scenes: [7]
+
+props:
+  net: >-
+    a handmade net of soft braided cream craft rope with large square gaps,
+    clearly soft and harmless, not dangerous or frightening
+
+# ---------------------------------------------------------------- scenes
+# The brief, scene by scene (from the author's story treatment). Shots are
+# broken out per scene as each one is worked on; `status` tracks progress.
+scenes:
+  1:
+    title: The peaceful forest
+    location: clearing
+    characters: [leo]
+    text: >-
+      Wide establishing shot. A beautiful handmade felt forest during a warm
+      sunny morning. Leo the lion sleeps peacefully beneath a large felt tree.
+      Soft felt grass surrounds him with tiny colourful fabric flowers,
+      mushrooms, butterflies and layered wool bushes. Sunlight filters gently
+      through the felt leaves. The camera slowly moves toward the sleeping
+      lion. Mood: peaceful, magical, safe and welcoming.
+    status: in design
+  2:
+    title: The little mouse appears
+    location: clearing
+    characters: [milo, butterfly]
+    text: >-
+      Milo happily runs through the felt grass. He explores flowers, climbs over
+      small stitched rocks, and playfully chases a tiny felt butterfly. He does
+      not notice the sleeping lion ahead. Low-angle camera following Milo
+      through the miniature forest. His expression is cheerful and curious.
+  3:
+    title: Oops!
+    location: clearing
+    characters: [leo, milo]
+    text: >-
+      Milo accidentally runs across Leo's enormous felt paw and climbs onto his
+      mane. Leo suddenly wakes up. His eyes open wide. Milo freezes. Leo gently
+      places one large paw in front of Milo, stopping him from running away.
+      Leo looks surprised and slightly annoyed rather than angry. Milo looks
+      nervous but adorable. Close-up showing the huge size difference.
+  4:
+    title: The mouse makes a promise
+    location: clearing
+    characters: [leo, milo]
+    text: >-
+      Milo looks up at Leo and places his tiny paws together, sincere and
+      hopeful. Milo says: "Please let me go. Maybe one day I can help you too."
+      Leo looks surprised, then smiles kindly, amused. Leo lifts his paw and
+      lets Milo go. Milo smiles gratefully. Warm sunlight falls across both.
+  5:
+    title: Kindness
+    location: clearing
+    characters: [leo, milo]
+    text: >-
+      Milo happily waves goodbye. Leo gives him a gentle smile. The little mouse
+      disappears through the felt grass. Leo rests beneath the tree again.
+      Camera slowly rises to show the beautiful felt forest.
+    narration: >-
+      Leo thought the little mouse could never help someone as big and strong
+      as him. But he chose kindness.
+  6:
+    title: The trap
+    location: trap_site
+    characters: [leo]
+    props: [net]
+    text: >-
+      Later that afternoon, Leo walks peacefully through another part of the
+      felt forest. A handmade rope net drops over him and he is tangled beneath
+      it. He tries gently to escape but cannot. His expression becomes worried.
+      He lets out a loud roar for help. Wide cinematic shot of Leo trapped
+      beneath the net among the felt trees.
+  7:
+    title: Milo hears the roar
+    location: berry_patch
+    characters: [milo]
+    text: >-
+      Far away, Milo is gathering tiny felt berries. He hears Leo's roar, raises
+      his head, and his ears perk up. His expression changes from curiosity to
+      concern. He drops the berries and runs toward the sound. Fast but playful
+      tracking shot following the tiny mouse through the felt forest.
+  8:
+    title: The little hero
+    location: trap_site
+    characters: [leo, milo]
+    props: [net]
+    text: >-
+      Milo reaches Leo and sees him trapped. Leo looks surprised and relieved.
+      Milo examines the rope net and nibbles through one rope with his tiny
+      teeth; small fibres separate. Leo watches hopefully. The rope breaks, then
+      another, until the opening is large enough for Leo to escape.
+  9:
+    title: Free!
+    location: trap_site
+    characters: [leo, milo]
+    props: [net]
+    text: >-
+      Leo gently pushes the loose net aside and st...  (brief truncated here;
+      remaining scenes to be added by the author)

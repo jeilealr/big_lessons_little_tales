@@ -35,17 +35,45 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from twc import media, paths, wan  # noqa: E402
 
 
-def load_config(path: Path) -> dict:
+# The design backdrop. Poses are shot on it so every pose cuts out cleanly.
+PLAIN_SET = "a plain cream felt floor in front of a plain pale sage-green felt backdrop"
+DEFAULT_RENDER = dict(width=1280, height=720, frames=81, steps=40, guidance=3.5, guidance_2=3.5)
+
+
+def load_config(path: Path | None = None, story: str | None = None,
+                character: str | None = None) -> dict:
+    """A standalone character file (the fox), or a character from a story.
+
+    Story characters are never re-described here: the sheet, style and
+    negative come from stories/<slug>/story.yaml, and only the poses to shoot
+    live in stories/<slug>/packs/<character>.yaml.
+    """
     import yaml
 
-    cfg = yaml.safe_load(path.read_text())
-    cfg["_workdir"] = paths.WORK / "characters" / cfg["name"]
-    return cfg
+    if story is None:
+        cfg = yaml.safe_load(path.read_text())
+        cfg.setdefault("subject", "The fox")
+        cfg["_workdir"] = paths.WORK / "characters" / cfg["name"]
+        return cfg
+    root = paths.REPO / "stories" / story
+    s = yaml.safe_load((root / "story.yaml").read_text())
+    c = s["characters"][character]
+    pack_file = root / "packs" / f"{character}.yaml"
+    pack = yaml.safe_load(pack_file.read_text()) if pack_file.is_file() else {}
+    return dict(
+        name=character, subject=c["name"][0].upper() + c["name"][1:],
+        trigger=c.get("trigger", f"twc{character}"), character=c["sheet"],
+        set=pack.get("set", PLAIN_SET), style=s["style"], negative=s["negative"],
+        render={**DEFAULT_RENDER, **pack.get("render", {})},
+        canonical={"design": str(paths.WORK / "stories" / story / "design" / character)},
+        orbit=pack.get("orbit"), shots=pack.get("shots", []),
+        _workdir=paths.WORK / "stories" / story / "characters" / character,
+    )
 
 
 def assemble(cfg: dict, action: str) -> str:
     """Step 1: every prompt = the action + the character sheet + the set + style."""
-    return (f"{action.strip()} The fox is {cfg['character']}. "
+    return (f"{action.strip()} {cfg['subject']} is {cfg['character']}. "
             f"The scene is {cfg['set']}. {cfg['style']}.")
 
 
@@ -59,6 +87,16 @@ def stage_canonical(cfg: dict) -> None:
     from PIL import Image
 
     c = cfg["canonical"]
+    if "design" in c:                      # a story character: the still picked in design
+        import shutil
+
+        src = Path(c["design"]) / "canonical.png"
+        out = cfg["_workdir"] / "canonical.png"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(src, out)
+        sidecar(out, stage="canonical", source=str(src), how="picked in production/design.py")
+        print(f"canonical: {src} -> {out}")
+        return
     clip = paths.CHANNEL / c["clip"]
     frames = media.read_frames(clip)
     if c.get("frame", "auto") == "auto":
@@ -223,6 +261,8 @@ def main() -> None:
                                       "assemble", "prompt"])
     ap.add_argument("--config", type=Path,
                     default=Path(__file__).resolve().parent / "characters" / "fox.yaml")
+    ap.add_argument("--story", help="use a story character: --story lion_and_mouse --character leo")
+    ap.add_argument("--character")
     ap.add_argument("--only", nargs="+", help="shots: render only these shot names")
     ap.add_argument("--every", type=int, default=8, help="dataset: keep every Nth shot frame")
     ap.add_argument("--clips", nargs="+",
@@ -231,10 +271,11 @@ def main() -> None:
     ap.add_argument("--redo", action="store_true",
                     help="orbit/shots: re-render even if the output already exists")
     args = ap.parse_args()
-    cfg = load_config(args.config)
+    cfg = load_config(args.config, args.story, args.character)
 
     if args.stage == "prompt":
-        print("orbit:", assemble(cfg, cfg["orbit"]["action"]), "\n")
+        if cfg.get("orbit"):
+            print("orbit:", assemble(cfg, cfg["orbit"]["action"]), "\n")
         for s in cfg["shots"]:
             print(f"{s['name']} (from {s['from']}):", assemble(cfg, s["action"]), "\n")
         return

@@ -66,3 +66,17 @@ shots:
     action: >-
       The fox slowly raises his head and tilts his nose upward, ears pricked,
       then blinks once.
+  # Round 3: new views for the LoRA dataset. Turning the character is more
+  # reliable than orbiting the camera (the orbit only turned ~30 degrees).
+  - name: fox_turns_to_camera
+    from: angle_1
+    seed: 603
+    action: >-
+      The fox slowly turns his head and then his whole body toward the camera
+      until he faces the viewer directly, then holds still.
+  - name: fox_turns_away
+    from: canonical
+    seed: 604
+    action: >-
+      The fox slowly turns around until his back and his bushy white-tipped
+      tail face the camera, then holds still.
