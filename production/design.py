@@ -37,9 +37,13 @@ CHARACTER_SHOT = (
     "plain cream felt floor in front of a plain pale sage-green felt backdrop, the "
     "whole body in frame, centred, eye level, soft even studio lighting. {style}."
 )
+# "Miniature set" alone drew isolated props on a studio table in half the
+# berry-patch candidates; the scene must be said to fill the frame edge to edge.
 LOCATION_SHOT = (
-    "An empty handmade miniature set with no animals and no characters: {sheet}. "
-    "Wide shot at eye level, the centre of the frame left open as a stage. {style}."
+    "An empty handmade felt landscape with no animals and no characters: {sheet}. "
+    "The scene fills the whole frame from edge to edge, with no studio backdrop and "
+    "no table visible. Wide shot at eye level, the centre of the frame left open as "
+    "a stage. {style}."
 )
 POSES = {
     "leo": "He stands calmly on all four paws in a three-quarter view, head turned "

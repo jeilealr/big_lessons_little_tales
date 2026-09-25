@@ -13,7 +13,7 @@ sources:
     frames: [8, 40, 72]
     pose: "walking, side view"
   - {clip: shots/fox_sits.mp4, frames: [48, 64, 80], pose: "sitting, three-quarter view"}
-  - {clip: shots/fox_looks_up.mp4, frames: [48, 80], pose: "head raised looking up, side view"}
+  - {clip: shots/fox_looks_up.mp4, frames: [48, 80], pose: "standing, side view"}   # the head barely rises
   - {clip: shots/fox_turns_to_camera.mp4, frames: [64, 80], pose: "standing, front view facing the camera"}
   - {clip: shots/fox_turns_away.mp4, frames: [64, 80], pose: "standing, back view, tail toward the camera"}
 

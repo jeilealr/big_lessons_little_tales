@@ -135,8 +135,13 @@ can sleep.
 
 ![Clearing candidates](img/lm_clearing_candidates.jpg)
 
+**Say that the place fills the frame.** With "an empty miniature set", half of
+the berry-patch candidates came out as isolated props on a studio table, not
+as a place. The location prompt now says the scene fills the frame edge to
+edge, with no backdrop and no table.
+
 Picks for The Lion and the Mouse: Leo 1003, Milo 1001 (reframed), butterfly
-1004, clearing 1002, trap site 1004.
+1004, clearing 1002, trap site 1004, berry patch 1003.
 
 ## 4. Keyframes: the character, in the place, before anything moves
 
@@ -164,7 +169,46 @@ while the plate is backlit. That is acceptable in a *first frame*, because the
 video model relights the character as it animates; it would not be acceptable
 in a still.
 
-(Sections 5 to 8 follow as each stage is validated.)
+## 5. The character pack: poses and views
+
+A character needs more than one picture: other views for other camera angles,
+the key poses the story calls for, and material for the LoRA (section 6).
+Each pose is a short image-to-video shot that starts from the canonical still,
+on the plain design backdrop, so every pose can later be cut out and placed.
+
+Poses live in `stories/<slug>/packs/<character>.yaml`; the character's
+description, the style and the negative prompt come from the story bible, so
+a pose file is just a list of actions:
+
+```yaml
+- name: leo_sleeps
+  from: canonical
+  action: Leo slowly lies down on his belly, rests his round head on his big
+          front paws and gently closes his eyes.
+```
+
+What works and what does not, measured on the felt fox:
+
+| Action | Result |
+|---|---|
+| sit down, lie down (one slow whole-body movement) | reliable |
+| turn to face the camera, turn around | reliable: the way to get front and back views |
+| camera orbits around a still character | identity perfect, but only ~30 degrees of rotation |
+| look up / raise the head | too subtle: the pose barely changes |
+| "looks up at the clouds drifting overhead" | the model animated the clouds instead |
+
+![turning gives front and back views; a small head movement does not register](img/fox_turns.jpg)
+
+Rules that follow:
+- **One whole-body action per shot.** Small gestures from a still start do not
+  register; if a head movement matters, make it the whole shot's point and
+  exaggerate it.
+- **The action names only the character's body.** Anything else it names (the
+  clouds, a butterfly) is something the model may animate instead.
+- **Turn the character, do not orbit the camera**, to get new views.
+- 3 s (49 frames) is enough for one pose change and takes about an hour.
+
+(Sections 6 to 8 follow as each stage is validated.)
 
 ## Sources
 
