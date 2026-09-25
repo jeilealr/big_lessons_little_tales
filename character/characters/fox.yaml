@@ -61,6 +61,8 @@ shots:
   - name: fox_looks_up
     from: angle_3
     seed: 602
+    # v1 said "looks up at the cotton clouds drifting overhead": the model moved a
+    # cloud instead of the fox. Describe only the body; the set sheet has the clouds.
     action: >-
-      The fox slowly lifts its head and looks up at the cotton clouds drifting
-      overhead, then blinks.
+      The fox slowly raises his head and tilts his nose upward, ears pricked,
+      then blinks once.

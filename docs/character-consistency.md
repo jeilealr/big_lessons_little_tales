@@ -110,6 +110,32 @@ Each shot names the keyframe it starts from (`from: angle_1`) and **one slow
 action**. The prompt is the action plus the frozen sheets. Every shot therefore
 opens on the real fox, from the angle that suits it, in the same set.
 
+### Result: does the fox stay the same fox?
+
+Yes. The canonical still, the end of the text-only walk it came from, the
+keyframe `fox_sits` started from, and frames from both anchored shots:
+
+![consistency across shots](img/fox_consistency.jpg)
+
+Same stitched chest, black paws, bead eyes, stitched ears and white tail tip,
+in the same set, across three separately generated shots. That is what text
+alone could not do (compare the felt bunny, which was a different animal from
+shot to shot and even jumped around within one).
+
+**What the anchors do *not* guarantee: the action.** `fox_sits` did exactly what
+it was asked. `fox_looks_up` did not: the fox stayed in profile and shuffled his
+feet, while a huge cotton cloud drifted in across the top of the frame. The
+action line said *"looks up at the cotton clouds drifting overhead"*, and the
+model acted out the scene half of that sentence instead of the body half.
+
+Rule: **the action line describes only the character's body.**
+- good: *"The fox slowly raises his head and tilts his nose upward."*
+- bad: *"The fox looks up at the clouds drifting overhead."* (names something
+  the model can animate instead)
+
+The set sheet already puts the clouds in the scene; the action line should not
+mention them again.
+
 ### 3. LoRA (later)
 
 Once the design is final, `dataset` collects the canonical still, the angles
@@ -139,3 +165,8 @@ up to ~4 on one node (host RAM is the limit, ~80–100 GB each).
 - 2026-09-25: orbit done (seed 501, ~2 h 05 min at 40 steps). Identity perfect across
   all five keyframes; angle change only ~30°. Shots `fox_sits` (from `angle_1`) and
   `fox_looks_up` (from `angle_3`) submitted.
+- 2026-09-25: both shots done (~2 h 45 min wall, 4 tasks loading concurrently took
+  ~42 min). Identity held across all shots. `fox_sits`: action correct.
+  `fox_looks_up`: action wrong (a cloud moved instead of the fox); rewrite the action
+  line and re-render only that shot (`shots --only fox_looks_up --redo`).
+- Assembled with `character.py assemble`: `Intro/fox_sequence.mov`.

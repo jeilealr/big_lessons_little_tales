@@ -34,7 +34,7 @@ def tone(freq, dur, partials, decay, attack=0.004):
     return env * sum(a * np.sin(2 * np.pi * freq * m * t) for m, a in partials)
 
 
-def build(duration: float, chime_at: float | None, seed: int) -> np.ndarray:
+def build(duration: float, chime_at: list[float] | None, seed: int) -> np.ndarray:
     rng = np.random.default_rng(seed)
     n = int(duration * SR)
     mix = np.zeros((n, 2))
@@ -55,6 +55,8 @@ def build(duration: float, chime_at: float | None, seed: int) -> np.ndarray:
     music_box = [(1, 1.0), (3.0, 0.22), (5.1, 0.06)]      # bright, bell-like
     marimba = [(1, 1.0), (4.0, 0.12)]                      # round, woody
     t0 = 0.35
+    repeats = max(1, int(np.ceil((duration - t0) / (len(bars) * 4 * beat))))
+    bars = bars[:-1] * (repeats - 1) + bars if repeats > 1 else bars
     for b, (_, melody, chord) in enumerate(bars):
         start = t0 + b * 4 * beat
         step = beat / 2 if len(melody) == 8 else beat
@@ -71,9 +73,9 @@ def build(duration: float, chime_at: float | None, seed: int) -> np.ndarray:
                   for p in chord)
         put(pad, start, 0.035)
 
-    if chime_at is not None:                    # a little sparkle on the cut
+    for cut in chime_at or []:                  # a little sparkle on each cut
         for k, name in enumerate(["C6", "E6", "G6", "C7"]):
-            put(tone(note(name), 1.2, music_box, 0.5), chime_at - 0.12 + k * 0.05, 0.07,
+            put(tone(note(name), 1.2, music_box, 0.5), cut - 0.12 + k * 0.05, 0.07,
                 pan=-0.4 + 0.27 * k)
 
     ir_len = int(1.4 * SR)
@@ -92,7 +94,8 @@ def build(duration: float, chime_at: float | None, seed: int) -> np.ndarray:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--duration", type=float, default=10.2)
-    ap.add_argument("--chime-at", type=float, default=None)
+    ap.add_argument("--chime-at", type=float, nargs="*", default=None,
+                    help="seconds of each cut that gets a chime")
     ap.add_argument("--seed", type=int, default=3)
     ap.add_argument("-o", "--output", type=Path, default=_AUDIO / "felt_lullaby.wav")
     args = ap.parse_args()

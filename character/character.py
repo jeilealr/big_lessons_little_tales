@@ -171,14 +171,63 @@ def stage_dataset(cfg: dict, every: int) -> None:
     print(f"dataset: {n} captioned stills -> {ds}")
 
 
+def stage_assemble(cfg: dict, clips: list[str], out: Path) -> None:
+    """Join shots with hard cuts, bring them to 1080p30 and add a lullaby.
+
+    `clips` are shot names from the config, or paths (relative to the channel
+    folder) for clips made elsewhere, such as the shot the canonical still was
+    taken from.
+    """
+    import subprocess
+
+    import numpy as np
+    import torch
+
+    from twc import post as vp
+
+    wd = cfg["_workdir"]
+    paths_in = []
+    for c in clips:
+        p = wd / "shots" / f"{c}.mp4"
+        paths_in.append(p if p.is_file() else paths.CHANNEL / c)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    parts, cuts, t = [], [], 0.0
+    for p in paths_in:
+        frames = vp.retime(vp.decode(p), wan.FPS, 1.0, 30, device)
+        print(f"  {p.name}: {len(frames)} frames at 30 fps", flush=True)
+        parts.append(frames)
+        t += len(frames) / 30
+        cuts.append(t)
+    frames = np.concatenate(parts)
+    print(f"  upscaling {len(frames)} frames to 1920x1080 on {device}", flush=True)
+    frames = vp.upscale(frames, 1920, 1080, device)
+    silent = wd / f"{out.stem}_silent.mp4"
+    vp.encode(frames, silent, 30, vf=vp.GRADE_VF)
+    duration = len(frames) / 30
+    music = wd / f"{out.stem}_lullaby.wav"
+    subprocess.run([sys.executable, str(paths.REPO / "audio" / "make_lullaby.py"),
+                    "--duration", f"{duration + 0.1:.2f}", "--chime-at",
+                    *[f"{c:.3f}" for c in cuts[:-1]], "-o", str(music)], check=True)
+    media.finish(concat_video=silent, audio_source=music, output=out,
+                 target_duration=duration, source_duration=duration, final_width=1920,
+                 final_height=1080, final_fps=30, hold_end=0.0, audio_restart_at=None)
+    sidecar(out, stage="assemble", clips=[str(p) for p in paths_in], cuts=cuts[:-1],
+            duration=duration)
+    print(f"Saved {out} ({duration:.2f} s, cuts at {', '.join(f'{c:.2f}' for c in cuts[:-1])})")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["canonical", "orbit", "angles", "shots", "dataset", "prompt"])
+    ap.add_argument("stage", choices=["canonical", "orbit", "angles", "shots", "dataset",
+                                      "assemble", "prompt"])
     ap.add_argument("--config", type=Path,
                     default=Path(__file__).resolve().parent / "characters" / "fox.yaml")
     ap.add_argument("--only", nargs="+", help="shots: render only these shot names")
     ap.add_argument("--every", type=int, default=8, help="dataset: keep every Nth shot frame")
+    ap.add_argument("--clips", nargs="+",
+                    help="assemble: shot names, or clip paths relative to the channel folder")
+    ap.add_argument("-o", "--output", type=Path, help="assemble: output video")
     ap.add_argument("--redo", action="store_true",
                     help="orbit/shots: re-render even if the output already exists")
     args = ap.parse_args()
@@ -191,7 +240,10 @@ def main() -> None:
         return
     {"canonical": lambda: stage_canonical(cfg), "orbit": lambda: stage_orbit(cfg, args.redo),
      "angles": lambda: stage_angles(cfg), "shots": lambda: stage_shots(cfg, args.only, args.redo),
-     "dataset": lambda: stage_dataset(cfg, args.every)}[args.stage]()
+     "dataset": lambda: stage_dataset(cfg, args.every),
+     "assemble": lambda: stage_assemble(cfg, args.clips,
+                                        args.output or paths.OUTPUT / f"{cfg['name']}_sequence.mov"),
+     }[args.stage]()
 
 
 if __name__ == "__main__":
