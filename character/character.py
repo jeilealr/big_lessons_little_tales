@@ -99,9 +99,12 @@ def _render(cfg: dict, stage: str, action: str, image_path: Path, seed: int, out
     print(f"  saved {out}", flush=True)
 
 
-def stage_orbit(cfg: dict) -> None:
+def stage_orbit(cfg: dict, redo: bool = False) -> None:
     o = cfg["orbit"]
     wd = cfg["_workdir"]
+    if (wd / "orbit.mp4").is_file() and not redo:
+        print(f"orbit: {wd / 'orbit.mp4'} exists, skipping (use --redo to re-render)")
+        return
     _render(cfg, "orbit", o["action"], wd / "canonical.png", o["seed"], wd / "orbit.mp4",
             o.get("negative_extra", ""))
 
@@ -128,10 +131,14 @@ def stage_angles(cfg: dict) -> None:
     print(f"angles: {len(tiles)} keyframes -> {wd / 'angles'}")
 
 
-def stage_shots(cfg: dict, only: list[str] | None) -> None:
+def stage_shots(cfg: dict, only: list[str] | None, redo: bool = False) -> None:
     wd = cfg["_workdir"]
     for shot in cfg["shots"]:
         if only and shot["name"] not in only:
+            continue
+        out = wd / "shots" / f"{shot['name']}.mp4"
+        if out.is_file() and not redo:
+            print(f"shot {shot['name']}: {out} exists, skipping (use --redo to re-render)")
             continue
         src = wd / ("canonical.png" if shot["from"] == "canonical"
                     else f"angles/{shot['from']}.png")
@@ -172,6 +179,8 @@ def main() -> None:
                     default=Path(__file__).resolve().parent / "characters" / "fox.yaml")
     ap.add_argument("--only", nargs="+", help="shots: render only these shot names")
     ap.add_argument("--every", type=int, default=8, help="dataset: keep every Nth shot frame")
+    ap.add_argument("--redo", action="store_true",
+                    help="orbit/shots: re-render even if the output already exists")
     args = ap.parse_args()
     cfg = load_config(args.config)
 
@@ -180,8 +189,8 @@ def main() -> None:
         for s in cfg["shots"]:
             print(f"{s['name']} (from {s['from']}):", assemble(cfg, s["action"]), "\n")
         return
-    {"canonical": lambda: stage_canonical(cfg), "orbit": lambda: stage_orbit(cfg),
-     "angles": lambda: stage_angles(cfg), "shots": lambda: stage_shots(cfg, args.only),
+    {"canonical": lambda: stage_canonical(cfg), "orbit": lambda: stage_orbit(cfg, args.redo),
+     "angles": lambda: stage_angles(cfg), "shots": lambda: stage_shots(cfg, args.only, args.redo),
      "dataset": lambda: stage_dataset(cfg, args.every)}[args.stage]()
 
 
