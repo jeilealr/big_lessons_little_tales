@@ -169,6 +169,25 @@ def stage_angles(cfg: dict) -> None:
     print(f"angles: {len(tiles)} keyframes -> {wd / 'angles'}")
 
 
+def start_image(wd: Path, name: str) -> Path:
+    """What a shot starts from: the canonical, an orbit angle, or the last
+    frame of another shot (so a walk can start from the side-view pose)."""
+    from PIL import Image
+
+    if name == "canonical":
+        return wd / "canonical.png"
+    if (wd / "angles" / f"{name}.png").is_file():
+        return wd / "angles" / f"{name}.png"
+    clip = wd / "shots" / f"{name}.mp4"
+    if clip.is_file():
+        out = wd / "poses" / f"{name}_last.png"
+        if not out.is_file():
+            out.parent.mkdir(parents=True, exist_ok=True)
+            Image.fromarray(media.read_frames(clip)[-1]).save(out)
+        return out
+    raise SystemExit(f"cannot start from {name!r}: no canonical, angle or shot of that name")
+
+
 def stage_shots(cfg: dict, only: list[str] | None, redo: bool = False) -> None:
     wd = cfg["_workdir"]
     for shot in cfg["shots"]:
@@ -178,8 +197,7 @@ def stage_shots(cfg: dict, only: list[str] | None, redo: bool = False) -> None:
         if out.is_file() and not redo:
             print(f"shot {shot['name']}: {out} exists, skipping (use --redo to re-render)")
             continue
-        src = wd / ("canonical.png" if shot["from"] == "canonical"
-                    else f"angles/{shot['from']}.png")
+        src = start_image(wd, shot["from"])
         _render(cfg, "shot", shot["action"], src, shot["seed"], wd / "shots" / f"{shot['name']}.mp4")
 
 

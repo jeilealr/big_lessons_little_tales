@@ -23,3 +23,16 @@ shots:
     action: >-
       Leo slowly turns around until his back, his mane from behind and his
       tufted tail face the camera, then holds still.
+  # Round 7: actions the story needs (scenes 6, 9), which also widen the LoRA data
+  - name: leo_walks
+    from: leo_turns_side
+    seed: 704
+    action: >-
+      Leo walks slowly and calmly forward on his short rounded legs, his big
+      soft paws stepping one after another, his tufted tail swaying gently.
+  - name: leo_sits
+    from: canonical
+    seed: 705
+    action: >-
+      Leo slowly sits down on his haunches, his front paws together in front of
+      him, and settles with a gentle friendly smile.

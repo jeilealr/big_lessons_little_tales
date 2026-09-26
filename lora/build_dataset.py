@@ -89,6 +89,7 @@ def main() -> None:
         return ", ".join([cfg["trigger"], cfg["identity"], pose, framing, cfg["setting"], cfg["style"]])
 
     items, crops, skipped = [], 0, []
+    pose_of = {}
     for src in cfg["sources"]:
         if "image" in src:
             files = sorted(glob.glob(str(base / src["image"])))
@@ -107,7 +108,7 @@ def main() -> None:
         for stem, img in frames:
             Image.fromarray(img).save(out / f"{stem}.png")
             (out / f"{stem}.txt").write_text(caption(src["pose"], "full body"))
-            items.append(stem)
+            items.append(stem); pose_of[stem] = src["pose"]
             if src.get("crop", cfg.get("crop_every", True)):
                 box = subject_box(img, cfg["subject"])
                 c = medium_crop(img, box) if box else None
@@ -115,6 +116,44 @@ def main() -> None:
                     Image.fromarray(c).save(out / f"{stem}_medium.png")
                     (out / f"{stem}_medium.txt").write_text(caption(src["pose"], "medium shot"))
                     items.append(f"{stem}_medium"); crops += 1
+    # Background diversity: cut each full-body still out and composite it into
+    # several different location plates. Without this the LoRA memorises the
+    # training background (the fox LoRA drew its meadow for a "forest" prompt).
+    comp = cfg.get("composite")
+    if comp:
+        import random
+
+        sys.path.insert(0, str(paths.REPO / "production"))
+        from keyframe import place, subject_bbox
+
+        rng = random.Random(comp.get("seed", 7))
+        plates = []
+        for spec in comp["plates"]:
+            for f in sorted(glob.glob(str(paths.WORK / spec["glob"]))):
+                plates.append((f, spec["caption"]))
+        if not plates:
+            raise SystemExit("composite: no plates found")
+        full = [st for st in items if not st.endswith("_medium")]
+        n_comp = 0
+        for stem in full:
+            src = np.asarray(Image.open(out / f"{stem}.png").convert("RGB"))
+            _, _, _, bh = subject_bbox(src)
+            share = bh / src.shape[0]
+            pose = pose_of[stem]
+            for k in range(comp.get("per_image", 2)):
+                plate_path, plate_caption = rng.choice(plates)
+                plate = np.asarray(Image.open(plate_path).convert("RGB").resize((src.shape[1], src.shape[0])))
+                h = float(np.clip(share * rng.uniform(0.8, 1.1), 0.25, 0.8))
+                frame, _ = place(plate.astype(np.float32), src, x=rng.uniform(0.35, 0.65),
+                                 y=rng.uniform(0.82, 0.92), height=h, flip=rng.random() < 0.5,
+                                 light=0.0)       # never alter identity colours in training data
+                name = f"{stem}_comp{k}"
+                Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8)).save(out / f"{name}.png")
+                cap = ", ".join([cfg["trigger"], cfg["identity"], pose, "full body", plate_caption, cfg["style"]])
+                (out / f"{name}.txt").write_text(cap)
+                items.append(name); n_comp += 1
+        print(f"composited {n_comp} images into {len(plates)} plates")
+
     if skipped and not args.allow_missing:
         raise SystemExit("missing sources:\n  " + "\n  ".join(skipped))
 

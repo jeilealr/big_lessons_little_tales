@@ -64,13 +64,14 @@ def main() -> None:
         if out.is_file():
             print(f"exists, skipping {out.name}"); continue
         t0 = time.time()
-        video = wan.generate(pipe, prompt, negative=story["negative"], frames=frames, seed=seed,
+        negative = story["negative"] + (", " + shot["negative_extra"] if shot.get("negative_extra") else "")
+        video = wan.generate(pipe, prompt, negative=negative, frames=frames, seed=seed,
                              image=Image.open(keyframe), **RENDER)
         wan.save(video, out)
         out.with_suffix(".json").write_text(json.dumps(dict(
             stage="shot", scene=args.scene, shot=args.shot, keyframe=str(keyframe),
             model=wan.MODELS["i2v"], seed=seed, frames=frames, prompt=prompt,
-            negative=story["negative"], seconds=round(time.time() - t0), **RENDER), indent=2))
+            negative=negative, seconds=round(time.time() - t0), **RENDER), indent=2))
         print(f"saved {out} ({time.time() - t0:.0f} s)", flush=True)
 
 

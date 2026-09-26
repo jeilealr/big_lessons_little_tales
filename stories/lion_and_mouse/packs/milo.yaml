@@ -23,3 +23,16 @@ shots:
     action: >-
       Milo slowly turns around until his back and his thin pink tail face the
       camera, then holds still.
+  # Round 7: actions for scenes 2, 5, 7
+  - name: milo_runs
+    from: milo_turns_side
+    seed: 804
+    action: >-
+      Milo runs quickly forward on his tiny feet in a happy scamper, his big pink
+      ears bouncing and his thin pink tail swinging behind him.
+  - name: milo_waves
+    from: canonical
+    seed: 805
+    action: >-
+      Milo raises one tiny paw high and waves it happily from side to side,
+      smiling.

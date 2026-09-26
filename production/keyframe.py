@@ -108,18 +108,23 @@ def subject_bbox(img: np.ndarray) -> tuple[int, int, int, int]:
 
 def harmonise(rgb: np.ndarray, alpha: np.ndarray, plate_region: np.ndarray,
               amount: float = 0.35) -> np.ndarray:
-    """Pull the character's per-channel mean towards the plate's local light."""
+    """Match the character's brightness to the plate's local light: luminance
+    only, never hue. A character's colours are part of its identity; the first
+    version matched each channel and turned the fox's white chest pale green
+    in a green forest.
+    """
     m = alpha > 0.5
-    if m.sum() < 50:
+    if m.sum() < 50 or amount <= 0:
         return rgb
-    src_mean = rgb[m].mean(0)
-    dst_mean = plate_region.reshape(-1, 3).mean(0)
-    gain = 1 + amount * (dst_mean / np.maximum(src_mean, 1) - 1)
-    return np.clip(rgb * gain, 0, 255)
+    w = np.array([0.299, 0.587, 0.114])
+    src = float(rgb[m] @ w.mean() if False else (rgb[m] * w).sum(1).mean())
+    dst = float((plate_region.reshape(-1, 3) * w).sum(1).mean())
+    gain = 1 + amount * (dst / max(src, 1.0) - 1)
+    return np.clip(rgb * float(np.clip(gain, 0.8, 1.1)), 0, 255)
 
 
 def place(plate: np.ndarray, still: np.ndarray, x: float, y: float, height: float,
-          flip: bool = False, shadow: float = 0.45) -> tuple[np.ndarray, dict]:
+          flip: bool = False, shadow: float = 0.45, light: float = 0.35) -> tuple[np.ndarray, dict]:
     H, W = plate.shape[:2]
     alpha = matte(still)
     ys, xs = np.nonzero(alpha > 0.5)
@@ -148,7 +153,7 @@ def place(plate: np.ndarray, still: np.ndarray, x: float, y: float, height: floa
     rgb_c = rgb[sy0:sy0 + dy1 - dy0, sx0:sx0 + dx1 - dx0]
     a_c = a[sy0:sy0 + dy1 - dy0, sx0:sx0 + dx1 - dx0][..., None]
     region = out[dy0:dy1, dx0:dx1]
-    rgb_c = harmonise(rgb_c, a_c[..., 0], region)
+    rgb_c = harmonise(rgb_c, a_c[..., 0], region, light)
     out[dy0:dy1, dx0:dx1] = region * (1 - a_c) + rgb_c * a_c
     return out, dict(box=[dx0, dy0, dx1 - dx0, dy1 - dy0], scale=round(scale, 3))
 
@@ -160,8 +165,22 @@ def main() -> None:
     ap.add_argument("--char", action="append", required=True,
                     help="STILL.png:x=..,y=..,h=..[,flip]  (x,y = feet, fractions of the frame)")
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--plate-crop", help="x,y,w,h as fractions: a virtual close-up of the plate, "
+                                         "cropped and upscaled with Real-ESRGAN (same place, closer)")
     args = ap.parse_args()
     frame = np.asarray(Image.open(args.plate).convert("RGB")).astype(np.float32)
+    if args.plate_crop:
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        import torch
+        from twc import post
+        H, W = frame.shape[:2]
+        fx, fy, fw, fh = map(float, args.plate_crop.split(","))
+        x0, y0, cw = int(fx * W), int(fy * H), int(fw * W)
+        ch = int(cw * H / W)                                  # keep the plate's aspect
+        crop = frame[y0:y0 + ch, x0:x0 + cw].astype(np.uint8)
+        dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        frame = post.upscale(crop[None], W, H, dev)[0].astype(np.float32)
     placed = []
     for spec in args.char:
         path, _, opts = spec.partition(":")

@@ -117,6 +117,19 @@ scenes:
           round belly gently rising and falling as he breathes. Two small pastel
           felt butterflies flutter slowly through the warm sunlight filtering
           through the felt leaves.
+      - name: s01_establish_v2
+        keyframe: keyframes/scene01_y0.78.png
+        characters: [leo]
+        frames: 81
+        seeds: [5103]
+        # v1: in seed 5101 Leo opened his eyes and smiled at the camera
+        action: >-
+          Wide establishing shot of a peaceful handmade felt forest on a warm sunny
+          morning. The camera slowly and smoothly moves closer to Leo the lion, who
+          stays fast asleep beneath the large felt tree the whole time, his eyes
+          closed, his round belly gently rising and falling as he breathes. Two small
+          pastel felt butterflies flutter slowly through the warm sunlight.
+        negative_extra: open eyes, awake, looking at the camera, standing up
   2:
     title: The little mouse appears
     location: clearing
@@ -126,6 +139,18 @@ scenes:
       small stitched rocks, and playfully chases a tiny felt butterfly. He does
       not notice the sleeping lion ahead. Low-angle camera following Milo
       through the miniature forest. His expression is cheerful and curious.
+    shots:
+      - name: s02_milo_runs
+        keyframe: keyframes/scene02_milo.png      # Milo in a close-up of the clearing
+        characters: [milo, butterfly]
+        frames: 81
+        seeds: [5201]
+        action: >-
+          Low-angle camera close to the ground, following Milo the tiny mouse as he
+          happily runs to the right through the soft felt grass past fabric flowers,
+          his big pink ears bouncing, playfully chasing a small pastel-blue felt
+          butterfly that flutters just ahead of him. Cheerful and curious.
+        negative_extra: lion, big animal, second mouse
   3:
     title: Oops!
     location: clearing

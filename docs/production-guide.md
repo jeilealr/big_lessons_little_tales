@@ -208,7 +208,64 @@ Rules that follow:
 - **Turn the character, do not orbit the camera**, to get new views.
 - 3 s (49 frames) is enough for one pose change and takes about an hour.
 
-(Sections 6 to 8 follow as each stage is validated.)
+## 6. Character LoRA: teaching the model *your* character
+
+A keyframe fixes the character at the first frame of a shot. A LoRA (a small
+add-on to the video model, a few hundred MB) goes further: the model learns the
+character, so a prompt containing its trigger word (`twcfox`) draws it in any
+place and pose, with no anchor image.
+
+```bash
+$W python twc_video/lora/build_dataset.py fox          # captioned stills
+# GPU, two tasks in parallel (one per Wan expert, ~1 h 10 min for 1500 steps):
+#   bash twc_video/lora/train_character.sh fox low 1500
+#   bash twc_video/lora/train_character.sh fox high 1500
+# GPU: bash twc_video/lora/eval_character.sh fox base 500 1000 final
+$W python twc_video/lora/eval_grid.py fox base 500 1000 final
+```
+
+**Dataset.** 20-40 stills from the character pack (section 5): canonical,
+turns, story poses, full body plus medium crops. Every caption follows one
+recipe, so what should stay controllable is spelled out and not absorbed into
+the character:
+
+> `twcfox, a small orange felt fox, sitting, three-quarter view, full body, on a green felt meadow ..., handmade felt stop-motion animation`
+
+**Training.** Trainer: [musubi-tuner](https://github.com/kohya-ss/musubi-tuner)
+(Apache-2.0). Wan 2.2 has two experts; each gets its own LoRA, trained in
+parallel on its own GPU. Measured: training both experts in one run costs
+11-13 s per step (28 GB of weights swap between CPU and GPU whenever a step
+changes expert); one expert per run costs 2.6-3.5 s per step. Settings: rank 32,
+alpha 16, learning rate 2e-4, AdamW, flow shift 3, 1500 steps, a checkpoint
+every 250.
+
+**Evaluation.** The same seeds and prompts for every checkpoint, plus a row with
+no LoRA that uses the full text description instead. Three of the four prompts
+put the character somewhere the training data never showed.
+
+![fox LoRA grid](img/fox_lora_grid.jpg)
+
+What the grid shows, in order:
+
+1. **Without a LoRA, the full text description gives four different foxes**
+   (black-tipped ears, eyebrows, other faces). Text cannot pin a character.
+2. **By step 500 it is our fox, everywhere**: stitched ears, bead eyes, the
+   stitched chest, black paws, white tail tip, in a forest, a snowy village
+   and on a blanket.
+3. **After that, the LoRA mostly memorises the background.** From step 1000 the
+   forest prompt returns the training meadow. Every training image had that
+   meadow behind the fox.
+4. Pose follows the data: "sleeping curled up" came out lying stretched at
+   step 500, because no training image showed a sleeping fox.
+
+So: **pick the earliest checkpoint where identity holds** (500 here), and give
+the dataset varied backgrounds and every pose the story needs. The dataset
+builder can cut the character out (BiRefNet) and composite it into several
+location plates, so that the character is the only thing every training image
+has in common (`composite:` in the dataset file). Compositing never changes
+the character's colours: a character's colours are part of its identity.
+
+(Sections 7 and 8 follow as each stage is validated.)
 
 ## Sources
 
