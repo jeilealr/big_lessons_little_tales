@@ -293,6 +293,23 @@ scenes:
         negative_extra: >-
           angry face, teeth, roaring, scary, second lion, second mouse, mouse
           running away, lion standing up, camera tilting up
+      - name: s04_milo_pleads_v2           # close-up keyframe: a crop of the continuity frame (Rule 2.12)
+        keyframe: keyframes/scene04_milo_close.png
+        compose:
+          plate: keyframes/scene04_from_s03.png
+          crop: [0.20, 0.66, 0.34]
+          characters: []
+        characters: [milo]
+        frames: 81
+        seeds: [4103, 4104]
+        action: >-
+          Close-up at ground level. Tiny Milo the mouse stands beside the lion's
+          enormous soft paws, looks up, and lifts his tiny paws together up to his
+          chin, pleading with big hopeful eyes, sincere and sweet. The camera stays
+          still.
+        negative_extra: >-
+          lion face, whole lion, second mouse, running, scary, angry, crying,
+          camera moving
       - name: s04_leo_smiles
         take: 4202                          # big warm smile and a nod
         keyframe: keyframes/scene04_from_s03.png
@@ -318,6 +335,34 @@ scenes:
     narration: >-
       Leo thought the little mouse could never help someone as big and strong
       as him. But he chose kindness.
+    shots:
+      - name: s05_milo_leaves
+        keyframe: keyframes/scene05_from_s04.png
+        continue_from: {shot: s04_leo_smiles, take: 4202}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [5501, 5502]
+        action: >-
+          Tiny Milo the mouse turns and scampers happily away across the grass to
+          the left and out of the left edge of the frame, while Leo the lion stays
+          lying down, watching him with a gentle smile. The camera stays still.
+        negative_extra: >-
+          angry face, teeth, roaring, scary, second lion, second mouse, lion standing
+          up, camera moving
+      - name: s05_leo_rests
+        keyframe: keyframes/scene05_from_leaves.png
+        continue_from: {shot: s05_milo_leaves, take: TBD}   # set when s05_milo_leaves has a take
+        characters: [leo]
+        frames: 81
+        seeds: [5601]
+        # The brief's "camera rises" would reveal canopy the frame lacks (Rule 2.8b).
+        action: >-
+          Leo the lion slowly lays his big round head down on his front paws and
+          closes his eyes, content and peaceful, with a gentle smile. The camera
+          stays still.
+        negative_extra: >-
+          angry face, teeth, roaring, scary, second lion, lion standing up, open
+          eyes at the end, camera moving
   6:
     title: The trap
     location: trap_site
