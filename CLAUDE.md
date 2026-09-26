@@ -167,13 +167,13 @@ to back it up (see `docs/findings-and-risks.md` B1).
   (prompting Rule 2.10).
 - Scene 3: done, take 5302 approved by the owner (Leo looking at the camera is
   fine: do not spend re-renders on eye-lines).
-- Scene 4: continues from Scene 3's last frame (`continue_from`); job queued
-  after the LoRA A/B (tasks_s04.txt).
+- Scene 4: continues from Scene 3's last frame (`continue_from`); job 22366832
+  (tasks_s04.txt), done ~17:30.
 - Scenes 6, 7: shots written (fixed-camera locomotion test); job 22365871.
 - Net prop designed (1001). Scene 5, 8, 9 shots not written yet.
 - LoRAs: `fox` -> `fox_v2` (composited plates fix the background leak). Leo and
-  Milo LoRAs: step 500 chosen (eval grid). LoRA inside I2V loads and is active;
-  A/B renders (s02_milo_runs_v2_lora, s03_leo_wakes_lora): job 22364893.
+  Milo LoRAs: step 500 chosen (eval grid). LoRA inside I2V shots: measured
+  worse (location drifts, identity no better): shots render without LoRAs.
 - Animatic: `work/stories/lion_and_mouse/animatic.mp4` (placeholder timing).
 - Two tasks in one job must not write the same file (e.g. a shared
   continue_from keyframe): extract it before submitting.

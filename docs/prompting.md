@@ -255,4 +255,7 @@ Update this when a rule is confirmed, refuted or refined.
 - 2026-09-26: Scene 2 v2 seed 5202: tracking camera moved, Milo stayed on the
   spot (Rule 2.10 revised to a fixed camera). Seed 5203 the same: no run; the
   camera arced round him and invented a red-barked tree (Rules 2.8b, 2.11).
+- 2026-09-26: LoRA A/B (s03_leo_wakes_lora 5301, s02_milo_runs_v2_lora 5202):
+  with LoRAs the location drifted away from the keyframe (new canopy, another
+  forest) and identity was no better. Shots stay without LoRAs.
 

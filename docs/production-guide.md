@@ -366,10 +366,25 @@ the I2V model), so the same files load into it. A shot opts in with
 `lora: true`; each character in it with a chosen checkpoint (`lora: {name,
 step}` under the character) gets its adapter, and its trigger word enters the
 prompt the way the captions had it ("Leo the lion is twcleo, a large ...").
-`twc/wan.py` asserts the adapters are active on both experts. Whether this
-helps (identity through the shot, especially when a character turns or moves
-away from its keyframe pose) is measured as an A/B: `s02_milo_runs_v2_lora`
-and `s03_leo_wakes_lora` are the same shots and seeds as their plain versions.
+`twc/wan.py` asserts the adapters are active on both experts.
+
+**Measured: in keyframe shots the LoRA does more harm than good.** Same shots,
+same seeds, with and without (rows: Scene 3 plain, Scene 3 + LoRAs, Scene 2
+plain, Scene 2 + LoRA; frames 0, 40, 80):
+
+![LoRA inside image-to-video, A/B](img/lora_in_i2v_ab.jpg)
+
+- Identity was already held by the keyframe over 5 seconds; the LoRA added
+  little (Milo slightly more on-model when he turns to the camera).
+- The **location drifted**: with the LoRA the camera pulled back and the model
+  drew a different tree canopy (Scene 3), or a different forest altogether
+  (Scene 2). The LoRA weakens the keyframe's hold on everything, not only on
+  the character.
+
+So shots are rendered **without** LoRAs by default. The LoRAs remain the tool
+for text-to-video (no keyframe), for designing new poses and keyframe stills
+of the characters, and possibly at a lower weight for long shots where a
+character turns far from its keyframe pose (untested).
 
 ## 7. Shots: write, check, render, choose
 
