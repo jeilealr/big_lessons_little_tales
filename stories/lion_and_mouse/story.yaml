@@ -294,12 +294,12 @@ scenes:
         # and explicit side-on geometry with a tracking camera (Rule 2.10).
         action: >-
           Seen from the side, Leo the lion strides steadily along the soft felt path
-          from left to right with big bouncy steps, his fluffy mane bobbing and his
-          tufted tail swinging. The camera glides sideways alongside him at his
-          height, keeping him in the centre of the frame. Peaceful and content.
+          from left to right across the frame with big bouncy steps, his fluffy mane
+          bobbing and his tufted tail swinging. The camera stays still. Peaceful and
+          content.
         negative_extra: >-
           net, rope, mouse, second lion, walking away from the camera, back view,
-          standing still, lying down, sitting
+          standing still, walking on the spot, camera tracking, lying down, sitting
   7:
     title: Milo hears the roar
     location: berry_patch
@@ -331,15 +331,18 @@ scenes:
         characters: [milo]
         frames: 81
         seeds: [7201, 7202]
-        # The Scene 2 v2 recipe (Rule 2.10), with a brave mood instead of play.
+        # Scene 2 v2 (tracking camera, "keep him centred") gave a gliding camera
+        # and a mouse bobbing on the spot. The pack clip that did run had a fixed
+        # camera, so: fixed camera, and the run leaves the frame.
         action: >-
           Seen from the side at ground level, Milo the tiny mouse runs very fast
-          across the frame from right to left along the felt forest floor, his big
-          pink ears streaming back, brave and determined. The camera glides sideways
-          alongside him at his height, keeping him in the centre of the frame.
+          across the frame from right to left along the felt forest floor and out
+          of the left edge of the frame, his big pink ears streaming back, brave and
+          determined. The camera stays still.
         negative_extra: >-
           lion, big animal, second mouse, butterfly, running away from the camera,
-          back view, mouse getting smaller, camera tilting up
+          back view, mouse getting smaller, standing still, hopping on the spot,
+          camera tracking
   8:
     title: The little hero
     location: trap_site
