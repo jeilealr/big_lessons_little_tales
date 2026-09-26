@@ -47,6 +47,8 @@ in all six design candidates although the sheet says "warm brown stitched
 eyes", and it added a cream muzzle nobody asked for. Decide once: accept it and
 edit the sheet, or keep asking. Do not leave the sheet saying something the
 images never show.
+*Resolved for Leo (owner, 2026-09-26): keep the black eyes; the sheet now says
+"small black stitched eyes".*
 
 ## 2. The action line
 

@@ -19,7 +19,7 @@ Checked 2026-09-26.
 | LoRA learns the training background (forest prompt returns the meadow from step 1000) | every training image had the same meadow | composite the cut-out character into varied plates (`composite:` in the dataset file); pick the earliest good checkpoint | **solved** (`fox_v2`: no leak at any checkpoint) |
 | LoRA can't do poses it never saw ("sleeping curled up" came out lying stretched) | no such pose in the data | put every pose the story needs into the character pack before training | rule |
 | Design picked that contradicts its text sheet gets pulled back to the text | the sheet is in every prompt | make canonical and sheet agree | rule |
-| Model ignores some sheet details (Leo's eyes always black, not brown) | model prior | decide and edit the sheet, or keep asking | **open: owner's call** |
+| Model ignores some sheet details (Leo's eyes always black, not brown) | model prior | decide and edit the sheet, or keep asking | **resolved**: owner keeps black eyes; sheet edited |
 
 ### Prompting (full rules in `docs/prompting.md`)
 
@@ -214,7 +214,7 @@ before the second story.
 
 ### Open decisions (owner)
 
-- Leo's eyes: keep the black the model draws, or insist on "warm brown".
+- ~~Leo's eyes~~: decided, black (the sheet now matches the images).
 - Leo's look: 1003 (fluffy mane, chosen) or 1005 (felt-ball mane).
 - The story brief stops mid-sentence at Scene 9; the rest of the scenes are needed.
 - Narration convention (point 3).

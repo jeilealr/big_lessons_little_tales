@@ -177,5 +177,5 @@ to back it up (see `docs/findings-and-risks.md` B1).
 - Animatic: `work/stories/lion_and_mouse/animatic.mp4` (placeholder timing).
 - Two tasks in one job must not write the same file (e.g. a shared
   continue_from keyframe): extract it before submitting.
-- Open questions for the owner: keep Leo's black eyes or insist on brown;
+- Open questions for the owner: (Leo's eyes: decided, black);
   Leo 1003 vs 1005; the story brief is truncated at Scene 9.
