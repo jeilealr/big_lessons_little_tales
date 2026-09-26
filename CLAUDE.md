@@ -149,6 +149,97 @@ TWC_ENV=musubi $W python ...                   # the LoRA-training venv instead
 - LoRAs: `lora/eval_grid.py` with a no-LoRA row, same seeds for every
   checkpoint, and prompts outside the training data.
 
+## Character and scene design: reusable guidance
+
+The following workflow principles are supported both by this repo's measured
+results (see `docs/prompting.md` and `docs/character-consistency.md`) and by
+Neolemon's [How to Create Consistent Characters in AI Videos](https://www.neolemon.com/blog/how-to-create-consistent-characters-in-ai-videos-complete-guide/)
+(Sachin Kamath, 12 February 2026; accessed 26 September 2026). The article is
+published by a character-generation vendor, so treat its tool comparisons,
+pricing, timelines, and claims of perfect consistency as vendor claims. Use
+the workflow ideas below; the project's measured rules take precedence.
+
+### Define and freeze character identity
+
+- Before generating, write a compact character specification. In this repo,
+  put story facts in `stories/<slug>/story.yaml`, not in a separate prompt:
+  include name and story role, silhouette/body proportions, distinctive face
+  features, fur/felt colours and materials, signature features or props,
+  default costume/accessories if any, personality and safe emotional range,
+  relative scale, and details that must never change. For felt animals,
+  translate the article's age/vibe and hair/skin anchors into animal-appropriate
+  traits such as age impression, fur/felt texture, ear shape, and muzzle.
+- Keep a short, repeatable palette and a fixed style bible. Ensure the written
+  sheet matches the approved canonical image. If the image wins over a detail
+  (as with Leo's black stitched eyes), settle that discrepancy once by updating
+  the sheet or selecting another canonical; do not carry conflicting text and
+  image references downstream.
+- Treat each intentional costume or accessory change as a separate visual
+  state with its own canonical/anchor and pose references. Do not casually add
+  clothing or props in shot actions.
+- Generate and approve a neutral, full-body canonical first, alone against a
+  plain contrasting felt backdrop. Build only the useful pack for the story:
+  side/three-quarter/back views, expressions, and reusable action poses. The
+  article's front, three-quarter, side, face, expression, and action coverage
+  is a useful completeness checklist; the existing `packs/<character>.yaml`
+  and LUMI budget determine what to make, not a fixed image count.
+- Create every main character separately before composing a cast. Use the
+  story's character sheets, canonicals and pose stills to keep designs distinct.
+  For a multi-character keyframe, specify each character's position, scale,
+  facing, and interaction in `compose:`; keep the scale relation from the
+  story bible and exclude absent characters with `negative_extra`. If one
+  character's small gesture is hard to read, make a close-up keyframe for that
+  character rather than asking a camera move to find it.
+
+### Design the set and storyboard the story
+
+- Treat each location as a reusable empty background plate. Give it a frozen
+  sheet with materials, palette, landmarks, time of day/light direction, and
+  staging needs. Design the set edge to edge, with no studio table/backdrop,
+  and leave clear open ground where characters must stand or travel. Keep
+  story-specific landmarks consistent; a landmark associated with a character
+  should not appear empty immediately after that character was established
+  there unless the story shows them leaving.
+- Design needed props as their own simple entities with a clear silhouette,
+  distinctive material/colour, and a contrasting design background. Keep the
+  prop's appearance stable in the story bible and compose it into keyframes
+  when exact placement matters.
+- Break a story into short, modular shots. The article suggests noting shot ID,
+  duration, framing, camera movement, one main action, emotion, prop, and
+  background. `story.yaml` already stores most of this through scene/shot IDs,
+  `frames`, `action`, `characters`, `keyframe`/`compose`, and location/props;
+  make missing staging or framing explicit in the action or composition.
+- Keep each shot to one legible character action and at most one clear camera
+  move. Generate a keyframe for the exact composition before animation, then
+  animate that still. This project's 81-frame Wan shots are about five seconds;
+  the article's generic 3–6 second suggestion is not a reason to change the
+  project's measured Wan frame settings.
+- For continuity, start a shot from its approved canonical/pose-based keyframe
+  or a chosen frame from the prior take (`continue_from`). Carry forward
+  character scale, screen position, facing, prop side/holder, lighting/time of
+  day, and the emotional state required by the story. Use transition or
+  background/prop-only shots when they help story pacing or bridge a difficult
+  cut; they are optional editing tools, not a substitute for correct anchors.
+- Prefer a simpler action or shorter shot when identity, felt texture, or
+  staging drifts. Reuse the same plate and locked style language; check the
+  contact sheet across the full clip, not only its first frame. For critical
+  multi-character beats, use the repo's composited keyframe pipeline; the
+  article likewise notes that animating a whole cast together is faster but
+  can drift more than composing/controlling elements separately.
+
+### Apply these principles to this codebase
+
+The current pipeline implements the same separation of design, composition,
+and motion: `production/design.py` makes candidate stills and canonicals;
+`character/character.py` creates poses from a canonical; `lora/` trains and
+evaluates optional character adapters; `production/keyframe.py` and each
+shot's `compose:` recipe place pose stills on a location plate; and
+`production/shot.py` animates the composed keyframe with Wan image-to-video.
+The primary records are the story bible and shot recipes, not prompts copied
+into ad hoc scripts. Keep decisions and measured outcomes in the relevant
+`docs/` file and link it here when the guidance becomes too detailed for this
+manual.
+
 ## Data lifetime
 
 The LUMI project's data is deleted around **30 March 2027**. `work/` (designs,

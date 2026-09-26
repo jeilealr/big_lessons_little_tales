@@ -301,4 +301,11 @@ Update this when a rule is confirmed, refuted or refined.
   gesture). Rows: plead 4103, plead 4104, leaves 5501, leaves 5502.
 
   ![Scene 4 v2 and 5](img/s04v2_s05.jpg)
+- 2026-09-26: Scene 6 call for help: "calls out loudly, mouth in a big round O,
+  worried but not scared" gave a mild cartoon call (6302); 6301 pushed into the
+  net with rope over his face, which reads as struggling (not used: findings
+  B6). Scene 8 arrival from a wide frame: Milo (1/10 of the frame, at the edge)
+  barely moved in both seeds (Rule 2.12 again); v2 uses a close-up crop.
+
+  ![Scene 6 call and Scene 8 arrival](img/s06call_s08.jpg)
 

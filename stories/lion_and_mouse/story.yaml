@@ -432,6 +432,7 @@ scenes:
           scary, angry face, teeth, roaring, crying, pain, struggling, metal, wire,
           chains, spikes, cage, mouse, second lion, people, hunter
       - name: s06_leo_calls
+        take: 6302                          # calls with a round 'O', paw raised; 6301 looked like struggling
         keyframe: keyframes/scene06_trapped.png
         continue_from: {shot: s06_net_falls, take: 6202}
         characters: [leo]
@@ -503,6 +504,7 @@ scenes:
       another, until the opening is large enough for Leo to escape.
     shots:
       - name: s08_milo_arrives
+        superseded_by: s08_milo_arrives_v2  # Milo too small at the frame edge: barely moved
         keyframe: keyframes/scene08_arrive.png
         compose:                                  # Milo pasted into the trap's own final frame
           plate: keyframes/scene06_trapped.png
@@ -519,6 +521,41 @@ scenes:
         negative_extra: >-
           teeth, angry face, scary, crying, second lion, second mouse, mouse running
           away, camera moving, people, hunter
+      - name: s08_milo_arrives_v2          # close-up crop of the trap frame, Milo larger (Rule 2.12)
+        keyframe: keyframes/scene08_arrive_close.png
+        compose:
+          plate: keyframes/scene06_trapped.png
+          crop: [0.0, 0.5, 0.5]
+          characters:
+            - {still: characters/milo/poses/milo_turns_side_last.png, x: 0.14, y: 0.92, h: 0.15, flip: true}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [8103, 8104]
+        action: >-
+          Seen from the side at ground level, tiny Milo the mouse runs quickly along
+          the felt path from left to right up to the soft rope net and stops right
+          beside it, looking up at Leo. The camera stays still.
+        negative_extra: >-
+          teeth, angry face, scary, crying, second lion, second mouse, mouse running
+          away, camera moving, people, hunter
+      - name: s08_milo_nibbles
+        keyframe: keyframes/scene08_nibble.png
+        compose:
+          plate: keyframes/scene06_trapped.png
+          crop: [0.22, 0.55, 0.45]
+          characters:
+            - {still: characters/milo/poses/milo_turns_side_last.png, x: 0.30, y: 0.93, h: 0.30, flip: true}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [8201, 8202]
+        action: >-
+          Close-up at ground level. Tiny Milo the mouse grips one braided cream rope of
+          the net with his tiny paws and nibbles it busily with his little teeth,
+          until the rope frays and snaps apart into two loose ends. Leo the lion
+          watches hopefully. The camera stays still.
+        negative_extra: >-
+          angry face, scary, crying, sharp teeth, fangs, second lion, second mouse,
+          mouse running away, camera moving, people, hunter, metal, wire
   9:
     title: Free!
     location: trap_site
