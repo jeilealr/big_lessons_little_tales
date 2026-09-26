@@ -55,7 +55,7 @@ def main() -> None:
     frames = wan.generate(pipe, prompt, negative=negative, seed=args.seed, **RENDER)
     wan.save(frames, out)
     out.with_suffix(".json").write_text(json.dumps(dict(
-        stage="scene_baseline", scene=args.scene, model=wan.MODELS["t2v"], seed=args.seed,
+        stage="scene_baseline", scene=args.scene, model=wan.model_id("t2v"), seed=args.seed,
         prompt=prompt, negative=negative, seconds=round(time.time() - t0), **RENDER), indent=2))
     print(f"saved {out}", flush=True)
 

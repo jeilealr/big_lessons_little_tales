@@ -132,7 +132,7 @@ def _render(cfg: dict, stage: str, action: str, image_path: Path, seed: int, out
                           guidance=r["guidance"], guidance_2=r["guidance_2"], seed=seed,
                           image=Image.open(image_path))
     wan.save(frames, out)
-    sidecar(out, stage=stage, model=wan.MODELS["i2v"], start_image=str(image_path),
+    sidecar(out, stage=stage, model=wan.model_id("i2v"), start_image=str(image_path),
             seed=seed, prompt=prompt, negative=negative, **r)
     print(f"  saved {out}", flush=True)
 

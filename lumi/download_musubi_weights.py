@@ -5,6 +5,11 @@ VAE / T5 files, not the diffusers layout in Wan-AI/*-Diffusers. All Apache-2.0.
 """
 from huggingface_hub import hf_hub_download
 
+REVISIONS = {   # pinned; see docs/findings-and-risks.md
+    "Comfy-Org/Wan_2.2_ComfyUI_Repackaged": "ee6f4a40737a995bf5818954cfce6d59443b0f04",
+    "Wan-AI/Wan2.1-T2V-14B": "a064a6c71f5be440641209c07bf2a5ce7a2ff5e4",
+}
+
 FILES = [
     ("Comfy-Org/Wan_2.2_ComfyUI_Repackaged", "split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp16.safetensors"),
     ("Comfy-Org/Wan_2.2_ComfyUI_Repackaged", "split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp16.safetensors"),
@@ -19,5 +24,5 @@ FILES = [
     ("Comfy-Org/Wan_2.2_ComfyUI_Repackaged", "split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_low_noise.safetensors"),
 ]
 for repo, name in FILES:
-    print("->", hf_hub_download(repo, name, local_dir="/scratch/project_465002727/jelealro/models/wan22_musubi"), flush=True)
+    print("->", hf_hub_download(repo, name, revision=REVISIONS[repo], local_dir="/scratch/project_465002727/jelealro/models/wan22_musubi"), flush=True)
 print("DOWNLOAD DONE")

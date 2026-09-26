@@ -88,7 +88,7 @@ def main() -> None:
         wan.save(video, out)
         out.with_suffix(".json").write_text(json.dumps(dict(
             stage="shot", scene=args.scene, shot=args.shot, keyframe=str(keyframe),
-            model=wan.MODELS["i2v"], seed=seed, frames=frames, prompt=prompt,
+            model=wan.model_id("i2v"), seed=seed, frames=frames, prompt=prompt,
             negative=negative, seconds=round(time.time() - t0), **RENDER), indent=2))
         print(f"saved {out} ({time.time() - t0:.0f} s)", flush=True)
 

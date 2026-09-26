@@ -26,8 +26,10 @@ from pathlib import Path
 import numpy as np
 
 RIFE_REPO = "TensorForger/RIFE-safetensors"
+RIFE_REV = "78a62b7c2dd910536432d6c2c3a25e76f14fbf78"          # pinned
 ESRGAN_REPO = "Comfy-Org/Real-ESRGAN_repackaged"
 ESRGAN_FILE = "RealESRGAN_x4plus.safetensors"
+ESRGAN_REV = "5fd49b7b278836f48af63ecd314d0f98ab336105"        # pinned
 
 
 def _ffmpeg() -> str:
@@ -82,7 +84,7 @@ def _load_rife(device):
     from huggingface_hub import snapshot_download
     from safetensors.torch import load_file
 
-    path = Path(snapshot_download(RIFE_REPO))
+    path = Path(snapshot_download(RIFE_REPO, revision=RIFE_REV))
     sys.path.insert(0, str(path))          # the repo ships its own IFNet
     import interpolation_model as im
     im.device = device                     # warp() reads these module globals
@@ -149,7 +151,7 @@ def _load_esrgan(device):
     from huggingface_hub import hf_hub_download
     from spandrel import ModelLoader
 
-    path = hf_hub_download(ESRGAN_REPO, ESRGAN_FILE)
+    path = hf_hub_download(ESRGAN_REPO, ESRGAN_FILE, revision=ESRGAN_REV)
     model = ModelLoader().load_from_file(path)
     return model.model.to(device).eval(), model.scale
 

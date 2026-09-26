@@ -106,6 +106,7 @@ scenes:
     status: first shot
     shots:
       - name: s01_establish
+        superseded_by: s01_establish_v2   # 5101 woke up; kept for the record
         keyframe: keyframes/scene01_y0.78.png     # sleeping Leo composed into the clearing
         characters: [leo]
         frames: 81
@@ -118,6 +119,7 @@ scenes:
           felt butterflies flutter slowly through the warm sunlight filtering
           through the felt leaves.
       - name: s01_establish_v2
+        take: 5103                          # chosen render (the animatic uses it)
         keyframe: keyframes/scene01_y0.78.png
         characters: [leo]
         frames: 81
@@ -141,6 +143,7 @@ scenes:
       through the miniature forest. His expression is cheerful and curious.
     shots:
       - name: s02_milo_runs
+        superseded_by: s02_milo_runs_v2    # ran into depth; invented canopy
         keyframe: keyframes/scene02_milo.png      # Milo in a close-up of the clearing
         characters: [milo, butterfly]
         frames: 81

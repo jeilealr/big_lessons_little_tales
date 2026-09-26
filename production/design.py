@@ -114,7 +114,7 @@ def candidates(story: dict, entities: list[str], n: int, seed0: int) -> None:
                 used = 5
             Image.fromarray(frame_to_uint8(frames)).save(out)
             out.with_suffix(".json").write_text(json.dumps(dict(
-                stage="design", entity=entity, model=wan.MODELS["t2v"], seed=seed,
+                stage="design", entity=entity, model=wan.model_id("t2v"), seed=seed,
                 frames_generated=used, prompt=prompt, negative=negative,
                 seconds=round(time.time() - t0, 1), **RENDER), indent=2))
             print(f"  saved {out.name} ({time.time() - t0:.0f} s)", flush=True)

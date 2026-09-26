@@ -23,6 +23,12 @@ MODELS = {
     "i2v": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
     "t2v": "Wan-AI/Wan2.2-T2V-A14B-Diffusers",
 }
+# Hugging Face repos can change under the same name; a pinned commit keeps a
+# seed reproducible. Update deliberately, and note it in docs/findings-and-risks.md.
+REVISIONS = {
+    "i2v": "596658fd9ca6b7b71d5057529bbf319ecbc61d74",
+    "t2v": "5be7df9619b54f4e2667b2755bc6a756675b5cd7",
+}
 NATIVE_FRAMES = 81
 FPS = 16
 
@@ -47,14 +53,20 @@ def fit(image, width: int, height: int):
     return image.convert("RGB").resize((width, height), Image.LANCZOS)
 
 
+def model_id(kind: str) -> str:
+    """`repo@commit`, for sidecars."""
+    return f"{MODELS[kind]}@{REVISIONS[kind]}"
+
+
 def load(kind: str, frames: int = NATIVE_FRAMES):
     import torch
     from diffusers import AutoencoderKLWan, WanImageToVideoPipeline, WanPipeline
 
-    repo = MODELS[kind]
-    vae = AutoencoderKLWan.from_pretrained(repo, subfolder="vae", torch_dtype=torch.float32)
+    repo, rev = MODELS[kind], REVISIONS[kind]
+    vae = AutoencoderKLWan.from_pretrained(repo, subfolder="vae", revision=rev,
+                                           torch_dtype=torch.float32)
     cls = WanImageToVideoPipeline if kind == "i2v" else WanPipeline
-    pipe = cls.from_pretrained(repo, vae=vae, torch_dtype=torch.bfloat16)
+    pipe = cls.from_pretrained(repo, vae=vae, revision=rev, torch_dtype=torch.bfloat16)
     pipe.enable_model_cpu_offload()
     if frames > NATIVE_FRAMES:
         pipe.vae.enable_tiling()

@@ -76,7 +76,7 @@ def generate(variant: str, dry_run: bool) -> None:
                           image=Image.open(start), last_image=end, **RENDER)
     wan.save(frames, out)
     out.with_suffix(".json").write_text(json.dumps(dict(
-        stage="generate", variant=variant, model=wan.MODELS["i2v"], start_image=str(start),
+        stage="generate", variant=variant, model=wan.model_id("i2v"), start_image=str(start),
         end_image="white card (255,253,248)" if end else None, seed=SEED, prompt=JOURNEY,
         negative=NEGATIVE, created=time.strftime("%Y-%m-%d %H:%M:%S"), **RENDER), indent=2))
     print(f"  saved {out}", flush=True)
