@@ -165,7 +165,8 @@ to back it up (see `docs/findings-and-risks.md` B1).
 - Scene 2: v1 ran into depth; v2 (tracking camera) did not run at all, take 5202
   provisional ("Milo spots the butterfly"). Locomotion now uses a fixed camera
   (prompting Rule 2.10).
-- Scene 3: works (take 5302): first two-character shot, no identity blending.
+- Scene 3: done, take 5302 approved by the owner (Leo looking at the camera is
+  fine: do not spend re-renders on eye-lines).
 - Scene 4: continues from Scene 3's last frame (`continue_from`); job queued
   after the LoRA A/B (tasks_s04.txt).
 - Scenes 6, 7: shots written (fixed-camera locomotion test); job 22365871.

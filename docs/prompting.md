@@ -246,7 +246,8 @@ Update this when a rule is confirmed, refuted or refined.
   eyes wide, surprised, never scary; Milo stays frozen; no identity blending
   between the two. The model also blended the pasted characters into the light
   (no cut-out look left). Leo looks at the camera rather than down at Milo: the
-  eye-line was not followed. Take 5302.
+  eye-line was not followed. Take 5302, **approved by the owner**: a look to
+  camera is acceptable for this channel, so eye-lines are not worth re-renders.
 
   ![Scene 3](img/s03_wake.jpg)
 - 2026-09-26: Scene 2 v2 seed 5202: tracking camera moved, Milo stayed on the

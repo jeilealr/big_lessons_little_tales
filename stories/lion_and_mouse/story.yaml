@@ -215,7 +215,7 @@ scenes:
       nervous but adorable. Close-up showing the huge size difference.
     shots:
       - name: s03_leo_wakes
-        take: 5302                          # eyes wide, 'o' mouth, Milo frozen; 5301 also fine
+        take: 5302                          # approved by the owner (Leo's look to camera is fine)
         keyframe: keyframes/scene03_wake.png      # both characters: first two-character test
         compose:
           plate: design/clearing/canonical.png
