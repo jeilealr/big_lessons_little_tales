@@ -19,7 +19,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from twc import paths, wan  # noqa: E402
+from twc import paths, post, wan  # noqa: E402
 
 RENDER = dict(width=1280, height=720, steps=40, guidance=3.5, guidance_2=3.5)
 
@@ -67,14 +67,22 @@ def main() -> None:
     frames = shot.get("frames", 81)
     print(f"[{args.shot}] keyframe {keyframe.name}, {frames} frames, seeds {seeds}\n{prompt}\n",
           flush=True)
+    # `continue_from: {shot, take, frame}`: the keyframe is a frame (default: the
+    # last) of another shot's render, so the cut is continuous.
+    cont = shot.get("continue_from")
+    if cont:
+        src = work / "shots" / f"{cont['shot']}_s{cont['take']}.mp4"
+        if not src.is_file():
+            raise SystemExit(f"continue_from: missing render {src}")
+        print(f"keyframe = frame {cont.get('frame', -1)} of {src.name}")
     recipe = shot.get("compose")
-    if recipe:
+    if recipe and not cont:
         for c in recipe["characters"]:
             if not (work / c["still"]).is_file():
                 raise SystemExit(f"keyframe recipe: missing still {work / c['still']}")
         if not (work / recipe["plate"]).is_file():
             raise SystemExit(f"keyframe recipe: missing plate {work / recipe['plate']}")
-    elif not keyframe.is_file():
+    elif not cont and not keyframe.is_file():
         raise SystemExit(f"missing keyframe {keyframe} and no compose: recipe")
     for lo in loras:
         for f in (lo["high"], lo["low"]):
@@ -84,7 +92,12 @@ def main() -> None:
     if args.dry_run:
         print("dry run: inputs ok" + (" (keyframe will be composed)" if recipe else ""))
         return
-    if recipe and (args.recompose or not keyframe.is_file()):
+    if cont and (args.recompose or not keyframe.is_file()):
+        frames_ = post.decode(src)
+        keyframe.parent.mkdir(parents=True, exist_ok=True)
+        Image.fromarray(frames_[int(cont.get("frame", -1))]).save(keyframe)
+        print(f"keyframe from {src.name} -> {keyframe}", flush=True)
+    elif recipe and (args.recompose or not keyframe.is_file()):
         sys.path.insert(0, str(Path(__file__).resolve().parent))
         from keyframe import compose
 
