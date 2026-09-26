@@ -115,9 +115,11 @@ towards the text in every shot. If you prefer a candidate that contradicts the
 sheet, rewrite the sheet to match it; never keep both.
 
 What the model does not follow: it drew Leo's eyes black in all six
-candidates although the sheet says "warm brown stitched eyes", and it added a
+candidates although the sheet said "warm brown stitched eyes", and it added a
 cream muzzle nobody asked for. Decide once whether to accept such changes (and
-edit the sheet) or to keep asking for them.
+edit the sheet) or to keep asking for them. For Leo the owner kept the black
+eyes, and the sheet now says "small black stitched eyes": the sheet describes
+what the images show.
 
 **Small characters get reframed.** Milo is correctly tiny in his design shot,
 but that leaves too few pixels to animate or to train on. `reframe` crops
@@ -140,8 +142,19 @@ the berry-patch candidates came out as isolated props on a studio table, not
 as a place. The location prompt now says the scene fills the frame edge to
 edge, with no backdrop and no table.
 
+**Props** (objects the story needs, under `props:` in the bible) are designed
+the same way: `design.py candidates --entities net`. They are laid out on a
+plain floor in a colour that contrasts with them (a cream net on a cream floor
+would not cut out). Write prop sheets in positive words only ("soft, floppy,
+like a knitted toy", not "not dangerous"): the text encoder reads "not
+frightening" as a mention of "frightening". All six net candidates came out as
+nearly the same net, so a simple prop, like a simple secondary character
+(the butterfly), stays consistent from its sheet alone.
+
+![net candidates](img/lm_net_candidates.jpg)
+
 Picks for The Lion and the Mouse: Leo 1003, Milo 1001 (reframed), butterfly
-1004, clearing 1002, trap site 1004, berry patch 1003.
+1004, clearing 1002, trap site 1004, berry patch 1003, net 1001.
 
 ## 4. Keyframes: the character, in the place, before anything moves
 
@@ -159,8 +172,11 @@ $W python twc_video/production/keyframe.py --plate PLATE.png \
   because his grey felt is close to the grey-green backdrop.
 - **Scale** is a fraction of frame height, so relative sizes stay fixed:
   Milo is 1/6 of Leo in the story bible, so he is placed at 1/6 of Leo's height.
-- A soft **contact shadow** under the feet grounds the character; colours are
-  pulled a little towards the plate's light.
+- A soft **contact shadow** under the feet grounds the character. Only the
+  **brightness** is matched to the plate, never the hue: colour matching once
+  turned the fox's white chest green, and a character's colours are part of
+  its identity.
+- `flip` mirrors a pose still, so one side view serves both directions.
 
 ![first composite](img/lm_keyframe_test.jpg)
 
@@ -172,8 +188,39 @@ implies.
 
 Known limit: the character keeps the flat studio light of the design shot,
 while the plate is backlit. That is acceptable in a *first frame*, because the
-video model relights the character as it animates; it would not be acceptable
-in a still.
+video model relights the character as it animates (confirmed in Scene 3: after
+a second nothing looks pasted); it would not be acceptable in a still.
+
+**Leave room to move into.** A character who will walk or run faces the open
+side of the frame, with space ahead of them. The first Scene 6 keyframe put
+Leo at the left edge facing left, so he would have left the frame at once; he
+was flipped to face right, on the path, with the path opening ahead.
+
+**Keyframes are recipes in the bible, not loose files.** Write the composition
+into the shot, and `shot.py` builds the keyframe on the GPU node when it is
+missing (seconds there, 15-25 min on the login node):
+
+```yaml
+- name: s06_leo_walks
+  keyframe: keyframes/scene06_walk_v2.png
+  compose:
+    plate: design/trap_site/canonical.png
+    crop: [0.25, 0.35, 0.5]          # optional virtual close-up (x, y, width), upscaled
+    characters:
+      - {still: characters/leo/poses/leo_turns_side_last.png, x: 0.22, y: 0.88, h: 0.40, flip: true}
+```
+
+Compose on the login node first when you want to look at it before spending
+GPU time (`keyframe.py` as above), which is what you should do for any new
+framing.
+
+**Continuity between shots**: a shot can start from a frame of another shot's
+chosen take instead of a composition, so the cut is seamless (Scene 4 starts
+on the last frame of Scene 3):
+
+```yaml
+continue_from: {shot: s03_leo_wakes, take: 5302}   # frame: -1 (last) by default
+```
 
 ## 5. The character pack: poses and views
 
@@ -217,8 +264,9 @@ Rules that follow:
 - **The action names only the character's body.** Anything else it names (the
   clouds, a butterfly) is something the model may animate instead.
 - **Turn the character, do not orbit the camera**, to get new views.
-- **Locomotion needs an energetic verb and a direction**; in a scene, the camera
-  follows.
+- **Locomotion needs an energetic verb, a direction and a fixed camera.** A
+  tracking camera ("glides alongside him, keeping him centred") made the camera
+  move instead of the character (Scene 2 v2); see prompting Rule 2.10.
 - 3 s (49 frames) is enough for one pose change and takes about an hour.
 
 ## 6. Character LoRA: teaching the model *your* character
@@ -323,7 +371,110 @@ helps (identity through the shot, especially when a character turns or moves
 away from its keyframe pose) is measured as an A/B: `s02_milo_runs_v2_lora`
 and `s03_leo_wakes_lora` are the same shots and seeds as their plain versions.
 
-(Sections 7 and 8 follow as each stage is validated.)
+## 7. Shots: write, check, render, choose
+
+A shot is one entry under its scene in `story.yaml`: a keyframe (or a
+`compose:` recipe, or `continue_from:`), the characters in it, seeds, and an
+**action**. The tool assembles the prompt as action + each character's sheet
++ the location's sheet + the style, so you write only the action (and a
+`negative_extra` with this shot's likely failures). Rules and checklist:
+**[prompting.md](prompting.md)**.
+
+```yaml
+- name: s03_leo_wakes
+  keyframe: keyframes/scene03_wake.png
+  characters: [leo, milo]
+  frames: 81                 # 5 s at 16 fps, Wan's native length
+  seeds: [5301, 5302]        # two seeds for anything that matters
+  action: >-
+    Close-up at ground level. Leo the lion lies with his big front paws in front
+    of him, and tiny Milo the mouse stands frozen on the grass right in front of
+    Leo's paws. Leo slowly lifts his round head and opens his eyes wide in
+    surprise ...
+  negative_extra: angry face, teeth, roaring, scary, second lion, second mouse, ...
+```
+
+```bash
+$W python twc_video/production/shot.py --scene 3 --shot s03_leo_wakes --dry-run   # read the prompt
+# GPU (one line per seed in a task file, submitted with lumi/run_tasks.sbatch):
+#   python twc_video/production/shot.py --scene 3 --shot s03_leo_wakes --seed 5301
+```
+
+Output: `work/stories/<slug>/shots/<shot>_s<seed>.mp4` plus a `.json` with the
+exact prompt, negative, seed, model revision and LoRAs. About 2.5 h per clip
+(25 min model load + 40 steps x ~190 s); the four GCDs of a job render four
+clips in parallel.
+
+**Review every clip as a contact sheet** (a frame every 10) and at full size for
+the key moments; record what worked and what failed in prompting.md's results
+log, and turn every failure into a rule or a negative.
+
+**Choose a take** by writing `take: <seed>` on the shot: the animatic and the
+next shot's `continue_from` use it. Other bookkeeping fields:
+
+| Field | Meaning |
+|---|---|
+| `take: 5302` | the chosen render |
+| `superseded_by: <shot>` | a failed version kept for the record (skipped by the animatic) |
+| `variant_of: <shot>` | an experiment on the same shot, e.g. with LoRAs (skipped by the animatic) |
+| `lora: true` | use the characters' chosen LoRAs in this shot (section 6) |
+
+Measured so far: sleeping and waking (Scenes 1, 3), two characters in one shot
+without blending (Scene 3), a secondary character from its sheet alone (the
+butterfly). Not yet solved: a run across the frame (Scene 2), contact between
+characters (Scenes 3-4, 8). Current results: CLAUDE.md "Current state".
+
+## 8. Animatic and hand-off
+
+The **animatic** is the whole story at its planned pacing, before and while
+rendering: chosen takes where they exist, keyframe stills where not, a title
+card for scenes without shots.
+
+```bash
+$W python twc_video/production/animatic.py        # seconds, no GPU
+# -> work/stories/<slug>/animatic.mp4 + a timing report
+```
+
+Record the narration first (ElevenLabs), one file per scene at
+`audio/<slug>/sceneNN.wav`: each scene then lasts as long as its narration,
+the narration becomes the soundtrack, and the report flags scenes whose
+narration needs more 5-second shots than they have. Plan and render shots to
+fit the narration, not the other way round.
+
+The final edit (narration, music, sound, titles) happens in your editor,
+using the chosen takes from `shots/` (post-processed to 1080p30 with
+`twc/post.py`: RIFE interpolation, Real-ESRGAN upscaling, grade).
+
+## 9. A new story, step by step
+
+1. **Write the bible** `stories/<slug>/story.yaml`: style and negative (copy
+   them from an existing story for a consistent series), characters (sheet,
+   trigger, scale), locations, props, scenes (the text of each).
+2. **Narration**: record each scene in ElevenLabs; put the files at
+   `audio/<slug>/sceneNN.wav`; run the animatic to see the real length.
+3. **Design** (GPU, ~2.5 min per still): `design.py candidates` for every
+   character, location and prop; look at the contact sheets; `pick`; `reframe`
+   small characters. Make each sheet agree with its pick.
+4. **Character packs** (GPU, ~1 h per pose): write
+   `packs/<character>.yaml` with every pose the story needs; run
+   `character/character.py shots --story <slug> --character <name>`. Pose
+   stills for keyframes go in `characters/<name>/poses/`: `character.py` saves
+   `<pose>_last.png` itself when one pose starts from another; any other frame
+   (e.g. the moment a paw is highest) you take by hand after looking at the
+   contact sheet:
+   `ffmpeg -i shots/milo_waves.mp4 -vf "select=eq(n\,24)" -frames:v 1 poses/milo_waves_f24.png`
+5. **LoRAs** (GPU, ~1 h): `lora/datasets/<name>.yaml` with `composite:` plates
+   and every pose; `lora/build_and_train.sh`; evaluate with `eval_character.sh`
+   + `eval_grid.py`; choose the earliest checkpoint that holds identity (500 so
+   far); write it under the character (`lora: {name, step}`).
+6. **Shot plan**: for each scene, shots of one action each, fitted to the
+   narration; keyframe recipes or `continue_from`; actions checked against the
+   prompting checklist; `--dry-run` every shot.
+7. **Render** in batches of 4 (one dev-g job), two seeds for important shots;
+   review contact sheets; set `take:`; fix and re-render failures.
+8. **Animatic** after every batch; when every scene has takes, **post** and
+   **edit**.
+9. **Back up** `work/` with `lumi/backup_assets.sh` after every session.
 
 ## What is next, and what may be missing
 
