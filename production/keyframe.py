@@ -158,6 +158,44 @@ def place(plate: np.ndarray, still: np.ndarray, x: float, y: float, height: floa
     return out, dict(box=[dx0, dy0, dx1 - dx0, dy1 - dy0], scale=round(scale, 3))
 
 
+def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None = None) -> dict:
+    """Build a keyframe. `chars`: [{still, x, y, h, flip?}], x/y = feet position
+    as fractions of the frame, h = height fraction. `crop`: [x, y, w] fractions of
+    the plate for a virtual close-up (Real-ESRGAN; cached next to the plate)."""
+    import sys as _sys
+
+    frame = np.asarray(Image.open(plate).convert("RGB")).astype(np.float32)
+    if crop:
+        _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        import torch
+
+        from twc import post
+
+        H, W = frame.shape[:2]
+        fx, fy, fw = map(float, crop[:3])
+        cache = plate.parent / f"{plate.stem}_crop_{fx:.3f}_{fy:.3f}_{fw:.3f}.png"
+        if cache.is_file():                   # the upscale takes ~15 min on a CPU
+            frame = np.asarray(Image.open(cache).convert("RGB")).astype(np.float32)
+        else:
+            x0, y0, cw = int(fx * W), int(fy * H), int(fw * W)
+            ch = int(cw * H / W)
+            piece = frame[y0:y0 + ch, x0:x0 + cw].astype(np.uint8)
+            dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            frame = post.upscale(piece[None], W, H, dev)[0].astype(np.float32)
+            Image.fromarray(frame.astype(np.uint8)).save(cache)
+    placed = []
+    for c in chars:
+        still = np.asarray(Image.open(c["still"]).convert("RGB"))
+        frame, info = place(frame, still, float(c.get("x", 0.5)), float(c.get("y", 0.85)),
+                            float(c.get("h", 0.4)), flip=bool(c.get("flip", False)))
+        placed.append({**{k: v for k, v in c.items()}, **info})
+    out.parent.mkdir(parents=True, exist_ok=True)
+    Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8)).save(out)
+    record = dict(stage="keyframe", plate=str(plate), crop=crop, characters=placed)
+    out.with_suffix(".json").write_text(json.dumps(record, indent=2, default=str))
+    return record
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -165,40 +203,17 @@ def main() -> None:
     ap.add_argument("--char", action="append", required=True,
                     help="STILL.png:x=..,y=..,h=..[,flip]  (x,y = feet, fractions of the frame)")
     ap.add_argument("--out", type=Path, required=True)
-    ap.add_argument("--plate-crop", help="x,y,w,h as fractions: a virtual close-up of the plate, "
-                                         "cropped and upscaled with Real-ESRGAN (same place, closer)")
+    ap.add_argument("--plate-crop", help="x,y,w as fractions: a virtual close-up of the plate")
     args = ap.parse_args()
-    frame = np.asarray(Image.open(args.plate).convert("RGB")).astype(np.float32)
-    if args.plate_crop:
-        import sys as _sys
-        _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-        import torch
-        from twc import post
-        H, W = frame.shape[:2]
-        fx, fy, fw, fh = map(float, args.plate_crop.split(","))
-        x0, y0, cw = int(fx * W), int(fy * H), int(fw * W)
-        ch = int(cw * H / W)                                  # keep the plate's aspect
-        cache = args.plate.parent / f"{args.plate.stem}_crop_{fx:.3f}_{fy:.3f}_{fw:.3f}.png"
-        if cache.is_file():                   # the upscale takes ~15 min on a CPU
-            frame = np.asarray(Image.open(cache).convert("RGB")).astype(np.float32)
-        else:
-            crop = frame[y0:y0 + ch, x0:x0 + cw].astype(np.uint8)
-            dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-            frame = post.upscale(crop[None], W, H, dev)[0].astype(np.float32)
-            Image.fromarray(frame.astype(np.uint8)).save(cache)
-    placed = []
+    chars = []
     for spec in args.char:
         path, _, opts = spec.partition(":")
         kv = dict(o.split("=") if "=" in o else (o, "1") for o in opts.split(",") if o)
-        still = np.asarray(Image.open(path).convert("RGB"))
-        frame, info = place(frame, still, float(kv.get("x", 0.5)), float(kv.get("y", 0.85)),
-                            float(kv.get("h", 0.4)), flip="flip" in kv)
-        placed.append(dict(still=path, **kv, **info))
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8)).save(args.out)
-    args.out.with_suffix(".json").write_text(json.dumps(
-        dict(stage="keyframe", plate=str(args.plate), characters=placed), indent=2))
-    print(f"keyframe -> {args.out}  {placed}")
+        chars.append(dict(still=path, x=float(kv.get("x", 0.5)), y=float(kv.get("y", 0.85)),
+                          h=float(kv.get("h", 0.4)), flip="flip" in kv))
+    crop = [float(v) for v in args.plate_crop.split(",")[:3]] if args.plate_crop else None
+    rec = compose(args.plate, chars, args.out, crop)
+    print(f"keyframe -> {args.out}  {rec['characters']}")
 
 
 if __name__ == "__main__":

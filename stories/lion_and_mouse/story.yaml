@@ -152,7 +152,12 @@ scenes:
           butterfly that flutters just ahead of him. Cheerful and curious.
         negative_extra: lion, big animal, second mouse
       - name: s02_milo_runs_v2
-        keyframe: keyframes/scene02_milo_v2.png   # left of the clearing: no tree, Milo larger
+        keyframe: keyframes/scene02_milo_v3.png   # left of the clearing: no tree, Milo larger
+        compose:                                  # feet on the in-focus grass, not the mushrooms
+          plate: design/clearing/canonical.png
+          crop: [0.0, 0.46, 0.42]
+          characters:
+            - {still: characters/milo/poses/milo_turns_side_last.png, x: 0.66, y: 0.62, h: 0.36}
         characters: [milo, butterfly]
         frames: 81
         seeds: [5202, 5203]
@@ -180,6 +185,12 @@ scenes:
     shots:
       - name: s03_leo_wakes
         keyframe: keyframes/scene03_wake.png      # both characters: first two-character test
+        compose:
+          plate: design/clearing/canonical.png
+          crop: [0.25, 0.35, 0.5]
+          characters:
+            - {still: characters/leo/poses/leo_asleep.png, x: 0.5, y: 0.93, h: 0.62}
+            - {still: characters/milo/canonical.png, x: 0.36, y: 0.97, h: 0.17}
         characters: [leo, milo]
         frames: 81
         seeds: [5301, 5302]

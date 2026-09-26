@@ -34,6 +34,8 @@ def main() -> None:
     ap.add_argument("--scene", type=int, required=True)
     ap.add_argument("--shot", required=True)
     ap.add_argument("--seed", type=int, help="default: every seed listed for the shot")
+    ap.add_argument("--recompose", action="store_true",
+                    help="rebuild the keyframe from the shot's compose: recipe even if it exists")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -53,10 +55,26 @@ def main() -> None:
     frames = shot.get("frames", 81)
     print(f"[{args.shot}] keyframe {keyframe.name}, {frames} frames, seeds {seeds}\n{prompt}\n",
           flush=True)
-    if not keyframe.is_file():
-        raise SystemExit(f"missing keyframe {keyframe}")
+    recipe = shot.get("compose")
+    if recipe:
+        for c in recipe["characters"]:
+            if not (work / c["still"]).is_file():
+                raise SystemExit(f"keyframe recipe: missing still {work / c['still']}")
+        if not (work / recipe["plate"]).is_file():
+            raise SystemExit(f"keyframe recipe: missing plate {work / recipe['plate']}")
+    elif not keyframe.is_file():
+        raise SystemExit(f"missing keyframe {keyframe} and no compose: recipe")
     if args.dry_run:
+        print("dry run: inputs ok" + (" (keyframe will be composed)" if recipe else ""))
         return
+    if recipe and (args.recompose or not keyframe.is_file()):
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from keyframe import compose
+
+        compose(work / recipe["plate"],
+                [{**c, "still": str(work / c["still"])} for c in recipe["characters"]],
+                keyframe, recipe.get("crop"))
+        print(f"composed keyframe {keyframe}", flush=True)
     pipe = wan.load("i2v", frames)
     print("model loaded", flush=True)
     for seed in seeds:
