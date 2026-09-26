@@ -162,19 +162,20 @@ to back it up (see `docs/findings-and-risks.md` B1).
 - Poses done: Leo sleeps, sits, turns side, turns away, walks (did not travel);
   Milo paws together, turns side, turns away, runs, waves.
 - Scene 1: done (s01_establish_s5102, s01_establish_v2_s5103: Leo stays asleep).
-- Scene 2: v1 ran into depth; v2 (tracking camera) did not run at all, take 5202
-  provisional ("Milo spots the butterfly"). Locomotion now uses a fixed camera
-  (prompting Rule 2.10).
+- Scene 2: take 5204 (v3, fixed camera: Milo runs out of frame). v1 ran into
+  depth, v2 (tracking camera) did not run.
 - Scene 3: done, take 5302 approved by the owner (Leo looking at the camera is
   fine: do not spend re-renders on eye-lines).
 - Scene 4: Leo smiles (take 4202). Milo's plead: the push-in went to Leo
   (Rule 2.12); v2 starts from a close-up crop of the continuity frame: job
   22368409 with Scene 5 "Milo leaves" (~20:10). Then s05_leo_rests continues
   from the chosen "leaves" take (set its `take: TBD`).
-- Scenes 6, 7: fixed camera works: Leo walks (take 6101), Milo turns (7101),
-  Milo runs off diagonally (7201). Next: net falls on Leo (s06_net_falls) and
-  Scene 2 v3 (fixed-camera run): job 22367516, done ~18:40.
-- Net prop designed (1001). Scene 5, 8, 9 shots not written yet.
+- Scene 6: Leo walks (6101), the net falls (6202). Scene 7: Milo turns (7101),
+  runs (7201). Running: job 22369291 (~21:20) with Leo's call for help
+  (s06_leo_calls) and Scene 8 Milo arrives (keyframe = Milo pasted into the
+  trap's final frame).
+- Net prop designed (1001). Still to write: Scene 8 nibbling (close-up),
+  Scene 9 (brief truncated), Scene 5 Milo waves (close-up crop).
 - LoRAs: `fox` -> `fox_v2` (composited plates fix the background leak). Leo and
   Milo LoRAs: step 500 chosen (eval grid). LoRA inside I2V shots: measured
   worse (location drifts, identity no better): shots render without LoRAs.
