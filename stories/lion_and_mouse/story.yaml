@@ -373,7 +373,7 @@ scenes:
         continue_from: {shot: s05_milo_leaves, take: 5501}
         characters: [leo]
         frames: 81
-        seeds: [5601]
+        seeds: [5601, 5602]
         # The brief's "camera rises" would reveal canopy the frame lacks (Rule 2.8b).
         action: >-
           Leo the lion slowly lays his big round head down on his front paws and
