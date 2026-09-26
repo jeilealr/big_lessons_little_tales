@@ -1,0 +1,22 @@
+# Leo v2: poses the story needs that the owner-made pack does not contain.
+# Every pose starts from the v2 canonical (installed by production/install_pack.py)
+# on the same warm off-white studio, so it cuts out cleanly (BiRefNet).
+# Measured in v1: lying down / sleeping is reliable; head raises are not.
+set: a warm off-white seamless studio floor and backdrop with a small soft ground shadow
+render:
+  frames: 49          # 3 s: one slow pose change
+shots:
+  - name: leo_sleeps
+    from: canonical
+    seed: 2701
+    action: >-
+      Leo slowly lies down on his belly, rests his big round head on his front
+      paws and gently closes his eyes, peaceful and content.
+    negative_extra: open eyes at the end, standing, sitting, open mouth
+  - name: leo_lies_awake
+    from: canonical
+    seed: 2702
+    action: >-
+      Leo slowly lies down on his belly with his big front paws stretched out in
+      front of him, keeping his head up and his eyes open, calm and gentle.
+    negative_extra: closed eyes, sleeping, standing, open mouth

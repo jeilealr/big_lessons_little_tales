@@ -153,7 +153,7 @@ def main() -> None:
             if kind == "still":
                 img = Image.open(src).convert("RGB").resize(size, Image.LANCZOS)
             else:
-                img = card(size, f"{n}. {scene['title']}", " ".join(scene.get("text", "").split()))
+                img = card(size, f"{n}. {scene['title']}", " ".join((scene.get("text") or scene.get("narration") or scene.get("beat", "")).split()))
             frame = np.asarray(caption(img, label)).tobytes()
             for _ in range(nframes):
                 enc.stdin.write(frame)

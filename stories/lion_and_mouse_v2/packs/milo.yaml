@@ -1,0 +1,20 @@
+# Milo v2: poses the story needs that the owner-made pack does not contain.
+# Same studio as the pack; from the v2 canonical.
+set: a warm off-white seamless studio floor and backdrop with a small soft ground shadow
+render:
+  frames: 49
+shots:
+  - name: milo_paws_together
+    from: canonical
+    seed: 2801
+    action: >-
+      Milo lifts his tiny paws and presses them together in front of his chest,
+      smiling gratefully with bright eyes.
+    negative_extra: open mouth, teeth, frightened, running
+  - name: milo_worried
+    from: canonical
+    seed: 2802
+    action: >-
+      Milo pulls his tiny paws close to his chest and hunches his shoulders a
+      little, his big ears tilting back, worried but brave.
+    negative_extra: open mouth, teeth, crying, running, falling

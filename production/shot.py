@@ -89,6 +89,13 @@ def main() -> None:
             if not f.is_file():
                 raise SystemExit(f"missing LoRA {f}")
         print(f"LoRA {lo['name']}: {lo['high'].name} + {lo['low'].name} x{lo['weight']}")
+    if shot.get("end_keyframe") and not (work / shot["end_keyframe"]).is_file():
+        er = shot.get("end_compose")
+        if not er:
+            raise SystemExit(f"missing end keyframe {shot['end_keyframe']} and no end_compose")
+        for c in er["characters"]:
+            if not (work / c["still"]).is_file():
+                raise SystemExit(f"end_compose: missing still {work / c['still']}")
     if args.dry_run:
         print("dry run: inputs ok" + (" (keyframe will be composed)" if recipe else ""))
         return
@@ -105,6 +112,21 @@ def main() -> None:
                 [{**c, "still": str(work / c["still"])} for c in recipe["characters"]],
                 keyframe, recipe.get("crop"))
         print(f"composed keyframe {keyframe}", flush=True)
+    # `end_keyframe:` (+ optional `end_compose:` recipe): the frame the shot must
+    # arrive at. Wan 2.2 I2V-A14B then animates between two stills (first/last
+    # frame), which pins identity and pose at both ends (docs/prompting.md 3.4).
+    end_key = work / shot["end_keyframe"] if shot.get("end_keyframe") else None
+    end_recipe = shot.get("end_compose")
+    if end_key and (args.recompose or not end_key.is_file()):
+        if not end_recipe:
+            raise SystemExit(f"missing end keyframe {end_key} and no end_compose: recipe")
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from keyframe import compose
+
+        compose(work / end_recipe["plate"],
+                [{**c, "still": str(work / c["still"])} for c in end_recipe["characters"]],
+                end_key, end_recipe.get("crop"))
+        print(f"composed end keyframe {end_key}", flush=True)
     pipe = wan.load("i2v", frames, loras=loras)
     print("model loaded", flush=True)
     for seed in seeds:
@@ -114,10 +136,12 @@ def main() -> None:
         t0 = time.time()
         negative = story["negative"] + (", " + shot["negative_extra"] if shot.get("negative_extra") else "")
         video = wan.generate(pipe, prompt, negative=negative, frames=frames, seed=seed,
-                             image=Image.open(keyframe), **RENDER)
+                             image=Image.open(keyframe),
+                             last_image=Image.open(end_key) if end_key else None, **RENDER)
         wan.save(video, out)
         out.with_suffix(".json").write_text(json.dumps(dict(
             stage="shot", scene=args.scene, shot=args.shot, keyframe=str(keyframe),
+            end_keyframe=str(end_key) if end_key else None,
             model=wan.model_id("i2v"), seed=seed, frames=frames, prompt=prompt,
             negative=negative, loras=[{k: str(v) for k, v in lo.items()} for lo in loras],
             seconds=round(time.time() - t0), **RENDER), indent=2))

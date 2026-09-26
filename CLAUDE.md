@@ -246,12 +246,59 @@ The LUMI project's data is deleted around **30 March 2027**. `work/` (designs,
 packs, LoRAs, shots) is git-ignored and exists only on scratch: remind the owner
 to back it up (see `docs/findings-and-risks.md` B1).
 
+## v2: the Lion and the Mouse with the owner's character pack (active)
+
+**2026-09-27: the owner directed v2 production**: their retelling
+(`work/stories/lion_and_mouse_v2_review/story.txt`), with an owner-made
+character pack made following neolemon's consistency guide (character DNA +
+reference pack + keyframes + motion-only prompts). v1 stays as it was.
+
+Authority, in order:
+1. Canonicals: `character/characters/{Leo,Milo}/v2/canonical/*.png` (identity
+   authority; text follows the image, never the reverse).
+2. The rest of the owner's pack (views, expressions, actions) in the same folders.
+3. `stories/lion_and_mouse_v2/story.yaml`: sheets (DNA corrected to the
+   canonicals), locations, scale, 12 scenes with the owner's narration.
+4. Review frames in `work/stories/lion_and_mouse_v2_review/`: **layout guides
+   only**, never character references (owner: 08, 09 rejected for drift; 07
+   uncertain).
+
+How v2 differs from v1 (and why):
+- **Canonicals are owner-made, not Wan designs**: `production/install_pack.py`
+  pads them to 16:9 (edge-repeat, blurred: a flat-colour pad left visible
+  seams) into `work/stories/lion_and_mouse_v2/design/<name>/canonical.png` and
+  copies the pack into `characters/<name>/pack/` (fixing `.png.png` names in the
+  copies only). Originals are never modified.
+- **Scale: Milo = 1/3 of Leo's standing height** (v1: 1/6, too small for his
+  gestures to register; Rule 2.12).
+- **Start + end keyframes** (`end_keyframe:` / `end_compose:` in a shot): Wan
+  animates between two composed stills. This is the guide's core method; the
+  owner's expression images (identical head-and-shoulders framing) are natural
+  start/end pairs for close-ups.
+- Missing story poses (Leo asleep, Leo lying awake, Milo paws together, Milo
+  worried) are Wan pose clips from the canonicals on the same studio backdrop
+  (`stories/lion_and_mouse_v2/packs/`). Owner-made versions would be preferred.
+- Everything learned in v1 still applies: fixed camera for locomotion, one
+  action per shot, close-up crops for small gestures, no LoRA in shots,
+  positive wording, two seeds.
+
+Owner's asset prompts, updated with these production lessons:
+`character/characters/v2_asset_review_prompt.md` (section "Lessons from video
+production") and `character/characters/character_pack_prompts_v2.md`.
+
 ## Current state (update when it changes)
 
-**Paused on 2026-09-26 by the owner**, who will create a new set of character
-designs ("character DNA") before continuing. Nothing new is to be submitted
-until then.
+v2 (2026-09-27):
+- Installed: v2 canonicals + packs (install_pack.py). Story bible v2 written.
+- Running: job 22373398 (Wan pose clips: leo_sleeps, leo_lies_awake,
+  milo_paws_together, milo_worried), job 22373399 (location plates: clearing,
+  trap_site, forest_run, 6 candidates each).
+- Next: pick plates, extract pose stills, compose Scene 1-3 keyframes (start
+  and end), render.
+- Open for the owner: licence/terms of the image tool used for the v2 pack
+  (record in docs/licensing.md); whether to commit the v2 pack images to git.
 
+v1 (paused 2026-09-26, kept for reference):
 - Lion and Mouse picks: Leo 1003 (black eyes, owner decision), Milo 1001
   (reframed), butterfly 1004, clearing 1002, trap site 1004, berry patch 1003,
   net 1001.

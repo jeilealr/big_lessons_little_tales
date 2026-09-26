@@ -1,0 +1,215 @@
+# The Lion and the Mouse, v2 -- the owner's retelling (2026-09-27), with the
+# v2 character pack (character/characters/{Leo,Milo}/v2/).
+# The single source of truth for this story. v1 (stories/lion_and_mouse/)
+# stays as it was; nothing here refers to v1 assets except as lessons.
+title: The Lion and the Mouse
+slug: lion_and_mouse_v2
+moral: >-
+  Kindness does not create a debt. It creates more kindness.
+source_text: work/stories/lion_and_mouse_v2_review/story.txt   # the owner's story text
+
+# ---------------------------------------------------------------- style bible
+# Appended to every prompt, verbatim. Written to match the v2 character pack
+# (Leo and Milo DNA "style" + the review frames' storybook forest).
+style: >-
+  handcrafted wool-felt stop-motion storybook miniature, softly stuffed matte
+  felt forms, tactile fuzzy wool fibres, delicate visible stitching, charming
+  handmade irregularities, bright warm children's storybook colours, soft warm
+  light, shallow depth of field, miniature diorama photography, wholesome and
+  gentle atmosphere
+negative: >-
+  plastic, glossy CGI, realistic animal fur, photorealistic animals, scary
+  expression, angry face, visible teeth, fangs, sharp claws, roaring, clothing,
+  text, letters, logo, watermark, subtitles, modern objects, people, deformed,
+  extra limbs, extra tails, duplicate character, flickering, jittery motion,
+  blurry, low quality, overexposed
+
+# ---------------------------------------------------------------- characters
+# `sheet`: the frozen description pasted into every prompt. From each
+# character's dna.yaml `story_sheet_candidate`, corrected to what the canonical
+# image shows (docs: prompting Rule 1.4). The canonical image is the authority.
+characters:
+  leo:
+    name: Leo the lion
+    role: main
+    canonical: character/characters/Leo/v2/canonical/full-body_leo_neutral_pose_01.png
+    dna: character/characters/Leo/v2/dna.yaml
+    sheet: >-
+      a handcrafted needle-felted lion with a compact sturdy warm golden-ochre
+      body with delicate stitched seams, short thick legs, oversized rounded
+      pale-tan paws with stitched toes, a pale-cream chest patch, and a very
+      large round rust-red mane of long pointed fuzzy wool locks framing his
+      face; large round dark-brown eyes with cream whites, short curved brown
+      brows, a small dark-brown nose on a soft peach-pink bridge, a broad
+      pale-cream muzzle with tiny whisker dots and fine pale whiskers, a subtle
+      stitched smile, small rounded ears with pink inner felt, and a long golden
+      tail ending in a rust-red tuft
+    personality: strong, warm, wise, gentle; surprised or worried at most, never threatening
+    anatomy: quadrupedal; stands and walks on all four paws
+  milo:
+    name: Milo the mouse
+    role: main
+    canonical: character/characters/Milo/v2/canonical/full-body_milo_neutral_pose_01.png
+    dna: character/characters/Milo/v2/dna.yaml
+    sheet: >-
+      a small handcrafted wool-felt mouse with a slender warm taupe-grey body
+      with delicate stitched seams, a long pale-cream belly, a large round head
+      with a small tuft of rust-orange wool hair on top, two very large round
+      upright ears with coral-pink inner felt and stitched grey rims, very large
+      round dark-brown eyes with cream whites, small curved brown brows, a tiny
+      dark-brown nose, a pale-cream muzzle with a small stitched smile and long
+      fine pale whiskers, slim arms and legs with tiny rounded paws, and a long
+      thin pinkish-taupe tail
+    personality: small, clever, curious, optimistic, quietly brave; never helpless
+    anatomy: upright; stands and walks on two feet
+# Scale, fixed for every keyframe: Milo standing (to the top of his ears) is
+# one third of Leo's standing height. v1 used one sixth, and Milo was too small
+# for his gestures to register (prompting Rule 2.12).
+scale:
+  leo_standing: 1.0
+  milo_standing: 0.33
+
+# ---------------------------------------------------------------- locations
+# Two recurring places, kept visually distinct; their fixed cues come from the
+# review README. Each gets one empty v2 plate, reused by every shot there.
+locations:
+  clearing:
+    name: the sunny clearing with Leo's tree
+    sheet: >-
+      a bright open handmade felt forest clearing in soft morning light: a
+      grassy green felt floor with small white fabric flowers and a few red
+      felt mushrooms, a broad hand-stitched brown felt tree trunk on the right
+      with a rounded canopy of layered green felt leaves, rounded grey felt
+      stones and leafy felt plants in the foreground, rounded wool trees in the
+      distance and a pale blue sky with small cotton-wool clouds
+    scenes: [1, 2, 3, 4, 5, 6, 12]
+  trap_site:
+    name: the forest path where the net falls
+    sheet: >-
+      a narrow pale felt path winding among tall rounded felt trees in the same
+      handmade felt forest, green felt ferns and rounded grey felt rocks along
+      the path, warm golden late-afternoon light
+    scenes: [7, 9, 10, 11]
+  forest_run:
+    name: the forest between the two
+    sheet: >-
+      a handmade felt forest floor with soft green felt grass, leafy felt
+      plants, small white fabric flowers and tall rounded felt trees, warm
+      golden afternoon light
+    scenes: [8]
+
+props:
+  net: >-
+    a hunter's net of soft braided cream craft rope with large square gaps and
+    chunky round knots
+
+# ---------------------------------------------------------------- scenes
+# `narration` is the owner's text for that beat (ElevenLabs reads it); `beat`
+# is what the pictures must show. Shots are added as they are planned; see
+# docs/production-guide.md section 7 and docs/prompting.md.
+scenes:
+  1:
+    title: The sleeping lion
+    location: clearing
+    characters: [leo]
+    narration: >-
+      Once upon a time, a great lion was sleeping beneath a tree
+    beat: Leo sleeps peacefully beneath his tree; the camera eases in.
+  2:
+    title: A little mouse
+    location: clearing
+    characters: [leo, milo]
+    narration: >-
+      when a little mouse accidentally ran across his paw.
+    beat: Milo scampers across the grass, past Leo's big front paw, not noticing him.
+  3:
+    title: Caught
+    location: clearing
+    characters: [leo, milo]
+    narration: >-
+      The lion woke with a growl and caught the mouse beneath his paw.
+    beat: >-
+      Leo wakes, surprised; he gently places one big paw beside Milo as a soft
+      barrier (never on top of him, no teeth: the "growl" is the narrator's).
+  4:
+    title: The lion decides
+    location: clearing
+    characters: [leo, milo]
+    narration: >-
+      The mouse trembled, but the lion looked at the tiny creature and realized
+      there was no reason to hurt him.
+    beat: Close-up of Milo, worried; close-up of Leo, whose look softens from surprise to kindness.
+  5:
+    title: Go on your way
+    location: clearing
+    characters: [leo, milo]
+    narration: >-
+      "You frightened me," said the lion, "but you meant no harm. Go on your
+      way."
+    beat: Leo lifts his paw away and smiles; Milo is free.
+  6:
+    title: Thank you
+    location: clearing
+    characters: [leo, milo]
+    narration: >-
+      The mouse was surprised. He had expected anger, but instead the lion
+      showed him kindness. "Thank you," said the mouse. "I hope one day I can
+      show someone the same kindness."
+    beat: Milo's surprise turns into a warm smile; he thanks Leo and scampers off.
+  7:
+    title: The net
+    location: trap_site
+    characters: [leo]
+    props: [net]
+    narration: >-
+      Some days later, the lion became trapped in a hunter's net. He pulled and
+      struggled, but the ropes only tightened around him.
+    beat: >-
+      Leo walks the forest path; a soft rope net drops over him; he tugs at it,
+      worried, mouth closed (mild peril: findings B6).
+  8:
+    title: Milo hears
+    location: forest_run
+    characters: [milo]
+    narration: >-
+      The mouse heard his roars and hurried toward the sound.
+    beat: Milo stops, ears up, turns towards the sound, and runs.
+  9:
+    title: Someone in trouble
+    location: trap_site
+    characters: [leo, milo]
+    props: [net]
+    narration: >-
+      When he saw the lion trapped, he did not stop to think about whether the
+      lion deserved his help or whether he owed him anything. He simply saw
+      someone in trouble. "I think I can help," said the mouse.
+    beat: Milo arrives at the net, looks up at Leo, and raises a paw ("I can help").
+  10:
+    title: Gnawing
+    location: trap_site
+    characters: [leo, milo]
+    props: [net]
+    narration: >-
+      He began to gnaw through the ropes with his sharp little teeth. It took
+      time, but at last the net loosened and the lion stepped free.
+    beat: Close-up of Milo nibbling a rope until it parts; the net loosens; Leo steps out.
+  11:
+    title: Amazement
+    location: trap_site
+    characters: [leo, milo]
+    narration: >-
+      The lion looked at the mouse with amazement. "You helped me even though
+      you did not have to." The mouse smiled. "You were kind to me when you did
+      not have to either."
+    beat: Leo looks down at Milo, amazed and grateful; Milo smiles up at him.
+  12:
+    title: Passed on
+    location: clearing
+    characters: [leo, milo]
+    narration: >-
+      The lion thought about this for a moment. Perhaps kindness was not
+      something to be repaid like a debt. Perhaps it was something that could
+      simply be passed on. And from then on, the lion and the mouse remembered
+      that being strong sometimes means choosing gentleness, and being small
+      never means being powerless.
+    beat: Leo thinks, then smiles; the two friends sit together beneath the tree as the camera eases back.
