@@ -40,6 +40,7 @@ Checked 2026-09-26.
 | Scene 2: a tilt-up revealed a canopy the keyframe lacked; the model invented a different tree | push-ins, or keyframes that contain what the move reveals |
 | Scene 2 showed Leo's tree without Leo | keep character-tied landmarks out of frame or include the character |
 | a secondary character with only a text sheet (butterfly) came out on-model | a specific sheet is enough for small, simple secondary characters |
+| net prop design: all 6 candidates were nearly the same net (cream braided rope, square gaps, round knots), but every one filled the frame instead of showing the whole net | a simple prop is consistent from its sheet alone, like the butterfly; the design still fixes the reference (picked 1001). "Whole object in frame" is ignored for a net: fine, it is a material |
 | location prompt drew props on a table | say the scene fills the frame, no backdrop |
 
 ### Tools and pipeline
@@ -147,8 +148,9 @@ frozen sheet), and plan its states (whole / one rope broken / open) as
 separate keyframes.
 **Started:** `design.py` handles props (laid flat on a contrasting deep-green
 floor so it cuts out cleanly). The net's sheet was rewritten before its first
-render to use positive words only (see prompting Rule 3.5). Candidates are
-queued for the next free GPU slot.
+render to use positive words only (see prompting Rule 3.5). Designed: 1001
+(`design/net/contact_sheet.png`). Next: the net's states as keyframes (falling
+onto Leo, over him, one rope broken, open).
 
 ### 6. The trap scene is close to YouTube's own example of distressing content
 
