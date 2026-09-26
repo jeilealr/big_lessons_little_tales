@@ -89,7 +89,8 @@ def main() -> None:
             if not f.is_file():
                 raise SystemExit(f"missing LoRA {f}")
         print(f"LoRA {lo['name']}: {lo['high'].name} + {lo['low'].name} x{lo['weight']}")
-    if shot.get("end_keyframe") and not (work / shot["end_keyframe"]).is_file():
+    if (shot.get("end_keyframe") and shot["end_keyframe"] != shot["keyframe"]
+            and not (work / shot["end_keyframe"]).is_file()):
         er = shot.get("end_compose")
         if not er:
             raise SystemExit(f"missing end keyframe {shot['end_keyframe']} and no end_compose")
@@ -110,7 +111,7 @@ def main() -> None:
 
         compose(work / recipe["plate"],
                 [{**c, "still": str(work / c["still"])} for c in recipe["characters"]],
-                keyframe, recipe.get("crop"))
+                keyframe, recipe.get("crop"), recipe.get("blur", 0.0))
         print(f"composed keyframe {keyframe}", flush=True)
     # `end_keyframe:` (+ optional `end_compose:` recipe): the frame the shot must
     # arrive at. Wan 2.2 I2V-A14B then animates between two stills (first/last
@@ -125,7 +126,7 @@ def main() -> None:
 
         compose(work / end_recipe["plate"],
                 [{**c, "still": str(work / c["still"])} for c in end_recipe["characters"]],
-                end_key, end_recipe.get("crop"))
+                end_key, end_recipe.get("crop"), end_recipe.get("blur", 0.0))
         print(f"composed end keyframe {end_key}", flush=True)
     pipe = wan.load("i2v", frames, loras=loras)
     print("model loaded", flush=True)

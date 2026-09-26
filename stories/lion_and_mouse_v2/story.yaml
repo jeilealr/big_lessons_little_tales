@@ -139,6 +139,48 @@ scenes:
       The mouse trembled, but the lion looked at the tiny creature and realized
       there was no reason to hurt him.
     beat: Close-up of Milo, worried; close-up of Leo, whose look softens from surprise to kindness.
+    shots:
+      # Close-ups from the owner's expression images (identical framing), as
+      # start and end frames: the guide's two-frame method.
+      - name: s04_milo_trembles
+        keyframe: keyframes/s04_milo_concerned.png
+        compose:
+          plate: design/clearing/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/milo/pack/expressions__milo_expression_concerned_01.png, x: 0.5, y: 1.08, h: 1.05}
+        end_keyframe: keyframes/s04_milo_concerned.png
+        characters: [milo]
+        frames: 81
+        seeds: [4101]
+        action: >-
+          Close-up of tiny Milo the mouse looking up, worried; he trembles a little,
+          his big ears quivering and his whiskers twitching, mouth closed. The
+          camera stays still.
+        negative_extra: >-
+          lion, second mouse, open mouth, teeth, crying, tears, running, camera
+          moving
+      - name: s04_leo_softens
+        keyframe: keyframes/s04_leo_curious.png
+        compose:
+          plate: design/clearing/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/leo/pack/expressions__leo_expression_curious_01.png, x: 0.5, y: 1.08, h: 1.05}
+        end_keyframe: keyframes/s04_leo_smile.png
+        end_compose:
+          plate: design/clearing/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/leo/pack/expressions__leo_expression_smile_01.png, x: 0.5, y: 1.08, h: 1.05}
+        characters: [leo]
+        frames: 81
+        seeds: [4201, 4202]
+        action: >-
+          Close-up of Leo the lion looking down curiously; slowly his face softens
+          into a gentle, kind closed-mouth smile. The camera stays still.
+        negative_extra: >-
+          mouse, second lion, open mouth, teeth, angry, roaring, camera moving
   5:
     title: Go on your way
     location: clearing
@@ -156,6 +198,29 @@ scenes:
       showed him kindness. "Thank you," said the mouse. "I hope one day I can
       show someone the same kindness."
     beat: Milo's surprise turns into a warm smile; he thanks Leo and scampers off.
+    shots:
+      - name: s06_milo_smiles
+        keyframe: keyframes/s06_milo_surprise.png
+        compose:
+          plate: design/clearing/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/milo/pack/expressions__milo_expression_pleasant_surprise_01.png, x: 0.5, y: 1.08, h: 1.05}
+        end_keyframe: keyframes/s06_milo_smile.png
+        end_compose:
+          plate: design/clearing/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/milo/pack/expressions__milo_expression_smile_01.png, x: 0.5, y: 1.08, h: 1.05}
+        characters: [milo]
+        frames: 81
+        seeds: [6101]
+        action: >-
+          Close-up of tiny Milo the mouse looking up, surprised; his surprise turns
+          into a warm, grateful smile, his big ears lifting. The camera stays
+          still.
+        negative_extra: >-
+          lion, second mouse, teeth, crying, running, camera moving
   7:
     title: The net
     location: trap_site

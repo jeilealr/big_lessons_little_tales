@@ -158,10 +158,13 @@ def place(plate: np.ndarray, still: np.ndarray, x: float, y: float, height: floa
     return out, dict(box=[dx0, dy0, dx1 - dx0, dy1 - dy0], scale=round(scale, 3))
 
 
-def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None = None) -> dict:
+def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None = None,
+            blur: float = 0.0) -> dict:
     """Build a keyframe. `chars`: [{still, x, y, h, flip?}], x/y = feet position
     as fractions of the frame, h = height fraction. `crop`: [x, y, w] fractions of
-    the plate for a virtual close-up (Real-ESRGAN; cached next to the plate)."""
+    the plate for a virtual close-up (Real-ESRGAN; cached next to the plate).
+    `blur`: Gaussian sigma (pixels) applied to the background only, for close-ups
+    whose background should be out of focus."""
     import sys as _sys
 
     frame = np.asarray(Image.open(plate).convert("RGB")).astype(np.float32)
@@ -183,6 +186,10 @@ def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None 
             dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             frame = post.upscale(piece[None], W, H, dev)[0].astype(np.float32)
             Image.fromarray(frame.astype(np.uint8)).save(cache)
+    if blur:                                  # defocus the background for close-ups
+        import cv2
+
+        frame = cv2.GaussianBlur(frame, (0, 0), sigmaX=float(blur))
     placed = []
     for c in chars:
         still = np.asarray(Image.open(c["still"]).convert("RGB"))
@@ -191,7 +198,7 @@ def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None 
         placed.append({**{k: v for k, v in c.items()}, **info})
     out.parent.mkdir(parents=True, exist_ok=True)
     Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8)).save(out)
-    record = dict(stage="keyframe", plate=str(plate), crop=crop, characters=placed)
+    record = dict(stage="keyframe", plate=str(plate), crop=crop, blur=blur, characters=placed)
     out.with_suffix(".json").write_text(json.dumps(record, indent=2, default=str))
     return record
 
