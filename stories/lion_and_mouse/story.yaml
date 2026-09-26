@@ -277,6 +277,7 @@ scenes:
       lets Milo go. Milo smiles gratefully. Warm sunlight falls across both.
     shots:
       - name: s04_milo_pleads
+        superseded_by: s04_milo_pleads_v2   # the push-in went to Leo; Milo stayed tiny
         keyframe: keyframes/scene04_from_s03.png
         continue_from: {shot: s03_leo_wakes, take: 5302}   # the cut continues Scene 3
         characters: [leo, milo]
@@ -293,6 +294,7 @@ scenes:
           angry face, teeth, roaring, scary, second lion, second mouse, mouse
           running away, lion standing up, camera tilting up
       - name: s04_leo_smiles
+        take: 4202                          # big warm smile and a nod
         keyframe: keyframes/scene04_from_s03.png
         continue_from: {shot: s03_leo_wakes, take: 5302}
         characters: [leo, milo]

@@ -163,6 +163,17 @@ without Leo asleep under it, one scene after we saw him there. When a location
 has a landmark tied to a character, either keep the landmark out of frame or
 show the character in it.
 
+**Rule 2.12: a camera move goes to the dominant subject, not to the one you
+name.** Scene 4: "the camera slowly moves closer to tiny Milo" pushed in on
+Leo both times; Milo, 1/7 of the frame high, stayed tiny and his paw gesture
+was invisible. A small character's gesture needs its **own close-up keyframe**:
+crop the continuity frame around them and upscale it (`compose` with only a
+`crop:`), so the shot is still continuous with the one before.
+
+![Scene 4](img/s04.jpg)
+
+*(rows: pleads 4101, pleads 4102, smiles 4201, smiles 4202)*
+
 ## 3. Words and framing
 
 **Rule 3.1: materials, not photography.** "needle-felted", "stitched", "wool",
@@ -231,7 +242,7 @@ twcfox, a small orange felt fox, sitting, three-quarter view, full body, on a gr
 5. What must stay still is stated ("the whole time, eyes closed"), and its
    opposite is in `negative_extra`.
 6. Characters not in the shot are in `negative_extra`.
-7. At most one camera move.
+7. At most one camera move, and it goes to the biggest subject (Rule 2.12).
 8. No photographic or realism words.
 9. The sheets were not edited for this shot.
 9b. No "not ..." / "no ..." phrases in the action or sheets: they go in the negative.
@@ -269,4 +280,8 @@ Update this when a rule is confirmed, refuted or refined.
   Scene 7: the whole-body turn to camera works (7101); the run leaves the
   frame diagonally (7201). Rule 2.10's fixed-camera version confirmed for
   walking. Scene 2 v3 re-tests the run on the clearing keyframe.
+- 2026-09-26: Scene 4: "Leo's face softens into a big warm smile and he nods"
+  worked (4202: expression changes register when they are the whole shot);
+  4201 turned his head down towards Milo instead (eye-line right, no smile).
+  Both "push in on Milo" renders pushed in on Leo (Rule 2.12).
 
