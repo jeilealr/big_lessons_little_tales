@@ -159,7 +159,7 @@ scenes:
           butterfly that flutters just ahead of him. Cheerful and curious.
         negative_extra: lion, big animal, second mouse
       - name: s02_milo_runs_v2
-        take: 5202                          # provisional: no run, but a nice 'Milo spots the butterfly' beat
+        superseded_by: s02_milo_runs_v3     # no run (tracking camera)
         keyframe: keyframes/scene02_milo_v3.png   # left of the clearing: no tree, Milo larger
         compose:                                  # feet on the in-focus grass, not the mushrooms
           plate: design/clearing/canonical.png
@@ -181,6 +181,7 @@ scenes:
           lion, big animal, second mouse, running away from the camera, back view,
           mouse getting smaller, camera tilting up, tree trunk
       - name: s02_milo_runs_v3             # fixed camera (v2's tracking camera moved instead of Milo)
+        take: 5204                          # runs left out of frame; butterfly flutters in
         keyframe: keyframes/scene02_milo_v3.png
         characters: [milo, butterfly]
         frames: 81
@@ -396,6 +397,7 @@ scenes:
           net, rope, mouse, second lion, walking away from the camera, back view,
           standing still, walking on the spot, camera tracking, lying down, sitting
       - name: s06_net_falls
+        take: 6202                          # net drops and drapes over Leo; matches the design
         keyframe: keyframes/scene06_from_walk.png
         continue_from: {shot: s06_leo_walks, take: 6101}
         characters: [leo]
@@ -411,6 +413,21 @@ scenes:
         negative_extra: >-
           scary, angry face, teeth, roaring, crying, pain, struggling, metal, wire,
           chains, spikes, cage, mouse, second lion, people, hunter
+      - name: s06_leo_calls
+        keyframe: keyframes/scene06_trapped.png
+        continue_from: {shot: s06_net_falls, take: 6202}
+        characters: [leo]
+        frames: 81
+        seeds: [6301, 6302]
+        # The brief's roar is a call for help (findings B6): big round mouth, no
+        # teeth, no anger.
+        action: >-
+          Leo the lion sits under the soft rope net, lifts his round head high and
+          calls out loudly for help, his mouth open in a big round O, his fluffy mane
+          shaking, worried but not scared. The camera stays still.
+        negative_extra: >-
+          teeth, fangs, angry face, snarling, scary, crying, pain, struggling,
+          mouse, second lion, people, hunter, camera moving
   7:
     title: Milo hears the roar
     location: berry_patch
@@ -466,6 +483,24 @@ scenes:
       Milo examines the rope net and nibbles through one rope with his tiny
       teeth; small fibres separate. Leo watches hopefully. The rope breaks, then
       another, until the opening is large enough for Leo to escape.
+    shots:
+      - name: s08_milo_arrives
+        keyframe: keyframes/scene08_arrive.png
+        compose:                                  # Milo pasted into the trap's own final frame
+          plate: keyframes/scene06_trapped.png
+          characters:
+            - {still: characters/milo/poses/milo_turns_side_last.png, x: 0.14, y: 0.93, h: 0.11, flip: true}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [8101, 8102]
+        action: >-
+          Seen from the side, tiny Milo the mouse runs quickly along the felt path
+          from left to right towards the rope net, and stops right beside it. Leo
+          the lion sits under the net and looks at him, surprised and relieved. The
+          camera stays still.
+        negative_extra: >-
+          teeth, angry face, scary, crying, second lion, second mouse, mouse running
+          away, camera moving, people, hunter
   9:
     title: Free!
     location: trap_site

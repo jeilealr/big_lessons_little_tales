@@ -284,4 +284,12 @@ Update this when a rule is confirmed, refuted or refined.
   worked (4202: expression changes register when they are the whole shot);
   4201 turned his head down towards Milo instead (eye-line right, no smile).
   Both "push in on Milo" renders pushed in on Leo (Rule 2.12).
+- 2026-09-26: Scene 2 v3 (fixed camera): Milo runs left out of the frame in
+  both seeds (5204, 5205). **Rule 2.10's fixed-camera version confirmed for
+  running.** Scene 6 net (first prop event): 6202 the net drops and drapes
+  over Leo, matching the design picked from its sheet; 6201 the net just
+  appeared in a pile beside him. A prop described by its sheet in the action
+  line comes out on-model.
+
+  ![Scene 2 v3 and the net](img/s02v3_net.jpg)
 
