@@ -162,15 +162,19 @@ to back it up (see `docs/findings-and-risks.md` B1).
 - Poses done: Leo sleeps, sits, turns side, turns away, walks (did not travel);
   Milo paws together, turns side, turns away, runs, waves.
 - Scene 1: done (s01_establish_s5102, s01_establish_v2_s5103: Leo stays asleep).
-- Scene 2: v1 failed (Milo ran away into depth; invented tree canopy; Leo's tree
-  without Leo); v2 (treeless region, Milo on the in-focus grass, explicit
-  side-on geometry) rendering: job 22363722, seeds 5202/5203.
-- Scene 3: first two-character test (Leo wakes, Milo frozen), same job, seeds
-  5301/5302.
-- LoRAs: `fox` (background leak after 500) -> `fox_v2` (composited plates: no
-  leak at any checkpoint; pose freedom best at 500). Leo and Milo LoRAs trained
-  (1000 steps, job 22363458); eval grid job 22364103. Next: A/B of LoRA inside
-  I2V shots + net prop candidates (`work/tasks_lora_ab_net.txt`).
-- Animatic: `work/stories/lion_and_mouse/animatic.mp4` (39 s, placeholder timing).
+- Scene 2: v1 ran into depth; v2 (tracking camera) did not run at all, take 5202
+  provisional ("Milo spots the butterfly"). Locomotion now uses a fixed camera
+  (prompting Rule 2.10).
+- Scene 3: works (take 5302): first two-character shot, no identity blending.
+- Scene 4: continues from Scene 3's last frame (`continue_from`); job queued
+  after the LoRA A/B (tasks_s04.txt).
+- Scenes 6, 7: shots written (fixed-camera locomotion test); job 22365871.
+- Net prop designed (1001). Scene 5, 8, 9 shots not written yet.
+- LoRAs: `fox` -> `fox_v2` (composited plates fix the background leak). Leo and
+  Milo LoRAs: step 500 chosen (eval grid). LoRA inside I2V loads and is active;
+  A/B renders (s02_milo_runs_v2_lora, s03_leo_wakes_lora): job 22364893.
+- Animatic: `work/stories/lion_and_mouse/animatic.mp4` (placeholder timing).
+- Two tasks in one job must not write the same file (e.g. a shared
+  continue_from keyframe): extract it before submitting.
 - Open questions for the owner: keep Leo's black eyes or insist on brown;
   Leo 1003 vs 1005; the story brief is truncated at Scene 9.
