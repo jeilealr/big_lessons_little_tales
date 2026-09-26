@@ -111,7 +111,7 @@ def main() -> None:
         scene = story["scenes"][n]
         segs = []
         for shot in scene.get("shots", []):
-            if shot.get("superseded_by"):
+            if shot.get("superseded_by") or shot.get("variant_of"):
                 continue
             clip = work / "shots" / f"{shot['name']}_s{shot['take']}.mp4" if shot.get("take") else None
             if clip and clip.is_file():

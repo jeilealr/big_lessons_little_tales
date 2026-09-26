@@ -45,9 +45,21 @@ def main() -> None:
     work = paths.WORK / "stories" / args.story
     keyframe = work / shot["keyframe"]
     parts = [shot["action"].strip()]
+    # `lora: true` on a shot: every character in it that has a chosen LoRA
+    # (`lora:` under the character) gets it, and its trigger word in the prompt,
+    # the way the training captions put it: "<trigger>, <description>".
+    loras = []
     for c in shot.get("characters", scene.get("characters", [])):
         ch = story["characters"][c]
-        parts.append(f"{ch['name'][0].upper() + ch['name'][1:]} is {ch['sheet']}.")
+        use = shot.get("lora") and ch.get("lora")
+        if use:
+            d = paths.WORK / "lora" / ch["lora"]["name"]
+            suf = f"-step{int(ch['lora']['step']):08d}" if ch["lora"].get("step") else ""
+            loras.append(dict(name=c, weight=ch["lora"].get("weight", 1.0),
+                              high=d / "out_high" / f"{ch['lora']['name']}_high{suf}.safetensors",
+                              low=d / "out_low" / f"{ch['lora']['name']}_low{suf}.safetensors"))
+        name = ch["name"][0].upper() + ch["name"][1:]
+        parts.append(f"{name} is {ch['trigger'] + ', ' if use else ''}{ch['sheet']}.")
     parts.append(f"The scene is {story['locations'][scene['location']]['sheet']}.")
     parts.append(story["style"] + ".")
     prompt = " ".join(parts)
@@ -64,6 +76,11 @@ def main() -> None:
             raise SystemExit(f"keyframe recipe: missing plate {work / recipe['plate']}")
     elif not keyframe.is_file():
         raise SystemExit(f"missing keyframe {keyframe} and no compose: recipe")
+    for lo in loras:
+        for f in (lo["high"], lo["low"]):
+            if not f.is_file():
+                raise SystemExit(f"missing LoRA {f}")
+        print(f"LoRA {lo['name']}: {lo['high'].name} + {lo['low'].name} x{lo['weight']}")
     if args.dry_run:
         print("dry run: inputs ok" + (" (keyframe will be composed)" if recipe else ""))
         return
@@ -75,7 +92,7 @@ def main() -> None:
                 [{**c, "still": str(work / c["still"])} for c in recipe["characters"]],
                 keyframe, recipe.get("crop"))
         print(f"composed keyframe {keyframe}", flush=True)
-    pipe = wan.load("i2v", frames)
+    pipe = wan.load("i2v", frames, loras=loras)
     print("model loaded", flush=True)
     for seed in seeds:
         out = work / "shots" / f"{args.shot}_s{seed}.mp4"
@@ -89,7 +106,8 @@ def main() -> None:
         out.with_suffix(".json").write_text(json.dumps(dict(
             stage="shot", scene=args.scene, shot=args.shot, keyframe=str(keyframe),
             model=wan.model_id("i2v"), seed=seed, frames=frames, prompt=prompt,
-            negative=negative, seconds=round(time.time() - t0), **RENDER), indent=2))
+            negative=negative, loras=[{k: str(v) for k, v in lo.items()} for lo in loras],
+            seconds=round(time.time() - t0), **RENDER), indent=2))
         print(f"saved {out} ({time.time() - t0:.0f} s)", flush=True)
 
 

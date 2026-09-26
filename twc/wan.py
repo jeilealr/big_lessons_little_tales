@@ -58,7 +58,16 @@ def model_id(kind: str) -> str:
     return f"{MODELS[kind]}@{REVISIONS[kind]}"
 
 
-def load(kind: str, frames: int = NATIVE_FRAMES):
+def load(kind: str, frames: int = NATIVE_FRAMES, loras: list[dict] | None = None):
+    """`loras`: [{name, high, low, weight}], musubi-tuner files (one per expert).
+
+    A LoRA trained on T2V A14B loads into I2V A14B too: it only touches the
+    attention and FFN layers, which have the same shapes in both (checked: all
+    400 targets exist in both experts). diffusers' `transformer` is the
+    high-noise expert, `transformer_2` the low-noise one. musubi's alpha/rank is
+    folded into the weights by the converter, so an adapter weight of 1.0 means
+    "as trained".
+    """
     import torch
     from diffusers import AutoencoderKLWan, WanImageToVideoPipeline, WanPipeline
 
@@ -67,6 +76,20 @@ def load(kind: str, frames: int = NATIVE_FRAMES):
                                            torch_dtype=torch.float32)
     cls = WanImageToVideoPipeline if kind == "i2v" else WanPipeline
     pipe = cls.from_pretrained(repo, vae=vae, revision=rev, torch_dtype=torch.bfloat16)
+    if loras:
+        for lo in loras:
+            for path, second in ((Path(lo["high"]), False), (Path(lo["low"]), True)):
+                pipe.load_lora_weights(str(path.parent), weight_name=path.name,
+                                       adapter_name=lo["name"], load_into_transformer_2=second)
+        names, weights = [lo["name"] for lo in loras], [lo.get("weight", 1.0) for lo in loras]
+        pipe.transformer.set_adapters(names, weights)
+        pipe.transformer_2.set_adapters(names, weights)
+        for part in ("transformer", "transformer_2"):     # assert, don't assume
+            layers = [m for m in getattr(pipe, part).modules() if hasattr(m, "lora_A")]
+            active = {n for m in layers for n in m.lora_A.keys()}
+            if len(layers) < 400 or not set(names) <= active:
+                raise RuntimeError(f"LoRA not applied to {part}: {len(layers)} layers, {active}")
+            print(f"LoRA {names} on {part}: {len(layers)} layers", flush=True)
     pipe.enable_model_cpu_offload()
     if frames > NATIVE_FRAMES:
         pipe.vae.enable_tiling()

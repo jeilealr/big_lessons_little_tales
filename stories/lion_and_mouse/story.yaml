@@ -29,6 +29,7 @@ characters:
     name: Leo the lion
     role: main
     trigger: twcleo
+    lora: {name: leo, step: 500}       # provisional until the eval grid is read
     sheet: >-
       a large but lovable needle-felted lion with a golden-yellow felt body, a
       round head, a large fluffy burnt-orange wool mane, small rounded ears,
@@ -41,6 +42,7 @@ characters:
     name: Milo the mouse
     role: main
     trigger: twcmilo
+    lora: {name: milo, step: 500}      # provisional until the eval grid is read
     sheet: >-
       a tiny adorable needle-felted mouse with a soft light-grey felt body, a
       cream-coloured belly, oversized round pink felt ears, tiny black stitched
@@ -177,6 +179,29 @@ scenes:
         negative_extra: >-
           lion, big animal, second mouse, running away from the camera, back view,
           mouse getting smaller, camera tilting up, tree trunk
+      - name: s02_milo_runs_v2_lora        # A/B: same shot and seed with Milo's LoRA
+        variant_of: s02_milo_runs_v2
+        lora: true
+        keyframe: keyframes/scene02_milo_v3.png
+        compose:                                  # feet on the in-focus grass, not the mushrooms
+          plate: design/clearing/canonical.png
+          crop: [0.0, 0.46, 0.42]
+          characters:
+            - {still: characters/milo/poses/milo_turns_side_last.png, x: 0.66, y: 0.62, h: 0.36}
+        characters: [milo, butterfly]
+        frames: 81
+        seeds: [5202]
+        # v1: Milo turned his back and ran away into depth; the camera tilted up and
+        # invented a different tree canopy; Leo's tree appeared without Leo.
+        action: >-
+          Seen from the side at ground level, Milo the tiny mouse runs quickly across
+          the frame from right to left in a happy scamper through the soft felt grass,
+          his big pink ears bouncing, chasing a small pastel-blue felt butterfly that
+          flutters just ahead of him. The camera glides sideways alongside him at his
+          height, keeping him in the centre of the frame. Cheerful and curious.
+        negative_extra: >-
+          lion, big animal, second mouse, running away from the camera, back view,
+          mouse getting smaller, camera tilting up, tree trunk
   3:
     title: Oops!
     location: clearing
@@ -199,6 +224,22 @@ scenes:
         characters: [leo, milo]
         frames: 81
         seeds: [5301, 5302]
+        action: >-
+          Close-up at ground level. Leo the lion lies with his big front paws in
+          front of him, and tiny Milo the mouse stands frozen on the grass right in
+          front of Leo's paws. Leo slowly lifts his round head and opens his eyes wide
+          in surprise, looking down at the tiny mouse. Milo stays perfectly still,
+          nervous but adorable.
+        negative_extra: >-
+          angry face, teeth, roaring, scary, second lion, second mouse, mouse
+          running away, lion standing up
+      - name: s03_leo_wakes_lora            # A/B: the same shot and seed with both LoRAs
+        variant_of: s03_leo_wakes
+        lora: true
+        keyframe: keyframes/scene03_wake.png
+        characters: [leo, milo]
+        frames: 81
+        seeds: [5301]
         action: >-
           Close-up at ground level. Leo the lion lies with his big front paws in
           front of him, and tiny Milo the mouse stands frozen on the grass right in
