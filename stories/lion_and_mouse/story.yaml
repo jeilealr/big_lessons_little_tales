@@ -159,6 +159,7 @@ scenes:
           butterfly that flutters just ahead of him. Cheerful and curious.
         negative_extra: lion, big animal, second mouse
       - name: s02_milo_runs_v2
+        take: 5202                          # provisional: no run, but a nice 'Milo spots the butterfly' beat
         keyframe: keyframes/scene02_milo_v3.png   # left of the clearing: no tree, Milo larger
         compose:                                  # feet on the in-focus grass, not the mushrooms
           plate: design/clearing/canonical.png

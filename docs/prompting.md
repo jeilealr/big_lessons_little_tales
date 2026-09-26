@@ -250,5 +250,6 @@ Update this when a rule is confirmed, refuted or refined.
 
   ![Scene 3](img/s03_wake.jpg)
 - 2026-09-26: Scene 2 v2 seed 5202: tracking camera moved, Milo stayed on the
-  spot (Rule 2.10 revised to a fixed camera).
+  spot (Rule 2.10 revised to a fixed camera). Seed 5203 the same: no run; the
+  camera arced round him and invented a red-barked tree (Rules 2.8b, 2.11).
 
