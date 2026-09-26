@@ -10,6 +10,10 @@ Not legal advice.
 | Wan 2.2 weights (I2V/T2V A14B) | Apache-2.0 | no revenue cap, no gate |
 | LTX-Video 0.9.8 weights (legacy scripts only) | LTXV Open Weights License | free under $10M annual revenue; disclose AI generation |
 | RIFE code + weights | MIT (Megvii) | |
+| BiRefNet matting (`ZhengPeng7/BiRefNet`, revision pinned) | MIT | cuts characters out for keyframes and datasets |
+| musubi-tuner (LoRA training, `ext/musubi-tuner`) | Apache-2.0 | its `wan/` code derives from Wan2.1 (Apache-2.0) |
+| Wan 2.2 repackaged experts (`Comfy-Org/Wan_2.2_ComfyUI_Repackaged`), Wan 2.1 VAE and T5 | Apache-2.0 | the weights musubi-tuner trains on |
+| kornia | Apache-2.0 | BiRefNet dependency |
 | Real-ESRGAN x4plus weights | BSD-3-Clause | |
 | Cinzel typeface (`assets/fonts/`) | SIL Open Font License 1.1 | bundled with its `OFL.txt` |
 | diffusers, transformers, safetensors, huggingface-hub, ftfy | Apache-2.0 | |
@@ -28,6 +32,7 @@ Not legal advice.
 | HunyuanVideo 1.5 | its licence states it "DOES NOT APPLY IN THE EUROPEAN UNION, UNITED KINGDOM AND SOUTH KOREA" |
 | MusicGen | weights are CC-BY-NC (non-commercial) |
 | Stable Audio Open | gated, and its community licence caps revenue |
+| RMBG 1.4 / 2.0 (background removal) | "other" licences, non-commercial |
 | Wan 2.5 | not released as open weights |
 
 YouTube description line: *Portions of this video were generated with AI.*

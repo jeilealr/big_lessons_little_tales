@@ -147,7 +147,7 @@ scenes:
         seeds: [5201]
         action: >-
           Low-angle camera close to the ground, following Milo the tiny mouse as he
-          happily runs to the right through the soft felt grass past fabric flowers,
+          happily runs to the left through the soft felt grass past fabric flowers,
           his big pink ears bouncing, playfully chasing a small pastel-blue felt
           butterfly that flutters just ahead of him. Cheerful and curious.
         negative_extra: lion, big animal, second mouse
