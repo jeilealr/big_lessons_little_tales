@@ -1,0 +1,25 @@
+# Milo the mouse. All stills from his (reframed) design pick and his pose pack.
+name: milo
+trigger: twcmilo
+identity: a tiny adorable needle-felted mouse
+setting: on a plain cream felt floor in front of a sage-green felt backdrop
+style: handmade felt stop-motion animation
+workdir: stories/lion_and_mouse/characters/milo
+subject: {method: matte}
+sources:
+  - {image: canonical.png, pose: "standing upright, front view"}
+  - {clip: shots/milo_paws_together.mp4, frames: [24, 48], pose: "standing upright with paws pressed together, front view"}
+  - {clip: shots/milo_turns_side.mp4, frames: [30, 48], pose: "standing upright, side view"}
+  - {clip: shots/milo_turns_away.mp4, frames: [36, 48], pose: "standing upright, back view, tail toward the camera"}
+eval:
+  seed: 4242
+  steps: 30
+  baseline_identity: >-
+    a tiny adorable needle-felted mouse with a soft light-grey felt body, a
+    cream-coloured belly, oversized round pink felt ears, tiny black stitched eyes,
+    a small pink triangular nose, a thin pink felt tail, tiny rounded paws, and a
+    sweet expressive face
+  prompts:
+    - running, side view, full body, through soft felt grass with fabric flowers
+    - standing upright, front view, full body, beside tiny red felt berries in a felt forest
+    - waving one paw, front view, full body, in a sunny felt forest clearing

@@ -9,3 +9,8 @@ T5=$W/models_t5_umt5-xxl-enc-bf16.pth
 # the musubi venv (diffusers 0.32 / transformers 4.57), inside the same container
 source $ROOT/twc_video/lumi/env_musubi.sh
 export HF_HUB_OFFLINE=1          # everything is cached; a job must never need the network
+
+# Every musubi script runs as ONE process. Inside a multi-task Slurm step, Cray's
+# process manager sets PMI_SIZE etc., which accelerate (used by training AND by
+# generation) reads as an MPI world size, then aborts asking for MASTER_ADDR.
+for v in $(env | grep -oE '^(PMI|PMIX|OMPI|MV2|MPI_LOCAL)[A-Z_]*' || true); do unset "$v"; done

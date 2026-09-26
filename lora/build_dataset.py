@@ -32,7 +32,12 @@ from twc import media, paths  # noqa: E402
 
 
 def subject_box(img: np.ndarray, how: dict) -> tuple[int, int, int, int] | None:
-    """Bounding box of the character: a hue range, or 'not the plain backdrop'."""
+    """Bounding box of the character: the BiRefNet matte, a hue range, or
+    'not the plain backdrop'."""
+    if how["method"] == "matte":
+        sys.path.insert(0, str(paths.REPO / "production"))
+        from keyframe import subject_bbox
+        return subject_bbox(img)
     if how["method"] == "hue":
         hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
         lo, hi = how["hue"]

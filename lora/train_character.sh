@@ -12,11 +12,7 @@ NAME=$1; EXPERT=$2; STEPS=${3:-2000}
 D=$ROOT/twc_video/work/lora/$NAME
 READY=$D/.cache_ready_${SLURM_JOB_ID:-manual}
 mkdir -p $D/cache $D/out_$EXPERT
-# Each training task is ONE process. Inside a multi-task Slurm step, Cray's
-# process manager sets PMI_SIZE (=number of tasks) etc., which accelerate
-# reads as an MPI world size and then aborts ("launch on distributed with
-# multinode ... MASTER_ADDR"). Clear them for the training process only.
-for v in $(env | grep -oE '^(PMI|PMIX|OMPI|MV2|MPI_LOCAL)[A-Z_]*' || true); do unset "$v"; done
+# (PMI/MPI variables are cleared in musubi_env.sh)
 stamp() { echo "[$(date +%T)] [$NAME/$EXPERT] $*"; }
 
 if [ "$EXPERT" = low ]; then

@@ -1,0 +1,26 @@
+# Leo the lion. All stills from his design pick and his pose pack.
+name: leo
+trigger: twcleo
+identity: a large lovable needle-felted lion
+setting: on a plain cream felt floor in front of a sage-green felt backdrop
+style: handmade felt stop-motion animation
+workdir: stories/lion_and_mouse/characters/leo
+subject: {method: matte}
+sources:
+  - {image: canonical.png, pose: "standing, three-quarter view"}
+  - {clip: shots/leo_turns_side.mp4, frames: [30, 48], pose: "standing, side view"}
+  - {clip: shots/leo_turns_away.mp4, frames: [36, 48], pose: "standing, back view, tail toward the camera"}
+  - {clip: shots/leo_sleeps.mp4, frames: [30, 48], pose: "lying down asleep with eyes closed, front view"}
+eval:
+  seed: 4242
+  steps: 30
+  baseline_identity: >-
+    a large but lovable needle-felted lion with a golden-yellow felt body, a round
+    head, a large fluffy burnt-orange wool mane, small rounded ears, warm brown
+    stitched eyes, a dark brown triangular felt nose, a tiny stitched smile, short
+    rounded legs, oversized soft felt paws, and a long golden tail with a brown
+    wool tuft
+  prompts:
+    - sitting, front view, full body, in a sunny felt forest clearing under a felt tree
+    - walking, side view, full body, on a felt path between tall wool trees
+    - lying down asleep, full body, on soft felt grass with fabric flowers
