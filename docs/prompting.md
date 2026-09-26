@@ -138,7 +138,16 @@ the depth of the scene, shrinking until he vanished. Say the geometry
 explicitly: "seen from the side, Milo runs across the frame from right to left;
 the camera glides sideways at ground level alongside him, keeping him in the
 centre", and negate the failure ("running away from the camera, back view").
-*(v2 tests this; see the results log.)*
+**Refuted as written (Scene 2 v2, seed 5202):** Milo no longer ran into
+depth, but he did not run at all: the camera glided sideways and Milo turned
+and bobbed on the spot. "Keep him in the centre of the frame" can be met by
+moving the camera alone. The Milo run that worked (pose clip `milo_runs`) had a
+fixed camera. Current version: side-on geometry, **a fixed camera**, and the
+run crosses and leaves the frame ("runs across the frame from right to left
+and out of the left edge; the camera stays still"); "standing still, on the
+spot, camera tracking" in the negative. Being tested in Scenes 6 and 7.
+
+![Scene 2 v2](img/s02_v2.jpg)
 
 **Rule 2.11: story continuity beats a nice plate.** Scene 2 v1 showed Leo's tree
 without Leo asleep under it, one scene after we saw him there. When a location
@@ -202,9 +211,10 @@ twcfox, a small orange felt fox, sitting, three-quarter view, full body, on a gr
 1. The action has **one** whole-body movement, described big.
 2. The action names **only** the character's body (no clouds, leaves, sky).
 3. A movement that must travel uses an energetic verb, explicit geometry
-   ("seen from the side, across the frame from right to left") and a camera job
-   ("glides sideways alongside him"); the failure is in the negative ("running
-   away from the camera").
+   ("seen from the side, across the frame from right to left"), a **fixed**
+   camera, and room in the keyframe to travel into (the character faces the
+   open side); the failures are in the negative ("running away from the
+   camera, standing still, on the spot, camera tracking").
 3b. The camera move only shows what the keyframe already contains (push-in),
    or the keyframe was cut to include what the move will reveal.
 3c. No landmark tied to a character (Leo's tree) appears without that character.
@@ -232,3 +242,13 @@ Update this when a rule is confirmed, refuted or refined.
   invented a different tree canopy (Rule 2.8b); Leo's tree without Leo
   (Rule 2.11). v2: a region of the clearing without the tree, Milo larger, explicit
   side-on geometry, a sideways camera.
+- 2026-09-26: Scene 3 (first two-character shot, seeds 5301/5302): Leo wakes,
+  eyes wide, surprised, never scary; Milo stays frozen; no identity blending
+  between the two. The model also blended the pasted characters into the light
+  (no cut-out look left). Leo looks at the camera rather than down at Milo: the
+  eye-line was not followed. Take 5302.
+
+  ![Scene 3](img/s03_wake.jpg)
+- 2026-09-26: Scene 2 v2 seed 5202: tracking camera moved, Milo stayed on the
+  spot (Rule 2.10 revised to a fixed camera).
+
