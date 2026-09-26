@@ -20,3 +20,35 @@ shots:
       Leo slowly lies down on his belly with his big front paws stretched out in
       front of him, keeping his head up and his eyes open, calm and gentle.
     negative_extra: closed eyes, sleeping, standing, open mouth
+  # Round 2. leo_sleeps lay down but kept his big eyes OPEN in every frame, and
+  # leo_lies_awake ended sitting with paw pads towards the camera.
+  - name: leo_closes_eyes_a
+    from: leo_sleeps           # its last frame: lying, head on paws, eyes open
+    seed: 2711
+    action: >-
+      Leo slowly closes his big eyes and falls asleep, his eyelids shut tight,
+      his head resting on his front paws, peaceful and content.
+    negative_extra: open eyes, looking at the camera, lifting the head, standing
+  - name: leo_closes_eyes_b
+    from: leo_sleeps
+    seed: 2712
+    action: >-
+      Leo's eyelids slowly droop and close, and he falls fast asleep with his eyes
+      shut, resting his head on his front paws, breathing gently.
+    negative_extra: open eyes, looking at the camera, lifting the head, standing
+  - name: leo_sphinx_a
+    from: canonical
+    seed: 2721
+    action: >-
+      Leo slowly lies down on his belly like a sphinx, both front paws flat on
+      the floor and pointing forward, his head up and his eyes open, calm and
+      gentle.
+    negative_extra: paw pads facing the camera, sitting, standing, closed eyes, open mouth
+  - name: leo_sphinx_b
+    from: canonical
+    seed: 2722
+    action: >-
+      Leo slowly lies down on his belly like a sphinx, both front paws flat on
+      the floor and pointing forward, his head up and his eyes open, calm and
+      gentle.
+    negative_extra: paw pads facing the camera, sitting, standing, closed eyes, open mouth

@@ -290,11 +290,14 @@ production") and `character/characters/character_pack_prompts_v2.md`.
 
 v2 (2026-09-27):
 - Installed: v2 canonicals + packs (install_pack.py). Story bible v2 written.
-- Running: job 22373398 (Wan pose clips: leo_sleeps, leo_lies_awake,
-  milo_paws_together, milo_worried), job 22373399 (location plates: clearing,
-  trap_site, forest_run, 6 candidates each).
-- Next: pick plates, extract pose stills, compose Scene 1-3 keyframes (start
-  and end), render.
+- Plates picked: clearing 3003, trap_site 3104, forest_run 3204. Look test:
+  owner-made characters composite well into Wan's felt plates.
+- Poses round 1: Milo paws together / worried OK; Leo lies down but his eyes
+  never close; "lies awake" ends sitting with paw pads forward. Round 2 (job
+  22374000): close the eyes as the whole shot; sphinx lying.
+- Rendering: job 22373786, close-ups from expression images with start+end
+  keyframes (s04_milo_trembles, s04_leo_softens x2, s06_milo_smiles).
+- Next: Scenes 1-3 keyframes once Leo's sleeping/lying stills are good.
 - Open for the owner: licence/terms of the image tool used for the v2 pack
   (record in docs/licensing.md); whether to commit the v2 pack images to git.
 

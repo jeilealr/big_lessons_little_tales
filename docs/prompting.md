@@ -308,4 +308,13 @@ Update this when a rule is confirmed, refuted or refined.
   barely moved in both seeds (Rule 2.12 again); v2 uses a close-up crop.
 
   ![Scene 6 call and Scene 8 arrival](img/s06call_s08.jpg)
+- 2026-09-27 (v2 cast): pose clips from the owner's canonicals. Milo paws
+  together and Milo worried: clean, on-model. Leo lying down: on-model, but
+  **his big glossy cartoon eyes never closed** ("gently closes his eyes" in the
+  action and "open eyes" in the negative) and "lies awake" ended sitting with
+  paw pads to the camera. Eyes this large seem to resist closing without an
+  image that shows them closed; round 2 tries closing the eyes as the whole
+  shot, from the lying frame. An owner-made "Leo asleep" still would settle it.
+
+  ![v2 poses round 1](img/v2_poses_round1.jpg)
 
