@@ -180,6 +180,21 @@ scenes:
         negative_extra: >-
           lion, big animal, second mouse, running away from the camera, back view,
           mouse getting smaller, camera tilting up, tree trunk
+      - name: s02_milo_runs_v3             # fixed camera (v2's tracking camera moved instead of Milo)
+        keyframe: keyframes/scene02_milo_v3.png
+        characters: [milo, butterfly]
+        frames: 81
+        seeds: [5204, 5205]
+        action: >-
+          Seen from the side at ground level, Milo the tiny mouse runs quickly across
+          the frame from right to left through the soft felt grass in a happy scamper
+          and out of the left edge of the frame, his big pink ears bouncing, chasing a
+          small pastel-blue felt butterfly that flutters just ahead of him. The camera
+          stays still.
+        negative_extra: >-
+          lion, big animal, second mouse, running away from the camera, back view,
+          mouse getting smaller, standing still, hopping on the spot, camera
+          tracking, camera moving, tree trunk
       - name: s02_milo_runs_v2_lora        # A/B: same shot and seed with Milo's LoRA
         variant_of: s02_milo_runs_v2
         lora: true
@@ -314,6 +329,7 @@ scenes:
       beneath the net among the felt trees.
     shots:
       - name: s06_leo_walks
+        take: 6101                          # walks across the frame on the path (fixed camera works)
         keyframe: keyframes/scene06_walk_v2.png   # Leo side-on on the path, facing right, room ahead
         compose:
           plate: design/trap_site/canonical.png
@@ -332,6 +348,22 @@ scenes:
         negative_extra: >-
           net, rope, mouse, second lion, walking away from the camera, back view,
           standing still, walking on the spot, camera tracking, lying down, sitting
+      - name: s06_net_falls
+        keyframe: keyframes/scene06_from_walk.png
+        continue_from: {shot: s06_leo_walks, take: 6101}
+        characters: [leo]
+        frames: 81
+        seeds: [6201, 6202]
+        # First prop event. Peril kept mild (findings B6): soft rope, surprise,
+        # no struggle, no fear.
+        action: >-
+          A soft handmade net of braided cream craft rope with large square gaps and
+          chunky round knots gently drops from above and settles loosely over Leo the
+          lion. Leo stops, sits down under the soft net and looks up, surprised and a
+          little worried. The camera stays still.
+        negative_extra: >-
+          scary, angry face, teeth, roaring, crying, pain, struggling, metal, wire,
+          chains, spikes, cage, mouse, second lion, people, hunter
   7:
     title: Milo hears the roar
     location: berry_patch
@@ -343,6 +375,7 @@ scenes:
       tracking shot following the tiny mouse through the felt forest.
     shots:
       - name: s07_milo_hears
+        take: 7101                          # turns to the camera, startled
         keyframe: keyframes/scene07_run.png       # Milo side-on among the berries, facing left
         compose:
           plate: design/berry_patch/canonical.png
@@ -359,6 +392,7 @@ scenes:
         negative_extra: >-
           lion, big animal, second mouse, running, crying, scary, eating
       - name: s07_milo_runs
+        take: 7201                          # runs off diagonally into the plants; usable
         keyframe: keyframes/scene07_run.png
         characters: [milo]
         frames: 81

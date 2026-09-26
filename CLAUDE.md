@@ -169,7 +169,9 @@ to back it up (see `docs/findings-and-risks.md` B1).
   fine: do not spend re-renders on eye-lines).
 - Scene 4: continues from Scene 3's last frame (`continue_from`); job 22366832
   (tasks_s04.txt), done ~17:30.
-- Scenes 6, 7: shots written (fixed-camera locomotion test); job 22365871.
+- Scenes 6, 7: fixed camera works: Leo walks (take 6101), Milo turns (7101),
+  Milo runs off diagonally (7201). Next: net falls on Leo (s06_net_falls) and
+  Scene 2 v3 (fixed-camera run): job 22367516, done ~18:40.
 - Net prop designed (1001). Scene 5, 8, 9 shots not written yet.
 - LoRAs: `fox` -> `fox_v2` (composited plates fix the background leak). Leo and
   Milo LoRAs: step 500 chosen (eval grid). LoRA inside I2V shots: measured

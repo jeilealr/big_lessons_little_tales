@@ -436,8 +436,10 @@ next shot's `continue_from` use it. Other bookkeeping fields:
 
 Measured so far: sleeping and waking (Scenes 1, 3), two characters in one shot
 without blending (Scene 3), a secondary character from its sheet alone (the
-butterfly). Not yet solved: a run across the frame (Scene 2), contact between
-characters (Scenes 3-4, 8). Current results: CLAUDE.md "Current state".
+butterfly), walking across the frame with a fixed camera (Scene 6), a startled
+turn (Scene 7). Partly solved: a run (it leaves the frame, but not cleanly
+side-on). Not yet tested: contact between characters (Scenes 4, 8), a prop
+event (the net, Scene 6). Current results: CLAUDE.md "Current state".
 
 ## 8. Animatic and hand-off
 

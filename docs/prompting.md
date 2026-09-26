@@ -147,7 +147,14 @@ moving the camera alone. The Milo run that worked (pose clip `milo_runs`) had a
 fixed camera. Current version: side-on geometry, **a fixed camera**, and the
 run crosses and leaves the frame ("runs across the frame from right to left
 and out of the left edge; the camera stays still"); "standing still, on the
-spot, camera tracking" in the negative. Being tested in Scenes 6 and 7.
+spot, camera tracking" in the negative.
+**Confirmed for walking (Scene 6, both seeds):** with a fixed camera and room
+ahead in the keyframe, Leo walked along the path across most of the frame
+(the earlier "walks slowly" shuffled on the spot). **Partly for running (Scene
+7):** Milo ran and left the frame, but diagonally into the plants rather than
+side-on. Rows: Leo 6101, Leo 6102, Milo hears 7101, Milo runs 7201:
+
+![fixed camera: walk and run](img/s06_s07_fixed_camera.jpg)
 
 ![Scene 2 v2](img/s02_v2.jpg)
 
@@ -258,4 +265,8 @@ Update this when a rule is confirmed, refuted or refined.
 - 2026-09-26: LoRA A/B (s03_leo_wakes_lora 5301, s02_milo_runs_v2_lora 5202):
   with LoRAs the location drifted away from the keyframe (new canopy, another
   forest) and identity was no better. Shots stay without LoRAs.
+- 2026-09-26: Scene 6 (fixed camera): Leo walks across the frame, both seeds.
+  Scene 7: the whole-body turn to camera works (7101); the run leaves the
+  frame diagonally (7201). Rule 2.10's fixed-camera version confirmed for
+  walking. Scene 2 v3 re-tests the run on the clearing keyframe.
 
