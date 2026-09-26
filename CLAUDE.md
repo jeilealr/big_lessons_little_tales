@@ -167,8 +167,10 @@ to back it up (see `docs/findings-and-risks.md` B1).
   (prompting Rule 2.10).
 - Scene 3: done, take 5302 approved by the owner (Leo looking at the camera is
   fine: do not spend re-renders on eye-lines).
-- Scene 4: continues from Scene 3's last frame (`continue_from`); job 22366832
-  (tasks_s04.txt), done ~17:30.
+- Scene 4: Leo smiles (take 4202). Milo's plead: the push-in went to Leo
+  (Rule 2.12); v2 starts from a close-up crop of the continuity frame: job
+  22368409 with Scene 5 "Milo leaves" (~20:10). Then s05_leo_rests continues
+  from the chosen "leaves" take (set its `take: TBD`).
 - Scenes 6, 7: fixed camera works: Leo walks (take 6101), Milo turns (7101),
   Milo runs off diagonally (7201). Next: net falls on Leo (s06_net_falls) and
   Scene 2 v3 (fixed-camera run): job 22367516, done ~18:40.
