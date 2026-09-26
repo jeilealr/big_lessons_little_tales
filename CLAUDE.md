@@ -248,30 +248,24 @@ to back it up (see `docs/findings-and-risks.md` B1).
 
 ## Current state (update when it changes)
 
-- Lion and Mouse picks: Leo 1003, Milo 1001 (reframed), butterfly 1004,
-  clearing 1002, trap site 1004, berry patch 1003.
-- Poses done: Leo sleeps, sits, turns side, turns away, walks (did not travel);
-  Milo paws together, turns side, turns away, runs, waves.
-- Scene 1: done (s01_establish_s5102, s01_establish_v2_s5103: Leo stays asleep).
-- Scene 2: take 5204 (v3, fixed camera: Milo runs out of frame). v1 ran into
-  depth, v2 (tracking camera) did not run.
-- Scene 3: done, take 5302 approved by the owner (Leo looking at the camera is
-  fine: do not spend re-renders on eye-lines).
-- Scene 4: Leo smiles (take 4202). Milo's plead: the push-in went to Leo
-  (Rule 2.12); v2 starts from a close-up crop of the continuity frame: job
-  22368409 with Scene 5 "Milo leaves" (~20:10). Then s05_leo_rests continues
-  from the chosen "leaves" take (set its `take: TBD`).
-- Scene 6: Leo walks (6101), the net falls (6202). Scene 7: Milo turns (7101),
-  runs (7201). Running: job 22369291 (~21:20) with Leo's call for help
-  (s06_leo_calls) and Scene 8 Milo arrives (keyframe = Milo pasted into the
-  trap's final frame).
-- Net prop designed (1001). Still to write: Scene 8 nibbling (close-up),
-  Scene 9 (brief truncated), Scene 5 Milo waves (close-up crop).
-- LoRAs: `fox` -> `fox_v2` (composited plates fix the background leak). Leo and
-  Milo LoRAs: step 500 chosen (eval grid). LoRA inside I2V shots: measured
-  worse (location drifts, identity no better): shots render without LoRAs.
-- Animatic: `work/stories/lion_and_mouse/animatic.mp4` (placeholder timing).
-- Two tasks in one job must not write the same file (e.g. a shared
-  continue_from keyframe): extract it before submitting.
-- Open questions for the owner: (Leo's eyes: decided, black);
-  Leo 1003 vs 1005; the story brief is truncated at Scene 9.
+**Paused on 2026-09-26 by the owner**, who will create a new set of character
+designs ("character DNA") before continuing. Nothing new is to be submitted
+until then.
+
+- Lion and Mouse picks: Leo 1003 (black eyes, owner decision), Milo 1001
+  (reframed), butterfly 1004, clearing 1002, trap site 1004, berry patch 1003,
+  net 1001.
+- Takes (story.yaml `take:`): s01 5103, s02 v3 5204, s03 5302 (owner-approved),
+  s04 pleads v2 4103, s04 smiles 4202, s05 leaves 5501, s06 walks 6101,
+  s06 net 6202, s06 calls 6302, s07 hears 7101, s07 runs 7201.
+- Last job left running at the pause: 22370370 (Scene 5: Milo waves close-up,
+  Leo rests), results to review in `work/stories/lion_and_mouse/shots/`.
+- Written but never rendered: s08_milo_arrives_v2 and s08_milo_nibbles
+  (keyframes scene08_arrive_close.png / scene08_nibble.png were being composed
+  on the login node at the pause; check them before rendering).
+- Scene 9 not written (the brief is truncated).
+- LoRAs: Leo/Milo step 500; not used in shots (measured: location drift).
+- Animatic: `work/stories/lion_and_mouse/animatic.mp4`.
+- What works and what does not: docs/prompting.md (rules + results log) and
+  docs/findings-and-risks.md. A new cast goes through production-guide.md
+  section 9, step by step.
