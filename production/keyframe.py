@@ -178,9 +178,14 @@ def main() -> None:
         fx, fy, fw, fh = map(float, args.plate_crop.split(","))
         x0, y0, cw = int(fx * W), int(fy * H), int(fw * W)
         ch = int(cw * H / W)                                  # keep the plate's aspect
-        crop = frame[y0:y0 + ch, x0:x0 + cw].astype(np.uint8)
-        dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        frame = post.upscale(crop[None], W, H, dev)[0].astype(np.float32)
+        cache = args.plate.parent / f"{args.plate.stem}_crop_{fx:.3f}_{fy:.3f}_{fw:.3f}.png"
+        if cache.is_file():                   # the upscale takes ~15 min on a CPU
+            frame = np.asarray(Image.open(cache).convert("RGB")).astype(np.float32)
+        else:
+            crop = frame[y0:y0 + ch, x0:x0 + cw].astype(np.uint8)
+            dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            frame = post.upscale(crop[None], W, H, dev)[0].astype(np.float32)
+            Image.fromarray(frame.astype(np.uint8)).save(cache)
     placed = []
     for spec in args.char:
         path, _, opts = spec.partition(":")

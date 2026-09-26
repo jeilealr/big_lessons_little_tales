@@ -145,10 +145,12 @@ to back it up (see `docs/findings-and-risks.md` B1).
   clearing 1002, trap site 1004, berry patch 1003.
 - Poses done: Leo sleeps, sits, turns side, turns away, walks (did not travel);
   Milo paws together, turns side, turns away, runs, waves.
-- Scene 1: two seeds rendered (5102 good; 5101 Leo woke up); v2 with the
-  eyes-closed fix rendering. Scene 2 (Milo runs, camera following) rendering.
-- LoRAs: `fox` evaluated (identity by step 500; background leaks later).
-  `fox_v2` (composited backgrounds) trained; evaluation job running. Leo and
-  Milo datasets need more poses before training (9 and 7 images).
+- Scene 1: done (s01_establish_s5102, s01_establish_v2_s5103: Leo stays asleep).
+- Scene 2: v1 failed (Milo ran away into depth; invented tree canopy; Leo's tree
+  without Leo); v2 (treeless region, explicit side-on geometry) keyframe composing.
+- Scene 3: first two-character test (Leo wakes, Milo frozen) keyframe composing.
+- LoRAs: `fox` (background leak after 500) -> `fox_v2` (composited plates: no
+  leak at any checkpoint; pose freedom best at 500). Leo and Milo LoRAs
+  (composited, all story poses, 1000 steps) training: job 22363458.
 - Open questions for the owner: keep Leo's black eyes or insist on brown;
   Leo 1003 vs 1005; the story brief is truncated at Scene 9.

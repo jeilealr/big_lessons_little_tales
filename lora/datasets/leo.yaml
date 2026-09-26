@@ -6,11 +6,24 @@ setting: on a plain cream felt floor in front of a sage-green felt backdrop
 style: handmade felt stop-motion animation
 workdir: stories/lion_and_mouse/characters/leo
 subject: {method: matte}
+# Lessons from the fox (docs/production-guide.md section 6): composite the
+# character into varied plates so it is the only constant; include every pose
+# the story needs; keep the step count moderate (pose freedom shrinks with
+# training).
+composite:
+  per_image: 2
+  seed: 7
+  plates:
+    - {glob: "stories/lion_and_mouse/design/clearing/cand_*.png", caption: "in a sunny felt forest clearing with wool trees and felt mushrooms"}
+    - {glob: "stories/lion_and_mouse/design/trap_site/cand_*.png", caption: "on a felt path between tall wool trees with stitched rocks and felt ferns"}
+    - {glob: "stories/lion_and_mouse/design/berry_patch/cand_100[034].png", caption: "in a felt berry patch with clover and red felt berries"}
 sources:
   - {image: canonical.png, pose: "standing, three-quarter view"}
   - {clip: shots/leo_turns_side.mp4, frames: [30, 48], pose: "standing, side view"}
   - {clip: shots/leo_turns_away.mp4, frames: [36, 48], pose: "standing, back view, tail toward the camera"}
   - {clip: shots/leo_sleeps.mp4, frames: [30, 48], pose: "lying down asleep with eyes closed, front view"}
+  - {clip: shots/leo_sits.mp4, frames: [36, 48], pose: "sitting with front paws together, front view"}
+  - {clip: shots/leo_walks.mp4, frames: [20, 30], pose: "standing, three-quarter front view"}
 eval:
   seed: 4242
   steps: 30

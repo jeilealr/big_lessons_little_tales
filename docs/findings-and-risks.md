@@ -16,7 +16,7 @@ Checked 2026-09-26.
 |---|---|---|---|
 | Same text gives a different character every shot (4 different foxes) | text describes a *kind* of character, the model samples one | start every shot from an image (keyframe); train a LoRA per main character | solved |
 | Characters stay consistent within a shot but not between shots | nothing ties shots together but words | same as above | solved |
-| LoRA learns the training background (forest prompt returns the meadow from step 1000) | every training image had the same meadow | composite the cut-out character into varied plates (`composite:` in the dataset file); pick the earliest good checkpoint | fix trained (`fox_v2`), evaluation running |
+| LoRA learns the training background (forest prompt returns the meadow from step 1000) | every training image had the same meadow | composite the cut-out character into varied plates (`composite:` in the dataset file); pick the earliest good checkpoint | **solved** (`fox_v2`: no leak at any checkpoint) |
 | LoRA can't do poses it never saw ("sleeping curled up" came out lying stretched) | no such pose in the data | put every pose the story needs into the character pack before training | rule |
 | Design picked that contradicts its text sheet gets pulled back to the text | the sheet is in every prompt | make canonical and sheet agree | rule |
 | Model ignores some sheet details (Leo's eyes always black, not brown) | model prior | decide and edit the sheet, or keep asking | **open: owner's call** |
@@ -31,8 +31,14 @@ Checked 2026-09-26.
 | a runner leaves a fixed frame | give the camera a job ("follows alongside") |
 | Milo faced left, the prompt said run right | read the keyframe first; direction must match |
 | "hops three times": the bunny teleported | no repeated fast actions |
-| sleeping Leo woke up in one seed | state what must not change + its opposite in `negative_extra`; render 2 seeds |
+| sleeping Leo woke up in one seed | state what must not change + its opposite in `negative_extra`; render 2 seeds (**confirmed**, Scene 1 v2) |
+| LoRA pose freedom shrinks with training (fox_v2 sleeps at step 500, sits awake later) | ~1000 steps; choose the earliest checkpoint that holds identity; train every story pose |
+| keyframe with a sharp character over a blurred foreground object reads as floating | place the character on the in-focus plane |
 | camera orbit around a still character: only ~30 degrees | turn the character instead |
+| Scene 2: Milo ran away into depth, not across | explicit side-on geometry + sideways camera + negate "running away" (v2 testing) |
+| Scene 2: a tilt-up revealed a canopy the keyframe lacked; the model invented a different tree | push-ins, or keyframes that contain what the move reveals |
+| Scene 2 showed Leo's tree without Leo | keep character-tied landmarks out of frame or include the character |
+| a secondary character with only a text sheet (butterfly) came out on-model | a specific sheet is enough for small, simple secondary characters |
 | location prompt drew props on a table | say the scene fills the frame, no backdrop |
 
 ### Tools and pipeline

@@ -151,6 +151,22 @@ scenes:
           his big pink ears bouncing, playfully chasing a small pastel-blue felt
           butterfly that flutters just ahead of him. Cheerful and curious.
         negative_extra: lion, big animal, second mouse
+      - name: s02_milo_runs_v2
+        keyframe: keyframes/scene02_milo_v2.png   # left of the clearing: no tree, Milo larger
+        characters: [milo, butterfly]
+        frames: 81
+        seeds: [5202, 5203]
+        # v1: Milo turned his back and ran away into depth; the camera tilted up and
+        # invented a different tree canopy; Leo's tree appeared without Leo.
+        action: >-
+          Seen from the side at ground level, Milo the tiny mouse runs quickly across
+          the frame from right to left in a happy scamper through the soft felt grass,
+          his big pink ears bouncing, chasing a small pastel-blue felt butterfly that
+          flutters just ahead of him. The camera glides sideways alongside him at his
+          height, keeping him in the centre of the frame. Cheerful and curious.
+        negative_extra: >-
+          lion, big animal, second mouse, running away from the camera, back view,
+          mouse getting smaller, camera tilting up, tree trunk
   3:
     title: Oops!
     location: clearing
@@ -161,6 +177,21 @@ scenes:
       places one large paw in front of Milo, stopping him from running away.
       Leo looks surprised and slightly annoyed rather than angry. Milo looks
       nervous but adorable. Close-up showing the huge size difference.
+    shots:
+      - name: s03_leo_wakes
+        keyframe: keyframes/scene03_wake.png      # both characters: first two-character test
+        characters: [leo, milo]
+        frames: 81
+        seeds: [5301, 5302]
+        action: >-
+          Close-up at ground level. Leo the lion lies with his big front paws in
+          front of him, and tiny Milo the mouse stands frozen on the grass right in
+          front of Leo's paws. Leo slowly lifts his round head and opens his eyes wide
+          in surprise, looking down at the tiny mouse. Milo stays perfectly still,
+          nervous but adorable.
+        negative_extra: >-
+          angry face, teeth, roaring, scary, second lion, second mouse, mouse
+          running away, lion standing up
   4:
     title: The mouse makes a promise
     location: clearing

@@ -6,11 +6,20 @@ setting: on a plain cream felt floor in front of a sage-green felt backdrop
 style: handmade felt stop-motion animation
 workdir: stories/lion_and_mouse/characters/milo
 subject: {method: matte}
+composite:
+  per_image: 2
+  seed: 7
+  plates:
+    - {glob: "stories/lion_and_mouse/design/clearing/cand_*.png", caption: "in a sunny felt forest clearing with wool trees and felt mushrooms"}
+    - {glob: "stories/lion_and_mouse/design/trap_site/cand_*.png", caption: "on a felt path between tall wool trees with stitched rocks and felt ferns"}
+    - {glob: "stories/lion_and_mouse/design/berry_patch/cand_100[034].png", caption: "in a felt berry patch with clover and red felt berries"}
 sources:
   - {image: canonical.png, pose: "standing upright, front view"}
   - {clip: shots/milo_paws_together.mp4, frames: [24, 48], pose: "standing upright with paws pressed together, front view"}
   - {clip: shots/milo_turns_side.mp4, frames: [30, 48], pose: "standing upright, side view"}
   - {clip: shots/milo_turns_away.mp4, frames: [36, 48], pose: "standing upright, back view, tail toward the camera"}
+  - {clip: shots/milo_runs.mp4, frames: [8, 20], pose: "running, side view"}
+  - {clip: shots/milo_waves.mp4, frames: [20, 28], pose: "standing upright waving one paw, front view"}
 eval:
   seed: 4242
   steps: 30

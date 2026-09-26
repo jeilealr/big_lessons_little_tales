@@ -105,16 +105,45 @@ at the camera. The fix is two-sided:
 - action: "stays fast asleep beneath the tree **the whole time**, his eyes
   **closed**"
 - `negative_extra`: "open eyes, awake, looking at the camera, standing up"
-*(Result of the fixed version is recorded in the results log below.)*
+**Confirmed:** with both halves, seed 5103 kept Leo asleep for all five
+seconds while the camera moved in.
+
+![Scene 1 v2](img/s01_v2.jpg)
 
 **Rule 2.8: one clear camera move, stated once.** "The camera slowly moves
 closer to Leo" works. Two moves in one shot ("pulls back, then orbits, then
 dives") get merged or ignored.
 
+**Rule 2.8b: a camera move that reveals what the keyframe does not show
+makes the model invent it, and the invention will not match the location.**
+Scene 2 v1: the keyframe was a close-up of the clearing that cut off the tree's
+canopy; the camera tilted up and the model drew a canopy of flat felt leaves
+instead of the clearing's woolly-ball canopy. Prefer push-ins (they reveal
+nothing new), or compose the keyframe from the part of the plate that already
+contains everything the move will show.
+
+![Scene 2 v1](img/s02_v1.jpg)
+
 **Rule 2.9: keep secondary characters in the action, and keep main characters
 out of shots they are not in.** The butterflies appeared because the action
 names them. For a Milo-only shot, the negative carries "lion, big animal,
 second mouse", so Leo does not wander in from the story's context.
+A secondary character with only a text sheet and no keyframe can still come out
+on-model when its sheet is specific: the pastel-blue felt butterfly with cream
+edging matched its design exactly in Scene 2.
+
+**Rule 2.10: "runs to the left" plus "the camera follows" is not enough to get
+a run across the frame.** In Scene 2 v1 Milo turned his back and ran away into
+the depth of the scene, shrinking until he vanished. Say the geometry
+explicitly: "seen from the side, Milo runs across the frame from right to left;
+the camera glides sideways at ground level alongside him, keeping him in the
+centre", and negate the failure ("running away from the camera, back view").
+*(v2 tests this; see the results log.)*
+
+**Rule 2.11: story continuity beats a nice plate.** Scene 2 v1 showed Leo's tree
+without Leo asleep under it, one scene after we saw him there. When a location
+has a landmark tied to a character, either keep the landmark out of frame or
+show the character in it.
 
 ## 3. Words and framing
 
@@ -165,8 +194,13 @@ twcfox, a small orange felt fox, sitting, three-quarter view, full body, on a gr
 
 1. The action has **one** whole-body movement, described big.
 2. The action names **only** the character's body (no clouds, leaves, sky).
-3. A movement that must travel uses an energetic verb **and** a direction, and
-   the camera has a job ("follows alongside").
+3. A movement that must travel uses an energetic verb, explicit geometry
+   ("seen from the side, across the frame from right to left") and a camera job
+   ("glides sideways alongside him"); the failure is in the negative ("running
+   away from the camera").
+3b. The camera move only shows what the keyframe already contains (push-in),
+   or the keyframe was cut to include what the move will reveal.
+3c. No landmark tied to a character (Leo's tree) appears without that character.
 4. The direction matches how the character faces in the keyframe.
 5. What must stay still is stated ("the whole time, eyes closed"), and its
    opposite is in `negative_extra`.
@@ -184,6 +218,9 @@ Update this when a rule is confirmed, refuted or refined.
 - 2026-09-26: Rule 2.3 from leo_walks (slow, did not travel) and milo_runs
   (energetic, ran out of frame). Rule 2.5 from the Scene 2 keyframe.
 - 2026-09-26: Scene 1 seed 5101, Leo woke up; seed 5102 stayed asleep. Rule 2.7
-  fix (s01_establish_v2, seed 5103) rendering.
-- 2026-09-26: Scene 2 (Milo runs with a following camera, s02_milo_runs)
-  rendering: the first test of Rules 2.3-2.5 inside a scene.
+  fix (s01_establish_v2, seed 5103): Leo stayed asleep. **Rule 2.7 confirmed.**
+- 2026-09-26: Scene 2 v1 (seed 5201): the butterfly came out on-model from its
+  sheet; Milo ran away into depth instead of across (Rule 2.10); the tilt-up
+  invented a different tree canopy (Rule 2.8b); Leo's tree without Leo
+  (Rule 2.11). v2: a region of the clearing without the tree, Milo larger, explicit
+  side-on geometry, a sideways camera.

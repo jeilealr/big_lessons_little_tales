@@ -164,6 +164,12 @@ $W python twc_video/production/keyframe.py --plate PLATE.png \
 
 ![first composite](img/lm_keyframe_test.jpg)
 
+**Place the character on the in-focus plane.** The Scene 2 v2 keyframe put a
+sharp Milo with his feet over the *blurred* foreground mushrooms, so he read as
+floating in front of things that should be in front of him. Put the feet on
+ground that is in focus in the plate, at the depth the character's scale
+implies.
+
 Known limit: the character keeps the flat studio light of the design shot,
 while the plate is backlit. That is acceptable in a *first frame*, because the
 video model relights the character as it animates; it would not be acceptable
@@ -265,12 +271,26 @@ What the grid shows, in order:
 4. Pose follows the data: "sleeping curled up" came out lying stretched at
    step 500, because no training image showed a sleeping fox.
 
-So: **pick the earliest checkpoint where identity holds** (500 here), and give
-the dataset varied backgrounds and every pose the story needs. The dataset
-builder can cut the character out (BiRefNet) and composite it into several
-location plates, so that the character is the only thing every training image
-has in common (`composite:` in the dataset file). Compositing never changes
-the character's colours: a character's colours are part of its identity.
+**The fix, measured (`fox_v2`).** The same stills, plus each full-body still
+cut out (BiRefNet) and composited into two random location plates (67 images
+instead of 31); everything else identical, same evaluation prompts and seeds:
+
+![fox_v2 LoRA grid](img/fox_v2_lora_grid.jpg)
+
+- **The background leak is gone at every checkpoint.** The forest prompt gives a
+  forest, the village a full village, the bedroom a bedroom, with the fox
+  on-model in all of them.
+- **Even the untrained pose improved at step 500**: the fox is really curled up
+  asleep, eyes closed, on the blanket.
+- **Pose freedom shrinks with training.** By step 1000 and at the end the
+  "sleeping" fox sits awake in the bedroom: the LoRA pulls towards the poses it
+  was trained on.
+
+Recipe that follows: composite every full-body still into varied plates
+(`composite:` in the dataset file), include every pose the story needs, train
+about 1000 steps with a checkpoint every 250, and choose the earliest checkpoint
+whose identity holds. Compositing never changes the character's colours: a
+character's colours are part of its identity.
 
 (Sections 7 and 8 follow as each stage is validated.)
 
