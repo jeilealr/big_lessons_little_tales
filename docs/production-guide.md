@@ -292,6 +292,25 @@ about 1000 steps with a checkpoint every 250, and choose the earliest checkpoint
 whose identity holds. Compositing never changes the character's colours: a
 character's colours are part of its identity.
 
+**Leo and Milo (the story's LoRAs).** Same recipe: composited plates (22 of
+~34 images each), every story pose, 1000 steps, rank 32. Evaluated with the
+same method, on prompts outside the data:
+
+![Leo and Milo LoRA grids](img/leo_milo_lora_grid.jpg)
+
+- Without a LoRA, the full text sheet gives a different lion (thin fur mane,
+  whiskers, flat storybook look) and a different mouse (whiskers, small ears)
+  in every image.
+- With a LoRA, every checkpoint gives *our* Leo (felt-ball mane, cream muzzle)
+  and *our* Milo (huge pink ears, red-pink nose, cream belly), in places the
+  training never showed. No background leak.
+- **Step 500 follows the prompt's pose best**: Leo walks side-on and sleeps
+  lying down; at step 750 "walking, side view" became a back view. Chosen: 500
+  for both (the same as fox_v2).
+- Milo's "running" and "waving" are weak at every checkpoint (upright, paws at
+  the chest). Not a problem for shots, where the keyframe and the action carry
+  the motion, but a LoRA alone will not produce a pose like that.
+
 **Using the LoRA in a shot.** The LoRAs are trained on the text-to-video model,
 but shots are image-to-video from a keyframe. The two share the layers a LoRA
 changes (attention and feed-forward; all 400 targets exist in both experts of

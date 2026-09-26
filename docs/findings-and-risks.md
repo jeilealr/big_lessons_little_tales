@@ -32,6 +32,7 @@ Checked 2026-09-26.
 | Milo faced left, the prompt said run right | read the keyframe first; direction must match |
 | "hops three times": the bunny teleported | no repeated fast actions |
 | sleeping Leo woke up in one seed | state what must not change + its opposite in `negative_extra`; render 2 seeds (**confirmed**, Scene 1 v2) |
+| Leo/Milo LoRAs: identity at every checkpoint; "side view walking" became a back view by step 750 | choose step 500 (confirmed a second time) |
 | LoRA pose freedom shrinks with training (fox_v2 sleeps at step 500, sits awake later) | ~1000 steps; choose the earliest checkpoint that holds identity; train every story pose |
 | keyframe with a sharp character over a blurred foreground object reads as floating | place the character on the in-focus plane |
 | camera orbit around a still character: only ~30 degrees | turn the character instead |

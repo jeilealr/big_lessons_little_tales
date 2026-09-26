@@ -29,7 +29,7 @@ characters:
     name: Leo the lion
     role: main
     trigger: twcleo
-    lora: {name: leo, step: 500}       # provisional until the eval grid is read
+    lora: {name: leo, step: 500}       # chosen from the eval grid (docs/img/leo_milo_lora_grid.jpg)
     sheet: >-
       a large but lovable needle-felted lion with a golden-yellow felt body, a
       round head, a large fluffy burnt-orange wool mane, small rounded ears,
@@ -42,7 +42,7 @@ characters:
     name: Milo the mouse
     role: main
     trigger: twcmilo
-    lora: {name: milo, step: 500}      # provisional until the eval grid is read
+    lora: {name: milo, step: 500}      # chosen from the eval grid (docs/img/leo_milo_lora_grid.jpg)
     sheet: >-
       a tiny adorable needle-felted mouse with a soft light-grey felt body, a
       cream-coloured belly, oversized round pink felt ears, tiny black stitched
