@@ -280,6 +280,26 @@ scenes:
       it. He tries gently to escape but cannot. His expression becomes worried.
       He lets out a loud roar for help. Wide cinematic shot of Leo trapped
       beneath the net among the felt trees.
+    shots:
+      - name: s06_leo_walks
+        keyframe: keyframes/scene06_walk_v2.png   # Leo side-on on the path, facing right, room ahead
+        compose:
+          plate: design/trap_site/canonical.png
+          characters:
+            - {still: characters/leo/poses/leo_turns_side_last.png, x: 0.22, y: 0.88, h: 0.40, flip: true}
+        characters: [leo]
+        frames: 81
+        seeds: [6101, 6102]
+        # Rule 2.3: "walks slowly" did not travel (leo_walks); an energetic verb
+        # and explicit side-on geometry with a tracking camera (Rule 2.10).
+        action: >-
+          Seen from the side, Leo the lion strides steadily along the soft felt path
+          from left to right with big bouncy steps, his fluffy mane bobbing and his
+          tufted tail swinging. The camera glides sideways alongside him at his
+          height, keeping him in the centre of the frame. Peaceful and content.
+        negative_extra: >-
+          net, rope, mouse, second lion, walking away from the camera, back view,
+          standing still, lying down, sitting
   7:
     title: Milo hears the roar
     location: berry_patch
@@ -289,6 +309,37 @@ scenes:
       his head, and his ears perk up. His expression changes from curiosity to
       concern. He drops the berries and runs toward the sound. Fast but playful
       tracking shot following the tiny mouse through the felt forest.
+    shots:
+      - name: s07_milo_hears
+        keyframe: keyframes/scene07_run.png       # Milo side-on among the berries, facing left
+        compose:
+          plate: design/berry_patch/canonical.png
+          characters:
+            - {still: characters/milo/poses/milo_turns_side_last.png, x: 0.62, y: 0.84, h: 0.34}
+        characters: [milo]
+        frames: 81
+        seeds: [7101, 7102]
+        # Rule 2.1: a head raise does not register; turning the whole body does.
+        action: >-
+          Milo the tiny mouse stands among the felt berries. Suddenly he turns his
+          whole body quickly to face the camera, startled, his big pink ears standing
+          tall and his eyes wide with concern. The camera stays still at his height.
+        negative_extra: >-
+          lion, big animal, second mouse, running, crying, scary, eating
+      - name: s07_milo_runs
+        keyframe: keyframes/scene07_run.png
+        characters: [milo]
+        frames: 81
+        seeds: [7201, 7202]
+        # The Scene 2 v2 recipe (Rule 2.10), with a brave mood instead of play.
+        action: >-
+          Seen from the side at ground level, Milo the tiny mouse runs very fast
+          across the frame from right to left along the felt forest floor, his big
+          pink ears streaming back, brave and determined. The camera glides sideways
+          alongside him at his height, keeping him in the centre of the frame.
+        negative_extra: >-
+          lion, big animal, second mouse, butterfly, running away from the camera,
+          back view, mouse getting smaller, camera tilting up
   8:
     title: The little hero
     location: trap_site
