@@ -292,6 +292,18 @@ about 1000 steps with a checkpoint every 250, and choose the earliest checkpoint
 whose identity holds. Compositing never changes the character's colours: a
 character's colours are part of its identity.
 
+**Using the LoRA in a shot.** The LoRAs are trained on the text-to-video model,
+but shots are image-to-video from a keyframe. The two share the layers a LoRA
+changes (attention and feed-forward; all 400 targets exist in both experts of
+the I2V model), so the same files load into it. A shot opts in with
+`lora: true`; each character in it with a chosen checkpoint (`lora: {name,
+step}` under the character) gets its adapter, and its trigger word enters the
+prompt the way the captions had it ("Leo the lion is twcleo, a large ...").
+`twc/wan.py` asserts the adapters are active on both experts. Whether this
+helps (identity through the shot, especially when a character turns or moves
+away from its keyframe pose) is measured as an A/B: `s02_milo_runs_v2_lora`
+and `s03_leo_wakes_lora` are the same shots and seeds as their plain versions.
+
 (Sections 7 and 8 follow as each stage is validated.)
 
 ## What is next, and what may be missing

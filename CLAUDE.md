@@ -163,10 +163,14 @@ to back it up (see `docs/findings-and-risks.md` B1).
   Milo paws together, turns side, turns away, runs, waves.
 - Scene 1: done (s01_establish_s5102, s01_establish_v2_s5103: Leo stays asleep).
 - Scene 2: v1 failed (Milo ran away into depth; invented tree canopy; Leo's tree
-  without Leo); v2 (treeless region, explicit side-on geometry) keyframe composing.
-- Scene 3: first two-character test (Leo wakes, Milo frozen) keyframe composing.
+  without Leo); v2 (treeless region, Milo on the in-focus grass, explicit
+  side-on geometry) rendering: job 22363722, seeds 5202/5203.
+- Scene 3: first two-character test (Leo wakes, Milo frozen), same job, seeds
+  5301/5302.
 - LoRAs: `fox` (background leak after 500) -> `fox_v2` (composited plates: no
-  leak at any checkpoint; pose freedom best at 500). Leo and Milo LoRAs
-  (composited, all story poses, 1000 steps) training: job 22363458.
+  leak at any checkpoint; pose freedom best at 500). Leo and Milo LoRAs trained
+  (1000 steps, job 22363458); eval grid job 22364103. Next: A/B of LoRA inside
+  I2V shots + net prop candidates (`work/tasks_lora_ab_net.txt`).
+- Animatic: `work/stories/lion_and_mouse/animatic.mp4` (39 s, placeholder timing).
 - Open questions for the owner: keep Leo's black eyes or insist on brown;
   Leo 1003 vs 1005; the story brief is truncated at Scene 9.
