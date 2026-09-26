@@ -169,6 +169,8 @@ Leo both times; Milo, 1/7 of the frame high, stayed tiny and his paw gesture
 was invisible. A small character's gesture needs its **own close-up keyframe**:
 crop the continuity frame around them and upscale it (`compose` with only a
 `crop:`), so the shot is still continuous with the one before.
+**Confirmed:** from the close-up crop, Milo lifted his paws to his chin and
+pleaded, clearly, in both seeds (s04_milo_pleads_v2).
 
 ![Scene 4](img/s04.jpg)
 
@@ -292,4 +294,11 @@ Update this when a rule is confirmed, refuted or refined.
   line comes out on-model.
 
   ![Scene 2 v3 and the net](img/s02v3_net.jpg)
+- 2026-09-26: Scene 4 v2 (close-up crop of the continuity frame): Milo pleads,
+  both seeds (Rule 2.12 fix confirmed). Scene 5: "Milo turns and scampers away
+  out of the left edge; Leo stays lying down, watching with a smile" worked in
+  5501 (a tiny character's big whole-body move reads even when small, unlike a
+  gesture). Rows: plead 4103, plead 4104, leaves 5501, leaves 5502.
+
+  ![Scene 4 v2 and 5](img/s04v2_s05.jpg)
 

@@ -295,6 +295,7 @@ scenes:
           angry face, teeth, roaring, scary, second lion, second mouse, mouse
           running away, lion standing up, camera tilting up
       - name: s04_milo_pleads_v2           # close-up keyframe: a crop of the continuity frame (Rule 2.12)
+        take: 4103                          # paws lifted to his chin, pleading, by Leo's paws
         keyframe: keyframes/scene04_milo_close.png
         compose:
           plate: keyframes/scene04_from_s03.png
@@ -337,7 +338,24 @@ scenes:
       Leo thought the little mouse could never help someone as big and strong
       as him. But he chose kindness.
     shots:
+      - name: s05_milo_waves                # before he leaves; close-up crop (Rule 2.12)
+        keyframe: keyframes/scene05_milo_close.png
+        compose:
+          plate: keyframes/scene05_from_s04.png
+          crop: [0.20, 0.66, 0.34]
+          characters: []
+        characters: [milo]
+        frames: 81
+        seeds: [5401, 5402]
+        action: >-
+          Close-up at ground level. Tiny Milo the mouse stands beside the lion's
+          enormous soft paws and happily raises one tiny paw high and waves it from
+          side to side, smiling, saying goodbye. The camera stays still.
+        negative_extra: >-
+          lion face, whole lion, second mouse, running, scary, sad, crying, camera
+          moving
       - name: s05_milo_leaves
+        take: 5501                          # turns and scampers out left; Leo watches, smiling
         keyframe: keyframes/scene05_from_s04.png
         continue_from: {shot: s04_leo_smiles, take: 4202}
         characters: [leo, milo]
@@ -352,7 +370,7 @@ scenes:
           up, camera moving
       - name: s05_leo_rests
         keyframe: keyframes/scene05_from_leaves.png
-        continue_from: {shot: s05_milo_leaves, take: TBD}   # set when s05_milo_leaves has a take
+        continue_from: {shot: s05_milo_leaves, take: 5501}
         characters: [leo]
         frames: 81
         seeds: [5601]
