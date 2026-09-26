@@ -123,6 +123,22 @@ TWC_ENV=musubi $W python ...                   # the LoRA-training venv instead
   `production/design.py reframe`); look at every contact sheet.
 - Colour matching a pasted character to its background turned a white chest
   green. Never change a character's hue; brightness only.
+- A wait loop on `pgrep -f "<pattern>"` matched its own shell and never ended.
+  Wait on output files (timestamps) or PIDs.
+- dev-g's 2-job limit counts **pending** jobs: `--dependency` submissions are
+  refused while two jobs exist. Submit follow-ups from a waiter after the job ends.
+- `lumi/env.sh` and `env_musubi.sh` are sourced inside the container; a variable
+  they `export` overrides the caller's. Use `${VAR:-default}`.
+
+## Tools added for the risks in findings-and-risks.md
+
+- `lumi/backup_assets.sh`: list of assets to keep + the rsync to run at home.
+- `production/animatic.py`: whole story at planned pacing (takes, keyframes,
+  cards, narration from `audio/<slug>/sceneNN.wav`).
+- Keyframe recipes (`compose:`) live in the shot; `shot.py` builds missing
+  keyframes on the GPU node.
+- Model revisions are pinned (`twc/wan.py REVISIONS`, `twc/post.py`).
+- `design.py` designs props too (`--entities net`).
 
 ## Verification habits
 

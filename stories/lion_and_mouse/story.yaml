@@ -84,9 +84,11 @@ locations:
     scenes: [7]
 
 props:
+  # Positive words only: "not frightening" in a prompt names what it negates.
+  # Harmlessness is carried by the materials and by the design negative.
   net: >-
-    a handmade net of soft braided cream craft rope with large square gaps,
-    clearly soft and harmless, not dangerous or frightening
+    a handmade net of soft braided cream craft rope with large square gaps
+    and chunky round knots, loose and floppy like a knitted toy
 
 # ---------------------------------------------------------------- scenes
 # The brief, scene by scene (from the author's story treatment). Shots are

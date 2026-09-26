@@ -51,6 +51,8 @@ Checked 2026-09-26.
 | ffmpeg concat after trim fell back to 25 fps, every hybrid intro juddered | exact timestamps + forced 30 fps; count repeated frames on deliverables |
 | a luma check with `-ss` seeking showed a false 48-level jump | measure by frame index |
 | 97-frame clips cost ~250 s per step, could not finish in 3 h | 81 frames max; retime with RIFE |
+| a keyframe composed on the login node took 15-25 min (Real-ESRGAN + BiRefNet on CPU) and blocked the shot | the keyframe recipe lives in the shot (`compose:` in story.yaml); `shot.py` composes it on the GPU node when missing; upscaled plate crops are cached |
+| a wait loop `while pgrep -f "keyframe.py"` never ended: pgrep matched the waiting shell's own command line | wait on the output file (timestamp or existence) or a PID, never on `pgrep -f` of a pattern the loop itself contains |
 | ffmpeg minterpolate warped fast motion; lanczos upscale was soft | RIFE (MIT) + Real-ESRGAN (BSD-3) |
 
 ### LUMI and training
@@ -67,13 +69,15 @@ Checked 2026-09-26.
 | LoRA merge on GPU ran out of memory | `--blocks_to_swap 10 --lazy_loading` |
 | training could not survive a job ending | `--save_state`, automatic `--resume` |
 | MIOpen cache in /tmp unwritable on some nodes | per-job/task cache on scratch |
+| a dependent job (`--dependency=afterok`) was refused with `AssocMaxSubmitJobLimit` | dev-g's limit of 2 counts pending jobs too; submit the follow-up from a waiter once the first job has finished |
+| `THE_WEBTOONS_CORNER_ROOT` set by the caller was ignored | `lumi/env.sh` overwrote it; now it only sets a default |
 | login node refused to memory-map a 28 GB file | streaming fp16 -> bf16 converter |
 
 ---
 
 ## B. What you may be missing
 
-### 1. Everything generated will be deleted in 185 days  (**act on this**)
+### 1. Everything generated will be deleted in 185 days  (**act on this**; script ready)
 
 The LUMI project's data is removed on about **30 March 2027**. Everything in
 `work/` (47 GB: the chosen designs, character packs, LoRAs, rendered shots) is
@@ -81,9 +85,13 @@ git-ignored and exists **only on LUMI scratch**. The code is safe in git; the
 assets are not.
 
 *Recommendation:* back up the irreplaceable part regularly to your laptop:
-canonical stills, `packs` clips, trained LoRAs, finished shots. That is a few
-GB. Model weights (~420 GB) can be re-downloaded and need no backup. A
-`lumi/backup_assets.sh` (rsync of the small set) would make this one command.
+canonical stills, `packs` clips, trained LoRAs, finished shots. Model weights
+(~420 GB) can be re-downloaded and need no backup.
+**Done:** `bash twc_video/lumi/backup_assets.sh` lists the set (632 files,
+9.4 GB on 2026-09-26: everything in `work/` except LoRA training states,
+intermediate checkpoints and latent caches, plus the final and step-500 LoRAs
+and the channel videos) and prints the `rsync` to run on your computer. Re-run it
+after every session; rsync copies only what changed.
 
 ### 2. The narration should come before the video
 
@@ -96,7 +104,14 @@ find out after rendering.
 scene, measure each line's length, then plan shots to fit. Before rendering
 any video, cut an **animatic**: the keyframe stills (cheap, minutes on a CPU)
 laid on the narration with the planned durations. It shows pacing problems for
-free. The repo can build animatics automatically from `story.yaml` + audio.
+free.
+**Done:** `python twc_video/production/animatic.py` cuts
+`work/stories/<slug>/animatic.mp4` in seconds: chosen takes (`take:` on a
+shot), keyframe stills where nothing is rendered yet, and a text card for
+scenes without shots. Put narration at `audio/<slug>/sceneNN.wav` and each
+scene takes its narration's length; the report flags scenes whose narration
+needs more 5-second shots than they have. Today it runs 39 s with placeholder
+timings: the story needs narration before it has a real length.
 
 ### 3. Who speaks, and how (dialogue)
 
@@ -129,6 +144,10 @@ by one). `design.py` handles characters and locations only.
 *Recommendation:* design the net as a third kind of entity (canonical still,
 frozen sheet), and plan its states (whole / one rope broken / open) as
 separate keyframes.
+**Started:** `design.py` handles props (laid flat on a contrasting deep-green
+floor so it cuts out cleanly). The net's sheet was rewritten before its first
+render to use positive words only (see prompting Rule 3.5). Candidates are
+queued for the next free GPU slot.
 
 ### 6. The trap scene is close to YouTube's own example of distressing content
 
@@ -164,8 +183,10 @@ a different image. Revisions in use on 2026-09-26:
 | Comfy-Org/Real-ESRGAN_repackaged | `5fd49b7b278836f48af63ecd314d0f98ab336105` |
 | ZhengPeng7/BiRefNet | `e2bf8e4460fc8fa32bba5ea4d94b3233d367b0e4` (pinned in code) |
 
-*Recommendation:* pin these revisions in `twc/wan.py` and the download scripts,
-and write the revision into every sidecar.
+**Done:** `twc/wan.py` (`REVISIONS`), `twc/post.py`, the download scripts and
+BiRefNet load these commits; sidecars record `repo@commit`. Verified that all
+of them resolve offline from the local cache. Changing a revision is a
+deliberate edit: re-render one known shot and compare before relying on it.
 
 ### 9. Time, not GPU budget, is the limit
 

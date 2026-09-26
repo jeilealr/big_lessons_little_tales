@@ -45,6 +45,14 @@ LOCATION_SHOT = (
     "no table visible. Wide shot at eye level, the centre of the frame left open as "
     "a stage. {style}."
 )
+# Props: one object alone, laid out flat so its whole shape reads (a net draped
+# over something hides its structure). The backdrop contrasts with the prop (a
+# cream net on a cream floor would not cut out cleanly).
+PROP_SHOT = (
+    "A prop photograph of {sheet}, alone, laid out flat and fully spread on a plain "
+    "deep forest-green felt floor, the whole object in frame, seen from slightly "
+    "above, soft even studio lighting. {style}."
+)
 POSES = {
     "leo": "He stands calmly on all four paws in a three-quarter view, head turned "
            "slightly toward the camera, with a gentle friendly expression.",
@@ -68,6 +76,10 @@ def prompt_for(story: dict, entity: str) -> tuple[str, str]:
         prompt = CHARACTER_SHOT.format(sheet=c["sheet"], pose=POSES.get(entity, ""),
                                        style=story["style"])
         negative = story["negative"] + ", busy background, scenery, other animals"
+    elif entity in story.get("props", {}):
+        prompt = PROP_SHOT.format(sheet=story["props"][entity], style=story["style"])
+        negative = (story["negative"] + ", animals, characters, lion, mouse, scenery, "
+                    "tangled mess, wire, metal, spikes, sharp hooks, frightening")
     else:
         loc = story["locations"][entity]
         prompt = LOCATION_SHOT.format(sheet=loc["sheet"], style=story["style"])
@@ -211,13 +223,15 @@ def main() -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("stage", choices=["candidates", "sheet", "pick", "reframe", "prompt"])
     ap.add_argument("--story", default="lion_and_mouse")
-    ap.add_argument("--entities", nargs="+", help="characters and/or locations (default: all)")
+    ap.add_argument("--entities", nargs="+",
+                    help="characters, locations and/or props (default: characters and locations)")
     ap.add_argument("-n", type=int, default=6, help="candidates per entity")
     ap.add_argument("--seed", type=int, default=1000)
     args = ap.parse_args()
     story = load_story(args.story)
     entities = args.entities or [*story["characters"], *story["locations"]]
-    unknown = [e for e in entities if e not in story["characters"] and e not in story["locations"]]
+    known = {*story["characters"], *story["locations"], *story.get("props", {})}
+    unknown = [e for e in entities if e not in known]
     if unknown:
         raise SystemExit(f"unknown entities: {unknown}")
     if args.stage == "prompt":

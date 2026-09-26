@@ -165,6 +165,13 @@ the later cut-out clean.
 came out best when the clip was given a white end frame to arrive at, rather
 than asked in words to "end in a white flash".
 
+**Rule 3.5: say what you want, not what you don't want, in the positive
+prompt.** The text encoder reads "not frightening" as a mention of
+"frightening". Carry the quality with positive words (soft, floppy, knitted)
+and put the unwanted thing in the negative. *Status: precaution from how the T5
+encoder works, not yet measured here.* The net's sheet was rewritten this way
+before its first render.
+
 ## 4. Settings that are part of the prompt
 
 | Setting | Use | Why |
@@ -208,6 +215,7 @@ twcfox, a small orange felt fox, sitting, three-quarter view, full body, on a gr
 7. At most one camera move.
 8. No photographic or realism words.
 9. The sheets were not edited for this shot.
+9b. No "not ..." / "no ..." phrases in the action or sheets: they go in the negative.
 10. `--dry-run` printed the assembled prompt and it reads as one clear picture.
 11. Two seeds for anything that matters.
 
