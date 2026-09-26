@@ -23,6 +23,11 @@ image_directory = "$OUT/images"
 cache_directory = "$OUT/cache"
 num_repeats = 1
 TOML
+# Each training task is ONE process. Inside a multi-task Slurm step, Cray's
+# process manager sets PMI_SIZE (=number of tasks) etc., which accelerate
+# reads as an MPI world size and then aborts ("launch on distributed with
+# multinode ... MASTER_ADDR"). Clear them for the training process only.
+for v in $(env | grep -oE '^(PMI|PMIX|OMPI|MV2|MPI_LOCAL)[A-Z_]*' || true); do unset "$v"; done
 stamp() { echo "[$(date +%T)] $*"; }
 t0=$(date +%s)
 stamp "cache latents";   python $MUSUBI/wan_cache_latents.py --dataset_config $OUT/dataset.toml --vae $VAE --skip_existing

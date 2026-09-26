@@ -12,6 +12,11 @@ NAME=$1; EXPERT=$2; STEPS=${3:-2000}
 D=$ROOT/twc_video/work/lora/$NAME
 READY=$D/.cache_ready_${SLURM_JOB_ID:-manual}
 mkdir -p $D/cache $D/out_$EXPERT
+# Each training task is ONE process. Inside a multi-task Slurm step, Cray's
+# process manager sets PMI_SIZE (=number of tasks) etc., which accelerate
+# reads as an MPI world size and then aborts ("launch on distributed with
+# multinode ... MASTER_ADDR"). Clear them for the training process only.
+for v in $(env | grep -oE '^(PMI|PMIX|OMPI|MV2|MPI_LOCAL)[A-Z_]*' || true); do unset "$v"; done
 stamp() { echo "[$(date +%T)] [$NAME/$EXPERT] $*"; }
 
 if [ "$EXPERT" = low ]; then
@@ -41,6 +46,11 @@ case $EXPERT in
   high) DIT=$DIT_HIGH; TMIN=875; TMAX=1000 ;;
   *) echo "expert must be low or high"; exit 2 ;;
 esac
+# Resumable: full training state is saved every 250 steps (last two kept). If
+# a job is killed, rerunning this script continues from the newest state.
+RESUME=()
+LAST=$(ls -d $D/out_$EXPERT/${NAME}_$EXPERT-step*-state 2>/dev/null | sort | tail -1 || true)
+if [ -n "$LAST" ]; then RESUME=(--resume "$LAST"); stamp "resuming from $(basename $LAST)"; fi
 stamp "train $STEPS steps (timesteps $TMIN-$TMAX)"
 accelerate launch --num_processes 1 --num_machines 1 --mixed_precision bf16 --dynamo_backend no \
   --num_cpu_threads_per_process 1 $MUSUBI/wan_train_network.py \
@@ -51,5 +61,6 @@ accelerate launch --num_processes 1 --num_machines 1 --mixed_precision bf16 --dy
   --network_module networks.lora_wan --network_dim 32 --network_alpha 16 \
   --timestep_sampling shift --discrete_flow_shift 3.0 \
   --max_train_steps $STEPS --save_every_n_steps 250 --seed 42 \
+  --save_state --save_last_n_steps_state 500 "${RESUME[@]}" \
   --output_dir $D/out_$EXPERT --output_name ${NAME}_$EXPERT
 stamp "done"; ls -la $D/out_$EXPERT

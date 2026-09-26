@@ -8,6 +8,11 @@ source "$(dirname "$0")/musubi_env.sh"
 NAME=$1; shift
 D=$ROOT/twc_video/work/lora/$NAME
 mkdir -p $D/eval
+# Wait for training to finish (both final LoRAs) so this can be queued together
+# with the training job and start the moment the weights exist.
+until [ -f $D/out_low/${NAME}_low.safetensors ] && [ -f $D/out_high/${NAME}_high.safetensors ]; do
+  echo "[$(date +%T)] waiting for final $NAME LoRAs"; sleep 120
+done
 python - "$NAME" <<'PY'
 import sys, yaml
 from pathlib import Path

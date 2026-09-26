@@ -103,7 +103,20 @@ scenes:
       mushrooms, butterflies and layered wool bushes. Sunlight filters gently
       through the felt leaves. The camera slowly moves toward the sleeping
       lion. Mood: peaceful, magical, safe and welcoming.
-    status: in design
+    status: first shot
+    shots:
+      - name: s01_establish
+        keyframe: keyframes/scene01_y0.78.png     # sleeping Leo composed into the clearing
+        characters: [leo]
+        frames: 81
+        seeds: [5101, 5102]
+        action: >-
+          Wide establishing shot of a peaceful handmade felt forest on a warm sunny
+          morning. The camera slowly and smoothly moves toward Leo the lion, who
+          sleeps peacefully beneath the large felt tree with his eyes closed, his
+          round belly gently rising and falling as he breathes. Two small pastel
+          felt butterflies flutter slowly through the warm sunlight filtering
+          through the felt leaves.
   2:
     title: The little mouse appears
     location: clearing
