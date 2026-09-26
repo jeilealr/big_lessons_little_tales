@@ -58,6 +58,9 @@ sbatch --ntasks=4 --gpus-per-node=4 --mem=480G twc_video/lumi/run_tasks.sbatch t
 ## Docs
 
 - [Production guide](docs/production-guide.md): story to finished shots, with measured results
+- [Writing prompts](docs/prompting.md): every measured prompt rule, and a checklist
+- [Findings and risks](docs/findings-and-risks.md): every problem and its fix; what may be missing
+- [CLAUDE.md](CLAUDE.md): the operating manual for agents working in this repo
 - [Character consistency](docs/character-consistency.md): the first experiments, on a felt fox
 - [Licensing](docs/licensing.md): every model and library, checked for a monetised channel
 - [Running on LUMI](docs/lumi.md): jobs, multi-GPU tasks, times, solved gotchas

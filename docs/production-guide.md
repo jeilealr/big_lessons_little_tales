@@ -187,7 +187,9 @@ a pose file is just a list of actions:
           front paws and gently closes his eyes.
 ```
 
-What works and what does not, measured on the felt fox:
+The complete, measured prompt rules are in **[prompting.md](prompting.md)**;
+read it before writing any action. The short version, measured on the fox,
+Leo and Milo:
 
 | Action | Result |
 |---|---|
@@ -196,6 +198,9 @@ What works and what does not, measured on the felt fox:
 | camera orbits around a still character | identity perfect, but only ~30 degrees of rotation |
 | look up / raise the head | too subtle: the pose barely changes |
 | "looks up at the clouds drifting overhead" | the model animated the clouds instead |
+| sit down (Leo), wave a paw "high, side to side" (Milo) | reliable |
+| "walks slowly and calmly forward" (Leo) | did not travel: a pose shuffle |
+| "runs quickly forward in a happy scamper" (Milo) | ran out of frame |
 
 ![turning gives front and back views; a small head movement does not register](img/fox_turns.jpg)
 
@@ -206,6 +211,8 @@ Rules that follow:
 - **The action names only the character's body.** Anything else it names (the
   clouds, a butterfly) is something the model may animate instead.
 - **Turn the character, do not orbit the camera**, to get new views.
+- **Locomotion needs an energetic verb and a direction**; in a scene, the camera
+  follows.
 - 3 s (49 frames) is enough for one pose change and takes about an hour.
 
 ## 6. Character LoRA: teaching the model *your* character
@@ -266,6 +273,15 @@ has in common (`composite:` in the dataset file). Compositing never changes
 the character's colours: a character's colours are part of its identity.
 
 (Sections 7 and 8 follow as each stage is validated.)
+
+## What is next, and what may be missing
+
+See **[findings-and-risks.md](findings-and-risks.md)**: every problem found and
+its fix, and the gaps not yet covered (backups before the project's data is
+deleted, narration-first timing and animatics, dialogue without lip-sync,
+two-character contact shots, props, the trap scene and YouTube's policy,
+Made-for-kids settings, pinning model versions, render throughput, a shared
+style for the series).
 
 ## Sources
 
