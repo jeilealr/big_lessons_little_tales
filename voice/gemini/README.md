@@ -32,3 +32,13 @@ python twc_video/voice/gemini/list_voices.py      # -> voices_list.json
 - Outputs are the owner's ("Google won't claim ownership"); SynthID watermark.
 - Open question for Google: API terms exclude services "directed towards or
   likely to be accessed by individuals under the age of 18".
+
+## Cast
+
+| Role | Voice | File |
+|---|---|---|
+| narrator | Golden Hour Storyteller 3 (`voice_g00mo8cbdefq`) | `cast/narrator/voice.yaml` |
+
+Each `voice.yaml` keeps the id, the exact design prompt (Google deletes
+designed voices after a year) and a reference sample to compare a recreated
+voice against.

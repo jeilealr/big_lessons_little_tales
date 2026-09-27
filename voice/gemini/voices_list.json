@@ -1,0 +1,355 @@
+{
+  "listed_at": "2026-09-27T11:27:02+00:00",
+  "voices": [
+    {
+      "id": "voice_g00mo8cbdefq",
+      "display_name": "Golden Hour Storyteller 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_p45574twm5l2",
+      "display_name": "Golden Hour Storyteller 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_z378zop1mqc7",
+      "display_name": "Golden Hour Storyteller 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "achernar",
+      "display_name": "Achernar",
+      "type": "prebuilt",
+      "language_code": "en-US",
+      "gender": "female"
+    },
+    {
+      "id": "achird",
+      "display_name": "Achird",
+      "type": "prebuilt",
+      "language_code": "en-US",
+      "gender": "male"
+    },
+    {
+      "id": "algenib",
+      "display_name": "Algenib",
+      "type": "prebuilt",
+      "language_code": "en-US",
+      "gender": "male"
+    },
+    {
+      "id": "algieba",
+      "display_name": "Algieba",
+      "type": "prebuilt",
+      "language_code": "en-US",
+      "gender": "male"
+    },
+    {
+      "id": "alnilam",
+      "display_name": "Alnilam",
+      "type": "prebuilt",
+      "language_code": "en-US",
+      "gender": "male"
+    },
+    {
+      "id": "aoede",
+      "display_name": "Aoede",
+      "type": "prebuilt",
+      "language_code": "en-US",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-advisor-1",
+      "display_name": "Authoritative Advisor 1",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-advisor-10",
+      "display_name": "Authoritative Advisor 10",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-advisor-2",
+      "display_name": "Authoritative Advisor 2",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-advisor-3",
+      "display_name": "Authoritative Advisor 3",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-assistant-2",
+      "display_name": "Digital Assistant 2",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-assistant-4",
+      "display_name": "Digital Assistant 4",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-commercial-12",
+      "display_name": "Commercial Voiceover 12",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-commercial-2",
+      "display_name": "Commercial Voiceover 2",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-commercial-3",
+      "display_name": "Commercial Voiceover 3",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-commercial-4",
+      "display_name": "Commercial Voiceover 4",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-commercial-5",
+      "display_name": "Commercial Voiceover 5",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-commercial-7",
+      "display_name": "Commercial Voiceover 7",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-concierge-11",
+      "display_name": "Concierge 11",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-concierge-2",
+      "display_name": "Concierge 2",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-csagent-10",
+      "display_name": "Call Center Agent 10",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-csagent-11",
+      "display_name": "Call Center Agent 11",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-csagent-4",
+      "display_name": "Call Center Agent 4",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-csagent-8",
+      "display_name": "Call Center Agent 8",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-techagent-10",
+      "display_name": "Tech Advisor 10",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-techagent-11",
+      "display_name": "Tech Advisor 11",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-techagent-2",
+      "display_name": "Tech Advisor 2",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-techagent-4",
+      "display_name": "Tech Advisor 4",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-training-1",
+      "display_name": "Training Voiceover 1",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-training-12",
+      "display_name": "Training Voiceover 12",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-training-2",
+      "display_name": "Training Voiceover 2",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-tutor-1",
+      "display_name": "Tutor 1",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-tutor-2",
+      "display_name": "Tutor 2",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "male"
+    },
+    {
+      "id": "ar-001-tutor-3",
+      "display_name": "Tutor 3",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-001-tutor-4",
+      "display_name": "Tutor 4",
+      "type": "prebuilt",
+      "language_code": "ar-001",
+      "gender": "female"
+    },
+    {
+      "id": "ar-eg-advisor-11",
+      "display_name": "Authoritative Advisor 11",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "female"
+    },
+    {
+      "id": "ar-eg-advisor-12",
+      "display_name": "Authoritative Advisor 12",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "female"
+    },
+    {
+      "id": "ar-eg-advisor-4",
+      "display_name": "Authoritative Advisor 4",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "female"
+    },
+    {
+      "id": "ar-eg-advisor-5",
+      "display_name": "Authoritative Advisor 5",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "female"
+    },
+    {
+      "id": "ar-eg-advisor-6",
+      "display_name": "Authoritative Advisor 6",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "male"
+    },
+    {
+      "id": "ar-eg-advisor-7",
+      "display_name": "Authoritative Advisor 7",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "male"
+    },
+    {
+      "id": "ar-eg-advisor-8",
+      "display_name": "Authoritative Advisor 8",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "male"
+    },
+    {
+      "id": "ar-eg-advisor-9",
+      "display_name": "Authoritative Advisor 9",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "female"
+    },
+    {
+      "id": "ar-eg-assistant-1",
+      "display_name": "Digital Assistant 1",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "female"
+    },
+    {
+      "id": "ar-eg-assistant-10",
+      "display_name": "Digital Assistant 10",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "female"
+    },
+    {
+      "id": "ar-eg-assistant-11",
+      "display_name": "Digital Assistant 11",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "male"
+    },
+    {
+      "id": "ar-eg-assistant-12",
+      "display_name": "Digital Assistant 12",
+      "type": "prebuilt",
+      "language_code": "ar-EG",
+      "gender": "female"
+    }
+  ]
+}

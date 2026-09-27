@@ -1,0 +1,36 @@
+# Canonical narrator voice (owner's choice, 2026-09-27).
+role: narrator
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_g00mo8cbdefq
+display_name: Golden Hour Storyteller 3
+type: prompted
+model: gemini-3.8-flash-tts
+language: en (the same voice for de, es, fr, ru: to be tested)
+created: 2026-09-27
+expires: 2027-09-27T10:46:23Z   # Gemini keeps designed voices 1 year. Recreate
+                                # before then from the prompt below (same model),
+                                # compare with sample_scene01_line0.wav, update the id.
+# The design prompt, exactly as stored by Google (voices.get):
+prompt: >-
+  Narrate this story with the gentle, inviting cadence of a seasoned
+  storyteller in their late 30s. Use a rich, warm mid-range vocal register that
+  feels grounded and safe. Maintain a consistent "vocal smile"—a subtle
+  brightening of the tone that conveys kindness and genuine engagement without
+  becoming cartoonish. Your pacing should be medium-slow, allowing for natural,
+  fluid transitions between sentences, with occasional soft, thoughtful pauses
+  to let the imagery settle. Speak with clear, precise articulation that
+  remains conversational rather than performative. Infuse the delivery with a
+  sense of quiet wonder and rhythmic flow, as if sharing a secret treasure. The
+  tone must remain steady, trustworthy, and calm, balancing the soothing
+  quality of a lullaby with just enough lively, melodic inflection to keep a
+  young listener captivated. Avoid any forced enthusiasm or exaggerated
+  character voices; keep the performance grounded, sincere, and deeply
+  intimate, as if speaking directly to someone sitting right beside you in a
+  quiet, sunlit room.
+sample: sample_scene01_line0.wav   # reference render: scene 1 line 0, no style, 9.3 s
+licence: >-
+  Output owned by the channel owner (Gemini API terms: "Google won't claim
+  ownership"); SynthID-watermarked; disclose AI use in the description.
+  Open item: written confirmation from Google that the Age Requirements
+  (API Clients directed at under-18s) do not cover pre-rendered narration in
+  Made-for-kids YouTube videos.

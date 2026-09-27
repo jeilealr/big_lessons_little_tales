@@ -303,6 +303,13 @@ production") and `character/characters/character_pack_prompts_v2.md`.
   Owner plan: narration + character voices from here; music/SFX from
   ElevenLabs (paid plan, commercial); final mix in DaVinci; languages en first,
   then de, es, ru, fr.
+- **Voices: Gemini 3.8 Flash TTS is the channel's voice source (owner,
+  2026-09-27).** Tools and cast in `voice/gemini/` (README, speak.py,
+  list_voices.py); API key only in `~/.config/gemini/env` (owner-written,
+  chmod 600; never print, copy or commit it). Canonical voices:
+  `voice/gemini/cast/<role>/voice.yaml` (id, full design prompt, expiry,
+  sample). Narrator = Golden Hour Storyteller 3 (`voice_g00mo8cbdefq`,
+  expires 2027-09-27: recreate from the saved prompt before then).
 - **2026-09-27: Chatterbox voices PAUSED by the owner**, who is trying Gemini
   3.8 TTS (Google AI Studio / Gemini API) for narration and character voices.
   Agents: do not continue voice work unless asked; focus on video. What was
