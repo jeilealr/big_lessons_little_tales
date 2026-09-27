@@ -194,6 +194,16 @@ out-of-focus sunny felt meadow").
 
 *(rows: Milo trembles, Leo softens 4201, Leo softens 4202, Milo smiles)*
 
+**Rule 2.14: a continuation shot from a cropped close-up needs an end
+keyframe too.** Scenes 5 and 6 started from the last frame of a two-shot that
+was itself a crop of the clearing. With only a start frame, all six seeds
+pulled the camera back and drew a different tree and sky (the model filled in
+what the crop hides). "The camera stays still" did not stop it. Pin the end:
+the same frame again for an in-place action (a nod), or the same crop
+recomposed with the end state (Milo gone) for an exit.
+
+![continuation drift](img/v2_drift_continue.jpg)
+
 ## 3. Words and framing
 
 **Rule 3.1: materials, not photography.** "needle-felted", "stitched", "wool",
@@ -385,4 +395,8 @@ Update this when a rule is confirmed, refuted or refined.
   (worried -> paws together): clean in both seeds.
 
   ![v2 Scenes 5-6](img/v2_s05_s06.jpg)
+- 2026-09-27 (v2, fast mode): 3/4 Leo in Scenes 1-3: identity and pose held;
+  one seed in three woke Leo at the end (1113, 2113); Scene 3 3112 wakes with
+  a paw forward. Scene 7 tug: 7303 calm; 7301/7302 opened the mouth. Scenes
+  5/6 continuation shots drifted (Rule 2.14).
 

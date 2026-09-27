@@ -134,6 +134,7 @@ scenes:
           open eyes, awake, looking at the camera, lifting the head, standing up,
           mouse
       - name: s01_sleeps_3q                # owner: 3/4 full body instead of the front view
+        take: 1111                          # 3/4 Leo asleep, push-in (1113 wakes at the end)
         keyframe: keyframes/s01_sleeps_3q.png
         compose:
           plate: design/clearing/canonical.png
@@ -178,6 +179,7 @@ scenes:
           open eyes, awake, lion standing up, second mouse, running away from the
           camera, back view, standing still, camera moving
       - name: s02_milo_runs_3q
+        take: 2111                          # Milo runs past, Leo asleep
         keyframe: keyframes/s02_milo_runs_3q.png
         compose:
           plate: design/clearing/canonical.png
@@ -235,6 +237,7 @@ scenes:
           teeth, open mouth, angry face, roaring, lion standing up, mouse running
           away, second lion, second mouse, camera moving
       - name: s03_caught_3q
+        take: 3112                          # wakes, paw forward beside Milo
         keyframe: keyframes/s03_start_3q.png
         compose:
           plate: design/clearing/canonical.png
@@ -353,6 +356,7 @@ scenes:
           teeth, open mouth, angry face, roaring, lion standing up, mouse running
           away, second lion, second mouse, camera moving
       - name: s05_leo_nods
+        superseded_by: s05_leo_nods_v2       # all 3 seeds: camera pulled back, invented a new tree
         keyframe: keyframes/s05_from_s03.png
         continue_from: {shot: s03_caught, take: 3101}
         characters: [leo, milo]
@@ -366,6 +370,22 @@ scenes:
         negative_extra: >-
           raised paw, paw near the face, teeth, open mouth, angry face, roaring, lion
           standing up, mouse running away, second lion, second mouse, camera moving
+      - name: s05_leo_nods_v2              # end keyframe = start frame pins the framing (Rule 2.14)
+        keyframe: keyframes/s05_from_s03.png
+        end_keyframe: keyframes/s05_from_s03.png
+        continue_from: {shot: s03_caught, take: 3101}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [5106, 5107, 5108]
+        action: >-
+          Leo the lion keeps his big paws resting flat on the grass and gives the
+          tiny mouse a warm, kind closed-mouth smile and a slow gentle nod, as if
+          saying go on your way. Tiny Milo stands still, looking up at him. The
+          camera stays completely still.
+        negative_extra: >-
+          raised paw, teeth, open mouth, angry face, roaring, lion standing up, mouse
+          running away, second lion, second mouse, camera moving, zoom out, new
+          trees
   6:
     title: Thank you
     location: clearing
@@ -427,6 +447,7 @@ scenes:
           teeth, open mouth, angry face, lion standing up, mouse running away, second
           lion, second mouse, camera moving
       - name: s06_milo_leaves
+        superseded_by: s06_milo_leaves_v2   # same drift as s05
         keyframe: keyframes/s06_from_thanks.png
         continue_from: {shot: s06_milo_thanks, take: 6201}
         characters: [leo, milo]
@@ -439,6 +460,26 @@ scenes:
         negative_extra: >-
           angry face, teeth, open mouth, roaring, lion standing up, second lion,
           second mouse, camera moving
+      - name: s06_milo_leaves_v2           # end keyframe: the same crop with Leo alone
+        keyframe: keyframes/s06_from_thanks.png
+        continue_from: {shot: s06_milo_thanks, take: 6201}
+        end_keyframe: keyframes/s06_leaves_end.png
+        end_compose:
+          plate: design/clearing/canonical.png
+          crop: [0.28, 0.46, 0.52]
+          characters:
+            - {still: characters/leo/poses/leo_sphinx.png, x: 0.577, y: 0.769, h: 0.692}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [6304, 6305, 6306]
+        action: >-
+          Tiny Milo the mouse turns and scampers happily away across the grass to
+          the left and out of the left edge of the frame, while Leo the lion stays
+          lying down, watching him go with a gentle smile. The camera stays
+          completely still.
+        negative_extra: >-
+          angry face, teeth, open mouth, roaring, lion standing up, second lion,
+          second mouse, camera moving, zoom out, new trees
   7:
     title: The net
     location: trap_site
@@ -487,6 +528,7 @@ scenes:
           scary, angry face, teeth, open mouth, roaring, crying, pain, metal, wire,
           chains, spikes, cage, mouse, second lion, people, hunter, camera moving
       - name: s07_leo_tugs
+        take: 7303                          # gentle tug, mouth closed (7301/7302 open mouth)
         keyframe: keyframes/s07_from_net.png
         continue_from: {shot: s07_net_falls, take: 7202}
         characters: [leo]
