@@ -1,0 +1,34 @@
+# Sample lines from The Lion and the Mouse v2, in every channel language.
+# English is the owner's text; the translations are first drafts by the
+# assistant (2026-09-27): have a native speaker check them before the full
+# narration scripts (stories/<slug>/narration/<lang>.yaml) are written.
+# Files: <name>.wav for English, <name>_<lang>.wav otherwise.
+# One sample line per voice (owner): narrators read Scene 1, Leo and Milo
+# their first line.
+languages: [es, fr, de, ru, uk]
+
+lines:
+  sample_scene01_line0:
+    speakers: [narrators]
+    en: "Once upon a time, a great lion was sleeping beneath a tree, when a little mouse accidentally ran across his paw."
+    es: "Había una vez un gran león que dormía bajo un árbol, cuando un ratoncito pasó corriendo sin querer sobre su pata."
+    fr: "Il était une fois un grand lion qui dormait sous un arbre, quand une petite souris courut par mégarde sur sa patte."
+    de: "Es war einmal ein großer Löwe, der unter einem Baum schlief, als eine kleine Maus aus Versehen über seine Pfote lief."
+    ru: "Давным-давно большой лев спал под деревом, когда маленький мышонок нечаянно пробежал по его лапе."
+    uk: "Давним-давно великий лев спав під деревом, коли маленький мишко ненароком пробіг по його лапі."
+  sample_scene05_go_on_your_way:
+    speakers: [cast/leo]
+    en: "You frightened me, but you meant no harm. Go on your way."
+    es: "Me asustaste, pero no querías hacer daño. Sigue tu camino."
+    fr: "Tu m'as fait peur, mais tu ne voulais pas faire de mal. Va ton chemin."
+    de: "Du hast mich erschreckt, aber du wolltest nichts Böses. Geh deines Weges."
+    ru: "Ты меня напугал, но ты не хотел ничего плохого. Иди своей дорогой."
+    uk: "Ти мене налякав, але ти не хотів нічого поганого. Іди своєю дорогою."
+  sample_scene06_thank_you:
+    speakers: [cast/milo]
+    en: "Thank you. I hope one day I can show someone the same kindness."
+    es: "Gracias. Espero algún día poder mostrarle a alguien la misma bondad."
+    fr: "Merci. J'espère un jour pouvoir montrer la même gentillesse à quelqu'un."
+    de: "Danke. Ich hoffe, ich kann eines Tages jemandem die gleiche Freundlichkeit zeigen."
+    ru: "Спасибо. Надеюсь, однажды и я смогу проявить к кому-нибудь такую же доброту."
+    uk: "Дякую. Сподіваюся, колись і я зможу виявити до когось таку ж доброту."

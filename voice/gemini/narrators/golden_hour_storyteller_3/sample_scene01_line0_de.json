@@ -1,0 +1,8 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "voice_g00mo8cbdefq",
+  "text": "Es war einmal ein gro\u00dfer L\u00f6we, der unter einem Baum schlief, als eine kleine Maus aus Versehen \u00fcber seine Pfote lief.",
+  "style": "",
+  "mime": "audio/wav",
+  "seconds": 9.08
+}

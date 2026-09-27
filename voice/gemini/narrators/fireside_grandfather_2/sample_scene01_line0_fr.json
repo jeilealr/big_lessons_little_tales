@@ -1,0 +1,8 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "voice_4rdl7hydi35v",
+  "text": "Il \u00e9tait une fois un grand lion qui dormait sous un arbre, quand une petite souris courut par m\u00e9garde sur sa patte.",
+  "style": "",
+  "mime": "audio/wav",
+  "seconds": 8.0
+}

@@ -1,8 +1,8 @@
 {
   "model": "gemini-3.8-flash-tts",
   "voice": "voice_zdbgqrcerxqu",
-  "text": "You helped me even though you did not have to.",
+  "text": "Tu m'as fait peur, mais tu ne voulais pas faire de mal. Va ton chemin.",
   "style": "",
   "mime": "audio/wav",
-  "seconds": 3.52
+  "seconds": 5.8
 }

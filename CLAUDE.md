@@ -286,77 +286,93 @@ Owner's asset prompts, updated with these production lessons:
 `character/characters/v2_asset_review_prompt.md` (section "Lessons from video
 production") and `character/characters/character_pack_prompts_v2.md`.
 
-## Fast mode and repository
+## Fast mode, repository, compute
 
 - **Fast mode (Wan2.2-Lightning, `--fast`) is the default way to iterate**:
-  ~16 min per clip instead of ~2 h 10, same look (docs/prompting.md "Fast
-  mode"). Put several seeds of one shot in one task (one model load).
+  ~9-16 min per clip instead of ~2 h 10, same look (docs/prompting.md "Fast
+  mode"). Put several seeds of one shot in one task (one model load: the
+  first seed ~17 min incl. load, each further seed ~9 min).
 - The repo has a private GitHub remote (`origin`,
   git@github.com:jeilealr/twc_video.git). The owner's SSH keys have
   passphrases, so **the owner pushes**; agents commit locally.
-- Voices/narration: **`voice/README.md`**. Voices are designed from text
-  descriptions (Parler-TTS, Apache-2.0; never Parler's named real speakers),
-  auditioned and spoken with Chatterbox multilingual (MIT), one canonical
-  reference per role in `voice/cast/<role>/`, the same voice in every language.
-  Never clone a real or third-party voice (the chatterboxTTS Nate/Derek
-  references are ElevenLabs excerpts). Scripts: `stories/<slug>/narration/<lang>.yaml`.
-  Owner plan: narration + character voices from here; music/SFX from
-  ElevenLabs (paid plan, commercial); final mix in DaVinci; languages en first,
-  then de, es, ru, fr.
-- **Voices: Gemini 3.8 Flash TTS is the channel's voice source (owner,
-  2026-09-27).** Tools and cast in `voice/gemini/` (README, speak.py,
-  list_voices.py); API key only in `~/.config/gemini/env` (owner-written,
-  chmod 600; never print, copy or commit it). Canonical voices:
-  `voice/gemini/cast/<role>/voice.yaml` (id, full design prompt, expiry,
-  sample). Lion and Mouse v2: narrator Moonlight Storyteller 1
-  (`voice_v5bpq98uj7qh`, `voice/gemini/narrators/`), Leo The Noble Lion 1 (`voice_zdbgqrcerxqu`), Milo
-  The Brave Little Mouse 1 (`voice_vf2w20rcys8a`); Golden Hour Storyteller 3 and three
-  more alternative narrators in `voice/gemini/narrators/`. All expire 2027-09-27: recreate from the saved
-  prompts before then. Owner: generate no more audio for now.
-- **2026-09-27: Chatterbox voices PAUSED by the owner**, who is trying Gemini
-  3.8 TTS (Google AI Studio / Gemini API) for narration and character voices.
-  Agents: do not continue voice work unless asked; focus on video. What was
-  found, for when voices resume:
-  - Chatterbox: Parler voice design produced a hum instead of speech (sdpa
-    attention suspected; eager attention untested); the owner liked
-    narrator_warm_female_s101, narrator_bright_female_s131 (first line) and
-    leo_deep_warm_s201 (first line); refined references `*_l0` fixed the voice
-    drift between lines. CPU partitions (interactive/debug) never got past
-    start-up in 18 min: use a GPU task. Young voices (Leo ~18, Milo ~13):
-    candidates in voices.yaml, not reviewed.
-  - Gemini 3.8 Flash TTS: outputs owned by the user ("Google won't claim
-    ownership"); ~$0.0135/min of audio in 2026, ~$0.027 from 2027 (25 audio
-    tokens/s); free tier exists (rate-limited); EEA gets paid-tier data terms.
-    Check with Google: the API terms forbid services "directed towards or
-    likely to be accessed by individuals under the age of 18" (a kids'
-    channel?). Do not clone Gemini voices into another model (terms: no
-    extracting/replicating components of the Services).
+- Compute: `dev-g` only (2 jobs/user, 3 h). Checked 2026-09-27: `standard-g`
+  and `small-g` start days later (sbatch --test-only); CPU partitions
+  (`interactive` max 64 CPUs/user, `debug` 30 min) could not run Chatterbox in
+  18 min. A small CPU/voice step goes in as an extra task of a video job.
+  `lumi/run_cpu.sbatch` exists for CPU-only work.
+
+## Voices (owner decision 2026-09-27: Gemini 3.8 Flash TTS)
+
+- **Everything is in `voice/gemini/`** (read its README): `gemini_env.sh`,
+  `list_voices.py` (-> `voices_list.json`), `speak.py` (one line -> WAV +
+  json), `save_voice.py` (record a designed voice: id, exact prompt, expiry,
+  Google's sample), `render_samples.py` + `sample_lines.yaml` (sample lines in
+  every language). Client venv: `/scratch/project_465002727/jelealro/gemini_env`
+  (google-genai 2.25.0, pyyaml). No GPU: runs from the login node.
+- **API key: only in `~/.config/gemini/env`** (owner-written, chmod 600,
+  `GEMINI_API_KEY=...`). Never print, copy, log or commit it.
+- **Voices** (all designed "prompted" voices, expire 2027-09-27; recreate from
+  the prompt saved in each `voice.yaml` before then):
+
+  | Role | Voice | Folder |
+  |---|---|---|
+  | **Lion and Mouse v2 narrator** | Moonlight Storyteller 1, `voice_v5bpq98uj7qh` | `narrators/moonlight_storyteller_1/` |
+  | Leo | The Noble Lion 1, `voice_zdbgqrcerxqu` | `cast/leo/` |
+  | Milo | The Brave Little Mouse 1, `voice_vf2w20rcys8a` | `cast/milo/` |
+  | alternative narrators | Golden Hour Storyteller 3 `voice_g00mo8cbdefq` (first pick, replaced), The Fireside Grandfather 2 `voice_4rdl7hydi35v`, The Cheery Tale Keeper 2 `voice_8tnxrhfqk3ur`, Bright Trail Narrator 2 `voice_tcrjw3ney7q8` | `narrators/<name>/` |
+
+  The story maps them in `stories/lion_and_mouse_v2/story.yaml` (`voices:`).
+- **Samples**: every voice folder has `google_sample.wav` (Google's stored
+  sample) and ONE sample line in en/es/fr/de/ru/uk: narrators read Scene 1,
+  Leo "You frightened me... Go on your way", Milo "Thank you...". English
+  files have no suffix, other languages `_es _fr _de _ru _uk`. The owner asked
+  for one line per character only: do not generate extra lines. Translations
+  in `sample_lines.yaml` are assistant drafts: native check before full scripts.
+  Quality: Gemini audio has a ~-70 dB noise floor (Chatterbox references
+  -30/-40 dB); English and Spanish samples verified word-for-word by Whisper.
+- **Terms**: outputs owned by the user ("Google won't claim ownership"); price
+  ~$0.0135/min of audio in 2026, ~$0.027 from 2027 (25 audio tokens/s; free
+  tier rate-limited); SynthID watermark; EEA gets paid-tier data terms. Open:
+  the Age Requirements ("API Clients" directed at under-18s) vs a Made-for-kids
+  channel: the owner's question to Google is drafted in
+  `docs/google_gemini_terms_question.md` (no public email: AI Studio feedback,
+  developer forum, or Cloud support). Do not clone Gemini voices into another
+  model (terms forbid replicating components of the Services).
+- Chatterbox/Parler tools in `voice/` (voices.py, narrate.py, `TWC_ENV=tts`
+  venv) are **paused** fallbacks. Findings: Parler produced a hum instead of
+  speech (sdpa attention suspected); Chatterbox clones carried noise and
+  drifted between lines; `narrate.py` + `stories/<slug>/narration/<lang>.yaml`
+  (speaker-split script) + `production/animatic.py --lang` remain the path
+  for full narration once it is switched to Gemini.
+- Owner plan: narration + character voices from Gemini; music/SFX from
+  ElevenLabs (paid plan, commercial); final mix in DaVinci; narration first,
+  video fitted to it; languages en, then es, fr, de, ru, uk.
 
 ## Current state (update when it changes)
 
-v2 (2026-09-27):
-- Installed: v2 canonicals + packs (install_pack.py). Story bible v2 written.
-- Plates picked: clearing 3003, trap_site 3104, forest_run 3204. Look test:
-  owner-made characters composite well into Wan's felt plates.
-- Poses round 1: Milo paws together / worried OK; Leo lies down but his eyes
-  never close; "lies awake" ends sitting with paw pads forward. Round 2 (job
-  22374000): close the eyes as the whole shot; sphinx lying.
-- Close-ups (start+end = owner's expression images): Milo trembles (take
-  4101) and Milo surprise->smile (6101) clean; Leo softens wandered mid-shot
-  (location sheet names a trunk) -> v2 with `background:` override.
-- Leo stills: `poses/leo_asleep.png` (eyes closed, from leo_closes_eyes_a) and
-  `poses/leo_sphinx.png`. Milo: `poses/milo_worried_last.png`,
-  `poses/milo_paws_together_last.png`, pack walking image for runs.
-- Scale in the clearing: Leo standing 0.52 of frame; asleep h 0.34, sphinx
-  0.36 (measured bbox ratios 0.653 / 0.698); Milo standing 0.17.
-- Takes: s01 1101, s02 2101, s03 3101, s04 trembles 4101, s04 Leo softens v2
-  4203, s06 Milo smiles 6101. All on-model.
-- Rendering: job 22375419 (s07_leo_walks x2, s08_milo_hears, s08_milo_runs),
-  job 22375447 (s05_leo_releases x2, s06_milo_thanks x2). Both ~09:45.
-- Next: s06 Milo leaves; Scene 7 net falls / Leo tugs (continue from the
-  walk take); Scenes 9-11 at the net (Milo pasted into the trap frame, close-up
-  crops for gnawing); Scene 12.
-- Animatic: `work/stories/lion_and_mouse_v2/animatic.mp4`.
+v2 (2026-09-27), all shots in `work/stories/lion_and_mouse_v2/shots/`, takes
+in story.yaml (`take:`):
+- Cast and places: owner-made Leo/Milo pack installed (`install_pack.py`);
+  plates clearing 3003, trap_site 3104, forest_run 3204; Leo in 3/4 view for
+  sleeping/lying (owner request): `poses/leo_3q_asleep.png`,
+  `poses/leo_3q_sphinx.png` (eyes closed in a separate fast shot).
+- Takes: s01 3/4 1111, s02 3/4 2111, s03 3/4 3112 (front-view versions 1101,
+  2101, 3101 kept), s04 Milo trembles 4101, s04 Leo softens v2 4203,
+  s06 Milo smiles 6101, s06 thanks 6201, s07 walks 7101, s07 net falls 7202,
+  s07 tugs 7303, s08 hears 8101, s08 runs v2 8204.
+- Rendered, not yet reviewed (fast, 3 seeds each): s09_milo_arrives,
+  s09_milo_can_help, s10_milo_gnaws, s10_leo_steps_free, s11_leo_amazed,
+  s11_milo_smiles, s12_friends. Running: job 22378025, s05_leo_nods_v2 and
+  s06_milo_leaves_v2 (end keyframes pin the framing, Rule 2.14).
+- New rules today: 2.13 (close-ups: start+end from the expression set,
+  `background:` instead of the location sheet), 2.14 (continuations from a
+  crop need an end keyframe); split pose and face changes into two shots; a
+  walking start still gives a walk (use a standing side view for runs).
+- Tools added today: `production/install_pack.py`, `end_keyframe:` /
+  `end_compose:` / `background:` in shots, keyframe `blur`, `--fast`
+  (shot.py, character.py), `continue_from`, pose packs from `pack16x9/`.
+- Next: review Scenes 9-12, pick takes, fix failures; Scene 5/6 v2; full
+  animatic; then narration with the Gemini voices once the owner asks.
 
 v1 (paused 2026-09-26, kept for reference):
 - Lion and Mouse picks: Leo 1003 (black eyes, owner decision), Milo 1001

@@ -1,8 +1,0 @@
-{
-  "model": "gemini-3.8-flash-tts",
-  "voice": "voice_vf2w20rcys8a",
-  "text": "I think I can help.",
-  "style": "",
-  "mime": "audio/wav",
-  "seconds": 1.64
-}

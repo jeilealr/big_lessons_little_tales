@@ -66,4 +66,9 @@ keeps the exact text spoken.
 
 | Voice | Languages sampled |
 |---|---|
-| narrators/moonlight_storyteller_1 | en, es |
+| every narrator (Scene 1 line) | en, es, fr, de, ru, uk |
+| cast/leo ("Go on your way") | en, es, fr, de, ru, uk |
+| cast/milo ("Thank you") | en, es, fr, de, ru, uk |
+
+One sample line per voice (owner). Render missing ones with
+`python voice/gemini/render_samples.py` (texts in `sample_lines.yaml`).
