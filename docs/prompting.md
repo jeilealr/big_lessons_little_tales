@@ -230,6 +230,23 @@ before its first render.
 | guidance | 3.5 / 3.5 image-to-video; 4.0 / 3.0 text-to-video | the two numbers are the high- and low-noise experts |
 | negative | story negative + per-shot `negative_extra` | the per-shot part names this shot's specific failure |
 
+### Fast mode (Wan2.2-Lightning), measured 2026-09-27
+
+`shot.py --fast` / `character.py shots --fast`: the lightx2v 4-step
+distillation LoRAs (Apache-2.0, revision pinned in `twc/wan.py LIGHTNING`),
+4 Euler steps, shift 5, CFG 1. Same keyframes and seeds as two approved takes:
+
+![40 steps vs Lightning](img/lightning_ab.jpg)
+
+*(rows: Scene 1 40 steps, Scene 1 fast, Scene 3 40 steps, Scene 3 fast)*
+
+- Render time **16 min instead of ~2 h 10** per clip (4 x 97 s + decode;
+  the ~25 min model load is unchanged).
+- Identity, colours, sharpness and the start/end keyframe behaviour are the
+  same. Slightly more unrequested motion (sleeping Leo stirs at the end).
+- Use: render 3-4 seeds fast and pick; one task renders all seeds of a shot
+  with one model load. Keep 40 steps for shots where fast mode fails.
+
 ## 5. LoRA captions
 
 Every caption: `<trigger>, <identity>, <pose and view>, <framing>, <setting>, <style>`

@@ -286,6 +286,17 @@ Owner's asset prompts, updated with these production lessons:
 `character/characters/v2_asset_review_prompt.md` (section "Lessons from video
 production") and `character/characters/character_pack_prompts_v2.md`.
 
+## Fast mode and repository
+
+- **Fast mode (Wan2.2-Lightning, `--fast`) is the default way to iterate**:
+  ~16 min per clip instead of ~2 h 10, same look (docs/prompting.md "Fast
+  mode"). Put several seeds of one shot in one task (one model load).
+- The repo has a private GitHub remote (`origin`,
+  git@github.com:jeilealr/twc_video.git). The owner's SSH keys have
+  passphrases, so **the owner pushes**; agents commit locally.
+- Voices/narration: `TWC_ENV=tts` venv (Chatterbox multilingual MIT, Parler-TTS
+  Apache-2.0); see the voices section below when it exists.
+
 ## Current state (update when it changes)
 
 v2 (2026-09-27):
