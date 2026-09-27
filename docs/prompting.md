@@ -178,6 +178,22 @@ pleaded, clearly, in both seeds (s04_milo_pleads_v2).
 
 *(rows: pleads 4101, pleads 4102, smiles 4201, smiles 4202)*
 
+**Rule 2.13: start and end keyframes from the same expression set make the
+best close-ups; describe only a soft background.** The owner's expression
+images (identical head-and-shoulders framing) composed on a blurred crop of
+the plate, as first and last frame: Milo worried -> worried (a tremble) and
+Milo surprised -> smile came out on-model for all 81 frames. Leo curious ->
+smile *wandered* mid-shot: the background sharpened and a tree trunk appeared,
+then the shot returned to the end frame. The prompt carried the full location
+sheet ("a broad stitched tree trunk on the right..."), which asks the model to
+show the trunk. In a close-up, replace the location sheet with the
+background you want to see (`background:` on the shot: "a soft, completely
+out-of-focus sunny felt meadow").
+
+![v2 close-ups](img/v2_closeups.jpg)
+
+*(rows: Milo trembles, Leo softens 4201, Leo softens 4202, Milo smiles)*
+
 ## 3. Words and framing
 
 **Rule 3.1: materials, not photography.** "needle-felted", "stitched", "wool",

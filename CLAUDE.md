@@ -295,11 +295,18 @@ v2 (2026-09-27):
 - Poses round 1: Milo paws together / worried OK; Leo lies down but his eyes
   never close; "lies awake" ends sitting with paw pads forward. Round 2 (job
   22374000): close the eyes as the whole shot; sphinx lying.
-- Rendering: job 22373786, close-ups from expression images with start+end
-  keyframes (s04_milo_trembles, s04_leo_softens x2, s06_milo_smiles).
-- Next: Scenes 1-3 keyframes once Leo's sleeping/lying stills are good.
-- Open for the owner: licence/terms of the image tool used for the v2 pack
-  (record in docs/licensing.md); whether to commit the v2 pack images to git.
+- Close-ups (start+end = owner's expression images): Milo trembles (take
+  4101) and Milo surprise->smile (6101) clean; Leo softens wandered mid-shot
+  (location sheet names a trunk) -> v2 with `background:` override.
+- Leo stills: `poses/leo_asleep.png` (eyes closed, from leo_closes_eyes_a) and
+  `poses/leo_sphinx.png`. Milo: `poses/milo_worried_last.png`,
+  `poses/milo_paws_together_last.png`, pack walking image for runs.
+- Scale in the clearing: Leo standing 0.52 of frame; asleep h 0.34, sphinx
+  0.36 (measured bbox ratios 0.653 / 0.698); Milo standing 0.17.
+- Rendering: jobs 22374836 / 22374837 (seeds A / B): s01_sleeps, s02_milo_runs,
+  s03_caught (start+end), s04_leo_softens_v2.
+- Next: Scene 5 (continue from s03 take), Scene 6 thanks + leaves, then the
+  trap scenes (7-11) at trap_site 3104, Scene 12.
 
 v1 (paused 2026-09-26, kept for reference):
 - Lion and Mouse picks: Leo 1003 (black eyes, owner decision), Milo 1001
