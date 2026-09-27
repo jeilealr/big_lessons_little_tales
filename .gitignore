@@ -1,15 +1,23 @@
-# generated intermediates and media
+# generated files (renders, keyframes, audio, LoRAs, task files): never in git
 work/
+# media is ignored by default ...
 *.mp4
 *.mov
 *.wav
 *.png
 *.jpg
+# ... except the references the repo exists to keep:
 !docs/img/*.jpg
 !docs/img/*.png
+# saved voice samples (voice/cast, voice/narrators)
+!voice/**/*.wav
+# owner-made character packs (identity authority)
+!character/characters/**/*.png
 # python
 __pycache__/
 *.pyc
-# never commit weights or binaries
+# never commit weights, keys or binaries
 *.safetensors
 *.pkl
+*.pt
+.env

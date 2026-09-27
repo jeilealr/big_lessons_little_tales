@@ -24,5 +24,5 @@ FILES = [
     ("Comfy-Org/Wan_2.2_ComfyUI_Repackaged", "split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_low_noise.safetensors"),
 ]
 for repo, name in FILES:
-    print("->", hf_hub_download(repo, name, revision=REVISIONS[repo], local_dir="/scratch/project_465002727/jelealro/models/wan22_musubi"), flush=True)
+    print("->", hf_hub_download(repo, name, revision=REVISIONS[repo], local_dir=__import__("os").environ.get("BLLT_MODELS", "/scratch/project_465002727/jelealro/models") + "/wan22_musubi"), flush=True)
 print("DOWNLOAD DONE")

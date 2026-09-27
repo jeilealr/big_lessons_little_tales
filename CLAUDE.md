@@ -3,17 +3,21 @@
 Read this first. It is the durable memory of the project: what it is for, how
 to run things on LUMI without repeating past failures, and where the knowledge
 lives. Keep it current: when you learn something that would have saved you
-time, add it here or to the doc it belongs in, and commit.
+time, add it here or to the doc it belongs in.
 
 ## What this repo is
 
-Felt-animal fables for children with a kind message, made with open video
-models (Wan 2.2) on the LUMI supercomputer, for a monetised YouTube channel
-(The Webtoons Corner). The owner adds narration, voices and music outside this
-repo with ElevenLabs; this repo makes the pictures and, at most, background
-ambience.
+**Big Lessons, Little Tales**: felt-animal fables for children, each with a
+kind message, for the monetised YouTube channel of the same name (Made for
+kids). Pictures: open video models (Wan 2.2) on the LUMI supercomputer.
+Narration and character voices: Gemini 3.8 Flash TTS (`voice/`). Music and
+sound effects: ElevenLabs (owner, paid plan). Final mix: DaVinci Resolve
+(owner).
 
-First story: **The Lion and the Mouse** (`stories/lion_and_mouse/story.yaml`).
+Repo: `/scratch/project_465002727/jelealro/big_lessons_little_tales`
+(renamed from `twc_video` on 2026-09-27; GitHub
+`jeilealr/big_lessons_little_tales`, private). Current story: **The Lion and
+the Mouse, v2** (`stories/lion_and_mouse_v2/`).
 
 ## The owner's standing instructions
 
@@ -21,79 +25,106 @@ First story: **The Lion and the Mouse** (`stories/lion_and_mouse/story.yaml`).
   shots). Iterate until the result is genuinely good; show evidence (contact
   sheets) for every judgement.
 - Everything used must be **licence-clean for a monetised channel**. Check a
-  model's licence before downloading it; record it in `docs/licensing.md`.
-  Rejected so far: HunyuanVideo (excludes the EU), MusicGen (CC-BY-NC), Stable
-  Audio Open (revenue cap), RMBG 1.4/2.0 (non-commercial).
-- **Do not push to GitHub.** Commit locally. Commit messages end with the
-  `Co-Authored-By:` trailer the session specifies.
-- Only run GPU jobs when you are sure they are ready: dry-run and smoke-test
-  first (see "Before a GPU job").
+  model's licence or service terms before using it; record it in
+  `docs/licensing.md`. Rejected so far: HunyuanVideo (excludes the EU),
+  MusicGen (CC-BY-NC), Stable Audio Open (revenue cap), RMBG 1.4/2.0
+  (non-commercial); ElevenLabs-voice clones (third-party voices).
+- **Git: the owner does all git** (add, commit, push). Agents do not run git
+  commands unless asked (owner, 2026-09-27). Leave the tree ready for
+  `git add . && git commit && git push`.
+- Only run GPU jobs when you are sure they are ready: dry-run first (see
+  "Before a GPU job").
 - Keep the docs as a guide a person can learn from: why, measured results,
   images.
+- Voices: one sample line per voice only; do not generate audio the owner has
+  not asked for.
 
 ## Where the knowledge is
 
 | Need | Read |
 |---|---|
-| Writing any prompt (shot, pose, design) | **`docs/prompting.md`**: every measured rule and a checklist |
+| Writing any prompt (shot, pose, design) | **`docs/prompting.md`**: every measured rule, a checklist, results log |
 | Every problem found and its fix; gaps and risks | **`docs/findings-and-risks.md`** |
 | The whole pipeline, story to shots | `docs/production-guide.md` |
-| Consistency experiments (the fox) | `docs/character-consistency.md` |
+| Voices (Gemini TTS) | **`voice/README.md`** |
 | LUMI jobs, times, solved gotchas | `docs/lumi.md` |
-| What was changed where (no third-party repo modified) | `docs/provenance.md` |
-| Licences | `docs/licensing.md` |
-| Story facts (characters, places, scenes, shots) | `stories/<slug>/story.yaml`: the only place they live |
+| Licences and service terms | `docs/licensing.md`, `docs/google_gemini_terms_question.md` |
+| Where code came from | `docs/provenance.md` |
+| Story facts (characters, places, voices, scenes, shots) | `stories/<slug>/story.yaml`: the only place they live |
+| The owner's story text | `stories/<slug>/story.txt`; narration per language `stories/<slug>/narration/<lang>.yaml` |
+| Character packs (identity authority) | `character/characters/<Name>/v2/`, prompts in `character/characters/*.md` |
 
-## Layout
+## Layout and paths
 
 ```
-stories/<slug>/story.yaml   style bible, frozen sheets, scenes, shots
-stories/<slug>/packs/       per-character pose lists
-production/                 design.py, keyframe.py, shot.py, scene_baseline.py
-character/character.py      pose/turn clips for a character (story or fox test)
-lora/                       build_dataset.py, train_character.sh, eval_character.sh, eval_grid.py
-twc/                        paths, media (ffmpeg), wan (model wrapper), post (RIFE/ESRGAN/grade)
-lumi/                       run_in_container.sh, env.sh, env_musubi.sh, run_tasks.sbatch, setup_env.sh
-work/                       generated files (git-ignored); every output has a .json sidecar
+stories/<slug>/     story.yaml (bible, voices, scenes, shots), story.txt, narration/, packs/
+production/         install_pack, design, keyframe, shot, animatic, scene_baseline
+character/          character.py (pose clips); characters/ (owner-made packs)
+voice/              Gemini TTS tools; cast/<role>/ and narrators/<name>/ (voice.yaml + samples)
+lora/               LoRA dataset/training/eval (musubi-tuner); datasets/ is empty (v1 removed)
+bllt/               package: paths, media (ffmpeg), wan (model wrapper), post (RIFE/ESRGAN/grade)
+lumi/               site.sh, env*.sh, run_in_container.sh, run_tasks.sbatch, task_exec.sh, setup_env.sh
+docs/               guides; docs/img/ evidence images
+work/               everything generated (git-ignored); every output has a .json sidecar
 ```
 
-Paths: the repo is `/scratch/project_465002727/jelealro/twc_video`; run
-commands from its parent (the "channel folder"), which also holds `Intro/`
-(stills, finished videos) and `audio/`.
+- **Paths never depend on the repo's folder name.** Python derives them from
+  `bllt/paths.py` (`REPO`, `WORK`, `story_work(slug)`, `story_audio(slug,
+  lang)`); shell scripts from `lumi/site.sh`, the only file with
+  machine-specific locations (project dir, venvs, HF cache, container, Slurm
+  account, log dir). Moving or renaming the repo needs no edit; another
+  machine or project needs `lumi/site.sh` plus the `#SBATCH` account/output
+  lines in `lumi/run_tasks.sbatch`.
+- **Everything runs from the repo root.** `run_in_container.sh` cd's there;
+  task-file lines are written relative to it (`python production/shot.py ...`);
+  submit `sbatch` from the repo root (the script checks).
+- Per-story generated files: `work/stories/<slug>/` = `design/` (plates,
+  props, installed canonicals), `characters/<name>/` (pack, pack16x9, poses,
+  shots), `keyframes/`, `shots/`, `audio/<lang>/sceneNN.wav` (narration, for
+  the animatic), `animatic*.mp4`. Task files: `work/tasks/` (old ones in
+  `work/tasks/archive/`, with pre-rename paths). LoRAs: `work/lora/`.
+- Outside the repo (in `$BLLT_PROJECT`, `/scratch/project_465002727/jelealro`):
+  venvs `ltx_env/venv` (generation; legacy name, do not move: venvs hold
+  absolute paths), `musubi_env/venv`, `gemini_env/venv`; `hf_cache/`,
+  `models/`, `ext/musubi-tuner`, `slurm_logs/`.
 
 ## Running things
 
 ```bash
-cd /scratch/project_465002727/jelealro
-W=twc_video/lumi/run_in_container.sh           # LUMI PyTorch ROCm container + venv
-$W python twc_video/production/shot.py --scene 1 --shot s01_establish --dry-run
-TWC_ENV=musubi $W python ...                   # the LoRA-training venv instead
+cd /scratch/project_465002727/jelealro/big_lessons_little_tales
+W=lumi/run_in_container.sh                     # LUMI PyTorch ROCm container + venv
+$W python production/shot.py --scene 1 --shot s01_sleeps_3q --fast --dry-run
+BLLT_ENV=musubi $W python ...                  # the LoRA-training venv instead
+source voice/gemini_env.sh && python voice/list_voices.py   # voices, no container
 ```
 
-- **Two venvs**, one container. `ltx_env/venv` (default): diffusers 0.39,
-  transformers 4.51, for generation, design, keyframes, post. `musubi_env/venv`
-  (`TWC_ENV=musubi`): musubi-tuner's pins (diffusers 0.32, transformers 4.57,
-  accelerate 1.6), for LoRA training and LoRA inference only.
-- **GPU work = a task file + `lumi/run_tasks.sbatch`**, one command per line, one
-  GCD each:
-  `sbatch --ntasks=4 --gpus-per-node=4 --mem=480G twc_video/lumi/run_tasks.sbatch tasks.txt`
-  Logs: `slurm_logs/twc_tasks_<job>_<task>.log`.
-- `dev-g`: starts in seconds, **max 2 jobs per user, 3 h each**. `small-g` and
-  `standard-g` queue for hours.
-- **Host RAM, not VRAM, limits Wan**: ~100-120 GB per Wan task (weights are
-  offloaded to CPU). Four tasks per 512 GB node.
-- The login node has no GPU; CPU work (Real-ESRGAN on one image, BiRefNet,
-  dataset building) runs there but slowly (Real-ESRGAN 1280x720: ~15 min).
+- **Two venvs in the container** + one plain venv. `ltx_env/venv` (default):
+  diffusers 0.39, transformers 4.51 (generation, design, keyframes, post).
+  `musubi_env/venv` (`BLLT_ENV=musubi`): musubi-tuner pins, LoRA only.
+  `gemini_env/venv`: google-genai, outside the container.
+- **GPU work = a task file + `lumi/run_tasks.sbatch`**, one command per line,
+  one GCD each, from the repo root:
+  `sbatch --ntasks=3 --gpus-per-node=3 --mem=330G lumi/run_tasks.sbatch work/tasks/<name>.txt`
+  Logs: `$BLLT_LOGS/bllt_tasks_<job>_<task>.log`.
+- **Fast mode (Wan2.2-Lightning, `--fast`) is the default way to iterate**:
+  ~9-16 min per clip instead of ~2 h 10, same look (docs/prompting.md "Fast
+  mode"). Several seeds of one shot in one task share one model load (first
+  seed ~17 min incl. load, then ~9 min each).
+- Compute: `dev-g` only in practice (**2 jobs per user, pending ones count;
+  3 h each**). `standard-g`/`small-g` start days later (sbatch --test-only,
+  2026-09-27). **Host RAM, not VRAM, limits Wan**: ~100-110 GB per task, four
+  tasks per 512 GB node. The login node has no GPU; keyframe composing
+  (BiRefNet, Real-ESRGAN crops) runs there but slowly (~3 min per keyframe,
+  15 min per upscaled crop, cached).
 
 ## Before a GPU job
 
 1. `--dry-run` every script that has one; read the assembled prompt.
-2. Check every input file exists (keyframes, canonicals, pose clips).
-3. New pipeline or tool? Run a short smoke test first (`lora/musubi_smoke.sh`
-   caught four separate failures in minutes, each of which would have wasted a
-   3-hour job).
-4. Will it fit in 3 h? Measured: Wan model load 10-21 min; 81-frame 720p shot
-   ~2 h (40 steps); 49-frame pose ~1 h; LoRA 1500 steps ~1 h 15 min.
+2. Check every input file exists (keyframes, canonicals, pose stills).
+3. Look at every composed keyframe (and end keyframe) before rendering.
+4. Will it fit in 3 h? Wan model load 10-25 min; fast clip ~9 min per seed;
+   40-step 81-frame shot ~2 h 10; 49-frame pose ~1 h (fast ~15 min); LoRA
+   1000 steps ~50 min.
 
 ## Mistakes already made (do not repeat)
 
@@ -115,8 +146,8 @@ TWC_ENV=musubi $W python ...                   # the LoRA-training venv instead
 - deepspeed/apex/aiter in the container break imports: the default venv shadows
   them with stubs, the musubi venv hides them with `sitecustomize.py`
   (`lumi/stubs/`).
-- ffmpeg `concat` after `trim` silently fell back to 25 fps and made every
-  hybrid intro judder. **Count repeated frames on deliverables**, not just
+- ffmpeg `concat` after `trim` silently fell back to 25 fps and made a whole
+  video judder (the old channel intro). **Count repeated frames on deliverables**, not just
   duration.
 - A reframing step once produced an image of empty floor, and nothing
   downstream noticed. Tools must **assert** their results (see
@@ -130,24 +161,20 @@ TWC_ENV=musubi $W python ...                   # the LoRA-training venv instead
 - `lumi/env.sh` and `env_musubi.sh` are sourced inside the container; a variable
   they `export` overrides the caller's. Use `${VAR:-default}`.
 
-## Tools added for the risks in findings-and-risks.md
-
-- `lumi/backup_assets.sh`: list of assets to keep + the rsync to run at home.
-- `production/animatic.py`: whole story at planned pacing (takes, keyframes,
-  cards, narration from `audio/<slug>/sceneNN.wav`).
-- Keyframe recipes (`compose:`) live in the shot; `shot.py` builds missing
-  keyframes on the GPU node.
-- Model revisions are pinned (`twc/wan.py REVISIONS`, `twc/post.py`).
-- `design.py` designs props too (`--entities net`).
+- `pkill -f "<pattern>"` in a command also kills that command's own shell when
+  the pattern appears in it (it cut a deletion short on 2026-09-27).
+- A `yaml` value with a colon inside (`language: en (xx, yy: zz)`) breaks the
+  file: quote such values.
+- A `google-genai` client created inline and discarded (`genai.Client().x()`)
+  closes itself before the call: keep it in a variable.
 
 ## Verification habits
 
-- Every clip: a contact sheet (`ffmpeg ... select='not(mod(n\,6))',tile=9x1`),
-  and look at it before judging.
+- Every clip: a contact sheet (frames 0/20/40/60/80, or every 8th) and look at
+  it before judging; full-size frames for faces and contact.
 - Cuts and flashes: mean luma per frame by frame index, not `-ss` seeking.
 - Deliverables: 0 repeated frames, exact duration, PCM 48 kHz audio in `.mov`.
-- LoRAs: `lora/eval_grid.py` with a no-LoRA row, same seeds for every
-  checkpoint, and prompts outside the training data.
+- Voice lines: transcribe (Whisper) and compare with the text.
 
 ## Character and scene design: reusable guidance
 
@@ -243,152 +270,104 @@ manual.
 ## Data lifetime
 
 The LUMI project's data is deleted around **30 March 2027**. `work/` (designs,
-packs, LoRAs, shots) is git-ignored and exists only on scratch: remind the owner
-to back it up (see `docs/findings-and-risks.md` B1).
+poses, keyframes, shots, LoRAs) is git-ignored and exists only on scratch:
+remind the owner to back it up (`bash lumi/backup_assets.sh`, then the printed
+rsync on their computer; see `docs/findings-and-risks.md` B1). Gemini voices
+expire 2027-09-27 (recreate from the prompts in `voice/`).
 
-## v2: the Lion and the Mouse with the owner's character pack (active)
+## The Lion and the Mouse v2 (active)
 
-**2026-09-27: the owner directed v2 production**: their retelling
-(`work/stories/lion_and_mouse_v2_review/story.txt`), with an owner-made
-character pack made following neolemon's consistency guide (character DNA +
-reference pack + keyframes + motion-only prompts). v1 stays as it was.
+**2026-09-27**: the owner's retelling (`stories/lion_and_mouse_v2/story.txt`,
+moral: "Kindness does not create a debt. It creates more kindness.") with an
+owner-made character pack made following neolemon's consistency guide.
 
 Authority, in order:
 1. Canonicals: `character/characters/{Leo,Milo}/v2/canonical/*.png` (identity
    authority; text follows the image, never the reverse).
 2. The rest of the owner's pack (views, expressions, actions) in the same folders.
 3. `stories/lion_and_mouse_v2/story.yaml`: sheets (DNA corrected to the
-   canonicals), locations, scale, 12 scenes with the owner's narration.
+   canonicals), locations, scale, voices, 12 scenes with the owner's narration.
 4. Review frames in `work/stories/lion_and_mouse_v2_review/`: **layout guides
-   only**, never character references (owner: 08, 09 rejected for drift; 07
-   uncertain).
+   only**, never character references.
 
-How v2 differs from v1 (and why):
-- **Canonicals are owner-made, not Wan designs**: `production/install_pack.py`
-  pads them to 16:9 (edge-repeat, blurred: a flat-colour pad left visible
-  seams) into `work/stories/lion_and_mouse_v2/design/<name>/canonical.png` and
-  copies the pack into `characters/<name>/pack/` (fixing `.png.png` names in the
-  copies only). Originals are never modified.
-- **Scale: Milo = 1/3 of Leo's standing height** (v1: 1/6, too small for his
-  gestures to register; Rule 2.12).
-- **Start + end keyframes** (`end_keyframe:` / `end_compose:` in a shot): Wan
-  animates between two composed stills. This is the guide's core method; the
-  owner's expression images (identical head-and-shoulders framing) are natural
-  start/end pairs for close-ups.
-- Missing story poses (Leo asleep, Leo lying awake, Milo paws together, Milo
-  worried) are Wan pose clips from the canonicals on the same studio backdrop
-  (`stories/lion_and_mouse_v2/packs/`). Owner-made versions would be preferred.
-- Everything learned in v1 still applies: fixed camera for locomotion, one
-  action per shot, close-up crops for small gestures, no LoRA in shots,
-  positive wording, two seeds.
+How it is made (and why):
+- **Owner-made canonicals**: `production/install_pack.py` pads them to 16:9
+  (edge-repeat, blurred) into `work/stories/<slug>/design/<name>/canonical.png`,
+  copies the pack to `characters/<name>/pack/` (`.png.png` fixed in copies
+  only) and 16:9 versions of views/actions to `pack16x9/`. Originals are
+  never modified.
+- **Scale: Milo = 1/3 of Leo's standing height** (Rule 2.12). In the clearing:
+  Leo standing 0.52 of frame; asleep 3/4 h 0.312; sphinx 3/4 0.361; Milo 0.17.
+- **Start + end keyframes** (`end_keyframe:` / `end_compose:`): Wan animates
+  between two composed stills. Close-ups: the owner's expression images as
+  start/end, `blur` background, `background:` text instead of the location
+  sheet (Rule 2.13). Continuations from a cropped frame also need an end
+  keyframe (Rule 2.14).
+- **Leo in 3/4 view** for sleeping and lying (owner request): pose clips from
+  `pack16x9/views__leo_view_3q_01.png`; eyes closed in a separate short shot
+  (a pose change and a face change in one shot fail).
+- Everything from v1 still holds: fixed camera for locomotion, one action per
+  shot, close-up crops for small gestures, no LoRA in shots, positive wording,
+  several seeds (fast mode makes 3 cheap).
 
-Owner's asset prompts, updated with these production lessons:
-`character/characters/v2_asset_review_prompt.md` (section "Lessons from video
-production") and `character/characters/character_pack_prompts_v2.md`.
+## Voices: Gemini 3.8 Flash TTS (owner decision 2026-09-27)
 
-## Fast mode, repository, compute
-
-- **Fast mode (Wan2.2-Lightning, `--fast`) is the default way to iterate**:
-  ~9-16 min per clip instead of ~2 h 10, same look (docs/prompting.md "Fast
-  mode"). Put several seeds of one shot in one task (one model load: the
-  first seed ~17 min incl. load, each further seed ~9 min).
-- The repo has a private GitHub remote (`origin`,
-  git@github.com:jeilealr/twc_video.git). The owner's SSH keys have
-  passphrases, so **the owner pushes**; agents commit locally.
-- Compute: `dev-g` only (2 jobs/user, 3 h). Checked 2026-09-27: `standard-g`
-  and `small-g` start days later (sbatch --test-only); CPU partitions
-  (`interactive` max 64 CPUs/user, `debug` 30 min) could not run Chatterbox in
-  18 min. A small CPU/voice step goes in as an extra task of a video job.
-  `lumi/run_cpu.sbatch` exists for CPU-only work.
-
-## Voices (owner decision 2026-09-27: Gemini 3.8 Flash TTS)
-
-- **Everything is in `voice/gemini/`** (read its README): `gemini_env.sh`,
+- **Everything is in `voice/`** (read its README): `gemini_env.sh`,
   `list_voices.py` (-> `voices_list.json`), `speak.py` (one line -> WAV +
   json), `save_voice.py` (record a designed voice: id, exact prompt, expiry,
-  Google's sample), `render_samples.py` + `sample_lines.yaml` (sample lines in
-  every language). Client venv: `/scratch/project_465002727/jelealro/gemini_env`
-  (google-genai 2.25.0, pyyaml). No GPU: runs from the login node.
+  Google's sample), `render_samples.py` + `sample_lines.yaml` (the sample
+  lines in every language). No GPU, no container.
 - **API key: only in `~/.config/gemini/env`** (owner-written, chmod 600,
   `GEMINI_API_KEY=...`). Never print, copy, log or commit it.
-- **Voices** (all designed "prompted" voices, expire 2027-09-27; recreate from
+- **Voices** (designed "prompted" voices, expire 2027-09-27; recreate from
   the prompt saved in each `voice.yaml` before then):
 
   | Role | Voice | Folder |
   |---|---|---|
-  | **Lion and Mouse v2 narrator** | Moonlight Storyteller 1, `voice_v5bpq98uj7qh` | `narrators/moonlight_storyteller_1/` |
-  | Leo | The Noble Lion 1, `voice_zdbgqrcerxqu` | `cast/leo/` |
-  | Milo | The Brave Little Mouse 1, `voice_vf2w20rcys8a` | `cast/milo/` |
-  | alternative narrators | Golden Hour Storyteller 3 `voice_g00mo8cbdefq` (first pick, replaced), The Fireside Grandfather 2 `voice_4rdl7hydi35v`, The Cheery Tale Keeper 2 `voice_8tnxrhfqk3ur`, Bright Trail Narrator 2 `voice_tcrjw3ney7q8` | `narrators/<name>/` |
+  | **Lion and Mouse v2 narrator** | Moonlight Storyteller 1, `voice_v5bpq98uj7qh` | `voice/narrators/moonlight_storyteller_1/` |
+  | Leo | The Noble Lion 1, `voice_zdbgqrcerxqu` | `voice/cast/leo/` |
+  | Milo | The Brave Little Mouse 1, `voice_vf2w20rcys8a` | `voice/cast/milo/` |
+  | alternative narrators | Golden Hour Storyteller 3 `voice_g00mo8cbdefq` (first pick), The Fireside Grandfather 2 `voice_4rdl7hydi35v`, The Cheery Tale Keeper 2 `voice_8tnxrhfqk3ur`, Bright Trail Narrator 2 `voice_tcrjw3ney7q8` | `voice/narrators/<name>/` |
 
-  The story maps them in `stories/lion_and_mouse_v2/story.yaml` (`voices:`).
-- **Samples**: every voice folder has `google_sample.wav` (Google's stored
-  sample) and ONE sample line in en/es/fr/de/ru/uk: narrators read Scene 1,
-  Leo "You frightened me... Go on your way", Milo "Thank you...". English
-  files have no suffix, other languages `_es _fr _de _ru _uk`. The owner asked
-  for one line per character only: do not generate extra lines. Translations
-  in `sample_lines.yaml` are assistant drafts: native check before full scripts.
-  Quality: Gemini audio has a ~-70 dB noise floor (Chatterbox references
-  -30/-40 dB); English and Spanish samples verified word-for-word by Whisper.
+  The story maps them in `stories/lion_and_mouse_v2/story.yaml` (`voices:`,
+  paths relative to `voice/`).
+- **Samples**: every voice folder has `google_sample.wav` and ONE sample line
+  in en/es/fr/de/ru/uk (narrators: Scene 1; Leo: "You frightened me... Go on
+  your way"; Milo: "Thank you..."). English files have no suffix, others
+  `_es _fr _de _ru _uk`. Translations in `sample_lines.yaml` are assistant
+  drafts: native check before the full scripts. Gemini audio: ~-70 dB noise
+  floor; en and es verified word for word (Whisper).
 - **Terms**: outputs owned by the user ("Google won't claim ownership"); price
   ~$0.0135/min of audio in 2026, ~$0.027 from 2027 (25 audio tokens/s; free
   tier rate-limited); SynthID watermark; EEA gets paid-tier data terms. Open:
   the Age Requirements ("API Clients" directed at under-18s) vs a Made-for-kids
-  channel: the owner's question to Google is drafted in
-  `docs/google_gemini_terms_question.md` (no public email: AI Studio feedback,
-  developer forum, or Cloud support). Do not clone Gemini voices into another
-  model (terms forbid replicating components of the Services).
-- Chatterbox/Parler tools in `voice/` (voices.py, narrate.py, `TWC_ENV=tts`
-  venv) are **paused** fallbacks. Findings: Parler produced a hum instead of
-  speech (sdpa attention suspected); Chatterbox clones carried noise and
-  drifted between lines; `narrate.py` + `stories/<slug>/narration/<lang>.yaml`
-  (speaker-split script) + `production/animatic.py --lang` remain the path
-  for full narration once it is switched to Gemini.
-- Owner plan: narration + character voices from Gemini; music/SFX from
-  ElevenLabs (paid plan, commercial); final mix in DaVinci; narration first,
-  video fitted to it; languages en, then es, fr, de, ru, uk.
+  channel; the owner's question to Google is drafted in
+  `docs/google_gemini_terms_question.md`. Never clone Gemini voices into
+  another model (terms forbid replicating components of the Services).
+- Chatterbox/Parler were tried and **removed** 2026-09-27 (Parler produced a
+  hum; Chatterbox clones were noisy and drifted between lines); they are in
+  git history before that date.
+- Owner plan: narration first, video fitted to it; languages en, then es, fr,
+  de, ru, uk. The full narration renderer is still to write: read
+  `stories/<slug>/narration/<lang>.yaml`, speak each line with the story's
+  voices (`voice/speak.py`), join per scene into
+  `work/stories/<slug>/audio/<lang>/sceneNN.wav`, then
+  `production/animatic.py --lang <lang>` times the pictures to it.
 
 ## Current state (update when it changes)
 
-v2 (2026-09-27), all shots in `work/stories/lion_and_mouse_v2/shots/`, takes
-in story.yaml (`take:`):
-- Cast and places: owner-made Leo/Milo pack installed (`install_pack.py`);
-  plates clearing 3003, trap_site 3104, forest_run 3204; Leo in 3/4 view for
-  sleeping/lying (owner request): `poses/leo_3q_asleep.png`,
-  `poses/leo_3q_sphinx.png` (eyes closed in a separate fast shot).
+Lion and Mouse v2 (2026-09-27); shots in `work/stories/lion_and_mouse_v2/shots/`,
+takes in story.yaml (`take:`):
+- Places: plates clearing 3003, trap_site 3104, forest_run 3204; net = prop.
 - Takes: s01 3/4 1111, s02 3/4 2111, s03 3/4 3112 (front-view versions 1101,
   2101, 3101 kept), s04 Milo trembles 4101, s04 Leo softens v2 4203,
   s06 Milo smiles 6101, s06 thanks 6201, s07 walks 7101, s07 net falls 7202,
   s07 tugs 7303, s08 hears 8101, s08 runs v2 8204.
-- Rendered, not yet reviewed (fast, 3 seeds each): s09_milo_arrives,
-  s09_milo_can_help, s10_milo_gnaws, s10_leo_steps_free, s11_leo_amazed,
-  s11_milo_smiles, s12_friends. Running: job 22378025, s05_leo_nods_v2 and
-  s06_milo_leaves_v2 (end keyframes pin the framing, Rule 2.14).
-- New rules today: 2.13 (close-ups: start+end from the expression set,
-  `background:` instead of the location sheet), 2.14 (continuations from a
-  crop need an end keyframe); split pose and face changes into two shots; a
-  walking start still gives a walk (use a standing side view for runs).
-- Tools added today: `production/install_pack.py`, `end_keyframe:` /
-  `end_compose:` / `background:` in shots, keyframe `blur`, `--fast`
-  (shot.py, character.py), `continue_from`, pose packs from `pack16x9/`.
-- Next: review Scenes 9-12, pick takes, fix failures; Scene 5/6 v2; full
-  animatic; then narration with the Gemini voices once the owner asks.
-
-v1 (paused 2026-09-26, kept for reference):
-- Lion and Mouse picks: Leo 1003 (black eyes, owner decision), Milo 1001
-  (reframed), butterfly 1004, clearing 1002, trap site 1004, berry patch 1003,
-  net 1001.
-- Takes (story.yaml `take:`): s01 5103, s02 v3 5204, s03 5302 (owner-approved),
-  s04 pleads v2 4103, s04 smiles 4202, s05 leaves 5501, s06 walks 6101,
-  s06 net 6202, s06 calls 6302, s07 hears 7101, s07 runs 7201.
-- Last job left running at the pause: 22370370 (Scene 5: Milo waves close-up,
-  Leo rests), results to review in `work/stories/lion_and_mouse/shots/`.
-- Written but never rendered: s08_milo_arrives_v2 and s08_milo_nibbles
-  (keyframes scene08_arrive_close.png / scene08_nibble.png were being composed
-  on the login node at the pause; check them before rendering).
-- Scene 9 not written (the brief is truncated).
-- LoRAs: Leo/Milo step 500; not used in shots (measured: location drift).
-- Animatic: `work/stories/lion_and_mouse/animatic.mp4`.
-- What works and what does not: docs/prompting.md (rules + results log) and
-  docs/findings-and-risks.md. A new cast goes through production-guide.md
-  section 9, step by step.
+- Rendered, NOT yet reviewed (fast, 3 seeds each): s05_leo_nods_v2,
+  s06_milo_leaves_v2, s09_milo_arrives, s09_milo_can_help, s10_milo_gnaws,
+  s10_leo_steps_free, s11_leo_amazed, s11_milo_smiles, s12_friends.
+- Next: review those, pick takes, re-render failures; full animatic; then
+  narration with the Gemini voices when the owner asks.
+- Removed 2026-09-27 (owner): v1 story and its generated files, fox tests,
+  The Webtoons Corner intro/LTX/felt/music code, Chatterbox. Kept: LoRA
+  outputs (`work/lora/`, 86 GB) and old intro renders (`work/intro_v4/`).

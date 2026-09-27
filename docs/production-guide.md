@@ -1,10 +1,12 @@
 # Producing a felt-animal fable: the complete guide
 
 How to go from a story idea to a finished, consistent, monetisable children's
-video with this repo. Worked example throughout: **The Lion and the Mouse**
-(`stories/lion_and_mouse/story.yaml`). Narration, voices and sound are done
-outside this repo (ElevenLabs); here we make the pictures, plus optional
-background ambience.
+video with this repo. Worked example throughout: **The Lion and the Mouse**.
+The measured examples below come from its first version (v1, whose files
+were removed on 2026-09-27); the current production is v2
+(`stories/lion_and_mouse_v2/story.yaml`, owner-made cast, see CLAUDE.md).
+Narration and character voices: Gemini TTS (`voice/`); music and sound
+effects: ElevenLabs; final mix: DaVinci Resolve.
 
 ## 0. What "professional" means here
 
@@ -62,7 +64,7 @@ story.yaml ──► design ──► characters ──► locations ──► s
 | Character pack | `character/character.py` (turns, angles, dataset) | a pose/angle library, and the LoRA dataset |
 | LoRA | `lora/` (musubi-tuner) | a small model per main character |
 | Shots | Wan 2.2 image-to-video from keyframes | 5 s clips, one action each |
-| Post | `twc/post.py` | 1080p30, learned interpolation and upscaling, grade |
+| Post | `bllt/post.py` | 1080p30, learned interpolation and upscaling, grade |
 | Edit | your editor + ElevenLabs | the finished episode |
 
 ## 2. The story bible (`story.yaml`)
@@ -89,11 +91,11 @@ Before anything moves, every character and location gets **one canonical
 still**. Everything later starts from it.
 
 ```bash
-W=twc_video/lumi/run_in_container.sh
-$W python twc_video/production/design.py prompt                     # see the prompts
+W=lumi/run_in_container.sh   # from the repo root
+$W python production/design.py prompt                     # see the prompts
 # GPU: design.py candidates -n 6                                    # ~2.5 min per still
-$W python twc_video/production/design.py pick --entities leo --seed 1003
-$W python twc_video/production/design.py reframe --entities milo    # small characters
+$W python production/design.py pick --entities leo --seed 1003
+$W python production/design.py reframe --entities milo    # small characters
 ```
 
 **Same model for design and animation.** The candidates are drawn by Wan 2.2
@@ -163,7 +165,7 @@ composed: the character cut out of a pose still and placed into the location
 plate (`production/keyframe.py`).
 
 ```bash
-$W python twc_video/production/keyframe.py --plate PLATE.png \
+$W python production/keyframe.py --plate PLATE.png \
     --char STILL.png:x=0.5,y=0.80,h=0.42 --out KEY.png   # x,y = where the feet go
 ```
 
@@ -277,12 +279,12 @@ character, so a prompt containing its trigger word (`twcfox`) draws it in any
 place and pose, with no anchor image.
 
 ```bash
-$W python twc_video/lora/build_dataset.py fox          # captioned stills
+$W python lora/build_dataset.py fox          # captioned stills
 # GPU, two tasks in parallel (one per Wan expert, ~1 h 10 min for 1500 steps):
-#   bash twc_video/lora/train_character.sh fox low 1500
-#   bash twc_video/lora/train_character.sh fox high 1500
-# GPU: bash twc_video/lora/eval_character.sh fox base 500 1000 final
-$W python twc_video/lora/eval_grid.py fox base 500 1000 final
+#   bash lora/train_character.sh fox low 1500
+#   bash lora/train_character.sh fox high 1500
+# GPU: bash lora/eval_character.sh fox base 500 1000 final
+$W python lora/eval_grid.py fox base 500 1000 final
 ```
 
 **Dataset.** 20-40 stills from the character pack (section 5): canonical,
@@ -366,7 +368,7 @@ the I2V model), so the same files load into it. A shot opts in with
 `lora: true`; each character in it with a chosen checkpoint (`lora: {name,
 step}` under the character) gets its adapter, and its trigger word enters the
 prompt the way the captions had it ("Leo the lion is twcleo, a large ...").
-`twc/wan.py` asserts the adapters are active on both experts.
+`bllt/wan.py` asserts the adapters are active on both experts.
 
 **Measured: in keyframe shots the LoRA does more harm than good.** Same shots,
 same seeds, with and without (rows: Scene 3 plain, Scene 3 + LoRAs, Scene 2
@@ -410,9 +412,9 @@ A shot is one entry under its scene in `story.yaml`: a keyframe (or a
 ```
 
 ```bash
-$W python twc_video/production/shot.py --scene 3 --shot s03_leo_wakes --dry-run   # read the prompt
+$W python production/shot.py --scene 3 --shot s03_leo_wakes --dry-run   # read the prompt
 # GPU (one line per seed in a task file, submitted with lumi/run_tasks.sbatch):
-#   python twc_video/production/shot.py --scene 3 --shot s03_leo_wakes --seed 5301
+#   python production/shot.py --scene 3 --shot s03_leo_wakes --seed 5301
 ```
 
 Output: `work/stories/<slug>/shots/<shot>_s<seed>.mp4` plus a `.json` with the
@@ -448,7 +450,7 @@ rendering: chosen takes where they exist, keyframe stills where not, a title
 card for scenes without shots.
 
 ```bash
-$W python twc_video/production/animatic.py        # seconds, no GPU
+$W python production/animatic.py        # seconds, no GPU
 # -> work/stories/<slug>/animatic.mp4 + a timing report
 ```
 
@@ -460,7 +462,7 @@ fit the narration, not the other way round.
 
 The final edit (narration, music, sound, titles) happens in your editor,
 using the chosen takes from `shots/` (post-processed to 1080p30 with
-`twc/post.py`: RIFE interpolation, Real-ESRGAN upscaling, grade).
+`bllt/post.py`: RIFE interpolation, Real-ESRGAN upscaling, grade).
 
 ## 9. A new story, step by step
 

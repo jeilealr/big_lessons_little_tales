@@ -28,7 +28,7 @@ import numpy as np
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from twc import media, paths  # noqa: E402
+from bllt import media, paths  # noqa: E402
 
 
 def subject_box(img: np.ndarray, how: dict) -> tuple[int, int, int, int] | None:
@@ -98,7 +98,7 @@ def main() -> None:
                 skipped.append(src["image"])
         else:
             clip = Path(src["clip"]) if src["clip"].startswith("/") else (
-                paths.CHANNEL / src["clip"] if src["clip"].startswith("Intro/") else base / src["clip"])
+                base / src["clip"])
             if not clip.is_file():
                 skipped.append(str(clip)); frames = []
             else:

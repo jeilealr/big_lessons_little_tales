@@ -172,7 +172,7 @@ def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None 
         _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
         import torch
 
-        from twc import post
+        from bllt import post
 
         H, W = frame.shape[:2]
         fx, fy, fw = map(float, crop[:3])

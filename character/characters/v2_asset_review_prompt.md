@@ -4,7 +4,7 @@ Use this prompt when continuing the Leo and Milo v2 design work. The goal is to 
 
 ## Repository and authority
 
-Repository: `/scratch/project_465002727/jelealro/twc_video`
+Repository: `/scratch/project_465002727/jelealro/big_lessons_little_tales`
 
 Inspect these folders completely:
 
@@ -16,9 +16,9 @@ Read each folder's `dna.yaml`, every `README.txt`, and all images in its canonic
 - `character/characters/character_pack_prompts_v2.md`
 - `CLAUDE.md`
 - `docs/character-consistency.md`
-- `stories/lion_and_mouse/story.yaml`
+- `stories/lion_and_mouse_v2/story.yaml`
 - `work/stories/lion_and_mouse_v2_review/README.txt` (if present)
-- Existing location sheets and plates under `work/stories/lion_and_mouse/design/`
+- Existing location sheets and plates under `work/stories/lion_and_mouse_v2/design/`
 
 The v2 canonical neutral images are the highest-priority character identity anchors:
 

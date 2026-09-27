@@ -19,7 +19,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from twc import paths, post, wan  # noqa: E402
+from bllt import paths, post, wan  # noqa: E402
 
 RENDER = dict(width=1280, height=720, steps=40, guidance=3.5, guidance_2=3.5)
 
@@ -30,7 +30,7 @@ def main() -> None:
 
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--story", default="lion_and_mouse")
+    ap.add_argument("--story", default="lion_and_mouse_v2")
     ap.add_argument("--scene", type=int, required=True)
     ap.add_argument("--shot", required=True)
     ap.add_argument("--seed", type=int, help="default: every seed listed for the shot")

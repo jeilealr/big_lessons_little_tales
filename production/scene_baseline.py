@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from twc import paths, wan  # noqa: E402
+from bllt import paths, wan  # noqa: E402
 
 RENDER = dict(width=1280, height=720, frames=49, steps=40, guidance=4.0, guidance_2=3.0)
 
@@ -35,7 +35,7 @@ def main() -> None:
     import yaml
 
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--story", default="lion_and_mouse")
+    ap.add_argument("--story", default="lion_and_mouse_v2")
     ap.add_argument("--scene", type=int, required=True)
     ap.add_argument("--seed", type=int, default=2026)
     ap.add_argument("--frames", type=int, default=RENDER["frames"],

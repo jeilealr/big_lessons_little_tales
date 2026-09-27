@@ -32,7 +32,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from twc import media, paths, wan  # noqa: E402
+from bllt import media, paths, wan  # noqa: E402
 
 
 # The design backdrop. Poses are shot on it so every pose cuts out cleanly.
@@ -42,7 +42,7 @@ DEFAULT_RENDER = dict(width=1280, height=720, frames=81, steps=40, guidance=3.5,
 
 def load_config(path: Path | None = None, story: str | None = None,
                 character: str | None = None) -> dict:
-    """A standalone character file (the fox), or a character from a story.
+    """A standalone character file (--config), or a character from a story.
 
     Story characters are never re-described here: the sheet, style and
     negative come from stories/<slug>/story.yaml, and only the poses to shoot
@@ -52,7 +52,7 @@ def load_config(path: Path | None = None, story: str | None = None,
 
     if story is None:
         cfg = yaml.safe_load(path.read_text())
-        cfg.setdefault("subject", "The fox")
+        cfg.setdefault("subject", cfg["name"].capitalize())
         cfg["_workdir"] = paths.WORK / "characters" / cfg["name"]
         return cfg
     root = paths.REPO / "stories" / story
@@ -62,7 +62,7 @@ def load_config(path: Path | None = None, story: str | None = None,
     pack = yaml.safe_load(pack_file.read_text()) if pack_file.is_file() else {}
     return dict(
         name=character, subject=c["name"][0].upper() + c["name"][1:],
-        trigger=c.get("trigger", f"twc{character}"), character=c["sheet"],
+        trigger=c.get("trigger", f"bllt{character}"), character=c["sheet"],
         set=pack.get("set", PLAIN_SET), style=s["style"], negative=s["negative"],
         render={**DEFAULT_RENDER, **pack.get("render", {})},
         canonical={"design": str(paths.WORK / "stories" / story / "design" / character)},
@@ -97,7 +97,7 @@ def stage_canonical(cfg: dict) -> None:
         sidecar(out, stage="canonical", source=str(src), how="picked in production/design.py")
         print(f"canonical: {src} -> {out}")
         return
-    clip = paths.CHANNEL / c["clip"]
+    clip = paths.REPO / c["clip"]
     frames = media.read_frames(clip)
     if c.get("frame", "auto") == "auto":
         lo, hi = c.get("window", [0, len(frames) - 1])
@@ -245,13 +245,13 @@ def stage_assemble(cfg: dict, clips: list[str], out: Path) -> None:
     import numpy as np
     import torch
 
-    from twc import post as vp
+    from bllt import post as vp
 
     wd = cfg["_workdir"]
     paths_in = []
     for c in clips:
         p = wd / "shots" / f"{c}.mp4"
-        paths_in.append(p if p.is_file() else paths.CHANNEL / c)
+        paths_in.append(p if p.is_file() else paths.REPO / c)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     parts, cuts, t = [], [], 0.0
     for p in paths_in:
@@ -284,19 +284,21 @@ def main() -> None:
     ap.add_argument("stage", choices=["canonical", "orbit", "angles", "shots", "dataset",
                                       "assemble", "prompt"])
     ap.add_argument("--config", type=Path,
-                    default=Path(__file__).resolve().parent / "characters" / "fox.yaml")
-    ap.add_argument("--story", help="use a story character: --story lion_and_mouse --character leo")
+                    help="a standalone character file (instead of --story/--character)")
+    ap.add_argument("--story", help="use a story character: --story lion_and_mouse_v2 --character leo")
     ap.add_argument("--character")
     ap.add_argument("--only", nargs="+", help="shots: render only these shot names")
     ap.add_argument("--every", type=int, default=8, help="dataset: keep every Nth shot frame")
     ap.add_argument("--clips", nargs="+",
-                    help="assemble: shot names, or clip paths relative to the channel folder")
+                    help="assemble: shot names, or clip paths relative to the repo")
     ap.add_argument("-o", "--output", type=Path, help="assemble: output video")
     ap.add_argument("--fast", action="store_true",
                     help="shots: Wan2.2-Lightning 4-step LoRA; output gets a _fast suffix")
     ap.add_argument("--redo", action="store_true",
                     help="orbit/shots: re-render even if the output already exists")
     args = ap.parse_args()
+    if not args.config and not (args.story and args.character):
+        ap.error("give --story and --character (or --config)")
     cfg = load_config(args.config, args.story, args.character)
 
     if args.stage == "prompt":
@@ -309,7 +311,7 @@ def main() -> None:
      "angles": lambda: stage_angles(cfg), "shots": lambda: stage_shots(cfg, args.only, args.redo, args.fast),
      "dataset": lambda: stage_dataset(cfg, args.every),
      "assemble": lambda: stage_assemble(cfg, args.clips,
-                                        args.output or paths.OUTPUT / f"{cfg['name']}_sequence.mov"),
+                                        args.output or paths.WORK / "exports" / f"{cfg['name']}_sequence.mov"),
      }[args.stage]()
 
 

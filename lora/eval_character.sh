@@ -6,7 +6,7 @@
 set -euo pipefail
 source "$(dirname "$0")/musubi_env.sh"
 NAME=$1; shift
-D=$ROOT/twc_video/work/lora/$NAME
+D=$ROOT/work/lora/$NAME
 mkdir -p $D/eval
 # Wait for training to finish (both final LoRAs) so this can be queued together
 # with the training job and start the moment the weights exist.
@@ -17,7 +17,7 @@ python - "$NAME" <<'PY'
 import sys, yaml
 from pathlib import Path
 name = sys.argv[1]
-root = Path("/scratch/project_465002727/jelealro/twc_video")
+root = Path(__import__("os").environ["BLLT_REPO"])
 cfg = yaml.safe_load((root / "lora" / "datasets" / f"{name}.yaml").read_text())
 e = cfg["eval"]
 out = root / "work" / "lora" / name / "eval"

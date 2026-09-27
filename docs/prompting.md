@@ -243,7 +243,7 @@ before its first render.
 ### Fast mode (Wan2.2-Lightning), measured 2026-09-27
 
 `shot.py --fast` / `character.py shots --fast`: the lightx2v 4-step
-distillation LoRAs (Apache-2.0, revision pinned in `twc/wan.py LIGHTNING`),
+distillation LoRAs (Apache-2.0, revision pinned in `bllt/wan.py LIGHTNING`),
 4 Euler steps, shift 5, CFG 1. Same keyframes and seeds as two approved takes:
 
 ![40 steps vs Lightning](img/lightning_ab.jpg)
@@ -399,4 +399,11 @@ Update this when a rule is confirmed, refuted or refined.
   one seed in three woke Leo at the end (1113, 2113); Scene 3 3112 wakes with
   a paw forward. Scene 7 tug: 7303 calm; 7301/7302 opened the mouth. Scenes
   5/6 continuation shots drifted (Rule 2.14).
+- 2026-09-27 (v2, fast mode, end keyframes): Rule 2.14 confirmed. With an end
+  keyframe, Scene 5 (nod, 5106) and Scene 6 (Milo leaves, 6305) kept the
+  framing in all seeds; without one, the Scene 10 gnaw close-up drifted back
+  into a new forest in all three seeds (v2 re-rendered with the end pinned).
+  Leo stepping free of the net (start: trapped; end: standing free, composed)
+  worked in all seeds: the net slid away on its own. Close-ups from the
+  expression set (Scenes 9, 11) clean in every seed.
 

@@ -7,8 +7,9 @@ For every scene in story.yaml, in order, each shot shows
   * else its keyframe still, if composed,
   * else (a scene without shots yet) a card with the scene's title and text.
 
-Timing comes from the narration when it exists: put the ElevenLabs file for
-scene N at `<channel>/audio/<story>/sceneNN.wav` (or .mp3/.m4a). The scene then
+Timing comes from the narration when it exists: put the narration for
+scene N (Gemini voices, voice/) at `work/stories/<story>/audio/<lang>/sceneNN.wav`
+(or .mp3/.m4a; without --lang: `work/stories/<story>/audio/sceneNN.wav`). The scene then
 lasts the narration plus a short breath, split evenly across its shots, and the
 narration is the soundtrack. Without narration: a clip keeps its own length, a
 still 5 s, a card 4 s.
@@ -17,7 +18,7 @@ The report at the end is the point: which scenes need more shots than they
 have (the narration outlasts the clips), and where a render is held on its last
 frame.
 
-  python production/animatic.py [--story lion_and_mouse] [--size 960x540]
+  python production/animatic.py [--story lion_and_mouse_v2] [--size 960x540]
 """
 
 from __future__ import annotations
@@ -32,7 +33,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from twc import paths, post  # noqa: E402
+from bllt import paths, post  # noqa: E402
 
 FPS = 24
 SR = 48000
@@ -41,7 +42,7 @@ DEFAULT = dict(clip=None, still=5.0, card=4.0)
 
 
 def narration(story: str, n: int, lang: str | None = None) -> Path | None:
-    base = paths.AUDIO / story / lang if lang else paths.AUDIO / story
+    base = paths.story_audio(story, lang)
     for ext in ("wav", "mp3", "m4a"):
         p = base / f"scene{n:02d}.{ext}"
         if p.is_file():
@@ -92,9 +93,9 @@ def main() -> None:
 
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--story", default="lion_and_mouse")
+    ap.add_argument("--story", default="lion_and_mouse_v2")
     ap.add_argument("--size", default="960x540")
-    ap.add_argument("--lang", help="narration from audio/<story>/<lang>/ (voice/narrate.py)")
+    ap.add_argument("--lang", help="narration from work/stories/<story>/audio/<lang>/")
     args = ap.parse_args()
     size = tuple(int(v) for v in args.size.split("x"))
 

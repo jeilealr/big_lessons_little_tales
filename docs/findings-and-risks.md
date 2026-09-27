@@ -63,7 +63,7 @@ Checked 2026-09-26.
 | Finding | Solution |
 |---|---|
 | deepspeed/apex/aiter in the container break model imports | stubs (default venv), `sitecustomize.py` hider (musubi venv) |
-| musubi-tuner and the generation code need incompatible library versions | two venvs in one container (`TWC_ENV=musubi`) |
+| musubi-tuner and the generation code need incompatible library versions | two venvs in one container (`BLLT_ENV=musubi`) |
 | training both Wan experts in one run: 11-13 s/step (28 GB swapped per expert change) | one LoRA per expert, trained in parallel: 2.6-3.5 s/step |
 | accelerate aborted in multi-task jobs ("MASTER_ADDR") | unset Cray PMI variables (`lora/musubi_env.sh`) |
 | work launched with `srun --overlap` died when the host job ended | submit every workload as its own job's task |
@@ -73,7 +73,7 @@ Checked 2026-09-26.
 | training could not survive a job ending | `--save_state`, automatic `--resume` |
 | MIOpen cache in /tmp unwritable on some nodes | per-job/task cache on scratch |
 | a dependent job (`--dependency=afterok`) was refused with `AssocMaxSubmitJobLimit` | dev-g's limit of 2 counts pending jobs too; submit the follow-up from a waiter once the first job has finished |
-| `THE_WEBTOONS_CORNER_ROOT` set by the caller was ignored | `lumi/env.sh` overwrote it; now it only sets a default |
+| an environment variable set by the caller was ignored | `lumi/env.sh` overwrote it; env files only set defaults (`${VAR:-...}`) |
 | login node refused to memory-map a 28 GB file | streaming fp16 -> bf16 converter |
 
 ---
@@ -90,7 +90,7 @@ assets are not.
 *Recommendation:* back up the irreplaceable part regularly to your laptop:
 canonical stills, `packs` clips, trained LoRAs, finished shots. Model weights
 (~420 GB) can be re-downloaded and need no backup.
-**Done:** `bash twc_video/lumi/backup_assets.sh` lists the set (632 files,
+**Done:** `bash lumi/backup_assets.sh` lists the set (632 files,
 9.4 GB on 2026-09-26: everything in `work/` except LoRA training states,
 intermediate checkpoints and latent caches, plus the final and step-500 LoRAs
 and the channel videos) and prints the `rsync` to run on your computer. Re-run it
@@ -108,7 +108,7 @@ scene, measure each line's length, then plan shots to fit. Before rendering
 any video, cut an **animatic**: the keyframe stills (cheap, minutes on a CPU)
 laid on the narration with the planned durations. It shows pacing problems for
 free.
-**Done:** `python twc_video/production/animatic.py` cuts
+**Done:** `python production/animatic.py` cuts
 `work/stories/<slug>/animatic.mp4` in seconds: chosen takes (`take:` on a
 shot), keyframe stills where nothing is rendered yet, and a text card for
 scenes without shots. Put narration at `audio/<slug>/sceneNN.wav` and each
@@ -187,7 +187,7 @@ a different image. Revisions in use on 2026-09-26:
 | Comfy-Org/Real-ESRGAN_repackaged | `5fd49b7b278836f48af63ecd314d0f98ab336105` |
 | ZhengPeng7/BiRefNet | `e2bf8e4460fc8fa32bba5ea4d94b3233d367b0e4` (pinned in code) |
 
-**Done:** `twc/wan.py` (`REVISIONS`), `twc/post.py`, the download scripts and
+**Done:** `bllt/wan.py` (`REVISIONS`), `bllt/post.py`, the download scripts and
 BiRefNet load these commits; sidecars record `repo@commit`. Verified that all
 of them resolve offline from the local cache. Changing a revision is a
 deliberate edit: re-render one known shot and compare before relying on it.

@@ -26,7 +26,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from twc import paths, wan  # noqa: E402
+from bllt import paths, wan  # noqa: E402
 
 RENDER = dict(width=1280, height=720, steps=40, guidance=4.0, guidance_2=3.0)
 
@@ -183,7 +183,7 @@ def reframe(story: dict, entity: str, fill: float = 0.62) -> None:
 
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from keyframe import subject_bbox
-    from twc import post
+    from bllt import post
 
     d = story["_design"] / entity
     info = json.loads((d / "canonical.json").read_text())
@@ -222,7 +222,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("stage", choices=["candidates", "sheet", "pick", "reframe", "prompt"])
-    ap.add_argument("--story", default="lion_and_mouse")
+    ap.add_argument("--story", default="lion_and_mouse_v2")
     ap.add_argument("--entities", nargs="+",
                     help="characters, locations and/or props (default: characters and locations)")
     ap.add_argument("-n", type=int, default=6, help="candidates per entity")

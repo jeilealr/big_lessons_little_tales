@@ -1,5 +1,6 @@
 #!/bin/bash
-# Picks line $SLURM_PROCID of the task file and runs it in the container.
+# Picks line $SLURM_PROCID of the task file and runs it in the container,
+# from the repo root.
 LINE=$(grep -v -E '^\s*(#|$)' "$1" | sed -n "$((SLURM_PROCID + 1))p")
 echo "[task $SLURM_PROCID] GPU=$ROCR_VISIBLE_DEVICES host=$(hostname) $(date)"
 echo "[task $SLURM_PROCID] $LINE"

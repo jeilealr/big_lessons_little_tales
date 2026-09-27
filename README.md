@@ -1,68 +1,77 @@
-# twc_video
+# Big Lessons, Little Tales
 
-Felt-animal fables for children, made with open video models on LUMI.
+Felt-animal fables for children, each with a kind message, made with open
+video models on the LUMI supercomputer, for the YouTube channel
+*Big Lessons, Little Tales*.
 
-Every story is a data file (`stories/<slug>/story.yaml`): a style bible, frozen
-character and location descriptions, and scenes broken into shots. The tools
-turn it into consistent pictures: the same lion and the same mouse, in the same
-forest, from scene to scene. Narration, voices and music are added outside this
-repo (ElevenLabs); here we make the video, plus optional background ambience.
+Every story is a data file (`stories/<slug>/story.yaml`): a style bible,
+frozen character and location descriptions, the narration, and scenes broken
+into shots. The tools turn it into consistent pictures: the same lion and the
+same mouse, in the same forest, from shot to shot. Narration and character
+voices come from Gemini TTS (`voice/`); music and sound effects from
+ElevenLabs; the final mix is done in DaVinci Resolve.
 
-First story: **The Lion and the Mouse**.
+Current story: **The Lion and the Mouse** (`stories/lion_and_mouse_v2/`).
 
 ## How a story gets made
 
 ```
-story.yaml -> design -> character pack -> LoRA -> keyframes -> shots -> post -> edit
+story + narration -> cast (owner pack) -> places -> poses -> keyframes -> shots -> animatic -> post -> edit
 ```
 
 | Stage | Tool | What it produces |
 |---|---|---|
-| Story bible | `stories/<slug>/story.yaml` | the single source of truth for style, characters, places, scenes |
-| Design | `production/design.py` | candidate stills; the chosen canonical per character and location |
-| Character pack | `character/character.py` + `stories/<slug>/packs/*.yaml` | turns and story poses, each starting from the canonical |
-| LoRA | `lora/` (musubi-tuner) | a small model per main character, trained on the pack |
-| Keyframes | `production/keyframe.py` | a shot's first frame: character cut out (BiRefNet) and placed in the location |
-| Shots | `production/shot.py` | Wan 2.2 image-to-video from the keyframe, one action per shot |
-| Post | `twc/post.py` | RIFE 16->30 fps, Real-ESRGAN to 1080p, grade |
+| Story bible | `stories/<slug>/story.yaml` | style, characters, places, voices, scenes, shots |
+| Narration | `stories/<slug>/narration/<lang>.yaml`, `voice/` | the script per language; Gemini voices |
+| Cast | `character/characters/<Name>/v2/` + `production/install_pack.py` | owner-made canonical, views, expressions, actions |
+| Places and props | `production/design.py` | empty location plates, props (Wan 2.2 stills) |
+| Poses | `character/character.py` + `stories/<slug>/packs/*.yaml` | extra poses from the canonical |
+| Keyframes | `production/keyframe.py` (or `compose:` in a shot) | start/end frames: characters cut out (BiRefNet) and placed |
+| Shots | `production/shot.py` (`--fast`) | Wan 2.2 image-to-video between keyframes, one action per shot |
+| Animatic | `production/animatic.py` | the whole story at its pacing, with the narration |
+| Post | `bllt/post.py` | RIFE 16->30 fps, Real-ESRGAN to 1080p, grade |
 
-**Read [docs/production-guide.md](docs/production-guide.md)**: the complete
-guide, with the results and the rules measured along the way.
+**Read [CLAUDE.md](CLAUDE.md) first** (current state, rules, commands), then
+[docs/production-guide.md](docs/production-guide.md) and
+[docs/prompting.md](docs/prompting.md).
 
 ## Layout
 
 ```
-stories/      one folder per story: story.yaml (bible, scenes, shots) and packs/
-production/   design, keyframes, shots, text-only baseline
-character/    character packs (poses and turns) for story characters and tests
-lora/         dataset builder, training, evaluation (musubi-tuner)
-twc/          shared package: paths, ffmpeg helpers, Wan wrapper, post-processing
-lumi/         container wrapper, two venvs, multi-GPU task runner, env rebuild
-docs/         production guide, character consistency, licensing, LUMI, provenance
-felt/         the first felt-animal test (text-to-video)
-intro/, procedural/, audio/, legacy/   the channel intro and its history
-work/         generated intermediates (git-ignored)
+stories/     one folder per story: story.yaml, story.txt, narration/, packs/
+production/  install_pack, design, keyframe, shot, animatic, scene_baseline
+character/   character.py (pose clips) and characters/ (owner-made packs)
+voice/       Gemini TTS: tools, saved voices (cast/, narrators/), samples
+lora/        LoRA dataset builder, training, evaluation (musubi-tuner)
+bllt/        shared package: paths, ffmpeg helpers, Wan wrapper, post-processing
+lumi/        site.sh (machine paths), container wrapper, venvs, task runner
+docs/        guides, measured rules, findings, licensing, LUMI, provenance
+work/        everything generated (git-ignored)
 ```
 
 ## Quick start (LUMI)
 
 ```bash
-cd /scratch/project_465002727/jelealro
-W=twc_video/lumi/run_in_container.sh
-$W python twc_video/production/design.py prompt              # the design prompts
-$W python twc_video/production/shot.py --scene 1 --shot s01_establish --dry-run
-# GPU work: one command per line in a task file, several GCDs per job
-sbatch --ntasks=4 --gpus-per-node=4 --mem=480G twc_video/lumi/run_tasks.sbatch tasks.txt
+cd /scratch/project_465002727/jelealro/big_lessons_little_tales   # always from the repo root
+W=lumi/run_in_container.sh
+$W python production/shot.py --scene 1 --shot s01_sleeps_3q --fast --dry-run
+# GPU work: one command per line in a task file (commands run from the repo root)
+sbatch --ntasks=3 --gpus-per-node=3 --mem=330G lumi/run_tasks.sbatch work/tasks/<name>.txt
+# voices (no GPU)
+source voice/gemini_env.sh && python voice/list_voices.py
 ```
+
+Machine-specific paths (venvs, model cache, container, Slurm account) are all
+in `lumi/site.sh`; nothing depends on the repo's folder name.
 
 ## Docs
 
+- [CLAUDE.md](CLAUDE.md): operating manual and current state
 - [Production guide](docs/production-guide.md): story to finished shots, with measured results
 - [Writing prompts](docs/prompting.md): every measured prompt rule, and a checklist
-- [Findings and risks](docs/findings-and-risks.md): every problem and its fix; what may be missing
-- [CLAUDE.md](CLAUDE.md): the operating manual for agents working in this repo
-- [Character consistency](docs/character-consistency.md): the first experiments, on a felt fox
-- [Licensing](docs/licensing.md): every model and library, checked for a monetised channel
-- [Running on LUMI](docs/lumi.md): jobs, multi-GPU tasks, times, solved gotchas
-- [Provenance](docs/provenance.md): no third-party repo was modified
-- [The intro](docs/intro.md): the channel intro and how it evolved
+- [Findings and risks](docs/findings-and-risks.md): every problem and its fix
+- [Voices](voice/README.md): Gemini TTS setup, saved voices, languages
+- [Licensing](docs/licensing.md): every model and service, checked for a monetised channel
+- [Running on LUMI](docs/lumi.md): jobs, multi-GPU tasks, times, gotchas
+- [Character consistency](docs/character-consistency.md): the first experiments
+- [Provenance](docs/provenance.md): what came from where

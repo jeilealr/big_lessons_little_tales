@@ -81,5 +81,5 @@ Kind regards,
   and Google states it "won't claim ownership over that content". The wording
   "or other service" is broad enough that a written confirmation is worth
   having before relying on Gemini for a monetised children's channel.
-- Fallback if the answer is no: Chatterbox (MIT) voices in `voice/`
-  (paused, not deleted).
+- Fallback if the answer is no: an open-licence TTS (e.g. Chatterbox, MIT;
+  the earlier experiment is in the git history before 2026-09-27).

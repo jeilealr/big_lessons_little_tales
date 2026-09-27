@@ -32,12 +32,12 @@ shots → (later) LoRA dataset**.
 Run from the channel folder (`/scratch/project_465002727/jelealro`):
 
 ```bash
-W=twc_video/lumi/run_in_container.sh
-$W python twc_video/character/character.py prompt      # show the assembled prompts
-$W python twc_video/character/character.py canonical   # CPU, seconds
+W=lumi/run_in_container.sh   # from the repo root
+$W python character/character.py prompt      # show the assembled prompts
+$W python character/character.py canonical   # CPU, seconds
 #  orbit and shots need a GPU: submit them through lumi/run_tasks.sbatch
-$W python twc_video/character/character.py angles      # CPU, seconds
-$W python twc_video/character/character.py dataset     # CPU, seconds
+$W python character/character.py angles      # CPU, seconds
+$W python character/character.py dataset     # CPU, seconds
 ```
 
 Outputs go to `work/characters/<name>/`. **Every image and clip gets a `.json`

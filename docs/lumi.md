@@ -5,8 +5,8 @@ container through `lumi/run_in_container.sh`, which activates the venv at
 `ltx_env/venv` (rebuild with `lumi/setup_env.sh`).
 
 ```bash
-W=twc_video/lumi/run_in_container.sh
-$W python twc_video/character/character.py prompt      # anything, on a login node
+W=lumi/run_in_container.sh   # from the repo root
+$W python character/character.py prompt      # anything, on a login node
 ```
 
 ## GPU jobs
@@ -18,7 +18,7 @@ $W python twc_video/character/character.py prompt      # anything, on a login no
   `lumi/run_tasks.sbatch` runs one command per line of a task file, one GCD
   each, in parallel:
   ```bash
-  sbatch --ntasks=3 --gpus-per-node=3 --mem=400G twc_video/lumi/run_tasks.sbatch tasks.txt
+  sbatch --ntasks=3 --gpus-per-node=3 --mem=400G lumi/run_tasks.sbatch tasks.txt
   ```
   Each task reports `ROCR_VISIBLE_DEVICES=0`: that is its *own* GCD renumbered
   inside its task cgroup, not a shared device. Verified: the three tasks of job
@@ -51,8 +51,8 @@ $W python twc_video/character/character.py prompt      # anything, on a login no
   after `trim` can lose the frame rate and fall back to **25 fps**; a later 30 fps
   step then resamples 30 -> 25 -> 30 (one frame in six dropped, one in five
   repeated: judder through the whole video, while duration still reads 10.00 s).
-  Fixed in `intro/hybrid_cut.py` by `settb=1/30,setpts=N` on every branch plus
-  `-r 30 -fps_mode cfr`. Count exact repeats of consecutive frames to verify; the
+  Fix: `settb=1/30,setpts=N` on every branch plus `-r 30 -fps_mode cfr` (it was
+  applied in the old intro's hybrid_cut.py, now in the git history). Count exact repeats of consecutive frames to verify; the
   only legitimate repeats are intentional holds and pure-white frames.
 - Measure luma across a cut **by frame index over the whole file**. `-ss` seeking is
   not frame-exact and made a continuous join look like a 48-level step.

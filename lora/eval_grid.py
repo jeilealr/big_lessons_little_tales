@@ -13,7 +13,7 @@ import yaml
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from twc import paths  # noqa: E402
+from bllt import paths  # noqa: E402
 
 name, rows = sys.argv[1], sys.argv[2:]
 cfg = yaml.safe_load((paths.REPO / "lora" / "datasets" / f"{name}.yaml").read_text())

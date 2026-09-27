@@ -1,50 +1,74 @@
-# Voices and narration
+# Gemini 3.8 Flash TTS voices
 
-Original, licence-clean voices for the channel's fables, one canonical voice per
-role (narrator, each character), usable in every language.
+Owner's choice (2026-09-27) for narration and character voices; the Chatterbox
+tools in `voice/` are paused. Gemini runs on Google's servers: no GPU, no LUMI
+job; any login-node shell works.
 
-## Why this way
+## Setup (once)
 
-- **No cloning of real or third-party voices.** Voices are *designed* from a
-  written description with Parler-TTS (Apache-2.0). Parler's named speakers
-  (Jon, Lea, ...) are real audiobook readers and are never used. The older
-  chatterboxTTS "Nate"/"Derek" references are excerpts of ElevenLabs voices and
-  are not used here (third-party voices; ElevenLabs terms).
-- **One voice, many languages.** Chatterbox multilingual (MIT) clones a ~10 s
-  reference and speaks 23 languages with it (en, de, es, fr, ru ...). For a
-  language other than the reference's, `cfg_weight` 0 reduces accent carry-over
-  (Resemble AI's guidance).
-- **Audio first.** Narration decides each scene's length; the animatic and the
-  shot plan follow it (docs/findings-and-risks.md B2). The characters' stitched
-  mouths do not lip-sync, so any language fits the same pictures; plan scene
-  length for the longest language.
-- Outputs carry Resemble AI's imperceptible Perth watermark.
+1. API key, stored by the owner outside every repo:
+   ```
+   mkdir -p ~/.config/gemini && chmod 700 ~/.config/gemini
+   read -s -p "Gemini API key: " K && printf 'GEMINI_API_KEY=%s\n' "$K" > ~/.config/gemini/env && chmod 600 ~/.config/gemini/env && unset K
+   ```
+2. Client: `/scratch/project_465002727/jelealro/gemini_env/venv` (google-genai
+   2.25.0; voice design needs >= 2.25.0).
 
-## Steps
+## Use
 
 ```bash
 cd /scratch/project_465002727/jelealro
-W="env TWC_ENV=tts twc_video/lumi/run_in_container.sh"
-# 1+2 (GPU task, ~40 min): design every candidate in voice/voices.yaml, audition them
-TWC_ENV=tts sbatch --ntasks=1 --gpus-per-node=1 --mem=120G twc_video/lumi/run_tasks.sbatch twc_video/work/tasks_voices.txt
-#   -> work/voices/<candidate>/{reference,audition_en}.wav
-#   -> work/voices/audition_<role>.wav   all candidates of a role, a beep between them
-# 3 listen, then make the choice canonical (copies into voice/cast/<role>/):
-$W python twc_video/voice/voices.py pick --role leo --candidate leo_deep_warm_s201
-# 4 narration for a story and language (GPU task):
-$W python twc_video/voice/narrate.py --story lion_and_mouse_v2 --lang en
-#   -> audio/<story>/<lang>/sceneNN.wav, lines/*.wav, timing.json
-# 5 the animatic with that narration:
-twc_video/lumi/run_in_container.sh python twc_video/production/animatic.py --story lion_and_mouse_v2 --lang en
+source voice/gemini_env.sh
+python voice/list_voices.py      # -> voices_list.json
 ```
 
-Scripts per language: `stories/<slug>/narration/<lang>.yaml` (same scenes,
-speakers and line order in every language). The canonical voices live in the
-repo (`voice/cast/<role>/reference.wav` + `voice.yaml`), like the character
-images: they define the cast.
+## Facts (checked 2026-09-27; see CLAUDE.md for sources)
 
-Environment: `TWC_ENV=tts` (lumi/env_tts.sh): chatterbox-tts 0.1.6 and
-parler-tts 0.2.2 on the container's ROCm torch 2.7.1, transformers 4.46.3,
-protobuf 6 (descript-audiotools pins protobuf < 3.20, which breaks
-s3tokenizer's onnx; its pin is ignored). Chatterbox's built-in `conds.pt` only
-loads on a GPU node (it was saved on CUDA).
+- Models: `gemini-3.8-flash-tts` (quality), `gemini-3.8-flash-lite-tts`.
+- Designed ("prompted") voices: stored per project, **200 voices max, 1-year
+  TTL**. Keep each chosen voice's prompt and id here so it can be recreated.
+- Price (paid tier): ~$0.0135 per minute of audio until 2026-12-31, ~$0.027
+  from 2027 (25 audio tokens/s). Free tier: rate-limited.
+- Outputs are the owner's ("Google won't claim ownership"); SynthID watermark.
+- Open question for Google: API terms exclude services "directed towards or
+  likely to be accessed by individuals under the age of 18".
+
+## Cast
+
+Every voice folder: `voice.yaml` (id, name, model, the exact design prompt,
+expiry, notes) and `google_sample.wav` (the sample Google stores with the
+voice; no audio was generated for it). Save a voice with
+`python voice/save_voice.py --id <voice_id> --dir <folder> --role <role>`.
+
+| Role | Voice | Folder |
+|---|---|---|
+| Leo | The Noble Lion 1 (`voice_zdbgqrcerxqu`) | `cast/leo/` |
+| Milo | The Brave Little Mouse 1 (`voice_vf2w20rcys8a`) | `cast/milo/` |
+| narrator (alternative) | The Fireside Grandfather 2 (`voice_4rdl7hydi35v`) | `narrators/fireside_grandfather_2/` |
+| **narrator (Lion and Mouse v2)** | Moonlight Storyteller 1 (`voice_v5bpq98uj7qh`) | `narrators/moonlight_storyteller_1/` |
+| narrator (alternative) | Golden Hour Storyteller 3 (`voice_g00mo8cbdefq`) | `narrators/golden_hour_storyteller_3/` |
+| narrator (alternative) | The Cheery Tale Keeper 2 (`voice_8tnxrhfqk3ur`) | `narrators/cheery_tale_keeper_2/` |
+| narrator (alternative) | Bright Trail Narrator 2 (`voice_tcrjw3ney7q8`) | `narrators/bright_trail_narrator_2/` |
+
+`cast/` holds character voices; `narrators/` is the pool of narrator voices.
+A story picks its voices in its `story.yaml` (`voices:`), e.g. the Lion and
+Mouse v2 narrator is `narrators/moonlight_storyteller_1`. Samples:
+`google_sample.wav` (Google's own) and `sample_scene*.wav` (story lines). All designed voices
+expire on 2027-09-27: recreate each from its saved prompt before then.
+
+## Languages
+
+English is the default and keeps the plain file name; every other language
+adds its code: `sample_scene01_line0.wav` (en), `sample_scene01_line0_es.wav`
+(Spanish), `_de` German, `_fr` French, `_ru` Russian. The same voice id speaks
+every language (Gemini detects the language from the text). Each file's .json
+keeps the exact text spoken.
+
+| Voice | Languages sampled |
+|---|---|
+| every narrator (Scene 1 line) | en, es, fr, de, ru, uk |
+| cast/leo ("Go on your way") | en, es, fr, de, ru, uk |
+| cast/milo ("Thank you") | en, es, fr, de, ru, uk |
+
+One sample line per voice (owner). Render missing ones with
+`python voice/render_samples.py` (texts in `sample_lines.yaml`).

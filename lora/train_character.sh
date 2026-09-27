@@ -9,7 +9,7 @@
 set -euo pipefail
 source "$(dirname "$0")/musubi_env.sh"
 NAME=$1; EXPERT=$2; STEPS=${3:-2000}
-D=$ROOT/twc_video/work/lora/$NAME
+D=$ROOT/work/lora/$NAME
 READY=$D/.cache_ready_${SLURM_JOB_ID:-manual}
 mkdir -p $D/cache $D/out_$EXPERT
 # (PMI/MPI variables are cleared in musubi_env.sh)

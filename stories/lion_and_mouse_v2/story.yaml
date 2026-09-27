@@ -25,7 +25,7 @@ negative: >-
   blurry, low quality, overexposed
 
 # ---------------------------------------------------------------- voices
-# Gemini 3.8 Flash TTS designed voices (records: voice/gemini/<path>/voice.yaml).
+# Gemini 3.8 Flash TTS designed voices (records: voice/<path>/voice.yaml).
 voices:
   narrator: narrators/moonlight_storyteller_1   # Moonlight Storyteller 1, voice_v5bpq98uj7qh
   leo: cast/leo                # The Noble Lion 1, voice_zdbgqrcerxqu
@@ -378,6 +378,7 @@ scenes:
           raised paw, paw near the face, teeth, open mouth, angry face, roaring, lion
           standing up, mouse running away, second lion, second mouse, camera moving
       - name: s05_leo_nods_v2              # end keyframe = start frame pins the framing (Rule 2.14)
+        take: 5106                          # calm smile and nod; framing held
         keyframe: keyframes/s05_from_s03.png
         end_keyframe: keyframes/s05_from_s03.png
         continue_from: {shot: s03_caught, take: 3101}
@@ -468,6 +469,7 @@ scenes:
           angry face, teeth, open mouth, roaring, lion standing up, second lion,
           second mouse, camera moving
       - name: s06_milo_leaves_v2           # end keyframe: the same crop with Leo alone
+        take: 6305                          # Milo scampers out left, Leo watches
         keyframe: keyframes/s06_from_thanks.png
         continue_from: {shot: s06_milo_thanks, take: 6201}
         end_keyframe: keyframes/s06_leaves_end.png
@@ -629,6 +631,7 @@ scenes:
     beat: Milo arrives at the net, looks up at Leo, and raises a paw ("I can help").
     shots:
       - name: s09_milo_arrives
+        take: 9102                          # Milo reaches the net
         keyframe: keyframes/s09_arrive_start.png
         compose:
           plate: keyframes/s07_from_net.png
@@ -651,6 +654,7 @@ scenes:
           teeth, open mouth, angry face, roaring, crying, second lion, second mouse,
           mouse running away, camera moving, people, hunter
       - name: s09_milo_can_help             # close-up from expression images (Rule 2.13)
+        take: 9201                          # worried -> confident
         keyframe: keyframes/s09_milo_concerned.png
         compose:
           plate: design/trap_site/canonical.png
@@ -685,6 +689,7 @@ scenes:
     beat: Close-up of Milo nibbling a rope until it parts; the net loosens; Leo steps out.
     shots:
       - name: s10_milo_gnaws                # close-up crop of the trap frame at Leo's paw
+        superseded_by: s10_milo_gnaws_v2     # camera pulled back, new forest (Rule 2.14)
         keyframe: keyframes/s10_gnaw.png
         compose:
           plate: keyframes/s07_from_net.png
@@ -702,6 +707,7 @@ scenes:
           sharp teeth, fangs, angry face, scary, crying, second lion, second mouse,
           mouse running away, camera moving, people, hunter, metal, wire
       - name: s10_leo_steps_free            # start: trapped; end: free on the path (the net must slide away)
+        take: 10201                         # net slides off, Leo stands free
         keyframe: keyframes/s10_free_start.png
         compose:
           plate: keyframes/s07_from_net.png
@@ -723,6 +729,21 @@ scenes:
         negative_extra: >-
           teeth, open mouth, roaring, angry face, crying, second lion, second mouse,
           people, hunter, camera moving
+      - name: s10_milo_gnaws_v2            # end keyframe = start frame pins the close-up (Rule 2.14)
+        keyframe: keyframes/s10_gnaw.png
+        end_keyframe: keyframes/s10_gnaw.png
+        characters: [leo, milo]
+        frames: 81
+        seeds: [10111, 10112, 10113]
+        action: >-
+          Close-up at ground level. Tiny Milo the mouse holds one braided cream rope
+          of the net with his tiny paws and nibbles it busily, until the rope frays
+          and snaps apart into two loose ends. Leo the lion watches hopefully. The
+          camera stays completely still.
+        negative_extra: >-
+          sharp teeth, fangs, angry face, scary, crying, second lion, second mouse,
+          mouse running away, camera moving, zoom out, new trees, people, hunter,
+          metal, wire
   11:
     title: Amazement
     location: trap_site
@@ -734,6 +755,7 @@ scenes:
     beat: Leo looks down at Milo, amazed and grateful; Milo smiles up at him.
     shots:
       - name: s11_leo_amazed
+        take: 11101                         # amazed -> warm smile
         keyframe: keyframes/s11_leo_surprise.png
         compose:
           plate: design/trap_site/canonical.png
@@ -758,6 +780,7 @@ scenes:
           mouse, second lion, teeth, angry, roaring, camera moving, sharp background,
           cut, scene change
       - name: s11_milo_smiles
+        take: 11201                         # smile and nod
         keyframe: keyframes/s11_milo_smile.png
         compose:
           plate: design/trap_site/canonical.png
@@ -793,6 +816,7 @@ scenes:
     beat: Leo thinks, then smiles; the two friends sit together beneath the tree as the camera eases back.
     shots:
       - name: s12_friends
+        take: 12101                         # push-in on the two friends
         keyframe: keyframes/s12_friends.png
         compose:
           plate: design/clearing/canonical.png
