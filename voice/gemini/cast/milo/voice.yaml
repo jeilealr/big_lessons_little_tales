@@ -1,0 +1,24 @@
+# Gemini designed voice. Google deletes it at `expires`: recreate it from
+# `prompt` with the same model before then, compare with the samples,
+# and update voice_id.
+role: milo
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_vf2w20rcys8a
+display_name: The Brave Little Mouse 1
+type: prompted
+model: models/gemini-3.8-flash-tts
+expires: '2027-09-27 11:58:02.790786+00:00'
+prompt: 'Deliver the dialogue in the voice of a young adult male mouse: bright, agile,
+  and expressive. Use a light vocal weight with a clear upper-mid pitch and a soft,
+  rounded timbre that feels naturally endearing rather than exaggerated or cartoonish.
+  Maintain a neutral English accent with crisp, precise articulation. The pacing should
+  be quick and alert, reflecting an inquisitive mind that is constantly scanning its
+  surroundings. Infuse the performance with a delicate, nervous energy that occasionally
+  wavers with timidity during moments of tension, but pivots into a steady, resonant,
+  and sincere tone when expressing loyalty or making a promise. The delivery must
+  remain warm, earnest, and clever throughout. Avoid any shrillness or forced squeakiness;
+  the performance should feel grounded in character-driven emotion, balancing a humble
+  vulnerability with a quiet, growing courage. Record as if in a clean, dry studio
+  setting to highlight the nuanced textures of the voice.'
+google_sample: google_sample.wav
+notes: Milo the mouse (owner, 2026-09-27)

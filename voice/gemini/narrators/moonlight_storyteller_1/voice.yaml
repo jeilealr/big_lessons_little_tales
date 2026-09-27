@@ -1,0 +1,24 @@
+# Gemini designed voice. Google deletes it at `expires`: recreate it from
+# `prompt` with the same model before then, compare with the samples,
+# and update voice_id.
+role: narrator
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_v5bpq98uj7qh
+display_name: Moonlight Storyteller 1
+type: prompted
+model: models/gemini-3.8-flash-tts
+expires: '2027-09-27 11:42:02.592373+00:00'
+prompt: Deliver the narration with the poise of a seasoned, warm-hearted storyteller
+  in her early 40s. Use a mid-range female voice that carries a velvety, slightly
+  breathy texture, pitched just below the average register. Maintain a neutral English
+  accent with articulation that is crisp and clear, yet soft and rounded at the edges.
+  The tone must be fundamentally compassionate and sincere, projecting an intimate,
+  thoughtful quality, as if speaking directly to a listener in a quiet, sunlit room.
+  Adopt a steady, fluid pace—neither sluggish nor hurried—incorporating graceful,
+  natural pauses at punctuation to allow the sentiment to resonate. Ensure the delivery
+  feels grounded, hopeful, and present. Avoid any hint of sleepiness, melancholic
+  mourning, or forced theatricality; keep the emotional inflection genuine, light,
+  and steady, maintaining a consistent, reassuring presence that feels like a steady
+  hand on a shoulder throughout the reading.
+google_sample: google_sample.wav
+notes: alternative narrator (owner's shortlist, 2026-09-27)

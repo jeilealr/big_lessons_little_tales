@@ -1,0 +1,28 @@
+# Gemini designed voice. Google deletes it at `expires`: recreate it from
+# `prompt` with the same model before then, compare with the samples,
+# and update voice_id.
+role: leo
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_zdbgqrcerxqu
+display_name: The Noble Lion 1
+type: prompted
+model: models/gemini-3.8-flash-tts
+expires: '2027-09-27 11:55:13.127203+00:00'
+prompt: "Speak with the deep, warm, and resonant baritone of a mature male lion, grounded\
+  \ in a rich, chest-heavy timbre that feels both powerful and inherently safe. The\
+  \ pitch should remain in a low, soothing register, vibrating with a calm, steady\
+  \ strength. Adopt a neutral, polished English accent characterized by clear, deliberate\
+  \ articulation and a dignified, unhurried cadence. Your delivery must project natural\
+  \ authority and noble confidence, maintaining an unwavering sense of stability.\
+  \ \n\nPerform at a medium-slow, measured pace, utilizing thoughtful pauses to convey\
+  \ wisdom and presence. When the dialogue calls for amusement, infuse the voice with\
+  \ a subtle, bright \"smile\" that lifts the corners of the tone without losing the\
+  \ underlying bass resonance. When shifting to moments of humility or surprise, soften\
+  \ the vocal weight significantly, moving from an authoritative lead to a gentle,\
+  \ mentor-like warmth. Throughout the performance, avoid any gravelly, guttural,\
+  \ or predatory textures; ensure the voice remains consistently smooth, rounded,\
+  \ and approachable, as if speaking to a child who is under your protection. The\
+  \ overall acoustic quality should be clear and close-miked, evocative of an intimate,\
+  \ high-end studio narration."
+google_sample: google_sample.wav
+notes: Leo the lion (owner, 2026-09-27)

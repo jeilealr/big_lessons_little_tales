@@ -24,6 +24,13 @@ negative: >-
   extra limbs, extra tails, duplicate character, flickering, jittery motion,
   blurry, low quality, overexposed
 
+# ---------------------------------------------------------------- voices
+# Gemini 3.8 Flash TTS designed voices (records: voice/gemini/<path>/voice.yaml).
+voices:
+  narrator: cast/narrator      # Golden Hour Storyteller 3, voice_g00mo8cbdefq
+  leo: cast/leo                # The Noble Lion 1, voice_zdbgqrcerxqu
+  milo: cast/milo              # The Brave Little Mouse 1, voice_vf2w20rcys8a
+
 # ---------------------------------------------------------------- characters
 # `sheet`: the frozen description pasted into every prompt. From each
 # character's dna.yaml `story_sheet_candidate`, corrected to what the canonical

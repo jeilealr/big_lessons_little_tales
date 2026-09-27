@@ -1,6 +1,153 @@
 {
-  "listed_at": "2026-09-27T11:27:02+00:00",
+  "listed_at": "2026-09-27T12:06:23+00:00",
   "voices": [
+    {
+      "id": "voice_ge1bnt693l6z",
+      "display_name": "The Brave Little Mouse 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_vf2w20rcys8a",
+      "display_name": "The Brave Little Mouse 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_qinwh94qukrg",
+      "display_name": "The Brave Little Mouse 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_7iwlht3tie9k",
+      "display_name": "The Noble Lion 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_zdbgqrcerxqu",
+      "display_name": "The Noble Lion 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_jt6087as9vbv",
+      "display_name": "The Noble Lion 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_4rdl7hydi35v",
+      "display_name": "The Fireside Grandfather 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_51z9z26qxrem",
+      "display_name": "The Fireside Grandfather 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_c9l0svdk7l25",
+      "display_name": "The Fireside Grandfather 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_jo4p8jy6f3su",
+      "display_name": "Moonlight Storyteller 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_v5bpq98uj7qh",
+      "display_name": "Moonlight Storyteller 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_f8takniw4vv5",
+      "display_name": "Moonlight Storyteller 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_8eolmotvab6u",
+      "display_name": "The Cheery Tale Keeper 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_8tnxrhfqk3ur",
+      "display_name": "The Cheery Tale Keeper 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_gefpch6euk17",
+      "display_name": "The Cheery Tale Keeper 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_tcrjw3ney7q8",
+      "display_name": "Bright Trail Narrator 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_i2ybgnh7xio6",
+      "display_name": "Bright Trail Narrator 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_4gpn8akibal1",
+      "display_name": "Bright Trail Narrator 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_gnfrv216eopl",
+      "display_name": "The Gentle Sage 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_wll2l7cbya9x",
+      "display_name": "The Gentle Sage 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_oiobd9vnjru6",
+      "display_name": "The Gentle Sage 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
     {
       "id": "voice_g00mo8cbdefq",
       "display_name": "Golden Hour Storyteller 3",
@@ -202,153 +349,6 @@
       "display_name": "Tech Advisor 11",
       "type": "prebuilt",
       "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-techagent-2",
-      "display_name": "Tech Advisor 2",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-techagent-4",
-      "display_name": "Tech Advisor 4",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-training-1",
-      "display_name": "Training Voiceover 1",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-training-12",
-      "display_name": "Training Voiceover 12",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-training-2",
-      "display_name": "Training Voiceover 2",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-tutor-1",
-      "display_name": "Tutor 1",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-tutor-2",
-      "display_name": "Tutor 2",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-tutor-3",
-      "display_name": "Tutor 3",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-tutor-4",
-      "display_name": "Tutor 4",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-eg-advisor-11",
-      "display_name": "Authoritative Advisor 11",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "female"
-    },
-    {
-      "id": "ar-eg-advisor-12",
-      "display_name": "Authoritative Advisor 12",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "female"
-    },
-    {
-      "id": "ar-eg-advisor-4",
-      "display_name": "Authoritative Advisor 4",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "female"
-    },
-    {
-      "id": "ar-eg-advisor-5",
-      "display_name": "Authoritative Advisor 5",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "female"
-    },
-    {
-      "id": "ar-eg-advisor-6",
-      "display_name": "Authoritative Advisor 6",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "male"
-    },
-    {
-      "id": "ar-eg-advisor-7",
-      "display_name": "Authoritative Advisor 7",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "male"
-    },
-    {
-      "id": "ar-eg-advisor-8",
-      "display_name": "Authoritative Advisor 8",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "male"
-    },
-    {
-      "id": "ar-eg-advisor-9",
-      "display_name": "Authoritative Advisor 9",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "female"
-    },
-    {
-      "id": "ar-eg-assistant-1",
-      "display_name": "Digital Assistant 1",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "female"
-    },
-    {
-      "id": "ar-eg-assistant-10",
-      "display_name": "Digital Assistant 10",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "female"
-    },
-    {
-      "id": "ar-eg-assistant-11",
-      "display_name": "Digital Assistant 11",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
-      "gender": "male"
-    },
-    {
-      "id": "ar-eg-assistant-12",
-      "display_name": "Digital Assistant 12",
-      "type": "prebuilt",
-      "language_code": "ar-EG",
       "gender": "female"
     }
   ]

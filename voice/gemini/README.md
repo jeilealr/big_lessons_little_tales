@@ -35,10 +35,20 @@ python twc_video/voice/gemini/list_voices.py      # -> voices_list.json
 
 ## Cast
 
-| Role | Voice | File |
-|---|---|---|
-| narrator | Golden Hour Storyteller 3 (`voice_g00mo8cbdefq`) | `cast/narrator/voice.yaml` |
+Every voice folder: `voice.yaml` (id, name, model, the exact design prompt,
+expiry, notes) and `google_sample.wav` (the sample Google stores with the
+voice; no audio was generated for it). Save a voice with
+`python voice/gemini/save_voice.py --id <voice_id> --dir <folder> --role <role>`.
 
-Each `voice.yaml` keeps the id, the exact design prompt (Google deletes
-designed voices after a year) and a reference sample to compare a recreated
-voice against.
+| Role | Voice | Folder |
+|---|---|---|
+| narrator (Lion and Mouse v2) | Golden Hour Storyteller 3 (`voice_g00mo8cbdefq`) | `cast/narrator/` |
+| Leo | The Noble Lion 1 (`voice_zdbgqrcerxqu`) | `cast/leo/` |
+| Milo | The Brave Little Mouse 1 (`voice_vf2w20rcys8a`) | `cast/milo/` |
+| narrator (alternative) | The Fireside Grandfather 2 (`voice_4rdl7hydi35v`) | `narrators/fireside_grandfather_2/` |
+| narrator (alternative) | Moonlight Storyteller 1 (`voice_v5bpq98uj7qh`) | `narrators/moonlight_storyteller_1/` |
+| narrator (alternative) | The Cheery Tale Keeper 2 (`voice_8tnxrhfqk3ur`) | `narrators/cheery_tale_keeper_2/` |
+| narrator (alternative) | Bright Trail Narrator 2 (`voice_tcrjw3ney7q8`) | `narrators/bright_trail_narrator_2/` |
+
+A story picks its voices in its `story.yaml` (`voices:`). All designed voices
+expire on 2027-09-27: recreate each from its saved prompt before then.

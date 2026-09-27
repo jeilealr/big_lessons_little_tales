@@ -1,0 +1,25 @@
+# Gemini designed voice. Google deletes it at `expires`: recreate it from
+# `prompt` with the same model before then, compare with the samples,
+# and update voice_id.
+role: narrator
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_4rdl7hydi35v
+display_name: The Fireside Grandfather 2
+type: prompted
+model: models/gemini-3.8-flash-tts
+expires: '2027-09-27 11:51:18.738046+00:00'
+prompt: Speak with the rich, resonant voice of a man in his late 60s, characterized
+  by a deep, velvety baritone and a gentle chest-centered warmth. Maintain a neutral
+  English accent with fluid, effortless articulation that feels unhurried and seasoned.
+  Adopt a tone of profound, quiet affection—reassuring, protective, and patient—as
+  if sharing a cherished memory with a loved one. Infuse the delivery with a subtle,
+  underlying warmth that suggests a faint, knowing smile. Pace the narration at a
+  slow-to-medium rhythm, utilizing long, natural pauses to create an intimate, cozy
+  atmosphere that allows the listener to fully settle into the space. The vocal quality
+  should be soft and rounded, avoiding any gravel, harshness, or performative theatricality.
+  Prioritize a steady, comforting cadence that remains grounded and serene, capturing
+  the essence of a wise storyteller beside a flickering fireplace. Ensure the breath
+  is deep and steady, lending a sense of stability and enduring kindness to every
+  word.
+google_sample: google_sample.wav
+notes: alternative narrator (owner's shortlist, 2026-09-27)

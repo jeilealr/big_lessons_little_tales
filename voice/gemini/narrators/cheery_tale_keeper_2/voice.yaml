@@ -1,0 +1,24 @@
+# Gemini designed voice. Google deletes it at `expires`: recreate it from
+# `prompt` with the same model before then, compare with the samples,
+# and update voice_id.
+role: narrator
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_8tnxrhfqk3ur
+display_name: The Cheery Tale Keeper 2
+type: prompted
+model: models/gemini-3.8-flash-tts
+expires: '2027-09-27 11:38:11.858989+00:00'
+prompt: Adopt the persona of a charismatic, imaginative storyteller in his mid-30s.
+  Speak with a warm, light tenor voice that feels natural, grounded, and highly expressive.
+  Maintain a medium-to-high pitch with a medium-light vocal weight, ensuring the delivery
+  is clear and conversational with a neutral English accent. Infuse the performance
+  with a genuine, audible smile, projecting a friendly, mischievous energy that invites
+  the listener into the narrative. Use a medium pace, punctuated by artful, rhythmic
+  pauses that emphasize the wit and humor of the story without resorting to caricature
+  or forced character voices. The tone should be consistently approachable and engaging,
+  flowing with a smooth, storytelling cadence that remains pleasant and easy to follow
+  over an extended duration. Focus on subtle, playful vocal inflections to highlight
+  key details, maintaining a polished yet intimate studio quality that sounds like
+  a close friend sharing an amusing, well-told tale.
+google_sample: google_sample.wav
+notes: alternative narrator (owner's shortlist, 2026-09-27)
