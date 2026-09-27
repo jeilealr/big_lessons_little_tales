@@ -749,7 +749,7 @@ scenes:
           plate: design/clearing/canonical.png
           characters:
             - {still: characters/leo/poses/leo_3q_sphinx.png, x: 0.52, y: 0.87, h: 0.361}
-            - {still: characters/milo/poses/milo_paws_together_last.png, x: 0.30, y: 0.91, h: 0.17}
+            - {still: characters/milo/poses/milo_paws_together_last.png, x: 0.44, y: 0.96, h: 0.17}
         characters: [leo, milo]
         frames: 81
         seeds: [12101, 12102, 12103]
