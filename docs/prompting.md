@@ -63,6 +63,8 @@ images never show.
 | press paws together (the gesture *is* the shot) | works, gentle | milo_paws_together |
 | raise the head / look up | **does not register** | `p_head_raise.jpg` |
 | hop three times | **character teleports** | felt bunny |
+| lie down *and* close the eyes (v2 Leo) | lies down, eyes stay open | leo_sleeps |
+| close the eyes, as the whole shot, from a lying frame | reliable (1 of 2 seeds) | leo_closes_eyes_a |
 
 A small movement of one body part, starting from a still, is usually lost.
 If a gesture matters, make it the whole shot and describe it big ("raises one
@@ -317,4 +319,13 @@ Update this when a rule is confirmed, refuted or refined.
   shot, from the lying frame. An owner-made "Leo asleep" still would settle it.
 
   ![v2 poses round 1](img/v2_poses_round1.jpg)
+- 2026-09-27 (v2): **Rule 2.1 again, for faces: split a pose change and a face
+  change into two shots.** "Lie down and close the eyes" kept the eyes open;
+  starting from the lying frame, "Leo slowly closes his big eyes and falls
+  asleep" as the whole shot closed them cleanly (seed 2711; seed 2712 turned the
+  eyes into yellow discs, so two seeds). "Lies down like a sphinx, both front
+  paws flat on the floor and pointing forward" fixed the paw-pads-up pose.
+  Rows: closes eyes a, b; sphinx a, b.
+
+  ![v2 poses round 2](img/v2_poses_round2.jpg)
 
