@@ -578,6 +578,53 @@ scenes:
       lion deserved his help or whether he owed him anything. He simply saw
       someone in trouble. "I think I can help," said the mouse.
     beat: Milo arrives at the net, looks up at Leo, and raises a paw ("I can help").
+    shots:
+      - name: s09_milo_arrives
+        keyframe: keyframes/s09_arrive_start.png
+        compose:
+          plate: keyframes/s07_from_net.png
+          characters:
+            - {still: characters/milo/pack/views__milo_view_side_01.png, x: 0.22, y: 0.70, h: 0.16}
+        end_keyframe: keyframes/s09_arrive_end.png
+        end_compose:
+          plate: keyframes/s07_from_net.png
+          characters:
+            - {still: characters/milo/pack/views__milo_view_side_01.png, x: 0.50, y: 0.70, h: 0.16}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [9101, 9102, 9103]
+        action: >-
+          Seen from the side, tiny Milo the mouse runs quickly along the pale felt
+          path from left to right and stops next to the rope net, looking at the
+          trapped lion. Leo lies calmly under the soft net and looks at him,
+          surprised and relieved, his mouth closed. The camera stays still.
+        negative_extra: >-
+          teeth, open mouth, angry face, roaring, crying, second lion, second mouse,
+          mouse running away, camera moving, people, hunter
+      - name: s09_milo_can_help             # close-up from expression images (Rule 2.13)
+        keyframe: keyframes/s09_milo_concerned.png
+        compose:
+          plate: design/trap_site/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/milo/pack/expressions__milo_expression_concerned_01.png, x: 0.5, y: 1.08, h: 1.05}
+        end_keyframe: keyframes/s09_milo_confident.png
+        end_compose:
+          plate: design/trap_site/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/milo/pack/expressions__milo_expression_confident_01.png, x: 0.5, y: 1.08, h: 1.05}
+        background: a soft, completely out-of-focus felt forest path in warm golden afternoon light
+        characters: [milo]
+        frames: 81
+        seeds: [9201, 9202, 9203]
+        action: >-
+          Close-up of tiny Milo the mouse looking up at the trapped lion, worried;
+          then his face fills with brave determination and a small confident smile,
+          his big ears lifting. The camera stays completely still.
+        negative_extra: >-
+          lion, second mouse, teeth, crying, running, camera moving, sharp
+          background, cut, scene change
   10:
     title: Gnawing
     location: trap_site
@@ -587,6 +634,46 @@ scenes:
       He began to gnaw through the ropes with his sharp little teeth. It took
       time, but at last the net loosened and the lion stepped free.
     beat: Close-up of Milo nibbling a rope until it parts; the net loosens; Leo steps out.
+    shots:
+      - name: s10_milo_gnaws                # close-up crop of the trap frame at Leo's paw
+        keyframe: keyframes/s10_gnaw.png
+        compose:
+          plate: keyframes/s07_from_net.png
+          crop: [0.40, 0.50, 0.45]
+          characters:
+            - {still: characters/milo/pack/views__milo_view_side_01.png, x: 0.40, y: 0.86, h: 0.40}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [10101, 10102, 10103]
+        action: >-
+          Close-up at ground level. Tiny Milo the mouse holds one braided cream rope
+          of the net with his tiny paws and nibbles it busily, until the rope frays
+          and snaps apart into two loose ends. The camera stays still.
+        negative_extra: >-
+          sharp teeth, fangs, angry face, scary, crying, second lion, second mouse,
+          mouse running away, camera moving, people, hunter, metal, wire
+      - name: s10_leo_steps_free            # start: trapped; end: free on the path (the net must slide away)
+        keyframe: keyframes/s10_free_start.png
+        compose:
+          plate: keyframes/s07_from_net.png
+          characters:
+            - {still: characters/milo/pack/views__milo_view_side_01.png, x: 0.50, y: 0.70, h: 0.16}
+        end_keyframe: keyframes/s10_free_end.png
+        end_compose:
+          plate: design/trap_site/canonical.png
+          characters:
+            - {still: characters/leo/pack16x9/views__leo_view_3q_01.png, x: 0.70, y: 0.90, h: 0.54}
+            - {still: characters/milo/pack/views__milo_view_3q_01.png, x: 0.42, y: 0.90, h: 0.18}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [10201, 10202, 10203]
+        action: >-
+          The loose rope net slides off the lion and falls away onto the ground, and
+          Leo the lion slowly stands up and steps free onto the path, happy and
+          relieved, next to tiny Milo the mouse. The camera stays still.
+        negative_extra: >-
+          teeth, open mouth, roaring, angry face, crying, second lion, second mouse,
+          people, hunter, camera moving
   11:
     title: Amazement
     location: trap_site
@@ -596,6 +683,54 @@ scenes:
       you did not have to." The mouse smiled. "You were kind to me when you did
       not have to either."
     beat: Leo looks down at Milo, amazed and grateful; Milo smiles up at him.
+    shots:
+      - name: s11_leo_amazed
+        keyframe: keyframes/s11_leo_surprise.png
+        compose:
+          plate: design/trap_site/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/leo/pack/expressions__leo_expression_pleasant_surprise_01.png, x: 0.5, y: 1.08, h: 1.05}
+        end_keyframe: keyframes/s11_leo_smile.png
+        end_compose:
+          plate: design/trap_site/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/leo/pack/expressions__leo_expression_smile_01.png, x: 0.5, y: 1.08, h: 1.05}
+        background: a soft, completely out-of-focus felt forest path in warm golden afternoon light
+        characters: [leo]
+        frames: 81
+        seeds: [11101, 11102, 11103]
+        action: >-
+          Close-up of Leo the lion looking down at the tiny mouse with amazement; his
+          surprise slowly turns into a warm, grateful closed-mouth smile. The camera
+          stays completely still.
+        negative_extra: >-
+          mouse, second lion, teeth, angry, roaring, camera moving, sharp background,
+          cut, scene change
+      - name: s11_milo_smiles
+        keyframe: keyframes/s11_milo_smile.png
+        compose:
+          plate: design/trap_site/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/milo/pack/expressions__milo_expression_smile_01.png, x: 0.5, y: 1.08, h: 1.05}
+        end_keyframe: keyframes/s11_milo_proud.png
+        end_compose:
+          plate: design/trap_site/canonical.png
+          blur: 14
+          characters:
+            - {still: characters/milo/pack/expressions__milo_expression_relieved-proud_01.png, x: 0.5, y: 1.08, h: 1.05}
+        background: a soft, completely out-of-focus felt forest path in warm golden afternoon light
+        characters: [milo]
+        frames: 81
+        seeds: [11201, 11202, 11203]
+        action: >-
+          Close-up of tiny Milo the mouse looking up at the lion with a warm smile;
+          he nods gently, kind and proud. The camera stays completely still.
+        negative_extra: >-
+          lion, second mouse, teeth, crying, running, camera moving, sharp
+          background, cut, scene change
   12:
     title: Passed on
     location: clearing
@@ -607,3 +742,21 @@ scenes:
       that being strong sometimes means choosing gentleness, and being small
       never means being powerless.
     beat: Leo thinks, then smiles; the two friends sit together beneath the tree as the camera eases back.
+    shots:
+      - name: s12_friends
+        keyframe: keyframes/s12_friends.png
+        compose:
+          plate: design/clearing/canonical.png
+          characters:
+            - {still: characters/leo/poses/leo_3q_sphinx.png, x: 0.52, y: 0.87, h: 0.361}
+            - {still: characters/milo/poses/milo_paws_together_last.png, x: 0.30, y: 0.91, h: 0.17}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [12101, 12102, 12103]
+        action: >-
+          Leo the lion lies peacefully beneath the tree next to his tiny friend Milo
+          the mouse; they look at each other and smile warmly. The camera slowly
+          moves closer to them.
+        negative_extra: >-
+          teeth, open mouth, angry face, roaring, lion standing up, mouse running
+          away, second lion, second mouse
