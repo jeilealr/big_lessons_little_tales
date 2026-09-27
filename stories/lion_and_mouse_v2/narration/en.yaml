@@ -1,0 +1,48 @@
+# English narration script, split by speaker, one entry per spoken line.
+# Source: ../story.txt (the owner's text), unchanged except for the split.
+# Speakers: narrator, leo, milo (voices in voices/<name>/voice.yaml).
+# One file per language (en, de, es, ru, fr): same scenes, same speakers, same
+# line order, so a line can be matched across languages by (scene, index).
+# `pause_after` (seconds) is the silence before the next line.
+language: en
+story: lion_and_mouse_v2
+scenes:
+  1:
+    - {speaker: narrator, text: "Once upon a time, a great lion was sleeping beneath a tree,"}
+  2:
+    - {speaker: narrator, text: "when a little mouse accidentally ran across his paw."}
+  3:
+    - {speaker: narrator, text: "The lion woke with a growl and caught the mouse beneath his paw."}
+  4:
+    - {speaker: narrator, text: "The mouse trembled, but the lion looked at the tiny creature and realized there was no reason to hurt him."}
+  5:
+    - {speaker: leo, text: "You frightened me,", pause_after: 0.2}
+    - {speaker: narrator, text: "said the lion,", pause_after: 0.2}
+    - {speaker: leo, text: "but you meant no harm. Go on your way."}
+  6:
+    - {speaker: narrator, text: "The mouse was surprised. He had expected anger, but instead the lion showed him kindness."}
+    - {speaker: milo, text: "Thank you,", pause_after: 0.2}
+    - {speaker: narrator, text: "said the mouse.", pause_after: 0.2}
+    - {speaker: milo, text: "I hope one day I can show someone the same kindness."}
+  7:
+    - {speaker: narrator, text: "Some days later, the lion became trapped in a hunter's net. He pulled and struggled, but the ropes only tightened around him."}
+  8:
+    - {speaker: narrator, text: "The mouse heard his roars and hurried toward the sound."}
+  9:
+    - {speaker: narrator, text: "When he saw the lion trapped, he did not stop to think about whether the lion deserved his help or whether he owed him anything."}
+    - {speaker: narrator, text: "He simply saw someone in trouble."}
+    - {speaker: milo, text: "I think I can help,", pause_after: 0.2}
+    - {speaker: narrator, text: "said the mouse."}
+  10:
+    - {speaker: narrator, text: "He began to gnaw through the ropes with his sharp little teeth. It took time, but at last the net loosened and the lion stepped free."}
+  11:
+    - {speaker: narrator, text: "The lion looked at the mouse with amazement."}
+    - {speaker: leo, text: "You helped me even though you did not have to."}
+    - {speaker: narrator, text: "The mouse smiled."}
+    - {speaker: milo, text: "You were kind to me when you did not have to either."}
+  12:
+    - {speaker: narrator, text: "The lion thought about this for a moment."}
+    - {speaker: narrator, text: "Perhaps kindness was not something to be repaid like a debt."}
+    - {speaker: narrator, text: "Perhaps it was something that could simply be passed on."}
+    - {speaker: narrator, text: "And from then on, the lion and the mouse remembered that being strong sometimes means choosing gentleness, and being small never means being powerless."}
+    - {speaker: narrator, text: "Kindness does not create a debt. It creates more kindness.", pause_after: 1.0}

@@ -6,7 +6,7 @@ title: The Lion and the Mouse
 slug: lion_and_mouse_v2
 moral: >-
   Kindness does not create a debt. It creates more kindness.
-source_text: work/stories/lion_and_mouse_v2_review/story.txt   # the owner's story text
+source_text: stories/lion_and_mouse_v2/story.txt   # the owner's story text (copied from work/ so it is kept)
 
 # ---------------------------------------------------------------- style bible
 # Appended to every prompt, verbatim. Written to match the v2 character pack
