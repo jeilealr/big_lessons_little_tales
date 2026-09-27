@@ -279,6 +279,7 @@ scenes:
     beat: Leo lifts his paw away and smiles; Milo is free.
     shots:
       - name: s05_leo_releases
+        superseded_by: s05_leo_nods          # 'draws his paw back' lifted the paw to his face
         keyframe: keyframes/s05_from_s03.png
         continue_from: {shot: s03_caught, take: 3101}
         characters: [leo, milo]
@@ -291,6 +292,20 @@ scenes:
         negative_extra: >-
           teeth, open mouth, angry face, roaring, lion standing up, mouse running
           away, second lion, second mouse, camera moving
+      - name: s05_leo_nods
+        keyframe: keyframes/s05_from_s03.png
+        continue_from: {shot: s03_caught, take: 3101}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [5103, 5104]
+        action: >-
+          Leo the lion keeps his big paws resting flat on the grass and gives the
+          tiny mouse a warm, kind closed-mouth smile and a slow gentle nod, as if
+          saying go on your way. Tiny Milo stands still, looking up at him. The
+          camera stays still.
+        negative_extra: >-
+          raised paw, paw near the face, teeth, open mouth, angry face, roaring, lion
+          standing up, mouse running away, second lion, second mouse, camera moving
   6:
     title: Thank you
     location: clearing
@@ -325,6 +340,7 @@ scenes:
         negative_extra: >-
           lion, second mouse, teeth, crying, running, camera moving
       - name: s06_milo_thanks               # same two-shot crop as Scene 3; Milo worried -> paws together
+        take: 6201                          # worried -> paws together, Leo smiling behind
         keyframe: keyframes/s06_thanks_start.png
         compose:
           plate: design/clearing/canonical.png
@@ -381,6 +397,21 @@ scenes:
         negative_extra: >-
           net, rope, mouse, second lion, walking away from the camera, back view,
           standing still, walking on the spot, camera tracking, lying down
+      - name: s07_net_falls
+        keyframe: keyframes/s07_from_walk.png
+        continue_from: {shot: s07_leo_walks, take: 7101}
+        characters: [leo]
+        frames: 81
+        seeds: [7201, 7202]
+        # v1 wording that worked (s06_net_falls 6202); mild peril (findings B6).
+        action: >-
+          A soft handmade net of braided cream craft rope with large square gaps and
+          chunky round knots gently drops from above and settles loosely over Leo the
+          lion. Leo stops, lies down under the soft net and looks up, surprised and
+          a little worried, his mouth closed. The camera stays still.
+        negative_extra: >-
+          scary, angry face, teeth, open mouth, roaring, crying, pain, metal, wire,
+          chains, spikes, cage, mouse, second lion, people, hunter, camera moving
   8:
     title: Milo hears
     location: forest_run
@@ -429,6 +460,23 @@ scenes:
         negative_extra: >-
           lion, second mouse, running away from the camera, back view, standing
           still, hopping on the spot, camera tracking
+      - name: s08_milo_runs_v2             # standing side view (v1: a standing start ran; a walking start walks)
+        keyframe: keyframes/s08_runs_v2.png
+        compose:
+          plate: design/forest_run/canonical.png
+          characters:
+            - {still: characters/milo/pack/views__milo_view_side_01.png, x: 0.70, y: 0.90, h: 0.40, flip: true}
+        characters: [milo]
+        frames: 81
+        seeds: [8203, 8204]
+        action: >-
+          Seen from the side, tiny Milo the mouse suddenly sprints very fast across
+          the felt forest floor from right to left and out of the left edge of the
+          frame, his big ears streaming back, brave and determined. The camera stays
+          still.
+        negative_extra: >-
+          lion, second mouse, walking, running away from the camera, back view,
+          standing still, hopping on the spot, camera tracking
   9:
     title: Someone in trouble
     location: trap_site

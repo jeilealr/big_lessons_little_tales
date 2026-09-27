@@ -361,4 +361,11 @@ Update this when a rule is confirmed, refuted or refined.
   start pose sets the gait. A run needs a running start still.
 
   ![v2 Scenes 7-8](img/v2_s07_s08.jpg)
+- 2026-09-27 (v2 Scenes 5-6): "Leo draws his big paw back towards himself"
+  lifted the paw up to his face in both seeds: a direction relative to the
+  body is ambiguous. Say where the paw stays or goes in the frame ("keeps his
+  paws resting flat on the grass"). Scene 6 thank-you with start+end keyframes
+  (worried -> paws together): clean in both seeds.
+
+  ![v2 Scenes 5-6](img/v2_s05_s06.jpg)
 
