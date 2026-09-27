@@ -124,6 +124,7 @@ scenes:
     beat: Leo sleeps peacefully beneath his tree; the camera eases in.
     shots:
       - name: s01_sleeps
+        superseded_by: s01_sleeps_3q            # owner: 3/4 Leo
         take: 1101                          # push-in, Leo stays asleep, eyes closed
         keyframe: keyframes/s01_sleeps.png
         compose:
@@ -166,6 +167,7 @@ scenes:
     beat: Milo scampers across the grass, past Leo's big front paw, not noticing him.
     shots:
       - name: s02_milo_runs
+        superseded_by: s02_milo_runs_3q            # owner: 3/4 Leo
         take: 2101                          # Milo scampers past and out right; Leo asleep
         keyframe: keyframes/s02_milo_runs.png
         compose:
@@ -217,6 +219,7 @@ scenes:
       # Start and end keyframes: the same crop, the same place; only Leo's pose
       # changes (asleep -> lying awake, sphinx). Milo stays frozen at his paws.
       - name: s03_caught
+        superseded_by: s03_caught_3q            # owner: 3/4 Leo
         take: 3101                          # wakes surprised, swings a paw down beside Milo
         keyframe: keyframes/s03_start.png
         compose:
@@ -706,6 +709,22 @@ scenes:
         negative_extra: >-
           sharp teeth, fangs, angry face, scary, crying, second lion, second mouse,
           mouse running away, camera moving, people, hunter, metal, wire
+      - name: s10_milo_gnaws_v2            # end keyframe = start frame pins the close-up (Rule 2.14)
+        take: 10112                         # PROVISIONAL: framing held, but Milo only stands at the rope (no visible gnawing)
+        keyframe: keyframes/s10_gnaw.png
+        end_keyframe: keyframes/s10_gnaw.png
+        characters: [leo, milo]
+        frames: 81
+        seeds: [10111, 10112, 10113]
+        action: >-
+          Close-up at ground level. Tiny Milo the mouse holds one braided cream rope
+          of the net with his tiny paws and nibbles it busily, until the rope frays
+          and snaps apart into two loose ends. Leo the lion watches hopefully. The
+          camera stays completely still.
+        negative_extra: >-
+          sharp teeth, fangs, angry face, scary, crying, second lion, second mouse,
+          mouse running away, camera moving, zoom out, new trees, people, hunter,
+          metal, wire
       - name: s10_leo_steps_free            # start: trapped; end: free on the path (the net must slide away)
         take: 10201                         # net slides off, Leo stands free
         keyframe: keyframes/s10_free_start.png
@@ -729,21 +748,6 @@ scenes:
         negative_extra: >-
           teeth, open mouth, roaring, angry face, crying, second lion, second mouse,
           people, hunter, camera moving
-      - name: s10_milo_gnaws_v2            # end keyframe = start frame pins the close-up (Rule 2.14)
-        keyframe: keyframes/s10_gnaw.png
-        end_keyframe: keyframes/s10_gnaw.png
-        characters: [leo, milo]
-        frames: 81
-        seeds: [10111, 10112, 10113]
-        action: >-
-          Close-up at ground level. Tiny Milo the mouse holds one braided cream rope
-          of the net with his tiny paws and nibbles it busily, until the rope frays
-          and snaps apart into two loose ends. Leo the lion watches hopefully. The
-          camera stays completely still.
-        negative_extra: >-
-          sharp teeth, fangs, angry face, scary, crying, second lion, second mouse,
-          mouse running away, camera moving, zoom out, new trees, people, hunter,
-          metal, wire
   11:
     title: Amazement
     location: trap_site

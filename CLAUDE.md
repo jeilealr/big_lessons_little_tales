@@ -356,18 +356,27 @@ How it is made (and why):
 
 ## Current state (update when it changes)
 
-Lion and Mouse v2 (2026-09-27); shots in `work/stories/lion_and_mouse_v2/shots/`,
-takes in story.yaml (`take:`):
+Lion and Mouse v2 (2026-09-27): **every scene has a take**; takes are in
+story.yaml (`take:`), clips in `work/stories/lion_and_mouse_v2/shots/`
+(fast-mode files end in `_fast`; the animatic finds both).
+- **Animatic**: `work/stories/lion_and_mouse_v2/animatic.mp4`, 1 min 46 s,
+  12 scenes, 22 shots, placeholder timing (no narration yet).
+- Takes: s01 3/4 1111, s02 3/4 2111, s03 3/4 3112, s04 Milo trembles 4101,
+  s04 Leo softens v2 4203, s05 nod v2 5106, s06 smiles 6101, thanks 6201,
+  leaves v2 6305, s07 walks 7101, net falls 7202, tugs 7303, s08 hears 8101,
+  runs v2 8204, s09 arrives 9102, can help 9201, s10 gnaws v2 10112
+  (PROVISIONAL), steps free 10201, s11 Leo amazed 11101, Milo smiles 11201,
+  s12 friends 12101.
+- **Open: the gnawing shot.** v1 drifted (camera pulled back); v2 (end
+  keyframe = start frame) held the framing but Milo only stands at the rope:
+  pinning both ends to the same frame also freezes the action. Next try: a
+  tighter crop with Milo larger, his paws on the rope, and an end keyframe
+  that differs (a composed frame with the rope parted), or accept the beat
+  with the narration carrying "gnaw".
 - Places: plates clearing 3003, trap_site 3104, forest_run 3204; net = prop.
-- Takes: s01 3/4 1111, s02 3/4 2111, s03 3/4 3112 (front-view versions 1101,
-  2101, 3101 kept), s04 Milo trembles 4101, s04 Leo softens v2 4203,
-  s06 Milo smiles 6101, s06 thanks 6201, s07 walks 7101, s07 net falls 7202,
-  s07 tugs 7303, s08 hears 8101, s08 runs v2 8204.
-- Rendered, NOT yet reviewed (fast, 3 seeds each): s05_leo_nods_v2,
-  s06_milo_leaves_v2, s09_milo_arrives, s09_milo_can_help, s10_milo_gnaws,
-  s10_leo_steps_free, s11_leo_amazed, s11_milo_smiles, s12_friends.
-- Next: review those, pick takes, re-render failures; full animatic; then
-  narration with the Gemini voices when the owner asks.
+- Next: fix the gnaw (owner's call); narration with the Gemini voices when
+  the owner asks (write the narration renderer, see Voices); then
+  `animatic.py --lang en` times the pictures to it; post (1080p30) and edit.
 - Removed 2026-09-27 (owner): v1 story and its generated files, fox tests,
   The Webtoons Corner intro/LTX/felt/music code, Chatterbox. Kept: LoRA
   outputs (`work/lora/`, 86 GB) and old intro renders (`work/intro_v4/`).

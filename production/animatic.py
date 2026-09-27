@@ -116,8 +116,13 @@ def main() -> None:
         for shot in scene.get("shots", []):
             if shot.get("superseded_by") or shot.get("variant_of"):
                 continue
-            clip = work / "shots" / f"{shot['name']}_s{shot['take']}.mp4" if shot.get("take") else None
-            if clip and clip.is_file():
+            clip = None
+            if shot.get("take"):          # a 40-step render, or a fast-mode one (_fast)
+                for name in (f"{shot['name']}_s{shot['take']}.mp4", f"{shot['name']}_s{shot['take']}_fast.mp4"):
+                    if (work / "shots" / name).is_file():
+                        clip = work / "shots" / name
+                        break
+            if clip:
                 segs.append(("clip", clip, shot["name"]))
             elif (work / shot["keyframe"]).is_file():
                 segs.append(("still", work / shot["keyframe"], shot["name"]))
@@ -139,7 +144,7 @@ def main() -> None:
 
         notes = []
         for (kind, src, name), slot in zip(segs, slots):
-            source = (f"take {src.stem.rsplit('_s', 1)[-1]}" if kind == "clip"
+            source = (f"take {src.stem.split('_s')[-1]}" if kind == "clip"
                       else "keyframe only" if kind == "still" else "not planned")
             label = f"{n}. {scene['title']}  |  {name}  |  {source}"
             nframes = int(round(slot * FPS))

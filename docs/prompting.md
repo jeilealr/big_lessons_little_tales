@@ -406,4 +406,8 @@ Update this when a rule is confirmed, refuted or refined.
   Leo stepping free of the net (start: trapped; end: standing free, composed)
   worked in all seeds: the net slid away on its own. Close-ups from the
   expression set (Scenes 9, 11) clean in every seed.
+- 2026-09-27: Scene 10 gnaw v2, end keyframe = start keyframe: the framing
+  held in all seeds, but Milo stood still at the rope in all three. An end
+  frame identical to the start pins the action too; for an action that must
+  change the scene (a rope parting), the end keyframe must show the result.
 
