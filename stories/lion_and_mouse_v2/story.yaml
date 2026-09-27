@@ -317,6 +317,25 @@ scenes:
     beat: >-
       Leo walks the forest path; a soft rope net drops over him; he tugs at it,
       worried, mouth closed (mild peril: findings B6).
+    shots:
+      - name: s07_leo_walks
+        keyframe: keyframes/s07_walk.png
+        compose:
+          plate: design/trap_site/canonical.png
+          characters:
+            - {still: characters/leo/pack/actions__leo_action_walking_01.png, x: 0.28, y: 0.92, h: 0.44}
+        characters: [leo]
+        frames: 81
+        seeds: [7101, 7102]
+        # v1 Scene 6: a fixed camera + room ahead made Leo really walk.
+        action: >-
+          Seen from the side, Leo the lion strides steadily along the pale felt path
+          from left to right across the frame with big bouncy steps, his mane
+          bobbing and his tufted tail swinging. The camera stays still. Peaceful
+          and content.
+        negative_extra: >-
+          net, rope, mouse, second lion, walking away from the camera, back view,
+          standing still, walking on the spot, camera tracking, lying down
   8:
     title: Milo hears
     location: forest_run
@@ -324,6 +343,45 @@ scenes:
     narration: >-
       The mouse heard his roars and hurried toward the sound.
     beat: Milo stops, ears up, turns towards the sound, and runs.
+    shots:
+      # The turn is pinned by start and end keyframes: 3/4 view -> side view
+      # facing left (towards the sound). A head turn alone does not register.
+      - name: s08_milo_hears
+        keyframe: keyframes/s08_hears_start.png
+        compose:
+          plate: design/forest_run/canonical.png
+          characters:
+            - {still: characters/milo/pack/views__milo_view_3q_01.png, x: 0.58, y: 0.90, h: 0.40}
+        end_keyframe: keyframes/s08_hears_end.png
+        end_compose:
+          plate: design/forest_run/canonical.png
+          characters:
+            - {still: characters/milo/pack/views__milo_view_side_01.png, x: 0.58, y: 0.90, h: 0.40, flip: true}
+        characters: [milo]
+        frames: 81
+        seeds: [8101, 8102]
+        action: >-
+          Tiny Milo the mouse hears a far-away sound; his big ears lift and he turns
+          his whole body towards the left, listening, alert and concerned. The
+          camera stays still.
+        negative_extra: >-
+          lion, second mouse, running, open mouth, teeth, crying, camera moving
+      - name: s08_milo_runs
+        keyframe: keyframes/s08_runs.png
+        compose:
+          plate: design/forest_run/canonical.png
+          characters:
+            - {still: characters/milo/pack/actions__milo_action_walking_01.png, x: 0.70, y: 0.90, h: 0.38, flip: true}
+        characters: [milo]
+        frames: 81
+        seeds: [8201, 8202]
+        action: >-
+          Seen from the side, tiny Milo the mouse runs very fast across the felt
+          forest floor from right to left and out of the left edge of the frame,
+          his big ears streaming back, brave and determined. The camera stays still.
+        negative_extra: >-
+          lion, second mouse, running away from the camera, back view, standing
+          still, hopping on the spot, camera tracking
   9:
     title: Someone in trouble
     location: trap_site
