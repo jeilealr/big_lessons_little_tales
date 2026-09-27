@@ -11,6 +11,8 @@ For every character in story.yaml with a `canonical:` path:
   * characters/<name>/pack/*.png  every view, expression and action image,
     unchanged except for the file name (".png.png" -> ".png").
   * characters/<name>/pack/manifest.json  source path and size of each file.
+  * characters/<name>/pack16x9/  full-body views/actions padded to 16:9 like
+    the canonical, as start images for pose clips.
 
 The originals under character/characters/ are never modified.
 """
@@ -81,6 +83,15 @@ def main() -> None:
                     dst.write_bytes(f.read_bytes())
                 manifest[dst.name] = dict(source=str(f), size=Image.open(f).size)
         (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
+        # 16:9 padded copies of the full-body images, for pose clips that start
+        # from a view or action instead of the canonical (wan.fit would crop them).
+        pad_dir = work / "characters" / name / "pack16x9"
+        pad_dir.mkdir(parents=True, exist_ok=True)
+        for f in sorted(pack_dir.glob("*.png")):
+            if f.name.startswith(("views__", "actions__")) and "face" not in f.name:
+                dst = pad_dir / f.name
+                if not dst.is_file():
+                    pad_16x9(Image.open(f))[0].save(dst)
         print(f"{name}: canonical -> {out} (pad colour {colour}); {len(manifest)} pack images")
 
 

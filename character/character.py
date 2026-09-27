@@ -117,15 +117,15 @@ def stage_canonical(cfg: dict) -> None:
 
 
 def _render(cfg: dict, stage: str, action: str, image_path: Path, seed: int, out: Path,
-            negative_extra: str = "") -> None:
+            negative_extra: str = "", fast: bool = False) -> None:
     from PIL import Image
 
-    r = cfg["render"]
+    r = {**cfg["render"], **(wan.LIGHTNING["render"] if fast else {})}
     prompt = assemble(cfg, action)
     negative = cfg["negative"] + (", " + negative_extra if negative_extra else "")
     print(f"[{stage}] {out.name}\n  from  {image_path}\n  seed  {seed}\n  prompt {prompt}",
           flush=True)
-    pipe = wan.load("i2v", r["frames"])
+    pipe = wan.load("i2v", r["frames"], fast=fast)
     print("  model loaded", flush=True)
     frames = wan.generate(pipe, prompt, negative=negative, width=r["width"],
                           height=r["height"], frames=r["frames"], steps=r["steps"],
@@ -133,7 +133,7 @@ def _render(cfg: dict, stage: str, action: str, image_path: Path, seed: int, out
                           image=Image.open(image_path))
     wan.save(frames, out)
     sidecar(out, stage=stage, model=wan.model_id("i2v"), start_image=str(image_path),
-            seed=seed, prompt=prompt, negative=negative, **r)
+            seed=seed, prompt=prompt, negative=negative, fast=fast, **r)
     print(f"  saved {out}", flush=True)
 
 
@@ -176,6 +176,8 @@ def start_image(wd: Path, name: str) -> Path:
 
     if name == "canonical":
         return wd / "canonical.png"
+    if name.endswith(".png") and (wd / name).is_file():   # e.g. pack16x9/views__leo_view_3q_01.png
+        return wd / name
     if (wd / "angles" / f"{name}.png").is_file():
         return wd / "angles" / f"{name}.png"
     clip = wd / "shots" / f"{name}.mp4"
@@ -188,17 +190,21 @@ def start_image(wd: Path, name: str) -> Path:
     raise SystemExit(f"cannot start from {name!r}: no canonical, angle or shot of that name")
 
 
-def stage_shots(cfg: dict, only: list[str] | None, redo: bool = False) -> None:
+def stage_shots(cfg: dict, only: list[str] | None, redo: bool = False,
+                fast: bool = False) -> None:
     wd = cfg["_workdir"]
     for shot in cfg["shots"]:
         if only and shot["name"] not in only:
             continue
-        out = wd / "shots" / f"{shot['name']}.mp4"
+        out = wd / "shots" / f"{shot['name']}{'_fast' if fast else ''}.mp4"
         if out.is_file() and not redo:
             print(f"shot {shot['name']}: {out} exists, skipping (use --redo to re-render)")
             continue
         src = start_image(wd, shot["from"])
-        _render(cfg, "shot", shot["action"], src, shot["seed"], wd / "shots" / f"{shot['name']}.mp4")
+        # negative_extra was not passed before 2026-09-27: every pose negative
+        # (v1 and v2 round 1-2) was silently ignored.
+        _render(cfg, "shot", shot["action"], src, shot["seed"], out,
+                shot.get("negative_extra", ""), fast)
 
 
 def stage_dataset(cfg: dict, every: int) -> None:
@@ -286,6 +292,8 @@ def main() -> None:
     ap.add_argument("--clips", nargs="+",
                     help="assemble: shot names, or clip paths relative to the channel folder")
     ap.add_argument("-o", "--output", type=Path, help="assemble: output video")
+    ap.add_argument("--fast", action="store_true",
+                    help="shots: Wan2.2-Lightning 4-step LoRA; output gets a _fast suffix")
     ap.add_argument("--redo", action="store_true",
                     help="orbit/shots: re-render even if the output already exists")
     args = ap.parse_args()
@@ -298,7 +306,7 @@ def main() -> None:
             print(f"{s['name']} (from {s['from']}):", assemble(cfg, s["action"]), "\n")
         return
     {"canonical": lambda: stage_canonical(cfg), "orbit": lambda: stage_orbit(cfg, args.redo),
-     "angles": lambda: stage_angles(cfg), "shots": lambda: stage_shots(cfg, args.only, args.redo),
+     "angles": lambda: stage_angles(cfg), "shots": lambda: stage_shots(cfg, args.only, args.redo, args.fast),
      "dataset": lambda: stage_dataset(cfg, args.every),
      "assemble": lambda: stage_assemble(cfg, args.clips,
                                         args.output or paths.OUTPUT / f"{cfg['name']}_sequence.mov"),

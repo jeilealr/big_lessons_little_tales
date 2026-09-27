@@ -36,6 +36,8 @@ def main() -> None:
     ap.add_argument("--seed", type=int, help="default: every seed listed for the shot")
     ap.add_argument("--recompose", action="store_true",
                     help="rebuild the keyframe from the shot's compose: recipe even if it exists")
+    ap.add_argument("--fast", action="store_true",
+                    help="Wan2.2-Lightning 4-step LoRA (~20x faster); output gets a _fast suffix")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -134,24 +136,25 @@ def main() -> None:
                 [{**c, "still": str(work / c["still"])} for c in end_recipe["characters"]],
                 end_key, end_recipe.get("crop"), end_recipe.get("blur", 0.0))
         print(f"composed end keyframe {end_key}", flush=True)
-    pipe = wan.load("i2v", frames, loras=loras)
+    pipe = wan.load("i2v", frames, loras=loras, fast=args.fast)
+    render = {**RENDER, **(wan.LIGHTNING["render"] if args.fast else {})}
     print("model loaded", flush=True)
     for seed in seeds:
-        out = work / "shots" / f"{args.shot}_s{seed}.mp4"
+        out = work / "shots" / f"{args.shot}_s{seed}{'_fast' if args.fast else ''}.mp4"
         if out.is_file():
             print(f"exists, skipping {out.name}"); continue
         t0 = time.time()
         negative = story["negative"] + (", " + shot["negative_extra"] if shot.get("negative_extra") else "")
         video = wan.generate(pipe, prompt, negative=negative, frames=frames, seed=seed,
                              image=Image.open(keyframe),
-                             last_image=Image.open(end_key) if end_key else None, **RENDER)
+                             last_image=Image.open(end_key) if end_key else None, **render)
         wan.save(video, out)
         out.with_suffix(".json").write_text(json.dumps(dict(
             stage="shot", scene=args.scene, shot=args.shot, keyframe=str(keyframe),
             end_keyframe=str(end_key) if end_key else None,
             model=wan.model_id("i2v"), seed=seed, frames=frames, prompt=prompt,
             negative=negative, loras=[{k: str(v) for k, v in lo.items()} for lo in loras],
-            seconds=round(time.time() - t0), **RENDER), indent=2))
+            fast=args.fast, seconds=round(time.time() - t0), **render), indent=2))
         print(f"saved {out} ({time.time() - t0:.0f} s)", flush=True)
 
 

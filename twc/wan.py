@@ -29,6 +29,15 @@ REVISIONS = {
     "i2v": "596658fd9ca6b7b71d5057529bbf319ecbc61d74",
     "t2v": "5be7df9619b54f4e2667b2755bc6a756675b5cd7",
 }
+# Wan2.2-Lightning (lightx2v, Apache-2.0): 4-step distillation LoRAs for I2V
+# A14B. Reference settings (their ComfyUI workflow): 4 Euler steps, shift 5,
+# CFG 1 (no negative pass), high-noise expert steps 0-2, low-noise 2-4, which is
+# what boundary_ratio 0.9 gives with these timesteps (1000, 937 | 833, 625).
+LIGHTNING = dict(
+    repo="lightx2v/Wan2.2-Lightning", revision="18bccf8884ec0a078eed79785eb4ef13ea16ce1e",
+    folder="Wan2.2-I2V-A14B-4steps-lora-rank64-Seko-V1",
+    render=dict(steps=4, guidance=1.0, guidance_2=1.0), shift=5.0,
+)
 NATIVE_FRAMES = 81
 FPS = 16
 
@@ -58,7 +67,17 @@ def model_id(kind: str) -> str:
     return f"{MODELS[kind]}@{REVISIONS[kind]}"
 
 
-def load(kind: str, frames: int = NATIVE_FRAMES, loras: list[dict] | None = None):
+def lightning_lora() -> dict:
+    from huggingface_hub import hf_hub_download
+
+    L = LIGHTNING
+    get = lambda f: Path(hf_hub_download(L["repo"], f"{L['folder']}/{f}", revision=L["revision"]))
+    return dict(name="lightning", high=get("high_noise_model.safetensors"),
+                low=get("low_noise_model.safetensors"), weight=1.0)
+
+
+def load(kind: str, frames: int = NATIVE_FRAMES, loras: list[dict] | None = None,
+         fast: bool = False):
     """`loras`: [{name, high, low, weight}], musubi-tuner files (one per expert).
 
     A LoRA trained on T2V A14B loads into I2V A14B too: it only touches the
@@ -76,6 +95,12 @@ def load(kind: str, frames: int = NATIVE_FRAMES, loras: list[dict] | None = None
                                            torch_dtype=torch.float32)
     cls = WanImageToVideoPipeline if kind == "i2v" else WanPipeline
     pipe = cls.from_pretrained(repo, vae=vae, revision=rev, torch_dtype=torch.bfloat16)
+    if fast:                                   # 4-step Lightning (see LIGHTNING)
+        from diffusers import FlowMatchEulerDiscreteScheduler
+
+        loras = [*(loras or []), lightning_lora()]
+        pipe.scheduler = FlowMatchEulerDiscreteScheduler(num_train_timesteps=1000,
+                                                         shift=LIGHTNING["shift"])
     if loras:
         for lo in loras:
             for path, second in ((Path(lo["high"]), False), (Path(lo["low"]), True)):

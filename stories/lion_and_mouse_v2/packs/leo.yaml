@@ -52,3 +52,29 @@ shots:
       the floor and pointing forward, his head up and his eyes open, calm and
       gentle.
     negative_extra: paw pads facing the camera, sitting, standing, closed eyes, open mouth
+  # Round 3 (owner, 2026-09-27): sleeping and lying awake in the 3/4 view, full
+  # body visible, instead of the front view (face, paws and tail only). As in
+  # round 2, the eyes close in a separate shot.
+  - name: leo_3q_lies_down
+    from: pack16x9/views__leo_view_3q_01.png
+    seed: 2731
+    action: >-
+      Leo slowly lies down on his belly in a relaxed three-quarter view, his whole
+      body, legs and long tufted tail visible, and rests his big head on his front
+      paws.
+    negative_extra: turning to face the camera, front view, sitting, standing, open mouth
+  - name: leo_3q_sphinx
+    from: pack16x9/views__leo_view_3q_01.png
+    seed: 2732
+    action: >-
+      Leo slowly lies down on his belly like a sphinx in a three-quarter view, his
+      whole body and long tufted tail visible, both front paws flat on the floor
+      and his head up, eyes open, calm and gentle.
+    negative_extra: turning to face the camera, front view, sitting, standing, closed eyes, open mouth
+  - name: leo_3q_closes_eyes
+    from: leo_3q_lies_down
+    seed: 2733
+    action: >-
+      Leo slowly closes his big eyes and falls asleep, his eyelids shut tight, his
+      head resting on his front paws, peaceful and content.
+    negative_extra: open eyes, looking at the camera, lifting the head, standing
