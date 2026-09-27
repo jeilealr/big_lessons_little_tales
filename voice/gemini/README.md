@@ -55,3 +55,15 @@ A story picks its voices in its `story.yaml` (`voices:`), e.g. the Lion and
 Mouse v2 narrator is `narrators/moonlight_storyteller_1`. Samples:
 `google_sample.wav` (Google's own) and `sample_scene*.wav` (story lines). All designed voices
 expire on 2027-09-27: recreate each from its saved prompt before then.
+
+## Languages
+
+English is the default and keeps the plain file name; every other language
+adds its code: `sample_scene01_line0.wav` (en), `sample_scene01_line0_es.wav`
+(Spanish), `_de` German, `_fr` French, `_ru` Russian. The same voice id speaks
+every language (Gemini detects the language from the text). Each file's .json
+keeps the exact text spoken.
+
+| Voice | Languages sampled |
+|---|---|
+| narrators/moonlight_storyteller_1 | en, es |
