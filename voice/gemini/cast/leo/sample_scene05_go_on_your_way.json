@@ -1,0 +1,8 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "voice_zdbgqrcerxqu",
+  "text": "You frightened me, but you meant no harm. Go on your way.",
+  "style": "",
+  "mime": "audio/wav",
+  "seconds": 5.88
+}

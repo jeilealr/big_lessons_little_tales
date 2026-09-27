@@ -1,0 +1,8 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "voice_zdbgqrcerxqu",
+  "text": "You helped me even though you did not have to.",
+  "style": "",
+  "mime": "audio/wav",
+  "seconds": 3.52
+}

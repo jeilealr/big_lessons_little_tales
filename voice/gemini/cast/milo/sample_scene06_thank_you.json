@@ -1,0 +1,8 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "voice_vf2w20rcys8a",
+  "text": "Thank you. I hope one day I can show someone the same kindness.",
+  "style": "",
+  "mime": "audio/wav",
+  "seconds": 4.52
+}

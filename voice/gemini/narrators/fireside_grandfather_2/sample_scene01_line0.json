@@ -1,0 +1,8 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "voice_4rdl7hydi35v",
+  "text": "Once upon a time, a great lion was sleeping beneath a tree, when a little mouse accidentally ran across his paw.",
+  "style": "",
+  "mime": "audio/wav",
+  "seconds": 9.88
+}

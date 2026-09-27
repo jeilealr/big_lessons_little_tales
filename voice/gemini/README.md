@@ -42,13 +42,16 @@ voice; no audio was generated for it). Save a voice with
 
 | Role | Voice | Folder |
 |---|---|---|
-| narrator (Lion and Mouse v2) | Golden Hour Storyteller 3 (`voice_g00mo8cbdefq`) | `cast/narrator/` |
 | Leo | The Noble Lion 1 (`voice_zdbgqrcerxqu`) | `cast/leo/` |
 | Milo | The Brave Little Mouse 1 (`voice_vf2w20rcys8a`) | `cast/milo/` |
 | narrator (alternative) | The Fireside Grandfather 2 (`voice_4rdl7hydi35v`) | `narrators/fireside_grandfather_2/` |
-| narrator (alternative) | Moonlight Storyteller 1 (`voice_v5bpq98uj7qh`) | `narrators/moonlight_storyteller_1/` |
+| **narrator (Lion and Mouse v2)** | Moonlight Storyteller 1 (`voice_v5bpq98uj7qh`) | `narrators/moonlight_storyteller_1/` |
+| narrator (alternative) | Golden Hour Storyteller 3 (`voice_g00mo8cbdefq`) | `narrators/golden_hour_storyteller_3/` |
 | narrator (alternative) | The Cheery Tale Keeper 2 (`voice_8tnxrhfqk3ur`) | `narrators/cheery_tale_keeper_2/` |
 | narrator (alternative) | Bright Trail Narrator 2 (`voice_tcrjw3ney7q8`) | `narrators/bright_trail_narrator_2/` |
 
-A story picks its voices in its `story.yaml` (`voices:`). All designed voices
+`cast/` holds character voices; `narrators/` is the pool of narrator voices.
+A story picks its voices in its `story.yaml` (`voices:`), e.g. the Lion and
+Mouse v2 narrator is `narrators/moonlight_storyteller_1`. Samples:
+`google_sample.wav` (Google's own) and `sample_scene*.wav` (story lines). All designed voices
 expire on 2027-09-27: recreate each from its saved prompt before then.

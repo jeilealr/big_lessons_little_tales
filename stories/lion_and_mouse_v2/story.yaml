@@ -27,7 +27,7 @@ negative: >-
 # ---------------------------------------------------------------- voices
 # Gemini 3.8 Flash TTS designed voices (records: voice/gemini/<path>/voice.yaml).
 voices:
-  narrator: cast/narrator      # Golden Hour Storyteller 3, voice_g00mo8cbdefq
+  narrator: narrators/moonlight_storyteller_1   # Moonlight Storyteller 1, voice_v5bpq98uj7qh
   leo: cast/leo                # The Noble Lion 1, voice_zdbgqrcerxqu
   milo: cast/milo              # The Brave Little Mouse 1, voice_vf2w20rcys8a
 

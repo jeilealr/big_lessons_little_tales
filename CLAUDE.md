@@ -308,10 +308,10 @@ production") and `character/characters/character_pack_prompts_v2.md`.
   list_voices.py); API key only in `~/.config/gemini/env` (owner-written,
   chmod 600; never print, copy or commit it). Canonical voices:
   `voice/gemini/cast/<role>/voice.yaml` (id, full design prompt, expiry,
-  sample). Lion and Mouse v2: narrator Golden Hour Storyteller 3
-  (`voice_g00mo8cbdefq`), Leo The Noble Lion 1 (`voice_zdbgqrcerxqu`), Milo
-  The Brave Little Mouse 1 (`voice_vf2w20rcys8a`); four alternative narrators
-  in `voice/gemini/narrators/`. All expire 2027-09-27: recreate from the saved
+  sample). Lion and Mouse v2: narrator Moonlight Storyteller 1
+  (`voice_v5bpq98uj7qh`, `voice/gemini/narrators/`), Leo The Noble Lion 1 (`voice_zdbgqrcerxqu`), Milo
+  The Brave Little Mouse 1 (`voice_vf2w20rcys8a`); Golden Hour Storyteller 3 and three
+  more alternative narrators in `voice/gemini/narrators/`. All expire 2027-09-27: recreate from the saved
   prompts before then. Owner: generate no more audio for now.
 - **2026-09-27: Chatterbox voices PAUSED by the owner**, who is trying Gemini
   3.8 TTS (Google AI Studio / Gemini API) for narration and character voices.
