@@ -344,4 +344,14 @@ Update this when a rule is confirmed, refuted or refined.
   Rows: closes eyes a, b; sphinx a, b.
 
   ![v2 poses round 2](img/v2_poses_round2.jpg)
+- 2026-09-27 (v2 Scenes 1-4): with the owner's cast every shot came out
+  on-model. Scene 1 push-in, Leo stays asleep (both seeds). Scene 2 Milo runs
+  past the sleeping Leo and out of frame (both seeds; fixed camera). Scene 3
+  **start + end keyframes** (Leo asleep -> Leo lying awake, same place): Leo
+  woke, swung a paw down beside Milo and landed on the end pose (3101).
+  Scene 4 Leo softens with `background:` instead of the location sheet: the
+  background stayed soft in both seeds (Rule 2.13 fix confirmed).
+
+  ![v2 Scenes 1-2](img/v2_s01_s02.jpg)
+  ![v2 Scenes 3-4](img/v2_s03_s04.jpg)
 

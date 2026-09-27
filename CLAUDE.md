@@ -303,10 +303,14 @@ v2 (2026-09-27):
   `poses/milo_paws_together_last.png`, pack walking image for runs.
 - Scale in the clearing: Leo standing 0.52 of frame; asleep h 0.34, sphinx
   0.36 (measured bbox ratios 0.653 / 0.698); Milo standing 0.17.
-- Rendering: jobs 22374836 / 22374837 (seeds A / B): s01_sleeps, s02_milo_runs,
-  s03_caught (start+end), s04_leo_softens_v2.
-- Next: Scene 5 (continue from s03 take), Scene 6 thanks + leaves, then the
-  trap scenes (7-11) at trap_site 3104, Scene 12.
+- Takes: s01 1101, s02 2101, s03 3101, s04 trembles 4101, s04 Leo softens v2
+  4203, s06 Milo smiles 6101. All on-model.
+- Rendering: job 22375419 (s07_leo_walks x2, s08_milo_hears, s08_milo_runs),
+  job 22375447 (s05_leo_releases x2, s06_milo_thanks x2). Both ~09:45.
+- Next: s06 Milo leaves; Scene 7 net falls / Leo tugs (continue from the
+  walk take); Scenes 9-11 at the net (Milo pasted into the trap frame, close-up
+  crops for gnawing); Scene 12.
+- Animatic: `work/stories/lion_and_mouse_v2/animatic.mp4`.
 
 v1 (paused 2026-09-26, kept for reference):
 - Lion and Mouse picks: Leo 1003 (black eyes, owner decision), Milo 1001
