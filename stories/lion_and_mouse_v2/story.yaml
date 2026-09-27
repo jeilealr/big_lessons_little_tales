@@ -117,6 +117,7 @@ scenes:
     beat: Leo sleeps peacefully beneath his tree; the camera eases in.
     shots:
       - name: s01_sleeps
+        take: 1101                          # push-in, Leo stays asleep, eyes closed
         keyframe: keyframes/s01_sleeps.png
         compose:
           plate: design/clearing/canonical.png
@@ -141,6 +142,7 @@ scenes:
     beat: Milo scampers across the grass, past Leo's big front paw, not noticing him.
     shots:
       - name: s02_milo_runs
+        take: 2101                          # Milo scampers past and out right; Leo asleep
         keyframe: keyframes/s02_milo_runs.png
         compose:
           plate: design/clearing/canonical.png
@@ -172,6 +174,7 @@ scenes:
       # Start and end keyframes: the same crop, the same place; only Leo's pose
       # changes (asleep -> lying awake, sphinx). Milo stays frozen at his paws.
       - name: s03_caught
+        take: 3101                          # wakes surprised, swings a paw down beside Milo
         keyframe: keyframes/s03_start.png
         compose:
           plate: design/clearing/canonical.png
@@ -250,6 +253,7 @@ scenes:
         negative_extra: >-
           mouse, second lion, open mouth, teeth, angry, roaring, camera moving
       - name: s04_leo_softens_v2           # close-up background instead of the location sheet
+        take: 4203                          # curious -> kind smile; background stays soft
         keyframe: keyframes/s04_leo_curious.png
         end_keyframe: keyframes/s04_leo_smile.png
         background: >-
@@ -273,6 +277,20 @@ scenes:
       "You frightened me," said the lion, "but you meant no harm. Go on your
       way."
     beat: Leo lifts his paw away and smiles; Milo is free.
+    shots:
+      - name: s05_leo_releases
+        keyframe: keyframes/s05_from_s03.png
+        continue_from: {shot: s03_caught, take: 3101}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [5101, 5102]
+        action: >-
+          Leo the lion gently draws his big front paw back towards himself and gives
+          the tiny mouse a warm, kind closed-mouth smile, lying calmly on the grass.
+          Tiny Milo stands still, looking up at him. The camera stays still.
+        negative_extra: >-
+          teeth, open mouth, angry face, roaring, lion standing up, mouse running
+          away, second lion, second mouse, camera moving
   6:
     title: Thank you
     location: clearing
@@ -306,6 +324,32 @@ scenes:
           still.
         negative_extra: >-
           lion, second mouse, teeth, crying, running, camera moving
+      - name: s06_milo_thanks               # same two-shot crop as Scene 3; Milo worried -> paws together
+        keyframe: keyframes/s06_thanks_start.png
+        compose:
+          plate: design/clearing/canonical.png
+          crop: [0.28, 0.46, 0.52]
+          characters:
+            - {still: characters/leo/poses/leo_sphinx.png, x: 0.577, y: 0.769, h: 0.692}
+            - {still: characters/milo/poses/milo_worried_last.png, x: 0.25, y: 0.93, h: 0.327}
+        end_keyframe: keyframes/s06_thanks_end.png
+        end_compose:
+          plate: design/clearing/canonical.png
+          crop: [0.28, 0.46, 0.52]
+          characters:
+            - {still: characters/leo/poses/leo_sphinx.png, x: 0.577, y: 0.769, h: 0.692}
+            - {still: characters/milo/poses/milo_paws_together_last.png, x: 0.25, y: 0.93, h: 0.327}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [6201, 6202]
+        action: >-
+          Tiny Milo the mouse looks up at the lion, relaxes, and presses his tiny paws
+          together in front of his chest with a grateful smile, saying thank you.
+          Leo the lion lies calmly behind him, smiling gently. The camera stays
+          still.
+        negative_extra: >-
+          teeth, open mouth, angry face, lion standing up, mouse running away, second
+          lion, second mouse, camera moving
   7:
     title: The net
     location: trap_site
