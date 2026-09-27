@@ -40,9 +40,10 @@ BREATH = 0.6          # seconds of silence after each scene's narration
 DEFAULT = dict(clip=None, still=5.0, card=4.0)
 
 
-def narration(story: str, n: int) -> Path | None:
+def narration(story: str, n: int, lang: str | None = None) -> Path | None:
+    base = paths.AUDIO / story / lang if lang else paths.AUDIO / story
     for ext in ("wav", "mp3", "m4a"):
-        p = paths.AUDIO / story / f"scene{n:02d}.{ext}"
+        p = base / f"scene{n:02d}.{ext}"
         if p.is_file():
             return p
     return None
@@ -93,12 +94,13 @@ def main() -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--story", default="lion_and_mouse")
     ap.add_argument("--size", default="960x540")
+    ap.add_argument("--lang", help="narration from audio/<story>/<lang>/ (voice/narrate.py)")
     args = ap.parse_args()
     size = tuple(int(v) for v in args.size.split("x"))
 
     story = yaml.safe_load((paths.REPO / "stories" / args.story / "story.yaml").read_text())
     work = paths.WORK / "stories" / args.story
-    out = work / "animatic.mp4"
+    out = work / (f"animatic_{args.lang}.mp4" if args.lang else "animatic.mp4")
     tmp_video = out.with_name("animatic_video.mp4")
     cmd = [post._ffmpeg(), "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
            "-s", f"{size[0]}x{size[1]}", "-r", str(FPS), "-i", "-", "-c:v", "libx264",
@@ -121,7 +123,7 @@ def main() -> None:
         if not segs:
             segs.append(("card", None, "no shots yet"))
 
-        voice = narration(args.story, n)
+        voice = narration(args.story, n, args.lang)
         if voice is not None:
             wav = read_audio(voice)
             length = len(wav) / SR + BREATH

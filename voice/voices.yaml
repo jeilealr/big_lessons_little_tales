@@ -1,0 +1,73 @@
+# Voice design for the channel's fables: licence-clean, original voices.
+#
+# How a voice is made (see voice/README.md):
+#   1. design   Parler-TTS (Apache-2.0) turns a written description into a
+#               ~10 s reference clip. Only generic descriptions: Parler's named
+#               speakers are real audiobook readers and are never used.
+#   2. audition Chatterbox multilingual (MIT) clones the reference and reads the
+#               role's lines from the story, exactly as narration will be made.
+#   3. pick     the chosen reference becomes the canonical voice, kept in the
+#               repo at voice/cast/<role>/ (reference.wav + voice.yaml).
+# The same reference then speaks every language (Chatterbox supports en, de,
+# es, fr, ru and more), so Leo sounds like Leo in all of them.
+#
+# Descriptions follow Parler's vocabulary (gender, pitch, pace, expressiveness,
+# recording quality). Positive words only (docs/prompting.md Rule 3.5).
+
+reference_text: >-
+  The morning sun rose slowly over the quiet forest. The birds began to sing,
+  and a gentle breeze moved through the tall green trees. It was going to be a
+  wonderful day.
+
+roles:
+  narrator:
+    brief: >-
+      The storyteller of a children's fable channel: warm, clear and kind, with
+      gentle expression and an unhurried bedtime-story pace; easy for small
+      children to follow; never announcer-like or dramatic.
+    candidates:
+      - {id: narrator_warm_female, seed: 101, description: "A warm, gentle female voice with a moderate pitch tells a bedtime story slowly and expressively, calm, kind and clear. Very clear audio, recorded close to the microphone."}
+      - {id: narrator_warm_female, seed: 102, description: "A warm, gentle female voice with a moderate pitch tells a bedtime story slowly and expressively, calm, kind and clear. Very clear audio, recorded close to the microphone."}
+      - {id: narrator_warm_male, seed: 111, description: "A warm, friendly male voice with a medium-low pitch narrates a children's story slowly and expressively, calm and kind. Very clear audio, recorded close to the microphone."}
+      - {id: narrator_warm_male, seed: 112, description: "A warm, friendly male voice with a medium-low pitch narrates a children's story slowly and expressively, calm and kind. Very clear audio, recorded close to the microphone."}
+      - {id: narrator_soft_female, seed: 121, description: "A soft, soothing female voice with a slightly low pitch reads a fairy tale very slowly and tenderly, like a grandmother at bedtime. Very clear audio, recorded close to the microphone."}
+      - {id: narrator_bright_female, seed: 131, description: "A bright, cheerful female voice with a medium-high pitch reads a fairy tale with lively, animated expression at a moderate pace. Very clear audio, recorded close to the microphone."}
+  leo:
+    brief: >-
+      Leo the lion: big, strong and gentle; a deep, warm, slow voice with a
+      kind smile in it; surprised or worried at most, never threatening.
+    candidates:
+      - {id: leo_deep_warm, seed: 201, description: "A deep, warm and gentle male voice with a very low pitch speaks slowly and calmly, kind and wise. Very clear audio, recorded close to the microphone."}
+      - {id: leo_deep_warm, seed: 202, description: "A deep, warm and gentle male voice with a very low pitch speaks slowly and calmly, kind and wise. Very clear audio, recorded close to the microphone."}
+      - {id: leo_rich_friendly, seed: 211, description: "A rich, friendly male voice with a low pitch speaks at a relaxed pace with a gentle, expressive and slightly playful tone. Very clear audio, recorded close to the microphone."}
+      - {id: leo_rich_friendly, seed: 212, description: "A rich, friendly male voice with a low pitch speaks at a relaxed pace with a gentle, expressive and slightly playful tone. Very clear audio, recorded close to the microphone."}
+  milo:
+    brief: >-
+      Milo the mouse: small, clever, cheerful and quietly brave; a light, bright,
+      youthful voice, quick but clear; sincere, never squeaky-silly.
+    candidates:
+      - {id: milo_bright_young, seed: 301, description: "A light, bright and youthful female voice with a high pitch speaks quickly and cheerfully, sweet and sincere. Very clear audio, recorded close to the microphone."}
+      - {id: milo_bright_young, seed: 302, description: "A light, bright and youthful female voice with a high pitch speaks quickly and cheerfully, sweet and sincere. Very clear audio, recorded close to the microphone."}
+      - {id: milo_bright_young, seed: 303, description: "A light, bright and youthful female voice with a high pitch speaks quickly and cheerfully, sweet and sincere. Very clear audio, recorded close to the microphone."}
+      - {id: milo_curious_boy, seed: 311, description: "A soft, curious and youthful male voice with a high pitch speaks at a lively pace, friendly and earnest. Very clear audio, recorded close to the microphone."}
+      - {id: milo_curious_boy, seed: 312, description: "A soft, curious and youthful male voice with a high pitch speaks at a lively pace, friendly and earnest. Very clear audio, recorded close to the microphone."}
+
+# What each role reads in the audition (English; from the Lion and the Mouse v2).
+audition:
+  narrator:
+    - "Once upon a time, a great lion was sleeping beneath a tree, when a little mouse accidentally ran across his paw."
+    - "Perhaps kindness was not something to be repaid like a debt. Perhaps it was something that could simply be passed on."
+  leo:
+    - "You frightened me, but you meant no harm. Go on your way."
+    - "You helped me even though you did not have to."
+  milo:
+    - "Thank you. I hope one day I can show someone the same kindness."
+    - "I think I can help!"
+
+# Chatterbox settings for auditions and narration (their guidance: 0.5/0.5 is
+# the default; more expressive = higher exaggeration, lower cfg).
+chatterbox:
+  exaggeration: 0.55
+  cfg_weight: 0.5
+  cfg_weight_other_language: 0.0   # reference in English, text in another language
+  seed: 7
