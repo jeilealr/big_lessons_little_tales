@@ -294,8 +294,15 @@ production") and `character/characters/character_pack_prompts_v2.md`.
 - The repo has a private GitHub remote (`origin`,
   git@github.com:jeilealr/twc_video.git). The owner's SSH keys have
   passphrases, so **the owner pushes**; agents commit locally.
-- Voices/narration: `TWC_ENV=tts` venv (Chatterbox multilingual MIT, Parler-TTS
-  Apache-2.0); see the voices section below when it exists.
+- Voices/narration: **`voice/README.md`**. Voices are designed from text
+  descriptions (Parler-TTS, Apache-2.0; never Parler's named real speakers),
+  auditioned and spoken with Chatterbox multilingual (MIT), one canonical
+  reference per role in `voice/cast/<role>/`, the same voice in every language.
+  Never clone a real or third-party voice (the chatterboxTTS Nate/Derek
+  references are ElevenLabs excerpts). Scripts: `stories/<slug>/narration/<lang>.yaml`.
+  Owner plan: narration + character voices from here; music/SFX from
+  ElevenLabs (paid plan, commercial); final mix in DaVinci; languages en first,
+  then de, es, ru, fr.
 
 ## Current state (update when it changes)
 
