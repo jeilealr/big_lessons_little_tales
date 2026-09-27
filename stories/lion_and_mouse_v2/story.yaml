@@ -133,6 +133,22 @@ scenes:
         negative_extra: >-
           open eyes, awake, looking at the camera, lifting the head, standing up,
           mouse
+      - name: s01_sleeps_3q                # owner: 3/4 full body instead of the front view
+        keyframe: keyframes/s01_sleeps_3q.png
+        compose:
+          plate: design/clearing/canonical.png
+          characters:
+            - {still: characters/leo/poses/leo_3q_asleep.png, x: 0.52, y: 0.87, h: 0.312}
+        characters: [leo]
+        frames: 81
+        seeds: [1111, 1112, 1113]
+        action: >-
+          Leo the lion lies fast asleep on the grass beneath the tree the whole
+          time, his eyes closed, breathing slowly and peacefully. The camera slowly
+          moves closer to him.
+        negative_extra: >-
+          open eyes, awake, looking at the camera, lifting the head, standing up,
+          mouse
   2:
     title: A little mouse
     location: clearing
@@ -153,6 +169,24 @@ scenes:
         frames: 81
         seeds: [2101, 2102]
         # Fixed camera + an energetic verb + the run leaves the frame (Rule 2.10).
+        action: >-
+          Seen from the side, tiny Milo the mouse runs quickly across the grass from
+          left to right, right in front of the sleeping lion's big front paws, and
+          out of the right edge of the frame. Leo stays fast asleep the whole time,
+          his eyes closed. The camera stays still.
+        negative_extra: >-
+          open eyes, awake, lion standing up, second mouse, running away from the
+          camera, back view, standing still, camera moving
+      - name: s02_milo_runs_3q
+        keyframe: keyframes/s02_milo_runs_3q.png
+        compose:
+          plate: design/clearing/canonical.png
+          characters:
+            - {still: characters/leo/poses/leo_3q_asleep.png, x: 0.52, y: 0.87, h: 0.312}
+            - {still: characters/milo/pack/actions__milo_action_walking_01.png, x: 0.12, y: 0.95, h: 0.17}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [2111, 2112, 2113]
         action: >-
           Seen from the side, tiny Milo the mouse runs quickly across the grass from
           left to right, right in front of the sleeping lion's big front paws, and
@@ -192,6 +226,32 @@ scenes:
         characters: [leo, milo]
         frames: 81
         seeds: [3101, 3102]
+        action: >-
+          Leo the lion wakes up with a start, lifts his big head and opens his eyes
+          wide in surprise, looking at the tiny mouse right beside his paws, and
+          stretches one big front paw forward onto the grass next to him. Tiny Milo
+          freezes, worried. The camera stays still.
+        negative_extra: >-
+          teeth, open mouth, angry face, roaring, lion standing up, mouse running
+          away, second lion, second mouse, camera moving
+      - name: s03_caught_3q
+        keyframe: keyframes/s03_start_3q.png
+        compose:
+          plate: design/clearing/canonical.png
+          crop: [0.28, 0.46, 0.52]
+          characters:
+            - {still: characters/leo/poses/leo_3q_asleep.png, x: 0.46, y: 0.788, h: 0.60}
+            - {still: characters/milo/poses/milo_worried_last.png, x: 0.66, y: 0.97, h: 0.34}
+        end_keyframe: keyframes/s03_end_3q.png
+        end_compose:
+          plate: design/clearing/canonical.png
+          crop: [0.28, 0.46, 0.52]
+          characters:
+            - {still: characters/leo/poses/leo_3q_sphinx.png, x: 0.46, y: 0.788, h: 0.694}
+            - {still: characters/milo/poses/milo_worried_last.png, x: 0.66, y: 0.97, h: 0.34}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [3111, 3112, 3113]
         action: >-
           Leo the lion wakes up with a start, lifts his big head and opens his eyes
           wide in surprise, looking at the tiny mouse right beside his paws, and
