@@ -78,3 +78,10 @@ shots:
       Leo slowly closes his big eyes and falls asleep, his eyelids shut tight, his
       head resting on his front paws, peaceful and content.
     negative_extra: open eyes, looking at the camera, lifting the head, standing
+  - name: leo_3q_closes_eyes_b
+    from: leo_3q_lies_down
+    seed: 2734
+    action: >-
+      Leo's eyelids slowly droop and close, and he falls fast asleep with his eyes
+      shut tight, his head resting on his front paws, peaceful and content.
+    negative_extra: open eyes, looking at the camera, lifting the head, standing
