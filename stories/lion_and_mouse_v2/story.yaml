@@ -115,6 +115,23 @@ scenes:
     narration: >-
       Once upon a time, a great lion was sleeping beneath a tree
     beat: Leo sleeps peacefully beneath his tree; the camera eases in.
+    shots:
+      - name: s01_sleeps
+        keyframe: keyframes/s01_sleeps.png
+        compose:
+          plate: design/clearing/canonical.png
+          characters:
+            - {still: characters/leo/poses/leo_asleep.png, x: 0.58, y: 0.86, h: 0.34}
+        characters: [leo]
+        frames: 81
+        seeds: [1101, 1102]
+        action: >-
+          Leo the lion lies fast asleep on the grass beneath the tree the whole
+          time, his eyes closed, breathing slowly and peacefully. The camera slowly
+          moves closer to him.
+        negative_extra: >-
+          open eyes, awake, looking at the camera, lifting the head, standing up,
+          mouse
   2:
     title: A little mouse
     location: clearing
@@ -122,6 +139,26 @@ scenes:
     narration: >-
       when a little mouse accidentally ran across his paw.
     beat: Milo scampers across the grass, past Leo's big front paw, not noticing him.
+    shots:
+      - name: s02_milo_runs
+        keyframe: keyframes/s02_milo_runs.png
+        compose:
+          plate: design/clearing/canonical.png
+          characters:
+            - {still: characters/leo/poses/leo_asleep.png, x: 0.58, y: 0.86, h: 0.34}
+            - {still: characters/milo/pack/actions__milo_action_walking_01.png, x: 0.12, y: 0.95, h: 0.17}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [2101, 2102]
+        # Fixed camera + an energetic verb + the run leaves the frame (Rule 2.10).
+        action: >-
+          Seen from the side, tiny Milo the mouse runs quickly across the grass from
+          left to right, right in front of the sleeping lion's big front paws, and
+          out of the right edge of the frame. Leo stays fast asleep the whole time,
+          his eyes closed. The camera stays still.
+        negative_extra: >-
+          open eyes, awake, lion standing up, second mouse, running away from the
+          camera, back view, standing still, camera moving
   3:
     title: Caught
     location: clearing
@@ -131,6 +168,35 @@ scenes:
     beat: >-
       Leo wakes, surprised; he gently places one big paw beside Milo as a soft
       barrier (never on top of him, no teeth: the "growl" is the narrator's).
+    shots:
+      # Start and end keyframes: the same crop, the same place; only Leo's pose
+      # changes (asleep -> lying awake, sphinx). Milo stays frozen at his paws.
+      - name: s03_caught
+        keyframe: keyframes/s03_start.png
+        compose:
+          plate: design/clearing/canonical.png
+          crop: [0.28, 0.46, 0.52]
+          characters:
+            - {still: characters/leo/poses/leo_asleep.png, x: 0.577, y: 0.769, h: 0.654}
+            - {still: characters/milo/poses/milo_worried_last.png, x: 0.25, y: 0.93, h: 0.327}
+        end_keyframe: keyframes/s03_end.png
+        end_compose:
+          plate: design/clearing/canonical.png
+          crop: [0.28, 0.46, 0.52]
+          characters:
+            - {still: characters/leo/poses/leo_sphinx.png, x: 0.577, y: 0.769, h: 0.692}
+            - {still: characters/milo/poses/milo_worried_last.png, x: 0.25, y: 0.93, h: 0.327}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [3101, 3102]
+        action: >-
+          Leo the lion wakes up with a start, lifts his big head and opens his eyes
+          wide in surprise, looking at the tiny mouse right beside his paws, and
+          stretches one big front paw forward onto the grass next to him. Tiny Milo
+          freezes, worried. The camera stays still.
+        negative_extra: >-
+          teeth, open mouth, angry face, roaring, lion standing up, mouse running
+          away, second lion, second mouse, camera moving
   4:
     title: The lion decides
     location: clearing
@@ -143,6 +209,7 @@ scenes:
       # Close-ups from the owner's expression images (identical framing), as
       # start and end frames: the guide's two-frame method.
       - name: s04_milo_trembles
+        take: 4101                          # on-model throughout, gentle worried quiver
         keyframe: keyframes/s04_milo_concerned.png
         compose:
           plate: design/clearing/canonical.png
@@ -161,6 +228,7 @@ scenes:
           lion, second mouse, open mouth, teeth, crying, tears, running, camera
           moving
       - name: s04_leo_softens
+        superseded_by: s04_leo_softens_v2   # background wandered mid-shot (tree drawn in)
         keyframe: keyframes/s04_leo_curious.png
         compose:
           plate: design/clearing/canonical.png
@@ -181,6 +249,22 @@ scenes:
           into a gentle, kind closed-mouth smile. The camera stays still.
         negative_extra: >-
           mouse, second lion, open mouth, teeth, angry, roaring, camera moving
+      - name: s04_leo_softens_v2           # close-up background instead of the location sheet
+        keyframe: keyframes/s04_leo_curious.png
+        end_keyframe: keyframes/s04_leo_smile.png
+        background: >-
+          a soft, completely out-of-focus sunny felt meadow with blurred green and
+          pale blue shapes
+        characters: [leo]
+        frames: 81
+        seeds: [4203, 4204]
+        action: >-
+          Close-up of Leo the lion looking down curiously; slowly his face softens
+          into a gentle, kind closed-mouth smile. The camera stays completely
+          still.
+        negative_extra: >-
+          mouse, second lion, open mouth, teeth, angry, roaring, camera moving,
+          tree trunk, sharp background, cut, scene change
   5:
     title: Go on your way
     location: clearing
@@ -200,6 +284,7 @@ scenes:
     beat: Milo's surprise turns into a warm smile; he thanks Leo and scampers off.
     shots:
       - name: s06_milo_smiles
+        take: 6101                          # surprise -> smile, clean
         keyframe: keyframes/s06_milo_surprise.png
         compose:
           plate: design/clearing/canonical.png

@@ -60,7 +60,13 @@ def main() -> None:
                               low=d / "out_low" / f"{ch['lora']['name']}_low{suf}.safetensors"))
         name = ch["name"][0].upper() + ch["name"][1:]
         parts.append(f"{name} is {ch['trigger'] + ', ' if use else ''}{ch['sheet']}.")
-    parts.append(f"The scene is {story['locations'][scene['location']]['sheet']}.")
+    # `background:` replaces the location sheet, for close-ups: the full sheet
+    # names landmarks (a tree trunk...) that the model then tries to show,
+    # wandering away from the keyframes mid-shot (v2 s04_leo_softens).
+    if shot.get("background"):
+        parts.append(f"The background is {shot['background'].strip()}.")
+    else:
+        parts.append(f"The scene is {story['locations'][scene['location']]['sheet']}.")
     parts.append(story["style"] + ".")
     prompt = " ".join(parts)
     seeds = [args.seed] if args.seed else shot["seeds"]
