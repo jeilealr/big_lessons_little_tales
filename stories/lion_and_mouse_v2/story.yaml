@@ -357,7 +357,7 @@ scenes:
         continue_from: {shot: s03_caught, take: 3101}
         characters: [leo, milo]
         frames: 81
-        seeds: [5103, 5104]
+        seeds: [5103, 5104, 5105]
         action: >-
           Leo the lion keeps his big paws resting flat on the grass and gives the
           tiny mouse a warm, kind closed-mouth smile and a slow gentle nod, as if
@@ -426,6 +426,19 @@ scenes:
         negative_extra: >-
           teeth, open mouth, angry face, lion standing up, mouse running away, second
           lion, second mouse, camera moving
+      - name: s06_milo_leaves
+        keyframe: keyframes/s06_from_thanks.png
+        continue_from: {shot: s06_milo_thanks, take: 6201}
+        characters: [leo, milo]
+        frames: 81
+        seeds: [6301, 6302, 6303]
+        action: >-
+          Tiny Milo the mouse turns and scampers happily away across the grass to
+          the left and out of the left edge of the frame, while Leo the lion stays
+          lying down, watching him go with a gentle smile. The camera stays still.
+        negative_extra: >-
+          angry face, teeth, open mouth, roaring, lion standing up, second lion,
+          second mouse, camera moving
   7:
     title: The net
     location: trap_site
@@ -458,6 +471,7 @@ scenes:
           net, rope, mouse, second lion, walking away from the camera, back view,
           standing still, walking on the spot, camera tracking, lying down
       - name: s07_net_falls
+        take: 7202                          # net drapes over Leo lying calmly
         keyframe: keyframes/s07_from_walk.png
         continue_from: {shot: s07_leo_walks, take: 7101}
         characters: [leo]
@@ -472,6 +486,22 @@ scenes:
         negative_extra: >-
           scary, angry face, teeth, open mouth, roaring, crying, pain, metal, wire,
           chains, spikes, cage, mouse, second lion, people, hunter, camera moving
+      - name: s07_leo_tugs
+        keyframe: keyframes/s07_from_net.png
+        continue_from: {shot: s07_net_falls, take: 7202}
+        characters: [leo]
+        frames: 81
+        seeds: [7301, 7302, 7303]
+        # Mild peril (findings B6): gentle tugging, worried, mouth closed; the
+        # narrator carries "struggled"; no thrashing, no rope over the face.
+        action: >-
+          Leo the lion, lying under the soft rope net, gently tugs at the ropes with
+          one big front paw and looks up, worried, his mouth closed. The net stays
+          over him. The camera stays still.
+        negative_extra: >-
+          teeth, open mouth, roaring, angry face, crying, pain, thrashing, rope over
+          the face, standing up, escaping, mouse, second lion, people, hunter,
+          camera moving
   8:
     title: Milo hears
     location: forest_run
@@ -504,7 +534,7 @@ scenes:
         negative_extra: >-
           lion, second mouse, running, open mouth, teeth, crying, camera moving
       - name: s08_milo_runs
-        take: 8201                          # provisional: walks off into depth, not a run
+        superseded_by: s08_milo_runs_v2     # walked off into depth (walking start still)
         keyframe: keyframes/s08_runs.png
         compose:
           plate: design/forest_run/canonical.png
@@ -521,6 +551,7 @@ scenes:
           lion, second mouse, running away from the camera, back view, standing
           still, hopping on the spot, camera tracking
       - name: s08_milo_runs_v2             # standing side view (v1: a standing start ran; a walking start walks)
+        take: 8204                          # runs left out of frame (standing start)
         keyframe: keyframes/s08_runs_v2.png
         compose:
           plate: design/forest_run/canonical.png
