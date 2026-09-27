@@ -354,4 +354,11 @@ Update this when a rule is confirmed, refuted or refined.
 
   ![v2 Scenes 1-2](img/v2_s01_s02.jpg)
   ![v2 Scenes 3-4](img/v2_s03_s04.jpg)
+- 2026-09-27 (v2 Scenes 7-8): Leo walks the trap path across the frame (both
+  seeds; fixed camera). Milo's turn towards the sound pinned by start+end
+  keyframes (3/4 view -> side view mirrored) landed exactly. Milo "runs very
+  fast" starting from the owner's *walking* image walked off into depth: the
+  start pose sets the gait. A run needs a running start still.
+
+  ![v2 Scenes 7-8](img/v2_s07_s08.jpg)
 

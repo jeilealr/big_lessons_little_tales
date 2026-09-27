@@ -363,6 +363,7 @@ scenes:
       worried, mouth closed (mild peril: findings B6).
     shots:
       - name: s07_leo_walks
+        take: 7101                          # walks along the path across the frame
         keyframe: keyframes/s07_walk.png
         compose:
           plate: design/trap_site/canonical.png
@@ -391,6 +392,7 @@ scenes:
       # The turn is pinned by start and end keyframes: 3/4 view -> side view
       # facing left (towards the sound). A head turn alone does not register.
       - name: s08_milo_hears
+        take: 8101                          # turns to face the sound (start+end keyframes)
         keyframe: keyframes/s08_hears_start.png
         compose:
           plate: design/forest_run/canonical.png
@@ -411,6 +413,7 @@ scenes:
         negative_extra: >-
           lion, second mouse, running, open mouth, teeth, crying, camera moving
       - name: s08_milo_runs
+        take: 8201                          # provisional: walks off into depth, not a run
         keyframe: keyframes/s08_runs.png
         compose:
           plate: design/forest_run/canonical.png
