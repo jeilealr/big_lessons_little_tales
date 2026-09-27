@@ -303,6 +303,24 @@ production") and `character/characters/character_pack_prompts_v2.md`.
   Owner plan: narration + character voices from here; music/SFX from
   ElevenLabs (paid plan, commercial); final mix in DaVinci; languages en first,
   then de, es, ru, fr.
+- **2026-09-27: Chatterbox voices PAUSED by the owner**, who is trying Gemini
+  3.8 TTS (Google AI Studio / Gemini API) for narration and character voices.
+  Agents: do not continue voice work unless asked; focus on video. What was
+  found, for when voices resume:
+  - Chatterbox: Parler voice design produced a hum instead of speech (sdpa
+    attention suspected; eager attention untested); the owner liked
+    narrator_warm_female_s101, narrator_bright_female_s131 (first line) and
+    leo_deep_warm_s201 (first line); refined references `*_l0` fixed the voice
+    drift between lines. CPU partitions (interactive/debug) never got past
+    start-up in 18 min: use a GPU task. Young voices (Leo ~18, Milo ~13):
+    candidates in voices.yaml, not reviewed.
+  - Gemini 3.8 Flash TTS: outputs owned by the user ("Google won't claim
+    ownership"); ~$0.0135/min of audio in 2026, ~$0.027 from 2027 (25 audio
+    tokens/s); free tier exists (rate-limited); EEA gets paid-tier data terms.
+    Check with Google: the API terms forbid services "directed towards or
+    likely to be accessed by individuals under the age of 18" (a kids'
+    channel?). Do not clone Gemini voices into another model (terms: no
+    extracting/replicating components of the Services).
 
 ## Current state (update when it changes)
 
