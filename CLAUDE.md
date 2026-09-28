@@ -52,7 +52,9 @@ the Mouse, v2** (`stories/lion_and_mouse_v2/`).
 | Where code came from | `docs/provenance.md` |
 | Story facts (characters, places, voices, scenes, shots) | `stories/<slug>/story.yaml`: the only place they live |
 | The owner's story text | `stories/<slug>/story.txt`; narration per language `stories/<slug>/narration/<lang>.yaml` |
-| Character packs (identity authority) | `character/characters/<Name>/v2/`, prompts in `character/characters/*.md` |
+| Character packs (identity authority) | `character/characters/<Name>/v3/` (v2 kept for the v2 story), prompts in `character/characters/*.md`. v3 file names have no `_01` suffix (renamed 2026-09-29, `.png.png` fixed too); extra takes get `_02`, `_03` |
+| Location DNA and plates (v3) | `stories/lion_and_mouse_v3/locations_dna.yaml`; plates in `character/locations/<id>/` |
+| Owner's verdicts on renders | `stories/<slug>/owner_review.yaml` |
 
 ## Layout and paths
 
@@ -355,6 +357,20 @@ How it is made (and why):
   `production/animatic.py --lang <lang>` times the pictures to it.
 
 ## Current state (update when it changes)
+
+**v3 in planning (2026-09-27)**: the owner's longer dialogue script
+(`stories/lion_and_mouse_v3/script_dialog_en.txt`, ~1,160 words, 8-10 min,
+narrator + lion + mouse lines). The owner will generate the images; the list
+is `stories/lion_and_mouse_v3/ASSETS.md` (58 images, to-do list with prompts in `TODO_images.md`: 10 location plates, one normal-height view per place (owner: no low angles),
+new Leo/Milo poses and expressions, Leo-in-the-net states, 8 two-character
+interactions, a beat-by-beat shot map), location DNA in
+`stories/lion_and_mouse_v3/locations_dna.yaml`. The owner's verdict on every
+v2 clip is in `stories/lion_and_mouse_v2/owner_review.yaml` (files kept;
+`reject` = never use). Key v2 lesson: every shot where Wan had to draw Leo in
+a new state (the net) went off-model; the best shots start and end on
+owner-made images. v3 = owner-made start/end images for every shot, a plate
+per camera angle and lighting.
+
 
 Lion and Mouse v2 (2026-09-27): **every scene has a take**; takes are in
 story.yaml (`take:`), clips in `work/stories/lion_and_mouse_v2/shots/`

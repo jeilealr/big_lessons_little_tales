@@ -138,6 +138,8 @@ def main() -> None:
         print(f"composed end keyframe {end_key}", flush=True)
     pipe = wan.load("i2v", frames, loras=loras, fast=args.fast)
     render = {**RENDER, **(wan.LIGHTNING["render"] if args.fast else {})}
+    if shot.get("size"):          # e.g. [1248, 832] to match 3:2 reference images
+        render["width"], render["height"] = (int(v) for v in shot["size"])
     print("model loaded", flush=True)
     for seed in seeds:
         out = work / "shots" / f"{args.shot}_s{seed}{'_fast' if args.fast else ''}.mp4"

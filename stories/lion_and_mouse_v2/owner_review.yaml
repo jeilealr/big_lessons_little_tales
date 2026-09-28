@@ -1,0 +1,98 @@
+# Owner's review of the v2 renders (2026-09-27). Files are KEPT (owner: "keep
+# it and mark it as something we don't want"); `reject` means never use.
+# verdicts: best | good | ok | weak | reject
+# Clips: work/stories/lion_and_mouse_v2/shots/<name>.mp4
+review:
+  s01_sleeps_3q_s1111_fast: {verdict: ok, note: Leo moves while asleep}
+  s01_sleeps_3q_s1112_fast: {verdict: ok, note: Leo moves while asleep}
+  s01_sleeps_3q_s1113_fast: {verdict: best, note: liked most, because Leo half wakes at the end}
+  s01_sleeps_s1101_fast: {verdict: reject, note: old reference (front view)}
+  s01_sleeps_s1101: {verdict: reject, note: old reference (front view)}
+  s01_sleeps_s1102: {verdict: reject, note: old reference (front view)}
+  s02_milo_runs_3q_s2111_fast: {verdict: weak, note: bad render on Milo's face}
+  s02_milo_runs_3q_s2112_fast: {verdict: best, note: Milo could move a bit slower}
+  s02_milo_runs_3q_s2113_fast: {verdict: reject, note: two Milos at the end; Leo's eyes bad}
+  s02_milo_runs_s2101: {verdict: reject}
+  s02_milo_runs_s2102: {verdict: reject}
+  s03_caught_3q_s3111_fast: {verdict: ok, note: liked, but moves weirdly}
+  s03_caught_3q_s3112_fast: {verdict: best, note: no errors, solid}
+  s03_caught_3q_s3113_fast: {verdict: good}
+  s03_caught_s3101_fast: {verdict: reject, note: shows little}
+  s03_caught_s3101: {verdict: reject, note: shows little}
+  s03_caught_s3102: {verdict: reject, note: shows little}
+  s04_leo_softens_s4201: {verdict: reject, note: changes too obvious}
+  s04_leo_softens_s4202: {verdict: reject, note: bad (owner confirmed 2026-09-27)}
+  s04_leo_softens_v2_s4204: {verdict: ok}
+  s04_milo_trembles_s4101: {verdict: reject, note: no movement at all}
+  s05_leo_nods_s5103_fast: {verdict: ok, note: good character movement, background inconsistent}
+  s05_leo_nods_s5104_fast: {verdict: ok, note: good character movement, background inconsistent}
+  s05_leo_nods_s5105_fast: {verdict: reject, note: too exaggerated}
+  s05_leo_nods_v2_s5106_fast: {verdict: good, note: good for conversation}
+  s05_leo_nods_v2_s5107_fast: {verdict: good, note: good for conversation}
+  s05_leo_nods_v2_s5108_fast: {verdict: good, note: good for conversation}
+  s05_leo_releases_s5101: {verdict: good, note: good for conversation}
+  s05_leo_releases_s5102: {verdict: best, note: shows movement}
+  s06_milo_leaves_s6301_fast: {verdict: ok}
+  s06_milo_leaves_s6302_fast: {verdict: best}
+  s06_milo_leaves_s6303_fast: {verdict: ok}
+  s06_milo_leaves_v2_s6304_fast: {verdict: ok}
+  s06_milo_leaves_v2_s6305_fast: {verdict: ok}
+  s06_milo_leaves_v2_s6306_fast: {verdict: ok}
+  s06_milo_smiles_s6101: {verdict: good}
+  s06_milo_thanks_s6201: {verdict: reject, note: ugly, Milo's eyes}
+  s06_milo_thanks_s6202: {verdict: weak, note: better than 6201 but still bad}
+  s07_leo_tugs_s7301_fast: {verdict: reject, note: the worst, Leo is not the canonical Leo}
+  s07_leo_tugs_s7302_fast: {verdict: reject, note: the worst, Leo is not the canonical Leo}
+  s07_leo_tugs_s7303_fast: {verdict: reject, note: the worst, Leo is not the canonical Leo}
+  s07_leo_walks_s7101: {verdict: ok}
+  s07_leo_walks_s7102: {verdict: ok}
+  s07_net_falls_s7201: {verdict: reject, note: Leo distorted}
+  s07_net_falls_s7202: {verdict: reject, note: Leo distorted}
+  s08_milo_hears_s8101: {verdict: reject}
+  s08_milo_runs_s8201: {verdict: ok}
+  s08_milo_runs_v2_s8203: {verdict: reject}
+  s08_milo_runs_v2_s8204: {verdict: reject}
+  s09_milo_arrives_s9101_fast: {verdict: reject, note: Leo not like the canonical}
+  s09_milo_arrives_s9102_fast: {verdict: reject, note: Leo not like the canonical}
+  s09_milo_arrives_s9103_fast: {verdict: reject, note: Leo not like the canonical}
+  s09_milo_can_help_s9201_fast: {verdict: good}
+  s09_milo_can_help_s9202_fast: {verdict: good}
+  s09_milo_can_help_s9203_fast: {verdict: good}
+  s10_milo_gnaws_s10101_fast: {verdict: reject, note: Leo off-model}
+  s10_milo_gnaws_s10102_fast: {verdict: reject, note: Leo off-model}
+  s10_milo_gnaws_s10103_fast: {verdict: reject, note: Leo off-model}
+  s10_milo_gnaws_v2_s10111_fast: {verdict: reject, note: Leo off-model}
+  s10_milo_gnaws_v2_s10112_fast: {verdict: reject, note: Leo off-model}
+  s10_milo_gnaws_v2_s10113_fast: {verdict: reject, note: Leo off-model}
+  s10_leo_steps_free_s10201_fast: {verdict: reject, note: Leo off-model}
+  s10_leo_steps_free_s10202_fast: {verdict: reject, note: Leo off-model}
+  s10_leo_steps_free_s10203_fast: {verdict: reject, note: Leo off-model}
+  s11_leo_amazed_s11101_fast: {verdict: good}
+  s11_leo_amazed_s11102_fast: {verdict: reject, note: an animal appears in the background}
+  s11_leo_amazed_s11103_fast: {verdict: good}
+  s11_milo_smiles_s11201_fast: {verdict: good}
+  s11_milo_smiles_s11202_fast: {verdict: good}
+  s11_milo_smiles_s11203_fast: {verdict: good}
+  s12_friends_s12101_fast: {verdict: ok, note: Milo slightly off-model}
+  s12_friends_s12102_fast: {verdict: ok, note: Milo slightly off-model}
+  s12_friends_s12103_fast: {verdict: ok, note: Milo slightly off-model}
+
+# What the review shows (feeds v3; details in docs/prompting.md results log):
+lessons:
+  - Every shot where Wan had to DRAW Leo in a new state (inside the net,
+    tugging, under the net at a distance, stepping free) went off-model.
+    Shots that start AND end on owner-made images (close-ups from the
+    expression set) were the best. v3 needs owner-made images of every new
+    state, used as start and end keyframes.
+  - Backgrounds drift whenever the camera sees more than the plate (camera
+    moves, crops, continuations). v3 needs a location DNA and a plate for
+    every camera angle used, not one plate per place.
+  - Small characters in wide shots lose identity (Milo in s12, Leo small
+    under the net). Keep each character large enough; use mouse-eye-level
+    plates and close-ups.
+  - Fast mode adds motion (sleeping Leo stirs); for still moments pin the end
+    keyframe, or use the 40-step render.
+  - Some 40-step renders the owner liked (s05_leo_releases_s5102,
+    s06_milo_smiles_s6101); some identical close-ups had no motion at all
+    (s04_milo_trembles): a start and end that are the same image freeze the
+    shot.

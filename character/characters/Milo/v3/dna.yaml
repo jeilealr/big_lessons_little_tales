@@ -1,0 +1,23 @@
+version: 2
+status: draft_for_character_pack
+canonical_reference: canonical/full-body_milo_neutral_pose.png
+identity:
+  name: Milo
+  species: mouse
+  role: young adult in story role; main character with intentionally youthful, baby-faced proportions
+  personality: tiny, clever, curious, optimistic, resourceful, quietly brave; friendly and alert, never helpless
+  posture: upright bipedal; stands and moves on two feet
+  silhouette: tiny slender body, large rounded youthful head, very large circular ears set high and wide, slim limbs, small rounded paws, long thin curved tail
+  face: very large round dark-brown eyes with warm cream sclera and bright highlights; small curved dark-brown brows; tiny rounded dark-brown nose; short pale-cream muzzle with small stitched smile; fine pale whiskers; delicate central stitched face seam
+  ears: extremely large upright round ears; warm gray/taupe outer felt, muted dusty-rose inner felt, delicate stitched edges; preserve size and spacing
+  body_material: soft looped and fuzzy wool-felt surface, fine fibers, delicate visible seams
+  body_color: warm light gray and taupe, with elongated pale warm-cream belly patch
+  paws: tiny rounded rosy-taupe paws
+  tail: long thin gently curved muted rosy-taupe tail; visible in full-body views
+  palette: [warm light gray, taupe, pale warm cream, dusty rose pink, dark chocolate brown]
+  style: handcrafted wool-felt stop-motion storybook miniature matching Leo; softly stuffed matte forms, tactile wool fibers, delicate stitching, handmade irregularities
+  presentation: warm off-white seamless studio, soft even light, small soft ground shadow; camera at Milo's eye level; no scenery or props for neutral references
+  never_change: [bipedal anatomy, youthful head and eye proportions, very large round ears, gray body, cream belly and muzzle, rosy-taupe tail]
+  avoid: [clothing, hats, shoes, accessories, realistic fur, photorealistic anatomy, glossy CGI, plastic, sharp claws, visible teeth, frightened expression, text, logos, watermarks]
+story_sheet_candidate: >-
+  a tiny handcrafted wool-felt mouse with a slender warm-gray and taupe body, an elongated pale-cream belly and lower muzzle, a large rounded youthful head, two extremely large upright circular warm-gray ears with muted dusty-rose-pink inner felt and delicate stitched edges, very large round dark-brown eyes with warm cream sclera and bright highlights, small curved dark-brown brows, a tiny rounded dark-brown nose, a short pale-cream muzzle with a subtle stitched smile and fine pale whiskers, a delicate central hand-stitched face seam, slim arms and legs with tiny rosy-taupe paws, and a long thin gently curved rosy-taupe tail

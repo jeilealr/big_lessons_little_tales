@@ -13,6 +13,8 @@ work/
 !voice/**/*.wav
 # owner-made character packs (identity authority)
 !character/characters/**/*.png
+# owner-made location plates (v3)
+!character/locations/**/*.png
 # python
 __pycache__/
 *.pyc
