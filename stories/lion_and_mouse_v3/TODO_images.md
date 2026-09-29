@@ -84,7 +84,7 @@ as the reference and change only the light.
 - [x] **L-12 Great tree, sky, dusk**
   File: `character/locations/great_tree/great_tree_sky_dusk.png` · Refs: L-09
   Prompt: Looking up past the felt canopy of the same tree at the dusk sky, the first small stitched stars appearing. ("Those stars you were worried about are almost here.")
-- [ ] **L-13 Great tree, wide, day**
+- [x] **L-13 Great tree, wide, day**
   File: `character/locations/great_tree/great_tree_wide_day.png` · Refs: L-09
   Prompt: Exactly the same view as the reference, but in warm midday light, blue sky with small cotton-wool clouds, no stars.
 
@@ -174,13 +174,13 @@ branches above (see ASSETS.md).
 - [x] **N-06 Face through the ropes, close-up (P)**
   File: `character/characters/Leo/v3/net/leo_net_face_closeup.png` · Refs: + Leo neutral expression, L-16
   Prompt: A close-up of Leo's face seen through the rope gaps, embarrassed but trying to stay composed, mouth closed, background soft.
-- [ ] **N-07 Net loosened (P)**
+- [x] **N-07 Net loosened (P)**
   File: `character/characters/Leo/v3/net/leo_net_loosened.png` · Refs: + N-05
   Prompt: The same scene as N-05, but several rope strands broken and the net sagging open on the left side; Leo still inside, hopeful.
-- [ ] **N-08 Stepping out (P)**
+- [x] **N-08 Stepping out (P)**
   File: `character/characters/Leo/v3/net/leo_net_stepping_out.png` · Refs: + N-07
   Prompt: The same scene, Leo stepping out through the opening, one front paw forward on the path, the net slipping off his back.
-- [ ] **N-09 Free (P)**
+- [x] **N-09 Free (P)**
   File: `character/characters/Leo/v3/net/leo_free.png` · Refs: + N-08
   Prompt: The same place, Leo standing free on the path next to the fallen net, amazed and happy, looking down at the ground in front of him.
 
@@ -192,85 +192,85 @@ branches above (see ASSETS.md).
 - [x] **M-02 Startled, looking up**
   File: `character/characters/Milo/v3/actions/milo_startled_up.png`
   Prompt: Milo standing, looking up at the sky, startled, ears up, eyes wide, mouth a small O.
-- [ ] **M-03 Looking left**
+- [x] **M-03 Looking left**
   File: `character/characters/Milo/v3/actions/milo_look_left.png`
   Prompt: Milo standing, head and body turned to his left, thinking.
-- [ ] **M-04 Looking right**
+- [x] **M-04 Looking right**
   File: `character/characters/Milo/v3/actions/milo_look_right.png`
   Prompt: Milo standing, head and body turned to his right, thinking.
-- [ ] **M-05 Determined**
+- [x] **M-05 Determined**
   File: `character/characters/Milo/v3/actions/milo_determined.png`
   Prompt: Milo standing tall, determined, paws closed at his chest, small confident smile.
-- [ ] **M-06 Running, side view (P)**
+- [x] **M-06 Running, side view (P)**
   File: `character/characters/Milo/v3/actions/milo_run_side.png`
   Prompt: Milo running fast in side view, facing right, mid-stride with one foot far forward and the other pushing off, arms swinging, ears streaming back, tail out behind. A real run, not a walk.
-- [ ] **M-07 Jumping over a stone**
+- [x] **M-07 Jumping over a stone**
   File: `character/characters/Milo/v3/actions/milo_jump.png`
   Prompt: Milo jumping, side view facing right, mid-air, legs tucked, ears up, joyful.
-- [ ] **M-08 Tripping**
+- [x] **M-08 Tripping**
   File: `character/characters/Milo/v3/actions/milo_tripping.png`
   Prompt: Milo tripping forward, side view facing right, falling with his paws out in front, surprised ("Whoa!"), not hurt.
-- [ ] **M-09 Frozen, scared**
+- [x] **M-09 Frozen, scared**
   File: `character/characters/Milo/v3/actions/milo_frozen.png`
   Prompt: Milo standing frozen, looking up, scared but not crying, ears back, paws close to his chest.
-- [ ] **M-10 Apologising**
+- [x] **M-10 Apologising**
   File: `character/characters/Milo/v3/actions/milo_apologising.png`
   Prompt: Milo looking up, earnest and sorry, paws pressed together in front of his chest.
-- [ ] **M-11 Surprised, grateful**
+- [x] **M-11 Surprised, grateful**
   File: `character/characters/Milo/v3/actions/milo_surprised_grateful.png`
   Prompt: Milo looking up with wide surprised eyes turning grateful, paws open at his sides, a small hopeful smile.
-- [ ] **M-12 Hurrying away**
+- [x] **M-12 Hurrying away**
   File: `character/characters/Milo/v3/actions/milo_hurrying.png`
   Prompt: Milo hurrying in side view facing right, a quick careful walk-run, looking back over his shoulder with a smile.
-- [ ] **M-13 Listening, ears up**
+- [x] **M-13 Listening, ears up**
   File: `character/characters/Milo/v3/actions/milo_listening.png`
   Prompt: Milo standing still, ears lifted high and turned, alert and concerned, listening to a far sound.
-- [ ] **M-14 Gnawing a rope (P)**
+- [x] **M-14 Gnawing a rope (P)**
   File: `character/characters/Milo/v3/actions/milo_gnawing.png`
   Prompt: Milo standing and holding a thick braided cream rope with both paws, the rope between his small rounded felt teeth, busy and determined. (Only the rope, no net.)
-- [ ] **M-15 The rope snaps (P)**
+- [x] **M-15 The rope snaps (P)**
   File: `character/characters/Milo/v3/actions/milo_rope_snaps.png` · Refs: + M-14
   Prompt: The same as the reference, but the rope has just parted at his mouth into two frayed loose ends, Milo surprised and proud.
-- [ ] **M-16 Laughing**
+- [x] **M-16 Laughing**
   File: `character/characters/Milo/v3/actions/milo_laughing.png`
   Prompt: Milo laughing, eyes happy, head tilted back a little, paws at his tummy.
-- [ ] **MILO-E1 Startled (close-up)**
+- [x] **MILO-E1 Startled (close-up)**
   File: `character/characters/Milo/v3/expressions/milo_expression_startled.png` · Refs: + `Milo/v3/expressions/milo_expression_neutral.png`
   Prompt: The same head-and-shoulders framing as the reference. Milo startled: eyes very wide, ears straight up, mouth a small O.
-- [ ] **MILO-E2 Apologetic (close-up)**
+- [x] **MILO-E2 Apologetic (close-up)**
   File: `character/characters/Milo/v3/expressions/milo_expression_apologetic.png` · Refs: + neutral expression
   Prompt: Same framing. Milo sorry and earnest: brows up in the middle, ears slightly back, mouth closed.
-- [ ] **MILO-E3 Calm confidence (close-up)**
+- [x] **MILO-E3 Calm confidence (close-up)**
   File: `character/characters/Milo/v3/expressions/milo_expression_calm_confident.png` · Refs: + neutral expression
   Prompt: Same framing. Milo calm and confident: steady eyes, small closed-mouth smile.
-- [ ] **MILO-E4 Playful, cheeky (close-up)**
+- [x] **MILO-E4 Playful, cheeky (close-up)**
   File: `character/characters/Milo/v3/expressions/milo_expression_playful.png` · Refs: + neutral expression
   Prompt: Same framing. Milo playful and cheeky: one eye slightly narrowed, lopsided grin, mouth closed ("I have quite a lot of them").
 
 ## 5. Interactions - SCENE block, refs: LEO + MILO canonicals + the plate
 
-- [ ] **I-01 Milo racing toward the sleeping Leo**
+- [x] **I-01 Milo racing toward the sleeping Leo**
   File: `character/characters/interactions/v3/int_milo_runs_to_paw.png` · Refs: + L-09, LEO-01, M-06
   Prompt: On the reference path: Milo running in from the left edge; ahead of him Leo asleep against the trunk, one enormous paw stretched across the path.
-- [ ] **I-02 Milo against Leo's nose (P)**
+- [x] **I-02 Milo against Leo's nose (P)**
   File: `character/characters/interactions/v3/int_milo_on_nose.png` · Refs: + L-09, LEO-02
   Prompt: A close two-shot: Milo has landed against Leo's big nose, both surprised, Leo's eyes just opened wide, Milo's ears up. Funny, not scary.
-- [ ] **I-03 The barrier paw (P)**
+- [x] **I-03 The barrier paw (P)**
   File: `character/characters/interactions/v3/int_barrier_paw.png` · Refs: + L-09, LEO-03, M-09
   Prompt: Leo's big front paw planted on the grass right beside tiny Milo, blocking his way; Milo frozen, looking up; Leo looking down at him, surprised and a little annoyed, mouth closed.
-- [ ] **I-04 Kindness under the tree**
+- [x] **I-04 Kindness under the tree**
   File: `character/characters/interactions/v3/int_kindness.png` · Refs: + L-09, LEO-04, M-10
   Prompt: Leo lying calm, smiling gently down at Milo; Milo standing at his paw, paws together, looking up hopefully.
-- [ ] **I-05 Milo arrives at the net (P)**
+- [x] **I-05 Milo arrives at the net (P)**
   File: `character/characters/interactions/v3/int_milo_at_net.png` · Refs: + L-16, N-05
   Prompt: Milo standing at the edge of the rope net on the path, looking up; Leo inside the net looking at him, surprised and embarrassed.
-- [ ] **I-06 Milo gnawing, Leo watching (P)**
+- [x] **I-06 Milo gnawing, Leo watching (P)**
   File: `character/characters/interactions/v3/int_gnawing.png` · Refs: + L-16, M-14, N-06
   Prompt: A close-up: Milo gnawing a braided rope of the net in the foreground; behind the rope gaps, Leo's face watching hopefully, slightly out of focus.
-- [ ] **I-07 Leo free, looking at Milo (P)**
+- [x] **I-07 Leo free, looking at Milo (P)**
   File: `character/characters/interactions/v3/int_free.png` · Refs: + L-16, N-09
   Prompt: Leo standing free on the path, looking down amazed and grateful at tiny Milo, who smiles up at him; the fallen net lies behind them.
-- [ ] **I-08 Both laughing under the tree**
+- [x] **I-08 Both laughing under the tree**
   File: `character/characters/interactions/v3/int_laughing.png` · Refs: + L-13, LEO-06, M-16
   Prompt: Under the great tree in daylight, Leo lying relaxed and Milo sitting beside his paw, both laughing together.
 
