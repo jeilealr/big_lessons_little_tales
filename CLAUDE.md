@@ -43,7 +43,8 @@ the Mouse, v2** (`stories/lion_and_mouse_v2/`).
 
 | Need | Read |
 |---|---|
-| Writing any prompt (shot, pose, design) | **`docs/prompting.md`**: every measured rule, a checklist, results log |
+| **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
+| Writing any shot prompt, with evidence | `docs/prompting.md`: every measured rule, a checklist, results log |
 | Every problem found and its fix; gaps and risks | **`docs/findings-and-risks.md`** |
 | The whole pipeline, story to shots | `docs/production-guide.md` |
 | Voices (Gemini TTS) | **`voice/README.md`** |

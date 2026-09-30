@@ -6,6 +6,8 @@ in the image tool, and a **prompt** to paste. Append the matching style block
 below to every prompt. Background and reasons: `ASSETS.md`; location DNA:
 `locations_dna.yaml`.
 
+General rules for all images: `docs/creation-rules.md`.
+
 Priority (v2 could not make these shots): the net set (N-02..N-09),
 M-06 run, M-14/M-15 gnaw, I-02/I-03/I-06/I-07, and the great_tree and
 distant_forest plates. They are marked **(P)**.

@@ -11,7 +11,9 @@ same mouse, in the same forest, from shot to shot. Narration and character
 voices come from Gemini TTS (`voice/`); music and sound effects from
 ElevenLabs; the final mix is done in DaVinci Resolve.
 
-Current story: **The Lion and the Mouse** (`stories/lion_and_mouse_v2/`).
+Current story: **The Lion and the Mouse, v3** (`stories/lion_and_mouse_v3/`); v2 is kept for reference.
+
+**New here? See [Where to find things](#where-to-find-things) below.**
 
 ## How a story gets made
 
@@ -23,17 +25,14 @@ story + narration -> cast (owner pack) -> places -> poses -> keyframes -> shots 
 |---|---|---|
 | Story bible | `stories/<slug>/story.yaml` | style, characters, places, voices, scenes, shots |
 | Narration | `stories/<slug>/narration/<lang>.yaml`, `voice/` | the script per language; Gemini voices |
-| Cast | `character/characters/<Name>/v2/` + `production/install_pack.py` | owner-made canonical, views, expressions, actions |
-| Places and props | `production/design.py` | empty location plates, props (Wan 2.2 stills) |
-| Poses | `character/character.py` + `stories/<slug>/packs/*.yaml` | extra poses from the canonical |
-| Keyframes | `production/keyframe.py` (or `compose:` in a shot) | start/end frames: characters cut out (BiRefNet) and placed |
+| Cast | `character/characters/<Name>/v3/` + `production/install_pack.py` | owner-made canonical, views, expressions, actions, story states |
+| Places | `character/locations/<place>/` + `stories/<slug>/locations_dna.yaml` | owner-made empty plates, one per lighting |
+| Props (optional) | `production/design.py` | Wan 2.2 stills of places and props (the v1/v2 method) |
+| Poses (optional) | `character/character.py` + `stories/<slug>/packs/*.yaml` | extra poses animated from the canonical |
+| Keyframes | `production/compose_keyframes.py` (`compose:` in each shot) | start/end frames: characters cut out (BiRefNet) and placed; a contact sheet to check |
 | Shots | `production/shot.py` (`--fast`) | Wan 2.2 image-to-video between keyframes, one action per shot |
 | Animatic | `production/animatic.py` | the whole story at its pacing, with the narration |
 | Post | `bllt/post.py` | RIFE 16->30 fps, Real-ESRGAN to 1080p, grade |
-
-**Read [CLAUDE.md](CLAUDE.md) first** (current state, rules, commands), then
-[docs/production-guide.md](docs/production-guide.md) and
-[docs/prompting.md](docs/prompting.md).
 
 ## Layout
 
@@ -64,9 +63,51 @@ source voice/gemini_env.sh && python voice/list_voices.py
 Machine-specific paths (venvs, model cache, container, Slurm account) are all
 in `lumi/site.sh`; nothing depends on the repo's folder name.
 
-## Docs
+## Where to find things
+
+### Guides: which one to read
+
+| I want to... | Read |
+|---|---|
+| **write a script, an image prompt or a shot description** | **[docs/creation-rules.md](docs/creation-rules.md)**: rules for scripts, character and location images, interactions and shots, a checklist and copy-ready style blocks |
+| understand the whole pipeline, story to finished shots | [docs/production-guide.md](docs/production-guide.md) |
+| check a video-prompt rule and the evidence behind it | [docs/prompting.md](docs/prompting.md): every measured rule, a checklist, the results log |
+| know what went wrong before and how it was fixed | [docs/findings-and-risks.md](docs/findings-and-risks.md) |
+| work with voices (Gemini TTS) | [voice/README.md](voice/README.md) |
+| run things on LUMI (jobs, times, gotchas) | [docs/lumi.md](docs/lumi.md) |
+| check a model's or service's licence | [docs/licensing.md](docs/licensing.md), [docs/google_gemini_terms_question.md](docs/google_gemini_terms_question.md) |
+| see the current state, standing decisions and commands (also for AI agents) | [CLAUDE.md](CLAUDE.md) |
+| read the first consistency experiments | [docs/character-consistency.md](docs/character-consistency.md) |
+| know where code came from | [docs/provenance.md](docs/provenance.md) |
+
+### A story's files (example: `stories/lion_and_mouse_v3/`)
+
+| File | What it is |
+|---|---|
+| `script_dialog_en.txt` | the story text, with narrator and character lines |
+| `story.yaml` | the story bible: style, characters, places, voices, scenes and every shot |
+| `locations_dna.yaml` | each place: description, what must never change, lighting, plates |
+| `TODO_images.md` | every image the story needs, with file name, references and prompt |
+| `ASSETS.md` | why those images, and the beat-by-beat shot plan |
+| `../lion_and_mouse_v2/owner_review.yaml` | the owner's verdict on every v2 clip |
+
+### Images, voices and generated files
+
+| What | Where |
+|---|---|
+| Character packs (canonical, views, expressions, actions, story states) | `character/characters/<Name>/v3/` |
+| Character DNA (the written identity) | `character/characters/<Name>/v3/dna.yaml` |
+| Two-character images | `character/characters/interactions/v3/` |
+| Location plates | `character/locations/<place>/` |
+| Saved voices (id, design prompt, samples in 6 languages) | `voice/cast/<role>/`, `voice/narrators/<name>/` |
+| Rendered clips, keyframes, animatic (not in git) | `work/stories/<slug>/shots/`, `keyframes/`, `animatic.mp4` |
+| GPU task files and logs | `work/tasks/`, `/scratch/project_465002727/jelealro/slurm_logs/` |
+| Evidence images used in the docs | `docs/img/` |
+
+## All docs
 
 - [CLAUDE.md](CLAUDE.md): operating manual and current state
+- [Creation rules](docs/creation-rules.md): how to write scripts, image prompts and shot descriptions
 - [Production guide](docs/production-guide.md): story to finished shots, with measured results
 - [Writing prompts](docs/prompting.md): every measured prompt rule, and a checklist
 - [Findings and risks](docs/findings-and-risks.md): every problem and its fix
