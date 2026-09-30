@@ -17,7 +17,8 @@ sound effects: ElevenLabs (owner, paid plan). Final mix: DaVinci Resolve
 Repo: `/scratch/project_465002727/jelealro/big_lessons_little_tales`
 (renamed from `twc_video` on 2026-09-27; GitHub
 `jeilealr/big_lessons_little_tales`, private). Current story: **The Lion and
-the Mouse, v2** (`stories/lion_and_mouse_v2/`).
+the Mouse, v4 documentation** (`stories/lion_and_mouse_v4/`). V3 render review
+is the evidence for this revision; v2/v3 production data is historical.
 
 ## The owner's standing instructions
 
@@ -32,6 +33,21 @@ the Mouse, v2** (`stories/lion_and_mouse_v2/`).
 - **Git: the owner does all git** (add, commit, push). Agents do not run git
   commands unless asked (owner, 2026-09-27). Leave the tree ready for
   `git add . && git commit && git push`.
+- Current owner task (2026-09-30): documentation first for v4; do not generate
+  images, video or audio in this task. Read the complete v3 notes and v4 repair
+  plan. Owner reviews script/shot sequence before the next images.
+- Milo's v4 crown has no separate top tuft. The old smaller-tuft fixes and v3
+  sheet are superseded for v4. All derivatives must follow the approved new
+  canonical, with brown eyes and slender proportions; Leo retains the full
+  canonical rust-orange mane. Never mix v3 identity text into v4 prompts.
+- Render individual clips first. Owner reviews/selects exact takes; assembly
+  is a separately requested job afterward. Never auto-run an animatic after
+  each batch, and never use a default `take` as evidence of owner selection.
+- Fast Lightning uses CFG 1 with no negative conditioning pass. Write critical
+  desired states positively and encode them in anchors; exclusions remain review
+  criteria. Check actual runtime prompt token length and truncation before jobs.
+- Every image/edit and video mode gets its own full expanded prompt record,
+  reference roles, revision, pair/state checks and later actual execution log.
 - Only run GPU jobs when you are sure they are ready: dry-run first (see
   "Before a GPU job").
 - Keep the docs as a guide a person can learn from: why, measured results,
@@ -44,6 +60,8 @@ the Mouse, v2** (`stories/lion_and_mouse_v2/`).
 | Need | Read |
 |---|---|
 | **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
+| V4 documentation, script review and individual prompts | `stories/lion_and_mouse_v4/README.md`, `SHOT_PLAN.md`, `REPAIR_PLAN.md` |
+| Prompt provenance and review gates | `docs/prompt-records.md`, `docs/v4-preflight.md` |
 | Writing any shot prompt, with evidence | `docs/prompting.md`: every measured rule, a checklist, results log |
 | Every problem found and its fix; gaps and risks | **`docs/findings-and-risks.md`** |
 | The whole pipeline, story to shots | `docs/production-guide.md` |
@@ -51,9 +69,9 @@ the Mouse, v2** (`stories/lion_and_mouse_v2/`).
 | LUMI jobs, times, solved gotchas | `docs/lumi.md` |
 | Licences and service terms | `docs/licensing.md`, `docs/google_gemini_terms_question.md` |
 | Where code came from | `docs/provenance.md` |
-| Story facts (characters, places, voices, scenes, shots) | `stories/<slug>/story.yaml`: the only place they live |
+| Story facts and runtime export | V4 draft bible/manifest are the planning authority; later derive `story.yaml` for existing tools. V2/v3 YAML remains historical. |
 | The owner's story text | `stories/<slug>/story.txt`; narration per language `stories/<slug>/narration/<lang>.yaml` |
-| Character packs (identity authority) | `character/characters/<Name>/v3/` (v2 kept for the v2 story), prompts in `character/characters/*.md`. v3 file names have no `_01` suffix (renamed 2026-09-29, `.png.png` fixed too); extra takes get `_02`, `_03` |
+| Historical character packs (not v4 approval) | `character/characters/<Name>/v3/` (v2 kept for the v2 story), prompts in `character/characters/*.md`. v3 file names have no `_01` suffix (renamed 2026-09-29, `.png.png` fixed too); extra takes get `_02`, `_03` |
 | Location DNA and plates (v3) | `stories/lion_and_mouse_v3/locations_dna.yaml`; plates in `character/locations/<id>/` |
 | Owner's verdicts on renders | `stories/<slug>/owner_review.yaml` |
 
@@ -96,7 +114,7 @@ work/               everything generated (git-ignored); every output has a .json
 ```bash
 cd /scratch/project_465002727/jelealro/big_lessons_little_tales
 W=lumi/run_in_container.sh                     # LUMI PyTorch ROCm container + venv
-$W python production/shot.py --scene 1 --shot s01_sleeps_3q --fast --dry-run
+$W python production/shot.py --story lion_and_mouse_v3 --scene 1 --shot s01_milo_explores --fast --dry-run
 BLLT_ENV=musubi $W python ...                  # the LoRA-training venv instead
 source voice/gemini_env.sh && python voice/list_voices.py   # voices, no container
 ```
@@ -121,6 +139,10 @@ source voice/gemini_env.sh && python voice/list_voices.py   # voices, no contain
   15 min per upscaled crop, cached).
 
 ## Before a GPU job
+
+Follow **all gates in `docs/v4-preflight.md`** for v4; the quick checks below
+are insufficient alone. Review the combined negative separately: current dry-run
+prints only the positive. A draft manifest is not accepted by the renderer.
 
 1. `--dry-run` every script that has one; read the assembled prompt.
 2. Check every input file exists (keyframes, canonicals, pose stills).
@@ -192,7 +214,8 @@ the workflow ideas below; the project's measured rules take precedence.
 ### Define and freeze character identity
 
 - Before generating, write a compact character specification. In this repo,
-  put story facts in `stories/<slug>/story.yaml`, not in a separate prompt:
+  freeze story facts in the versioned bible and expand them into each recorded
+  prompt; export supported fields to `stories/<slug>/story.yaml` for execution:
   include name and story role, silhouette/body proportions, distinctive face
   features, fur/felt colours and materials, signature features or props,
   default costume/accessories if any, personality and safe emotional range,
@@ -201,7 +224,7 @@ the workflow ideas below; the project's measured rules take precedence.
   traits such as age impression, fur/felt texture, ear shape, and muzzle.
 - Keep a short, repeatable palette and a fixed style bible. Ensure the written
   sheet matches the approved canonical image. If the image wins over a detail
-  (as with Leo's black stitched eyes), settle that discrepancy once by updating
+  (as with the historical v1 black-eye design; current Leo has brown irises), settle that discrepancy once by updating
   the sheet or selecting another canonical; do not carry conflicting text and
   image references downstream.
 - Treat each intentional costume or accessory change as a separate visual
@@ -239,8 +262,8 @@ the workflow ideas below; the project's measured rules take precedence.
   background. `story.yaml` already stores most of this through scene/shot IDs,
   `frames`, `action`, `characters`, `keyframe`/`compose`, and location/props;
   make missing staging or framing explicit in the action or composition.
-- Keep each shot to one legible character action and at most one clear camera
-  move. Generate a keyframe for the exact composition before animation, then
+- Keep each shot to one legible character action and a fixed camera for the v4 baseline. An intentional camera move
+  needs separately reviewed matching anchors; never accept accidental scene zoom. Generate a keyframe for the exact composition before animation, then
   animate that still. This project's 81-frame Wan shots are about five seconds;
   the article's generic 3–6 second suggestion is not a reason to change the
   project's measured Wan frame settings.
@@ -265,8 +288,9 @@ and motion: `production/design.py` makes candidate stills and canonicals;
 evaluates optional character adapters; `production/keyframe.py` and each
 shot's `compose:` recipe place pose stills on a location plate; and
 `production/shot.py` animates the composed keyframe with Wan image-to-video.
-The primary records are the story bible and shot recipes, not prompts copied
-into ad hoc scripts. Keep decisions and measured outcomes in the relevant
+The v4 primary planning records are the versioned visual bible and full prompt
+manifest; runtime story recipes are derived later. Do not keep the only prompt
+record in an ad hoc script or conversation. Keep decisions and measured outcomes in the relevant
 `docs/` file and link it here when the guidance becomes too detailed for this
 manual.
 
@@ -278,7 +302,7 @@ remind the owner to back it up (`bash lumi/backup_assets.sh`, then the printed
 rsync on their computer; see `docs/findings-and-risks.md` B1). Gemini voices
 expire 2027-09-27 (recreate from the prompts in `voice/`).
 
-## The Lion and the Mouse v2 (active)
+## The Lion and the Mouse v2 (historical, 2026-09-27)
 
 **2026-09-27**: the owner's retelling (`stories/lion_and_mouse_v2/story.txt`,
 moral: "Kindness does not create a debt. It creates more kindness.") with an
@@ -357,7 +381,33 @@ How it is made (and why):
   `work/stories/<slug>/audio/<lang>/sceneNN.wav`, then
   `production/animatic.py --lang <lang>` times the pictures to it.
 
-## Current state (update when it changes)
+## Current state (2026-09-30)
+
+The owner rendered v3 and supplied `work/shots/notes.txt`. A verbatim durable
+copy is at `docs/reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt`.
+The source clips were not present in this checkout during documentation work;
+reported visual defects are owner observations, not a fresh video inspection.
+The two local v3 neutral canonicals were visually inspected for current identity.
+
+Read `stories/lion_and_mouse_v4/README.md`, then its repair/shot plan. The packet
+contains 118 planned image records and 62 video-mode records across 43 coverage
+shots, with complete expanded prompts for all 16 scenes. It is a draft coverage
+plan, not a complete timed 8–10 minute edit. Canonical approval, measured geometry,
+script/voice timing and any additional line coverage remain future work.
+
+No v4 media, selections, runtime story YAML or GPU task files were created.
+`visual_bible.json` / `prompt_manifest.json` are documentation schemas; current
+scripts do not enforce their gates. In particular bbox-based pose sizing, stale
+caches, additive negatives, fast-take continuation and animatic fallback require
+manual handling (see `docs/v4-preflight.md`). Do not mistake null hashes, planned
+paths or checked historical file lists for approval. Preserve v3 inputs/results.
+
+Next: owner reviews the proposed sequence; on a later image-production request,
+create the smooth-crown Milo root, review both canonicals and mouth designs,
+calibrate references and pairs, then render the pilot. Prompts reduce ambiguity;
+only inspection of actual outputs can establish that a defect is fixed.
+
+## Archived production snapshot (2026-09-27 to 2026-09-29)
 
 **Owner-made images (2026-09-29):** the owner generates the v3 images on
 another machine (N-07/08/09 included); do not generate them here.

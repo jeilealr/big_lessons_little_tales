@@ -3,10 +3,28 @@
 How to go from a story idea to a finished, consistent, monetisable children's
 video with this repo. Worked example throughout: **The Lion and the Mouse**.
 The measured examples below come from its first version (v1, whose files
-were removed on 2026-09-27); the current production is v2
-(`stories/lion_and_mouse_v2/story.yaml`, owner-made cast, see CLAUDE.md).
+were removed on 2026-09-27). V3 was reviewed by the owner; current work is the
+[v4 documentation packet](../stories/lion_and_mouse_v4/README.md).
 Narration and character voices: Gemini TTS (`voice/`); music and sound
 effects: ElevenLabs; final mix: DaVinci Resolve.
+
+## Current production policy (2026-09-30)
+
+Read [creation rules](creation-rules.md), [prompt records](prompt-records.md)
+and [v4 preflight](v4-preflight.md) before using a command below. Sections 2–7
+preserve earlier technical experiments; their character descriptions, example
+seeds and timings are historical. Current identity is approved-image-led: brown
+eyes, full rust-orange Leo mane, smooth-crown slender Milo, standing scale 1:3.
+Character LoRAs are not part of the default image-to-video workflow. This does
+not exclude the separate Lightning acceleration adapters used by fast mode.
+
+V4's bible and manifest are a draft plan with complete prompts. They are not
+runtime YAML or automatic validators. First approve story sequence and canonicals,
+then pairs, then a small individual-clip pilot. Review/choose takes before a
+separately requested animatic. Never append assembly to a render batch.
+
+The platform/licensing discussion below is retained from earlier research;
+this documentation pass did not re-check external policies.
 
 ## 0. What "professional" means here
 
@@ -48,7 +66,7 @@ Felt stop-motion animals are clearly unrealistic, so the label is not required;
 a line in the description ("Animated with the help of AI tools") is honest and
 costs nothing.
 
-## 1. The pipeline at a glance
+## 1. Historical pipeline at a glance (current order in section 9)
 
 ```
 story.yaml ──► design ──► characters ──► locations ──► shot plan ──► render ──► post ──► edit
@@ -75,7 +93,7 @@ tools into every prompt:
 - **style** and **negative**: the look of the whole film. Never change them
   mid-story.
 - **characters**: a frozen **sheet** each (the exact description), a trigger
-  word for the LoRA, personality, and relative **scale** (Milo is 1/6 of Leo).
+  word for the LoRA, personality, and relative **scale** (historically Milo was 1/6 of Leo; v4 uses 1/3 of neutral standing height).
 - **locations**: a sheet each; every shot set there starts from the same plate.
 - **scenes**: the author's text, then the shot breakdown.
 
@@ -172,8 +190,10 @@ $W python production/keyframe.py --plate PLATE.png \
 - **Matting**: BiRefNet (MIT licence, revision pinned because it runs remote
   code). A colour key was tried first; it cut a notch out of Milo's neck,
   because his grey felt is close to the grey-green backdrop.
-- **Scale** is a fraction of frame height, so relative sizes stay fixed:
-  Milo is 1/6 of Leo in the story bible, so he is placed at 1/6 of Leo's height.
+- **Scale:** `h` controls the cropped pose box as a fraction of frame height.
+  Equal `h` values do not preserve anatomy across poses. V4 calibrates skull and
+  torso first, then derives pose-specific `h`; Milo is 1/3 of Leo's neutral
+  standing height at equal depth (see creation rules CR-03).
 - A soft **contact shadow** under the feet grounds the character. Only the
   **brightness** is matched to the plate, never the hue: colour matching once
   turned the fox's white chest green, and a character's colours are part of
@@ -361,7 +381,7 @@ same method, on prompts outside the data:
   the chest). Not a problem for shots, where the keyframe and the action carry
   the motion, but a LoRA alone will not produce a pose like that.
 
-**Using the LoRA in a shot.** The LoRAs are trained on the text-to-video model,
+**Historical optional LoRA mechanism (not the v4 default).** The LoRAs are trained on the text-to-video model,
 but shots are image-to-video from a keyframe. The two share the layers a LoRA
 changes (attention and feed-forward; all 400 targets exist in both experts of
 the I2V model), so the same files load into it. A shot opts in with
@@ -443,57 +463,58 @@ turn (Scene 7). Partly solved: a run (it leaves the frame, but not cleanly
 side-on). Not yet tested: contact between characters (Scenes 4, 8), a prop
 event (the net, Scene 6). Current results: CLAUDE.md "Current state".
 
-## 8. Animatic and hand-off
+## 8. Animatic and hand-off: a separate reviewed stage
 
-The **animatic** is the whole story at its planned pacing, before and while
-rendering: chosen takes where they exist, keyframe stills where not, a title
-card for scenes without shots.
+Deliver individual clip candidates first. The owner chooses exact filenames,
+revisions, modes, seeds, trims and order. Record those choices, then assemble only
+on the owner's separate instruction. Do not launch an animatic after each batch.
+The present `animatic.py` can choose standard files before fast ones and silently
+fall back to stills/cards. Audit its actual input mapping; it is not an approval
+gate. Its equal scene-audio splitting does not align individual dialogue lines.
 
-```bash
-$W python production/animatic.py        # seconds, no GPU
-# -> work/stories/<slug>/animatic.mp4 + a timing report
-```
+Narration and character voices use Gemini TTS (`voice/`), generated only when
+requested. Approved per-line audio durations inform coverage before expensive
+renders; this can be a timing table without an automatically built animatic.
+Scene audio lives under `work/stories/<slug>/audio/<lang>/sceneNN.wav`.
+Plan more coverage when a line exceeds a usable clip; do not loop a five-second
+shot or play mouth alternatives consecutively just to fill narration.
 
-Record the narration first (ElevenLabs), one file per scene at
-`audio/<slug>/sceneNN.wav`: each scene then lasts as long as its narration,
-the narration becomes the soundtrack, and the report flags scenes whose
-narration needs more 5-second shots than they have. Plan and render shots to
-fit the narration, not the other way round.
+The selected edit goes to DaVinci Resolve. Post-processing (`bllt/post.py`) uses
+interpolation/upscaling; inspect the result for newly warped paws, faces and rope.
+Back up chosen media, exact prompt logs and source references together.
 
-The final edit (narration, music, sound, titles) happens in your editor,
-using the chosen takes from `shots/` (post-processed to 1080p30 with
-`bllt/post.py`: RIFE interpolation, Real-ESRGAN upscaling, grade).
+## 9. Current workflow, step by step
 
-## 9. A new story, step by step
+1. **Review story order:** map every owner observation to a rule and image/shot
+   record. Review contact, trigger and rescue causality before making images.
+2. **Freeze identity:** revised v4 smooth-crown Milo, full canonical Leo mane,
+   brown eyes, calibrated anatomy and equal-depth standing ratio 1:3. Approve
+   canonical mouth designs before any speaking or gnawing variant.
+3. **Record every image:** fully expanded prompt, exclusions, ordered reference
+   roles/paths, counts, camera, light, pose, contacts, prop/occlusion state,
+   allowed delta and observable acceptance checks. Log actual attempts later.
+4. **Build references:** canonicals, views, pose calibration, mouths, empty
+   location plates and prop materials. Extract a clean trap-path plate; do not
+   use a background with a pre-fall net for a post-fall close-up.
+5. **Create registered endpoint pairs:** each character shot needs start/end.
+   Preserve skull/torso scale when a pose changes; equal bounding-box `h` is not
+   anatomical calibration. Preserve static scene landmarks and cumulative rope
+   damage. Inspect the saved files and their cut handoffs.
+6. **Prepare runtime recipes later:** derive supported story fields from approved
+   manifest records. Pass `--story` explicitly. Rebuild stale matte/crop/keyframe
+   caches after source changes. Review the full specification and the complete
+   runtime positive/negative. Measure actual tokenizer limits; fast CFG 1 has no
+   negative pass, so put critical desired states positively and in the anchors.
+7. **Pilot individual clips:** scale transition, sleep/contact/wake, readable run,
+   fray/cut and closed/mouth alternatives. Fixed backgrounds with gentle local
+   leaf/water/cloud motion. Keep character LoRAs off. Review full playback and
+   sampled frames; repair causes before expanding the render batch.
+8. **Owner selection then separate assembly:** preserve candidates and record
+   exact owner choices. Assemble only when requested, then inspect post/edit.
+9. **Back up** assets and provenance. The owner handles all git commands.
 
-1. **Write the bible** `stories/<slug>/story.yaml`: style and negative (copy
-   them from an existing story for a consistent series), characters (sheet,
-   trigger, scale), locations, props, scenes (the text of each).
-2. **Narration**: record each scene in ElevenLabs; put the files at
-   `audio/<slug>/sceneNN.wav`; run the animatic to see the real length.
-3. **Design** (GPU, ~2.5 min per still): `design.py candidates` for every
-   character, location and prop; look at the contact sheets; `pick`; `reframe`
-   small characters. Make each sheet agree with its pick.
-4. **Character packs** (GPU, ~1 h per pose): write
-   `packs/<character>.yaml` with every pose the story needs; run
-   `character/character.py shots --story <slug> --character <name>`. Pose
-   stills for keyframes go in `characters/<name>/poses/`: `character.py` saves
-   `<pose>_last.png` itself when one pose starts from another; any other frame
-   (e.g. the moment a paw is highest) you take by hand after looking at the
-   contact sheet:
-   `ffmpeg -i shots/milo_waves.mp4 -vf "select=eq(n\,24)" -frames:v 1 poses/milo_waves_f24.png`
-5. **LoRAs** (GPU, ~1 h): `lora/datasets/<name>.yaml` with `composite:` plates
-   and every pose; `lora/build_and_train.sh`; evaluate with `eval_character.sh`
-   + `eval_grid.py`; choose the earliest checkpoint that holds identity (500 so
-   far); write it under the character (`lora: {name, step}`).
-6. **Shot plan**: for each scene, shots of one action each, fitted to the
-   narration; keyframe recipes or `continue_from`; actions checked against the
-   prompting checklist; `--dry-run` every shot.
-7. **Render** in batches of 4 (one dev-g job), two seeds for important shots;
-   review contact sheets; set `take:`; fix and re-render failures.
-8. **Animatic** after every batch; when every scene has takes, **post** and
-   **edit**.
-9. **Back up** `work/` with `lumi/backup_assets.sh` after every session.
+See [v4 preflight](v4-preflight.md) for the complete checklist and known tool
+limitations. These are manual production gates, not newly implemented code.
 
 ## What is next, and what may be missing
 

@@ -1,0 +1,57 @@
+Scene issues and what to solve
+
+Fisrt I think that making the final shot animatic.mp4 should be done really as a separate job, so we first get all these short videos and then I will have a look to decide the best shot and then after my input we can really create it, doing it after it is jsut a waster of time and resources.
+
+S01 first scene: best video s01_milo_acorn_s1_fast.mp4 
+S01 second scene: best video s01_milo_explores_s2_fast.mp4
+
+S02 s1: all videos have the issue that the nut (milo’s food, falls to the ground and disappears, AND the biggest issue is that the canonical images of milo_acorn.png and  milo_startled_up.png after that are not the same size, so it look like Milos body shrinks!) : This leads to two important things we need to add into the CALUDE.MD as checkers to avoid this issues, first that the images that we will generate for our characters like in this case, must all have the same size, so every prompt that will generate a character expression or action should have the same character size, and second that things that are part on the video like the acorn can not be lost or disappear out of the blue. Also the background movement should be kept, so for this section when compared with the S01 scenes, the water basically didn’t move. If we decide to have water bodies moving or the trees moving a bit bc of the wind, whatever it goes in one scene background should be kept in all other scenes that will use similar backgrounds.
+
+S03 first scene: best s03_decides_s2_fast.mp4
+S03 second scene: best s03_two_paths_s3_fast.mp4
+
+S04: bet s04_shortcut_run_s3_fast.mp4 but honestly the others were good. Here  I would like to just improve the quality of milo while milo runs, for some reason it is hard to follow him visually, it might be the quality of the image. Should we improve the image  quality generation too?
+
+S05 first scene: s04_shortcut_run_s3_fast.mp4 was the worst because when Leo open his eyes, the are first not the right color and second they don’t look nice, I preferred the option where he kept his eyes closed, not sure how important is for the plot of the story that he open his eyes here, but if in the future this is important we must keep the same colro of  the eyes of the canonical images, in fact there must be some expression for the character that can be use to depict “waking up suddenly and wiht surprise” 
+S05 second scene: I like the video s05_the_trip_s2_fast, but they all have a similar issue as the one I mentioned before: the canonical images have no the same character size, so in this case you see how both characters and even the scenario gets “zoom in”, this enforces the fact to keep character size and also character sizes within the background images unless there is a scene that intentionally moved the character forwards or backwards on the scene. And more specifically for this scene when we do the video, Leo should only opens his eyes after Milo touches his paw
+
+S06: same as commented before the size of character and background changes because our canonical images dont keep the character size and scenario size and there is not a forward/backwards character movement, which if there was one, the scenario shouldn’t “zoom” in or out if only the character is moving. Important to keep for future developed to be VERY clear when representing this videos AND creating the canonical images.
+
+S07 first scene: best s07_leo_annoyed_s3_fast.mp4, I think Leo’s mouth could open more here like in the case of S07 second scene Milo’s mouth. I know the voice later must match the at least start and end of the mouth movement, but I can deal with that later by changing the text or making it faster and so on
+S07 second scene: s07_milo_sorry_s2_fast.mp4 the best.
+In these scenes where we have a look to the character only and the background in blurred it is not so much important that all the canonical sizes have the same size, here  they are close but no the same size so it is nice because it creates the illusion that the camera zoom in or out.
+
+S08 first scene: Here the transition from the start and end images was pretty good, but this set us a new rule in this case for Milo: let remove the hair he has on top. All the canonical images have a different hair color of form, if the images cannot keep the exact hair, which I haven’t seen, better just to remove his top haircut and be save. This is something for this case, but can be extrapolated to other future characters if the hairstyle cannot be kept.
+S08 second scene: the second video s2 was the best here because in this one there is some king of stuff going upon, like hands or paws or something like that, again some mouth movement is not taht bad, but lets also keep one iteration with the no mouth movement to have it as back up and keep that info in the documentation memory CALUDE.md so it is taken care of in the future  for any other character.
+S08 third scene: Yes, this scene makes my mind. Lets keep one scene with no need of mouth sync as standard, but still having one iteration with the movement of mouth for all future work and character videos. 
+
+S09 first scene: best one s09_home_s1_fast.mp4, but all are good.
+S09 second scene: the best one was s09_milo_hurries_s3_fast.mp4, the other two were pretty bad, like two Milos popping up or milo running in a very weird crouched way. Check why this happens and see how can we avoid this in the future.
+S09 third scene: let’s pick s09_stars_s3_fast.mp4 as the best, but really they were all good, I guess since this is just the background there is no much room for error. Something I can rescue from this scene that maybe some other scenes dont have is the gentle movement of the canopy trees and the clouds. Maybe we can make this as standard for all background where  this si shown.
+
+S10 fist scene: The is a clear example of a case where the character can move forwards/backwards in the background. In this case Leo move inwards. This scene to me looks move like Leo intentionally press the trap, instead of being a mistake, which is probably what it is depicted in the story, but in  this case we can tweak it and make the story so Leo was curios to see was was that “thing” on the ground while he was just walking, and then narrate how he felt into a trap. 
+S10 second scene: I liked them all, the scene of the falling net is  good, and I like the movement or the plants in the background as well. However, the stem of the trees also moved, so I think this could be because the two images might not have the same position of the trees background. Highlighting the importance on having the same background!!!
+
+S11 first scene: the scenes are all good, but then raise the question about mouth movemements and match with audio, here the Lion Leo is moving his mouth. Again I am not against the idea of that, but I am not sure enow how will that work with the audio, so again prepare the documentation rules for we always have one render with mouth movement and the other one without it. This is important.
+S11 second scene: here it happens again the same that the background trees move, probably bc the image use for the start and end have a bit different background. 
+S11 third scene: this set of videos are good, you see plants moving and shadows as well, not problem with tree movements like before.
+S11 fourth scene: very bad at the end. I think this happens because we only have the scen of the beginning but no a scene for the end, therefore the paw of hair of Leo gets very bad and distorted, this whole set of videos is pretty bad. This might mean that we need  to 
+
+S12 first scene: I like the 3 iterations, I would have add just some delicate movement of leaves bc of wind as we have seen before in other videos.
+S12 second scene: same as before, good but I would add the gentle movement of the leaves bc of the wind. Also I wonder if S12 first scene and S12 second scene will merge together in the final video, in that order and if so if there will be some issues when Milos is trying to b eseen from first to second scene, like suddenly moving o something like that.
+
+S13 first scene: those 3 clips I liked, you can also see Leo’s tail and nothing weird is showing off.
+S13 second scene: I like the first s1 clip, the other ones have some weird look on Milo’s eyes, and also I see that there is one leaf that start on top on the net and ends up below the net, probably bc the first image has that net above and the second one bellow, this is a minor mistake, but can be solved.
+S13 third iteration: I didn’t like the s3 clip bc of Milo’s paw but S1 was pretty good and s2 was the safest.
+S13 fourth scene: this was horrible, I think the fact that Milos arms change so much is something she should avoid and better to play safe, even if needed here having always arm lower and also trying to keep a start end end image if there is none. 
+
+S14 first scene: here I see a bit issue with the last canonical image and is that Milos has two tails (also the fact that his hair style is not matching but we already spoke about removing it for consistency), also I see that the second image in canonical cause a problem when render the video, the net should fall behind Leo not on the side that awy the falling will look more realistic, here the background trees dont move crazy, so this is good.
+S14 second scene: here the problem in Milo, but I think this is bc of canonical  image: Milo doesn’t look like the other Milo’s, he looks a bit fact for example. Also when rendering the videos the cut of the rope seems a bit unreal, sometime the piece of rope cut disappears of the cut is somewhere else  where milo was bitting.
+S14 third seven: this is so far the worst  in term of sense, in the previous scene Milos was cutting the rope, now the rope is bak to normal and somehow it get ripped off magically, not sure how to fix this or if we need it at all.
+S14 fourth scene: also quite bad, how the net moves, I dont see how to put Milos here. I think this raise another important point before creating the videos. I would have to have a look at the scripts order and how everything happens to see if maybe there is some tweaks also needed, here I am not sure how to combine the scenes in S14 and if this will work at all.
+
+S15 first scene: here again I see paws going up and tail and so on, I think this works fine like in s1 but sometimes, often time, this is not the casee, like s2 and s3, so. Again I will prefer not to add those details in the video and play it safe.
+S15 second scene: nothing to add, I see no mouth movement which is the safe play, I would just maybe create one with mouth movement to have it in case I want to use it, but in general no moth sync is the safest play.
+S15 third and fourth scene: same, paws raising, tail showing up, sometimes is good, most of the times is bad. The mouth also here looks different in Milos face. If we create a mouth open for a character I think for consistency we should have a canonical image, so the teeth, mouth shape and other details  are kept
+
+S16 first scene: I think here the issue is again with canonical images. Milo’s don’t look like Milo  again his hair style, but also body physic, he looks more chubby here. This raises once again the point fo importance to keep the canonical images consistent. THIS MUST BE A TO DO. We need to create a strategy that ensures that each prompt creates the canonical images that are consistent between each others!

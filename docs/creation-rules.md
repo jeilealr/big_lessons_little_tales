@@ -1,203 +1,263 @@
-# Creation rules: scripts, images and shots
+# Creation rules: scripts, images and video
 
-The one guide to read before writing a script, generating an image or
-describing a video shot for *Big Lessons, Little Tales*. Every rule here was
-learned on this project (v1, v2 and v3 of The Lion and the Mouse); the
-evidence for the video rules is in [prompting.md](prompting.md) (rule numbers
-in brackets), the problems and fixes in
-[findings-and-risks.md](findings-and-risks.md).
+Current policy, 2026-09-30, for v4 and future stories. Based on the owner's
+[v3 render notes](reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt).
+The [repair map](../stories/lion_and_mouse_v4/REPAIR_PLAN.md) connects observations
+to these rules. Historical experiments in [prompting.md](prompting.md) remain
+evidence, but do not override the current rules.
 
-Order of work: **script -> DNA -> images -> keyframes -> shots -> animatic ->
-narration and edit.**
+Prompts alone cannot guarantee correct anatomy or motion. Production requires
+specific prompts, approved references, registered pairs, persistent state records
+and visual review before downstream use. A completed job is not approval.
 
----
+## CR-01. Production order and owner selection
 
-## 1. Writing the script
+1. Write the script, proposed shot order and cause-and-effect state table. Plan
+   dialogue durations; generate audio only when requested.
+2. Owner reviews the sequence before its images, especially revised contact,
+   trap and rescue beats. A written storyboard is sufficient for this gate.
+3. Freeze the visual bible; create and approve neutral canonicals, scale
+   calibration, expression/mouth references, plates and prop states.
+4. Create a separate prompt record for every image, edit, reused asset, endpoint
+   and mouth variant. Follow [prompt-records.md](prompt-records.md). Review each
+   image before using it as another image's reference.
+5. Register and inspect start/end pairs and adjacent-shot handoffs using
+   [v4-preflight.md](v4-preflight.md).
+6. Render a small pilot of individual clips; review it before expanding the batch.
+7. Give the owner individual clips, contact sheets and a selection ledger. Record
+   the exact selected file, revision, seed, mouth mode, trim and order.
+8. **After owner take selection and an instruction to assemble, run the animatic
+   as a separate job.** Never append assembly/post to a clip task file. Never
+   build an animatic automatically after each batch.
+9. Post-process selected material and inspect it again. Upscaling/interpolation
+   cannot repair identity, impossible contact or prop causality.
 
-1. **Narration first, pictures fitted to it.** The spoken text sets each
-   scene's length; shots are planned to fill it (about one 5-second shot per
-   10-12 spoken words).
-2. **Length.** ~1,160 spoken words = 8-10 minutes = ~90-110 shots. Decide the
-   target length before writing; every extra minute is ~12 shots to make.
-3. **One beat per shot.** Write the story so each moment is one clear action
-   (Milo trips; Leo wakes; the net falls), not several at once.
-4. **Dialogue = close-ups.** The characters' stitched mouths do not lip-sync,
-   so each spoken line becomes a close-up of the speaker (a small gesture or
-   expression change) and a reaction of the listener. Keep lines short.
-5. **Write what the pictures can show.** Fast contact between characters
-   (tumbles, rolls, catching) and complex physical actions cannot be animated
-   reliably: show them as a cut between two stills (before and after) and let
-   the narration carry the motion ("a tumble, a roll").
-6. **Peril is brief, mild and resolved kindly** (YouTube's "animals in
-   distress" example, findings B6). No hanging, squeezing, pain or teeth; a
-   roar is a call for help. The villain's device is simple and visible (the
-   net drops from the branches when Leo steps on a trigger).
-7. **Time of day tells the story** (afternoon -> sunset -> dusk -> morning):
-   each lighting state needs its own location plate, so decide them in the
-   script.
-8. **Name the places.** Every scene happens in a named location with its own
-   DNA (section 3). Keep the number of places small and reuse them.
-9. **The moral in the characters' words** at the end, repeated once by the
-   narrator.
-10. Script format: one line per spoken sentence, each tagged with its speaker
-    and a delivery note (`LION — calm, slightly amused`); one file per
-    language, same scenes and line order (`stories/<slug>/narration/<lang>.yaml`).
+The current task is documentation only. V4 is a draft plan, not authorisation to
+produce media. Preserve v2/v3 inputs and reviews; future assets use v4 paths.
 
-## 2. Character images
+## CR-02. Freeze one versioned character identity
 
-**Authority:** the canonical image of each character is the identity; its
-DNA text (`character/characters/<Name>/<version>/dna.yaml`) describes that
-image, never the reverse (prompting 1.4). Settle any mismatch once (Leo's eye
-colour, Milo's hair tuft).
+An explicit owner redesign precedes the next canonical. For v4 **Milo has a
+smooth felt crown with no separate top-hair tuft**. This supersedes all earlier
+attempts to shrink the tuft. Retain ordinary felt fibres, eyebrows and whiskers.
+First revise the neutral canonical; once approved, derive the pack and every
+interaction from that v4 root. Independently erasing hair in many old images
+is not proof that their faces and bodies agree.
 
-1. **One character per image, plain warm off-white studio**, soft even light,
-   small ground shadow: the pipeline cuts the character out (BiRefNet) and
-   places it on the plates. Never draw scenery behind a single-character
-   reference.
-2. **Always attach the canonical** as the image reference, and change only
-   the pose or expression the prompt asks for.
-3. **Full body means everything in frame**: paws, whole tail, ear tips, the
-   whole mane. A cropped paw or tail cannot be restored in a shot (v3
-   LEO-03 lost its "barrier paw").
-4. **One pose per image, the pose the story needs.** The video model keeps
-   the start pose's gait: a walking still gives a walk, not a run (v2 Scene 8);
-   a real run needs a running still (mid-stride, ears back).
-5. **Expressions: identical head-and-shoulders framing** for the whole set,
-   so any two can be a shot's start and end without a jump or zoom.
-6. **Pairs are made from each other.** When two images are a shot's start and
-   end (asleep -> just woken; gnawing -> rope snaps), make the second with the
-   first attached as the reference and change only the action.
-7. **Every new state of a character gets an owner-made image.** In v2 every
-   shot where the model had to invent Leo in a new state (inside the net,
-   tugging, stepping free) went off-model; in v3 every such state is an image.
-8. **A pose change and a face change are two images, not one** (the eyes of a
-   lion lying down would not close in the same step).
-9. **Side views face one direction**; the pipeline mirrors them for the other.
-10. **Positive wording** ("mouth closed", "soft, floppy rope"), never "no
-    teeth" or "not scary": a negation names the thing. Put unwanted things in
-    the negative prompt (prompting 3.5).
-11. **Check every image against the canonical** (face, colours, proportions,
-    the one distinctive feature: Leo's mane colour, Milo's ears and hair tuft)
-    before it is used. Batches made from a different reference drift (v3: the
-    net set's mane came out redder).
+Until approved, the new canonical is pending; v3 is reference material for the
+unchanged traits, not an approved v4 asset. Freeze and review:
 
-## 3. Location images (plates)
+- Milo: slender taupe-grey torso, elongated cream belly, youthful rounded head,
+  two large circular ears with dusty-rose interiors, dark-brown irises with cream
+  sclera, small brown nose, slim bipedal limbs, one thin rosy-taupe tail.
+- Leo: compact golden-ochre quadruped, cream muzzle/chest, dark-brown irises with
+  cream sclera, four paws, one golden tail with rust tuft; full circular
+  burnt-orange/rust mane with the canonical volume and lock pattern.
+- Head/torso ratio, muzzle width, ear diameter/spacing, eye spacing, torso width,
+  limb thickness and tail root. Chubby Milo, different eyes, extra tails and a
+  thinner/crimson mane fail even if the scene looks attractive.
+- Lighting may change brightness/shadows, not intrinsic identity colours. Compare
+  neutral references as well as the scene light; never recolour the cast to fit
+  a background.
+- Count anatomical parts, and specify which are visible versus hidden. An
+  occluded tail has a recorded location; it is not permission to create another.
 
-**Authority:** the location DNA (`stories/<slug>/locations_dna.yaml`): what the
-place is, what must never change, its lighting states, its plates.
+The v1 black stitched eyes and 1:6 size ratio are historical. The current cast
+has brown eyes. Milo is **one third of Leo's neutral standing height at the
+same depth**; this ratio does not use a lying lion's shorter silhouette.
 
-1. **Empty plates**: no characters, animals or props unless the entry says so.
-2. **The scene fills the frame edge to edge**; no studio table, backdrop or
-   border (prompting 3.2). 16:9.
-3. **One normal-height view per place** (owner, 2026-09-28): low "mouse-eye"
-   angles were not stable, and normal views show the Leo-Milo size
-   difference well. Close-ups are made by the pipeline (a crop of the plate
-   with a blurred background).
-4. **One plate per lighting state** (afternoon, sunset, dusk, night,
-   morning), made with the place's first plate as the reference and changing
-   only the light. The video model must never change time of day in a shot.
-5. **Leave the stage area open, flat and in focus**, where characters stand
-   or travel; put the feet there, never over blurred foreground objects
-   (production-guide section 4).
-6. **Landmarks never change**: list them in `never_change` (the trunk on the
-   right, the path in front) and keep them in every plate of that place.
-7. **A cutaway** (the sky with the first stars) is a separate plate used on
-   its own; characters are never placed on it.
-8. **Different places look different**: a character's home must not look like
-   another character's landmark (v3: Milo's burrow first sat in a tree like
-   Leo's).
-9. When a set of character images already defines a place (the v3 net
-   scenes), that place **is** the location; do not mix it with a different
-   plate of "the same" place.
+## CR-03. Canvas size, anatomical scale and scene scale
 
-## 4. Interaction images (two characters)
+Equal PNG dimensions do not imply equal characters. Equal silhouette heights
+also do not imply equal body scale across sitting, standing and running poses.
 
-1. **Made in the location**, with both canonicals and the plate attached, when
-   the characters touch or interact closely (on the nose, the barrier paw,
-   gnawing the net). Cut-out compositing cannot fake contact.
-2. **Scale: Milo is one third of Leo's standing height**, in every image.
-3. **Pairs again**: an interaction that is a shot's end frame is made with its
-   start frame as the reference (runs to the paw -> on the nose -> barrier paw).
-4. Check both characters against their canonicals; interactions drift more
-   than single images (v2 review frames 08/09).
+1. Lock dimensions and camera for each family: square studio canonicals/views,
+   matched portrait expressions, exact 16:9 scene endpoints. Record any pad/crop
+   transform; never stretch an image to force a ratio.
+2. Calibrate neutral standing height and stable anatomical landmarks: head width
+   excluding ears/hair, eye spacing, torso length and ground contacts. Measure
+   comparable views; a head turn needs perspective-aware review.
+3. Maintain anatomical scale through pose changes. Sitting reduces the pose's
+   height; the skull does not shrink on standing. Keep ground contacts separate
+   from the top of the pose's silhouette.
+4. `production/keyframe.py` mattes and tightly crops the entire silhouette, then
+   scales it to `h * frame_height`. Its `h` is pose-box height, not anatomical
+   calibration. Reusing `h: 0.36` for sitting and standing can cause S02's shrink.
+   After registering the poses to equal anatomical scale, compute
+   `h_pose = h_neutral * B_pose / B_neutral`, where B is the pose/neutral box
+   height in that registered space. Ratios of unaligned source files are invalid.
+   Save head scale and foot/contact placement alongside the resulting `h`.
+5. Inside a fixed-camera shot use the same plate, crop, focal framing, light,
+   depth plane and layer order. Actor depth motion changes actor scale smoothly;
+   trees and rocks do not zoom with the actor.
+6. Overlay both endpoints at the actual video input size. Inspect after all
+   resize/pad/crop operations, not only at original image resolution.
 
-## 5. Video shots (the description of a shot)
+Initial review tolerances (proposed, not measured model guarantees): unchanged
+view head/eye spacing within 2%; planted ground contact within 0.5% of frame
+height; static landmarks within 0.2% of frame dimensions after a common camera
+transform. Visible identity/scale jumps fail regardless of tolerance. Intentional
+motion uses its recorded trajectory; do not compare moving feet as planted feet.
 
-The full rules with evidence: [prompting.md](prompting.md). In short:
+## CR-04. Registered start and end images
 
-1. **Start AND end on owner-made images** where possible (the best v2 and v3
-   shots). The model only animates between them.
-2. **One whole-body action per shot**, described big (2.1). Small gestures
-   from a still are lost.
-3. **The action names only the characters' bodies** (2.2); anything else it
-   names may be animated instead.
-4. **Locomotion: an energetic verb, side-on geometry, a fixed camera, room
-   ahead, and the run leaves the frame** (2.3, 2.10).
-5. **At most one camera move**, and it goes to the biggest subject (2.8,
-   2.12); a move that reveals what the image does not show makes the model
-   invent it (2.8b).
-6. **Say what must not change, and negate its opposite** (2.7): "stays fast
-   asleep the whole time" + negative "open eyes, awake".
-7. **Close-ups: `background:` instead of the location sheet** (2.13); the full
-   sheet names landmarks the model then tries to show.
-8. **A continuation from a cropped frame needs an end keyframe** (2.14); an
-   end identical to the start freezes the action, so the end must show the
-   result.
-9. **Characters not in the shot go in the negative** (2.9).
-10. Fast mode (4 steps) for iterating, 3 seeds per shot; pick the best.
+Every v4 character shot needs approved start AND end images. Derive the end from
+the approved start using the same canonical roots and plate. Unrelated attractive
+stills are not a pair.
 
-## 6. Checklist before generating
+- Record pair ID, camera profile, dimensions, crop, colour treatment, depth and
+  exactly what may change. Everything else is protected. Use local image edits,
+  masks or composition where supported. Restore protected regions from the base
+  or reject a candidate if whole-image regeneration moves them.
+- Endpoints reduce drift; inspect the middle too. A perfect last frame cannot
+  excuse a distorted paw, eye, tail or prop halfway through.
+- For state changes, the end depicts the actual result. Identical start/end is
+  allowed for an explicitly planned hold/loop, never to depict a rope breaking.
+- Exits have a clean end plate and a continuous visible path through a frame
+  boundary. An empty endpoint alone may cause disappearance. If necessary cut
+  from a validated pre-exit frame to the empty scene instead of accepting a fade.
+- The owner accepts slight close-up reframing (S07). Make it intentional, record
+  start/end crop and transform, keep anatomy and blurred context consistent.
+  Prefer a controlled digital crop in post to a generative camera move.
 
-**Image**
-- [ ] The canonical (and the plate, for scenes) is attached.
-- [ ] The prompt changes only the pose, expression or light it is for.
-- [ ] Full body in frame (studio images); stage area open (plates).
-- [ ] Positive wording; unwanted things in the negative.
-- [ ] Pairs: the start image attached when making the end image.
-- [ ] Saved under the name and folder of the to-do list, no `_01` suffix
-      (extra takes `_02`, `_03`).
+## CR-05. Expression, mouth and gesture controls
 
-**Shot**
-- [ ] Start (and end) keyframe composed and looked at.
-- [ ] One action, only bodies named, direction matches the image.
-- [ ] Camera fixed or one move; nothing revealed that the image lacks.
-- [ ] What must not change is stated and negated.
-- [ ] `--dry-run` read.
+Before speech alternatives, approve closed, slightly open and moderately open
+mouth references in identical face framing. Freeze jaw hinge, muzzle, lip
+outline, mouth interior, tongue and dentition. Create Leo's just-woken surprised
+reference from his asleep pose; opening the eyes must reveal the same brown eyes.
 
-## 7. Style blocks (copy into image prompts)
+For **every speaking or expressive character beat**, render separate named modes:
 
-**STUDIO** (single character):
-> Handcrafted wool-felt stop-motion storybook miniature, softly stuffed matte
-> felt, tactile fuzzy wool fibres, delicate visible stitching, charming
-> handmade irregularities. Warm off-white seamless studio floor and backdrop,
-> soft even studio light, small soft ground shadow. The whole character in
-> frame (ears, paws, tail), one character only. Keep the exact identity of the
-> reference: same face, colours, proportions, materials. No text, no logo, no
-> watermark, no clothing.
+- `closed`: preferred edit-safe baseline. Lips closed, jaw steady; eyes/expression
+  carry the beat. Paws and tail stay anchored.
+- `mouth`: gentle mouth movement using the approved mouth family, with onset,
+  offset, opening limit and quiet lead/tail specified. This is editorial coverage,
+  **not phoneme-synchronised audio**. Record usable motion intervals and speaker.
 
-**LOCATION** (plate):
-> Handcrafted wool-felt stop-motion storybook miniature set, matte felt
-> surfaces, visible delicate stitching, rounded soft shapes, warm children's
-> storybook palette, miniature diorama photography, shallow depth of field.
-> 16:9, the scene fills the frame edge to edge, no studio table or backdrop.
-> Empty: no animals, no characters, no text.
+A different seed is not a different mode. Both modes need compatible endpoint
+images: a closed clip cannot end on an open mouth. Sleep, silent locomotion and
+empty scenery remain silent. Gnawing needs functional mouth contact; its safe
+backup is a separate closed observing/reaction shot, not sealed-mouth chewing.
+The closed alternative to a call is a worried reaction with off-screen audio.
 
-**SCENE** (characters in a place):
-> Handcrafted wool-felt stop-motion storybook miniature, 16:9. Keep both
-> characters exactly like their reference images (face, colours,
-> proportions, materials). Milo (the mouse) is one third of Leo's (the lion's)
-> standing height. Keep the location exactly like its reference plate. No
-> text, no logo, no watermark.
+Default body control: paws lowered/resting, shoulders and torso steady, tail
+settled in its recorded position. A smile does not authorise waving, pointing,
+hand clasping, arm lifts or tail flicks. An essential gesture gets its own shot,
+contact path and endpoints. Simplifying unreliable decoration in any future
+character requires a versioned canonical decision, as with Milo's hair.
 
-## 8. Files and names
+V4 proposes two small rounded cream upper incisors for Milo's gnaw reference,
+subject to mouth-design approval. Keep that tooth design whenever visible.
+Leo never acquires fangs. Avoid a global `visible teeth` negative when approved
+teeth are required, or a global `mouth open` negative for a speech variant.
 
-| What | Where |
-|---|---|
-| Character pack (canonical, views, expressions, actions, story states) | `character/characters/<Name>/<version>/<folder>/<name>.png` |
-| Interactions | `character/characters/interactions/<version>/<name>.png` |
-| Location plates | `character/locations/<place>/<place>_<angle>_<light>.png` |
-| Character DNA | `character/characters/<Name>/<version>/dna.yaml` |
-| Location DNA | `stories/<slug>/locations_dna.yaml` |
-| A story's image to-do list | `stories/<slug>/TODO_images.md` |
+## CR-06. Locations and ambient motion
 
-No `_01` suffix on file names; a second take of the same image is `_02`.
+One approved plate per place/camera/light. New lighting preserves its geometry.
+Close-ups use the same scene state; blurring a wrong place or old net state does
+not fix it. Freeze trunk centres, roots, rocks, horizon, path edges, ground plane
+and light direction. Record at least three static landmarks. Preserve identical
+protected background pixels in still pairs where possible.
+
+Each place has an ambient profile reused across its shots:
+
+- Gentle leaf/grass-tip movement; stems, roots and trunk bases stay fixed. Canopy
+  leaves may flutter; the tree skeleton does not bend or slide.
+- Visible water continuously ripples/flows in the approved direction. It cannot
+  freeze between S01 and S02; banks, rocks and water level stay fixed.
+- Visible clouds drift slowly in one consistent direction; stars may twinkle
+  softly in a cutaway. Sun and time of day remain fixed within a shot.
+- Soft leaf shadows may shift slightly with the same breeze; no global flicker
+  or relighting. Inspect amplitude/direction continuity across adjacent cuts.
+
+Keep the main action dominant. Add a short frozen ambient clause rather than
+another story about clouds. In empty scenery, ambient motion is the main action.
+A difference of location/light may justify another profile; record that change.
+
+## CR-07. Prop permanence, contact and net topology
+
+Give each prop an ID and start/event/end state: count, holder, position, attachment
+points, layer order and visibility. Carry it into the next shot. Hidden, off-screen
+and removed are different states.
+
+- One acorn stays in Milo's paws while he notices the time in the proposed v4
+  plan. A separate placement shot leaves it at a recorded ground point before he
+  travels. A falling object follows a visible path to a resting place; it never
+  disappears. Later views retain it if that place is visible.
+- Leo stays asleep until Milo contacts his paw. Contact precedes waking. A fast
+  tumble/nose aftermath can be an explicit editorial cut, not a morph from a wide
+  scene to a close-up under a supposedly fixed camera.
+- One net: suspended -> falling -> draped -> frayed -> severed -> opening ->
+  slipping behind Leo -> fallen behind him. After release the overhead branch
+  is empty in all later frames, including close-up backgrounds.
+- Establish why cutting the selected strand opens the net. The v4 proposal uses
+  a closure strand securing an existing fold; releasing it cannot delete other
+  mesh strands. Review this topology in the intact state before any bite image.
+- Annotate the selected strand, two neighbouring knots and bite point outside
+  the generated picture. Cut at the bite point. Track the resulting two ends
+  and their occlusions. A single cut does not delete a length of rope. Any
+  detached fragment gets an ID, a falling path and a resting location.
+- A broken strand remains broken. Additional breaks require distinct strand IDs
+  and visible work or a planned time-ellipsis cut with cumulative damage. Never
+  return to an intact net for a second magical snap.
+- Preserve rope/leaf/paw/body occlusion order. Leaves cannot pass through intact
+  netting. The net slips behind Leo by gravity, without teleporting sideways or
+  reforming around him after release.
+- Milo remains present or has an explicit off-screen place/entrance. A Leo-only
+  start cannot simply gain Milo at the endpoint.
+
+The proposed S14 order in the v4 packet needs owner review before images.
+Narration must match the chosen number/order of visible breaks and trap motion.
+
+## CR-08. Readable locomotion and source quality
+
+Use an approved side-view running pose, upright bipedal Milo, a fixed camera,
+one direction and a clear ground lane. Specify start/end position, depth, gait
+and ground contacts. Exactly one mouse follows one continuous path; his single
+tail stays attached. Avoid combining a run, glance back, jump and camera track.
+For S09 use a forward-looking careful run; a glance back can be a separate hold.
+Depth movement (S10) changes actor scale, not background scale.
+
+Sharp source images need enough actual subject pixels, legible eyes/face, intact
+paws and silhouette separation. Inspect at 1280x720. An initial planning floor
+for solo running Milo is about 180 pixels of upright-equivalent height at 720p
+(25% of frame height), subject to visual review, not a guarantee. If correct
+cast scale makes him too small, give him a separate closer shot. Do not enlarge
+him relative to Leo. Avoid smear, foreground obstruction and detail crossing
+his face. Upscaling cannot restore missing original features.
+
+## CR-09. Exhaustive records and focused model prompts
+
+Every image record includes ordered reference paths and roles, purpose, counts,
+geometry, state, full positive text, exclusions, edit scope, protected areas and
+acceptance checks. Submit complete frozen identity/style descriptions; do not
+submit only “same as before”. Record exact submitted prompts, output location,
+tool/model/seed where exposed, reference hashes and selected output hash. Mark
+unknown settings `unknown`; never invent provenance for earlier images.
+
+Every video record adds paired dependencies, event timeline, camera/ambient
+clauses, prop transitions, mouth mode, candidate naming and reject criteria.
+The runtime instruction focuses on one action; exhaustive planning must not
+become a pile of conflicting requests to the model. Keep the full specification
+and a separately recorded, complete runtime candidate. Measure its actual token
+length against the deployed text encoder before submission; never silently lose
+critical constraints to truncation. Fast Lightning runs at CFG 1 with no negative
+pass, so desired states must be present positively and in the approved images;
+negative lists alone do not control this mode.
+
+Use explicit local reference paths when supported. Inspect the actual files and
+confirm ordered roles. Filenames alone did not catch I-07's wrong sleeping scene.
+Reopen the saved output; a preview or save command is not visual verification.
+
+## CR-10. Revisions and downstream invalidation
+
+Use v4 paths and revision IDs; preserve v3. Approved-image edits produce a new
+revision. Identity, plate, prop or prompt changes make dependent prompts,
+installed packs, mattes/crops, keyframes and renders stale. Rebuild in dependency
+order. Current scripts may skip existing outputs; use new revisioned paths and
+shot names, or explicitly rebuild affected files. Do not trust stale caches.
+
+Documentation states: `draft`, `needs_reference`, `ready_for_image_review`,
+`approved_image`, `ready_for_pair_review`, `approved_pair`, `render_candidate`,
+`owner_selected`, `rejected`, `stale`. Current scripts do not enforce these gates.

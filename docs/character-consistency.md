@@ -1,5 +1,16 @@
 # Character and set consistency
 
+## Scope: historical fox experiments
+
+The fox configuration and original media discussed below were removed in 2026.
+This remains experimental evidence, not the v4 production recipe. Use
+[creation-rules.md](creation-rules.md), [prompt-records.md](prompt-records.md)
+and the [v4 packet](../stories/lion_and_mouse_v4/README.md) for current work.
+Current I2V uses approved start/end references without character LoRAs, measured
+anatomical scale, fixed plates and complete individual prompt records. A keyframe
+anchors frame 0; it does not guarantee identity throughout a clip. V4 derivatives
+must use the revised smooth-crown Milo canonical once it is approved.
+
 How we keep the same character and the same place across many shots, and how
 every image in that process is produced. Worked example: the felt fox,
 configured in `character/characters/fox.yaml`, run by `character/character.py`.
@@ -15,12 +26,13 @@ them together but the words.
 
 ## Three techniques that stack
 
-They are not alternatives. Each one feeds the next:
+In the early experiments these techniques were combined. The later I2V A/B
+showed character LoRAs could harm location consistency; step 3 is optional:
 
 | | Technique | What it fixes | Cost |
 |---|---|---|---|
 | 1 | **Sheets**: one fixed description of the character and of the set, pasted verbatim into every prompt | narrows the drift | free |
-| 2 | **Anchors**: every shot *starts from a real image* of the character (Wan image-to-video) | identity is exact at frame 0 and holds for the shot | one GPU job per shot |
+| 2 | **Anchors**: every shot *starts from a real image* of the character (Wan image-to-video) | anchors frame 0; later frames still require review | one GPU job per shot |
 | 3 | **LoRA**: a small fine-tune that teaches the model *this* character | the model knows him in any pose, even without an anchor | a few GPU-hours, once |
 
 Step 1 is inside every prompt of step 2. Step 2 produces the stills that step 3

@@ -1,0 +1,173 @@
+{
+  "revision": "v4-draft-2026-09-30",
+  "status": "draft_requires_owner_script_and_canonical_review",
+  "scope": "documentation_only",
+  "identity": {
+    "milo": "Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle.",
+    "leo": "Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette."
+  },
+  "style": "Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable.",
+  "relative_scale": "Milo = one third of Leo neutral standing height at equal depth; never compare with lying pose box height",
+  "canonical_measurements": {
+    "status": "pending_actual_approved_images",
+    "head_width": null,
+    "ear_spacing": null,
+    "eye_spacing": null,
+    "torso_ratio": null,
+    "ground_contacts": null
+  },
+  "geometry_profiles": {
+    "solo": "Fixed normal-height camera, 16:9. Milo's proposed neutral standing height is 0.30 of frame height; planted baseline y=0.84. Use pose-calibrated silhouette height, keeping skull and torso at that scale. Use the endpoint-specified centre; when it is inherited, keep the exact approved previous position. A new location such as the burrow requires a measured doorway-relative centre before approval.",
+    "run": "Fixed normal-height side camera, 16:9. Milo's neutral standing-equivalent height is 0.30 of frame height and travel baseline y=0.82. Keep depth constant through horizontal travel. Preserve head scale through the gait, including airborne phases; screen x is specified by each endpoint.",
+    "tree_pair": "Fixed normal-height wide camera, 16:9. Leo's neutral standing-equivalent height is 0.54 of frame height, centre x=0.72 and paw plane y=0.84. Milo's equivalent height is 0.18 at the same depth. Lying Leo keeps the same anatomical scale. Milo starts left and reaches the extended paw at x=0.54, y=0.84; later conversation position x=0.52. Keep ample mane and tail margins.",
+    "trap_pair": "Fixed normal-height wide camera, 16:9. Leo centre x=0.60 with neutral standing-equivalent height 0.54 and ground baseline y=0.86; Milo height 0.18 at the same depth, conversation centre x=0.35. Net initially spans Leo and the ground. Bite target R01 is the near-left strand at approximately x=0.43,y=0.71; measure/freeze the exact point on the approved start. Safe mouse position is x=0.24,y=0.86. Preserve planted anatomy and background scale.",
+    "portrait_milo": "Fixed normal-height portrait crop of the approved scene, 16:9. Milo centred x=0.50, eye-line y=0.43, proposed skull width excluding ears 0.32 of frame width. Keep both ears and muzzle legible; lower paws/tail stay outside the crop. Match head size, eye-line and neck seam in both endpoints. Same soft blurred scene crop, without newly revealed landmarks.",
+    "portrait_leo": "Fixed normal-height portrait crop of the approved scene, 16:9. Leo centred x=0.50, eye-line y=0.43, proposed skull width excluding mane 0.34 of frame width. Keep the mane outline, ears and muzzle intact; paws/tail remain below or behind the crop. Match skull scale and eye-line through expressions. Same soft blurred scene crop.",
+    "contact": "Fixed normal-height close two-shot cropped from the approved great-tree scene. Match both characters' established body proportions and depth; Milo remains one third of Leo's standing-equivalent height. The crop magnifies both equally. Nose/paw contacts and both faces are readable, with no camera motion inside the clip.",
+    "bite": "Fixed normal-height close two-shot cropped from the approved net scene around strand R01 and Milo's face/paws. Magnify both characters and net by one shared crop; do not resize Milo independently. Two neighbouring knots K-left and K-right bracket the single bite point. Leo's recognizable face is softly behind the rope; both of Milo's holding paws and the bite remain readable.",
+    "empty": "Fixed 16:9 camera at the approved plate framing; no cast. Preserve every static landmark and the complete field of view."
+  },
+  "locations": {
+    "stream_afternoon": {
+      "location": "stream_bank",
+      "light": "afternoon",
+      "v3_layout_reference": "character/locations/stream_bank/stream_bank_wide_afternoon.png",
+      "description": "A felt stream runs left-to-right beside low berry bushes, rounded trees, grass and a hollow log on the right bank. Warm afternoon light from the left. Preserve bank outline, log, red-berry bushes and all rocks.",
+      "ambient": "Stream surface ripples continuously left-to-right at low amplitude; leaf and grass tips move softly in a light breeze. Banks, trunks, log and rocks remain fixed.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "stream_sunset": {
+      "location": "stream_bank",
+      "light": "sunset",
+      "v3_layout_reference": "character/locations/stream_bank/stream_bank_wide_sunset.png",
+      "description": "The exact stream-bank geometry and camera of the afternoon plate in low warm sunset light. The hollow log, berries, rocks and bank contours occupy identical positions.",
+      "ambient": "Use the same low-amplitude water flow and leaf/grass-tip breeze as the afternoon stream scene. Banks, trunks, log and rocks remain fixed; the sunset light stays constant within the shot.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "fork_sunset": {
+      "location": "fork",
+      "light": "sunset",
+      "v3_layout_reference": "character/locations/fork/fork_wide_sunset.png",
+      "description": "One fork: the safe left path curves toward a meadow; the shortcut on the right leads into closer darker trees. Sunset light. Path boundaries, tree trunks and horizon stay fixed.",
+      "ambient": "Soft local leaf/grass-tip motion only; visible distant clouds drift slowly left-to-right. Trunks, roots, path and rocks remain fixed.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "shortcut_dusk": {
+      "location": "shortcut",
+      "light": "dusk",
+      "v3_layout_reference": "character/locations/shortcut/shortcut_side_track_dusk.png",
+      "description": "A side view of the mossy shortcut at dusk. Preserve the stone, fallen branch and stump in their established order, with a clear horizontal running lane.",
+      "ambient": "Soft leaf and grass tips stir gently. The stone, branch, stump, tree trunks and ground remain fixed.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "tree_dusk": {
+      "location": "great_tree",
+      "light": "dusk",
+      "v3_layout_reference": "character/locations/great_tree/great_tree_wide_dusk.png",
+      "description": "Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path.",
+      "ambient": "Canopy leaf edges and grass tips flutter gently; any visible stream ripples consistently and clouds drift slowly. Trunk, roots, rocks and camera remain fixed.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "tree_day": {
+      "location": "great_tree",
+      "light": "day",
+      "v3_layout_reference": "character/locations/great_tree/great_tree_wide_day.png",
+      "description": "The exact great-tree setup in warm daylight: trunk on the right, same roots, path and flowers, unchanged camera and landforms.",
+      "ambient": "Gentle canopy leaf-edge and grass-tip motion, subtle corresponding leaf shadows; visible water ripples. Tree skeleton, roots, rocks and sun direction remain fixed.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "tree_sky": {
+      "location": "great_tree",
+      "light": "dusk_sky",
+      "v3_layout_reference": "character/locations/great_tree/great_tree_sky_dusk.png",
+      "description": "An approved upward cutaway crop/view of the great tree canopy against dusk sky and first stars. Preserve branch silhouettes and sky framing.",
+      "ambient": "Canopy leaf edges flutter, clouds drift slowly left-to-right and stars twinkle subtly. Main branches and camera remain steady.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "home_night": {
+      "location": "milo_home",
+      "light": "night",
+      "v3_layout_reference": "character/locations/milo_home/milo_home_wide_night.png",
+      "description": "Milo's distinct low grassy-bank burrow among roots and rounded stones beside a small stream, a round wooden door and tiny warm lantern, under blue night sky. This is a low bank home, not Leo's giant trunk.",
+      "ambient": "Subtle stream ripples and small leaf-tip movement; steady warm lantern light. Door frame, bank, roots, rocks and distant trunks stay fixed.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "trap_morning": {
+      "location": "trap_path",
+      "light": "morning",
+      "v3_layout_reference": "character/characters/Leo/v3/net/net_trap_set.png",
+      "description": "The net sequence's straight forest path with red/green leaves, purple-grey rounded rocks and tall trees in warm morning light. Use this actual set, not the separate curved misty L-16 plate. Preserve the path vanishing point, two rock silhouettes and trunk centres.",
+      "ambient": "Low-amplitude leaf and fern-tip motion with subtle leaf shadows. All tree trunks, stems, roots, rocks, path edges and camera remain fixed. Leaves touching ropes retain their attachment/occlusion relationship.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    },
+    "run_morning": {
+      "location": "forest_run",
+      "light": "morning",
+      "v3_layout_reference": "character/locations/forest_run/forest_run_side_track_morning.png",
+      "description": "A side-view forest run with foreground roots, a middle bush and a low branch, warm morning shafts and a clear right-to-left travel lane.",
+      "ambient": "Gentle leaf/grass tips and soft leaf shadows move. Roots, branch, stems, trunks and ground geometry remain fixed.",
+      "landmark_coordinates": null,
+      "approval": "pending"
+    }
+  },
+  "prop_states": {
+    "acorn": [
+      "held",
+      "placed_by_stream_stone",
+      "offscreen_at_stream"
+    ],
+    "net": [
+      "suspended",
+      "falling",
+      "draped_intact",
+      "frayed_R01",
+      "severed_R01",
+      "opening_R01",
+      "slipping_behind",
+      "fallen_behind"
+    ]
+  },
+  "net_rules": "Exactly one net. R01 parts at its recorded bite between K-left/K-right. Both ends persist. Damage never reverses. After release overhead is empty. After freedom net remains behind Leo. Camera cuts retain world state.",
+  "mouth_rules": {
+    "default": "closed",
+    "alternative": "mouth, bounded unsynchronised motion; quiet lead/tail",
+    "functional": "gnawing or nibbling; dedicated approved contact mouth plus closed reaction backup",
+    "milo_teeth": "draft: two small rounded cream upper incisors for gnawing; approve before use",
+    "leo_mouth": "rounded dark warm interior and small muted-pink tongue, without fangs"
+  },
+  "tolerances": {
+    "status": "initial_proposal_not_measured_guarantee",
+    "stable_head_scale_percent": 2,
+    "fixed_contact_frame_height_percent": 0.5,
+    "static_landmark_frame_dimension_percent": 0.2
+  },
+  "render_plan": {
+    "width": 1280,
+    "height": 720,
+    "fps": 16,
+    "frames": 81,
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "mode": "fast_pilot_first",
+    "note": "runtime settings and installed model revision must be observed at execution; not a submitted job",
+    "negative_conditioning": "fast Lightning guidance 1.0/1.0: no negative CFG pass; exclusions are review criteria, not reliable fast-mode controls",
+    "token_budget_status": "pending deployed tokenizer and effective encoder limit; wrapper sets no explicit max_sequence_length"
+  },
+  "runtime_identity": {
+    "milo": "one slender taupe-grey felt bipedal mouse, smooth crown, huge round pink-inner ears, brown irises and cream sclera, cream muzzle/belly, slim limbs, one thin rosy tail; approved canonical proportions",
+    "leo": "one sturdy golden felt quadrupedal lion, full layered rust-orange mane, brown irises and cream sclera, cream muzzle/chest, four paws, one golden tail with rust tip; approved canonical proportions"
+  },
+  "runtime_style": "Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects"
+}

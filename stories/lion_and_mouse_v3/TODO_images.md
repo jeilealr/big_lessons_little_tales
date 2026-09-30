@@ -1,5 +1,12 @@
 # The Lion and the Mouse v3: images to create (to-do)
 
+**Historical v3 production document.** The owner has reviewed the v3 renders.
+Use the [v4 packet](../lion_and_mouse_v4/README.md) for the next iteration.
+This file preserves the requests used to plan v3; checkboxes mean a file was
+saved, not that it passed the later render review. Short prompts and shared
+blocks here are not a complete log of actual image-tool submissions. V4 identity,
+state and mouth rules supersede these prompts for new production.
+
 One entry per image: tick it when the image is saved. Each entry has the
 **file** to save as (paths from the repo root), the **references** to attach
 in the image tool, and a **prompt** to paste. Append the matching style block

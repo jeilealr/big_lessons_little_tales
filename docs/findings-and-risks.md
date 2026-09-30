@@ -1,10 +1,36 @@
 # Findings, fixes, and what you may be missing
 
-Two parts. **A** lists every problem found so far, what caused it, and how it
-was solved (or that it is still open). **B** lists gaps and risks nobody has
-raised yet, with a recommendation for each. Keep both current.
+## Current v3 review and v4 response (2026-09-30)
 
-Checked 2026-09-26.
+The owner's complete [v3 notes](reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt)
+are preserved verbatim. The [repair map](../stories/lion_and_mouse_v4/REPAIR_PLAN.md)
+covers every scene, candidate preference, ambiguity and previous image-review
+issue. Read the [v4 packet](../stories/lion_and_mouse_v4/README.md) before production.
+
+| Observed failure | Required response | Evidence/status |
+|---|---|---|
+| Milo hair/body and Leo eyes/mane drift | new smooth-crown Milo root, approved brown-eye/mouth references, full rust mane, one tail | owner observations; new references pending |
+| Milo shrinks between seated and standing images | calibrate skull/torso, then pose-specific silhouette heights | bbox scaling confirmed in code; clip-specific cause not measured |
+| scene zoom and moving trunks | registered pairs, fixed camera/plate, gentle motion limited to local foliage/water/clouds | owner observations; new pilot pending |
+| acorn disappears, rope resets or cuts away from bite, extra overhead net | explicit persistent object state, contacts/occlusion, single-net state chain | owner observations; storyboard/pair review required |
+| unrequested hands/tails and bad late frames | limbs anchored, end keyframe, whole-clip review | owner observations; ordinal missing-end attribution ambiguous |
+| expressive mouth changes unpredictably | closed baseline plus bounded mouth alternatives from approved mouth family | owner request; no lip-sync claim |
+| premature assembly | individual clips -> owner exact take selection -> separately requested animatic | current standing instruction |
+
+No v4 failure is marked solved. The source videos were not in this checkout.
+The new JSON manifest and checklists are documentation, not enforced validators.
+Known execution gaps and manual controls are in [v4-preflight.md](v4-preflight.md).
+The coverage plan requires script/audio timing before it becomes a complete edit.
+
+## Historical findings and risks (snapshot: 2026-09-26)
+
+Sections A/B below retain experiment results, obsolete examples and dated external
+research. A historical “solved” means that test, not all later shots. V1 black
+eyes/1:6 scale, mandatory character LoRA, ElevenLabs narration, tracking-camera
+advice and pre-render/automatic animatic recommendations are superseded. Current
+cast uses brown eyes, Milo standing ratio 1:3, Gemini voices, fixed-camera I2V
+without character LoRAs, and assembly only after owner selection and request.
+External policy, prices and storage figures were not re-checked in this pass.
 
 ---
 
@@ -80,7 +106,7 @@ Checked 2026-09-26.
 
 ## B. What you may be missing
 
-### 1. Everything generated will be deleted in 185 days  (**act on this**; script ready)
+### 1. Historical scratch-retention warning (reported deadline: 30 March 2027)
 
 The LUMI project's data is removed on about **30 March 2027**. Everything in
 `work/` (47 GB: the chosen designs, character packs, LoRAs, rendered shots) is
@@ -213,7 +239,7 @@ story uses, and recurring characters would need one shared character bible.
 recurring cast; if recurring, move style and characters to a shared place
 before the second story.
 
-### Open decisions (owner)
+### Historical open decisions (not the current owner decision list)
 
 - ~~Leo's eyes~~: decided, black (the sheet now matches the images).
 - Leo's look: 1003 (fluffy mane, chosen) or 1005 (felt-ball mane).

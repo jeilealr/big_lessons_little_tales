@@ -1,9 +1,11 @@
 # Writing prompts that work
 
-Every rule here was **measured** on this project (Wan 2.2 A14B, felt-animal
-style), not taken on faith. Each one names the test that showed it. Read this
-before writing any shot, pose or design prompt. The last section is a
-checklist to run before a prompt goes to a GPU.
+This is the historical experiment log for Wan 2.2 and the felt-animal style.
+Rules label observations and precautions; they are not universal model guarantees.
+For current production, [creation-rules.md](creation-rules.md) takes precedence.
+The [v4 packet](../stories/lion_and_mouse_v4/README.md) records the owner's v3
+failures and their draft remedies. Follow [v4-preflight.md](v4-preflight.md) in
+addition to the historical checklist below. No v4 remedy is yet render-validated.
 
 Where the tools put your text: every prompt is assembled as
 
@@ -12,9 +14,11 @@ Where the tools put your text: every prompt is assembled as
 ```
 
 `production/shot.py`, `character/character.py` and `production/scene_baseline.py`
-all build it this way from `stories/<slug>/story.yaml`. **You write only the
-ACTION** (and an optional per-shot negative). Everything else is pasted from
-the story bible, verbatim, every time.
+all build it this way from `stories/<slug>/story.yaml`. Runtime recipes supply the ACTION and optional per-shot negative; sheets and
+style are appended. For v4, save the **entire expanded positive and combined
+negative** in the prompt record, including references and endpoint state, before
+exporting a runtime recipe. Check the actual assembly for duplicated/conflicting
+text. Current dry-run prints the positive, not the complete negative.
 
 ---
 
@@ -26,7 +30,9 @@ in four prompts (black-tipped ears, eyebrows, different faces). The felt bunny
 was a different animal from shot to shot.
 *Evidence:* `docs/img/fox_lora_grid.jpg`, row "no LoRA".
 *Therefore:* every shot starts from an image of the character (a keyframe,
-section 4 of the production guide), and main characters get a LoRA.
+section 4 of the production guide). Character LoRAs were useful in early
+text-to-video experiments; later I2V A/Bs worsened the location, so keep them off
+for v4 keyframe shots. Fast-mode Lightning adapters are a different purpose.
 
 **Rule 1.2: never reword a character or location sheet.** The sheet is frozen
 text. Change the action, never the description. Rewording is how a second,
@@ -47,8 +53,9 @@ in all six design candidates although the sheet says "warm brown stitched
 eyes", and it added a cream muzzle nobody asked for. Decide once: accept it and
 edit the sheet, or keep asking. Do not leave the sheet saying something the
 images never show.
-*Resolved for Leo (owner, 2026-09-26): keep the black eyes; the sheet now says
-"small black stitched eyes".*
+*Historical v1 decision (2026-09-26): black stitched eyes. Superseded by the
+owner-made current cast: Leo and Milo have brown irises and cream sclera. Never
+copy the v1 eye description into v4.*
 
 ## 2. The action line
 
@@ -70,13 +77,16 @@ A small movement of one body part, starting from a still, is usually lost.
 If a gesture matters, make it the whole shot and describe it big ("raises one
 tiny paw **high** and waves it **from side to side**").
 
-**Rule 2.2: the action names only the character's body.**
+**Rule 2.2: give the main character action priority.**
 *Bad:* "The fox looks up at the cotton clouds drifting overhead." The model
 animated a cloud sliding across the sky; the fox did not move.
 *Good:* "The fox slowly raises his head and tilts his nose upward, ears pricked."
 Anything else the action names (clouds, a butterfly, a leaf) is something the
 model may animate *instead* of the character. The location sheet already puts
 those things in the scene.
+V4 still requires a separate bounded ambient clause: subtle water ripples and
+leaf/cloud motion must persist across clips while trunks, roots and rocks stay
+fixed. Ambient motion must not replace the main action or imply camera movement.
 
 **Rule 2.3: locomotion needs an energetic verb.**
 *Bad:* "Leo walks slowly and calmly forward on his short rounded legs." Leo
@@ -88,10 +98,11 @@ leaned in and ran out of frame (`p_run.jpg`).
 a walk that must travel, say where to: "walks steadily across the clearing
 from the left edge to the right edge", and check the result.
 
-**Rule 2.4: a moving character leaves a static frame.** On a fixed camera the
-runner exits the frame within the clip. That is fine for a pose clip; in a
-scene, give the camera a job: "the camera follows alongside him" or "a
-low-angle tracking shot following him".
+**Rule 2.4 (superseded tracking advice): plan the runner's travel lane.**
+Early tests suggested following the runner; later Rule 2.10 showed a tracking
+camera could move while Milo stayed still. V4 uses a fixed normal-height side
+view, matching endpoint scale/depth and a bounded path. Cut before an unsafe
+exit or split the travel; do not restore the old low-angle tracking prompt.
 
 **Rule 2.5: the direction in the text must match the keyframe.** Milo's
 keyframe had him facing left; the first Scene 2 prompt said "runs to the
@@ -244,7 +255,13 @@ before its first render.
 
 `shot.py --fast` / `character.py shots --fast`: the lightx2v 4-step
 distillation LoRAs (Apache-2.0, revision pinned in `bllt/wan.py LIGHTNING`),
-4 Euler steps, shift 5, CFG 1. Same keyframes and seeds as two approved takes:
+4 Euler steps, shift 5, CFG 1. At CFG 1 the code documents **no negative pass**:
+a saved negative prompt does not establish that those terms constrained fast
+inference. Put required states positively and in the endpoints; review output.
+Check actual deployed tokenizer limits before using long prompts. V4 records a
+compact runtime candidate separately from the full planning specification.
+
+Same keyframes and seeds as two approved takes:
 
 ![40 steps vs Lightning](img/lightning_ab.jpg)
 
@@ -276,7 +293,8 @@ twcfox, a small orange felt fox, sitting, three-quarter view, full body, on a gr
 ## 6. Checklist before a prompt goes to a GPU
 
 1. The action has **one** whole-body movement, described big.
-2. The action names **only** the character's body (no clouds, leaves, sky).
+2. The main action names the character movement; a separate low-amplitude
+   ambient clause preserves water/leaf continuity without moving static scenery.
 3. A movement that must travel uses an energetic verb, explicit geometry
    ("seen from the side, across the frame from right to left"), a **fixed**
    camera, and room in the keyframe to travel into (the character faces the
@@ -289,16 +307,26 @@ twcfox, a small orange felt fox, sitting, three-quarter view, full body, on a gr
 5. What must stay still is stated ("the whole time, eyes closed"), and its
    opposite is in `negative_extra`.
 6. Characters not in the shot are in `negative_extra`.
-7. At most one camera move, and it goes to the biggest subject (Rule 2.12).
+7. V4 baseline camera is fixed. A deliberate reframe needs its own reviewed
+   plan and must preserve anatomy; wider-to-closer endpoints do not count as a hold.
 8. No photographic or realism words.
 9. The sheets were not edited for this shot.
 9b. No "not ..." / "no ..." phrases in the action or sheets: they go in the negative.
 10. `--dry-run` printed the assembled prompt and it reads as one clear picture.
-11. Two seeds for anything that matters.
+11. V4 plans three candidate seeds per mode after the small pilot; a seed
+    variation is not a separate closed/mouth prompt mode. Owner selects takes.
 
 ## Results log
 
 Update this when a rule is confirmed, refuted or refined.
+
+- 2026-09-30: owner v3 render review archived verbatim in
+  [the review notes](reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt).
+  New draft controls cover tuft removal, anatomical registration, persistent
+  acorn/net damage, fixed trunks with moving foliage, matching endpoints,
+  mouth alternatives and selection before assembly. See the
+  [repair map](../stories/lion_and_mouse_v4/REPAIR_PLAN.md). Videos were not locally
+  available in this pass; proposed causes and fixes are not confirmed v4 results.
 
 - 2026-09-26: Rule 2.3 from leo_walks (slow, did not travel) and milo_runs
   (energetic, ran out of frame). Rule 2.5 from the Scene 2 keyframe.
