@@ -31,6 +31,7 @@ Not legal advice.
 | Wan2.2-Lightning 4-step LoRAs (`lightx2v/Wan2.2-Lightning`, revision pinned in `bllt/wan.py`) | Apache-2.0 | fast mode (`--fast`) |
 | Gemini 3.8 Flash TTS (Gemini API) | Gemini API Additional Terms | outputs owned by the user ("Google won't claim ownership"); SynthID watermark; paid ~$0.0135/min of audio (2026). Open question on the Age Requirements for a Made-for-kids channel: `docs/google_gemini_terms_question.md` |
 | google-genai (client) | Apache-2.0 | `gemini_env` venv |
+| Qwen-Image-Edit-2511 (`Qwen/Qwen-Image-Edit-2511`, pinned) | Apache-2.0 | downloaded, not used yet (`production/edit_image.py`) |
 
 ## Considered and rejected
 

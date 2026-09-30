@@ -358,6 +358,13 @@ How it is made (and why):
 
 ## Current state (update when it changes)
 
+**Owner-made images (2026-09-29):** the owner generates the v3 images on
+another machine (N-07/08/09 included); do not generate them here.
+`production/edit_image.py` (Qwen-Image-Edit-2511, Apache-2.0, 54 GB in
+`hf_cache`) exists but is **untested**: its first run failed because the
+generation venv's transformers 4.51 cannot load its Qwen2.5-VL text encoder;
+it needs its own venv with transformers >= 4.57 (not created).
+
 **v3 in planning (2026-09-27)**: the owner's longer dialogue script
 (`stories/lion_and_mouse_v3/script_dialog_en.txt`, ~1,160 words, 8-10 min,
 narrator + lion + mouse lines). The owner will generate the images; the list
