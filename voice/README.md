@@ -29,6 +29,12 @@ python voice/list_voices.py      # -> voices_list.json
   TTL**. Keep each chosen voice's prompt and id here so it can be recreated.
 - Price (paid tier): ~$0.0135 per minute of audio until 2026-12-31, ~$0.027
   from 2027 (25 audio tokens/s). Free tier: rate-limited.
+- **Rate limits, Tier 1 (seen 2026-10-01, AI Studio > Rate limits): Gemini 3.8
+  Flash TTS = 10 requests/min, 10K tokens/min, 100 requests/day**, reset at
+  midnight Pacific (09:00 in Germany). Retries count. Past the daily limit the
+  API does not return an error: calls just hang. `narrate_scenes.py` waits 8 s
+  between calls, tries each line at most twice (90 s limit per call) and stops
+  the run if a line fails twice; a full 160-line story needs two days.
 - Outputs are the owner's ("Google won't claim ownership"); SynthID watermark.
 - Open question for Google: API terms exclude services "directed towards or
   likely to be accessed by individuals under the age of 18".

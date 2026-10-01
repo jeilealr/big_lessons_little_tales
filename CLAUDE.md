@@ -188,6 +188,9 @@ prints only the positive. A draft manifest is not accepted by the renderer.
 
 - `pkill -f "<pattern>"` in a command also kills that command's own shell when
   the pattern appears in it (it cut a deletion short on 2026-09-27).
+- The same goes for `ps | awk '/pattern/'` then `kill`: any word of the pattern
+  in your own command (even a log file name) kills your shell. Kill by a PID
+  you have looked at.
 - A `yaml` value with a colon inside (`language: en (xx, yy: zz)`) breaks the
   file: quote such values.
 - A `google-genai` client created inline and discarded (`genai.Client().x()`)
@@ -371,6 +374,19 @@ How it is made (and why):
   channel; the owner's question to Google is drafted in
   `docs/google_gemini_terms_question.md`. Never clone Gemini voices into
   another model (terms forbid replicating components of the Services).
+- **Narration v4 (2026-10-01)**: `voice/narrate_scenes.py` (one WAV per scene
+  + `lines/` + `timing.json` in `work/stories/lion_and_mouse_v4/audio/en/`);
+  scenes 1-12 done (6:57). Scenes 13-16 (59 lines from S13-L005) blocked by
+  the **100 requests/day TTS limit** (Tier 1: also 10 requests/min, 10K
+  tokens/min; resets 09:00 Germany; the API hangs instead of erroring, so the
+  script waits 8 s between calls and tries a line at most twice). Scheduled
+  for 2026-10-02 09:05 Germany (`$BLLT_PROJECT/tmp/v4_narration_0905.sh`,
+  log `tmp/v4_narration_0905.log`); by hand: rerun
+  `source voice/gemini_env.sh && python voice/narrate_scenes.py --lines
+  stories/lion_and_mouse_v4/dialogue_coverage.json --story lion_and_mouse_v4
+  --scenes 13 14 15 16`, then `python3 production/timing_sheet.py --story
+  lion_and_mouse_v4` (TIMING_SHEET.md: which shot covers which line, slow-downs,
+  stills).
 - Chatterbox/Parler were tried and **removed** 2026-09-27 (Parler produced a
   hum; Chatterbox clones were noisy and drifted between lines); they are in
   git history before that date.
