@@ -423,6 +423,7 @@ Decide it before writing a prompt; it controls everything else.
    and one expression from `character/characters/<Name>/v4/expressions/`
    as `face_and_expression_reference`. Drop full-scene and portrait
    references that disagree with this framing.
+
 2. The prompt names the location plate and asks for it "very strongly
    blurred (like a portrait lens at f/1.4)". Without that phrase Nano Banana 2
    kept the background half sharp.
@@ -432,6 +433,37 @@ Decide it before writing a prompt; it controls everything else.
    background exactly as in reference image 1".
 5. Review: framing numbers, blur strength, face side by side with the
    canonical, two brows.
+
+## CR-16. Apparent size across adjacent scene shots (owner, 2026-10-02)
+
+For every wide or medium shot, record the plate, camera crop, ground baseline,
+character depth plane, and visible bounding box (normalized `x0,y0,x1,y1`)
+for the head or mane and for the complete body. Choose an approved shot of the
+same setup as the size anchor. Compare the next shot at equal image size before
+acceptance; changes in pose may change the silhouette but must keep the head,
+mane, torso and paw size consistent at the same depth. A close-up with a blurred
+plate is a deliberate editorial cut and uses its separate close-up framing.
+
+**Great-tree dusk wide-shot anchor:** use `s05_paw_contact_end_r01.png` for
+Leo's anatomical and mane scale and Milo's small same-depth scale. S06 barrier
+and S08 kindness are on the same plate and ground plane. Leo's mane must not
+shrink between them; use the S05 mane diameter and body proportions as the
+visual ruler while changing pose. Keep Milo at the same apparent height unless
+the shot explicitly moves him in depth. The smaller Leo in the present S06 and
+S08 kindness images needs repair. Compare both start and end of each pair.
+
+**Trap-path anchor:** use one owner-approved S11 or S14 wide frame to measure
+each actor on its stated depth plane. If S13 Milo walks toward the camera, save
+start and end positions and scale progression; if he only moves sideways, keep
+his ear-to-foot height constant. Preserve Leo's mane and muzzle dimensions
+through S11 to S14 unless a shot changes camera or depth.
+
+When an actor moves forward or backward, annotate the initial and final depth
+and resulting size in the manifest. A scale jump with no visible depth move or
+camera cut fails review. Prefer a measured bounding-box comparison to broad
+instructions such as “same size.” Do not apply the solo Milo 0.30–0.36 frame
+fraction to a farther-away two-character shot; use the chosen shot's depth
+anchor and Leo-to-Milo anatomical ratio instead.
 
 **Never mix framings inside one shot.** Wan animates between the start and
 end frames; a wide start with a close-up end becomes an unwanted zoom.
