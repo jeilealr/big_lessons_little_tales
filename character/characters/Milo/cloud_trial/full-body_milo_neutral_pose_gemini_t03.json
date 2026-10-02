@@ -1,0 +1,37 @@
+{
+  "id": "FULL-BODY_MILO_NEUTRAL_POSE_GEMINI_T03",
+  "status": "planned_not_executed",
+  "purpose": "Cloud trial: alternative v4 neutral full-body canonical take for Milo",
+  "bible": {
+    "path": "stories/lion_and_mouse_v4/visual_bible.json",
+    "revision": "v4-draft-2026-09-30"
+  },
+  "references": [
+    {
+      "path": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
+      "role": "identity_reference",
+      "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
+    }
+  ],
+  "engine": {
+    "api": "Gemini API generateContent",
+    "model": "gemini-3-pro-image-preview",
+    "imageConfig": {
+      "aspectRatio": "1:1",
+      "imageSize": "2K"
+    },
+    "seed": null
+  },
+  "positive_prompt": "Using the attached image as the identity reference for this exact character, create one new neutral full-body character reference of Milo. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Milo's head is one smooth rounded felt dome from brow to the back of the head, with the same short felt texture as the rest of the face and no separate hair, tuft or crest. Slender build: slim waist, narrow chest, thin arms and legs, as in the reference. Large round dark-brown irises. Front view, standing in a relaxed neutral pose, closed gentle mouth, looking at the camera, the whole body centred with comfortable margins on all sides. Square canvas, warm off-white seamless studio backdrop, soft even neutral studio light and a small soft contact shadow under the feet. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Only this one character; no props, scenery, text or watermark. Avoid: duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, changed iris colour, blue eyes, yellow eyes, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, props, scenery, chubby body, separate top-hair tuft, hair crest on the head.",
+  "exclusions": "duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, changed iris colour, blue eyes, yellow eyes, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, props, scenery, chubby body, separate top-hair tuft, hair crest on the head (embedded in the prompt as an 'Avoid:' sentence; the API has no negative prompt)",
+  "acceptance": [
+    "Exactly one character; whole body, ears, paws and single tail visible with margins",
+    "Identity matches the v4 canonical (face, palette, proportions)",
+    "Eyes: large round dark-brown irises, cream sclera",
+    "Milo: smooth crown, no top tuft or crest; slender build",
+    "Leo: full rust-orange mane, original volume and outline",
+    "Neutral relaxed frontal stance, closed mouth, plain warm off-white studio backdrop",
+    "Felt material reads as handmade wool felt, not plastic/CGI fur"
+  ],
+  "result": null
+}
