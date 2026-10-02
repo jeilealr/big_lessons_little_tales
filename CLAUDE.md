@@ -60,6 +60,7 @@ is the evidence for this revision; v2/v3 production data is historical.
 | Need | Read |
 |---|---|
 | **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
+| **Owner image review (keep/redo per image, shot-order diagram)** | `stories/lion_and_mouse_v4/IMAGE_REVIEW.md` (rebuild: `python3 production/image_review_md.py`) |
 | V4 documentation, script review and individual prompts | `stories/lion_and_mouse_v4/README.md`, `SHOT_PLAN.md`, `REPAIR_PLAN.md` |
 | Prompt provenance and review gates | `docs/prompt-records.md`, `docs/v4-preflight.md` |
 | Writing any shot prompt, with evidence | `docs/prompting.md`: every measured rule, a checklist, results log |
