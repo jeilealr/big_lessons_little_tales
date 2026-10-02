@@ -421,19 +421,19 @@ create the smooth-crown Milo root, review both canonicals and mouth designs,
 calibrate references and pairs, then render the pilot. Prompts reduce ambiguity;
 only inspection of actual outputs can establish that a defect is fixed.
 
-## Gemini r02 revision (2026-10-02)
+## Gemini r02/r03 revision (2026-10-02)
 
 The owner moved v4 still generation from GPT to the Gemini API
 (`character/gemini_image.py`, guide `docs/gemini-images.md`). Models:
 Nano Banana 2 for 16:9 scenes, Lite for square studio references, Pro
-only to escalate. The owner's 2026-10-02 rejections were redone as r02 from
-`stories/lion_and_mouse_v4/revisions/r02.json`: 22 frames accepted
-(S02, S05, S07, S08, S12, all S10/S11 with the V3 net staging, S13 arrival),
-`accepted_pending_owner_review`. Stopped at the project's monthly
-spending cap; S13 conversation, S14 and S15 remain (fixes written; four
-S13 r01 frames marked `stale`). Status table: `GENERATION_PROGRESS.md`
-(end). Always state scale in frame fractions and keep V3 images
-staging-only (they leak the red V3 mane).
+to escalate (it can replace the plate: check it). **All 118 v4 image
+records are accepted** (74 r01 GPT, 40 r02 and 4 r03 Gemini), new ones
+`accepted_pending_owner_review`; fixes in `stories/lion_and_mouse_v4/revisions/`,
+every API call in `revisions/gemini_ledger.csv` (`gemini_image.py ledger` =
+images and cost per model). **Before any new image read `docs/creation-rules.md`
+CR-13**: whole bodies, side-by-side identity gate, edit an approved same-setup
+frame instead of regenerating a character, scale as frame fractions, V3
+images staging-only, continuity cascades. Next: owner reviews the new frames.
 
 ## Archived production snapshot (2026-09-27 to 2026-09-29)
 

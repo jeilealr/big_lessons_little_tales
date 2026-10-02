@@ -25,7 +25,8 @@ manifest result.
 G="python3 character/gemini_image.py"
 $G gen --record s14_gnaw_fray_start --dry-run        # print references, model, fix text
 $G gen --record s14_gnaw_fray_start --takes 3        # candidates
-$G sheet --record s14_gnaw_fray_start                # current target + all candidates -> work/review/gemini_sheet.jpg
+$G sheet --record s14_gnaw_fray_start                # identity roots + current target + candidates -> work/review/gemini_sheet.jpg
+$G ledger                                            # images and estimated cost per model
 $G accept s14_gnaw_fray_start_r02_nb2_t02 --note "what you checked at full size"
 ```
 
@@ -43,7 +44,7 @@ $G accept s14_gnaw_fray_start_r02_nb2_t02 --note "what you checked at full size"
 3. **Candidates** go to `<target dir>/gemini/<stem>_<rev>_<model>_tNN.png`
    with a `.json` sidecar: references and hashes, model, the full prompt sent,
    usage, raw size, retries. These folders are git-ignored.
-4. **Review** every candidate: the contact sheet first, then full-size crops
+4. **Review** every candidate: the contact sheet first (its first columns are the record's identity roots, so a drifting face shows side by side), then full-size crops
    of faces, paws, legs and contacts (the checks in `docs/creation-rules.md`
    CR-11/CR-12 and the record's `acceptance` list).
 5. **Accept** copies the take to `<stem>_<rev>.png` and updates the manifest:
@@ -104,16 +105,41 @@ NB2 kept the scale once the prompt stated it in frame fractions.
 - The negative prompt is not sent (the API has no negative field). The
   record's exclusions are review criteria, as with Fast Lightning.
 
-## r02 status (2026-10-02)
+## Status: all v4 image records accepted (2026-10-02)
 
-Accepted at r02 (22 frames; full list and notes in `GENERATION_PROGRESS.md`):
+All 118 image records in the manifest are `accepted` (74 at r01 from GPT,
+40 at r02 and 4 at r03 from Gemini), pending the owner's review. r03 redid
+the owner's second-round rejections: s05 (Leo had no body, now made with
+Pro and anchored on the previous shot) and s08 (Milo's face was off-model,
+now an edit of the approved s07 frame). The four S15 Leo close-ups stay r01:
+they show no net and were not rejected.
 
-![accepted r02 frames](img/v4_r02_gemini_accepted.jpg)
+![all r02/r03 frames](img/v4_r02_gemini_accepted.jpg)
 
-Still to make, in this order: S13 Milo/Leo conversation (`s13_milo_confident_*`,
-`s13_leo_doubtful_*`, `s13_milo_playful_*`), S14 (12 frames), S15 (8 frames).
-Their fixes, including scale numbers, are already in `revisions/r02.json`.
-`s13_milo_confident_start` had two takes before the cap. One showed the net
-empty; the other made Milo twice Leo's head height, which led to the depth
-rule now in the fix. Four previously accepted S13 frames are marked `stale`
-in the manifest because they show the old r01 net.
+### Images made and cost
+
+From `stories/lion_and_mouse_v4/revisions/gemini_ledger.csv`
+(`python3 character/gemini_image.py ledger`). The first 84 rows were
+reconstructed from the session log after the candidate sidecars were removed
+(marked `reconstructed`); later rows are written by the tool for every call.
+
+| Model | Size | Images | Failed takes | ~USD/image | ~USD total |
+|---|---|---|---|---|---|
+| gemini-3-pro-image | 1K | 8 | 0 | 0.134 | 1.07 |
+| gemini-3-pro-image | 2K | 1 | 0 | 0.134 | 0.13 |
+| gemini-3-pro-image-preview | 2K | 3 | 0 | 0.134 | 0.40 |
+| gemini-3.1-flash-image | 1K | 123 | 0 | 0.067 | 8.24 |
+| gemini-3.1-flash-image | 2K | 1 | 0 | 0.101 | 0.10 |
+| gemini-3.1-flash-lite-image | 1K | 7 | 0 | 0.034 | 0.24 |
+| **total** | | **143** | 0 | | **10.19** |
+
+Prices are estimates per output image (see "Which model"); the Google bill
+also includes voice and the input tokens of blocked calls. For comparison,
+the billing page showed €5.99 after the first 84 images.
+
+### Rules learnt
+
+The generated-image gates in `docs/creation-rules.md` **CR-13** (whole bodies,
+side-by-side identity check, reuse of approved same-setup frames, scale as
+fractions, staging-only references, props, expressions, continuity cascades,
+plate checks, ledger) came out of this pass and apply to every future image.

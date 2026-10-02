@@ -43,6 +43,9 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 MANIFEST = REPO / "stories/lion_and_mouse_v4/prompt_manifest.json"
 REVISIONS = REPO / "stories/lion_and_mouse_v4/revisions"
+# One row per generated take (ok or failed), so cost per model can be reported from data.
+LEDGER = REVISIONS / "gemini_ledger.csv"
+LEDGER_COLS = ["date", "record", "revision", "candidate", "model", "size", "outcome", "retries", "est_usd"]
 API = "https://generativelanguage.googleapis.com/v1beta"
 # Lite matched GPT on single-character studio references; for 16:9 scene edits it ignored
 # scale (Milo grew from 0.3 to 0.55 of the frame), so scenes default to Nano Banana 2.
@@ -58,6 +61,8 @@ PRICE = {
     ("gemini-3-pro-image", "1K"): 0.134,
     ("gemini-3-pro-image", "2K"): 0.134,
     ("gemini-3-pro-image", "4K"): 0.24,
+    ("gemini-3-pro-image-preview", "1K"): 0.134,
+    ("gemini-3-pro-image-preview", "2K"): 0.134,
 }
 TAG = {"gemini-3.1-flash-lite-image": "nb2lite", "gemini-3.1-flash-image": "nb2",
        "gemini-3-pro-image": "nbpro", "gemini-3-pro-image-preview": "nbpro"}
@@ -169,6 +174,17 @@ def normalise(data, canvas):
     return im.resize((w, h), Image.LANCZOS), raw
 
 
+def ledger_add(**row):
+    import csv
+    new = not LEDGER.exists()
+    LEDGER.parent.mkdir(parents=True, exist_ok=True)
+    with LEDGER.open("a", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=LEDGER_COLS)
+        if new:
+            w.writeheader()
+        w.writerow({k: row.get(k, "") for k in LEDGER_COLS})
+
+
 def cand_dir(rec):
     return (REPO / rec["target"]).parent / "gemini"
 
@@ -246,6 +262,9 @@ def cmd_gen(args):
                                     "raw_size": list(raw), **meta}
                 print(f"   take {take}: {png.relative_to(REPO)}")
             (out / f"{stem}.json").write_text(json.dumps(record, indent=2) + "\n")
+            ledger_add(date=dt.date.today().isoformat(), record=rid, revision=args.revision, candidate=stem,
+                       model=model, size=args.size, outcome="failed" if data is None else "ok",
+                       retries=len(retried), est_usd="" if data is None else PRICE.get((model, args.size), ""))
             time.sleep(args.pause)
 
 
@@ -260,7 +279,10 @@ def cmd_sheet(args):
     for rid in args.record:
         rec = by_id[rid]
         cands = sorted(cand_dir(rec).glob(f"{base_stem(rec['target'])}_{args.revision}_*.png"))
-        rows.append([(REPO / rec["target"], f"{rid} current")] +
+        # Identity roots sit beside every candidate: a face that drifts from the canonical
+        # (s08 r02: cool grey, small eyes, no seam) is only obvious side by side.
+        ident = [(REPO / r["path"], r["id"]) for r in rec.get("ordered_references", []) if r["role"] == "identity_root"]
+        rows.append(ident + [(REPO / rec["target"], f"{rid} current")] +
                     [(c, c.stem.split(f"_{args.revision}_")[1]) for c in cands])
     cols = max(len(r) for r in rows)
     sheet = Image.new("RGB", (cols * (w + 6), len(rows) * (h + 26)), "white")
@@ -310,6 +332,26 @@ def cmd_accept(args):
     print(f"{rec['id']}: {new_target}")
 
 
+def cmd_ledger(_):
+    """Markdown table: images, failed takes and estimated cost per model and size."""
+    import csv
+    from collections import defaultdict
+    agg = defaultdict(lambda: [0, 0, 0.0])
+    for r in csv.DictReader(LEDGER.open()):
+        a = agg[(r["model"], r["size"])]
+        if r["outcome"] == "ok":
+            a[0] += 1
+            a[2] += float(r["est_usd"] or 0)
+        else:
+            a[1] += 1
+    print("| Model | Size | Images | Failed takes | ~USD/image | ~USD total |")
+    print("|---|---|---|---|---|---|")
+    for (mdl, size), (n, nf, usd) in sorted(agg.items()):
+        print(f"| {mdl} | {size} | {n} | {nf} | {PRICE.get((mdl, size), 0):.3f} | {usd:.2f} |")
+    tot = [sum(v[i] for v in agg.values()) for i in range(3)]
+    print(f"| **total** | | **{tot[0]}** | {tot[1]} | | **{tot[2]:.2f}** |")
+
+
 def cmd_models(_):
     for mdl in call(f"{API}/models?pageSize=1000").get("models", []):
         if "image" in mdl["name"]:
@@ -338,8 +380,9 @@ def main():
     a.add_argument("--note", required=True, help="what was checked at full size")
     a.add_argument("--reviewer", default="agent visual review")
     sub.add_parser("models", help="list image models visible to the key")
+    sub.add_parser("ledger", help="cost table per model from revisions/gemini_ledger.csv")
     args = ap.parse_args()
-    {"gen": cmd_gen, "sheet": cmd_sheet, "accept": cmd_accept, "models": cmd_models}[args.cmd](args)
+    {"gen": cmd_gen, "sheet": cmd_sheet, "accept": cmd_accept, "models": cmd_models, "ledger": cmd_ledger}[args.cmd](args)
 
 
 if __name__ == "__main__":

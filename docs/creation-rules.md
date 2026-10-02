@@ -315,3 +315,51 @@ read as a material seam, not a dark line cutting across the face. In close
 shots, keep the seam low contrast and consistent with the canonical reference.
 Inspect the forehead, muzzle and silhouette at delivery size for a strong
 or misaligned seam before acceptance.
+
+## CR-13. Generated-image gates (lessons from the Gemini r02/r03 pass, 2026-10-02)
+
+Each rule names the defect that made it necessary. Tooling: `character/gemini_image.py`
+(`docs/gemini-images.md`). These rules apply to any image model.
+
+1. **Whole bodies unless the shot is a face close-up.** In a wide, medium or
+   two-shot, every character's body stays in frame and attached: a lying lion
+   shows mane, torso, paws and tail. A head with no body is a reject.
+   (s05 r02: Leo became a floating head.) Anchor contact shots on the
+   previous shot's camera and pose, and say "no part of the body is cut by the
+   frame edge".
+2. **Side-by-side identity gate.** Before accepting a frame with a face,
+   compare it at full size beside the canonical (the review sheet puts the
+   identity roots first in every row). Check colour temperature (warm taupe,
+   not cool grey), iris size and colour, face seam, cheek width and the
+   head-to-body ratio. (s08 r02: off-model Milo face accepted at thumbnail size.)
+3. **Reuse an approved frame from the same setup.** When a character
+   reappears in a setup the owner has already approved, edit that frame and
+   change only the expression or pose; do not generate the character afresh.
+   (s08 r03 was fixed as an edit of the approved s07 frame. The same approach
+   held Milo's face across S13 and S15.)
+4. **Scale as frame fractions and comparisons.** "Same size as reference 1"
+   is ignored. Write "from ear tips to feet y=0.55 to y=0.87, centred
+   x=0.55" and relative statements such as "Milo's whole body is as tall as
+   Leo's head" or "his head is smaller than Leo's muzzle", plus depth ("at
+   the same depth as Leo"). (s02, s05, s13 grew Milo to twice his size.)
+5. **Staging references are staging only.** An older-version image used for
+   composition leaks its identity (the V3 references gave Leo a red, short
+   mane). Name the reference's role and restate the identity explicitly.
+6. **Spell out small props.** "A small plain round felt disc with no markings,
+   half hidden under leaves". (Unspecified, the trigger got an "X".) A prop
+   whose state is fixed (a net with the lion inside) is named in every
+   frame where it appears. (One s13 take showed the net empty.)
+7. **Name the expression parts.** Image models default to a smile. Write
+   brows, eyes and mouth explicitly: "brows high, eyes wide, mouth closed in
+   a small neutral line, no smile".
+8. **Continuity cascades.** When an upstream world state changes (the net
+   staging), mark every downstream frame that shows the old state `stale` and
+   redo the chain in dependency order. Redo a start and its end together, and
+   generate each end from its accepted start.
+9. **Plate check per take.** A model can silently replace the locked plate
+   (Pro did, on several takes). Compare background landmarks with the
+   previous frame before judging the character.
+10. **Record every take.** Each API call is logged in
+    `stories/lion_and_mouse_v4/revisions/gemini_ledger.csv`; each accepted take
+    in the manifest stores its prompt, references, model and review note, and
+    the replaced result stays under `superseded`.

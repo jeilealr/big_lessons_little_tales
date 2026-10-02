@@ -465,3 +465,18 @@ Contact sheet: `docs/img/v4_r02_gemini_accepted.jpg`.
 **Stopped** at the Gemini project's monthly spending cap (HTTP 429). Remaining, in dependency order:
 S13 conversation (`s13_milo_confident_*`, `s13_leo_doubtful_*`, `s13_milo_playful_*`), all twelve S14 frames, all eight S15 frames.
 Their r02 fixes are written. Four S13 frames previously accepted at r01 are now `stale` (old net heap) and must be redone before use.
+
+## Completion of r02 and r03 — 2026-10-02 (after the spending cap was raised)
+
+Owner review of the first 22: s05 pair rejected (no Leo body), s08 pair rejected (Milo's face off-model); the rest approved.
+Both pairs were redone as r03 (`revisions/r03.json`), then S13 conversation, S14 and S15 Milo were finished at r02.
+S15 Leo close-ups stay r01. All 118 image records are now `accepted`; new ones are `accepted_pending_owner_review`.
+
+| Record | Target | Model | Review note |
+|---|---|---|---|
+| `s05_nose_aftermath_start` (r03) | `s05_nose_aftermath_start_r03.png` | gemini-3-pro-image | r03 (owner: r02 had no Leo body). Same plate/camera family as s05_paw_contact_end, slightly closer; Leo's whole lying body from mane to tail in frame, head on forepaws, eyes closed; small Milo (same scale as the previous shot) at Leo's nose with paws on the muzzle; whiskers, smooth crown, one tail each. Pro; the other Pro take replaced the plate. |
+| `s05_nose_aftermath_end` (r03) | `s05_nose_aftermath_end_r03.png` | gemini-3-pro-image | Same as r03 start (whole lying Leo, small Milo at the nose); only Leo's brown eyes open in mild surprise. |
+| `s08_milo_surprised_start` (r03) | `s08_milo_surprised_start_r03.png` | gemini-3.1-flash-image | r03 (owner: r02 face off-model). Edit of owner-approved s07_milo_sorry_end r02: identical face shape, eye size, warm colour, body and plate; expression changed to surprised (brows high, eyes wide, mouth nearly closed). Side-by-side with canonical checked. Pro attempts drifted (smaller eyes/head). |
+| `s08_milo_surprised_end` (r03) | `s08_milo_surprised_end_r03.png` | gemini-3.1-flash-image | Edit of r03 start / approved s07 Milo: same face, body and plate; relieved small closed smile; canonical-matched face checked side by side. |
+
+Cost table: `docs/gemini-images.md` (from `revisions/gemini_ledger.csv`). Rules learnt: `docs/creation-rules.md` CR-13.
