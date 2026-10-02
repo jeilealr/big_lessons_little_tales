@@ -164,3 +164,9 @@ r04 frames (s07 Leo end, s08 pair, s13 Milo four, S15 Milo four):
 The owner asked for s07 as a first-meeting dialogue in the S15 close-up style. That became `docs/creation-rules.md` **CR-15**: a `framing` field on every scene record and a step-by-step close-up recipe. s05's Milo face was redrawn in three-quarter view; the first s05 end edit drew two Milos, which led to the "edits must not add characters" rule.
 
 ![r05](img/v4_r05_gemini.jpg)
+
+## r06: size consistency (CR-16) and remakes (2026-10-02)
+
+Anchors used: `s05_paw_contact_end` for the great-tree wide shots (Leo's mane about x=0.38–0.58; S06 and S08 kindness had shrunk him by about a third), `s13_milo_confident_start` r04 for Milo's height on the trap path (S13 arrival had him at 0.20 instead of about 0.30), and `s14_milo_clear_start` for the Leo-to-Milo ratio in the gnaw close two-shot (Milo's head had grown to Leo's face size). s08 Leo and Milo close-ups were made as edits of the approved s07 r05 close-ups, so their faces cannot drift. Lesson: an end-frame take can silently enlarge a character again (one s14 gnaw end did); compare every end with its start at the same size.
+
+![r06](img/v4_r06_gemini.jpg)

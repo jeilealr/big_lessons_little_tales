@@ -1,0 +1,207 @@
+{
+  "revision": "r06",
+  "date": "2026-10-02",
+  "source": "Owner review 2026-10-02 (commit 2d0940a): deleted s02_place_acorn_end, s08_leo_softens and s08_milo_surprised; CR-16 size consistency: S06/S08 kindness Leo too small vs s05_paw_contact; S13/S14 two-character frames; s08 Milo face off.",
+  "records": {
+    "s06_barrier_start": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [
+        {
+          "id": "s05_paw_contact_end",
+          "path": "",
+          "role": "camera_and_character_scale_anchor_CR16"
+        }
+      ],
+      "fix": "Size anchor (CR-16): use the camera, ground plane and character sizes of the s05_paw_contact_end reference. Leo is as large there as here: his mane spans about x=0.38 to x=0.58 and y=0.30 to y=0.62 of the frame, his lying body reaches x=0.95; never smaller. Milo keeps his small same-depth size from that frame (ear tips to feet about 0.12 of the frame height). Leo is now awake in a low crouch at the same place, eyes open, one front paw beside the path; Milo stands on the path at x=0.52 in front of Leo's paw. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides. Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text."
+    },
+    "s06_barrier_end": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [],
+      "fix": "Leo's front paw is planted on the path beside Milo, blocking his way, clearly separated from Leo's body. Keep everything exactly as in reference image 1 (the accepted start); only the stated change happens. Exactly one Leo and one Milo."
+    },
+    "s08_kindness_start": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s08_milo_surprised_end",
+        "L_CLOSED",
+        "M_CLOSED",
+        "s06_barrier_end"
+      ],
+      "extra_references": [
+        {
+          "id": "s05_paw_contact_end",
+          "path": "",
+          "role": "camera_and_character_scale_anchor_CR16"
+        },
+        {
+          "id": "s06_barrier_end",
+          "path": "",
+          "role": "same_setup_previous_wide_state"
+        }
+      ],
+      "fix": "Size anchor (CR-16): use the camera, ground plane and character sizes of the s05_paw_contact_end reference. Leo is as large there as here: his mane spans about x=0.38 to x=0.58 and y=0.30 to y=0.62 of the frame, his lying body reaches x=0.95; never smaller. Milo keeps his small same-depth size from that frame (ear tips to feet about 0.12 of the frame height). Leo lies calmly at the tree in the same place and size, head up, eyes open, mouth closed; Milo stands beside Leo's front paw at x=0.52, paws low, mouth closed. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides. Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text."
+    },
+    "s08_kindness_end": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [],
+      "fix": "Both share small closed smiles. Keep everything exactly as in reference image 1 (the accepted start); only the stated change happens. Exactly one Leo and one Milo."
+    },
+    "s08_leo_softens_start": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s07_leo_annoyed_end",
+        "PL_tree_dusk",
+        "L_CLOSED",
+        "s06_barrier_end",
+        "s08_leo_softens_end",
+        "M_CLOSED"
+      ],
+      "extra_references": [
+        {
+          "id": "s07_leo_annoyed_end",
+          "path": "",
+          "role": "owner_approved_same_setup_exact_edit_base"
+        },
+        {
+          "id": "L_EXPR_ANNOYED",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Dialogue close-up edit (CR-15, CR-13 rule 3): keep the framing, head size, face shape, colours, felt, whiskers and the strongly blurred dusk background of the approved close-up exactly. Change only the expression to still mildly annoyed, closed flat mouth, copying brows, eyes and mouth from the expression reference. Exactly two eyes and two brows; exactly one character."
+    },
+    "s08_leo_softens_end": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s07_leo_annoyed_end",
+        "PL_tree_dusk",
+        "L_CLOSED",
+        "s06_barrier_end",
+        "s08_leo_softens_end",
+        "M_CLOSED"
+      ],
+      "extra_references": [
+        {
+          "id": "L_EXPR_SMILE",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Dialogue close-up edit (CR-15, CR-13 rule 3): keep the framing, head size, face shape, colours, felt, whiskers and the strongly blurred dusk background of the approved close-up exactly. Change only the expression to kind and gently smiling, closed mouth, copying brows, eyes and mouth from the expression reference. Exactly two eyes and two brows; exactly one character."
+    },
+    "s08_milo_surprised_start": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s07_leo_annoyed_end",
+        "PL_tree_dusk",
+        "L_CLOSED",
+        "s06_barrier_end",
+        "s08_leo_softens_end",
+        "M_CLOSED"
+      ],
+      "extra_references": [
+        {
+          "id": "s07_milo_sorry_end",
+          "path": "",
+          "role": "owner_approved_same_setup_exact_edit_base"
+        },
+        {
+          "id": "M_EXPR_CURIOUS",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Dialogue close-up edit (CR-15, CR-13 rule 3): keep the framing, head size, face shape, colours, felt, whiskers and the strongly blurred dusk background of the approved close-up exactly. Change only the expression to surprised: brows high, eyes wide, mouth closed in a small neutral line, no smile, copying brows, eyes and mouth from the expression reference. Exactly two eyes and two brows; exactly one character."
+    },
+    "s08_milo_surprised_end": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s07_leo_annoyed_end",
+        "PL_tree_dusk",
+        "L_CLOSED",
+        "s06_barrier_end",
+        "s08_leo_softens_end",
+        "M_CLOSED"
+      ],
+      "extra_references": [
+        {
+          "id": "M_EXPR_RELIEVED_PROUD",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Dialogue close-up edit (CR-15, CR-13 rule 3): keep the framing, head size, face shape, colours, felt, whiskers and the strongly blurred dusk background of the approved close-up exactly. Change only the expression to relieved and grateful, small closed smile, copying brows, eyes and mouth from the expression reference. Exactly two eyes and two brows; exactly one character."
+    },
+    "s13_arrives_start": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [
+        {
+          "id": "s13_milo_confident_start",
+          "path": "",
+          "role": "camera_and_character_scale_anchor_CR16"
+        }
+      ],
+      "fix": "Size anchor (CR-16): same camera as the s13_milo_confident_start reference. Leo under the intact net keeps exactly the size and place he has there. Milo only moves sideways along the same depth plane, so his ear-to-foot height is the same as in that reference (about 0.32 of the frame height, feet at y=0.84). Milo enters on the ground at the far left (x=0.08), facing the net. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides. Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text."
+    },
+    "s13_arrives_end": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [
+        {
+          "id": "s13_milo_confident_start",
+          "path": "",
+          "role": "camera_and_character_scale_anchor_CR16"
+        }
+      ],
+      "fix": "Size anchor (CR-16): same camera as the s13_milo_confident_start reference. Leo under the intact net keeps exactly the size and place he has there. Milo only moves sideways along the same depth plane, so his ear-to-foot height is the same as in that reference (about 0.32 of the frame height, feet at y=0.84). Milo has stopped at x=0.20, facing Leo; Leo looks toward him. Keep everything exactly as in reference image 1 (the accepted start); only the stated change happens. Exactly one Leo and one Milo."
+    },
+    "s14_gnaw_fray_start": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [
+        {
+          "id": "s14_milo_clear_start",
+          "path": "",
+          "role": "anatomical_ratio_anchor_leo_to_milo"
+        },
+        {
+          "id": "s14_gnaw_fray_start",
+          "path": "",
+          "role": "previous_take_action_and_staging_reference"
+        }
+      ],
+      "fix": "Close two-shot with the correct size ratio (CR-14/CR-16): Milo's whole body is about as tall as Leo's mane is wide, so Milo's head with ears is clearly smaller than Leo's face, about 0.6 of its width. Milo stands in front of the draped net at the left, holding one strand between two knots with both paws and biting it with his two small front incisors; Leo's face and mane are behind the net at the right, the whole mane in frame. Plate softly blurred. The strand is intact. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides. Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text."
+    },
+    "s14_gnaw_fray_end": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [],
+      "fix": "Fibres fray at the bite point; the strand is still connected. Keep everything exactly as in reference image 1 (the accepted start); only the stated change happens. Exactly one Leo and one Milo."
+    },
+    "s14_sever_R01_start": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s14_gnaw_fray_end",
+        "PL_trap_morning",
+        "PROP_NET",
+        "M_GNAW",
+        "s13_arrives_end"
+      ],
+      "extra_references": [
+        {
+          "id": "s14_gnaw_fray_end",
+          "path": "",
+          "role": "approved_exact_edit_base"
+        }
+      ],
+      "fix": "Edit the s14_gnaw_fray_end reference: keep its framing, both characters' sizes, faces, the net and the plate exactly. The bitten strand is now badly frayed, Milo still biting. Exactly one Leo and one Milo."
+    },
+    "s14_sever_R01_end": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [],
+      "fix": "The bitten strand has parted into two frayed ends with a clear gap, each still attached to its knot side. Keep everything exactly as in reference image 1 (the accepted start); only the stated change happens. Exactly one Leo and one Milo."
+    },
+    "s02_place_acorn_end": {
+      "model": "gemini-3.1-flash-image",
+      "extra_references": [],
+      "fix": "Milo bends slightly toward the acorn at the same size and place as reference image 1 (ear tips to feet y=0.55 to y=0.87, about 0.3 of the frame, centred near x=0.55); one acorn rests on the ground beside the feeding stone; both empty paws just above it; both feet planted apart with a clear taupe-grey gap between the legs; whole tail visible. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides."
+    }
+  }
+}

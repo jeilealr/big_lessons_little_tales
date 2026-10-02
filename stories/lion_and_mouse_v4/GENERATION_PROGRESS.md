@@ -511,3 +511,25 @@ s05 Milo face redrawn; s07 Leo and Milo remade as dialogue close-ups (CR-15). Fi
 | `s05_nose_aftermath_end` | `s05_nose_aftermath_end_r05.png` | gemini-3.1-flash-image | Pure edit of r05 start: exactly one Milo, scene unchanged; Leo's brown eyes open in mild surprise. |
 | `s07_leo_annoyed_end` | `s07_leo_annoyed_end_r05.png` | gemini-3.1-flash-image | Same close-up as r05 start; mildly annoyed (L_EXPR_ANNOYED), exactly two brows, closed mouth. |
 | `s07_milo_sorry_end` | `s07_milo_sorry_end_r05.png` | gemini-3.1-flash-image | Same close-up as r05 start; apologetic, inner brows raised, closed mouth (M_EXPR_APOLOGETIC). |
+
+## r06 — 2026-10-02 (owner review commit 2d0940a + CR-16)
+
+Owner deleted rejected versions and added CR-16 (apparent size across adjacent shots). r06 remade the deleted frames and applied the CR-16 anchors. Fixes: `revisions/r06.json`.
+
+| Record | Target | Model | Review note |
+|---|---|---|---|
+| `s02_place_acorn_end` | `s02_place_acorn_end_r06.png` | gemini-3.1-flash-image | Remake after owner deleted r02: Milo bends toward the acorn at start-frame size (~0.3 frame), acorn on the ground by the stone; leg gap, whiskers, one tail. |
+| `s06_barrier_start` | `s06_barrier_start_r06.png` | gemini-3.1-flash-image | CR-16: Leo at s05_paw_contact scale (mane ~x0.44-0.60), awake low crouch, head up; small Milo on the path in front of his paw at S05 size; dusk tree plate. |
+| `s06_barrier_end` | `s06_barrier_end_r06.png` | gemini-3.1-flash-image | Same camera/sizes as r06 start; Leo's front paw planted on the path beside Milo, blocking him. |
+| `s08_leo_softens_start` | `s08_leo_softens_start_r06.png` | gemini-3.1-flash-image | Dialogue close-up as edit of approved s07_leo_annoyed_end r05: same framing/face/background, still mildly annoyed; two brows. |
+| `s08_leo_softens_end` | `s08_leo_softens_end_r06.png` | gemini-3.1-flash-image | Same close-up as r06 start; kind gentle closed smile. |
+| `s08_milo_surprised_start` | `s08_milo_surprised_start_r06.png` | gemini-3.1-flash-image | Dialogue close-up as edit of approved s07_milo_sorry_end r05: same framing/face/background; surprised brows high, eyes wide, closed neutral mouth. |
+| `s08_milo_surprised_end` | `s08_milo_surprised_end_r06.png` | gemini-3.1-flash-image | Same close-up as r06 start; relieved grateful closed smile; face consistent with s07 r05 and canonical. |
+| `s08_kindness_start` | `s08_kindness_start_r06.png` | gemini-3.1-flash-image | CR-16: Leo at s05/s06 r06 scale lying calmly, head up; Milo at the S06 height near Leo's front paw (x~0.3, record says 0.52 - owner to judge); mouths closed. |
+| `s08_kindness_end` | `s08_kindness_end_r06.png` | gemini-3.1-flash-image | Same camera/sizes as r06 start; both small closed smiles. |
+| `s13_arrives_start` | `s13_arrives_start_r06.png` | gemini-3.1-flash-image | CR-16: Milo at s13_milo_confident scale (~0.30 frame) entering at far left; Leo unchanged under intact net. |
+| `s13_arrives_end` | `s13_arrives_end_r06.png` | gemini-3.1-flash-image | Same camera; Milo moved sideways to x~0.2 at the same height (~0.30 frame); Leo looks toward him. |
+| `s14_gnaw_fray_start` | `s14_gnaw_fray_start_r06.png` | gemini-3.1-flash-image | Close two-shot with corrected ratio: Milo's head clearly smaller than Leo's face; biting one intact strand with both paws; Leo behind the net. |
+| `s14_gnaw_fray_end` | `s14_gnaw_fray_end_r06.png` | gemini-3.1-flash-image | Same framing and size ratio as r06 start; fibres fray at the bite point, strand still connected. |
+| `s14_sever_R01_start` | `s14_sever_R01_start_r06.png` | gemini-3.1-flash-image | Edit of r06 gnaw_fray_end: same framing and ratio; strand badly frayed, Milo biting. |
+| `s14_sever_R01_end` | `s14_sever_R01_end_r06.png` | gemini-3.1-flash-image | Same framing/ratio; strand parted into two frayed ends with a clear gap. |
