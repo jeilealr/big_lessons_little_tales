@@ -2777,7 +2777,8 @@
             "review_note": "Added one small approved acorn to the feeding stone at x=0.60; exact plate and walking Milo retained. Reviewed at full resolution and 1280x720."
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s01_explores_end",
@@ -2874,7 +2875,8 @@
           "normalization": "Exact 1920x1080 plate; no transform."
         },
         "attempts": []
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s01_acorn_start",
@@ -3017,7 +3019,8 @@
           "normalization": "Exact 1920x1080 plate; no transform."
         },
         "attempts": []
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s01_acorn_end",
@@ -3118,7 +3121,8 @@
           "normalization": "Exact 1920x1080 plate; no transform."
         },
         "attempts": []
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s02_notice_start",
@@ -3261,7 +3265,8 @@
           "normalization": "Exact 1920x1080 plate; no transform."
         },
         "attempts": []
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s02_notice_end",
@@ -3348,7 +3353,8 @@
           "normalization": "Exact 1920x1080 plate; no transform."
         },
         "attempts": []
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s02_stand_with_acorn_start",
@@ -3487,7 +3493,8 @@
           "normalization": "Byte-identical accepted 1920x1080 frame."
         },
         "attempts": []
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s02_stand_with_acorn_end",
@@ -3700,7 +3707,8 @@
             }
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s02_place_acorn_start",
@@ -3862,7 +3870,8 @@
             }
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s02_place_acorn_end",
@@ -4028,7 +4037,8 @@
             ]
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s03_two_paths_start",
@@ -4197,7 +4207,8 @@
             }
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s03_two_paths_end",
@@ -4377,7 +4388,8 @@
             }
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s03_decides_start",
@@ -4539,7 +4551,8 @@
           ],
           "portrait_processing": "Trim alpha bbox >16, resize to 1200x1022, attenuate alpha below 14; keep head unchanged and vertically extend only lower torso from layer row 700 to bottom frame to avoid horizontal cut edge."
         }
-      }
+      },
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s03_decides_end",
@@ -4660,7 +4673,8 @@
           ],
           "processing": "Trim alpha bbox >16, Lanczos resize, attenuate alpha values below 12. No other start-image pixels changed."
         }
-      }
+      },
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s04_shortcut_run_start",
@@ -4772,7 +4786,8 @@
           "height_fraction": 0.3,
           "normalization": "Exact 1920x1080 plate; no geometry resize."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s04_shortcut_run_end",
@@ -4869,7 +4884,8 @@
             "review_note": "Correct endpoint and scale, exact plate landmarks, one right-facing grounded Milo, close low arms and one tail."
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s05_leo_sleeps_start",
@@ -4971,7 +4987,8 @@
             "review_note": "Visual match to supplied great-tree dusk plate; preserved landmark placement and crop. Full rust mane and correct sleeping pose; no duplicate characters or props."
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s05_leo_sleeps_end",
@@ -5059,7 +5076,8 @@
             "review_note": "Tiny breathing phase only; asleep pose and plate layout match approved start."
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s05_paw_contact_start",
@@ -5214,7 +5232,8 @@
           "height_fraction": 0.18,
           "normalization": "Exact 1920x1080 scene base; no plate transform."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s05_paw_contact_end",
@@ -5328,15 +5347,16 @@
           "contact": "Milo leading planted foot at Leo paw edge",
           "normalization": "Exact 1920x1080 base; no plate transform."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s05_nose_aftermath_start",
       "group": "scene-05",
-      "revision": "r03",
+      "revision": "r05",
       "status": "accepted",
       "bible_revision": "v4-draft-2026-09-30",
-      "target": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r03.png",
+      "target": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r05.png",
       "canvas": [
         1920,
         1080
@@ -5405,13 +5425,13 @@
         "Full-resolution and 1280x720 preview checked"
       ],
       "result": {
-        "output_path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r03.png",
-        "sha256": "3ad9a98be1d973db257d9c4be2d5b90e8bf021030d0c02a528989fec5cc986e9",
+        "output_path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r05.png",
+        "sha256": "597fe48f633516bf69a8905012e072c26ea85f38ef28b0f23699676f411ebe67",
         "tool": "Gemini API generateContent (character/gemini_image.py)",
-        "model": "gemini-3-pro-image",
-        "model_details": "gemini-3-pro-image",
+        "model": "gemini-3.1-flash-image",
+        "model_details": "gemini-3.1-flash-image",
         "seed": null,
-        "candidate": "s05_nose_aftermath_start_r03_nbpro_t01",
+        "candidate": "s05_nose_aftermath_start_r05_nb2_t01",
         "imageConfig": {
           "aspectRatio": "16:9",
           "imageSize": "1K"
@@ -5419,54 +5439,30 @@
         "normalised": "1376x768 -> 1920x1080",
         "ordered_references": [
           {
-            "id": "s05_paw_contact_end",
-            "role": "latest_world_state_and_damage_use_planned_cast_and_crop",
-            "path": "character/characters/interactions/v4/keyframes/s05_paw_contact_end_r01.png",
-            "sha256": "a7cdeceb3db441adda721f1716e80f6995b0aeceae2e80f785e1cc988b74e52e"
-          },
-          {
-            "id": "PL_tree_dusk",
-            "role": "locked_location_plate",
-            "path": "character/locations/v4/great_tree/tree_dusk_r01.png",
-            "sha256": "f447f682caf4a99ebdc536e8afd79e9b582c8bb902128c5b26d6eebb514466fa"
-          },
-          {
-            "id": "LEO_CANON",
-            "role": "identity_root",
-            "path": "character/characters/Leo/v4/canonical/full-body_leo_neutral_pose_r01.png",
-            "sha256": "2ed72a4da14c02e65380842e79fbf634d5147a06ba373fbaacf8918e88273f0e"
-          },
-          {
             "id": "MILO_CANON",
             "role": "identity_root",
             "path": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
             "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
           },
           {
-            "id": "L_ASLEEP",
-            "role": "pose_anatomy_calibration_not_background",
-            "path": "character/characters/Leo/v4/references/l_asleep_r01.png",
-            "sha256": "674d3d0e2f7e8b2b6a1f4e59cce947323bbff3b2873cd935096701c2aa1a971c"
+            "id": "s05_nose_aftermath_start",
+            "role": "approved_exact_edit_base_keep_everything",
+            "path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r03.png",
+            "sha256": "3ad9a98be1d973db257d9c4be2d5b90e8bf021030d0c02a528989fec5cc986e9"
           },
           {
-            "id": "L_WAKE",
-            "role": "pose_anatomy_calibration_not_background",
-            "path": "character/characters/Leo/v4/references/l_wake_r01.png",
-            "sha256": "50ef9161e84e912209d2f222e5930f8016ead824fd3b83ec02caa8e216e3f736"
-          },
-          {
-            "id": "s05_paw_contact_end",
-            "role": "approved_previous_shot_exact_camera_and_leo_body",
-            "path": "character/characters/interactions/v4/keyframes/s05_paw_contact_end_r01.png",
-            "sha256": "a7cdeceb3db441adda721f1716e80f6995b0aeceae2e80f785e1cc988b74e52e"
+            "id": "M_EXPR_CALM_CONFIDENT",
+            "role": "face_and_expression_reference",
+            "path": "character/characters/Milo/v4/expressions/m_expr_calm_confident_r01.png",
+            "sha256": "dddb57b29efc6fa09978c2e7bc425367e6dfe6d50eb6e841fd8f5749e4580b94"
           }
         ],
-        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s05_nose_aftermath. World cast count: exactly one leo, exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height close two-shot cropped from the approved great-tree scene. Match both characters' established body proportions and depth; Milo remains one third of Leo's standing-equivalent height. The crop magnifies both equally. Nose/paw contacts and both faces are readable, with no camera motion inside the clip. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. World prop/contact state: supported nose contact; prior paw touch already occurred.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Endpoint to draw: After an explicit editorial cut, Milo rests gently against Leo's nose, ears readable and paws supported; Leo still has eyes closed. This is a single still state, not a sequence or montage. Mouth state follows the endpoint description. The recorded ordered references supply identity, geometry and prior state; do not invent an entrance or erase an object to fit a new composition. Revision fix (owner review): Composition anchor: keep the camera, plate and Leo exactly as in the previous shot (reference s05_paw_contact_end). Leo lies asleep on the ground under the great tree, head resting on his crossed forepaws, his whole body visible from the full mane through torso, hind legs and the tail tip; he is never a floating head and no part of his body is cut by the frame edge. The camera may be slightly closer than the previous shot, but Leo's entire lying body, four paws and tail stay inside the frame with margins. Milo keeps the small size he has in the previous shot (his whole body about as tall as Leo's closed eye-to-chin distance) and now stands on the ground right at Leo's nose, leaning gently against it with both front paws on the muzzle; ears, whiskers, both feet and tail visible. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Leo's eyes are closed.",
+        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s05_nose_aftermath. World cast count: exactly one leo, exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height close two-shot cropped from the approved great-tree scene. Match both characters' established body proportions and depth; Milo remains one third of Leo's standing-equivalent height. The crop magnifies both equally. Nose/paw contacts and both faces are readable, with no camera motion inside the clip. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. World prop/contact state: supported nose contact; prior paw touch already occurred.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Endpoint to draw: After an explicit editorial cut, Milo rests gently against Leo's nose, ears readable and paws supported; Leo still has eyes closed. This is a single still state, not a sequence or montage. Mouth state follows the endpoint description. The recorded ordered references supply identity, geometry and prior state; do not invent an entrance or erase an object to fit a new composition. Revision fix (owner review): Edit reference image: keep the camera, plate, Leo (pose, eyes, mane) and Milo's body, pose, size and position exactly. Redraw only Milo's head so his face turns three-quarters toward the camera and matches the expression reference: large round dark-brown eyes, curved brows, short cream muzzle with tiny brown nose, soft calm smile, both large ears, fine whiskers. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides.",
         "review": {
           "status": "accepted_pending_owner_review",
           "reviewer": "agent visual review",
           "date": "2026-10-02",
-          "review_note": "r03 (owner: r02 had no Leo body). Same plate/camera family as s05_paw_contact_end, slightly closer; Leo's whole lying body from mane to tail in frame, head on forepaws, eyes closed; small Milo (same scale as the previous shot) at Leo's nose with paws on the muzzle; whiskers, smooth crown, one tail each. Pro; the other Pro take replaced the plate."
+          "review_note": "Edit of r03: everything kept; only Milo's head redrawn three-quarter to camera with canonical eyes, muzzle, whiskers and calm smile (M_EXPR_CALM_CONFIDENT). Other take added a second Milo."
         }
       },
       "superseded": [
@@ -5624,16 +5620,86 @@
               "review_note": "Full-size check: Milo now clearly smaller (head ~ Leo's muzzle size), leaning on Leo's nose with paws on the muzzle, feet on ground, whiskers, smooth crown, one tail; Leo's whole head and mane in frame, eyes closed; tree-dusk plate."
             }
           }
+        },
+        {
+          "revision": "r03",
+          "status": "accepted",
+          "result": {
+            "output_path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r03.png",
+            "sha256": "3ad9a98be1d973db257d9c4be2d5b90e8bf021030d0c02a528989fec5cc986e9",
+            "tool": "Gemini API generateContent (character/gemini_image.py)",
+            "model": "gemini-3-pro-image",
+            "model_details": "gemini-3-pro-image",
+            "seed": null,
+            "candidate": "s05_nose_aftermath_start_r03_nbpro_t01",
+            "imageConfig": {
+              "aspectRatio": "16:9",
+              "imageSize": "1K"
+            },
+            "normalised": "1376x768 -> 1920x1080",
+            "ordered_references": [
+              {
+                "id": "s05_paw_contact_end",
+                "role": "latest_world_state_and_damage_use_planned_cast_and_crop",
+                "path": "character/characters/interactions/v4/keyframes/s05_paw_contact_end_r01.png",
+                "sha256": "a7cdeceb3db441adda721f1716e80f6995b0aeceae2e80f785e1cc988b74e52e"
+              },
+              {
+                "id": "PL_tree_dusk",
+                "role": "locked_location_plate",
+                "path": "character/locations/v4/great_tree/tree_dusk_r01.png",
+                "sha256": "f447f682caf4a99ebdc536e8afd79e9b582c8bb902128c5b26d6eebb514466fa"
+              },
+              {
+                "id": "LEO_CANON",
+                "role": "identity_root",
+                "path": "character/characters/Leo/v4/canonical/full-body_leo_neutral_pose_r01.png",
+                "sha256": "2ed72a4da14c02e65380842e79fbf634d5147a06ba373fbaacf8918e88273f0e"
+              },
+              {
+                "id": "MILO_CANON",
+                "role": "identity_root",
+                "path": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
+                "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
+              },
+              {
+                "id": "L_ASLEEP",
+                "role": "pose_anatomy_calibration_not_background",
+                "path": "character/characters/Leo/v4/references/l_asleep_r01.png",
+                "sha256": "674d3d0e2f7e8b2b6a1f4e59cce947323bbff3b2873cd935096701c2aa1a971c"
+              },
+              {
+                "id": "L_WAKE",
+                "role": "pose_anatomy_calibration_not_background",
+                "path": "character/characters/Leo/v4/references/l_wake_r01.png",
+                "sha256": "50ef9161e84e912209d2f222e5930f8016ead824fd3b83ec02caa8e216e3f736"
+              },
+              {
+                "id": "s05_paw_contact_end",
+                "role": "approved_previous_shot_exact_camera_and_leo_body",
+                "path": "character/characters/interactions/v4/keyframes/s05_paw_contact_end_r01.png",
+                "sha256": "a7cdeceb3db441adda721f1716e80f6995b0aeceae2e80f785e1cc988b74e52e"
+              }
+            ],
+            "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s05_nose_aftermath. World cast count: exactly one leo, exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height close two-shot cropped from the approved great-tree scene. Match both characters' established body proportions and depth; Milo remains one third of Leo's standing-equivalent height. The crop magnifies both equally. Nose/paw contacts and both faces are readable, with no camera motion inside the clip. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. World prop/contact state: supported nose contact; prior paw touch already occurred.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Endpoint to draw: After an explicit editorial cut, Milo rests gently against Leo's nose, ears readable and paws supported; Leo still has eyes closed. This is a single still state, not a sequence or montage. Mouth state follows the endpoint description. The recorded ordered references supply identity, geometry and prior state; do not invent an entrance or erase an object to fit a new composition. Revision fix (owner review): Composition anchor: keep the camera, plate and Leo exactly as in the previous shot (reference s05_paw_contact_end). Leo lies asleep on the ground under the great tree, head resting on his crossed forepaws, his whole body visible from the full mane through torso, hind legs and the tail tip; he is never a floating head and no part of his body is cut by the frame edge. The camera may be slightly closer than the previous shot, but Leo's entire lying body, four paws and tail stay inside the frame with margins. Milo keeps the small size he has in the previous shot (his whole body about as tall as Leo's closed eye-to-chin distance) and now stands on the ground right at Leo's nose, leaning gently against it with both front paws on the muzzle; ears, whiskers, both feet and tail visible. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Leo's eyes are closed.",
+            "review": {
+              "status": "accepted_pending_owner_review",
+              "reviewer": "agent visual review",
+              "date": "2026-10-02",
+              "review_note": "r03 (owner: r02 had no Leo body). Same plate/camera family as s05_paw_contact_end, slightly closer; Leo's whole lying body from mane to tail in frame, head on forepaws, eyes closed; small Milo (same scale as the previous shot) at Leo's nose with paws on the muzzle; whiskers, smooth crown, one tail each. Pro; the other Pro take replaced the plate."
+            }
+          }
         }
-      ]
+      ],
+      "framing": "close_two_shot"
     },
     {
       "id": "s05_nose_aftermath_end",
       "group": "scene-05",
-      "revision": "r03",
+      "revision": "r05",
       "status": "accepted",
       "bible_revision": "v4-draft-2026-09-30",
-      "target": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_end_r03.png",
+      "target": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_end_r05.png",
       "canvas": [
         1920,
         1080
@@ -5681,13 +5747,13 @@
         "Full-resolution and 1280x720 preview checked"
       ],
       "result": {
-        "output_path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_end_r03.png",
-        "sha256": "aae2230d49960d18206fcf2fa0bd861a0677b51f2e1d44475d9820b1c4c7a18f",
+        "output_path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_end_r05.png",
+        "sha256": "2bf50d9e060dec4295f59387c54c5965b296e32095c7f7c7f4a9b99105e10194",
         "tool": "Gemini API generateContent (character/gemini_image.py)",
-        "model": "gemini-3-pro-image",
-        "model_details": "gemini-3-pro-image",
+        "model": "gemini-3.1-flash-image",
+        "model_details": "gemini-3.1-flash-image",
         "seed": null,
-        "candidate": "s05_nose_aftermath_end_r03_nbpro_t01",
+        "candidate": "s05_nose_aftermath_end_r05_nb2_t03",
         "imageConfig": {
           "aspectRatio": "16:9",
           "imageSize": "1K"
@@ -5697,28 +5763,22 @@
           {
             "id": "s05_nose_aftermath_start",
             "role": "approved_start_exact_edit_base",
-            "path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r03.png",
-            "sha256": "3ad9a98be1d973db257d9c4be2d5b90e8bf021030d0c02a528989fec5cc986e9"
+            "path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r05.png",
+            "sha256": "597fe48f633516bf69a8905012e072c26ea85f38ef28b0f23699676f411ebe67"
           },
           {
             "id": "LEO_CANON",
             "role": "identity_root",
             "path": "character/characters/Leo/v4/canonical/full-body_leo_neutral_pose_r01.png",
             "sha256": "2ed72a4da14c02e65380842e79fbf634d5147a06ba373fbaacf8918e88273f0e"
-          },
-          {
-            "id": "MILO_CANON",
-            "role": "identity_root",
-            "path": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
-            "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
           }
         ],
-        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s05_nose_aftermath. World cast count: exactly one leo, exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height close two-shot cropped from the approved great-tree scene. Match both characters' established body proportions and depth; Milo remains one third of Leo's standing-equivalent height. The crop magnifies both equally. Nose/paw contacts and both faces are readable, with no camera motion inside the clip. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. World prop/contact state: supported nose contact; prior paw touch already occurred.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Same contact, anatomy and camera; Leo's canonical brown eyes now open in mild surprise. Milo stays in the anchored supported pose. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Composition anchor: keep the camera, plate and Leo exactly as in the previous shot (reference s05_paw_contact_end). Leo lies asleep on the ground under the great tree, head resting on his crossed forepaws, his whole body visible from the full mane through torso, hind legs and the tail tip; he is never a floating head and no part of his body is cut by the frame edge. The camera may be slightly closer than the previous shot, but Leo's entire lying body, four paws and tail stay inside the frame with margins. Milo keeps the small size he has in the previous shot (his whole body about as tall as Leo's closed eye-to-chin distance) and now stands on the ground right at Leo's nose, leaning gently against it with both front paws on the muzzle; ears, whiskers, both feet and tail visible. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Keep everything exactly as in reference image 1; only Leo's canonical brown eyes open in mild surprise.",
+        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s05_nose_aftermath. World cast count: exactly one leo, exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height close two-shot cropped from the approved great-tree scene. Match both characters' established body proportions and depth; Milo remains one third of Leo's standing-equivalent height. The crop magnifies both equally. Nose/paw contacts and both faces are readable, with no camera motion inside the clip. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. World prop/contact state: supported nose contact; prior paw touch already occurred.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Same contact, anatomy and camera; Leo's canonical brown eyes now open in mild surprise. Milo stays in the anchored supported pose. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Edit reference image 1 (the accepted start) and keep every pixel of the scene, Milo and Leo identical, including the count of characters: exactly one Milo, the one already at Leo's nose; do not add any other mouse. Change only Leo's eyes: open them to his canonical large round dark-brown eyes in mild surprise.",
         "review": {
           "status": "accepted_pending_owner_review",
           "reviewer": "agent visual review",
           "date": "2026-10-02",
-          "review_note": "Same as r03 start (whole lying Leo, small Milo at the nose); only Leo's brown eyes open in mild surprise."
+          "review_note": "Pure edit of r05 start: exactly one Milo, scene unchanged; Leo's brown eyes open in mild surprise."
         }
       },
       "superseded": [
@@ -5839,8 +5899,54 @@
               "review_note": "Full-size check: same framing/Milo size as r02 start; Leo's brown eyes open in mild surprise, whole head and mane in frame; Milo leaning on the muzzle, whiskers, one tail."
             }
           }
+        },
+        {
+          "revision": "r03",
+          "status": "accepted",
+          "result": {
+            "output_path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_end_r03.png",
+            "sha256": "aae2230d49960d18206fcf2fa0bd861a0677b51f2e1d44475d9820b1c4c7a18f",
+            "tool": "Gemini API generateContent (character/gemini_image.py)",
+            "model": "gemini-3-pro-image",
+            "model_details": "gemini-3-pro-image",
+            "seed": null,
+            "candidate": "s05_nose_aftermath_end_r03_nbpro_t01",
+            "imageConfig": {
+              "aspectRatio": "16:9",
+              "imageSize": "1K"
+            },
+            "normalised": "1376x768 -> 1920x1080",
+            "ordered_references": [
+              {
+                "id": "s05_nose_aftermath_start",
+                "role": "approved_start_exact_edit_base",
+                "path": "character/characters/interactions/v4/keyframes/s05_nose_aftermath_start_r03.png",
+                "sha256": "3ad9a98be1d973db257d9c4be2d5b90e8bf021030d0c02a528989fec5cc986e9"
+              },
+              {
+                "id": "LEO_CANON",
+                "role": "identity_root",
+                "path": "character/characters/Leo/v4/canonical/full-body_leo_neutral_pose_r01.png",
+                "sha256": "2ed72a4da14c02e65380842e79fbf634d5147a06ba373fbaacf8918e88273f0e"
+              },
+              {
+                "id": "MILO_CANON",
+                "role": "identity_root",
+                "path": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
+                "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
+              }
+            ],
+            "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s05_nose_aftermath. World cast count: exactly one leo, exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height close two-shot cropped from the approved great-tree scene. Match both characters' established body proportions and depth; Milo remains one third of Leo's standing-equivalent height. The crop magnifies both equally. Nose/paw contacts and both faces are readable, with no camera motion inside the clip. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. World prop/contact state: supported nose contact; prior paw touch already occurred.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Same contact, anatomy and camera; Leo's canonical brown eyes now open in mild surprise. Milo stays in the anchored supported pose. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Composition anchor: keep the camera, plate and Leo exactly as in the previous shot (reference s05_paw_contact_end). Leo lies asleep on the ground under the great tree, head resting on his crossed forepaws, his whole body visible from the full mane through torso, hind legs and the tail tip; he is never a floating head and no part of his body is cut by the frame edge. The camera may be slightly closer than the previous shot, but Leo's entire lying body, four paws and tail stay inside the frame with margins. Milo keeps the small size he has in the previous shot (his whole body about as tall as Leo's closed eye-to-chin distance) and now stands on the ground right at Leo's nose, leaning gently against it with both front paws on the muzzle; ears, whiskers, both feet and tail visible. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Keep everything exactly as in reference image 1; only Leo's canonical brown eyes open in mild surprise.",
+            "review": {
+              "status": "accepted_pending_owner_review",
+              "reviewer": "agent visual review",
+              "date": "2026-10-02",
+              "review_note": "Same as r03 start (whole lying Leo, small Milo at the nose); only Leo's brown eyes open in mild surprise."
+            }
+          }
         }
-      ]
+      ],
+      "framing": "close_two_shot"
     },
     {
       "id": "s06_barrier_start",
@@ -6020,7 +6126,8 @@
           },
           "alpha_processing": "Trim alpha bbox above 16, resize Lanczos, attenuate alpha below 14, add subtle blurred contact shadows; exact 1920x1080 approved plate base."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s06_barrier_end",
@@ -6119,15 +6226,16 @@
           "source_sha256": "7ccd0c3b5dd8f9a08d9da74341afcabab84aaca06c1e4d9003375c8249a1a70c",
           "reuse_reason": "Endpoint has no stated visual delta from start; byte-identical hold avoids introducing unsupported changes."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s07_leo_annoyed_start",
       "group": "scene-07",
-      "revision": "r01",
+      "revision": "r05",
       "status": "accepted",
       "bible_revision": "v4-draft-2026-09-30",
-      "target": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r01.png",
+      "target": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r05.png",
       "canvas": [
         1920,
         1080
@@ -6181,47 +6289,101 @@
         "Full-resolution and 1280x720 preview checked"
       ],
       "result": {
-        "output_path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r01.png",
-        "sha256": "219e91cdc9b36e3e61b4608e99a4f86d81228fb2cd4014ee4e199bf83ec1539e",
-        "tool": "built-in image_gen with reviewed actor extraction and Pillow layer composition",
-        "model": null,
-        "model_details": "Not exposed by built-in image_gen response; assistant session Sol medium",
-        "review": {
-          "status": "accepted",
-          "note": "Leo is a complete grounded quadruped with full rust mane, four paws, one tail and mildly surprised closed-mouth brown-eyed face; locked tree plate."
+        "output_path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r05.png",
+        "sha256": "fc4acfa873dcb4572d8f12d95dbcc35a53edb419b7f8393764aa28425e398f83",
+        "tool": "Gemini API generateContent (character/gemini_image.py)",
+        "model": "gemini-3.1-flash-image",
+        "model_details": "gemini-3.1-flash-image",
+        "seed": null,
+        "candidate": "s07_leo_annoyed_start_r05_nb2_t02",
+        "imageConfig": {
+          "aspectRatio": "16:9",
+          "imageSize": "1K"
         },
-        "locked_plate": "character/locations/v4/great_tree/tree_dusk_r01.png",
-        "actor_source": "/gpfs1/schlecker/home/lealroja/.codex/generated_images/01a0f49a-ce77-7871-84cd-9a88e9394306/exec-217b4d6e-e865-44d4-8353-85f3f4e0cbfc.png",
-        "expression_source": null,
-        "composition": "actor lower centre x1080 baseline915 visual height530; diffuse grounding shadow; end uses feathered face-only expression patch over exact start body and plate",
-        "superseded_results": [
+        "normalised": "1376x768 -> 1920x1080",
+        "ordered_references": [
           {
-            "output_path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r01.png",
-            "sha256": "a878ee3f0516d1a6ff2d21028f49587ec67717a9bdd7366d4ffd7a272819aa75",
-            "review": {
-              "status": "rejected_by_owner_review",
-              "reviewer": "Owner visual review",
-              "date": "2026-10-02",
-              "review_note": "Leo body is missing from the requested composition; restore intended visible body framing",
-              "prior_review": {
-                "status": "accepted",
-                "reviewer": "Codex visual inspection",
-                "date": "2026-10-01",
-                "issues": [],
-                "review_note": "Inspected source portrait layer and full frame. One Leo with brown eyes, full canonical burnt-orange/rust mane outline, pink-inner ears, broad cream muzzle/chest and closed surprised expression. Mane fits portrait, no paws or tail shown. Exact dusk tree plate crop retains right trunk/root, dusk palette and set blur; no net or extra character."
-              }
-            }
+            "id": "PL_tree_dusk",
+            "role": "locked_location_plate",
+            "path": "character/locations/v4/great_tree/tree_dusk_r01.png",
+            "sha256": "f447f682caf4a99ebdc536e8afd79e9b582c8bb902128c5b26d6eebb514466fa"
+          },
+          {
+            "id": "LEO_CANON",
+            "role": "identity_root",
+            "path": "character/characters/Leo/v4/canonical/full-body_leo_neutral_pose_r01.png",
+            "sha256": "2ed72a4da14c02e65380842e79fbf634d5147a06ba373fbaacf8918e88273f0e"
+          },
+          {
+            "id": "s15_leo_reflects_end",
+            "role": "close_up_format_reference_framing_only_ignore_its_background",
+            "path": "character/characters/interactions/v4/keyframes/s15_leo_reflects_end_r01.png",
+            "sha256": "919880266c9fa58caffc8650139486398dd72c0e9fdbaa2ef588ac7b1c932317"
+          },
+          {
+            "id": "L_EXPR_CURIOUS",
+            "role": "face_and_expression_reference",
+            "path": "character/characters/Leo/v4/expressions/l_expr_curious_r01.png",
+            "sha256": "57409e93e86145b9e224831a0074027e26afc7f081b7e49994bb3c12b7874292"
           }
-        ]
-      }
+        ],
+        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_leo_annoyed. World cast count: exactly one leo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Fixed normal-height 16:9 medium single of Leo on the approved great-tree plate. Leo stands at the lower centre with his entire full rust mane, compact golden torso, four grounded paws and single tufted tail inside the frame; preserve identical camera, placement and body silhouette through the paired expression change. Match the canonical brown eyes, muzzle and mane. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Endpoint to draw: Leo mildly surprised with closed lips, paws/tail below crop. This is a single still state, not a sequence or montage. Mouth state follows the endpoint description. The recorded ordered references supply identity, geometry and prior state; do not invent an entrance or erase an object to fit a new composition. Revision fix (owner review): Dialogue close-up (CR-15): Leo's head and upper chest fill the centre of the 16:9 frame (mane top near y=0.05, chin near y=0.70), facing the camera, exactly the framing of the close-up format reference. Behind Leo is the great tree clearing at blue-orange dusk from the location plate, strongly blurred into soft colour shapes by a very shallow depth of field; no props or other characters in front. Copy Leo's head, face and expression from the expression reference: mildly surprised, brows lifted, eyes open, closed lips. Exactly two eyes and two brows.  Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text.",
+        "review": {
+          "status": "accepted_pending_owner_review",
+          "reviewer": "agent visual review",
+          "date": "2026-10-02",
+          "review_note": "Dialogue close-up (CR-15): Leo head and chest centred, blurred dusk great-tree clearing; mildly surprised from L_EXPR_CURIOUS; two brows, brown eyes, full mane."
+        }
+      },
+      "superseded": [
+        {
+          "revision": "r01",
+          "status": "accepted",
+          "result": {
+            "output_path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r01.png",
+            "sha256": "219e91cdc9b36e3e61b4608e99a4f86d81228fb2cd4014ee4e199bf83ec1539e",
+            "tool": "built-in image_gen with reviewed actor extraction and Pillow layer composition",
+            "model": null,
+            "model_details": "Not exposed by built-in image_gen response; assistant session Sol medium",
+            "review": {
+              "status": "accepted",
+              "note": "Leo is a complete grounded quadruped with full rust mane, four paws, one tail and mildly surprised closed-mouth brown-eyed face; locked tree plate."
+            },
+            "locked_plate": "character/locations/v4/great_tree/tree_dusk_r01.png",
+            "actor_source": "/gpfs1/schlecker/home/lealroja/.codex/generated_images/01a0f49a-ce77-7871-84cd-9a88e9394306/exec-217b4d6e-e865-44d4-8353-85f3f4e0cbfc.png",
+            "expression_source": null,
+            "composition": "actor lower centre x1080 baseline915 visual height530; diffuse grounding shadow; end uses feathered face-only expression patch over exact start body and plate",
+            "superseded_results": [
+              {
+                "output_path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r01.png",
+                "sha256": "a878ee3f0516d1a6ff2d21028f49587ec67717a9bdd7366d4ffd7a272819aa75",
+                "review": {
+                  "status": "rejected_by_owner_review",
+                  "reviewer": "Owner visual review",
+                  "date": "2026-10-02",
+                  "review_note": "Leo body is missing from the requested composition; restore intended visible body framing",
+                  "prior_review": {
+                    "status": "accepted",
+                    "reviewer": "Codex visual inspection",
+                    "date": "2026-10-01",
+                    "issues": [],
+                    "review_note": "Inspected source portrait layer and full frame. One Leo with brown eyes, full canonical burnt-orange/rust mane outline, pink-inner ears, broad cream muzzle/chest and closed surprised expression. Mane fits portrait, no paws or tail shown. Exact dusk tree plate crop retains right trunk/root, dusk palette and set blur; no net or extra character."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s07_leo_annoyed_end",
       "group": "scene-07",
-      "revision": "r04",
+      "revision": "r05",
       "status": "accepted",
       "bible_revision": "v4-draft-2026-09-30",
-      "target": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_end_r04.png",
+      "target": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_end_r05.png",
       "canvas": [
         1920,
         1080
@@ -6261,13 +6423,13 @@
         "Full-resolution and 1280x720 preview checked"
       ],
       "result": {
-        "output_path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_end_r04.png",
-        "sha256": "f807cb4d79e93c817276f49fa0ab760c35ee2b6020e9b27d14f9397ede66f955",
+        "output_path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_end_r05.png",
+        "sha256": "6f7289984cbc7e8e472768ca69736628960c6bc690a648df44ac2768146d2675",
         "tool": "Gemini API generateContent (character/gemini_image.py)",
         "model": "gemini-3.1-flash-image",
         "model_details": "gemini-3.1-flash-image",
         "seed": null,
-        "candidate": "s07_leo_annoyed_end_r04_nb2_t02",
+        "candidate": "s07_leo_annoyed_end_r05_nb2_t02",
         "imageConfig": {
           "aspectRatio": "16:9",
           "imageSize": "1K"
@@ -6277,8 +6439,8 @@
           {
             "id": "s07_leo_annoyed_start",
             "role": "approved_start_exact_edit_base",
-            "path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r01.png",
-            "sha256": "219e91cdc9b36e3e61b4608e99a4f86d81228fb2cd4014ee4e199bf83ec1539e"
+            "path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r05.png",
+            "sha256": "fc4acfa873dcb4572d8f12d95dbcc35a53edb419b7f8393764aa28425e398f83"
           },
           {
             "id": "LEO_CANON",
@@ -6287,18 +6449,24 @@
             "sha256": "2ed72a4da14c02e65380842e79fbf634d5147a06ba373fbaacf8918e88273f0e"
           },
           {
+            "id": "s15_leo_reflects_end",
+            "role": "close_up_format_reference_framing_only_ignore_its_background",
+            "path": "character/characters/interactions/v4/keyframes/s15_leo_reflects_end_r01.png",
+            "sha256": "919880266c9fa58caffc8650139486398dd72c0e9fdbaa2ef588ac7b1c932317"
+          },
+          {
             "id": "L_EXPR_ANNOYED",
-            "role": "expression_reference_copy_brows_eyes_mouth_only",
+            "role": "face_and_expression_reference",
             "path": "character/characters/Leo/v4/expressions/l_expr_annoyed_r01.png",
             "sha256": "e1fac9ff992622edb8a013c2c78ad3a5eafea1177a33dce77663eb5079d18dc4"
           }
         ],
-        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_leo_annoyed. World cast count: exactly one leo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Fixed normal-height 16:9 medium single of Leo on the approved great-tree plate. Leo stands at the lower centre with his entire full rust mane, compact golden torso, four grounded paws and single tufted tail inside the frame; preserve identical camera, placement and body silhouette through the paired expression change. Match the canonical brown eyes, muzzle and mane. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Leo mildly annoyed but gentle, same muzzle and brown eyes; closed lips. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Edit reference image 1 (the approved start): keep everything identical, including the face, mane, body, crop and plate. Change only the expression to mildly annoyed but gentle, copying the brows, eyelids and mouth from the annoyed expression reference. Leo has exactly two eyebrows, one above each eye, drawn once; no second or extra brow lines anywhere on the face. Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text.",
+        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_leo_annoyed. World cast count: exactly one leo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Fixed normal-height 16:9 medium single of Leo on the approved great-tree plate. Leo stands at the lower centre with his entire full rust mane, compact golden torso, four grounded paws and single tufted tail inside the frame; preserve identical camera, placement and body silhouette through the paired expression change. Match the canonical brown eyes, muzzle and mane. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Leo mildly annoyed but gentle, same muzzle and brown eyes; closed lips. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Dialogue close-up (CR-15): Leo's head and upper chest fill the centre of the 16:9 frame (mane top near y=0.05, chin near y=0.70), facing the camera, exactly the framing of the close-up format reference. Behind Leo is the great tree clearing at blue-orange dusk from the location plate, very strongly blurred (like a portrait lens at f/1.4) into soft colour shapes by a very shallow depth of field; no props or other characters in front. Copy Leo's head, face and expression from the expression reference: mildly annoyed but gentle, closed flat mouth. Exactly two eyes and two brows.  Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text. Keep framing, head size and background exactly as in reference image 1 (the accepted start); only the expression changes.",
         "review": {
           "status": "accepted_pending_owner_review",
           "reviewer": "agent visual review",
           "date": "2026-10-02",
-          "review_note": "Edit of r01 start: exactly two brows (no extra brow lines), mildly annoyed lids and brows from L_EXPR_ANNOYED; face, mane, body and plate unchanged."
+          "review_note": "Same close-up as r05 start; mildly annoyed (L_EXPR_ANNOYED), exactly two brows, closed mouth."
         }
       },
       "superseded": [
@@ -6339,16 +6507,62 @@
               }
             ]
           }
+        },
+        {
+          "revision": "r04",
+          "status": "accepted",
+          "result": {
+            "output_path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_end_r04.png",
+            "sha256": "f807cb4d79e93c817276f49fa0ab760c35ee2b6020e9b27d14f9397ede66f955",
+            "tool": "Gemini API generateContent (character/gemini_image.py)",
+            "model": "gemini-3.1-flash-image",
+            "model_details": "gemini-3.1-flash-image",
+            "seed": null,
+            "candidate": "s07_leo_annoyed_end_r04_nb2_t02",
+            "imageConfig": {
+              "aspectRatio": "16:9",
+              "imageSize": "1K"
+            },
+            "normalised": "1376x768 -> 1920x1080",
+            "ordered_references": [
+              {
+                "id": "s07_leo_annoyed_start",
+                "role": "approved_start_exact_edit_base",
+                "path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_start_r01.png",
+                "sha256": "219e91cdc9b36e3e61b4608e99a4f86d81228fb2cd4014ee4e199bf83ec1539e"
+              },
+              {
+                "id": "LEO_CANON",
+                "role": "identity_root",
+                "path": "character/characters/Leo/v4/canonical/full-body_leo_neutral_pose_r01.png",
+                "sha256": "2ed72a4da14c02e65380842e79fbf634d5147a06ba373fbaacf8918e88273f0e"
+              },
+              {
+                "id": "L_EXPR_ANNOYED",
+                "role": "expression_reference_copy_brows_eyes_mouth_only",
+                "path": "character/characters/Leo/v4/expressions/l_expr_annoyed_r01.png",
+                "sha256": "e1fac9ff992622edb8a013c2c78ad3a5eafea1177a33dce77663eb5079d18dc4"
+              }
+            ],
+            "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_leo_annoyed. World cast count: exactly one leo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Fixed normal-height 16:9 medium single of Leo on the approved great-tree plate. Leo stands at the lower centre with his entire full rust mane, compact golden torso, four grounded paws and single tufted tail inside the frame; preserve identical camera, placement and body silhouette through the paired expression change. Match the canonical brown eyes, muzzle and mane. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Leo mildly annoyed but gentle, same muzzle and brown eyes; closed lips. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Edit reference image 1 (the approved start): keep everything identical, including the face, mane, body, crop and plate. Change only the expression to mildly annoyed but gentle, copying the brows, eyelids and mouth from the annoyed expression reference. Leo has exactly two eyebrows, one above each eye, drawn once; no second or extra brow lines anywhere on the face. Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text.",
+            "review": {
+              "status": "accepted_pending_owner_review",
+              "reviewer": "agent visual review",
+              "date": "2026-10-02",
+              "review_note": "Edit of r01 start: exactly two brows (no extra brow lines), mildly annoyed lids and brows from L_EXPR_ANNOYED; face, mane, body and plate unchanged."
+            }
+          }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s07_milo_sorry_start",
       "group": "scene-07",
-      "revision": "r02",
+      "revision": "r05",
       "status": "accepted",
       "bible_revision": "v4-draft-2026-09-30",
-      "target": "character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r02.png",
+      "target": "character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r05.png",
       "canvas": [
         1920,
         1080
@@ -6409,25 +6623,19 @@
         "Full-resolution and 1280x720 preview checked"
       ],
       "result": {
-        "output_path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r02.png",
-        "sha256": "8f982f91d6a5b62000b0f621a54d25408ef7ae703d3ad2ea5b43cf5a202a35a1",
+        "output_path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r05.png",
+        "sha256": "5b5e5983c40724c15966eb3a051b9258f15513988b58fd299e5366d448f9c4c7",
         "tool": "Gemini API generateContent (character/gemini_image.py)",
         "model": "gemini-3.1-flash-image",
         "model_details": "gemini-3.1-flash-image",
         "seed": null,
-        "candidate": "s07_milo_sorry_start_r02_nb2_t04",
+        "candidate": "s07_milo_sorry_start_r05_nb2_t01",
         "imageConfig": {
           "aspectRatio": "16:9",
           "imageSize": "1K"
         },
         "normalised": "1376x768 -> 1920x1080",
         "ordered_references": [
-          {
-            "id": "s07_leo_annoyed_end",
-            "role": "latest_world_state_and_damage_use_planned_cast_and_crop",
-            "path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_end_r01.png",
-            "sha256": "aac41214fe3b3dd07463fc15be3cdc9dcae2d183ddebe40b77dfcf5d620a1390"
-          },
           {
             "id": "PL_tree_dusk",
             "role": "locked_location_plate",
@@ -6441,24 +6649,24 @@
             "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
           },
           {
-            "id": "M_CLOSED",
-            "role": "closed_mouth_design",
-            "path": "character/characters/Milo/v4/references/m_closed_r01.png",
-            "sha256": "c3ff875b653c405dce89bf4f2154f8f94512a23521381f57c6eb5f90c1e36934"
+            "id": "s15_milo_modest_start",
+            "role": "close_up_format_reference_framing_only_ignore_its_background",
+            "path": "character/characters/interactions/v4/keyframes/s15_milo_modest_start_r04.png",
+            "sha256": "e4b52bd3337cbb132bd56739111e7c92976590af6df8e30c46ef49e5a722b749"
           },
           {
-            "id": "s06_barrier_end",
-            "role": "wide_camera_geometry_only_latest_endpoint_overrides_old_prop_damage",
-            "path": "character/characters/interactions/v4/keyframes/s06_barrier_end_r01.png",
-            "sha256": "7ccd0c3b5dd8f9a08d9da74341afcabab84aaca06c1e4d9003375c8249a1a70c"
+            "id": "M_EXPR_CONCERNED",
+            "role": "face_and_expression_reference",
+            "path": "character/characters/Milo/v4/expressions/m_expr_concerned_r01.png",
+            "sha256": "b77d57d3ecf1502eb09ee258e8d2803bee50a53664a8efdba9590c949d9f8f57"
           }
         ],
-        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_milo_sorry. World cast count: exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height portrait crop of the approved scene, 16:9. Milo centred x=0.50, eye-line y=0.43, proposed skull width excluding ears 0.32 of frame width. Keep both ears and muzzle legible; lower paws/tail stay outside the crop. Match head size, eye-line and neck seam in both endpoints. Same soft blurred scene crop, without newly revealed landmarks. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Endpoint to draw: Milo slightly startled, lips closed, arms low outside crop. This is a single still state, not a sequence or montage. Mouth state follows the endpoint description. The recorded ordered references supply identity, geometry and prior state; do not invent an entrance or erase an object to fit a new composition. Revision fix (owner review): Show Milo as one cohesive full-body character, not a cropped head: from the tips of both ears down to both feet and the whole tail, standing on the ground at lower centre, body height about 0.70 of the frame with a small margin under the feet. Head, slim neck, torso, arms and legs form one continuous felt figure in natural canonical proportions; the head is not enlarged. Arms rest low at his sides. He is lit like the background, its depth blur stays behind him and he casts a soft contact shadow, so he sits in the scene rather than looking pasted. This framing replaces any earlier 'portrait crop' or 'limbs below crop' instruction. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Expression: slightly startled, eyebrows raised, eyes wide, small closed mouth with no smile.",
+        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_milo_sorry. World cast count: exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height portrait crop of the approved scene, 16:9. Milo centred x=0.50, eye-line y=0.43, proposed skull width excluding ears 0.32 of frame width. Keep both ears and muzzle legible; lower paws/tail stay outside the crop. Match head size, eye-line and neck seam in both endpoints. Same soft blurred scene crop, without newly revealed landmarks. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Endpoint to draw: Milo slightly startled, lips closed, arms low outside crop. This is a single still state, not a sequence or montage. Mouth state follows the endpoint description. The recorded ordered references supply identity, geometry and prior state; do not invent an entrance or erase an object to fit a new composition. Revision fix (owner review): Dialogue close-up (CR-15): Milo's head and upper chest fill the centre of the 16:9 frame (ear tips near y=0.05, chin near y=0.70), facing the camera, exactly the framing of the close-up format reference. Behind Milo is the great tree clearing at blue-orange dusk from the location plate, strongly blurred into soft colour shapes by a very shallow depth of field; no props or other characters in front. Copy Milo's head, face and expression from the expression reference: slightly startled and worried, closed mouth. Exactly two eyes and two brows. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides.",
         "review": {
           "status": "accepted_pending_owner_review",
           "reviewer": "agent visual review",
           "date": "2026-10-02",
-          "review_note": "Full-size check: cohesive full-body Milo in the tree-dusk scene (no pasted head), whiskers both sides, rounded cheeks, smooth crown, leg gap, one tail, contact shadow. Startled brows and wide eyes; lips very slightly parted (record asks closed): owner to judge."
+          "review_note": "Dialogue close-up (CR-15): Milo head and chest centred, blurred dusk clearing; startled/worried closed mouth from M_EXPR_CONCERNED; face matches canonical."
         }
       },
       "superseded": [
@@ -6561,16 +6769,74 @@
               "alpha_processing": "Trim alpha bbox >40, resize Lanczos, remove fringe by alpha threshold 80 plus 9px min filter and 0.5px blur. Extend only lower neck/chest from row 660 to bottom frame; face scale unchanged."
             }
           }
+        },
+        {
+          "revision": "r02",
+          "status": "accepted",
+          "result": {
+            "output_path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r02.png",
+            "sha256": "8f982f91d6a5b62000b0f621a54d25408ef7ae703d3ad2ea5b43cf5a202a35a1",
+            "tool": "Gemini API generateContent (character/gemini_image.py)",
+            "model": "gemini-3.1-flash-image",
+            "model_details": "gemini-3.1-flash-image",
+            "seed": null,
+            "candidate": "s07_milo_sorry_start_r02_nb2_t04",
+            "imageConfig": {
+              "aspectRatio": "16:9",
+              "imageSize": "1K"
+            },
+            "normalised": "1376x768 -> 1920x1080",
+            "ordered_references": [
+              {
+                "id": "s07_leo_annoyed_end",
+                "role": "latest_world_state_and_damage_use_planned_cast_and_crop",
+                "path": "character/characters/interactions/v4/keyframes/s07_leo_annoyed_end_r01.png",
+                "sha256": "aac41214fe3b3dd07463fc15be3cdc9dcae2d183ddebe40b77dfcf5d620a1390"
+              },
+              {
+                "id": "PL_tree_dusk",
+                "role": "locked_location_plate",
+                "path": "character/locations/v4/great_tree/tree_dusk_r01.png",
+                "sha256": "f447f682caf4a99ebdc536e8afd79e9b582c8bb902128c5b26d6eebb514466fa"
+              },
+              {
+                "id": "MILO_CANON",
+                "role": "identity_root",
+                "path": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
+                "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
+              },
+              {
+                "id": "M_CLOSED",
+                "role": "closed_mouth_design",
+                "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+                "sha256": "c3ff875b653c405dce89bf4f2154f8f94512a23521381f57c6eb5f90c1e36934"
+              },
+              {
+                "id": "s06_barrier_end",
+                "role": "wide_camera_geometry_only_latest_endpoint_overrides_old_prop_damage",
+                "path": "character/characters/interactions/v4/keyframes/s06_barrier_end_r01.png",
+                "sha256": "7ccd0c3b5dd8f9a08d9da74341afcabab84aaca06c1e4d9003375c8249a1a70c"
+              }
+            ],
+            "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_milo_sorry. World cast count: exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height portrait crop of the approved scene, 16:9. Milo centred x=0.50, eye-line y=0.43, proposed skull width excluding ears 0.32 of frame width. Keep both ears and muzzle legible; lower paws/tail stay outside the crop. Match head size, eye-line and neck seam in both endpoints. Same soft blurred scene crop, without newly revealed landmarks. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Endpoint to draw: Milo slightly startled, lips closed, arms low outside crop. This is a single still state, not a sequence or montage. Mouth state follows the endpoint description. The recorded ordered references supply identity, geometry and prior state; do not invent an entrance or erase an object to fit a new composition. Revision fix (owner review): Show Milo as one cohesive full-body character, not a cropped head: from the tips of both ears down to both feet and the whole tail, standing on the ground at lower centre, body height about 0.70 of the frame with a small margin under the feet. Head, slim neck, torso, arms and legs form one continuous felt figure in natural canonical proportions; the head is not enlarged. Arms rest low at his sides. He is lit like the background, its depth blur stays behind him and he casts a soft contact shadow, so he sits in the scene rather than looking pasted. This framing replaces any earlier 'portrait crop' or 'limbs below crop' instruction. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Expression: slightly startled, eyebrows raised, eyes wide, small closed mouth with no smile.",
+            "review": {
+              "status": "accepted_pending_owner_review",
+              "reviewer": "agent visual review",
+              "date": "2026-10-02",
+              "review_note": "Full-size check: cohesive full-body Milo in the tree-dusk scene (no pasted head), whiskers both sides, rounded cheeks, smooth crown, leg gap, one tail, contact shadow. Startled brows and wide eyes; lips very slightly parted (record asks closed): owner to judge."
+            }
+          }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s07_milo_sorry_end",
       "group": "scene-07",
-      "revision": "r02",
+      "revision": "r05",
       "status": "accepted",
       "bible_revision": "v4-draft-2026-09-30",
-      "target": "character/characters/interactions/v4/keyframes/s07_milo_sorry_end_r02.png",
+      "target": "character/characters/interactions/v4/keyframes/s07_milo_sorry_end_r05.png",
       "canvas": [
         1920,
         1080
@@ -6610,13 +6876,13 @@
         "Full-resolution and 1280x720 preview checked"
       ],
       "result": {
-        "output_path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_end_r02.png",
-        "sha256": "ecc199122ba0528b4ec0728ed50ce41dae8d235a1b08a5bf324205db18eb5fdd",
+        "output_path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_end_r05.png",
+        "sha256": "b0fa509e6e0a65108867581bfb1e19244800765b41820f5ad72a35db55e02ae0",
         "tool": "Gemini API generateContent (character/gemini_image.py)",
         "model": "gemini-3.1-flash-image",
         "model_details": "gemini-3.1-flash-image",
         "seed": null,
-        "candidate": "s07_milo_sorry_end_r02_nb2_t02",
+        "candidate": "s07_milo_sorry_end_r05_nb2_t01",
         "imageConfig": {
           "aspectRatio": "16:9",
           "imageSize": "1K"
@@ -6626,22 +6892,34 @@
           {
             "id": "s07_milo_sorry_start",
             "role": "approved_start_exact_edit_base",
-            "path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r02.png",
-            "sha256": "8f982f91d6a5b62000b0f621a54d25408ef7ae703d3ad2ea5b43cf5a202a35a1"
+            "path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r05.png",
+            "sha256": "5b5e5983c40724c15966eb3a051b9258f15513988b58fd299e5366d448f9c4c7"
           },
           {
             "id": "MILO_CANON",
             "role": "identity_root",
             "path": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
             "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
+          },
+          {
+            "id": "s15_milo_modest_start",
+            "role": "close_up_format_reference_framing_only_ignore_its_background",
+            "path": "character/characters/interactions/v4/keyframes/s15_milo_modest_start_r04.png",
+            "sha256": "e4b52bd3337cbb132bd56739111e7c92976590af6df8e30c46ef49e5a722b749"
+          },
+          {
+            "id": "M_EXPR_APOLOGETIC",
+            "role": "face_and_expression_reference",
+            "path": "character/characters/Milo/v4/expressions/m_expr_apologetic_r01.png",
+            "sha256": "875beb85c59df0a4afa4336dfc161a1d687a3851d8225b532a20ab1eb6ae1f7c"
           }
         ],
-        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_milo_sorry. World cast count: exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height portrait crop of the approved scene, 16:9. Milo centred x=0.50, eye-line y=0.43, proposed skull width excluding ears 0.32 of frame width. Keep both ears and muzzle legible; lower paws/tail stay outside the crop. Match head size, eye-line and neck seam in both endpoints. Same soft blurred scene crop, without newly revealed landmarks. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Milo apologetic with inner brows raised subtly; same face dimensions, lips closed. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Show Milo as one cohesive full-body character, not a cropped head: from the tips of both ears down to both feet and the whole tail, standing on the ground at lower centre, body height about 0.70 of the frame with a small margin under the feet. Head, slim neck, torso, arms and legs form one continuous felt figure in natural canonical proportions; the head is not enlarged. Arms rest low at his sides. He is lit like the background, its depth blur stays behind him and he casts a soft contact shadow, so he sits in the scene rather than looking pasted. This framing replaces any earlier 'portrait crop' or 'limbs below crop' instruction. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Keep exactly the framing, position, body size and background of reference image 1; change only the expression. Expression: apologetic, inner brow corners raised, closed mouth with no smile.",
+        "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_milo_sorry. World cast count: exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height portrait crop of the approved scene, 16:9. Milo centred x=0.50, eye-line y=0.43, proposed skull width excluding ears 0.32 of frame width. Keep both ears and muzzle legible; lower paws/tail stay outside the crop. Match head size, eye-line and neck seam in both endpoints. Same soft blurred scene crop, without newly revealed landmarks. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Milo apologetic with inner brows raised subtly; same face dimensions, lips closed. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Dialogue close-up (CR-15): Milo's head and upper chest fill the centre of the 16:9 frame (ear tips near y=0.05, chin near y=0.70), facing the camera, exactly the framing of the close-up format reference. Behind Milo is the great tree clearing at blue-orange dusk from the location plate, very strongly blurred (like a portrait lens at f/1.4) into soft colour shapes by a very shallow depth of field; no props or other characters in front. Copy Milo's head, face and expression from the expression reference: apologetic, inner brows raised, closed mouth. Exactly two eyes and two brows. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides. Keep framing, head size and background exactly as in reference image 1 (the accepted start); only the expression changes.",
         "review": {
           "status": "accepted_pending_owner_review",
           "reviewer": "agent visual review",
           "date": "2026-10-02",
-          "review_note": "Full-size check: same framing/position/body size as r02 start; apologetic raised inner brows, closed mouth; whiskers both sides, smooth crown, leg gap, one tail."
+          "review_note": "Same close-up as r05 start; apologetic, inner brows raised, closed mouth (M_EXPR_APOLOGETIC)."
         }
       },
       "superseded": [
@@ -6801,8 +7079,48 @@
             "submitted_positive": "Create one 1920x1080 16:9 scene keyframe for s07_milo_sorry. World cast count: exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height portrait crop of the approved scene, 16:9. Milo centred x=0.50, eye-line y=0.43, proposed skull width excluding ears 0.32 of frame width. Keep both ears and muzzle legible; lower paws/tail stay outside the crop. Match head size, eye-line and neck seam in both endpoints. Same soft blurred scene crop, without newly revealed landmarks. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Milo apologetic with inner brows raised subtly; same face dimensions, lips closed. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked.",
             "submitted_constraints": "duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, chubby Milo, separate top-hair tuft on Milo, orange hair crest on Milo, changed iris colour, blue eyes, yellow eyes, crimson mane, shrunken mane, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, camera shake, spontaneous new props, lion"
           }
+        },
+        {
+          "revision": "r02",
+          "status": "accepted",
+          "result": {
+            "output_path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_end_r02.png",
+            "sha256": "ecc199122ba0528b4ec0728ed50ce41dae8d235a1b08a5bf324205db18eb5fdd",
+            "tool": "Gemini API generateContent (character/gemini_image.py)",
+            "model": "gemini-3.1-flash-image",
+            "model_details": "gemini-3.1-flash-image",
+            "seed": null,
+            "candidate": "s07_milo_sorry_end_r02_nb2_t02",
+            "imageConfig": {
+              "aspectRatio": "16:9",
+              "imageSize": "1K"
+            },
+            "normalised": "1376x768 -> 1920x1080",
+            "ordered_references": [
+              {
+                "id": "s07_milo_sorry_start",
+                "role": "approved_start_exact_edit_base",
+                "path": "character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r02.png",
+                "sha256": "8f982f91d6a5b62000b0f621a54d25408ef7ae703d3ad2ea5b43cf5a202a35a1"
+              },
+              {
+                "id": "MILO_CANON",
+                "role": "identity_root",
+                "path": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
+                "sha256": "fab5cd7767ddbd6ed76a0367a3649cb4b0a53c02435f778a9c4a8b8f4072c306"
+              }
+            ],
+            "prompt_sent": "Create one 1920x1080 16:9 scene keyframe for s07_milo_sorry. World cast count: exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height portrait crop of the approved scene, 16:9. Milo centred x=0.50, eye-line y=0.43, proposed skull width excluding ears 0.32 of frame width. Keep both ears and muzzle legible; lower paws/tail stay outside the crop. Match head size, eye-line and neck seam in both endpoints. Same soft blurred scene crop, without newly revealed landmarks. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Milo apologetic with inner brows raised subtly; same face dimensions, lips closed. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked. Revision fix (owner review): Show Milo as one cohesive full-body character, not a cropped head: from the tips of both ears down to both feet and the whole tail, standing on the ground at lower centre, body height about 0.70 of the frame with a small margin under the feet. Head, slim neck, torso, arms and legs form one continuous felt figure in natural canonical proportions; the head is not enlarged. Arms rest low at his sides. He is lit like the background, its depth blur stays behind him and he casts a soft contact shadow, so he sits in the scene rather than looking pasted. This framing replaces any earlier 'portrait crop' or 'limbs below crop' instruction. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Keep exactly the framing, position, body size and background of reference image 1; change only the expression. Expression: apologetic, inner brow corners raised, closed mouth with no smile.",
+            "review": {
+              "status": "accepted_pending_owner_review",
+              "reviewer": "agent visual review",
+              "date": "2026-10-02",
+              "review_note": "Full-size check: same framing/position/body size as r02 start; apologetic raised inner brows, closed mouth; whiskers both sides, smooth crown, leg gap, one tail."
+            }
+          }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s08_leo_softens_start",
@@ -6901,7 +7219,8 @@
             }
           }
         ]
-      }
+      },
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s08_leo_softens_end",
@@ -7086,7 +7405,8 @@
         },
         "submitted_positive": "Create one 1920x1080 16:9 scene keyframe for s08_leo_softens. World cast count: exactly one leo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Fixed normal-height portrait crop of the approved scene, 16:9. Leo centred x=0.50, eye-line y=0.43, proposed skull width excluding mane 0.34 of frame width. Keep the mane outline, ears and muzzle intact; paws/tail remain below or behind the crop. Match skull scale and eye-line through expressions. Same soft blurred scene crop. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. This frame is a crop of the approved scene state, softly blurred outside the subject. Do not reveal an overhead trap or new landmarks; any visible net belongs to the recorded current prop state. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Leo kind and gently smiling, closed mouth, same mane and eyes. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked.",
         "submitted_constraints": "duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, chubby Milo, separate top-hair tuft on Milo, orange hair crest on Milo, changed iris colour, blue eyes, yellow eyes, crimson mane, shrunken mane, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, camera shake, spontaneous new props, mouse"
-      }
+      },
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s08_milo_surprised_start",
@@ -7377,7 +7697,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s08_milo_surprised_end",
@@ -7702,7 +8023,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s08_kindness_start",
@@ -7861,7 +8183,8 @@
         },
         "submitted_positive": "Create one 1920x1080 16:9 scene keyframe for s08_kindness. World cast count: exactly one leo, exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height wide camera, 16:9. Leo's neutral standing-equivalent height is 0.54 of frame height, centre x=0.72 and paw plane y=0.84. Milo's equivalent height is 0.18 at the same depth. Lying Leo keeps the same anatomical scale. Milo starts left and reaches the extended paw at x=0.54, y=0.84; later conversation position x=0.52. Keep ample mane and tail margins. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Endpoint to draw: Leo already lying calmly at the tree, Milo standing beside his paw at x=0.52; paws low, mouths closed. This is a single still state, not a sequence or montage. Mouth state follows the endpoint description. The recorded ordered references supply identity, geometry and prior state; do not invent an entrance or erase an object to fit a new composition.",
         "submitted_constraints": "duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, chubby Milo, separate top-hair tuft on Milo, orange hair crest on Milo, changed iris colour, blue eyes, yellow eyes, crimson mane, shrunken mane, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, camera shake, spontaneous new props"
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s08_kindness_end",
@@ -7974,7 +8297,8 @@
         },
         "submitted_positive": "Create one 1920x1080 16:9 scene keyframe for s08_kindness. World cast count: exactly one leo, exactly one milo. Visibility follows the endpoint: fully occluded characters remain in the world and must not be duplicated in view. Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette. Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle. Fixed normal-height wide camera, 16:9. Leo's neutral standing-equivalent height is 0.54 of frame height, centre x=0.72 and paw plane y=0.84. Milo's equivalent height is 0.18 at the same depth. Lying Leo keeps the same anatomical scale. Milo starts left and reaches the extended paw at x=0.54, y=0.84; later conversation position x=0.52. Keep ample mane and tail margins. Leo's great tree with its broad trunk on the right, exposed roots, path across the foreground and small flowers, at blue-orange dusk. Preserve the trunk, roots, horizon and path. World prop/contact state: none.  Preserve stable ground contacts, intrinsic palettes, anatomical scale and static background landmarks. Handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities. Warm child-friendly palette, soft directional illumination, clear subject silhouettes and a softly out-of-focus distant background. Keep the subject face, contact points and ground plane sharply readable. Controlled edit of the approved paired start image. Draw exactly this endpoint: Same lying/standing poses and proportions; both share small closed smiles. Change only the stated action result. Preserve the parent image camera/crop, fixed plate pixels, count of cast, intrinsic colours and unaffected props. A pose changes its silhouette but not head or body dimensions. Record any authorised trajectory or depth change; all other geometry is locked.",
         "submitted_constraints": "duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, chubby Milo, separate top-hair tuft on Milo, orange hair crest on Milo, changed iris colour, blue eyes, yellow eyes, crimson mane, shrunken mane, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, camera shake, spontaneous new props"
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s09_milo_hurries_start",
@@ -8087,7 +8411,8 @@
           "normalization": "Exact 1920x1080 plate; no transform."
         },
         "attempts": []
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s09_milo_hurries_end",
@@ -8182,7 +8507,8 @@
             "review_note": "Byte-identical to previously accepted and inspected s04_shortcut_run_end; exact authorized endpoint match."
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s09_stars_start",
@@ -8265,7 +8591,8 @@
           "date": "2026-10-01",
           "issues": []
         }
-      }
+      },
+      "framing": "empty_plate"
     },
     {
       "id": "s09_stars_end",
@@ -8348,7 +8675,8 @@
           "date": "2026-10-01",
           "issues": []
         }
-      }
+      },
+      "framing": "empty_plate"
     },
     {
       "id": "s09_home_start",
@@ -8449,7 +8777,8 @@
             "approval": "accepted"
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s09_home_end",
@@ -8544,7 +8873,8 @@
             "approval": "accepted"
           }
         ]
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s10_curious_step_start",
@@ -8956,7 +9286,8 @@
             "submitted_constraints": "duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, chubby Milo, separate top-hair tuft on Milo, orange hair crest on Milo, changed iris colour, blue eyes, yellow eyes, crimson mane, shrunken mane, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, camera shake, spontaneous new props, duplicate net, extra suspended bundle, floating rope ends, changing knot topology, mouse"
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s10_curious_step_end",
@@ -9150,7 +9481,8 @@
             "submitted_constraints": "duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, chubby Milo, separate top-hair tuft on Milo, orange hair crest on Milo, changed iris colour, blue eyes, yellow eyes, crimson mane, shrunken mane, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, camera shake, spontaneous new props, duplicate net, extra suspended bundle, floating rope ends, changing knot topology, mouse"
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s10_net_falls_start",
@@ -9353,7 +9685,8 @@
             "submitted_constraints": "duplicate characters, extra limbs, extra paws, extra tails, disconnected tail, fused anatomy, changed face, chubby Milo, separate top-hair tuft on Milo, orange hair crest on Milo, changed iris colour, blue eyes, yellow eyes, crimson mane, shrunken mane, plastic skin, glossy CGI, realistic fur, clothing, text, watermark, smeared face, blurry subject, camera shake, spontaneous new props, duplicate net, extra suspended bundle, floating rope ends, changing knot topology, mouse"
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s10_net_falls_end",
@@ -9577,7 +9910,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s11_pull_once_start",
@@ -9762,7 +10096,8 @@
             ]
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s11_pull_once_end",
@@ -9911,7 +10246,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s11_why_wont_it_break_start",
@@ -10125,7 +10461,8 @@
             ]
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s11_why_wont_it_break_end",
@@ -10268,7 +10605,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s11_call_start",
@@ -10494,7 +10832,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s11_call_end",
@@ -10636,7 +10975,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s11_waits_start",
@@ -10849,7 +11189,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s11_waits_end",
@@ -10990,7 +11331,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s12_hears_start",
@@ -11150,7 +11492,8 @@
           },
           "normalization": "Exact 1920x1080 plate. Transparent character layer trimmed at alpha > 18, resized to 324 px height with Lanczos, placed with center x=0.78 and baseline y=0.82; small blurred contact shadow."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s12_hears_end",
@@ -11339,7 +11682,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s12_runs_start",
@@ -11473,7 +11817,8 @@
           },
           "alpha_processing": "Trim alpha bbox >16, Lanczos resize, attenuate alpha below 14, subtle blurred contact shadow; exact plate pixels retained."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s12_runs_end",
@@ -11578,7 +11923,8 @@
           },
           "alpha_processing": "Trim alpha bbox >16, Lanczos resize, attenuate alpha below 14, subtle contact shadow; exact plate pixels retained."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s13_arrives_start",
@@ -11774,7 +12120,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s13_arrives_end",
@@ -11928,7 +12275,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s13_milo_confident_start",
@@ -12183,7 +12531,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s13_milo_confident_end",
@@ -12376,7 +12725,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s13_leo_doubtful_start",
@@ -12605,7 +12955,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s13_leo_doubtful_end",
@@ -12742,7 +13093,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s13_milo_playful_start",
@@ -13024,7 +13376,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s13_milo_playful_end",
@@ -13231,7 +13584,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s14_gnaw_fray_start",
@@ -13492,7 +13846,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "close_two_shot"
     },
     {
       "id": "s14_gnaw_fray_end",
@@ -13677,7 +14032,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "close_two_shot"
     },
     {
       "id": "s14_sever_R01_start",
@@ -13908,7 +14264,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "close_two_shot"
     },
     {
       "id": "s14_sever_R01_end",
@@ -14093,7 +14450,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "close_two_shot"
     },
     {
       "id": "s14_milo_clear_start",
@@ -14340,7 +14698,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s14_milo_clear_end",
@@ -14520,7 +14879,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s14_opening_start",
@@ -14709,7 +15069,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s14_opening_end",
@@ -14863,7 +15224,8 @@
             "composition_note": "Accepted net layer and severed R01 shifted down 8 px as one connected assembly to show subtle sag; character poses and plate fixed."
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s14_step_clear_start",
@@ -15062,7 +15424,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s14_step_clear_end",
@@ -15223,7 +15586,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s14_free_hold_start",
@@ -15456,7 +15820,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s14_free_hold_end",
@@ -15615,7 +15980,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "scene_wide"
     },
     {
       "id": "s15_leo_amazed_start",
@@ -15751,7 +16117,8 @@
           "character_scale": 0.92,
           "method": "Portrait layer composed at x-centre 0.50 with eye-line close to y=0.43; net remains outside close crop in the recorded fallen-behind state."
         }
-      }
+      },
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s15_leo_amazed_end",
@@ -15843,7 +16210,8 @@
           "expression_layer": "/home/lealroja/.codex/generated_images/01a0f49a-ce77-7871-84cd-9a88e9394306/exec-f2997291-a6f5-4cff-9a21-ab8fe14beea1.png",
           "method": "Same cutout scale and background; soft elliptical local face mask preserves original mane outline."
         }
-      }
+      },
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s15_milo_modest_start",
@@ -16126,7 +16494,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s15_milo_modest_end",
@@ -16313,7 +16682,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s15_leo_reflects_start",
@@ -16453,7 +16823,8 @@
           "base_or_source": "character/characters/interactions/v4/keyframes/s15_leo_amazed_end_r01.png",
           "method": "accepted continuity reuse or localized mouth patch, exact portrait framing preserved"
         }
-      }
+      },
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s15_leo_reflects_end",
@@ -16539,7 +16910,8 @@
           "character_scale": 0.92,
           "method": "Transparent portrait cutout composited at same center and scale as the Leo grateful start; face layer variation retained after face-only blend showed duplicate-eye artifacts."
         }
-      }
+      },
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s15_milo_sincere_start",
@@ -16824,7 +17196,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s15_milo_sincere_end",
@@ -17006,7 +17379,8 @@
             }
           }
         }
-      ]
+      ],
+      "framing": "dialogue_close_up"
     },
     {
       "id": "s16_friends_start",
@@ -17207,7 +17581,8 @@
           },
           "alpha_processing": "Alpha values below 14 attenuated to remove fringe, then Lanczos resize; subtle blurred contact shadows. Exact 1920x1080 plate pixels were used as base."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "s16_friends_end",
@@ -17330,7 +17705,8 @@
           "milo_eye_source_sha256": "368a68afb44e2718fb2d73623096f9ec81af4714ae8e51d7e65572ad6db3360a",
           "method": "End layers independently resized to start pose heights, then only eye areas transferred to exact start scene with feathered elliptical masks. Leo eye centers (1194,631) and (1291,640), radii (30,25), blur 5 px. Milo source shifted +3 px to align gaze; eye centers (1017,812) and (1054,816), radii (15,13), blur 3 px. All other pixels come from accepted start."
         }
-      }
+      },
+      "framing": "scene_wide"
     },
     {
       "id": "M_EXPR_APOLOGETIC",

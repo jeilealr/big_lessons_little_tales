@@ -1,0 +1,127 @@
+{
+  "revision": "r05",
+  "date": "2026-10-02",
+  "source": "Owner review 2026-10-02: s05 r03 Milo face off; s07 Leo/Milo series should be first-meeting dialogue close-ups like S15 Milo r04, using the expression references.",
+  "records": {
+    "s05_nose_aftermath_start": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s05_paw_contact_end",
+        "PL_tree_dusk",
+        "LEO_CANON",
+        "L_ASLEEP",
+        "L_WAKE",
+        "s05_nose_aftermath_start"
+      ],
+      "extra_references": [
+        {
+          "id": "s05_nose_aftermath_start",
+          "path": "",
+          "role": "approved_exact_edit_base_keep_everything"
+        },
+        {
+          "id": "M_EXPR_CALM_CONFIDENT",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Edit reference image: keep the camera, plate, Leo (pose, eyes, mane) and Milo's body, pose, size and position exactly. Redraw only Milo's head so his face turns three-quarters toward the camera and matches the expression reference: large round dark-brown eyes, curved brows, short cream muzzle with tiny brown nose, soft calm smile, both large ears, fine whiskers. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides."
+    },
+    "s05_nose_aftermath_end": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "MILO_CANON"
+      ],
+      "extra_references": [],
+      "fix": "Edit reference image 1 (the accepted start) and keep every pixel of the scene, Milo and Leo identical, including the count of characters: exactly one Milo, the one already at Leo's nose; do not add any other mouse. Change only Leo's eyes: open them to his canonical large round dark-brown eyes in mild surprise."
+    },
+    "s07_leo_annoyed_start": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s06_barrier_end",
+        "L_CLOSED",
+        "M_CLOSED",
+        "s07_leo_annoyed_end"
+      ],
+      "extra_references": [
+        {
+          "id": "s15_leo_reflects_end",
+          "path": "",
+          "role": "close_up_format_reference_framing_only_ignore_its_background"
+        },
+        {
+          "id": "L_EXPR_CURIOUS",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Dialogue close-up (CR-15): Leo's head and upper chest fill the centre of the 16:9 frame (mane top near y=0.05, chin near y=0.70), facing the camera, exactly the framing of the close-up format reference. Behind Leo is the great tree clearing at blue-orange dusk from the location plate, very strongly blurred (like a portrait lens at f/1.4) into soft colour shapes by a very shallow depth of field; no props or other characters in front. Copy Leo's head, face and expression from the expression reference: mildly surprised, brows lifted, eyes open, closed lips. Exactly two eyes and two brows.  Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text."
+    },
+    "s07_leo_annoyed_end": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s06_barrier_end",
+        "L_CLOSED",
+        "M_CLOSED",
+        "s07_leo_annoyed_end"
+      ],
+      "extra_references": [
+        {
+          "id": "s15_leo_reflects_end",
+          "path": "",
+          "role": "close_up_format_reference_framing_only_ignore_its_background"
+        },
+        {
+          "id": "L_EXPR_ANNOYED",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Dialogue close-up (CR-15): Leo's head and upper chest fill the centre of the 16:9 frame (mane top near y=0.05, chin near y=0.70), facing the camera, exactly the framing of the close-up format reference. Behind Leo is the great tree clearing at blue-orange dusk from the location plate, very strongly blurred (like a portrait lens at f/1.4) into soft colour shapes by a very shallow depth of field; no props or other characters in front. Copy Leo's head, face and expression from the expression reference: mildly annoyed but gentle, closed flat mouth. Exactly two eyes and two brows.  Use the V3 images only for staging, camera and the look of the net; Leo's identity comes from the V4 canonical (rust-orange mane, golden-ochre body, brown eyes, canonical face), never the V3 Leo colours. Leo's mane is the canonical burnt-orange rust colour, more orange than red (not red, not crimson), with the canonical large volume: long layered fuzzy wool locks framing the whole face and covering the upper chest, exactly like the V4 canonical image. Rope labels such as R01 or K-left are notes, never visible text. Keep framing, head size and background exactly as in reference image 1 (the accepted start); only the expression changes."
+    },
+    "s07_milo_sorry_start": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s06_barrier_end",
+        "L_CLOSED",
+        "M_CLOSED",
+        "s07_leo_annoyed_end"
+      ],
+      "extra_references": [
+        {
+          "id": "s15_milo_modest_start",
+          "path": "",
+          "role": "close_up_format_reference_framing_only_ignore_its_background"
+        },
+        {
+          "id": "M_EXPR_CONCERNED",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Dialogue close-up (CR-15): Milo's head and upper chest fill the centre of the 16:9 frame (ear tips near y=0.05, chin near y=0.70), facing the camera, exactly the framing of the close-up format reference. Behind Milo is the great tree clearing at blue-orange dusk from the location plate, very strongly blurred (like a portrait lens at f/1.4) into soft colour shapes by a very shallow depth of field; no props or other characters in front. Copy Milo's head, face and expression from the expression reference: slightly startled and worried, closed mouth. Exactly two eyes and two brows. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides."
+    },
+    "s07_milo_sorry_end": {
+      "model": "gemini-3.1-flash-image",
+      "drop_references": [
+        "s06_barrier_end",
+        "L_CLOSED",
+        "M_CLOSED",
+        "s07_leo_annoyed_end"
+      ],
+      "extra_references": [
+        {
+          "id": "s15_milo_modest_start",
+          "path": "",
+          "role": "close_up_format_reference_framing_only_ignore_its_background"
+        },
+        {
+          "id": "M_EXPR_APOLOGETIC",
+          "path": "",
+          "role": "face_and_expression_reference"
+        }
+      ],
+      "fix": "Dialogue close-up (CR-15): Milo's head and upper chest fill the centre of the 16:9 frame (ear tips near y=0.05, chin near y=0.70), facing the camera, exactly the framing of the close-up format reference. Behind Milo is the great tree clearing at blue-orange dusk from the location plate, very strongly blurred (like a portrait lens at f/1.4) into soft colour shapes by a very shallow depth of field; no props or other characters in front. Copy Milo's head, face and expression from the expression reference: apologetic, inner brows raised, closed mouth. Exactly two eyes and two brows. Milo keeps the V4 canonical design: smooth rounded crown with no tuft, brown eyes, slim build, softly rounded cheeks, fine pale whiskers clearly visible on both sides of the muzzle, a subtle low-contrast central face seam. The pale-cream belly ends above the crotch and a clear taupe-grey gap separates his two slim legs down to both feet. Milo's face must match the canonical exactly: warm taupe-brown felt (not cool grey), large round dark-brown irises with cream sclera and small white highlights filling most of each eye, curved brown brows, a visible low-contrast central face seam from brow to nose, wide softly rounded cheeks, short cream muzzle with a tiny brown nose, fine pale whiskers on both sides. Keep framing, head size and background exactly as in reference image 1 (the accepted start); only the expression changes."
+    }
+  }
+}

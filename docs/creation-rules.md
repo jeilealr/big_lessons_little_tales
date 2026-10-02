@@ -401,3 +401,45 @@ scene's plate. The face comes from the expression references:
   (about $0.03 on Lite), never improvised in a scene.
 - Every face keeps exactly two brows and two eyes. (`s07_leo_annoyed_end_r01`
   had a second brow line painted over the first.)
+
+## CR-15. Which shots are face close-ups (dialogue format) and which are scene shots
+
+Every scene image record in `prompt_manifest.json` now has a `framing` field.
+Decide it before writing a prompt; it controls everything else.
+
+| `framing` | When | Look | Size rule |
+|---|---|---|---|
+| `dialogue_close_up` | One character speaks, listens or reacts alone; the line is about feelings | Head and upper chest centred in 16:9 (ear tips or mane top y≈0.05, chin y≈0.70), facing the camera, the scene's plate strongly blurred behind, nothing in front (except the net when the character is inside it) | Close-up; no size relation needed |
+| `close_two_shot` | A contact action needs both characters readable (nose contact, gnawing) | Both characters, plate softly blurred | CR-14: Milo's body ≈ Leo's mane diameter |
+| `scene_wide` | Arrivals, exits, travel, actions, any shot that shows where we are | Whole bodies on the sharp plate, fixed normal-height camera | CR-14: Milo 0.30–0.36 of frame |
+| `empty_plate` | Establishing or time-passing shots | Plate only | n/a |
+
+**Recipe for a `dialogue_close_up` (what fixed s07 and S15):**
+1. References, in this order: the record's previous state (for an end frame,
+   the accepted start = `approved_start_exact_edit_base`), the canonical
+   (`identity_root`), an approved close-up of the same character as
+   `close_up_format_reference_framing_only_ignore_its_background`
+   (`s15_leo_reflects_end` for Leo, `s15_milo_modest_start` r04 for Milo),
+   and one expression from `character/characters/<Name>/v4/expressions/`
+   as `face_and_expression_reference`. Drop full-scene and portrait
+   references that disagree with this framing.
+2. The prompt names the location plate and asks for it "very strongly
+   blurred (like a portrait lens at f/1.4)". Without that phrase Nano Banana 2
+   kept the background half sharp.
+3. Name the expression in words as well as by reference (CR-13 rule 7), and
+   say "exactly two eyes and two brows".
+4. The end frame changes only the expression: "keep framing, head size and
+   background exactly as in reference image 1".
+5. Review: framing numbers, blur strength, face side by side with the
+   canonical, two brows.
+
+**Never mix framings inside one shot.** Wan animates between the start and
+end frames; a wide start with a close-up end becomes an unwanted zoom.
+(`s08_leo_softens` r01 has exactly this problem: the start is wide and the
+end is a close-up.)
+
+**Edits must not add characters.** When the reference images contain the
+same character more than once (an approved frame plus a second frame of the
+same character), the model may draw that character twice: s05 r05 got two
+Milos. For a change of expression or eyes, send only the frame being edited
+plus the canonical, and state "exactly one Milo".

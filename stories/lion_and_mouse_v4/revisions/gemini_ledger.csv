@@ -200,3 +200,17 @@ date,record,revision,candidate,model,size,outcome,retries,est_usd
 2026-10-02,s15_milo_sincere_start,r04,s15_milo_sincere_start_r04_nb2_t02,gemini-3.1-flash-image,1K,ok,0,0.067
 2026-10-02,s15_milo_sincere_end,r04,s15_milo_sincere_end_r04_nb2_t01,gemini-3.1-flash-image,1K,ok,0,0.067
 2026-10-02,s15_milo_sincere_end,r04,s15_milo_sincere_end_r04_nb2_t02,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s05_nose_aftermath_start,r05,s05_nose_aftermath_start_r05_nb2_t01,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s05_nose_aftermath_start,r05,s05_nose_aftermath_start_r05_nb2_t02,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s07_leo_annoyed_start,r05,s07_leo_annoyed_start_r05_nb2_t01,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s07_leo_annoyed_start,r05,s07_leo_annoyed_start_r05_nb2_t02,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s07_milo_sorry_start,r05,s07_milo_sorry_start_r05_nb2_t01,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s07_milo_sorry_start,r05,s07_milo_sorry_start_r05_nb2_t02,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s05_nose_aftermath_end,r05,s05_nose_aftermath_end_r05_nb2_t01,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s05_nose_aftermath_end,r05,s05_nose_aftermath_end_r05_nb2_t02,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s07_leo_annoyed_end,r05,s07_leo_annoyed_end_r05_nb2_t01,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s07_leo_annoyed_end,r05,s07_leo_annoyed_end_r05_nb2_t02,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s07_milo_sorry_end,r05,s07_milo_sorry_end_r05_nb2_t01,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s07_milo_sorry_end,r05,s07_milo_sorry_end_r05_nb2_t02,gemini-3.1-flash-image,1K,ok,1,0.067
+2026-10-02,s05_nose_aftermath_end,r05,s05_nose_aftermath_end_r05_nb2_t03,gemini-3.1-flash-image,1K,ok,0,0.067
+2026-10-02,s05_nose_aftermath_end,r05,s05_nose_aftermath_end_r05_nb2_t04,gemini-3.1-flash-image,1K,ok,0,0.067

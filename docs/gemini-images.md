@@ -158,3 +158,9 @@ smiled and three Leo backgrounds turned into a room or floor.
 r04 frames (s07 Leo end, s08 pair, s13 Milo four, S15 Milo four):
 
 ![r04](img/v4_r04_gemini.jpg)
+
+## r05 and the framing rule (2026-10-02)
+
+The owner asked for s07 as a first-meeting dialogue in the S15 close-up style. That became `docs/creation-rules.md` **CR-15**: a `framing` field on every scene record and a step-by-step close-up recipe. s05's Milo face was redrawn in three-quarter view; the first s05 end edit drew two Milos, which led to the "edits must not add characters" rule.
+
+![r05](img/v4_r05_gemini.jpg)

@@ -498,3 +498,16 @@ Cost table: `docs/gemini-images.md` (from `revisions/gemini_ledger.csv`). Rules 
 | `s15_milo_modest_end` | `s15_milo_modest_end_r04.png` | gemini-3.1-flash-image | Same close-up framing and blurred background as r04 start; proud relieved closed smile. |
 | `s15_milo_sincere_start` | `s15_milo_sincere_start_r04.png` | gemini-3.1-flash-image | Same close-up framing and blurred background as s15_milo_modest_end r04; calm sincere face, closed lips. |
 | `s15_milo_sincere_end` | `s15_milo_sincere_end_r04.png` | gemini-3.1-flash-image | Same close-up framing/background as r04 sincere start; small warm closed smile. |
+
+## r05 — 2026-10-02 (owner's fourth review)
+
+s05 Milo face redrawn; s07 Leo and Milo remade as dialogue close-ups (CR-15). Fixes: `revisions/r05.json`.
+
+| Record | Target | Model | Review note |
+|---|---|---|---|
+| `s05_nose_aftermath_start` | `s05_nose_aftermath_start_r05.png` | gemini-3.1-flash-image | Edit of r03: everything kept; only Milo's head redrawn three-quarter to camera with canonical eyes, muzzle, whiskers and calm smile (M_EXPR_CALM_CONFIDENT). Other take added a second Milo. |
+| `s07_leo_annoyed_start` | `s07_leo_annoyed_start_r05.png` | gemini-3.1-flash-image | Dialogue close-up (CR-15): Leo head and chest centred, blurred dusk great-tree clearing; mildly surprised from L_EXPR_CURIOUS; two brows, brown eyes, full mane. |
+| `s07_milo_sorry_start` | `s07_milo_sorry_start_r05.png` | gemini-3.1-flash-image | Dialogue close-up (CR-15): Milo head and chest centred, blurred dusk clearing; startled/worried closed mouth from M_EXPR_CONCERNED; face matches canonical. |
+| `s05_nose_aftermath_end` | `s05_nose_aftermath_end_r05.png` | gemini-3.1-flash-image | Pure edit of r05 start: exactly one Milo, scene unchanged; Leo's brown eyes open in mild surprise. |
+| `s07_leo_annoyed_end` | `s07_leo_annoyed_end_r05.png` | gemini-3.1-flash-image | Same close-up as r05 start; mildly annoyed (L_EXPR_ANNOYED), exactly two brows, closed mouth. |
+| `s07_milo_sorry_end` | `s07_milo_sorry_end_r05.png` | gemini-3.1-flash-image | Same close-up as r05 start; apologetic, inner brows raised, closed mouth (M_EXPR_APOLOGETIC). |
