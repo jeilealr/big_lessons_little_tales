@@ -363,3 +363,41 @@ Each rule names the defect that made it necessary. Tooling: `character/gemini_im
     `stories/lion_and_mouse_v4/revisions/gemini_ledger.csv`; each accepted take
     in the manifest stores its prompt, references, model and review note, and
     the replaced result stays under `superseded`.
+
+## CR-14. Character size guide and expression close-ups (owner, 2026-10-02)
+
+**Relative size.** The story bible fixes Milo's standing height at one third of
+Leo's. The owner chose `s14_opening_start_r02` and `s14_milo_clear_*_r02` as
+the reference look. Measured on them (fractions of frame height, 16:9):
+
+| What | Measured | Use as |
+|---|---|---|
+| Milo, ear tips to feet | 0.34–0.36 (ears y≈0.48, feet y≈0.83) | Milo in any wide or medium scene shot |
+| Leo's mane, top to bottom | ≈0.40 | Milo's whole body ≈ Leo's mane diameter |
+| Milo's head, ear tips to chin | ≈0.14 | Milo's head ≈ Leo's face from brow to chin, a little smaller |
+| Leo lying or crouched, mane top to paws | ≈0.50–0.52 | |
+
+- Milo alone in a wide or medium shot keeps the size he would have if Leo
+  stood in the same place: about 0.30–0.36 of the frame. Never above 0.40
+  unless the shot is a planned close-up. (s08 and s13 r02 had Milo at 0.6–0.75
+  of the frame, which the owner rejected.)
+- Write the size into the prompt as frame fractions plus a comparison (CR-13
+  rule 4), and pass one of the reference frames above as
+  `camera_and_character_scale_reference`.
+
+**Dialogue and expression close-ups.** When a character speaks or reacts
+alone, use the `s15_leo_reflects` format: head and upper chest fill the
+centre of the 16:9 frame (ear tips or mane top near y=0.05, chin near
+y=0.70), facing the camera, in front of a strongly blurred version of the
+scene's plate. The face comes from the expression references:
+
+- `character/characters/Milo/v4/expressions/` and `.../Leo/v4/expressions/`
+  each hold 11 head studies (manifest group `expressions`, records
+  `M_EXPR_*` / `L_EXPR_*`). They were made from the V4 closed-mouth
+  portrait, taking only the expression from the V3 set.
+- Pass the matching `*_EXPR_*` record as `face_and_expression_reference`
+  (close-ups) or `expression_reference_copy_brows_eyes_mouth_only` (wide
+  shots). An expression missing from the set is added as a new record first
+  (about $0.03 on Lite), never improvised in a scene.
+- Every face keeps exactly two brows and two eyes. (`s07_leo_annoyed_end_r01`
+  had a second brow line painted over the first.)

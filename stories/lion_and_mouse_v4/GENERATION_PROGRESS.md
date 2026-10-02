@@ -480,3 +480,21 @@ S15 Leo close-ups stay r01. All 118 image records are now `accepted`; new ones a
 | `s08_milo_surprised_end` (r03) | `s08_milo_surprised_end_r03.png` | gemini-3.1-flash-image | Edit of r03 start / approved s07 Milo: same face, body and plate; relieved small closed smile; canonical-matched face checked side by side. |
 
 Cost table: `docs/gemini-images.md` (from `revisions/gemini_ledger.csv`). Rules learnt: `docs/creation-rules.md` CR-13.
+
+## r04 — 2026-10-02 (owner's third review)
+
+22 expression references (`*/v4/expressions/`) plus these r04 frames; size and close-up rule CR-14.
+
+| Record | Target | Model | Review note |
+|---|---|---|---|
+| `s07_leo_annoyed_end` | `s07_leo_annoyed_end_r04.png` | gemini-3.1-flash-image | Edit of r01 start: exactly two brows (no extra brow lines), mildly annoyed lids and brows from L_EXPR_ANNOYED; face, mane, body and plate unchanged. |
+| `s08_milo_surprised_start` | `s08_milo_surprised_start_r04.png` | gemini-3.1-flash-image | Milo now small (CR-14: ~0.34 frame height) on the path before the great tree; whole body, contact shadow; startled expression from M_EXPR_STARTLED (small open O mouth; record said closed - owner to judge); face matches canonical. |
+| `s08_milo_surprised_end` | `s08_milo_surprised_end_r04.png` | gemini-3.1-flash-image | Same small Milo and position as r04 start; relieved closed smile from M_EXPR_RELIEVED_PROUD. |
+| `s13_milo_confident_start` | `s13_milo_confident_start_r04.png` | gemini-3.1-flash-image | s14 camera and scale: Milo ~0.32 frame at left facing Leo under the intact net; neutral thoughtful face from M_EXPR_NEUTRAL; whole body, whiskers, one tail each. |
+| `s13_milo_confident_end` | `s13_milo_confident_end_r04.png` | gemini-3.1-flash-image | Same camera/scale as r04 start; calm closed smile. |
+| `s13_milo_playful_start` | `s13_milo_playful_start_r04.png` | gemini-3.1-flash-image | Same camera/scale/position as s13_milo_confident_end r04; calm confident face. |
+| `s13_milo_playful_end` | `s13_milo_playful_end_r04.png` | gemini-3.1-flash-image | Same camera/scale as r04 playful start; small cheeky smile (subtle at this size). |
+| `s15_milo_modest_start` | `s15_milo_modest_start_r04.png` | gemini-3.1-flash-image | s15_leo_reflects format: Milo head-and-chest close-up, strongly blurred trap-path background; face from M_EXPR_CALM_CONFIDENT, warm taupe, whiskers, smooth crown. |
+| `s15_milo_modest_end` | `s15_milo_modest_end_r04.png` | gemini-3.1-flash-image | Same close-up framing and blurred background as r04 start; proud relieved closed smile. |
+| `s15_milo_sincere_start` | `s15_milo_sincere_start_r04.png` | gemini-3.1-flash-image | Same close-up framing and blurred background as s15_milo_modest_end r04; calm sincere face, closed lips. |
+| `s15_milo_sincere_end` | `s15_milo_sincere_end_r04.png` | gemini-3.1-flash-image | Same close-up framing/background as r04 sincere start; small warm closed smile. |

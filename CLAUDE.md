@@ -433,7 +433,7 @@ every API call in `revisions/gemini_ledger.csv` (`gemini_image.py ledger` =
 images and cost per model). **Before any new image read `docs/creation-rules.md`
 CR-13**: whole bodies, side-by-side identity gate, edit an approved same-setup
 frame instead of regenerating a character, scale as frame fractions, V3
-images staging-only, continuity cascades. Next: owner reviews the new frames.
+images staging-only, continuity cascades; and **CR-14**: Milo ≈ Leo's mane diameter (0.34 of frame in wide shots), dialogue close-ups in the `s15_leo_reflects` format with faces from `character/characters/<Name>/v4/expressions/` (11 each). r04 (owner's third review): s07 brows, s08/s13 Milo smaller, S15 Milo close-ups. Next: owner reviews the r04 frames.
 
 ## Archived production snapshot (2026-09-27 to 2026-09-29)
 

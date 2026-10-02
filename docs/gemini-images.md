@@ -118,24 +118,19 @@ they show no net and were not rejected.
 
 ### Images made and cost
 
-From `stories/lion_and_mouse_v4/revisions/gemini_ledger.csv`
-(`python3 character/gemini_image.py ledger`). The first 84 rows were
-reconstructed from the session log after the candidate sidecars were removed
-(marked `reconstructed`); later rows are written by the tool for every call.
+From `stories/lion_and_mouse_v4/revisions/gemini_ledger.csv` (`python3 character/gemini_image.py ledger`). The first 84 rows were reconstructed from the session log (marked `reconstructed`); later rows are written by the tool for every call.
 
 | Model | Size | Images | Failed takes | ~USD/image | ~USD total |
 |---|---|---|---|---|---|
 | gemini-3-pro-image | 1K | 8 | 0 | 0.134 | 1.07 |
 | gemini-3-pro-image | 2K | 1 | 0 | 0.134 | 0.13 |
 | gemini-3-pro-image-preview | 2K | 3 | 0 | 0.134 | 0.40 |
-| gemini-3.1-flash-image | 1K | 123 | 0 | 0.067 | 8.24 |
+| gemini-3.1-flash-image | 1K | 147 | 0 | 0.067 | 9.85 |
 | gemini-3.1-flash-image | 2K | 1 | 0 | 0.101 | 0.10 |
-| gemini-3.1-flash-lite-image | 1K | 7 | 0 | 0.034 | 0.24 |
-| **total** | | **143** | 0 | | **10.19** |
+| gemini-3.1-flash-lite-image | 1K | 40 | 1 | 0.034 | 1.36 |
+| **total** | | **200** | 1 | | **12.92** |
 
-Prices are estimates per output image (see "Which model"); the Google bill
-also includes voice and the input tokens of blocked calls. For comparison,
-the billing page showed €5.99 after the first 84 images.
+Prices are estimates per output image; the Google bill also includes voice and the input tokens of calls that returned no image.
 
 ### Rules learnt
 
@@ -143,3 +138,23 @@ The generated-image gates in `docs/creation-rules.md` **CR-13** (whole bodies,
 side-by-side identity check, reuse of approved same-setup frames, scale as
 fractions, staging-only references, props, expressions, continuity cascades,
 plate checks, ledger) came out of this pass and apply to every future image.
+
+## r04 and expression references (2026-10-02)
+
+The owner's third review asked for a smaller Milo in s08 and s13 (the size
+in s14 opening or milo-clear), S15 Milo in the `s15_leo_reflects` close-up
+format, an expression set like V3, and a fix for a doubled brow in
+`s07_leo_annoyed_end`. Fixes are in `revisions/r04.json`; the measured size
+guide and the close-up format are now `docs/creation-rules.md` **CR-14**.
+
+**Expression references** (22 records, group `expressions`, Lite, about
+$0.03 each): `character/characters/{Milo,Leo}/v4/expressions/`. Each one is
+an edit of the V4 closed-mouth portrait that takes only the expression from
+the V3 image of the same name. Six needed a retake: three Milo faces still
+smiled and three Leo backgrounds turned into a room or floor.
+
+![V4 expressions](img/v4_expressions.jpg)
+
+r04 frames (s07 Leo end, s08 pair, s13 Milo four, S15 Milo four):
+
+![r04](img/v4_r04_gemini.jpg)
