@@ -22,6 +22,12 @@ parent. No media is authorised by this documentation task.
       functional gnawing mouth. All tooth/interior shapes have been approved.
 - [ ] Character and camera calibration measurements are populated from images,
       not guessed from file dimensions or copied `h` values.
+- [ ] A prop-free canonical and a same-depth cast lineup are approved. Each
+      character has measured neutral height, head/mane width and relative
+      size against every co-star before scene image generation.
+- [ ] Each location has an approved plate and each shot setup has a size anchor,
+      normalized actor boxes, ground baseline and depth plane. Close-ups have
+      their own intentional camera/crop record.
 - [ ] Shared plates have registered geometry for each light. The trap path uses
       one actual set, not a mixture of L-16 and unrelated net backgrounds.
 - [ ] Acorn and net states and all expected occlusions are defined.
@@ -32,6 +38,12 @@ parent. No media is authorised by this documentation task.
       show standing free Leo with Milo and a fallen net behind them.
 - [ ] Count cast, limbs and tails; inspect hidden roots/contacts as well as edges.
 - [ ] Compare full-resolution face, eyes, torso/ear ratios and mane to canonicals.
+- [ ] Compare every actor's nose/muzzle, cheeks, whiskers, eyes, seams, limbs
+      and tail against the canonical and approved same-setup frame; confirm the
+      complete identity list was repeated in the submitted prompt.
+- [ ] Measure head/mane and whole-body boxes for each actor against the size
+      anchor. Two characters sharing a depth plane retain their approved ratio;
+      any size change has a documented forward/backward move or camera cut.
 - [ ] Reject hair on v4 Milo, changed teeth, chubby torso, eye-colour drift.
 - [ ] Confirm crop/pad/resize retains the required paws, tail, mane and props.
 - [ ] Compare start/end at final video size, then blink/overlay them. Anatomical

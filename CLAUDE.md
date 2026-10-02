@@ -17,8 +17,8 @@ sound effects: ElevenLabs (owner, paid plan). Final mix: DaVinci Resolve
 Repo: `/scratch/project_465002727/jelealro/big_lessons_little_tales`
 (renamed from `twc_video` on 2026-09-27; GitHub
 `jeilealr/big_lessons_little_tales`, private). Current story: **The Lion and
-the Mouse, v4 documentation** (`stories/lion_and_mouse_v4/`). V3 render review
-is the evidence for this revision; v2/v3 production data is historical.
+the Mouse, v4 image creation and owner review** (`stories/lion_and_mouse_v4/`).
+V3 render review is evidence for this revision; v2/v3 production data is historical.
 
 ## The owner's standing instructions
 
@@ -33,13 +33,24 @@ is the evidence for this revision; v2/v3 production data is historical.
 - **Git: the owner does all git** (add, commit, push). Agents do not run git
   commands unless asked (owner, 2026-09-27). Leave the tree ready for
   `git add . && git commit && git push`.
-- Current owner task (2026-09-30): documentation first for v4; do not generate
-  images, video or audio in this task. Read the complete v3 notes and v4 repair
-  plan. Owner reviews script/shot sequence before the next images.
+- Current owner task (2026-10-02): finish and repair v4 still images under the
+  manifest, using the built-in image generation tool. Preserve v3 assets; do
+  not create clips, runtime YAML, animatics, audio or GPU jobs. The owner
+  pruned disliked v4 frames and requested replacement at active manifest
+  targets without accumulating unnecessary revisions.
 - Milo's v4 crown has no separate top tuft. The old smaller-tuft fixes and v3
   sheet are superseded for v4. All derivatives must follow the approved new
   canonical, with brown eyes and slender proportions; Leo retains the full
   canonical rust-orange mane. Never mix v3 identity text into v4 prompts.
+- For this and every future story, freeze prop-free character canonicals and
+  a same-depth cast size lineup before scene images. Lock each location plate
+  and camera. Record actor head/mane and full-body frame boxes, baseline and
+  depth for each setup; compare adjacent shots and paired endpoints at the
+  same depth. A pose change cannot shrink a head or mane. Repeat every visible
+  character's complete identity, anatomy counts, size anchor and prop state
+  in every individual prompt, even when repetitive. Review saved images
+  against canonicals, the size lineup, prior scene and exact plate. See
+  CR-16 and CR-17 in `docs/creation-rules.md` and `docs/v4-preflight.md`.
 - Render individual clips first. Owner reviews/selects exact takes; assembly
   is a separately requested job afterward. Never auto-run an animatic after
   each batch, and never use a default `take` as evidence of owner selection.

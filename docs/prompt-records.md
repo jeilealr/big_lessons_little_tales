@@ -67,6 +67,9 @@ Never quietly edit shared identity words in one individual record.
 | References | ordered IDs, explicit paths, identity/geometry/pose/material role for each |
 | Counts | number of each character/prop; anatomical counts and known occlusions |
 | Geometry | camera profile, framing, depth, position, standing-scale calibration and foot contacts |
+| Scale anchor | approved same-setup image and hash; normalized head/mane and whole-body boxes, ground baseline and depth plane for every actor; same-depth cast ratio; planned start/end depth change |
+| Identity checklist | fully expanded canonical features for every visible character, including nose/muzzle, eyes, ears/mane, torso, limb and tail counts, seams, colours and exclusions, even if repeated in adjacent records |
+| Plate lock | approved plate and hash; crop, light, ground plane and at least three protected landmarks |
 | State | expression, mouth/eyes, prop state, contact and occlusion order |
 | Pair/parent | source image ID and hash; paired shot; approved edit base |
 | Edit scope | allowed regions/features; protected character and background regions |
@@ -87,6 +90,8 @@ can safely be pasted.
 1. Output type and canvas, then reference roles and the intended scene.
 2. Exact count and full frozen identity of each visible character.
 3. Camera, ground plane, framing, screen position/facing and relative size.
+   Give the approved size anchor, numeric frame fractions and each character's
+   depth plane; for a multi-character shot state their same-depth ratio.
 4. Body pose, expression, eyes, mouth, limb contacts, tail location/occlusion.
 5. Prop count, material, holder, position, attachments, damage and layer order.
 6. Lighting, depth of field and the exact protected background.

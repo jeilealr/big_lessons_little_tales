@@ -1,7 +1,7 @@
 {
-  "revision": "v4-draft-2026-09-30",
-  "status": "draft_requires_owner_script_and_canonical_review",
-  "scope": "documentation_only",
+  "revision": "v4-continuity-2026-10-02",
+  "status": "active_image_creation_and_owner_review",
+  "scope": "v4_image_creation_and_reusable_continuity_rules",
   "identity": {
     "milo": "Milo is one slender upright bipedal wool-felt mouse with a warm taupe-grey body, elongated pale-cream belly, large youthful rounded head, smooth felt crown continuous with the head surface, two very large round ears with dusty-rose interiors and stitched grey rims, large round dark-brown irises with cream sclera and small consistent highlights, curved brown brows, a tiny brown nose, short cream muzzle, fine pale whiskers, central face seam, two slim arms with rounded paws, two slim legs and one long thin rosy-taupe tail attached at the lower back. Preserve the approved skull/torso ratio, slim waist, muzzle, ear spacing, eye spacing and limb thickness. The smooth crown has ordinary short felt texture without a separate hairstyle.",
     "leo": "Leo is one compact sturdy quadrupedal wool-felt lion with golden-ochre body, broad pale-cream muzzle and chest, short thick legs, four large rounded paws, large round dark-brown irises with cream sclera, curved brown brows, small brown triangular nose on a soft warm bridge, fine pale whiskers, central face seam, small round pink-inner ears and one golden tail with a rust-orange tip. His full circular burnt-orange/rust mane has the approved large volume and layered fuzzy wool locks around face and upper chest. Preserve the approved muzzle, eye spacing, leg thickness, mane outline and intrinsic palette."
@@ -169,5 +169,32 @@
     "milo": "one slender taupe-grey felt bipedal mouse, smooth crown, huge round pink-inner ears, brown irises and cream sclera, cream muzzle/belly, slim limbs, one thin rosy tail; approved canonical proportions",
     "leo": "one sturdy golden felt quadrupedal lion, full layered rust-orange mane, brown irises and cream sclera, cream muzzle/chest, four paws, one golden tail with rust tip; approved canonical proportions"
   },
-  "runtime_style": "Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects"
+  "runtime_style": "Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects",
+  "scene_size_anchors": {
+    "great_tree_dusk": {
+      "plate": "character/locations/v4/great_tree/tree_dusk_r01.png",
+      "anchor": "character/characters/interactions/v4/keyframes/s05_paw_contact_end_r01.png",
+      "anchor_measurements": {
+        "source_canvas": [1920, 1080],
+        "method": "Approximate visual bounding boxes measured on the accepted saved S05 image; recheck at full resolution when registering a revised pose.",
+        "leo_mane_bbox_px": [720, 320, 1350, 745],
+        "leo_mane_width_fraction": 0.328,
+        "milo_ear_to_foot_bbox_px": [625, 714, 742, 906],
+        "milo_visible_height_fraction": 0.178,
+        "depth_relation": "Leo and Milo share the same tree-ground depth plane; posture changes do not change anatomical size."
+      },
+      "linked_scene_pairs": [
+        "s06_barrier",
+        "s08_kindness"
+      ],
+      "rule": "At unchanged camera and depth, match Leo mane diameter and anatomical body scale to S05; match Milo apparent height to the same-depth S05 mouse. Pose changes do not shrink the head or mane. Record normalized head/mane and whole-body boxes for every revised endpoint."
+    },
+    "trap_morning": {
+      "plate": "character/locations/v4/trap_path/trap_morning_r01.png",
+      "rule": "Use one accepted wide S11 or S14 frame as the Leo/Milo size anchor per depth plane. Any approach in S13 requires documented start/end depth and gradual size progression; sideways movement keeps size fixed."
+    },
+    "dialogue_close_up": {
+      "rule": "A deliberate cut to a blurred-plate face close-up uses CR-15 and does not inherit wide-shot pixel height. Its own paired start/end must share head/mane size and position."
+    }
+  }
 }

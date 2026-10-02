@@ -511,3 +511,27 @@ s05 Milo face redrawn; s07 Leo and Milo remade as dialogue close-ups (CR-15). Fi
 | `s05_nose_aftermath_end` | `s05_nose_aftermath_end_r05.png` | gemini-3.1-flash-image | Pure edit of r05 start: exactly one Milo, scene unchanged; Leo's brown eyes open in mild surprise. |
 | `s07_leo_annoyed_end` | `s07_leo_annoyed_end_r05.png` | gemini-3.1-flash-image | Same close-up as r05 start; mildly annoyed (L_EXPR_ANNOYED), exactly two brows, closed mouth. |
 | `s07_milo_sorry_end` | `s07_milo_sorry_end_r05.png` | gemini-3.1-flash-image | Same close-up as r05 start; apologetic, inner brows raised, closed mouth (M_EXPR_APOLOGETIC). |
+
+- `s08_leo_softens_start` repopulated from retained `s07_leo_annoyed_end_r05.png`: `character/characters/interactions/v4/keyframes/s08_leo_softens_start_r01.png`; SHA-256 `6f7289984cbc7e8e472768ca69736628960c6bc690a648df44ac2768146d2675`. Reviewed full-size close-up; exact camera and expression continuity.
+
+- `s08_leo_softens_end` repopulated at `character/characters/interactions/v4/keyframes/s08_leo_softens_end_r01.png`; SHA-256 `58ef8606e381ec3fafe4cf2c26df896dd4a4a7ede314bfe95b51a36a3e609e5a`. Built-in image_gen; paired full-size review with the accepted close-up start: matching mane/crop/plate, brown eyes, two brows, canonical nose, gentle closed smile. Model unexposed.
+
+- `s07_milo_sorry_start` focused in-place muzzle repair at `character/characters/interactions/v4/keyframes/s07_milo_sorry_start_r05.png`; SHA-256 `d34d1c6031cf9df01748541bf6d2d4a77e2412e1fafbdc1c0edda6f620bc74f2`. Review: Canonical smaller brown nose, compact cream muzzle pads and short closed worried mouth; retained approved ears, eyes, brows, whiskers, chest and bokeh. Previous hash `5b5e5983c40724c15966eb3a051b9258f15513988b58fd299e5366d448f9c4c7` retained in manifest provenance.
+
+- `s07_milo_sorry_end` focused in-place muzzle repair at `character/characters/interactions/v4/keyframes/s07_milo_sorry_end_r05.png`; SHA-256 `aed664848032e83201ece58182d6019caa9a7c81d67297a49cde8bcaf7be924b`. Review: Same repaired canonical nose/muzzle/mouth geometry as paired start with apologetic brows; retained head scale, ears, eyes, whiskers and background. Previous hash `b0fa509e6e0a65108867581bfb1e19244800765b41820f5ad72a35db55e02ae0` retained in manifest provenance.
+
+- `s08_milo_surprised_start` repopulated at `character/characters/interactions/v4/keyframes/s08_milo_surprised_start_r04.png`; SHA-256 `6a3149b20652b38899e9b71ad58174e036b874e11f7250ef21acce886361128f`. Built-in image_gen, full-size reviewed against repaired S07 Milo and canonical: same close-up scale, compact muzzle/nose, whiskers, smooth crown, two ears, brown eyes, closed mouth.
+
+- `s08_milo_surprised_end` repopulated at `character/characters/interactions/v4/keyframes/s08_milo_surprised_end_r04.png`; SHA-256 `6864ccd6d98268c37fced60c8d318f0ffc4530e2a730fb9b6c18d2f98b03377c`. Built-in image_gen, reviewed against paired start: same close-up framing and character, small closed relieved smile. Model unexposed.
+
+- 2026-10-02 `s02_place_acorn_end` built-in image_gen edit rejected (candidate SHA-256 `b8d6a791b4d01289b6c691289347d334c72f091a96ebb07867385105206ebf7d`): inspected full frame; Milo size improved, but the stream plate geometry and crop changed. Target remains missing. Candidate is not a reference.
+
+- 2026-10-02 `s06_barrier_start` accepted in place: `character/characters/interactions/v4/keyframes/s06_barrier_start_r01.png`, SHA-256 `7a981708b357385374618285a3fc79435590a2db2e17bf82618f25d67becb7dd`. Re-composed reviewed built-in image_gen Leo and Milo transparent layers on the exact approved dusk plate at the S05 size anchor; inspected saved 1920x1080 image. Leo mane/torso enlarged consistently; four paws and full tail remain, Milo stays small and separate from the blocking paw. Old result retained as superseded provenance.
+
+- 2026-10-02 `s06_barrier_end` accepted in place: `character/characters/interactions/v4/keyframes/s06_barrier_end_r01.png`, SHA-256 `7a981708b357385374618285a3fc79435590a2db2e17bf82618f25d67becb7dd`. Inspected the saved 1920x1080 image; copied the accepted revised S06 start as a hold because the paw barrier and separation are already visible. Scale and plate remain identical through the pair; old result retained as superseded provenance.
+
+- 2026-10-02 `s08_kindness_start` accepted in place: `character/characters/interactions/v4/keyframes/s08_kindness_start_r01.png`, SHA-256 `7a981708b357385374618285a3fc79435590a2db2e17bf82618f25d67becb7dd`. Inspected saved full frame; reused the reviewed S06 exact-plate low-lying Leo/Milo hold to repair the too-small Leo, keeping cast scale and background identical. Old result retained as superseded provenance.
+
+- 2026-10-02 `s08_kindness_end` accepted in place: `character/characters/interactions/v4/keyframes/s08_kindness_end_r01.png`, SHA-256 `7a981708b357385374618285a3fc79435590a2db2e17bf82618f25d67becb7dd`. Inspected saved full frame; reused the reviewed S06 exact-plate low-lying Leo/Milo hold to repair the too-small Leo, keeping cast scale and background identical. Old result retained as superseded provenance.
+
+- 2026-10-02 `s02_place_acorn_end` transparent-layer attempt rejected (SHA-256 `0a155563e4c948e2086d78a6331703ab6e7f3ba5067ec262d952cc2a10ea84c2`): reviewed alpha/background glow and high-paw pose. Target remains missing; output not reused as reference.

@@ -1,6 +1,6 @@
 # Creation rules: scripts, images and video
 
-Current policy, 2026-09-30, for v4 and future stories. Based on the owner's
+Current policy, updated 2026-10-02, for v4 and future stories. Based on the owner's
 [v3 render notes](reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt).
 The [repair map](../stories/lion_and_mouse_v4/REPAIR_PLAN.md) connects observations
 to these rules. Historical experiments in [prompting.md](prompting.md) remain
@@ -32,8 +32,8 @@ and visual review before downstream use. A completed job is not approval.
 9. Post-process selected material and inspect it again. Upscaling/interpolation
    cannot repair identity, impossible contact or prop causality.
 
-The current task is documentation only. V4 is a draft plan, not authorisation to
-produce media. Preserve v2/v3 inputs and reviews; future assets use v4 paths.
+Preserve earlier-version inputs and reviews. An active production request may
+authorize image work; video and assembly remain separately scoped.
 
 ## CR-02. Freeze one versioned character identity
 
@@ -372,14 +372,16 @@ the reference look. Measured on them (fractions of frame height, 16:9):
 
 | What | Measured | Use as |
 |---|---|---|
-| Milo, ear tips to feet | 0.34–0.36 (ears y≈0.48, feet y≈0.83) | Milo in any wide or medium scene shot |
+| Milo, ear tips to feet | 0.34–0.36 (ears y≈0.48, feet y≈0.83) | Milo in the measured S14 setup and matching closer/solo shots |
 | Leo's mane, top to bottom | ≈0.40 | Milo's whole body ≈ Leo's mane diameter |
 | Milo's head, ear tips to chin | ≈0.14 | Milo's head ≈ Leo's face from brow to chin, a little smaller |
 | Leo lying or crouched, mane top to paws | ≈0.50–0.52 | |
 
-- Milo alone in a wide or medium shot keeps the size he would have if Leo
-  stood in the same place: about 0.30–0.36 of the frame. Never above 0.40
-  unless the shot is a planned close-up. (s08 and s13 r02 had Milo at 0.6–0.75
+- Milo alone in the measured closer/solo wide or medium setup keeps the size
+  he would have if Leo stood in the same place: about 0.30–0.36 of the frame.
+  Other depth planes use their own approved setup anchor (CR-16); for example,
+  S05's small same-depth Milo is about 0.18 of frame height. Never enlarge
+  him solely because Leo is absent. (s08 and s13 r02 had Milo at 0.6–0.75
   of the frame, which the owner rejected.)
 - Write the size into the prompt as frame fractions plus a comparison (CR-13
   rule 4), and pass one of the reference frames above as
@@ -410,8 +412,8 @@ Decide it before writing a prompt; it controls everything else.
 | `framing` | When | Look | Size rule |
 |---|---|---|---|
 | `dialogue_close_up` | One character speaks, listens or reacts alone; the line is about feelings | Head and upper chest centred in 16:9 (ear tips or mane top y≈0.05, chin y≈0.70), facing the camera, the scene's plate strongly blurred behind, nothing in front (except the net when the character is inside it) | Close-up; no size relation needed |
-| `close_two_shot` | A contact action needs both characters readable (nose contact, gnawing) | Both characters, plate softly blurred | CR-14: Milo's body ≈ Leo's mane diameter |
-| `scene_wide` | Arrivals, exits, travel, actions, any shot that shows where we are | Whole bodies on the sharp plate, fixed normal-height camera | CR-14: Milo 0.30–0.36 of frame |
+| `close_two_shot` | A contact action needs both characters readable (nose contact, gnawing) | Both characters, plate softly blurred | Use one shared crop of the approved same-depth pair; preserve the measured actor ratio for that setup |
+| `scene_wide` | Arrivals, exits, travel, actions, any shot that shows where we are | Whole bodies on the sharp plate, fixed normal-height camera | Use the approved setup and depth anchor in CR-16; the CR-14 0.30–0.36 range applies to its measured solo/closer setup |
 | `empty_plate` | Establishing or time-passing shots | Plate only | n/a |
 
 **Recipe for a `dialogue_close_up` (what fixed s07 and S15):**
@@ -464,6 +466,54 @@ camera cut fails review. Prefer a measured bounding-box comparison to broad
 instructions such as “same size.” Do not apply the solo Milo 0.30–0.36 frame
 fraction to a farther-away two-character shot; use the chosen shot's depth
 anchor and Leo-to-Milo anatomical ratio instead.
+
+## CR-17. Reusable setup and acceptance contract for every story
+
+Complete this setup **before the first scene image**, including stories with
+only one character. Save its measurements in the story's visual bible and
+repeat the applicable facts in each individual image prompt. Repetition is
+deliberate: a tool call must be understandable without earlier chat or prompts.
+
+| Freeze first | Record and use for every relevant image |
+|---|---|
+| Character identity | One approved, prop-free neutral root per character; front, side and back when needed; intrinsic colours; head, eyes, brows, nose, muzzle, cheeks, ears or mane, torso, limbs, tail root, material seams and feature counts. List forbidden drift (for example hair, extra limbs, changed nose). |
+| Shared cast scale | A same-depth lineup with neutral standing-equivalent heights and head/mane widths. Store ratios between every pair of characters. Repose or lie down without scaling skulls, manes or limbs. |
+| Location camera | One approved plate per place, camera and light state; image size, crop, lens/framing, horizon, ground plane, light direction and at least three fixed landmarks. Reuse it or derive an explicitly registered close-up. |
+| Shot size and depth | For each scene setup, choose an approved size anchor. Store each actor's normalized head/mane and whole-body box, screen centre, feet/baseline and depth plane in start and end frames. For two or more actors, compare them **in one frame at the same depth** and record their relative scale. |
+| Persistent world state | Prop count, holder, contact, damage, attachment, front/back occlusion, and off-screen location; current state comes from the latest accepted shot, never from an older attractive image. |
+
+Every scene prompt repeats the complete frozen identity of **each visible
+character**, even if the same words appeared in the previous prompt. It also
+states character counts, anatomical counts, the size anchor and measured frame
+fractions, depth, foot/contact positions, plate landmarks, expression parts,
+prop state, and the only allowed change from the accepted parent. A face
+expression reference controls brows, eyes and mouth; it cannot replace the
+canonical head, body or prop state. Prop-bearing images are action references,
+not neutral identity roots.
+
+At review, compare (1) each face and body against its canonical, (2) every
+character against the shared lineup and the setup's previous shot, (3) the
+background against its locked plate, and (4) the pair's start and end at final
+delivery size. Inspect nose/muzzle shape, whiskers, cheek width, eyes, ears,
+seams, mane, all visible paws and tails, ground shadows, scale, occlusion and
+object counts. Review close-ups at full resolution and wide shots both full
+size and delivery size. A pleasing composition does not excuse identity,
+scale or plate drift. A rejected or unreviewed output cannot become a later
+reference.
+
+If a model changes protected geometry, make a focused edit from the approved
+parent, use a reviewed isolated actor/prop layer on the locked plate, or reject
+the take. A request for transparent output is not proof of transparency:
+inspect the actual alpha channel and edges, especially whiskers, ears and
+tail, before any composite. Reject a matte with background gradients, colour
+fringing, clipped parts or leftover objects; never feed that rejected image
+into the next generation call. Record the exact tool, prompt, ordered reference paths and hashes,
+output hash, inspection note and any unresolved defect. A new result is accepted
+only when the actual saved file has been reopened and checked. Maintain one
+active target per manifest record where the owner requests replacement; retain
+earlier provenance in the record instead of accumulating unnecessary active
+`r**` files. Invalidate dependent frames when an upstream identity, plate,
+scale or prop state changes, then repair them in dependency order.
 
 **Never mix framings inside one shot.** Wan animates between the start and
 end frames; a wide start with a close-up end becomes an unwanted zoom.
