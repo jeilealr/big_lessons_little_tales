@@ -191,12 +191,16 @@
     }
   },
   "cast_scale": {
-    "lineup": "Milo is always much smaller than Leo: his whole standing body is shorter than Leo's mane is high and his head with ears is clearly smaller than Leo's face. A pose change never rescales a head, mane or limb.",
-    "measured": {
-      "tree_dusk_wide": "Milo 0.18 of the frame height; Leo's mane 0.38; Milo about half of Leo's mane height",
-      "trap_wide": "Milo 0.35; Leo's mane 0.42, standing Leo 0.68; Milo about half of Leo's standing height"
-    },
-    "open_decision": "The bible rule 'Milo = 1/3 of Leo's standing height' matches the great tree; the trap path (S14) is about 1/2. The owner chooses one ratio; until then every prompt follows its own setup's measured anchor."
+    "rule": "Milo standing = 0.55 of Leo's mane height (about 1:2.4 of Leo's estimated standing height); Milo's head with ears = about 0.4 of Leo's face height. A pose change never rescales a head, mane or limb.",
+    "decided": "owner, 2026-10-02",
+    "anchor_record": "s05_nose_aftermath_start",
+    "measured_on_anchor": "Milo 0.20 of the frame height, Leo's mane 0.36, Leo's face 0.24, Milo's head 0.10",
+    "setups_measured_before": {
+      "tree_dusk_wide": "Milo 0.18, mane 0.38 (0.47)",
+      "trap_wide": "Milo 0.35, mane 0.42 (0.85)",
+      "trap_bite": "Milo 0.76, Leo's face 0.50",
+      "tree_day_wide": "Milo sitting 0.13, mane 0.37"
+    }
   },
   "locations": {
     "stream_afternoon": {
@@ -397,12 +401,13 @@
       "framing": "scene_wide",
       "label": "a wide shot of Leo's great tree at dusk",
       "camera": "Fixed normal-height wide camera at the great tree, 16:9, exactly the framing of the locked plate.",
-      "anchor_record": "s05_paw_contact_end",
+      "anchor_record": "s05_leo_sleeps_end",
       "size": {
         "leo": "Leo lying: his mane spans about x=0.375-0.70 and y=0.30-0.68 (0.38 of the frame height), his face about 0.24 of the frame height, his whole body x=0.36-0.91 with his paws on y=0.73.",
-        "milo": "Milo standing measures 0.18 of the frame height from ear tips (y=0.66) to feet (y=0.845), on the ground in front of Leo, nearer the camera."
+        "milo": "Milo standing measures 0.21 of the frame height from ear tips (y=0.635) to feet (y=0.845), on the ground in front of Leo, nearer the camera."
       },
-      "relation": "Milo's whole standing body is about half the height of Leo's mane, and his head is about one fifth of the height of Leo's face."
+      "relation": "Milo's whole standing body is 0.55 of the height of Leo's mane, and his head with ears is about 0.4 of the height of Leo's face.",
+      "anchor_note": "Leo-only approved frame of this setup: it fixes the camera and Leo's size; Milo's size follows the story lineup (cast_scale), not an older frame."
     },
     "tree_dusk_contact": {
       "location": "tree_dusk",
@@ -414,7 +419,7 @@
         "leo": "Leo lying keeps the wide-shot size: his mane spans about x=0.375-0.70 and y=0.30-0.68.",
         "milo": "Milo standing at Leo's nose measures about 0.20 of the frame height from ear tips (y=0.56) to feet (y=0.76), centred near x=0.49."
       },
-      "relation": "Milo's whole body is about as tall as Leo's eye-to-chin distance."
+      "relation": "Milo's whole standing body is 0.55 of the height of Leo's mane (this frame is the size lineup), and his head with ears is about 0.4 of the height of Leo's face."
     },
     "tree_dusk_leo_closeup": {
       "location": "tree_dusk",
@@ -453,12 +458,13 @@
       "framing": "scene_wide",
       "label": "a wide shot of the trap path in morning light",
       "camera": "Fixed normal-height wide camera on the trap path, 16:9, exactly the framing of the locked plate.",
-      "anchor_record": "s14_opening_start",
+      "anchor_record": "s11_waits_end",
       "size": {
         "leo": "Leo crouching or lying: his mane spans about x=0.465-0.705 and y=0.245-0.665 (0.42 of the frame height), his face about 0.21 of the frame height; standing free, he measures 0.68 of the frame height from mane top (y=0.155) to paws (y=0.835).",
-        "milo": "Milo standing measures 0.35 of the frame height from ear tips (y=0.48) to feet (y=0.83), his head about 0.10 of the frame height."
+        "milo": "Milo standing measures 0.23 of the frame height from ear tips (y=0.60) to feet (y=0.83), his head about 0.11 of the frame height."
       },
-      "relation": "Milo's whole standing body is about as tall as Leo's mane is wide and half of Leo's standing height; his head is about half the height of Leo's face."
+      "relation": "Milo's whole standing body is 0.55 of the height of Leo's mane and about one third of Leo's standing height; his head with ears is about 0.4 of the height of Leo's face.",
+      "anchor_note": "Leo-only approved frame of this setup: it fixes the camera and Leo's size; Milo's size follows the story lineup (cast_scale), not an older frame."
     },
     "trap_leo_closeup": {
       "location": "trap_morning",
@@ -483,10 +489,11 @@
       "camera": "Fixed closer camera at the net, 16:9: one shared crop of the wide trap setup that magnifies Milo, Leo and the net equally; the plate is softly blurred behind them.",
       "anchor_record": "s14_gnaw_fray_start",
       "size": {
-        "milo": "Milo measures about 0.76 of the frame height from ear tips (y=0.12) to feet (y=0.88), centred near x=0.22, his head about 0.25 of the frame height.",
+        "milo": "Milo measures about 0.40 of the frame height from ear tips (y=0.48) to feet (y=0.88), centred near x=0.22, his head about 0.20 of the frame height.",
         "leo": "Leo's face behind the net spans about x=0.55-0.75 and y=0.05-0.55."
       },
-      "relation": "Milo's head with ears is clearly smaller than Leo's face."
+      "relation": "Milo's head with ears is about 0.4 of the height of Leo's face; his whole body is about 0.8 of Leo's face height.",
+      "anchor_note": "The anchor_record keeps this setup's camera and Leo's size; its Milo predates the 2026-10-02 lineup (Milo = 0.55 of Leo's mane height) and is not a size reference for Milo."
     },
     "forest_run": {
       "location": "run_morning",
@@ -506,16 +513,17 @@
       "anchor_record": "s16_friends_start",
       "size": {
         "leo": "Leo lying: his mane spans about x=0.50-0.68 and y=0.40-0.77, his whole body x=0.50-0.89 with his paws near y=0.83.",
-        "milo": "Milo sitting measures about 0.13 of the frame height from ear tips (y=0.70) to the ground (y=0.83), centred near x=0.52."
+        "milo": "Milo sitting measures about 0.16 of the frame height from ear tips (y=0.67) to the ground (y=0.83), centred near x=0.52; standing he would measure 0.20."
       },
-      "relation": "Milo sitting is about one third of the height of Leo's mane."
+      "relation": "Milo standing would be 0.55 of the height of Leo's mane; sitting, he keeps exactly the same head size.",
+      "anchor_note": "The anchor_record keeps this setup's camera and Leo's size; its Milo predates the 2026-10-02 lineup (Milo = 0.55 of Leo's mane height) and is not a size reference for Milo."
     }
   },
   "blocks": {
     "style": "Style: handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities; warm child-friendly palette and soft directional light; clear subject silhouettes; faces and contact points sharply readable.",
     "runtime_style": "Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.",
     "light_and_colour": "Light and colour: every character keeps exactly the colours, saturation and brightness of its canonical image; the scene light may only tint it the same way it tints the background, with the same exposure and contrast as the background. Characters are lit from the same direction as the plate and cast soft contact shadows on its ground, so they sit in the scene rather than on top of it.",
-    "cast_scale": "Relative size: Leo and Milo keep exactly the sizes measured for this camera setup (below). Milo is always much smaller than Leo: his whole standing body is shorter than Leo's mane is high, and his head with ears is clearly smaller than Leo's face. Lying down, crouching or sitting changes a silhouette but never the size of a head, mane, body or limb.",
+    "cast_scale": "Relative size (fixed for the whole story): Milo standing is 0.55 of the height of Leo's mane, and Milo's head with ears is about 0.4 of the height of Leo's face; the measured sizes for this camera setup are stated below. Lying down, crouching or sitting changes a silhouette but never the size of a head, mane, body or limb.",
     "final_check": "Before finishing, check: each visible character appears exactly once, with exactly two eyes and two eyebrows (one above each eye, drawn once), its canonical ears and limbs, whiskers on both sides of the muzzle and exactly one tail attached at its root; no text, letters, labels or watermark anywhere.",
     "edit_end_frame": "This is an edit of the accepted start frame of this shot (the first attached reference): keep its camera, crop, background, light and every character's identity, colours, brightness, size and position exactly; change only what this frame shows below.",
     "edit_reference": "Edit the first attached reference, the approved parent image: keep the character's identity, colours, brightness and proportions exactly; change only the view or pose stated here.",
@@ -555,7 +563,8 @@
     "mouth_design": "mouth design reference ({what}): copy only the mouth opening, the teeth and their size",
     "staging_only": "older-version staging reference ({what}): copy only the composition, camera and staging; every character's look comes from the canonical images",
     "size_anchor": "size anchor ({what}): an approved frame of this same camera setup; every character keeps exactly the size it has there, and takes no pose, expression or prop state from it",
-    "framing": "framing reference ({what}): copy only the shot size, where the head sits in the frame and how strongly the background is blurred; take no character, background, light or expression from it"
+    "framing": "framing reference ({what}): copy only the shot size, where the head sits in the frame and how strongly the background is blurred; take no character, background, light or expression from it",
+    "size_lineup": "the story's size lineup ({what}): copy only the size relation between Leo and Milo, applied at the sizes stated in this prompt; take no camera, background, pose, expression or prop state from it"
   },
   "lint": {
     "allow_phrases": [],

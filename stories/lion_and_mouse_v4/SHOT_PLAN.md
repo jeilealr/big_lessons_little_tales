@@ -4,7 +4,7 @@ Draft chronological coverage plan, not a selected edit. See [repair plan](REPAIR
 
 118 planned image records; 43 coverage shots; 62 video-mode records before seed candidates. None generated or approved (as planned on 2026-09-30).
 
-**Status 2026-10-02:** start and end images exist for every shot below except the missing `s02_place_acorn_end` (images accepted after agent review, under owner review in [IMAGE_REVIEW.md](IMAGE_REVIEW.md); 22 expression studies were added to the manifest). No clip has been rendered or selected. Each record's current `framing` (creation rules CR-15) is shown in IMAGE_REVIEW.md; the "Location / geometry" column below is the 2026-09-30 plan.
+**Status 2026-10-02:** start and end images exist for every shot below except the missing `s02_place_acorn_end` (images accepted after agent review, under owner review; 22 expression studies were added to the manifest). No clip has been rendered or selected. Each record's current `framing` (creation rules CR-15) and camera setup are in [prompts/](prompts/); the "Location / geometry" column below is the 2026-09-30 plan.
 
 [Foundation prompts](prompts/foundation.md): canonicals, views, calibrated poses, mouth designs, empty plates and prop material references.
 

@@ -326,6 +326,10 @@ def lint(manifest, bible):
                 if c not in attached and bible["characters"][c].get("canonical_record") != rid:
                     E(f"{rid}: {c} is visible but its canonical {bible['characters'][c].get('canonical_record')} "
                       f"is not attached")
+        for ref in refs:
+            shown = visible_characters(images[ref["id"]], bible) if ref.get("id") in images else []
+            if ref.get("role") != "staging_only" and set(shown) - set(vis):
+                E(f"{rid}: reference {ref['id']} shows {sorted(set(shown) - set(vis))}, who is not in this frame")
         for c in sorted(attached - set(vis)):
             E(f"{rid}: canonical of {c} attached although {c} is not visible (it may be drawn into the frame)")
         for ref in refs:

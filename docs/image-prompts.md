@@ -31,7 +31,7 @@ a character fact anywhere else.
 | Key | Content |
 |---|---|
 | `characters.<id>` | `name`; `canonical` (path) and `canonical_record` (manifest id); `identity` (full description written from the canonical, with colour hex codes, proportions and feature counts); `sheet` (one-line predicate) and `short` (`"<Name> is <sheet>..."`) for video prompts; `mouth` (approved open-mouth design); `palette` (hex per part), `proportions`, `checklist` (review items), `drift_phrases` (words a prompt may never contain) |
-| `cast_scale` | the size lineup, the measured ratio per setup and the open decision (great tree about 1:3, trap path about 1:2) |
+| `cast_scale` | the story-wide size rule (v4: Milo standing = 0.55 of Leo's mane height, decided 2026-10-02), its lineup frame and the sizes measured before |
 | `locations.<id>` | `description`, `landmarks` (normalised positions), `light`, `plate` (approved empty plate), `ambient` (video motion) |
 | `setups.<id>` | one camera setup: `location`, `framing` (CR-15), `label`, `camera`, optional `background_treatment` (e.g. the strong blur of a close-up), `size` (`{<char>: sentence}`, measured frame fractions on the anchor; only the characters in a frame are rendered), `relation` (comparison sentence, rendered when two characters share the frame), `anchor_record` (the approved frame the sizes were measured on; attached to every start frame as its size anchor) |
 | `blocks.<name>` | shared text: `style`, `light_and_colour`, `cast_scale`, `final_check`, edit instructions, studio and plate rules, prop and world-state rules |
@@ -117,10 +117,9 @@ from `show` or `prompts/*.md` and attach the listed references in that order), o
 `character/gemini_image.py`, which sends exactly the rendered `positive_prompt` with the
 references in their recorded order, appends nothing, and refuses to run while lint has errors.
 
-## Open decisions recorded in the bible
+## Decisions recorded in the bible
 
-- **Leo-to-Milo ratio.** The great-tree frames show Milo about half of Leo's mane height
-  (about 1:3 of Leo's standing height); the trap-path frames about 1:2. Each prompt follows its
-  own setup's measured anchor until the owner picks one ratio.
-- `s13_arrives` shows Milo at 0.21 of the frame on the same trap camera where its setup says 0.35;
-  the prompt states the setup size, so a regenerated frame will differ from the accepted one.
+- **Leo-to-Milo ratio (decided 2026-10-02).** Milo standing = 0.55 of Leo's mane height, Milo's
+  head about 0.4 of Leo's face height, as in `s05_nose_aftermath_start`. Setups whose old anchor
+  shows another ratio keep that anchor for camera and Leo only (`anchor_note`); frames with both
+  characters attach the lineup frame (role `size_lineup`).

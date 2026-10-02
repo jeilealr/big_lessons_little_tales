@@ -4,7 +4,7 @@ V4 record contract (written 2026-09-30; status updated 2026-10-02). Read
 [creation-rules.md](creation-rules.md) first. The rendering tools (`shot.py`,
 `keyframe.py`, `compose_keyframes.py`, `animatic.py`) do not read or enforce
 this schema; `character/gemini_image.py` reads the image records and writes
-their results, and `production/image_review_md.py` and
+their results, and `production/image_prompts.py` (templates, lint) and
 `production/timing_sheet.py` read the manifest.
 
 ## Where the exact prompt lives

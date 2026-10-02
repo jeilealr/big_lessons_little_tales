@@ -13,7 +13,7 @@ ElevenLabs; the final mix is done in DaVinci Resolve.
 
 Current work: **The Lion and the Mouse, v4: still images under owner review**
 (status 2026-10-02). Start with the [v4 review packet](stories/lion_and_mouse_v4/README.md)
-and the [image review](stories/lion_and_mouse_v4/IMAGE_REVIEW.md).
+and its [readable prompts](stories/lion_and_mouse_v4/prompts/).
 V3 has been rendered and reviewed by the owner; v2/v3 remain historical inputs.
 V4 stills were made from 2026-09-30 to 2026-10-02 with GPT's built-in image
 tool and the Gemini API (139 of 140 image records accepted, one missing); the
@@ -105,7 +105,7 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 | I want to... | Read |
 |---|---|
 | **review the next iteration** | **[V4 packet](stories/lion_and_mouse_v4/README.md)**: status, open issues, owner observations, proposed sequence and complete prompts |
-| **review the v4 images** | **[Image review](stories/lion_and_mouse_v4/IMAGE_REVIEW.md)**: every image with a keep column, plus the shot order |
+| **make or remake a v4 image** | **[Readable prompts](stories/lion_and_mouse_v4/prompts/)**: every image's exact prompt and references; `python3 production/image_prompts.py show <record>` |
 | make v4 still images with the Gemini API | [docs/gemini-images.md](docs/gemini-images.md): workflow, model choice, cost, lessons |
 | preserve exact prompts and references | [Prompt records](docs/prompt-records.md) |
 | approve images and prepare clip jobs | [V4 preflight](docs/v4-preflight.md): manual gates and current tooling gaps |
@@ -151,7 +151,7 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 ## All docs
 
 - [V4 review packet](stories/lion_and_mouse_v4/README.md): start here for the fourth iteration
-- [V4 image review](stories/lion_and_mouse_v4/IMAGE_REVIEW.md): every v4 image, with a keep column
+- [V4 prompts](stories/lion_and_mouse_v4/prompts/): every v4 image and video prompt, rendered from the bible
 - [Prompt records](docs/prompt-records.md): exact text, references, revisions and execution provenance
 - [V4 preflight](docs/v4-preflight.md): image, pair, clip and assembly gates
 - [Gemini images](docs/gemini-images.md): making v4 stills with the Gemini API

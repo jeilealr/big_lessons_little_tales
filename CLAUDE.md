@@ -42,7 +42,8 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   rejected). The `s02_place_acorn_end_r01.png` still on disk is the
   owner-rejected r01: never use it as a reference. "Accepted" means an agent's
   visual review, not owner approval: 63 records still read
-  `accepted_pending_owner_review`. The owner's verdicts go in `IMAGE_REVIEW.md`.
+  `accepted_pending_owner_review`; the owner reviews them directly (`IMAGE_REVIEW.md`
+  was deleted on 2026-10-02).
   Record revisions: r01 94, r02 30, r04 10, r05 6 (r03 was superseded).
   Superseded files were pruned; each record keeps their provenance under
   `superseded`. Tools: GPT's built-in image tool for r01 and the in-place
@@ -53,10 +54,10 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   end; S13 Milo framing and size (`s13_milo_confident_*`/`s13_milo_playful_*`
   are `dialogue_close_up` records whose r04 images are wide two-shots with
   Milo about 0.35 of the frame high, while `s13_arrives_*` shows him at about
-  0.25 with the same camera and baseline); and the Leo-to-Milo ratio, which
-  differs between the S05 great-tree anchor (Milo about 0.18 of the frame)
-  and the S14 trap-path look (0.34-0.36) although Leo's mane is about 0.4 high
-  in both. Details: "Open issues" in `stories/lion_and_mouse_v4/README.md`.
+  0.25 with the same camera and baseline); the Leo-to-Milo ratio was **decided on
+  2026-10-02: Milo standing = 0.55 of Leo's mane height** (bible `cast_scale`,
+  lineup frame `s05_nose_aftermath_start`); the S13/S14 trap frames, S14 gnaw
+  shots, S05/S06/S08 wides and S16 no longer match it. Details: "Open issues" in `stories/lion_and_mouse_v4/README.md`.
 - **Video and audio:** no v4 clips, take selections, runtime `story.yaml` or
   GPU task files exist. The English narration was rendered on 2026-10-02 (see
   Voices); `TIMING_SHEET.md` maps its lines to 42 of the 43 coverage shots
@@ -80,16 +81,20 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
 - **Before any new image** (whoever makes it): read `docs/creation-rules.md`
   from CR-11 on. CR-13: whole bodies, side-by-side identity gate, edit an
   approved same-setup frame instead of regenerating a character, scale as
-  frame fractions, V3 images staging-only, continuity cascades. CR-14 and
-  CR-16: size from the setup's own approved anchor (S05 great tree: Milo about
-  0.18 of the frame; S14 trap path: 0.34-0.36), never one number for all wide
-  shots; dialogue close-ups in the `s15_leo_reflects` format with faces from
+  frame fractions, V3 images staging-only, continuity cascades. CR-14,
+  CR-16 and CR-18: sizes as frame fractions from the bible's `setups`, with one
+  story-wide lineup (Milo = 0.55 of Leo's mane height); dialogue close-ups in the `s15_leo_reflects` format with faces from
   `character/characters/<Name>/v4/expressions/`. CR-15: every scene record has
   `framing` (`dialogue_close_up` / `close_two_shot` / `scene_wide` /
   `empty_plate`); follow its close-up recipe. CR-17: freeze the setup first,
   repeat the full identity in every prompt, review against canonical, lineup,
   previous shot and plate.
-- **Next:** the owner reviews and replaces images (`IMAGE_REVIEW.md`); when
+- **V5 images (owner, from 2026-10-02):** the owner makes a second still
+  iteration by hand. Folders mirror v4: `character/characters/{Leo,Milo}/v5/`
+  (canonical, references, expressions), `character/characters/interactions/v5/keyframes/`,
+  `character/locations/v5/<place>/`; each v5 root has a README with the file name for
+  every record (same stem as v4, `_r01`). Prompts are still the v4 records.
+- **Next:** the owner reviews and replaces images (prompts in `prompts/*.md`); when
   the owner asks, derive the runtime story and render a small clip pilot
   (`docs/v4-preflight.md` gates C-E).
 
@@ -152,7 +157,6 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
 |---|---|
 | **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
 | **Writing or changing any image/video prompt; starting a new story's characters and places** | **`.claude/skills/consistent-image-prompts/SKILL.md`** (repo skill), `docs/image-prompts.md`, `production/image_prompts.py` (`build`, `lint` must be 0 errors, `show`, `md`, `review`, `new-story`); CR-18 |
-| **Owner image review (yes/no keep per image file, shot-order diagram)** | `stories/lion_and_mouse_v4/IMAGE_REVIEW.md` (rebuild: `python3 production/image_review_md.py`) |
 | V4 packet: status, open issues, script, shot order, repair plan, readable prompts | `stories/lion_and_mouse_v4/README.md`, `SCRIPT_REVIEW.md`, `SHOT_PLAN.md`, `REPAIR_PLAN.md`, `prompts/*.md` |
 | V4 identity, camera setups, size anchors; every image/video record with each image's accepted result | `stories/lion_and_mouse_v4/visual_bible.json`, `prompt_manifest.json` |
 | V4 image history: accepted and rejected takes, hashes, tools, fix texts, Gemini calls | `stories/lion_and_mouse_v4/GENERATION_PROGRESS.md` (dated log), `revisions/*.json`, `revisions/gemini_ledger.csv` |
@@ -180,7 +184,7 @@ stories/<slug>/     story.yaml (bible, voices, scenes, shots), story.txt, narrat
                     v4 instead: visual_bible.json, prompt_manifest.json, dialogue_coverage.json,
                     prompts/, revisions/ (no story.yaml yet)
 production/         install_pack, design, keyframe, compose_keyframes, shot, animatic, image_prompts,
-                    timing_sheet, image_review_md, edit_image (Qwen, untested)
+                    timing_sheet, edit_image (Qwen, untested)
 character/          character.py (pose clips), gemini_image.py (v4 stills, Gemini API);
                     characters/ (packs v2-v4, interactions/), locations/ (plates; v4 in locations/v4/)
 voice/              Gemini TTS tools; cast/<role>/ and narrators/<name>/ (voice.yaml + samples)

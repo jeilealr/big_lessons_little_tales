@@ -1,6 +1,6 @@
 # The Lion and the Mouse — v4 review packet
 
-**Image review:** [`IMAGE_REVIEW.md`](IMAGE_REVIEW.md) lists every v4 image file (all revisions) with a yes/no Keep column, plus a diagram of the shot order and framing (rebuild with `python3 production/image_review_md.py`).
+**Prompts for making or remaking any image:** [`prompts/*.md`](prompts/) or `python3 production/image_prompts.py show <record>` (the exact prompt and the references to attach, in order).
 
 ## Status (2026-10-02)
 
@@ -11,8 +11,8 @@
   later in-place repairs) and the Gemini API (r02 to r05); every accepted and
   rejected take is in [generation progress](GENERATION_PROGRESS.md) and the
   records' `result` fields. "Accepted" is an agent's visual review: 63 records
-  still read `accepted_pending_owner_review`, and the owner's verdicts are
-  collected in [IMAGE_REVIEW.md](IMAGE_REVIEW.md).
+  still read `accepted_pending_owner_review` (the owner's review sheet
+  `IMAGE_REVIEW.md` was retired on 2026-10-02).
 - **The owner now creates new images personally** (instruction of 2026-10-02);
   agents generate nothing unless asked. The "Resume order" in
   [generation progress](GENERATION_PROGRESS.md) is part of that dated log, not
@@ -33,12 +33,14 @@
    (setup `trap_wide`, Leo counted). The preceding `s13_arrives_*` shows Milo at 0.21 with the same
    camera: a size jump without a depth move (CR-16). The prompts state the setup size (0.35), so a
    regenerated `s13_arrives` would match S13/S14; owner to decide whether to redo it.
-3. **Leo-to-Milo ratio differs between the two owner-chosen anchors** (scale audit 2026-10-02).
-   Great tree (S05/S06/S08/S16): Leo's mane 0.38 of the frame high, Milo 0.18, about half the mane
-   (one third of Leo's standing height, CR-02). Trap path (S14 look, CR-14): mane 0.42, Milo 0.35,
-   standing Leo 0.68 (one half). Each prompt follows its own setup's anchor (bible `setups`);
-   owner to pick one ratio. Keeping 1:3 needs Milo about 0.23 on the trap path; keeping 1:2
-   needs Milo about 0.33 at the great tree.
+3. **Leo-to-Milo ratio: decided 2026-10-02 (owner).** Milo standing = **0.55 of Leo's mane
+   height** (Milo's head with ears about 0.4 of Leo's face height), as in
+   `s05_nose_aftermath_start` (Milo 0.20 of the frame, Leo's mane 0.36). The bible
+   (`cast_scale`, `blocks.cast_scale`, `setups`) and all prompts follow it; frames with both
+   characters attach that frame as the size lineup. **Accepted images that no longer match**
+   (remake when convenient): every S13/S14 trap-path wide frame (Milo 0.33-0.36, now 0.23), the
+   S14 gnaw/sever two-shots (Milo 0.76, now 0.40), S05 paw contact, S06 barrier and S08 kindness
+   (Milo 0.18, now 0.21; within about 15%) and S16 friends (Milo sitting 0.13, now 0.16).
 4. **S06 barrier and S08 kindness share one image.** Since the 2026-10-02
    repair all four endpoints (`s06_barrier_*`, `s08_kindness_*`) are the same
    byte-identical composite, so both shots are holds. The shot records plan
@@ -58,9 +60,8 @@
    - `s14_milo_clear` and later frames show several broken strands where only R01 was cut; the
      prompts keep the planned single cut.
    - `s12_runs` leaves frame left and `s13_arrives` enters from the left (screen direction).
-6. **Bookkeeping.** `IMAGE_REVIEW.md` still embeds the deleted `s02_place_acorn_end_r02.png`;
-   `production/image_review_md.py` now refuses to overwrite the owner's per-shot layout without
-   `--force`, so update it by hand or decide which layout to keep. `dialogue_coverage.json` keeps
+6. **Bookkeeping.** `IMAGE_REVIEW.md` and its generator were deleted (owner, 2026-10-02).
+   `dialogue_coverage.json` keeps
    `status: draft_no_audio_or_edit_created`. The manifest's top-level revision and every
    record's `bible_revision` now read `v4-consistency-2026-10-02`.
 
@@ -97,7 +98,7 @@ guarantees a correct render.
 | [Scene prompts](SHOT_PLAN.md) | full positive and negative text for every planned start/end and video mode, references and acceptance checks |
 | [dialogue_coverage.json](dialogue_coverage.json) | complete draft spoken text, scene/speaker IDs and candidate coverage; the line list the narration was rendered from (its timing fields are still empty; see [TIMING_SHEET.md](TIMING_SHEET.md)) |
 | [Original owner notes](../../docs/reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt) | verbatim copy of `work/shots/notes.txt`, including its ambiguities |
-| [IMAGE_REVIEW.md](IMAGE_REVIEW.md), [GENERATION_PROGRESS.md](GENERATION_PROGRESS.md), `revisions/` | added during image creation: the owner's keep/redo sheet, the dated log of accepted and rejected takes, the fix texts used for the Gemini passes r02 to r05 and `gemini_ledger.csv` (every Gemini call) |
+| [GENERATION_PROGRESS.md](GENERATION_PROGRESS.md), `revisions/` | added during image creation: the dated log of accepted and rejected takes, the fix texts used for the Gemini passes r02 to r05 and `gemini_ledger.csv` (every Gemini call) |
 
 The manifest is the authoritative planning record; Markdown prompts are readable
 snapshots of the same full text. Video records also include compact runtime
@@ -159,8 +160,7 @@ were inspected to ground the identity and pipeline rules.
 ## Documentation checks completed
 
 2026-10-02 audit: every Markdown link and image embed in the docs, this packet
-and `CLAUDE.md` resolves; the only broken embed found is the deleted
-`s02_place_acorn_end_r02.png` in `IMAGE_REVIEW.md` (open issue 5). Every
+and `CLAUDE.md` resolves (the one broken embed, in the since-deleted `IMAGE_REVIEW.md`, is gone). Every
 manifest output path exists except that record's.
 
 2026-09-30: the JSON records parse; image IDs and target paths are unique; reference

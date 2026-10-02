@@ -6,8 +6,7 @@ No new validator or rendering behaviour was installed by this documentation pass
 
 **Status (2026-10-02).** Foundation and scene stills now exist: 139 of the 140
 manifest image records are accepted after agent visual review (one,
-`s02_place_acorn_end`, is missing), and the owner's review is ongoing in
-`stories/lion_and_mouse_v4/IMAGE_REVIEW.md`. The boxes below are a template
+`s02_place_acorn_end`, is missing), and the owner's review is ongoing. The boxes below are a template
 and have not been formally ticked. Since 2026-10-02 `visual_bible.json` holds measured
 character proportions, plate landmarks and per-setup sizes with anchor records, and
 `production/image_prompts.py lint` checks the prompt items; the owner has not yet ticked

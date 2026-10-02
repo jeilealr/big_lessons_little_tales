@@ -578,3 +578,9 @@ placeholders and add only frame-specific words: pose, position, expression, acti
 
 Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
 `.claude/skills/consistent-image-prompts/SKILL.md`.
+
+**Decision (owner, 2026-10-02): one Leo-to-Milo lineup for the whole story.** Milo standing is
+0.55 of Leo's mane height and his head with ears about 0.4 of Leo's face height, as in
+`s05_nose_aftermath_start` (Milo 0.20 of the frame, mane 0.36). This replaces the per-setup
+ratios of CR-14 and CR-16 (great tree about 0.47, trap path about 0.85): sizes still come from each
+setup, but every setup now applies this one ratio (`visual_bible.json` `cast_scale`).

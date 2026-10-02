@@ -127,8 +127,7 @@ are `accepted` with their file on disk; `s02_place_acorn_end` is
 `missing_after_owner_review` (the owner deleted its r02 and later attempts
 were rejected; the `s02_place_acorn_end_r01.png` left on disk is the rejected
 r01). Record revisions: r01 94, r02 30, r04 10, r05 6. 63 records still read
-`accepted_pending_owner_review`; the owner's verdicts are collected in
-`stories/lion_and_mouse_v4/IMAGE_REVIEW.md`.
+`accepted_pending_owner_review`; the owner reviews them directly.
 
 **After r03 (history, earlier on 2026-10-02):** all 118 image records in the
 manifest were `accepted` (74 at r01 from GPT, 40 at r02 and 4 at r03 from

@@ -134,8 +134,7 @@ delivery size:
    eyes and two brows each; one tail each; no text.
 
 Record the result in the manifest (tool, model, the references actually sent with their
-hashes, the prompt actually sent, output hash, review note), rebuild `IMAGE_REVIEW.md`
-(`python3 production/image_review_md.py`), and if an identity, plate, size or prop state changed
+hashes, the prompt actually sent, output hash, review note), and if an identity, plate, size or prop state changed
 upstream, mark dependent frames stale and redo them in story order.
 
 ## E. Pitfalls already paid for
