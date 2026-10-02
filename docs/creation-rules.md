@@ -261,3 +261,57 @@ shot names, or explicitly rebuild affected files. Do not trust stale caches.
 Documentation states: `draft`, `needs_reference`, `ready_for_image_review`,
 `approved_image`, `ready_for_pair_review`, `approved_pair`, `render_candidate`,
 `owner_selected`, `rejected`, `stale`. Current scripts do not enforce these gates.
+
+## CR-11. Anatomy readability and prop layers
+
+Keep identity references prop-free. Acorns, nets and other story objects belong
+to separate prop references and scene passes; an action-pose guide may show a
+character's hands or mouth contacting an object, but must not replace the
+character's canonical anatomy reference. For a held object, preserve a clean
+grip pose and composite the approved prop at the contact point so the fingers
+or paws visibly meet it.
+
+A prop that crosses a character in depth remains one continuous world object.
+For compositing, derive front and rear occlusion masks from that same approved
+prop source; do not redraw it as multiple objects or change its mesh, count,
+scale, knots or state. In particular, an intact net over Leo may have strands
+behind his body and strands in front, with a continuous path through the
+occlusion. Preserve all broken ends and the net's state across cuts.
+
+For Milo, the pale belly ends above the crotch. Keep a visible taupe-grey gap
+between the two slim legs from the crotch down; do not let the cream belly form
+a white bridge or wedge between them. Keep both legs distinct and planted, with
+the feet separated enough to read clearly. Retain his approved slim waist,
+softly rounded cheeks, fine visible whiskers on both sides, smooth crown,
+brown eyes, two large ears and one attached tail. Do not compensate for a
+cropped or incomplete body by stretching or enlarging the head.
+
+For full-body or medium shots, state the complete visible anatomy in the prompt:
+Milo's crown through both feet and entire tail; Leo's full mane, torso, four
+paws and tail. Keep a margin around ears, mane, paws and tail. Place solo
+characters at the established lower-centre/screen position unless the approved
+shot plan specifies otherwise. Close portraits are intentional only when the
+shot plan calls for a face crop; preserve a complete body in all other shots.
+When using a composited character pass, match contact shadows, edge softness,
+light direction, depth blur and ground contact to the locked plate so the
+character does not read as a pasted cutout.
+
+Before accepting an image, inspect leg separation, whiskers, cheek volume,
+whole-body visibility and character-to-plate integration at full resolution
+and at delivery size. Reject any white belly bridge between Milo's legs, missing
+whiskers, visibly clipped anatomy, floating feet, hard cutout edges, or altered
+plate landmarks.
+
+## CR-12. Expression references and face seams
+
+Keep expression references as clean, prop-free face or head studies with the
+canonical skull, muzzle, cheek width, ear spacing, eye spacing and whiskers.
+Use them to guide only the eyes, brows and mouth in a scene. Anchor every scene
+to an approved full-body character and the locked plate; a face study alone
+must never supply an entire scene actor or replace the torso, paws or tail.
+
+Milo and Leo may retain their subtle central felt stitching, but it should
+read as a material seam, not a dark line cutting across the face. In close
+shots, keep the seam low contrast and consistent with the canonical reference.
+Inspect the forehead, muzzle and silhouette at delivery size for a strong
+or misaligned seam before acceptance.
