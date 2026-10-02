@@ -3,22 +3,95 @@
 Read this first. It is the durable memory of the project: what it is for, how
 to run things on LUMI without repeating past failures, and where the knowledge
 lives. Keep it current: when you learn something that would have saved you
-time, add it here or to the doc it belongs in.
+time, add it here or to the doc it belongs in. Order: current state and
+standing rules first, reusable guidance next, dated history at the end (where
+history and the sections above differ, the sections above win).
 
 ## What this repo is
 
 **Big Lessons, Little Tales**: felt-animal fables for children, each with a
 kind message, for the monetised YouTube channel of the same name (Made for
-kids). Pictures: open video models (Wan 2.2) on the LUMI supercomputer.
+kids). Pictures: open video models (Wan 2.2) on the LUMI supercomputer animate
+approved still images; the v4 stills were made with GPT's built-in image tool
+and the Gemini API (2026-09-30 to 2026-10-02) and are now made by the owner.
 Narration and character voices: Gemini 3.8 Flash TTS (`voice/`). Music and
 sound effects: ElevenLabs (owner, paid plan). Final mix: DaVinci Resolve
 (owner).
 
-Repo: `/scratch/project_465002727/jelealro/big_lessons_little_tales`
+Repo: `/scratch/project_465002727/jelealro/big_lessons_little_tales` on LUMI
 (renamed from `twc_video` on 2026-09-27; GitHub
-`jeilealr/big_lessons_little_tales`, private). Current story: **The Lion and
-the Mouse, v4 image creation and owner review** (`stories/lion_and_mouse_v4/`).
-V3 render review is evidence for this revision; v2/v3 production data is historical.
+`jeilealr/big_lessons_little_tales`, private). Cloud sessions check the same
+repo out elsewhere (e.g. `/home/user/big_lessons_little_tales`) without
+`work/`, the LUMI venvs or Slurm. Current story: **The Lion and the Mouse, v4:
+stills made and under owner review, no clips yet** (`stories/lion_and_mouse_v4/`).
+V3 render review is the evidence for this revision; v2/v3 production data is historical.
+
+## Current state (2026-10-02)
+
+- **Owner's current instruction (latest, 2026-10-02):** the owner creates the
+  v4 images personally. Agents generate no images, clips, audio or GPU jobs
+  unless the owner asks for it in that session; audits, documentation and code
+  work continue. Superseded task statements are listed under the standing
+  instructions below.
+- **V4 stills** (counted from `stories/lion_and_mouse_v4/prompt_manifest.json`):
+  140 image records, the 118 planned ones (32 foundation: 2 canonicals,
+  18 references, 10 plates, 2 props; 86 scene start/end frames) plus 22
+  expression studies (`M_EXPR_*`/`L_EXPR_*`, 11 per character). 139 are
+  `accepted` and on disk; `s02_place_acorn_end` is
+  `missing_after_owner_review` (the owner deleted its r02; later attempts were
+  rejected). The `s02_place_acorn_end_r01.png` still on disk is the
+  owner-rejected r01: never use it as a reference. "Accepted" means an agent's
+  visual review, not owner approval: 63 records still read
+  `accepted_pending_owner_review`. The owner's verdicts go in `IMAGE_REVIEW.md`.
+  Record revisions: r01 94, r02 30, r04 10, r05 6 (r03 was superseded).
+  Superseded files were pruned; each record keeps their provenance under
+  `superseded`. Tools: GPT's built-in image tool for r01 and the in-place
+  repairs after r05; the Gemini API (`character/gemini_image.py`) for r02 to
+  r05 and the expressions (214 images, about $13.9 estimated, in
+  `revisions/gemini_ledger.csv`).
+- **Open image issues** (2026-10-02 audit; owner decisions): the missing S02
+  end; S13 Milo framing and size (`s13_milo_confident_*`/`s13_milo_playful_*`
+  are `dialogue_close_up` records whose r04 images are wide two-shots with
+  Milo about 0.35 of the frame high, while `s13_arrives_*` shows him at about
+  0.25 with the same camera and baseline); and the Leo-to-Milo ratio, which
+  differs between the S05 great-tree anchor (Milo about 0.18 of the frame)
+  and the S14 trap-path look (0.34-0.36) although Leo's mane is about 0.4 high
+  in both. Details: "Open issues" in `stories/lion_and_mouse_v4/README.md`.
+- **Video and audio:** no v4 clips, take selections, runtime `story.yaml` or
+  GPU task files exist. The English narration was rendered on 2026-10-02 (see
+  Voices); `TIMING_SHEET.md` maps its lines to 42 of the 43 coverage shots
+  (`s02_place_acorn` is unused there).
+- **Still true from the documentation phase:** no render tool
+  (`production/shot.py`, `keyframe.py`, `compose_keyframes.py`, `animatic.py`)
+  reads `visual_bible.json` or `prompt_manifest.json` (checked 2026-10-02);
+  their gates are manual. The known tool gaps (bbox-based pose sizing, stale
+  caches, additive negatives, fast-take continuation, animatic fallback) are
+  listed in `docs/v4-preflight.md` as read on 2026-09-30; re-check the current
+  code before relying on them. Do not mistake planned paths or checked historical
+  file lists for approval. Preserve v3 inputs/results. Prompts reduce
+  ambiguity; only inspection of actual outputs can establish that a defect is
+  fixed. `GENERATION_PROGRESS.md` is a dated log: its "Resume order" and
+  "continue with the next record" lines predate the current instruction.
+- **Prompts are templates (2026-10-02, CR-18):** every v4 prompt is rendered from
+  `visual_bible.json` (canonical identities with hex colours, measured setup sizes with
+  anchors, plates, shared blocks) by `production/image_prompts.py`; `lint` reports 0
+  errors. Edit the bible or a record's template, never a rendered prompt; `revisions/*.json`
+  are history. Each prompt names its attached references and their roles.
+- **Before any new image** (whoever makes it): read `docs/creation-rules.md`
+  from CR-11 on. CR-13: whole bodies, side-by-side identity gate, edit an
+  approved same-setup frame instead of regenerating a character, scale as
+  frame fractions, V3 images staging-only, continuity cascades. CR-14 and
+  CR-16: size from the setup's own approved anchor (S05 great tree: Milo about
+  0.18 of the frame; S14 trap path: 0.34-0.36), never one number for all wide
+  shots; dialogue close-ups in the `s15_leo_reflects` format with faces from
+  `character/characters/<Name>/v4/expressions/`. CR-15: every scene record has
+  `framing` (`dialogue_close_up` / `close_two_shot` / `scene_wide` /
+  `empty_plate`); follow its close-up recipe. CR-17: freeze the setup first,
+  repeat the full identity in every prompt, review against canonical, lineup,
+  previous shot and plate.
+- **Next:** the owner reviews and replaces images (`IMAGE_REVIEW.md`); when
+  the owner asks, derive the runtime story and render a small clip pilot
+  (`docs/v4-preflight.md` gates C-E).
 
 ## The owner's standing instructions
 
@@ -31,13 +104,20 @@ V3 render review is evidence for this revision; v2/v3 production data is histori
   MusicGen (CC-BY-NC), Stable Audio Open (revenue cap), RMBG 1.4/2.0
   (non-commercial); ElevenLabs-voice clones (third-party voices).
 - **Git: the owner does all git** (add, commit, push). Agents do not run git
-  commands unless asked (owner, 2026-09-27). Leave the tree ready for
+  commands unless the owner explicitly asks in that session (owner,
+  2026-09-27). Such a request covers that one commit or push; it does not
+  change this rule. Leave the tree ready for
   `git add . && git commit && git push`.
-- Current owner task (2026-10-02): finish and repair v4 still images under the
-  manifest, using the built-in image generation tool. Preserve v3 assets; do
-  not create clips, runtime YAML, animatics, audio or GPU jobs. The owner
-  pruned disliked v4 frames and requested replacement at active manifest
-  targets without accumulating unnecessary revisions.
+- **Owner task, current (2026-10-02):** the owner creates v4 images personally;
+  agents do not generate images, clips, audio or GPU jobs unless asked (see
+  "Current state"). Superseded, kept for history: the 2026-09-30 task
+  (documentation first for v4, no images, video or audio; read the complete v3
+  notes and v4 repair plan; owner reviews script/shot sequence before the next
+  images) and the earlier 2026-10-02 task (finish and repair v4 still images
+  under the manifest with the built-in image generation tool; preserve v3
+  assets; no clips, runtime YAML, animatics, audio or GPU jobs; replace pruned
+  frames at the active manifest target without accumulating revisions, now
+  CR-17). Both were carried out (r01 to r05).
 - Milo's v4 crown has no separate top tuft. The old smaller-tuft fixes and v3
   sheet are superseded for v4. All derivatives must follow the approved new
   canonical, with brown eyes and slender proportions; Leo retains the full
@@ -71,33 +151,42 @@ V3 render review is evidence for this revision; v2/v3 production data is histori
 | Need | Read |
 |---|---|
 | **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
+| **Writing or changing any image/video prompt; starting a new story's characters and places** | **`.claude/skills/consistent-image-prompts/SKILL.md`** (repo skill), `docs/image-prompts.md`, `production/image_prompts.py` (`build`, `lint` must be 0 errors, `show`, `md`, `review`, `new-story`); CR-18 |
 | **Owner image review (yes/no keep per image file, shot-order diagram)** | `stories/lion_and_mouse_v4/IMAGE_REVIEW.md` (rebuild: `python3 production/image_review_md.py`) |
-| V4 documentation, script review and individual prompts | `stories/lion_and_mouse_v4/README.md`, `SHOT_PLAN.md`, `REPAIR_PLAN.md` |
+| V4 packet: status, open issues, script, shot order, repair plan, readable prompts | `stories/lion_and_mouse_v4/README.md`, `SCRIPT_REVIEW.md`, `SHOT_PLAN.md`, `REPAIR_PLAN.md`, `prompts/*.md` |
+| V4 identity, camera setups, size anchors; every image/video record with each image's accepted result | `stories/lion_and_mouse_v4/visual_bible.json`, `prompt_manifest.json` |
+| V4 image history: accepted and rejected takes, hashes, tools, fix texts, Gemini calls | `stories/lion_and_mouse_v4/GENERATION_PROGRESS.md` (dated log), `revisions/*.json`, `revisions/gemini_ledger.csv` |
 | Prompt provenance and review gates | `docs/prompt-records.md`, `docs/v4-preflight.md` |
+| **Making v4 stills with the Gemini API**: workflow, model choice, cost, lessons | **`docs/gemini-images.md`**, `character/gemini_image.py` |
+| V4 narration timing: which shot covers which line | `stories/lion_and_mouse_v4/TIMING_SHEET.md`, `timing_plan.json` (audio on LUMI under `work/`) |
 | Writing any shot prompt, with evidence | `docs/prompting.md`: every measured rule, a checklist, results log |
 | Every problem found and its fix; gaps and risks | **`docs/findings-and-risks.md`** |
 | The whole pipeline, story to shots | `docs/production-guide.md` |
 | Voices (Gemini TTS) | **`voice/README.md`** |
-| **Making v4 stills (Gemini, replaces GPT)**: workflow, model choice, cost, lessons | **`docs/gemini-images.md`**, `character/gemini_image.py`, fixes in `stories/lion_and_mouse_v4/revisions/` |
 | LUMI jobs, times, solved gotchas | `docs/lumi.md` |
 | Licences and service terms | `docs/licensing.md`, `docs/google_gemini_terms_question.md` |
 | Where code came from | `docs/provenance.md` |
-| Story facts and runtime export | V4 draft bible/manifest are the planning authority; later derive `story.yaml` for existing tools. V2/v3 YAML remains historical. |
-| The owner's story text | `stories/<slug>/story.txt`; narration per language `stories/<slug>/narration/<lang>.yaml` |
+| Story facts and runtime export | V4: the bible and manifest above are the authority; a runtime `story.yaml` is derived from them later. V2/v3 `story.yaml` remain historical. |
+| The owner's story text | v4: `stories/lion_and_mouse_v4/SCRIPT_REVIEW.md` and its line list `dialogue_coverage.json`; v3: `stories/lion_and_mouse_v3/script_dialog_en.txt`; v2: `stories/lion_and_mouse_v2/story.txt`, narration per language `narration/<lang>.yaml` |
+| V4 character, scene and location images | `character/characters/<Name>/v4/` (canonical, references, expressions); `character/characters/interactions/v4/keyframes/` (scene start/end frames); `character/locations/v4/` (plates, props) |
 | Historical character packs (not v4 approval) | `character/characters/<Name>/v3/` (v2 kept for the v2 story), prompts in `character/characters/*.md`. v3 file names have no `_01` suffix (renamed 2026-09-29, `.png.png` fixed too); extra takes get `_02`, `_03` |
-| Location DNA and plates (v3) | `stories/lion_and_mouse_v3/locations_dna.yaml`; plates in `character/locations/<id>/` |
-| Owner's verdicts on renders | `stories/<slug>/owner_review.yaml` |
+| Location DNA and plates (v3) | `stories/lion_and_mouse_v3/locations_dna.yaml`; plates in `character/locations/<id>/` (v4 locations: `visual_bible.json` `locations`) |
+| Owner's verdicts on renders | v2: `stories/lion_and_mouse_v2/owner_review.yaml`; v3: `docs/reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt` (and `stories/lion_and_mouse_v3/RENDER_REVIEW.md`) |
 
 ## Layout and paths
 
 ```
 stories/<slug>/     story.yaml (bible, voices, scenes, shots), story.txt, narration/, packs/
-production/         install_pack, design, keyframe, shot, animatic, scene_baseline
-character/          character.py (pose clips); characters/ (owner-made packs)
+                    v4 instead: visual_bible.json, prompt_manifest.json, dialogue_coverage.json,
+                    prompts/, revisions/ (no story.yaml yet)
+production/         install_pack, design, keyframe, compose_keyframes, shot, animatic, image_prompts,
+                    timing_sheet, image_review_md, edit_image (Qwen, untested)
+character/          character.py (pose clips), gemini_image.py (v4 stills, Gemini API);
+                    characters/ (packs v2-v4, interactions/), locations/ (plates; v4 in locations/v4/)
 voice/              Gemini TTS tools; cast/<role>/ and narrators/<name>/ (voice.yaml + samples)
 lora/               LoRA dataset/training/eval (musubi-tuner); datasets/ is empty (v1 removed)
 bllt/               package: paths, media (ffmpeg), wan (model wrapper), post (RIFE/ESRGAN/grade)
-lumi/               site.sh, env*.sh, run_in_container.sh, run_tasks.sbatch, task_exec.sh, setup_env.sh
+lumi/               site.sh, env*.sh, run_in_container.sh, run_tasks.sbatch, task_exec.sh, setup_env*.sh
 docs/               guides; docs/img/ evidence images
 work/               everything generated (git-ignored); every output has a .json sidecar
 ```
@@ -117,9 +206,13 @@ work/               everything generated (git-ignored); every output has a .json
   shots), `keyframes/`, `shots/`, `audio/<lang>/sceneNN.wav` (narration, for
   the animatic), `animatic*.mp4`. Task files: `work/tasks/` (old ones in
   `work/tasks/archive/`, with pre-rename paths). LoRAs: `work/lora/`.
+- V4 images are not in `work/`: they are tracked PNGs under `character/`
+  (allowed by `.gitignore`). Gemini candidate takes (`character/**/gemini/`)
+  are git-ignored.
 - Outside the repo (in `$BLLT_PROJECT`, `/scratch/project_465002727/jelealro`):
   venvs `ltx_env/venv` (generation; legacy name, do not move: venvs hold
-  absolute paths), `musubi_env/venv`, `gemini_env/venv`; `hf_cache/`,
+  absolute paths), `musubi_env/venv`, `gemini_env/venv` (and `qwen_env/venv`,
+  defined in `lumi/site.sh`; its build is not recorded); `hf_cache/`,
   `models/`, `ext/musubi-tuner`, `slurm_logs/`.
 
 ## Running things
@@ -132,10 +225,15 @@ BLLT_ENV=musubi $W python ...                  # the LoRA-training venv instead
 source voice/gemini_env.sh && python voice/list_voices.py   # voices, no container
 ```
 
-- **Two venvs in the container** + one plain venv. `ltx_env/venv` (default):
+- **Container venvs** + one plain venv. `ltx_env/venv` (default):
   diffusers 0.39, transformers 4.51 (generation, design, keyframes, post).
   `musubi_env/venv` (`BLLT_ENV=musubi`): musubi-tuner pins, LoRA only.
-  `gemini_env/venv`: google-genai, outside the container.
+  `qwen_env/venv` (`BLLT_ENV=qwen`, built by `lumi/setup_env_qwen.sh`):
+  transformers 4.57 for `production/edit_image.py`; a build or successful run
+  is not recorded. `gemini_env/venv`: google-genai, outside the container.
+  `character/gemini_image.py` needs only Python 3 and Pillow
+  (`docs/gemini-images.md`).
+- Pass `--story` explicitly: some tools default to v2 or v3.
 - **GPU work = a task file + `lumi/run_tasks.sbatch`**, one command per line,
   one GCD each, from the repo root:
   `sbatch --ntasks=3 --gpus-per-node=3 --mem=330G lumi/run_tasks.sbatch work/tasks/<name>.txt`
@@ -154,8 +252,9 @@ source voice/gemini_env.sh && python voice/list_voices.py   # voices, no contain
 ## Before a GPU job
 
 Follow **all gates in `docs/v4-preflight.md`** for v4; the quick checks below
-are insufficient alone. Review the combined negative separately: current dry-run
-prints only the positive. A draft manifest is not accepted by the renderer.
+are insufficient alone. Review the positive and the combined negative together
+(older `shot.py --dry-run` printed only the positive; fast mode never applies
+the negative). A draft manifest is not accepted by the renderer.
 
 1. `--dry-run` every script that has one; read the assembled prompt.
 2. Check every input file exists (keyframes, canonicals, pose stills).
@@ -198,7 +297,6 @@ prints only the positive. A draft manifest is not accepted by the renderer.
   refused while two jobs exist. Submit follow-ups from a waiter after the job ends.
 - `lumi/env.sh` and `env_musubi.sh` are sourced inside the container; a variable
   they `export` overrides the caller's. Use `${VAR:-default}`.
-
 - `pkill -f "<pattern>"` in a command also kills that command's own shell when
   the pattern appears in it (it cut a deletion short on 2026-09-27).
 - The same goes for `ps | awk '/pattern/'` then `kill`: any word of the pattern
@@ -213,9 +311,80 @@ prints only the positive. A draft manifest is not accepted by the renderer.
 
 - Every clip: a contact sheet (frames 0/20/40/60/80, or every 8th) and look at
   it before judging; full-size frames for faces and contact.
+- Every still: reopen the saved file at full size, beside its canonical, its
+  plate and the setup's size anchor (`docs/creation-rules.md` CR-13, CR-16, CR-17).
 - Cuts and flashes: mean luma per frame by frame index, not `-ss` seeking.
 - Deliverables: 0 repeated frames, exact duration, PCM 48 kHz audio in `.mov`.
 - Voice lines: transcribe (Whisper) and compare with the text.
+
+## Voices: Gemini 3.8 Flash TTS (owner decision 2026-09-27)
+
+- **Everything is in `voice/`** (read its README): `gemini_env.sh`,
+  `list_voices.py` (-> `voices_list.json`), `speak.py` (one line -> WAV +
+  json), `save_voice.py` (record a designed voice: id, exact prompt, expiry,
+  Google's sample), `render_samples.py` + `sample_lines.yaml` (the sample
+  lines in every language), `narrate_scenes.py` (a story's narration, one WAV
+  per scene). No GPU, no container.
+- **API key: only in `~/.config/gemini/env`** (owner-written, chmod 600,
+  `GEMINI_API_KEY=...`). Never print, copy, log or commit it.
+- **Voices** (designed "prompted" voices, expire 2027-09-27; recreate from
+  the prompt saved in each `voice.yaml` before then):
+
+  | Role | Voice | Folder |
+  |---|---|---|
+  | **Lion and Mouse v2 narrator** | Moonlight Storyteller 1, `voice_v5bpq98uj7qh` | `voice/narrators/moonlight_storyteller_1/` |
+  | Leo | The Noble Lion 1, `voice_zdbgqrcerxqu` | `voice/cast/leo/` |
+  | Milo | The Brave Little Mouse 1, `voice_vf2w20rcys8a` | `voice/cast/milo/` |
+  | alternative narrators | Golden Hour Storyteller 3 `voice_g00mo8cbdefq` (first pick), The Fireside Grandfather 2 `voice_4rdl7hydi35v`, The Cheery Tale Keeper 2 `voice_8tnxrhfqk3ur`, Bright Trail Narrator 2 `voice_tcrjw3ney7q8` | `voice/narrators/<name>/` |
+
+  The v2 story maps them in `stories/lion_and_mouse_v2/story.yaml` (`voices:`,
+  paths relative to `voice/`); `voice/narrate_scenes.py` defaults to the
+  narrator, Leo and Milo voices above (`--voices` overrides).
+- **Samples**: every voice folder has `google_sample.wav` and ONE sample line
+  in en/es/fr/de/ru/uk (narrators: Scene 1; Leo: "You frightened me... Go on
+  your way"; Milo: "Thank you..."). English files have no suffix, others
+  `_es _fr _de _ru _uk`. Translations in `sample_lines.yaml` are assistant
+  drafts: native check before the full scripts. Gemini audio: ~-70 dB noise
+  floor; en and es verified word for word (Whisper).
+- **Terms**: outputs owned by the user ("Google won't claim ownership"); price
+  ~$0.0135/min of audio in 2026, ~$0.027 from 2027 (25 audio tokens/s; free
+  tier rate-limited); SynthID watermark; EEA gets paid-tier data terms. Open:
+  the Age Requirements ("API Clients" directed at under-18s) vs a Made-for-kids
+  channel; the owner's question to Google is drafted in
+  `docs/google_gemini_terms_question.md`. Never clone Gemini voices into
+  another model (terms forbid replicating components of the Services).
+- **Narration v4 done (2026-10-02)**: all 16 scenes, 161 lines, **11:23.7**
+  (en), by `voice/narrate_scenes.py`: `sceneNN.wav` + `lines/` + `timing.json`
+  in `work/stories/lion_and_mouse_v4/audio/en/`. Gemini 3.8 Flash TTS Tier 1
+  limits: **100 requests/day** (resets 09:00 Germany), 10/min, 10K tokens/min;
+  past the daily limit calls hang instead of erroring, so the script waits 8 s
+  between calls and tries a line at most twice. A 160-line story needs two days.
+  `production/timing_sheet.py --story lion_and_mouse_v4` ->
+  `stories/lion_and_mouse_v4/TIMING_SHEET.md` + `timing_plan.json`: which shot
+  covers which line; 42 shots give 3.4 min at normal speed, 8.0 min need
+  slow-downs, stills or extra shots (scenes 8, 15, 16 most).
+- Chatterbox/Parler were tried and **removed** 2026-09-27 (Parler produced a
+  hum; Chatterbox clones were noisy and drifted between lines); they are in
+  git history before that date.
+- Owner plan: narration first, video fitted to it; languages en, then es, fr,
+  de, ru, uk. The narration renderer exists:
+  `voice/narrate_scenes.py --lines <lines.json> --story <slug> --lang <lang>`
+  reads a line list in the v4 `dialogue_coverage.json` format (JSON; it does
+  not read v2's `narration/<lang>.yaml`), speaks each line with the story's
+  voices and joins them per scene into
+  `work/stories/<slug>/audio/<lang>/sceneNN.wav`. `production/timing_sheet.py`
+  then plans the picture coverage; `production/animatic.py --lang <lang>`
+  times the pictures to it, only as a separately requested assembly.
+
+## Data lifetime
+
+The LUMI project's data is deleted around **30 March 2027**. `work/` (designs,
+poses, keyframes, shots, LoRAs, the v4 narration audio) is git-ignored and
+exists only on scratch: remind the owner to back it up
+(`bash lumi/backup_assets.sh`, then the printed rsync on their computer; see
+`docs/findings-and-risks.md` B1). Gemini candidate takes
+(`character/**/gemini/`) are git-ignored too and exist only where they were
+made. Gemini voices expire 2027-09-27 (recreate from the prompts in `voice/`).
 
 ## Character and scene design: reusable guidance
 
@@ -304,21 +473,78 @@ and motion: `production/design.py` makes candidate stills and canonicals;
 evaluates optional character adapters; `production/keyframe.py` and each
 shot's `compose:` recipe place pose stills on a location plate; and
 `production/shot.py` animates the composed keyframe with Wan image-to-video.
+For v4 the stills (canonicals, plates and the scene start/end frames) were
+made with image models and recorded in the manifest instead of being
+composed by `keyframe.py`.
 The v4 primary planning records are the versioned visual bible and full prompt
 manifest; runtime story recipes are derived later. Do not keep the only prompt
 record in an ad hoc script or conversation. Keep decisions and measured outcomes in the relevant
 `docs/` file and link it here when the guidance becomes too detailed for this
 manual.
 
-## Data lifetime
+## History (dated snapshots)
 
-The LUMI project's data is deleted around **30 March 2027**. `work/` (designs,
-poses, keyframes, shots, LoRAs) is git-ignored and exists only on scratch:
-remind the owner to back it up (`bash lumi/backup_assets.sh`, then the printed
-rsync on their computer; see `docs/findings-and-risks.md` B1). Gemini voices
-expire 2027-09-27 (recreate from the prompts in `voice/`).
+Kept for the record. Where a snapshot differs from the sections above, the
+sections above are current.
 
-## The Lion and the Mouse v2 (historical, 2026-09-27)
+### V4 documentation phase (snapshot 2026-09-30, superseded)
+
+*Its "no v4 media" statement and its "Next" were overtaken by the image
+passes of 2026-09-30 to 2026-10-02 (see "Current state").*
+
+The owner rendered v3 and supplied `work/shots/notes.txt`. A verbatim durable
+copy is at `docs/reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt`.
+The source clips were not present in this checkout during documentation work;
+reported visual defects are owner observations, not a fresh video inspection.
+The two local v3 neutral canonicals were visually inspected for current identity.
+
+Read `stories/lion_and_mouse_v4/README.md`, then its repair/shot plan. The packet
+contains 118 planned image records and 62 video-mode records across 43 coverage
+shots, with complete expanded prompts for all 16 scenes. It is a draft coverage
+plan, not a complete timed 8–10 minute edit. Canonical approval, measured geometry,
+script/voice timing and any additional line coverage remain future work.
+
+No v4 media, selections, runtime story YAML or GPU task files were created.
+`visual_bible.json` / `prompt_manifest.json` were documentation schemas; the
+snapshot's tool-gap warnings (bbox-based pose sizing, stale caches, additive
+negatives, fast-take continuation, animatic fallback; null hashes and planned
+paths are not approval; preserve v3) are carried into "Current state".
+
+Next (then): owner reviews the proposed sequence; on a later image-production
+request, create the smooth-crown Milo root, review both canonicals and mouth
+designs, calibrate references and pairs, then render the pilot.
+
+### V4 image passes r01 to r05 (2026-09-30 to 2026-10-02)
+
+r01 (2026-09-30 to 2026-10-02) was made with GPT's built-in image tool and
+logged in `stories/lion_and_mouse_v4/GENERATION_PROGRESS.md`. Then the owner moved v4
+still generation from GPT to the Gemini API
+(`character/gemini_image.py`, guide `docs/gemini-images.md`). Models:
+Nano Banana 2 for 16:9 scenes, Lite for square studio references, Pro
+to escalate (it can replace the plate: check it). After r03 **all 118 v4 image
+records were accepted** (74 r01 GPT, 40 r02 and 4 r03 Gemini), new ones
+`accepted_pending_owner_review`; fixes in `stories/lion_and_mouse_v4/revisions/`,
+every API call in `revisions/gemini_ledger.csv` (`gemini_image.py ledger` =
+images and cost per model). The lessons became `docs/creation-rules.md`
+**CR-13** (whole bodies, side-by-side identity gate, edit an approved same-setup
+frame instead of regenerating a character, scale as frame fractions, V3
+images staging-only, continuity cascades) and **CR-14** (measured sizes in the
+S14 setup, Milo ≈ Leo's mane diameter there; dialogue close-ups in the
+`s15_leo_reflects` format with faces from
+`character/characters/<Name>/v4/expressions/`, 11 each). r04 (owner's third
+review): s07 brows, s08/s13 Milo smaller, S15 Milo close-ups. **CR-15**: every
+scene record has `framing` (`dialogue_close_up` / `close_two_shot` /
+`scene_wide` / `empty_plate`); follow its close-up recipe. r05: s05 Milo face,
+s07 Leo/Milo as dialogue close-ups. The "Next" of that day (owner decides s08
+Milo and s13 Milo framing and the s08_leo_softens pair, wide start and
+close-up end) was partly settled afterwards: in-place repairs with the
+built-in image tool made both `s08_leo_softens` ends and the `s08_milo_surprised`
+pair close-ups, repaired the S07 Milo muzzle, and recomposed S06 barrier and
+S08 kindness with Leo at the S05 scale (CR-16). The owner deleted
+`s02_place_acorn_end_r02`; two later attempts were rejected. S13 Milo framing
+is still open (see "Current state").
+
+### The Lion and the Mouse v2 (2026-09-27)
 
 **2026-09-27**: the owner's retelling (`stories/lion_and_mouse_v2/story.txt`,
 moral: "Kindness does not create a debt. It creates more kindness.") with an
@@ -333,7 +559,7 @@ Authority, in order:
 4. Review frames in `work/stories/lion_and_mouse_v2_review/`: **layout guides
    only**, never character references.
 
-How it is made (and why):
+How it is made (and why); the tool notes still apply to the runtime pipeline:
 - **Owner-made canonicals**: `production/install_pack.py` pads them to 16:9
   (edge-repeat, blurred) into `work/stories/<slug>/design/<name>/canonical.png`,
   copies the pack to `characters/<name>/pack/` (`.png.png` fixed in copies
@@ -353,110 +579,19 @@ How it is made (and why):
   shot, close-up crops for small gestures, no LoRA in shots, positive wording,
   several seeds (fast mode makes 3 cheap).
 
-## Voices: Gemini 3.8 Flash TTS (owner decision 2026-09-27)
-
-- **Everything is in `voice/`** (read its README): `gemini_env.sh`,
-  `list_voices.py` (-> `voices_list.json`), `speak.py` (one line -> WAV +
-  json), `save_voice.py` (record a designed voice: id, exact prompt, expiry,
-  Google's sample), `render_samples.py` + `sample_lines.yaml` (the sample
-  lines in every language). No GPU, no container.
-- **API key: only in `~/.config/gemini/env`** (owner-written, chmod 600,
-  `GEMINI_API_KEY=...`). Never print, copy, log or commit it.
-- **Voices** (designed "prompted" voices, expire 2027-09-27; recreate from
-  the prompt saved in each `voice.yaml` before then):
-
-  | Role | Voice | Folder |
-  |---|---|---|
-  | **Lion and Mouse v2 narrator** | Moonlight Storyteller 1, `voice_v5bpq98uj7qh` | `voice/narrators/moonlight_storyteller_1/` |
-  | Leo | The Noble Lion 1, `voice_zdbgqrcerxqu` | `voice/cast/leo/` |
-  | Milo | The Brave Little Mouse 1, `voice_vf2w20rcys8a` | `voice/cast/milo/` |
-  | alternative narrators | Golden Hour Storyteller 3 `voice_g00mo8cbdefq` (first pick), The Fireside Grandfather 2 `voice_4rdl7hydi35v`, The Cheery Tale Keeper 2 `voice_8tnxrhfqk3ur`, Bright Trail Narrator 2 `voice_tcrjw3ney7q8` | `voice/narrators/<name>/` |
-
-  The story maps them in `stories/lion_and_mouse_v2/story.yaml` (`voices:`,
-  paths relative to `voice/`).
-- **Samples**: every voice folder has `google_sample.wav` and ONE sample line
-  in en/es/fr/de/ru/uk (narrators: Scene 1; Leo: "You frightened me... Go on
-  your way"; Milo: "Thank you..."). English files have no suffix, others
-  `_es _fr _de _ru _uk`. Translations in `sample_lines.yaml` are assistant
-  drafts: native check before the full scripts. Gemini audio: ~-70 dB noise
-  floor; en and es verified word for word (Whisper).
-- **Terms**: outputs owned by the user ("Google won't claim ownership"); price
-  ~$0.0135/min of audio in 2026, ~$0.027 from 2027 (25 audio tokens/s; free
-  tier rate-limited); SynthID watermark; EEA gets paid-tier data terms. Open:
-  the Age Requirements ("API Clients" directed at under-18s) vs a Made-for-kids
-  channel; the owner's question to Google is drafted in
-  `docs/google_gemini_terms_question.md`. Never clone Gemini voices into
-  another model (terms forbid replicating components of the Services).
-- **Narration v4 done (2026-10-02)**: all 16 scenes, 161 lines, **11:23.7**
-  (en), by `voice/narrate_scenes.py`: `sceneNN.wav` + `lines/` + `timing.json`
-  in `work/stories/lion_and_mouse_v4/audio/en/`. Gemini 3.8 Flash TTS Tier 1
-  limits: **100 requests/day** (resets 09:00 Germany), 10/min, 10K tokens/min;
-  past the daily limit calls hang instead of erroring, so the script waits 8 s
-  between calls and tries a line at most twice. A 160-line story needs two days.
-  `production/timing_sheet.py --story lion_and_mouse_v4` ->
-  `stories/lion_and_mouse_v4/TIMING_SHEET.md` + `timing_plan.json`: which shot
-  covers which line; 42 shots give 3.4 min at normal speed, 8.0 min need
-  slow-downs, stills or extra shots (scenes 8, 15, 16 most).
-- Chatterbox/Parler were tried and **removed** 2026-09-27 (Parler produced a
-  hum; Chatterbox clones were noisy and drifted between lines); they are in
-  git history before that date.
-- Owner plan: narration first, video fitted to it; languages en, then es, fr,
-  de, ru, uk. The full narration renderer is still to write: read
-  `stories/<slug>/narration/<lang>.yaml`, speak each line with the story's
-  voices (`voice/speak.py`), join per scene into
-  `work/stories/<slug>/audio/<lang>/sceneNN.wav`, then
-  `production/animatic.py --lang <lang>` times the pictures to it.
-
-## Current state (2026-09-30)
-
-The owner rendered v3 and supplied `work/shots/notes.txt`. A verbatim durable
-copy is at `docs/reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt`.
-The source clips were not present in this checkout during documentation work;
-reported visual defects are owner observations, not a fresh video inspection.
-The two local v3 neutral canonicals were visually inspected for current identity.
-
-Read `stories/lion_and_mouse_v4/README.md`, then its repair/shot plan. The packet
-contains 118 planned image records and 62 video-mode records across 43 coverage
-shots, with complete expanded prompts for all 16 scenes. It is a draft coverage
-plan, not a complete timed 8–10 minute edit. Canonical approval, measured geometry,
-script/voice timing and any additional line coverage remain future work.
-
-No v4 media, selections, runtime story YAML or GPU task files were created.
-`visual_bible.json` / `prompt_manifest.json` are documentation schemas; current
-scripts do not enforce their gates. In particular bbox-based pose sizing, stale
-caches, additive negatives, fast-take continuation and animatic fallback require
-manual handling (see `docs/v4-preflight.md`). Do not mistake null hashes, planned
-paths or checked historical file lists for approval. Preserve v3 inputs/results.
-
-Next: owner reviews the proposed sequence; on a later image-production request,
-create the smooth-crown Milo root, review both canonicals and mouth designs,
-calibrate references and pairs, then render the pilot. Prompts reduce ambiguity;
-only inspection of actual outputs can establish that a defect is fixed.
-
-## Gemini r02/r03 revision (2026-10-02)
-
-The owner moved v4 still generation from GPT to the Gemini API
-(`character/gemini_image.py`, guide `docs/gemini-images.md`). Models:
-Nano Banana 2 for 16:9 scenes, Lite for square studio references, Pro
-to escalate (it can replace the plate: check it). **All 118 v4 image
-records are accepted** (74 r01 GPT, 40 r02 and 4 r03 Gemini), new ones
-`accepted_pending_owner_review`; fixes in `stories/lion_and_mouse_v4/revisions/`,
-every API call in `revisions/gemini_ledger.csv` (`gemini_image.py ledger` =
-images and cost per model). **Before any new image read `docs/creation-rules.md`
-CR-13**: whole bodies, side-by-side identity gate, edit an approved same-setup
-frame instead of regenerating a character, scale as frame fractions, V3
-images staging-only, continuity cascades; and **CR-14**: Milo ≈ Leo's mane diameter (0.34 of frame in wide shots), dialogue close-ups in the `s15_leo_reflects` format with faces from `character/characters/<Name>/v4/expressions/` (11 each). r04 (owner's third review): s07 brows, s08/s13 Milo smaller, S15 Milo close-ups. **CR-15**: every scene record has `framing` (`dialogue_close_up` / `close_two_shot` / `scene_wide` / `empty_plate`); follow its close-up recipe. r05: s05 Milo face, s07 Leo/Milo as dialogue close-ups. Next: owner decides s08 Milo and s13 Milo framing and the s08_leo_softens pair (wide start, close-up end).
-
-## Archived production snapshot (2026-09-27 to 2026-09-29)
+### Archived production snapshot (2026-09-27 to 2026-09-29)
 
 **Owner-made images (2026-09-29):** the owner generates the v3 images on
 another machine (N-07/08/09 included); do not generate them here.
 `production/edit_image.py` (Qwen-Image-Edit-2511, Apache-2.0, 54 GB in
 `hf_cache`) exists but is **untested**: its first run failed because the
 generation venv's transformers 4.51 cannot load its Qwen2.5-VL text encoder;
-it needs its own venv with transformers >= 4.57 (not created).
+it needs its own venv with transformers >= 4.57 (not created then; since then
+`lumi/setup_env_qwen.sh` and `BLLT_ENV=qwen` define it, with no recorded build
+or test run).
 
-**v3 in planning (2026-09-27)**: the owner's longer dialogue script
+**v3 planning (2026-09-27; v3 was later rendered and reviewed on 2026-09-30)**:
+the owner's longer dialogue script
 (`stories/lion_and_mouse_v3/script_dialog_en.txt`, ~1,160 words, 8-10 min,
 narrator + lion + mouse lines). The owner will generate the images; the list
 is `stories/lion_and_mouse_v3/ASSETS.md` (58 images, to-do list with prompts in `TODO_images.md`: 10 location plates, one normal-height view per place (owner: no low angles),
@@ -468,7 +603,6 @@ v2 clip is in `stories/lion_and_mouse_v2/owner_review.yaml` (files kept;
 a new state (the net) went off-model; the best shots start and end on
 owner-made images. v3 = owner-made start/end images for every shot, a plate
 per camera angle and lighting.
-
 
 Lion and Mouse v2 (2026-09-27): **every scene has a take**; takes are in
 story.yaml (`take:`), clips in `work/stories/lion_and_mouse_v2/shots/`

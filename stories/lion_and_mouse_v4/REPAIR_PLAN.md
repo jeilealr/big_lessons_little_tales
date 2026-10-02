@@ -109,6 +109,8 @@ change is necessary, mark an editorial cut and preserve world state.
 
 - **P0:** smooth-crown Milo canonical; identity/mouth/geometry approval; script
   order decision; exact plate/state continuity; net/acorn permanence.
+  *(Status 2026-10-02: the smooth-crown canonical exists; the other P0 items
+  are still open or under owner review; see the packet's "Open issues".)*
 - **P1:** matched endpoints for every character shot, readable run, dual mouth
   coverage, fixed limbs, location-specific ambient continuity.
 - **P2:** final dialogue-to-shot duration expansion and owner candidate selection.
@@ -116,3 +118,7 @@ change is necessary, mark an editorial cut and preserve world state.
 All new prompts are drafts. Image paths are planned and hashes/measurements remain
 unfilled until actual creation. Required pilot: sitting->standing, asleep->wake,
 run, fray->cut, and closed/mouth facial alternatives. No v4 success is claimed.
+
+*Status 2026-10-02: the images now exist and their paths and hashes are in the
+manifest results; the bible holds measured proportions, landmarks and per-setup
+sizes (2026-10-02), and the clip pilot has not been run.*

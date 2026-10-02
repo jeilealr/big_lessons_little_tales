@@ -59,15 +59,16 @@ def main() -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--story", default="lion_and_mouse_v2")
     args = ap.parse_args()
-    story = yaml.safe_load((paths.REPO / "stories" / args.story / "story.yaml").read_text())
-    work = paths.WORK / "stories" / args.story
+    story = yaml.safe_load((paths.STORIES / args.story / "story.yaml").read_text())
+    work = paths.story_work(args.story)
     for name, ch in story["characters"].items():
         if not ch.get("canonical"):
             continue
         src = paths.REPO / ch["canonical"]
         out = work / "design" / name / "canonical.png"
         out.parent.mkdir(parents=True, exist_ok=True)
-        img, colour = pad_16x9(Image.open(src))
+        with Image.open(src) as im:
+            img, colour = pad_16x9(im)
         img.save(out)
         out.with_suffix(".json").write_text(json.dumps(dict(
             stage="canonical", source=str(src), how="owner-made; padded to 16:9 by repeating "
@@ -81,7 +82,8 @@ def main() -> None:
                 dst = pack_dir / f"{sub}__{clean}"
                 if not dst.is_file():
                     dst.write_bytes(f.read_bytes())
-                manifest[dst.name] = dict(source=str(f), size=Image.open(f).size)
+                with Image.open(f) as im:
+                    manifest[dst.name] = dict(source=str(f), size=im.size)
         (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
         # 16:9 padded copies of the full-body images, for pose clips that start
         # from a view or action instead of the canonical (wan.fit would crop them).
@@ -91,7 +93,8 @@ def main() -> None:
             if f.name.startswith(("views__", "actions__")) and "face" not in f.name:
                 dst = pad_dir / f.name
                 if not dst.is_file():
-                    pad_16x9(Image.open(f))[0].save(dst)
+                    with Image.open(f) as im:
+                        pad_16x9(im)[0].save(dst)
         print(f"{name}: canonical -> {out} (pad colour {colour}); {len(manifest)} pack images")
 
 

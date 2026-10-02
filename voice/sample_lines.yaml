@@ -5,7 +5,9 @@
 # Files: <name>.wav for English, <name>_<lang>.wav otherwise.
 # One sample line per voice (owner): narrators read Scene 1, Leo and Milo
 # their first line.
-languages: [es, fr, de, ru, uk]
+# render_samples.py default; existing files are skipped, so only a newly saved
+# voice gets new audio.
+languages: [en, es, fr, de, ru, uk]
 
 lines:
   sample_scene01_line0:

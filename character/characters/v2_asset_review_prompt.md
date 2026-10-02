@@ -1,5 +1,8 @@
 # Prompt: Audit and complete Lion and Mouse v2 visual references
 
+*Historical (v2, 2026-09-27). The current story is v4: start from `CLAUDE.md`
+and `stories/lion_and_mouse_v4/README.md` instead.*
+
 Use this prompt when continuing the Leo and Milo v2 design work. The goal is to inspect the existing image assets and written DNA, resolve inconsistencies, fill only genuine reference gaps, and prepare a clean handoff to story-video production.
 
 ## Repository and authority

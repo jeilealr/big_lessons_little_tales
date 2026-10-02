@@ -1,13 +1,22 @@
 #!/usr/bin/env python3
-"""Render a story shot: image-to-video from its composed keyframe.
+"""Render a story shot: Wan 2.2 image-to-video from its keyframe(s).
 
-The shot is defined in story.yaml under its scene (`shots:`). The prompt is
-the shot's action, then each character's frozen sheet, then the location sheet
-and the style bible, exactly like the text-only baseline (production/
-scene_baseline.py), so the only difference between the two is the anchored
-first frame.
+  python production/shot.py --story lion_and_mouse_v3 --scene 1 --shot s01_milo_explores \\
+      [--seed 5101] [--fast] [--recompose] [--dry-run]
 
-  python production/shot.py --scene 1 --shot s01_establish [--seed 5101]
+The shot is defined in stories/<story>/story.yaml under its scene (`shots:`).
+The prompt is the shot's action, then each character's frozen sheet, then the
+location sheet (or the shot's `background:`) and the style bible. `--dry-run`
+checks the inputs and prints the assembled prompt and negative.
+
+First frame, in order of precedence: `continue_from: {shot, take, frame}` (a
+frame of another shot's render), a `compose:` recipe (built when the keyframe
+is missing or with --recompose), or the `keyframe:` file itself. Optional
+`end_keyframe:` (+ `end_compose:`) pins the last frame.
+
+Paths in story.yaml are relative to work/stories/<story>/. Output:
+work/stories/<story>/shots/<shot>_s<seed>[_fast].mp4 + .json sidecar (prompt,
+negative, seed, model revision, LoRAs, settings). An existing output is skipped.
 """
 
 from __future__ import annotations
@@ -19,9 +28,26 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from bllt import paths, post, wan  # noqa: E402
+from bllt import media, paths, wan  # noqa: E402
 
 RENDER = dict(width=1280, height=720, steps=40, guidance=3.5, guidance_2=3.5)
+
+
+def check_recipe(work: Path, recipe: dict, what: str) -> None:
+    """Every input of a compose recipe must exist before any GPU time is spent."""
+    for c in recipe.get("characters", []):
+        if not (work / c["still"]).is_file():
+            raise SystemExit(f"{what}: missing still {work / c['still']}")
+    if not (work / recipe["plate"]).is_file():
+        raise SystemExit(f"{what}: missing plate {work / recipe['plate']}")
+
+
+def compose_recipe(work: Path, recipe: dict, out: Path) -> None:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import keyframe as kf             # cv2 + BiRefNet: only when a keyframe is built
+
+    kf.compose_recipe(work, recipe, out)
+    print(f"composed keyframe {out}", flush=True)
 
 
 def main() -> None:
@@ -41,10 +67,14 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    story = yaml.safe_load((paths.REPO / "stories" / args.story / "story.yaml").read_text())
-    scene = story["scenes"][args.scene]
-    shot = next(s for s in scene["shots"] if s["name"] == args.shot)
-    work = paths.WORK / "stories" / args.story
+    story = yaml.safe_load((paths.STORIES / args.story / "story.yaml").read_text())
+    scene = story["scenes"].get(args.scene)
+    if scene is None:
+        raise SystemExit(f"{args.story}: no scene {args.scene}")
+    shot = next((s for s in scene.get("shots", []) if s["name"] == args.shot), None)
+    if shot is None:
+        raise SystemExit(f"{args.story} scene {args.scene}: no shot named {args.shot}")
+    work = paths.story_work(args.story)
     keyframe = work / shot["keyframe"]
     parts = [shot["action"].strip()]
     # `lora: true` on a shot: every character in it that has a chosen LoRA
@@ -71,25 +101,29 @@ def main() -> None:
         parts.append(f"The scene is {story['locations'][scene['location']]['sheet']}.")
     parts.append(story["style"] + ".")
     prompt = " ".join(parts)
-    seeds = [args.seed] if args.seed else shot["seeds"]
+    negative = story["negative"] + (", " + shot["negative_extra"] if shot.get("negative_extra") else "")
+    seeds = [args.seed] if args.seed is not None else shot["seeds"]
     frames = shot.get("frames", 81)
     print(f"[{args.shot}] keyframe {keyframe.name}, {frames} frames, seeds {seeds}\n{prompt}\n",
           flush=True)
+    # Fast mode runs CFG 1: diffusers skips the negative pass, so the text is logged only.
+    print(f"NEGATIVE{' (not applied: --fast has no negative pass)' if args.fast else ''}: "
+          f"{negative}\n", flush=True)
     # `continue_from: {shot, take, frame}`: the keyframe is a frame (default: the
     # last) of another shot's render, so the cut is continuous.
     cont = shot.get("continue_from")
+    src = None
     if cont:
         src = work / "shots" / f"{cont['shot']}_s{cont['take']}.mp4"
         if not src.is_file():
-            raise SystemExit(f"continue_from: missing render {src}")
+            # A fast take is never picked silently: the owner names it explicitly.
+            fast = src.with_name(f"{src.stem}_fast.mp4")
+            hint = f" ({fast.name} exists: write take: {cont['take']}_fast)" if fast.is_file() else ""
+            raise SystemExit(f"continue_from: missing render {src}{hint}")
         print(f"keyframe = frame {cont.get('frame', -1)} of {src.name}")
     recipe = shot.get("compose")
     if recipe and not cont:
-        for c in recipe["characters"]:
-            if not (work / c["still"]).is_file():
-                raise SystemExit(f"keyframe recipe: missing still {work / c['still']}")
-        if not (work / recipe["plate"]).is_file():
-            raise SystemExit(f"keyframe recipe: missing plate {work / recipe['plate']}")
+        check_recipe(work, recipe, "keyframe recipe")
     elif not cont and not keyframe.is_file():
         raise SystemExit(f"missing keyframe {keyframe} and no compose: recipe")
     for lo in loras:
@@ -97,45 +131,30 @@ def main() -> None:
             if not f.is_file():
                 raise SystemExit(f"missing LoRA {f}")
         print(f"LoRA {lo['name']}: {lo['high'].name} + {lo['low'].name} x{lo['weight']}")
-    if (shot.get("end_keyframe") and shot["end_keyframe"] != shot["keyframe"]
-            and not (work / shot["end_keyframe"]).is_file()):
-        er = shot.get("end_compose")
-        if not er:
-            raise SystemExit(f"missing end keyframe {shot['end_keyframe']} and no end_compose")
-        for c in er["characters"]:
-            if not (work / c["still"]).is_file():
-                raise SystemExit(f"end_compose: missing still {work / c['still']}")
+    # `end_keyframe:` (+ optional `end_compose:` recipe): the frame the shot must
+    # arrive at. Wan 2.2 I2V-A14B then animates between two stills (first/last
+    # frame), which pins identity and pose at both ends (docs/prompting.md 3.4).
+    # An end keyframe equal to the start keyframe is the start file itself.
+    end_key = work / shot["end_keyframe"] if shot.get("end_keyframe") else None
+    end_recipe = shot.get("end_compose")
+    build_end = bool(end_key and end_key != keyframe and end_recipe
+                     and (args.recompose or not end_key.is_file()))
+    if build_end:
+        check_recipe(work, end_recipe, "end_compose")
+    elif end_key and end_key != keyframe and not end_key.is_file():
+        raise SystemExit(f"missing end keyframe {end_key} and no end_compose: recipe")
     if args.dry_run:
         print("dry run: inputs ok" + (" (keyframe will be composed)" if recipe else ""))
         return
     if cont and (args.recompose or not keyframe.is_file()):
-        frames_ = post.decode(src)
+        frames_ = media.read_frames(src)
         keyframe.parent.mkdir(parents=True, exist_ok=True)
         Image.fromarray(frames_[int(cont.get("frame", -1))]).save(keyframe)
         print(f"keyframe from {src.name} -> {keyframe}", flush=True)
     elif recipe and (args.recompose or not keyframe.is_file()):
-        sys.path.insert(0, str(Path(__file__).resolve().parent))
-        from keyframe import compose
-
-        compose(work / recipe["plate"],
-                [{**c, "still": str(work / c["still"])} for c in recipe["characters"]],
-                keyframe, recipe.get("crop"), recipe.get("blur", 0.0))
-        print(f"composed keyframe {keyframe}", flush=True)
-    # `end_keyframe:` (+ optional `end_compose:` recipe): the frame the shot must
-    # arrive at. Wan 2.2 I2V-A14B then animates between two stills (first/last
-    # frame), which pins identity and pose at both ends (docs/prompting.md 3.4).
-    end_key = work / shot["end_keyframe"] if shot.get("end_keyframe") else None
-    end_recipe = shot.get("end_compose")
-    if end_key and (args.recompose or not end_key.is_file()):
-        if not end_recipe:
-            raise SystemExit(f"missing end keyframe {end_key} and no end_compose: recipe")
-        sys.path.insert(0, str(Path(__file__).resolve().parent))
-        from keyframe import compose
-
-        compose(work / end_recipe["plate"],
-                [{**c, "still": str(work / c["still"])} for c in end_recipe["characters"]],
-                end_key, end_recipe.get("crop"), end_recipe.get("blur", 0.0))
-        print(f"composed end keyframe {end_key}", flush=True)
+        compose_recipe(work, recipe, keyframe)
+    if build_end:
+        compose_recipe(work, end_recipe, end_key)
     pipe = wan.load("i2v", frames, loras=loras, fast=args.fast)
     render = {**RENDER, **(wan.LIGHTNING["render"] if args.fast else {})}
     if shot.get("size"):          # e.g. [1248, 832] to match 3:2 reference images
@@ -144,9 +163,9 @@ def main() -> None:
     for seed in seeds:
         out = work / "shots" / f"{args.shot}_s{seed}{'_fast' if args.fast else ''}.mp4"
         if out.is_file():
-            print(f"exists, skipping {out.name}"); continue
+            print(f"exists, skipping {out.name}")
+            continue
         t0 = time.time()
-        negative = story["negative"] + (", " + shot["negative_extra"] if shot.get("negative_extra") else "")
         video = wan.generate(pipe, prompt, negative=negative, frames=frames, seed=seed,
                              image=Image.open(keyframe),
                              last_image=Image.open(end_key) if end_key else None, **render)

@@ -8,6 +8,13 @@ little as the quality allows). One script does everything:
 chain is unchanged: record → candidates → visual review → accepted target +
 manifest result.
 
+**Status (2026-10-02, latest):** the owner now creates the v4 images
+personally; agents run this workflow only when the owner asks. It produced
+r02 to r05 and the 22 expression studies. After r05 a few in-place repairs
+were made again with GPT's built-in image tool (S07 Milo muzzle, S08 close-ups,
+S06/S08 kindness Leo scale); see
+`stories/lion_and_mouse_v4/GENERATION_PROGRESS.md`.
+
 ## Setup
 
 - Python 3 with Pillow (`pip install pillow`); the API calls use the standard library only.
@@ -19,28 +26,33 @@ manifest result.
   Spend). When it is reached, every call returns HTTP 429 `RESOURCE_EXHAUSTED`
   ("exceeded its monthly spending cap") and the script stops.
 
-## Workflow
+## Workflow (from 2026-10-02: prompts are rendered templates, CR-18)
 
 ```bash
+python3 production/image_prompts.py build && python3 production/image_prompts.py lint   # 0 errors first
 G="python3 character/gemini_image.py"
-$G gen --record s14_gnaw_fray_start --dry-run        # print references, model, fix text
-$G gen --record s14_gnaw_fray_start --takes 3        # candidates
-$G sheet --record s14_gnaw_fray_start                # identity roots + current target + candidates -> work/review/gemini_sheet.jpg
-$G ledger                                            # images and estimated cost per model
-$G accept s14_gnaw_fray_start_r02_nb2_t02 --note "what you checked at full size"
+R=rNN                                                              # revision tag: names the candidates and the accepted file
+$G gen --record s14_gnaw_fray_start --revision $R --dry-run        # print references, model and the text to be sent
+$G gen --record s14_gnaw_fray_start --revision $R --takes 3        # candidates
+$G sheet --record s14_gnaw_fray_start --revision $R                # identity roots + current target + candidates -> work/review/gemini_sheet.jpg
+$G ledger                                                          # images and estimated cost per model
+$G accept s14_gnaw_fray_start_${R}_nb2_t02 --note "what you checked at full size"
 ```
 
-1. **Revision fixes.** Owner review notes become positive, specific text in
-   `stories/lion_and_mouse_v4/revisions/<rev>.json` (`records.<id>.fix`).
-   That file can also hold `extra_references` (e.g. V3 staging images),
-   `drop_references` and a per-record `model`. `gen` appends the fix to the
-   record's `positive_prompt`. Use `--extra` only for one-off tests; the text
-   is still saved in the sidecar.
-2. **References.** Each manifest reference is sent after a one-line label
-   naming its id and role. An id that is itself a manifest record resolves
-   to that record's *current* target. So after you accept a new start frame,
-   its end frame (`approved_start_exact_edit_base`) automatically gets the new
-   start. Work in dependency order: start → accept → end → accept → next shot.
+`--revision` is required: the candidate names and the accepted file name come from it.
+
+1. **Corrections go into the prompt record, not into a side file.** An owner note becomes
+   positive, specific text in the record's `prompt_template` or `frame`, or in the bible when it
+   concerns a character, place or size; then `build` and `lint`. `gen` sends exactly the rendered
+   `positive_prompt` and appends nothing, and it refuses to run while lint has errors. The r02 to
+   r05 passes used appended fix files (`revisions/r02.json` to `r05.json`, with
+   `extra_references`/`drop_references`); they are kept as history only
+   (`revisions/README.md`), and their accepted corrections are folded into the templates.
+2. **References.** The record's `ordered_references` are sent in order, each image preceded by its
+   number; the prompt's own reference list (`{{refs}}`) says what each one is for. An id that is
+   itself a manifest record resolves to that record's *current* target. So after you accept a new
+   start frame, its end frame (role `edit_base`) automatically gets the new start. Work in
+   dependency order: start → accept → end → accept → next shot.
 3. **Candidates** go to `<target dir>/gemini/<stem>_<rev>_<model>_tNN.png`
    with a `.json` sidecar: references and hashes, model, the full prompt sent,
    usage, raw size, retries. These folders are git-ignored.
@@ -51,7 +63,9 @@ $G accept s14_gnaw_fray_start_r02_nb2_t02 --note "what you checked at full size"
    `revision`, `target`, `status: accepted` and a `result` holding the prompt,
    references, model and your note. Review status is
    `accepted_pending_owner_review`, and the previous result moves to
-   `superseded`. The owner's verdict comes after.
+   `superseded`. The owner's verdict comes after. `accept` does not delete
+   the previous file; superseded files are pruned after owner review, so each
+   record keeps one active file (CR-17).
 
 Output is normalised to the record canvas: centre-cropped to its aspect
 (Gemini's 16:9 at 1K is 1376×768) and resized to 1920×1080 or 1536×1536, as
@@ -105,10 +119,20 @@ NB2 kept the scale once the prompt stated it in frame fractions.
 - The negative prompt is not sent (the API has no negative field). The
   record's exclusions are review criteria, as with Fast Lightning.
 
-## Status: all v4 image records accepted (2026-10-02)
+## Status of the v4 image records
 
-All 118 image records in the manifest are `accepted` (74 at r01 from GPT,
-40 at r02 and 4 at r03 from Gemini), pending the owner's review. r03 redid
+**Current (2026-10-02, after r05 and the in-place repairs):** the manifest has
+140 image records, the 118 planned ones plus the 22 expression studies. 139
+are `accepted` with their file on disk; `s02_place_acorn_end` is
+`missing_after_owner_review` (the owner deleted its r02 and later attempts
+were rejected; the `s02_place_acorn_end_r01.png` left on disk is the rejected
+r01). Record revisions: r01 94, r02 30, r04 10, r05 6. 63 records still read
+`accepted_pending_owner_review`; the owner's verdicts are collected in
+`stories/lion_and_mouse_v4/IMAGE_REVIEW.md`.
+
+**After r03 (history, earlier on 2026-10-02):** all 118 image records in the
+manifest were `accepted` (74 at r01 from GPT, 40 at r02 and 4 at r03 from
+Gemini), pending the owner's review. r03 redid
 the owner's second-round rejections: s05 (Leo had no body, now made with
 Pro and anchored on the previous shot) and s08 (Milo's face was off-model,
 now an edit of the approved s07 frame). The four S15 Leo close-ups stay r01:
@@ -118,17 +142,17 @@ they show no net and were not rejected.
 
 ### Images made and cost
 
-From `stories/lion_and_mouse_v4/revisions/gemini_ledger.csv` (`python3 character/gemini_image.py ledger`). The first 84 rows were reconstructed from the session log (marked `reconstructed`); later rows are written by the tool for every call.
+From `stories/lion_and_mouse_v4/revisions/gemini_ledger.csv` (`python3 character/gemini_image.py ledger`, run after r05 on 2026-10-02). The first 84 rows were reconstructed from the session log (marked `reconstructed`); later rows are written by the tool for every call. (Before r05 the totals were 200 images and about $12.92.)
 
 | Model | Size | Images | Failed takes | ~USD/image | ~USD total |
 |---|---|---|---|---|---|
 | gemini-3-pro-image | 1K | 8 | 0 | 0.134 | 1.07 |
 | gemini-3-pro-image | 2K | 1 | 0 | 0.134 | 0.13 |
 | gemini-3-pro-image-preview | 2K | 3 | 0 | 0.134 | 0.40 |
-| gemini-3.1-flash-image | 1K | 147 | 0 | 0.067 | 9.85 |
+| gemini-3.1-flash-image | 1K | 161 | 0 | 0.067 | 10.79 |
 | gemini-3.1-flash-image | 2K | 1 | 0 | 0.101 | 0.10 |
 | gemini-3.1-flash-lite-image | 1K | 40 | 1 | 0.034 | 1.36 |
-| **total** | | **200** | 1 | | **12.92** |
+| **total** | | **214** | 1 | | **13.86** |
 
 Prices are estimates per output image; the Google bill also includes voice and the input tokens of calls that returned no image.
 
@@ -162,5 +186,7 @@ r04 frames (s07 Leo end, s08 pair, s13 Milo four, S15 Milo four):
 ## r05 and the framing rule (2026-10-02)
 
 The owner asked for s07 as a first-meeting dialogue in the S15 close-up style. That became `docs/creation-rules.md` **CR-15**: a `framing` field on every scene record and a step-by-step close-up recipe. s05's Milo face was redrawn in three-quarter view; the first s05 end edit drew two Milos, which led to the "edits must not add characters" rule.
+
+r05 was the last Gemini pass. What followed (in-place repairs with GPT's built-in image tool, the deleted S02 end, open S13 framing/size questions) is in `stories/lion_and_mouse_v4/GENERATION_PROGRESS.md` and the v4 README's "Open issues".
 
 ![r05](img/v4_r05_gemini.jpg)

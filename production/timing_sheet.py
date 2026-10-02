@@ -58,8 +58,8 @@ def main() -> None:
     args = ap.parse_args()
     sd = paths.STORIES / args.story
     timing = json.loads((paths.story_audio(args.story, args.lang) / "timing.json").read_text())
-    lines = json.loads((sd / "dialogue_coverage.json").read_text())["lines"]
-    man = json.loads((sd / "prompt_manifest.json").read_text())
+    lines = json.loads((sd / "dialogue_coverage.json").read_text(encoding="utf-8"))["lines"]
+    man = json.loads((sd / "prompt_manifest.json").read_text(encoding="utf-8"))
     img = {i["id"]: i.get("target") for i in man["images"]}
     shots = {s["id"]: s for s in man["shots"]}
 
@@ -69,52 +69,57 @@ def main() -> None:
               "Times are from the start of the film. A starting plan for the DaVinci edit: "
               "change freely. Clips are 5.06 s; see the script's docstring for the stretch rules.\n")
     summary = []
-    for scene in sorted({l["scene"] for l in lines}):
+    for scene in sorted({ln["scene"] for ln in lines}):
         t = timing.get(str(scene))
-        sl = [l for l in lines if l["scene"] == scene]
+        sl = [ln for ln in lines if ln["scene"] == scene]
         if not t:
-            md.append(f"\n## Scene {scene:02d}: no narration yet\n"); continue
+            md.append(f"\n## Scene {scene:02d}: no narration yet\n")
+            continue
         secs = {r["id"]: r["seconds"] for r in t["lines"]}
         # start time of each line inside the scene (same pauses as narrate_scenes.py)
         starts, cur, prev = {}, 0.0, None
-        for l in sl:
+        for ln in sl:
             if prev is not None:
-                cur += PAUSE_SAME if prev == l["speaker"] else PAUSE_CHANGE
-            starts[l["id"]] = cur; cur += secs[l["id"]]; prev = l["speaker"]
+                cur += PAUSE_SAME if prev == ln["speaker"] else PAUSE_CHANGE
+            starts[ln["id"]] = cur
+            cur += secs[ln["id"]]
+            prev = ln["speaker"]
         # groups of consecutive lines with the same candidate shots
         groups = []
-        for l in sl:
-            key = tuple(l["candidate_coverage_shots"])
+        for ln in sl:
+            key = tuple(ln["candidate_coverage_shots"])
             if groups and groups[-1][0] == key:
-                groups[-1][1].append(l)
+                groups[-1][1].append(ln)
             else:
-                groups.append((key, [l]))
+                groups.append((key, [ln]))
         used, segs, last_shot = set(), [], None
         for g, (cands, gl) in enumerate(groups):
             g_start = starts[gl[0]["id"]]
             nxt = starts[groups[g + 1][1][0]["id"]] if g + 1 < len(groups) else t["seconds"]
-            free = [c for c in cands if c not in used] or []
+            free = [c for c in cands if c not in used]
             if not free:                                     # nothing new: hold a still
                 still = cands[-1] if cands else last_shot
                 segs.append(dict(shot=still, kind="still", start=g_start, seconds=nxt - g_start,
-                                 lines=[l["id"] for l in gl],
+                                 lines=[ln["id"] for ln in gl],
                                  note="end image of the shot as a still, slow push-in (or reuse its clip)"))
                 continue
             # split the group's lines between the free shots, balancing time
             k, total = len(free), nxt - g_start
-            bounds, acc, j = [], 0.0, 1
-            for i, l in enumerate(gl[:-1]):
+            bounds, j = [], 1
+            for i in range(len(gl) - 1):
                 acc = starts[gl[i + 1]["id"]] - g_start
                 if j < k and acc >= total * j / k:
-                    bounds.append(i + 1); j += 1
+                    bounds.append(i + 1)
+                    j += 1
             parts = [gl[a:b] for a, b in zip([0] + bounds, bounds + [len(gl)])]
             free = free[:len(parts)]
             for p, (shot, pl) in enumerate(zip(free, parts)):
                 s0 = starts[pl[0]["id"]]
                 s1 = starts[parts[p + 1][0]["id"]] if p + 1 < len(parts) else nxt
                 segs.append(dict(shot=shot, kind="clip", start=s0, seconds=s1 - s0,
-                                 lines=[l["id"] for l in pl], note=treatment(s1 - s0)))
-                used.add(shot); last_shot = shot
+                                 lines=[ln["id"] for ln in pl], note=treatment(s1 - s0)))
+                used.add(shot)
+                last_shot = shot
         clip_s = sum(min(s["seconds"], CLIP) for s in segs if s["kind"] == "clip")
         summary.append((scene, t["seconds"], len({s["shot"] for s in segs if s["kind"] == "clip"}), clip_s))
         md.append(f"\n## Scene {scene:02d} ({fmt(film_t)} - {fmt(film_t + t['seconds'])}, "
@@ -129,16 +134,16 @@ def main() -> None:
             plan.append(dict(scene=scene, film_start=round(film_t + s["start"], 2), **{k: v for k, v in s.items()},
                              start_image=img.get(sh.get("start_image")), end_image=img.get(sh.get("end_image"))))
         md.append("\n<details><summary>Lines</summary>\n")
-        for l in sl:
-            md.append(f"- `{l['id']}` {fmt(film_t + starts[l['id']])} ({secs[l['id']]:.1f} s) "
-                      f"**{l['speaker']}**: {l['text']}")
+        for ln in sl:
+            md.append(f"- `{ln['id']}` {fmt(film_t + starts[ln['id']])} ({secs[ln['id']]:.1f} s) "
+                      f"**{ln['speaker']}**: {ln['text']}")
         md.append("\n</details>")
         film_t += t["seconds"]
     md.insert(2, "\n## Summary\n\n| Scene | Narration | Shots used | Clip time at normal speed | Covered by slow-down or stills |\n|---|---|---|---|---|\n"
               + "\n".join(f"| {s} | {a:.1f} s | {n} | {c:.1f} s | {a - c:.1f} s |" for s, a, n, c in summary)
               + f"\n| **total** | **{fmt(sum(a for _, a, _, _ in summary))}** | {sum(n for _, _, n, _ in summary)} | "
               f"{sum(c for *_, c in summary) / 60:.1f} min | {sum(a - c for _, a, _, c in summary) / 60:.1f} min |\n")
-    (sd / "TIMING_SHEET.md").write_text("\n".join(md) + "\n")
+    (sd / "TIMING_SHEET.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     (sd / "timing_plan.json").write_text(json.dumps(dict(story=args.story, lang=args.lang, clip_seconds=CLIP,
                                                          segments=plan), indent=2))
     print(f"film {fmt(film_t)}; {len(plan)} segments -> {sd / 'TIMING_SHEET.md'}")

@@ -11,11 +11,14 @@ review checks that the same characters and forest remain consistent across shots
 voices come from Gemini TTS (`voice/`); music and sound effects from
 ElevenLabs; the final mix is done in DaVinci Resolve.
 
-Current work: **The Lion and the Mouse, v4 documentation and prompt plan**.
-Start with the [v4 review packet](stories/lion_and_mouse_v4/README.md).
+Current work: **The Lion and the Mouse, v4: still images under owner review**
+(status 2026-10-02). Start with the [v4 review packet](stories/lion_and_mouse_v4/README.md)
+and the [image review](stories/lion_and_mouse_v4/IMAGE_REVIEW.md).
 V3 has been rendered and reviewed by the owner; v2/v3 remain historical inputs.
-V4 images and clips have **not** been generated. The script order and revised
-canonicals need review before production.
+V4 stills were made from 2026-09-30 to 2026-10-02 with GPT's built-in image
+tool and the Gemini API (139 of 140 image records accepted, one missing); the
+owner now makes new images personally. The English narration exists. **No v4
+clip has been rendered**; there is no runnable v4 `story.yaml` yet.
 
 **New here? See [Where to find things](#where-to-find-things) below.**
 
@@ -28,10 +31,11 @@ script + shot order review -> approved cast/places/props -> paired keyframes
 
 | Stage | Tool | What it produces |
 |---|---|---|
-| Story and prompt plan | v4 `visual_bible.json`, `prompt_manifest.json`; later approved `story.yaml` | complete draft image/video prompts and state/geometry records; current scripts require story YAML |
-| Narration | `stories/<slug>/narration/<lang>.yaml`, `voice/` | the script per language; Gemini voices |
-| Cast | `character/characters/<Name>/v3/` + `production/install_pack.py` | owner-made canonical, views, expressions, actions, story states |
-| Places | `character/locations/<place>/` + `stories/<slug>/locations_dna.yaml` | owner-made empty plates, one per lighting |
+| Story and prompt plan | v4 `visual_bible.json`, `prompt_manifest.json`; later approved `story.yaml` | complete image/video prompts, state/geometry records and each accepted image's result; current render scripts require story YAML |
+| Narration | v4: `dialogue_coverage.json` + `voice/narrate_scenes.py`; v2: `stories/<slug>/narration/<lang>.yaml`; `voice/` | the spoken lines; one WAV per scene with Gemini voices; `production/timing_sheet.py` maps lines to shots |
+| Cast | v4: `character/characters/<Name>/v4/`; v3: `character/characters/<Name>/v3/` + `production/install_pack.py` | canonical, views, expressions, actions, story states (v4 made with image models, see `docs/gemini-images.md`) |
+| Places | v4: `character/locations/v4/<place>/` (bible `locations`); v3: `character/locations/<place>/` + `stories/<slug>/locations_dna.yaml` | empty plates, one per lighting |
+| Scene stills (v4) | `character/characters/interactions/v4/keyframes/` | the start and end image of every shot, made with image models and recorded in the manifest |
 | Props (optional) | `production/design.py` | Wan 2.2 stills of places and props (the v1/v2 method) |
 | Poses (optional) | `character/character.py` + `stories/<slug>/packs/*.yaml` | extra poses animated from the canonical |
 | Keyframes | `production/compose_keyframes.py` (`compose:` in each shot) | start/end frames: characters cut out (BiRefNet) and placed; a contact sheet to check |
@@ -39,11 +43,34 @@ script + shot order review -> approved cast/places/props -> paired keyframes
 | Animatic (separate owner request) | `production/animatic.py` | assembly after actual take selection; source choices and dialogue timing need manual review |
 | Post | `bllt/post.py` | RIFE 16->30 fps, Real-ESRGAN to 1080p, grade |
 
+## Consistent images (start here before any image)
+
+Every story keeps one visual bible (`stories/<slug>/visual_bible.json`): canonical character
+descriptions written from the approved canonical images, the size lineup, locked location plates
+and camera setups with measured character sizes. All image and video prompts in
+`prompt_manifest.json` are templates built from it:
+
+```bash
+python3 production/image_prompts.py build   # render the templates
+python3 production/image_prompts.py lint    # must report 0 errors
+python3 production/image_prompts.py md      # readable prompts in stories/<slug>/prompts/
+python3 production/image_prompts.py review <record> --image <candidate>   # side-by-side gate
+python3 production/image_prompts.py --story lion_and_mouse_v4 new-story <slug>   # skeleton for a new story
+```
+
+Claude Code loads the repo skill `consistent-image-prompts` (`.claude/skills/`) for any image
+work; it walks through the setup for a new story, prompt writing, generation and review.
+Details: `docs/image-prompts.md`; rules: `docs/creation-rules.md` (CR-11 to CR-18).
+
+To make an image yourself: `python3 production/image_prompts.py show <record>` (or
+`stories/<slug>/prompts/*.md`) gives the exact prompt; attach the references it lists, in that
+order.
+
 ## Layout
 
 ```
 stories/     one folder per story: story.yaml, story.txt, narration/, packs/
-production/  install_pack, design, keyframe, shot, animatic, scene_baseline
+production/  install_pack, design, keyframe, shot, animatic, image_prompts
 character/   character.py (pose clips) and characters/ (owner-made packs)
 voice/       Gemini TTS: tools, saved voices (cast/, narrators/), samples
 lora/        LoRA dataset builder, training, evaluation (musubi-tuner)
@@ -77,7 +104,9 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 
 | I want to... | Read |
 |---|---|
-| **review the next iteration** | **[V4 packet](stories/lion_and_mouse_v4/README.md)**: owner observations, proposed sequence and complete draft prompts |
+| **review the next iteration** | **[V4 packet](stories/lion_and_mouse_v4/README.md)**: status, open issues, owner observations, proposed sequence and complete prompts |
+| **review the v4 images** | **[Image review](stories/lion_and_mouse_v4/IMAGE_REVIEW.md)**: every image with a keep column, plus the shot order |
+| make v4 still images with the Gemini API | [docs/gemini-images.md](docs/gemini-images.md): workflow, model choice, cost, lessons |
 | preserve exact prompts and references | [Prompt records](docs/prompt-records.md) |
 | approve images and prepare clip jobs | [V4 preflight](docs/v4-preflight.md): manual gates and current tooling gaps |
 | **write a script, an image prompt or a shot description** | **[docs/creation-rules.md](docs/creation-rules.md)**: rules for scripts, character and location images, interactions and shots, identity, scale, pair, prop, motion and review requirements |
@@ -106,7 +135,10 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 
 | What | Where |
 |---|---|
-| V4 planned references and prompts (not generated) | `stories/lion_and_mouse_v4/prompt_manifest.json`; each record names its future asset path |
+| V4 prompt records and their results | `stories/lion_and_mouse_v4/prompt_manifest.json`; each record names its image path, hash and review |
+| V4 character images (canonical, references, 11 expressions each) | `character/characters/<Name>/v4/` |
+| V4 scene start/end images | `character/characters/interactions/v4/keyframes/` |
+| V4 location plates and props | `character/locations/v4/` |
 | Existing v3 character packs (canonical, views, expressions, actions, story states) | `character/characters/<Name>/v3/` |
 | Character DNA (the written identity) | `character/characters/<Name>/v3/dna.yaml` |
 | Two-character images | `character/characters/interactions/v3/` |
@@ -119,8 +151,10 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 ## All docs
 
 - [V4 review packet](stories/lion_and_mouse_v4/README.md): start here for the fourth iteration
+- [V4 image review](stories/lion_and_mouse_v4/IMAGE_REVIEW.md): every v4 image, with a keep column
 - [Prompt records](docs/prompt-records.md): exact text, references, revisions and execution provenance
 - [V4 preflight](docs/v4-preflight.md): image, pair, clip and assembly gates
+- [Gemini images](docs/gemini-images.md): making v4 stills with the Gemini API
 
 - [CLAUDE.md](CLAUDE.md): operating manual and current state
 - [Creation rules](docs/creation-rules.md): how to write scripts, image prompts and shot descriptions

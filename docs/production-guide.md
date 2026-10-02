@@ -3,12 +3,13 @@
 How to go from a story idea to a finished, consistent, monetisable children's
 video with this repo. Worked example throughout: **The Lion and the Mouse**.
 The measured examples below come from its first version (v1, whose files
-were removed on 2026-09-27). V3 was reviewed by the owner; current work is the
-[v4 documentation packet](../stories/lion_and_mouse_v4/README.md).
+were removed on 2026-09-27). V3 was reviewed by the owner; current work is
+[v4](../stories/lion_and_mouse_v4/README.md): its stills were made from
+2026-09-30 to 2026-10-02 and are under owner review; no v4 clip exists yet.
 Narration and character voices: Gemini TTS (`voice/`); music and sound
 effects: ElevenLabs; final mix: DaVinci Resolve.
 
-## Current production policy (2026-09-30)
+## Current production policy (2026-09-30; status updated 2026-10-02)
 
 Read [creation rules](creation-rules.md), [prompt records](prompt-records.md)
 and [v4 preflight](v4-preflight.md) before using a command below. Sections 2–7
@@ -18,10 +19,13 @@ eyes, full rust-orange Leo mane, smooth-crown slender Milo, standing scale 1:3.
 Character LoRAs are not part of the default image-to-video workflow. This does
 not exclude the separate Lightning acceleration adapters used by fast mode.
 
-V4's bible and manifest are a draft plan with complete prompts. They are not
-runtime YAML or automatic validators. First approve story sequence and canonicals,
-then pairs, then a small individual-clip pilot. Review/choose takes before a
-separately requested animatic. Never append assembly to a render batch.
+V4's bible and manifest hold the complete prompts and, since generation began,
+each accepted image's result. They are not runtime YAML or automatic
+validators. First approve story sequence and canonicals, then pairs, then a
+small individual-clip pilot. Review/choose takes before a separately requested
+animatic. Never append assembly to a render batch. The v4 stills were made
+with commercial image models (see [gemini-images.md](gemini-images.md)), not
+with `design.py` or `keyframe.py`; the owner now makes new images personally.
 
 The platform/licensing discussion below is retained from earlier research;
 this documentation pass did not re-check external policies.
@@ -511,7 +515,8 @@ Back up chosen media, exact prompt logs and source references together.
    sampled frames; repair causes before expanding the render batch.
 8. **Owner selection then separate assembly:** preserve candidates and record
    exact owner choices. Assemble only when requested, then inspect post/edit.
-9. **Back up** assets and provenance. The owner handles all git commands.
+9. **Back up** assets and provenance. The owner handles all git commands
+   (agents only on the owner's explicit request).
 
 See [v4 preflight](v4-preflight.md) for the complete checklist and known tool
 limitations. These are manual production gates, not newly implemented code.

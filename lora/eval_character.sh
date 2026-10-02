@@ -1,23 +1,32 @@
 #!/bin/bash
-# Evaluate a character LoRA as a grid of stills.
+# Evaluate a character LoRA as a grid of stills (assemble with lora/eval_grid.py).
 #   bash lora/eval_character.sh <name> <step|final|base> ...
 # Same prompts and seeds for every checkpoint; `base` renders without a LoRA,
 # describing the character with its full text sheet instead of the trigger word.
+# Prompts come from the eval: section of lora/datasets/<name>.yaml.
 set -euo pipefail
+[ $# -ge 2 ] || { echo "usage: bash lora/eval_character.sh <name> <step|final|base> ..." >&2; exit 2; }
 source "$(dirname "$0")/musubi_env.sh"
 NAME=$1; shift
+for CK in "$@"; do      # checked before the wait below, which can last hours
+  [[ $CK =~ ^(base|final|[0-9]+)$ ]] || { echo "checkpoint must be base, final or a step number, not '$CK'" >&2; exit 2; }
+done
 D=$ROOT/work/lora/$NAME
-mkdir -p $D/eval
+mkdir -p "$D/eval"
 # Wait for training to finish (both final LoRAs) so this can be queued together
 # with the training job and start the moment the weights exist.
-until [ -f $D/out_low/${NAME}_low.safetensors ] && [ -f $D/out_high/${NAME}_high.safetensors ]; do
+until [ -f "$D/out_low/${NAME}_low.safetensors" ] && [ -f "$D/out_high/${NAME}_high.safetensors" ]; do
   echo "[$(date +%T)] waiting for final $NAME LoRAs"; sleep 120
 done
 python - "$NAME" <<'PY'
-import sys, yaml
+import os
+import sys
 from pathlib import Path
+
+import yaml
+
 name = sys.argv[1]
-root = Path(__import__("os").environ["BLLT_REPO"])
+root = Path(os.environ["BLLT_REPO"])
 cfg = yaml.safe_load((root / "lora" / "datasets" / f"{name}.yaml").read_text())
 e = cfg["eval"]
 out = root / "work" / "lora" / name / "eval"
@@ -33,12 +42,13 @@ for CK in "$@"; do
     LORA=(); PROMPTS=$D/eval/prompts_base.txt
   else
     SUF=$([ "$CK" = final ] && echo "" || printf -- "-step%08d" "$CK")
-    LORA=(--lora_weight $D/out_low/${NAME}_low$SUF.safetensors --lora_weight_high_noise $D/out_high/${NAME}_high$SUF.safetensors)
+    LORA=(--lora_weight "$D/out_low/${NAME}_low$SUF.safetensors"
+          --lora_weight_high_noise "$D/out_high/${NAME}_high$SUF.safetensors")
     PROMPTS=$D/eval/prompts_lora.txt
   fi
   echo "[$(date +%T)] eval $CK"
-  python $MUSUBI/wan_generate_video.py --task t2v-A14B --dit $DIT_LOW --dit_high_noise $DIT_HIGH \
-    --vae $VAE --t5 $T5 --attn_mode sdpa --blocks_to_swap 10 --lazy_loading \
-    "${LORA[@]}" --from_file $PROMPTS --output_type images --save_path $D/eval/$CK
-  echo "[$(date +%T)] eval $CK done: $(ls $D/eval/$CK | wc -l) files"
+  python "$MUSUBI/wan_generate_video.py" --task t2v-A14B --dit "$DIT_LOW" --dit_high_noise "$DIT_HIGH" \
+    --vae "$VAE" --t5 "$T5" --attn_mode sdpa --blocks_to_swap 10 --lazy_loading \
+    "${LORA[@]}" --from_file "$PROMPTS" --output_type images --save_path "$D/eval/$CK"
+  echo "[$(date +%T)] eval $CK done: $(find "$D/eval/$CK" -maxdepth 1 -type f | wc -l) files"
 done

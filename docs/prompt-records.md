@@ -1,8 +1,11 @@
 # Prompt records and reproducible handoffs
 
-Current v4 documentation contract (2026-09-30). Read
-[creation-rules.md](creation-rules.md) first. These records are planning data;
-existing rendering tools do not read or enforce this schema.
+V4 record contract (written 2026-09-30; status updated 2026-10-02). Read
+[creation-rules.md](creation-rules.md) first. The rendering tools (`shot.py`,
+`keyframe.py`, `compose_keyframes.py`, `animatic.py`) do not read or enforce
+this schema; `character/gemini_image.py` reads the image records and writes
+their results, and `production/image_review_md.py` and
+`production/timing_sheet.py` read the manifest.
 
 ## Where the exact prompt lives
 
@@ -15,17 +18,25 @@ For v4:
 
 - `stories/lion_and_mouse_v4/visual_bible.json`: versioned identity, style,
   geometry, location/motion profiles and prop-state definitions.
-- `stories/lion_and_mouse_v4/prompt_manifest.json`: authoritative draft records
-  for individual image and video prompts, including fully expanded text.
+- `stories/lion_and_mouse_v4/prompt_manifest.json`: authoritative records
+  for individual image and video prompts, including fully expanded text. Since
+  generation began (2026-09-30 to 2026-10-02) each image record's `result` also
+  holds the accepted output: path, hash, tool, model, ordered references,
+  submitted prompt where recorded, review; rejected tries are under
+  `result.attempts` and earlier results under the record's `superseded`
+  (in-place repairs used `result.superseded` or `result.superseded_results`).
 - `stories/lion_and_mouse_v4/prompts/*.md`: readable snapshots of those records,
   grouped by scene and foundation assets. Edit the manifest first and keep
   snapshots consistent; neither is an executed-generation log.
-- Future `stories/lion_and_mouse_v4/generation_log.jsonl`: append one record for
-  every image attempt/edit/reuse, including rejected attempts and exact text.
-  This file is created when generation actually begins, not with fake entries.
+- Execution log, as actually kept: the manifest fields above;
+  `stories/lion_and_mouse_v4/GENERATION_PROGRESS.md` (dated log of accepted
+  and rejected takes); `revisions/<rev>.json` (the fix texts of the Gemini
+  passes r02 to r05); `revisions/gemini_ledger.csv` (every Gemini call) and
+  the `.json` sidecar of each Gemini candidate. The `generation_log.jsonl`
+  planned here on 2026-09-30 was never created; do not start a parallel log.
 - Future `stories/lion_and_mouse_v4/selections.json`: the owner's actual clip
   choices, trims, order and assembly instruction. No default seed counts as a
-  selection. No selection has been recorded for v4.
+  selection. No selection has been recorded for v4 (no clip exists yet).
 
 Video records separate `full_prompt_specification` (the exhaustive planning
 contract) from `positive_prompt` (the complete, compact runtime candidate).
@@ -166,13 +177,17 @@ negative text must be universally valid; per-shot `negative_extra` can only add
 terms, not remove global ones. Teeth/mouth exceptions therefore cannot be fixed
 by merely adding a positive sentence at shot level.
 
-Current `--dry-run` prints the positive prompt and checks some paths, but does
-not print the complete negative or inspect image content/identity, net state,
-mode variants, stale caches or owner selection. Review those independently.
+`--dry-run` checks some paths and prints the assembled prompt (the 2026-09-30
+version printed only the positive, so check whether yours shows the combined
+negative). It does not inspect image content/identity, net state, mode
+variants, stale caches or owner selection. Review those independently.
 Always pass `--story lion_and_mouse_v4` when a runnable v4 story eventually exists;
 some tools still default to v2. Do not run draft manifests as story YAML.
 
-## Future execution ledger example (template, not an actual result)
+## Execution ledger example (template, not an actual result)
+
+The fields below are what an attempt must record. In practice v4 keeps them in
+the manifest record's `result` (and `attempts`), not in a separate file.
 
 ```json
 {

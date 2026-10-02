@@ -11,10 +11,13 @@ work/
 !docs/img/*.png
 # saved voice samples (voice/cast, voice/narrators)
 !voice/**/*.wav
-# owner-made character packs (identity authority)
+# character packs v2-v4 (identity authority) and the v4 record targets:
+# references, expressions, scene start/end frames (interactions/v4/keyframes)
 !character/characters/**/*.png
-# owner-made location plates (v3)
+!character/characters/**/*.jpg
+# location plates and props (v3; v4 in character/locations/v4/)
 !character/locations/**/*.png
+!character/locations/**/*.jpg
 # python
 __pycache__/
 *.pyc
@@ -22,6 +25,9 @@ __pycache__/
 *.safetensors
 *.pkl
 *.pt
+*.pth
+*.ckpt
+*.bin
 .env
 
 # Gemini candidate takes (character/gemini_image.py); accepted ones are copied to the record target

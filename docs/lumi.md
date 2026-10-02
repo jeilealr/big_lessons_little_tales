@@ -41,8 +41,9 @@ $W python character/character.py prompt      # anything, on a login node
 
 ## Gotchas already solved
 
-- No ffmpeg on PATH: `twc.media.locate_ffmpeg` falls back to imageio-ffmpeg's binary.
-- `deepspeed`/`apex` import failures: see `docs/provenance.md` and `lumi/stubs/`.
+- No ffmpeg on PATH: `bllt.media.locate_ffmpeg` falls back to imageio-ffmpeg's binary.
+- `deepspeed`/`apex` import failures: see `lumi/stubs/` and the "LUMI and
+  training" table in `docs/findings-and-risks.md`.
 - `Cannot open database file: /tmp/gfx90a…ukdb`: MIOpen cache moved to scratch,
   one directory per job *and task* (`lumi/env.sh`).
 - tqdm progress bars do not flush through `srun`; a job that looks silent may be

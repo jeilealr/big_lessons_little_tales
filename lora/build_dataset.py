@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a captioned image dataset for a character LoRA (step 3).
+"""Build a captioned image dataset for a character LoRA.
 
 Driven by lora/datasets/<name>.yaml: which stills and which clip frames to use,
 each with the pose/view it shows. Every caption follows one recipe:
@@ -12,7 +12,13 @@ not absorb it into the character. Medium-shot crops around the subject add
 framing variety, which character-LoRA practice asks for alongside angles and
 backgrounds.
 
+  lumi/run_in_container.sh python lora/build_dataset.py <name> [--allow-missing]
+
 Output: work/lora/<name>/dataset/*.png + *.txt, and contact_sheet.png.
+lora/datasets/ is empty since the v1 story was removed: write a new <name>.yaml
+first (keys read here: name, workdir, trigger, identity, setting, style,
+subject, sources, crop_every, composite; eval: is read by eval_character.sh
+and eval_grid.py).
 """
 
 from __future__ import annotations
@@ -63,9 +69,12 @@ def medium_crop(img: np.ndarray, box, aspect: float = 16 / 9) -> np.ndarray | No
     ch = max(h * 1.5, w * 1.5 / aspect)
     cw = ch * aspect
     H, W = img.shape[:2]
-    if cw >= W * 0.9:            # the subject already fills the frame; no crop needed
+    # the subject already fills the frame: no crop needed (the height test matters
+    # for frames wider than 16:9, where ch could exceed H and the slice would wrap)
+    if cw >= W * 0.9 or ch >= H * 0.9:
         return None
-    x0 = int(np.clip(cx - cw / 2, 0, W - cw)); y0 = int(np.clip(cy - ch / 2, 0, H - ch))
+    x0 = int(np.clip(cx - cw / 2, 0, W - cw))
+    y0 = int(np.clip(cy - ch / 2, 0, H - ch))
     return img[y0:y0 + int(ch), x0:x0 + int(cw)]
 
 
@@ -100,7 +109,8 @@ def main() -> None:
             clip = Path(src["clip"]) if src["clip"].startswith("/") else (
                 base / src["clip"])
             if not clip.is_file():
-                skipped.append(str(clip)); frames = []
+                skipped.append(str(clip))
+                frames = []
             else:
                 all_frames = media.read_frames(clip)
                 frames = [(f"{clip.stem}_f{i:02d}", all_frames[min(i, len(all_frames) - 1)])
@@ -108,14 +118,16 @@ def main() -> None:
         for stem, img in frames:
             Image.fromarray(img).save(out / f"{stem}.png")
             (out / f"{stem}.txt").write_text(caption(src["pose"], "full body"))
-            items.append(stem); pose_of[stem] = src["pose"]
+            items.append(stem)
+            pose_of[stem] = src["pose"]
             if src.get("crop", cfg.get("crop_every", True)):
                 box = subject_box(img, cfg["subject"])
                 c = medium_crop(img, box) if box else None
                 if c is not None:
                     Image.fromarray(c).save(out / f"{stem}_medium.png")
                     (out / f"{stem}_medium.txt").write_text(caption(src["pose"], "medium shot"))
-                    items.append(f"{stem}_medium"); crops += 1
+                    items.append(f"{stem}_medium")
+                    crops += 1
     # Background diversity: cut each full-body still out and composite it into
     # several different location plates. Without this the LoRA memorises the
     # training background (the fox LoRA drew its meadow for a "forest" prompt).
@@ -151,7 +163,8 @@ def main() -> None:
                 Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8)).save(out / f"{name}.png")
                 cap = ", ".join([cfg["trigger"], cfg["identity"], pose, "full body", plate_caption, cfg["style"]])
                 (out / f"{name}.txt").write_text(cap)
-                items.append(name); n_comp += 1
+                items.append(name)
+                n_comp += 1
         print(f"composited {n_comp} images into {len(plates)} plates")
 
     if skipped and not args.allow_missing:

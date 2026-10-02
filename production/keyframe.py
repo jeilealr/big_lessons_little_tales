@@ -7,21 +7,25 @@ holds the exact character (from its canonical or a pose clip) in the exact
 place (the location plate), the shot starts on-model and on-set, which text
 alone cannot guarantee.
 
-Cut-out: every pose is shot on the plain design backdrop, so the matte is
-"differs from the backdrop colour" (estimated from the image border), refined
-with GrabCut and feathered. Placement: the character's feet go to (x, y) in
-the plate, scaled to a height given as a fraction of the frame. A soft contact
-shadow grounds it, and its colours are pulled slightly towards the plate's
-lighting so it does not look pasted on.
+Cut-out: BiRefNet matting (a chroma key against the plain design backdrop if
+the model cannot be loaded). Placement: the matte's bounding box is scaled to a
+height `h` (fraction of the frame) with its bottom edge, the feet, at (x, y).
+A soft contact shadow grounds it; only its brightness is matched to the plate,
+never its hue. Optional: a virtual close-up of the plate (`crop`, Real-ESRGAN,
+cached next to the plate) and a background blur.
 
   python production/keyframe.py --plate PLATE.png --out KEY.png \\
-      --char STILL.png:x=0.5,y=0.82,h=0.45[,flip]  [--char ...]
+      --char STILL.png:x=0.5,y=0.82,h=0.45[,flip]  [--char ...] [--plate-crop x,y,w]
+
+Output: KEY.png + KEY.json (where each character went). story.yaml `compose:`
+recipes are built through `compose_recipe` (shot.py, compose_keyframes.py).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import cv2
@@ -92,8 +96,8 @@ def matte_colour_key(img: np.ndarray, t_lo: float = 8.0, t_hi: float = 18.0) -> 
     keep = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
     core = (lab_cc == keep).astype(np.uint8)
     solid = cv2.morphologyEx(core, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))
-    flood = solid.copy(); ff = np.zeros((h + 2, w + 2), np.uint8)
-    cv2.floodFill(flood, ff, (0, 0), 1)
+    flood = solid.copy()
+    cv2.floodFill(flood, np.zeros((h + 2, w + 2), np.uint8), (0, 0), 1)
     solid = solid | (1 - flood)                                    # holes filled
     near = cv2.dilate(solid, np.ones((7, 7), np.uint8)).astype(np.float32)
     alpha = np.maximum(soft * near, solid.astype(np.float32))
@@ -103,6 +107,8 @@ def matte_colour_key(img: np.ndarray, t_lo: float = 8.0, t_hi: float = 18.0) -> 
 def subject_bbox(img: np.ndarray) -> tuple[int, int, int, int]:
     """Tight box around the character, from the matte (x, y, w, h)."""
     ys, xs = np.nonzero(matte(img) > 0.5)
+    if not ys.size:
+        raise ValueError("no character found: the matte is empty")
     return int(xs.min()), int(ys.min()), int(xs.max() - xs.min() + 1), int(ys.max() - ys.min() + 1)
 
 
@@ -117,7 +123,7 @@ def harmonise(rgb: np.ndarray, alpha: np.ndarray, plate_region: np.ndarray,
     if m.sum() < 50 or amount <= 0:
         return rgb
     w = np.array([0.299, 0.587, 0.114])
-    src = float(rgb[m] @ w.mean() if False else (rgb[m] * w).sum(1).mean())
+    src = float((rgb[m] * w).sum(1).mean())
     dst = float((plate_region.reshape(-1, 3) * w).sum(1).mean())
     gain = 1 + amount * (dst / max(src, 1.0) - 1)
     return np.clip(rgb * float(np.clip(gain, 0.8, 1.1)), 0, 255)
@@ -128,8 +134,11 @@ def place(plate: np.ndarray, still: np.ndarray, x: float, y: float, height: floa
     H, W = plate.shape[:2]
     alpha = matte(still)
     ys, xs = np.nonzero(alpha > 0.5)
+    if not ys.size:
+        raise ValueError("no character found in the still: the matte is empty")
     y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
-    rgb = still[y0:y1, x0:x1].astype(np.float32); a = alpha[y0:y1, x0:x1]
+    rgb = still[y0:y1, x0:x1].astype(np.float32)
+    a = alpha[y0:y1, x0:x1]
     if flip:
         rgb, a = rgb[:, ::-1], a[:, ::-1]
     scale = height * H / rgb.shape[0]
@@ -165,42 +174,50 @@ def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None 
     the plate for a virtual close-up (Real-ESRGAN; cached next to the plate).
     `blur`: Gaussian sigma (pixels) applied to the background only, for close-ups
     whose background should be out of focus."""
-    import sys as _sys
-
     frame = np.asarray(Image.open(plate).convert("RGB")).astype(np.float32)
     if crop:
-        _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-        import torch
-
-        from bllt import post
-
         H, W = frame.shape[:2]
         fx, fy, fw = map(float, crop[:3])
+        x0, y0, cw = int(fx * W), int(fy * H), int(fw * W)
+        ch = int(cw * H / W)
+        # A crop past the plate edge would come back short and be stretched to W x H.
+        if x0 < 0 or y0 < 0 or cw < 1 or x0 + cw > W or y0 + ch > H:
+            raise ValueError(f"crop {crop} runs outside the {W}x{H} plate {plate}")
         cache = plate.parent / f"{plate.stem}_crop_{fx:.3f}_{fy:.3f}_{fw:.3f}.png"
-        if cache.is_file():                   # the upscale takes ~15 min on a CPU
+        # The upscale takes ~15 min on a CPU, so it is cached; a cache older than
+        # the plate would silently show the previous version of the set.
+        if cache.is_file() and cache.stat().st_mtime >= plate.stat().st_mtime:
             frame = np.asarray(Image.open(cache).convert("RGB")).astype(np.float32)
         else:
-            x0, y0, cw = int(fx * W), int(fy * H), int(fw * W)
-            ch = int(cw * H / W)
+            sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+            import torch
+
+            from bllt import post
+
             piece = frame[y0:y0 + ch, x0:x0 + cw].astype(np.uint8)
             dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             frame = post.upscale(piece[None], W, H, dev)[0].astype(np.float32)
             Image.fromarray(frame.astype(np.uint8)).save(cache)
     if blur:                                  # defocus the background for close-ups
-        import cv2
-
         frame = cv2.GaussianBlur(frame, (0, 0), sigmaX=float(blur))
     placed = []
     for c in chars:
         still = np.asarray(Image.open(c["still"]).convert("RGB"))
         frame, info = place(frame, still, float(c.get("x", 0.5)), float(c.get("y", 0.85)),
                             float(c.get("h", 0.4)), flip=bool(c.get("flip", False)))
-        placed.append({**{k: v for k, v in c.items()}, **info})
+        placed.append({**c, **info})
     out.parent.mkdir(parents=True, exist_ok=True)
     Image.fromarray(np.clip(frame, 0, 255).astype(np.uint8)).save(out)
     record = dict(stage="keyframe", plate=str(plate), crop=crop, blur=blur, characters=placed)
     out.with_suffix(".json").write_text(json.dumps(record, indent=2, default=str))
     return record
+
+
+def compose_recipe(work: Path, recipe: dict, out: Path) -> dict:
+    """Build a keyframe from a story.yaml `compose:` / `end_compose:` recipe
+    (plate, characters, crop, blur); its paths are relative to `work`."""
+    chars = [{**c, "still": str(work / c["still"])} for c in recipe.get("characters", [])]
+    return compose(work / recipe["plate"], chars, out, recipe.get("crop"), recipe.get("blur", 0.0))
 
 
 def main() -> None:

@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """Make a still image from reference images and an instruction (image editing).
 
+Experimental, never run successfully (CLAUDE.md): it needs its own venv
+(transformers >= 4.57 for the Qwen2.5-VL text encoder), built by
+lumi/setup_env_qwen.sh and selected with BLLT_ENV=qwen. v4 stills are made
+with character/gemini_image.py; this is the open-weight local alternative.
+
 Qwen-Image-Edit-2511 (Apache-2.0): up to 3 reference images, e.g. an owner-made
 scene plus a character canonical. It changes what the prompt says and keeps
 the rest. For missing story stills (a new state of a character in a scene),
 not for animation.
 
-  python production/edit_image.py --images SCENE.png [CHAR.png ...] \\
-      --prompt "..." --out work/.../name.png [--seeds 1 2 3] [--steps 40]
+  BLLT_ENV=qwen lumi/run_in_container.sh python production/edit_image.py \\
+      --images SCENE.png [CHAR.png ...] --prompt "..." --out work/.../name.png \\
+      [--seeds 1 2 3] [--steps 40]
 
 Output: <out stem>_s<seed>.png per seed + .json sidecar (prompt, refs, seed,
 model revision). The size follows the first image (rounded to multiples of 16).
@@ -32,10 +38,6 @@ NEGATIVE = ("photorealistic, realistic animal fur, plastic, glossy CGI, text, le
 
 
 def main() -> None:
-    import torch
-    from diffusers import QwenImageEditPlusPipeline
-    from PIL import Image
-
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--images", nargs="+", type=Path, required=True)
@@ -46,6 +48,10 @@ def main() -> None:
     ap.add_argument("--cfg", type=float, default=4.0)
     args = ap.parse_args()
 
+    import torch
+    from diffusers import QwenImageEditPlusPipeline
+    from PIL import Image
+
     refs = [Image.open(p).convert("RGB") for p in args.images]
     w, h = refs[0].size
     scale = min(1.0, (1536 * 1024 / (w * h)) ** 0.5)          # keep ~1.5 MP
@@ -54,7 +60,8 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     todo = [s for s in args.seeds if not out.with_name(f"{out.stem}_s{s}.png").is_file()]
     if not todo:
-        print("all seeds exist"); return
+        print("all seeds exist")
+        return
     pipe = QwenImageEditPlusPipeline.from_pretrained(MODEL[0], revision=MODEL[1],
                                                      torch_dtype=torch.bfloat16)
     pipe.enable_model_cpu_offload()

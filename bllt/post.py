@@ -1,5 +1,8 @@
-#!/usr/bin/env python3
 """Learned post-processing for the Wan renders: interpolation, upscale, grade.
+
+A library (no command line): `retime`/`interpolate` (RIFE), `upscale`
+(Real-ESRGAN), `encode` (frames -> H.264) and `grade` (ffmpeg look pass).
+Callers decode clips with `bllt.media.read_frames`.
 
 Wan renders 16 fps at 1280x720. Getting from there to 1080p30 was previously
 ffmpeg's `minterpolate` (block matching, warps on fast motion) plus a lanczos
@@ -25,6 +28,8 @@ from pathlib import Path
 
 import numpy as np
 
+from bllt.media import locate_ffmpeg
+
 RIFE_REPO = "TensorForger/RIFE-safetensors"
 RIFE_REV = "78a62b7c2dd910536432d6c2c3a25e76f14fbf78"          # pinned
 ESRGAN_REPO = "Comfy-Org/Real-ESRGAN_repackaged"
@@ -32,39 +37,10 @@ ESRGAN_FILE = "RealESRGAN_x4plus.safetensors"
 ESRGAN_REV = "5fd49b7b278836f48af63ecd314d0f98ab336105"        # pinned
 
 
-def _ffmpeg() -> str:
-    from bllt.media import locate_ffmpeg
-    return locate_ffmpeg()
-
-
-def probe_size(path: Path) -> tuple[int, int]:
-    out = subprocess.run([_ffmpeg(), "-hide_banner", "-i", str(path)],
-                         capture_output=True, text=True).stderr
-    for line in out.splitlines():
-        if "Video:" in line:
-            for token in line.split(","):
-                token = token.strip().split(" ")[0]
-                if "x" in token:
-                    w, _, h = token.partition("x")
-                    if w.isdigit() and h.isdigit():
-                        return int(w), int(h)
-    raise RuntimeError(f"could not read frame size of {path}")
-
-
-def decode(path: Path) -> np.ndarray:
-    """Whole clip as uint8 [N, H, W, 3]."""
-    w, h = probe_size(path)
-    raw = subprocess.run(
-        [_ffmpeg(), "-v", "error", "-i", str(path), "-f", "rawvideo",
-         "-pix_fmt", "rgb24", "-"],
-        capture_output=True).stdout
-    return np.frombuffer(raw, dtype=np.uint8).reshape(-1, h, w, 3)
-
-
 def encode(frames: np.ndarray, path: Path, fps: int, crf: int = 12,
            vf: str | None = None) -> None:
     h, w = frames.shape[1:3]
-    cmd = [_ffmpeg(), "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
+    cmd = [locate_ffmpeg(), "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
            "-s", f"{w}x{h}", "-r", str(fps), "-i", "-"]
     if vf:
         cmd += ["-vf", vf]
@@ -147,7 +123,6 @@ def retime(frames: np.ndarray, src_fps: int, speed: float, out_fps: int,
 # Real-ESRGAN
 # --------------------------------------------------------------------------- #
 def _load_esrgan(device):
-    import torch
     from huggingface_hub import hf_hub_download
     from spandrel import ModelLoader
 
@@ -156,12 +131,11 @@ def _load_esrgan(device):
     return model.model.to(device).eval(), model.scale
 
 
-def _upscale_tiled(net, img, device, tile: int = 384, overlap: int = 32):
+def _upscale_tiled(net, img, device, scale: int = 4, tile: int = 384, overlap: int = 32):
     """Tile so a 4x upscale of a 720p frame fits comfortably in VRAM."""
     import torch
 
     c, h, w = img.shape
-    scale = 4
     out = torch.zeros((c, h * scale, w * scale), device=device, dtype=img.dtype)
     weight = torch.zeros((1, h * scale, w * scale), device=device, dtype=img.dtype)
     step = tile - overlap
@@ -188,7 +162,7 @@ def upscale(frames: np.ndarray, out_w: int, out_h: int, device) -> np.ndarray:
         for i, frame in enumerate(frames):
             img = torch.from_numpy(np.ascontiguousarray(frame)).to(device)
             img = img.permute(2, 0, 1).float() / 255.0
-            big = _upscale_tiled(net, img, device)
+            big = _upscale_tiled(net, img, device, scale)
             small = F.interpolate(big.unsqueeze(0), size=(out_h, out_w),
                                   mode="area")[0]
             out[i] = (small.clamp(0, 1) * 255).round().permute(1, 2, 0) \
@@ -215,14 +189,14 @@ GRADE_VF = (
 )
 
 
-def grade(src: Path, dst: Path, vf: str = None, crf: int = 12) -> None:
+def grade(src: Path, dst: Path, vf: str | None = None, crf: int = 12) -> None:
     """Apply the look as its own cheap ffmpeg pass.
 
     Kept separate from the GPU pass on purpose: grading is taste, and baking it
     into the upscale meant every tweak cost a 20-minute job.
     """
     subprocess.run(
-        [_ffmpeg(), "-y", "-v", "error", "-i", str(src), "-vf", vf or GRADE_VF,
+        [locate_ffmpeg(), "-y", "-v", "error", "-i", str(src), "-vf", vf or GRADE_VF,
          "-c:v", "libx264", "-preset", "slow", "-crf", str(crf),
          "-pix_fmt", "yuv420p", str(dst)],
         check=True,

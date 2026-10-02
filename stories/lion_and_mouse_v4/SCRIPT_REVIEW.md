@@ -6,6 +6,8 @@ Line IDs are stable planning labels, not spoken text. Direction labels and pause
 
 For each scene, review the shot order and prop handoff in [SHOT_PLAN.md](SHOT_PLAN.md). These text changes are proposals for the owner, not retroactive changes to v3.
 
+*Status 2026-10-02: the English narration of all 161 lines below was rendered from `dialogue_coverage.json` with `voice/narrate_scenes.py` (11:23.7, audio on LUMI under `work/stories/lion_and_mouse_v4/audio/en/`), and [TIMING_SHEET.md](TIMING_SHEET.md) maps each line to a shot. An owner approval of the wording is not recorded here.*
+
 ## Scene 01 — The little explorer
 
 [Image and video prompt records](prompts/scene-01.md).

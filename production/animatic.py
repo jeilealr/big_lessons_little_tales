@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """Cut an animatic: the whole story at its planned pacing, before (and while)
-rendering. Minutes on a CPU; no GPU.
+rendering. Minutes on a CPU; no GPU. Run it only when the owner asks for an
+assembly (docs/production-guide.md section 8): it is not a take selector.
 
-For every scene in story.yaml, in order, each shot shows
-  * its chosen render, if the shot has `take: <seed>` and the clip exists,
+For every scene in story.yaml, in order, each shot (except `superseded_by` and
+`variant_of` ones) shows
+  * its chosen render, if the shot has `take: <seed>` and the clip exists
+    (<shot>_s<take>.mp4, else <shot>_s<take>_fast.mp4),
   * else its keyframe still, if composed,
   * else (a scene without shots yet) a card with the scene's title and text.
+Every such fallback is listed in the report.
 
 Timing comes from the narration when it exists: put the narration for
 scene N (Gemini voices, voice/) at `work/stories/<story>/audio/<lang>/sceneNN.wav`
@@ -18,7 +22,9 @@ The report at the end is the point: which scenes need more shots than they
 have (the narration outlasts the clips), and where a render is held on its last
 frame.
 
-  python production/animatic.py [--story lion_and_mouse_v2] [--size 960x540]
+  python production/animatic.py [--story lion_and_mouse_v2] [--size 960x540] [--lang en]
+
+Output: work/stories/<story>/animatic[_<lang>].mp4 + .json (the report).
 """
 
 from __future__ import annotations
@@ -28,12 +34,13 @@ import json
 import subprocess
 import sys
 import textwrap
+import wave
 from pathlib import Path
 
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from bllt import paths, post  # noqa: E402
+from bllt import media, paths, wan  # noqa: E402
 
 FPS = 24
 SR = 48000
@@ -51,7 +58,7 @@ def narration(story: str, n: int, lang: str | None = None) -> Path | None:
 
 
 def read_audio(path: Path) -> np.ndarray:
-    raw = subprocess.run([post._ffmpeg(), "-v", "error", "-i", str(path), "-f", "s16le",
+    raw = subprocess.run([media.locate_ffmpeg(), "-v", "error", "-i", str(path), "-f", "s16le",
                           "-ac", "1", "-ar", str(SR), "-"], capture_output=True, check=True).stdout
     return np.frombuffer(raw, dtype=np.int16)
 
@@ -99,33 +106,43 @@ def main() -> None:
     args = ap.parse_args()
     size = tuple(int(v) for v in args.size.split("x"))
 
-    story = yaml.safe_load((paths.REPO / "stories" / args.story / "story.yaml").read_text())
-    work = paths.WORK / "stories" / args.story
+    story = yaml.safe_load((paths.STORIES / args.story / "story.yaml").read_text())
+    work = paths.story_work(args.story)
     out = work / (f"animatic_{args.lang}.mp4" if args.lang else "animatic.mp4")
-    tmp_video = out.with_name("animatic_video.mp4")
-    cmd = [post._ffmpeg(), "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
+    # Per-output temporary names, so animatics of two languages can run side by side.
+    tmp_video = out.with_name(f"{out.stem}_video.mp4")
+    tmp_audio = out.with_name(f"{out.stem}_audio.wav")
+    cmd = [media.locate_ffmpeg(), "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
            "-s", f"{size[0]}x{size[1]}", "-r", str(FPS), "-i", "-", "-c:v", "libx264",
            "-crf", "23", "-pix_fmt", "yuv420p", str(tmp_video)]
     enc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     audio: list[np.ndarray] = []
     report, t = [], 0.0
+    written = 0           # video frames so far; slots are rounded on the running total
 
     for n in sorted(story["scenes"]):
         scene = story["scenes"][n]
-        segs = []
+        segs, notes = [], []
         for shot in scene.get("shots", []):
             if shot.get("superseded_by") or shot.get("variant_of"):
                 continue
             clip = None
             if shot.get("take"):          # a 40-step render, or a fast-mode one (_fast)
-                for name in (f"{shot['name']}_s{shot['take']}.mp4", f"{shot['name']}_s{shot['take']}_fast.mp4"):
-                    if (work / "shots" / name).is_file():
-                        clip = work / "shots" / name
-                        break
+                found = [work / "shots" / f"{shot['name']}_s{shot['take']}{sfx}.mp4"
+                         for sfx in ("", "_fast")]
+                found = [f for f in found if f.is_file()]
+                clip = found[0] if found else None
+                if len(found) > 1:
+                    notes.append(f"{shot['name']}: take {shot['take']} exists as standard and "
+                                 f"_fast render; the standard one is shown")
+                elif not found:
+                    notes.append(f"{shot['name']}: no render of take {shot['take']}")
             if clip:
                 segs.append(("clip", clip, shot["name"]))
             elif (work / shot["keyframe"]).is_file():
                 segs.append(("still", work / shot["keyframe"], shot["name"]))
+            else:
+                notes.append(f"{shot['name']}: no render and no keyframe, left out")
         if not segs:
             segs.append(("card", None, "no shots yet"))
 
@@ -138,30 +155,35 @@ def main() -> None:
         else:
             slots = []
             for kind, src, _ in segs:
-                slots.append(len(post.decode(src)) / 16 if kind == "clip" else DEFAULT[kind])
+                slots.append(len(media.read_frames(src)) / wan.FPS if kind == "clip" else DEFAULT[kind])
             length = sum(slots)
             audio.append(np.zeros(int(length * SR), np.int16))
 
-        notes = []
+        end = t
         for (kind, src, name), slot in zip(segs, slots):
             source = (f"take {src.stem.split('_s')[-1]}" if kind == "clip"
                       else "keyframe only" if kind == "still" else "not planned")
             label = f"{n}. {scene['title']}  |  {name}  |  {source}"
-            nframes = int(round(slot * FPS))
+            # Rounding each slot on its own drifted the pictures away from the
+            # narration (up to ~1.7 s over a film); round the running end instead.
+            end += slot
+            nframes = int(round(end * FPS)) - written
+            written += nframes
             if kind == "clip":
-                frames = post.decode(src)
-                have = len(frames) / 16
+                frames = media.read_frames(src)
+                have = len(frames) / wan.FPS
                 if have + 0.05 < slot:
                     notes.append(f"{name}: clip {have:.1f}s held to fill {slot:.1f}s")
                 for i in range(nframes):
-                    f = frames[min(int(i / FPS * 16), len(frames) - 1)]
+                    f = frames[min(int(i / FPS * wan.FPS), len(frames) - 1)]
                     img = caption(Image.fromarray(f).resize(size, Image.LANCZOS), label)
                     enc.stdin.write(np.asarray(img).tobytes())
                 continue
             if kind == "still":
                 img = Image.open(src).convert("RGB").resize(size, Image.LANCZOS)
             else:
-                img = card(size, f"{n}. {scene['title']}", " ".join((scene.get("text") or scene.get("narration") or scene.get("beat", "")).split()))
+                text = scene.get("text") or scene.get("narration") or scene.get("beat", "")
+                img = card(size, f"{n}. {scene['title']}", " ".join(text.split()))
             frame = np.asarray(caption(img, label)).tobytes()
             for _ in range(nframes):
                 enc.stdin.write(frame)
@@ -176,15 +198,16 @@ def main() -> None:
     enc.stdin.close()
     if enc.wait():
         raise RuntimeError("ffmpeg encode failed")
-    wav = out.with_name("animatic_audio.wav")
-    import wave
-
-    with wave.open(str(wav), "wb") as w:
-        w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
+    with wave.open(str(tmp_audio), "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(SR)
         w.writeframes(np.concatenate(audio).tobytes())
-    subprocess.run([post._ffmpeg(), "-y", "-v", "error", "-i", str(tmp_video), "-i", str(wav),
-                    "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-shortest", str(out)], check=True)
-    tmp_video.unlink(); wav.unlink()
+    subprocess.run([media.locate_ffmpeg(), "-y", "-v", "error", "-i", str(tmp_video),
+                    "-i", str(tmp_audio), "-c:v", "copy", "-c:a", "aac", "-b:a", "160k",
+                    "-shortest", str(out)], check=True)
+    tmp_video.unlink()
+    tmp_audio.unlink()
     out.with_suffix(".json").write_text(json.dumps(dict(stage="animatic", fps=FPS,
                                                         seconds=round(t, 1), scenes=report), indent=2))
     for r in report:

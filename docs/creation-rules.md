@@ -45,7 +45,9 @@ interaction from that v4 root. Independently erasing hair in many old images
 is not proof that their faces and bodies agree.
 
 Until approved, the new canonical is pending; v3 is reference material for the
-unchanged traits, not an approved v4 asset. Freeze and review:
+unchanged traits, not an approved v4 asset. (Status 2026-10-02: the v4 roots
+exist, `character/characters/{Milo,Leo}/v4/canonical/full-body_*_neutral_pose_r01.png`,
+accepted from the owner's list on 2026-10-01.) Freeze and review:
 
 - Milo: slender taupe-grey torso, elongated cream belly, youthful rounded head,
   two large circular ears with dusty-rose interiors, dark-brown irises with cream
@@ -208,7 +210,10 @@ and removed are different states.
   start cannot simply gain Milo at the endpoint.
 
 The proposed S14 order in the v4 packet needs owner review before images.
-Narration must match the chosen number/order of visible breaks and trap motion.
+(Status 2026-10-02: S14 images for this order exist at r02 and the owner chose
+two of them as the size reference, CR-14; an explicit approval of the order is
+not recorded.) Narration must match the chosen number/order of visible breaks
+and trap motion.
 
 ## CR-08. Readable locomotion and source quality
 
@@ -383,6 +388,16 @@ the reference look. Measured on them (fractions of frame height, 16:9):
   S05's small same-depth Milo is about 0.18 of frame height. Never enlarge
   him solely because Leo is absent. (s08 and s13 r02 had Milo at 0.6–0.75
   of the frame, which the owner rejected.)
+- *Which number applies (clarified 2026-10-02):* the table and the 0.30–0.36
+  range describe the S14 trap-path setup only. The current rule is CR-16:
+  every setup uses its own approved anchor, and no frame fraction or
+  Leo-to-Milo ratio is carried from one setup to another. The two owner-chosen
+  anchors differ: at the great tree (S05) Leo's mane is also about 0.39 of the
+  frame high but Milo is about 0.18, half the mane and one third of Leo's
+  standing-equivalent height (CR-02); in the S14 look Milo is about the mane's
+  height. Which ratio the trap scenes should keep is an open owner decision.
+  The draft `geometry_profiles` numbers of 2026-09-30 (e.g. `trap_pair` Milo 0.18) were
+  replaced on 2026-10-02 by the measured `setups` in `visual_bible.json` (CR-18).
 - Write the size into the prompt as frame fractions plus a comparison (CR-13
   rule 4), and pass one of the reference frames above as
   `camera_and_character_scale_reference`.
@@ -451,12 +466,17 @@ Leo's anatomical and mane scale and Milo's small same-depth scale. S06 barrier
 and S08 kindness are on the same plate and ground plane. Leo's mane must not
 shrink between them; use the S05 mane diameter and body proportions as the
 visual ruler while changing pose. Keep Milo at the same apparent height unless
-the shot explicitly moves him in depth. The smaller Leo in the present S06 and
-S08 kindness images needs repair. Compare both start and end of each pair.
+the shot explicitly moves him in depth. The smaller Leo in the first S06 and
+S08 kindness images was repaired on 2026-10-02 (S06 recomposed at the S05
+scale; all four S06/S08 kindness endpoints now use that composite; see
+`stories/lion_and_mouse_v4/GENERATION_PROGRESS.md`). Compare both start and
+end of each pair.
 
 **Trap-path anchor:** use one owner-approved S11 or S14 wide frame to measure
-each actor on its stated depth plane. If S13 Milo walks toward the camera, save
-start and end positions and scale progression; if he only moves sideways, keep
+each actor on its stated depth plane. The owner chose `s14_opening_start_r02`
+and `s14_milo_clear_*_r02` as the trap-path look (CR-14). If S13 Milo walks
+toward the camera, save start and end positions and scale progression; if he
+only moves sideways, keep
 his ear-to-foot height constant. Preserve Leo's mane and muzzle dimensions
 through S11 to S14 unless a shot changes camera or depth.
 
@@ -517,11 +537,44 @@ scale or prop state changes, then repair them in dependency order.
 
 **Never mix framings inside one shot.** Wan animates between the start and
 end frames; a wide start with a close-up end becomes an unwanted zoom.
-(`s08_leo_softens` r01 has exactly this problem: the start is wide and the
-end is a close-up.)
+(The first `s08_leo_softens` r01 pair had exactly this problem: a wide start
+and a close-up end. Both endpoints were remade as close-ups on 2026-10-02.)
 
 **Edits must not add characters.** When the reference images contain the
 same character more than once (an approved frame plus a second frame of the
 same character), the model may draw that character twice: s05 r05 got two
 Milos. For a change of expression or eyes, send only the frame being edited
 plus the canonical, and state "exactly one Milo".
+
+## CR-18. One source of truth for every prompt (2026-10-02)
+
+**Why:** the v4 audit of 2026-10-02 found the same character described in many slightly
+different ways across 140 image prompts, 62 video prompts and five revision files, size numbers
+that contradicted the accepted frames, and references attached without the prompt saying what
+they were for. Image models follow the words they are given, so word drift became image drift.
+
+**Rule:** for every story, all prompt text that describes a character, a place, a camera setup,
+a size relation, the light or the style lives once in `stories/<slug>/visual_bible.json`.
+Prompts are templates (`prompt_template` in `prompt_manifest.json`) that pull it in through
+placeholders and add only frame-specific words: pose, position, expression, action, prop state.
+
+- Write each character's `identity` from its approved canonical image, never from memory or an
+  older version. Colours are named with the hex sampled from the canonical; proportions as
+  ratios; every feature counted. `short`/`sheet` may only reuse its colour words.
+- Never write a character's colour or body feature in a record: `lint` rejects a sentence
+  that pairs a colour word with a body feature outside the canonical blocks.
+- Every attached reference is listed in the prompt (`{{refs}}`) with its role in plain words,
+  and every visible character's canonical is attached; a canonical is never attached for a
+  character that is not in the frame.
+- Sizes come from the setup (`setups.<id>.size`, measured on its `anchor_record`, which every
+  start frame attaches as its size anchor) and the lineup (`blocks.cast_scale`); never estimate
+  them per record. A frame states only the sizes of the characters in it.
+- A reference that shows a character who is not in the frame is not attached (it can draw that
+  character in); the edit base comes first, then plate, canonicals, poses, faces, props, size anchor.
+- Nothing is appended at generation time: no revision fix text, no `--extra`. The prompt sent is
+  the rendered prompt.
+- After any change: `python3 production/image_prompts.py build`, then `lint` (0 errors), then
+  `md`. The rendered prompt is the only text sent to a tool.
+
+Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
+`.claude/skills/consistent-image-prompts/SKILL.md`.

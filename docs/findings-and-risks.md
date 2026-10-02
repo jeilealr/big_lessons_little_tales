@@ -22,6 +22,17 @@ The new JSON manifest and checklists are documentation, not enforced validators.
 Known execution gaps and manual controls are in [v4-preflight.md](v4-preflight.md).
 The coverage plan requires script/audio timing before it becomes a complete edit.
 
+**Status 2026-10-02.** The v4 stills now exist: the smooth-crown Milo and Leo
+canonicals, references, 22 expression studies, plates, props and 85 of the 86
+scene start/end frames (`s02_place_acorn_end` is missing), accepted after
+agent review and under owner review. The image-stage problems found on the way
+became [creation-rules.md](creation-rules.md) CR-11 onward and the lessons in
+[gemini-images.md](gemini-images.md); open image issues are listed in the
+[v4 packet](../stories/lion_and_mouse_v4/README.md). English narration exists
+and [TIMING_SHEET.md](../stories/lion_and_mouse_v4/TIMING_SHEET.md) shows that
+the coverage shots it uses (42 of 43) fill 3.4 of its 11.4 minutes at normal
+speed. No v4 clip has been rendered, so the video rows above stay unverified.
+
 ## Historical findings and risks (snapshot: 2026-09-26)
 
 Sections A/B below retain experiment results, obsolete examples and dated external
@@ -141,6 +152,10 @@ scenes without shots. Put narration at `audio/<slug>/sceneNN.wav` and each
 scene takes its narration's length; the report flags scenes whose narration
 needs more 5-second shots than they have. Today it runs 39 s with placeholder
 timings: the story needs narration before it has a real length.
+*(Later: narration lives at `work/stories/<slug>/audio/<lang>/sceneNN.wav`,
+made by `voice/narrate_scenes.py`; per-line timing for v4 is planned by
+`production/timing_sheet.py`; an animatic is run only on the owner's separate
+request.)*
 
 ### 3. Who speaks, and how (dialogue)
 

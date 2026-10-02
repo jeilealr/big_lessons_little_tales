@@ -70,8 +70,10 @@ def model_id(kind: str) -> str:
 def lightning_lora() -> dict:
     from huggingface_hub import hf_hub_download
 
-    L = LIGHTNING
-    get = lambda f: Path(hf_hub_download(L["repo"], f"{L['folder']}/{f}", revision=L["revision"]))
+    def get(name: str) -> Path:
+        return Path(hf_hub_download(LIGHTNING["repo"], f"{LIGHTNING['folder']}/{name}",
+                                    revision=LIGHTNING["revision"]))
+
     return dict(name="lightning", high=get("high_noise_model.safetensors"),
                 low=get("low_noise_model.safetensors"), weight=1.0)
 

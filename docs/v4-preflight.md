@@ -4,6 +4,17 @@ This checklist implements [creation-rules.md](creation-rules.md). Checks are
 manual documentation gates unless a tool below explicitly implements one.
 No new validator or rendering behaviour was installed by this documentation pass.
 
+**Status (2026-10-02).** Foundation and scene stills now exist: 139 of the 140
+manifest image records are accepted after agent visual review (one,
+`s02_place_acorn_end`, is missing), and the owner's review is ongoing in
+`stories/lion_and_mouse_v4/IMAGE_REVIEW.md`. The boxes below are a template
+and have not been formally ticked. Since 2026-10-02 `visual_bible.json` holds measured
+character proportions, plate landmarks and per-setup sizes with anchor records, and
+`production/image_prompts.py lint` checks the prompt items; the owner has not yet ticked
+gates A and B. No clip exists, so gates C to
+E have not started. The current owner instruction (the owner creates images;
+agents only on request) is in `CLAUDE.md`.
+
 ## Gate A: story first, then foundation approval
 
 - [ ] Owner has reviewed the proposed chronological shot plan and changed wording
@@ -13,7 +24,8 @@ No new validator or rendering behaviour was installed by this documentation pass
 After script review, create foundation references in dependency order. The checks
 below apply before **derivative/scene** images; a new canonical cannot be required
 to exist before its own creation. Review each foundation before using it as a
-parent. No media is authorised by this documentation task.
+parent. No media was authorised by the 2026-09-30 documentation task (image
+creation was requested later; see the status above).
 
 - [ ] Approved v4 Milo neutral reference has a smooth felt crown; face, ears, slim
       torso, eye palette and single tail match the chosen design.
@@ -106,7 +118,10 @@ match narration to observed mouth intervals where applicable, and review post
 for newly warped paws/rope. Current animatic's equal splitting of scene audio is
 not per-line dialogue timing. Do not claim it performs mouth/audio alignment.
 
-## Findings in the current code and data (read, not changed)
+## Findings in the code and data (read 2026-09-30, not changed)
+
+Re-check the named code before relying on a row: the tools may have changed
+since.
 
 | Evidence | Consequence for v4 |
 |---|---|

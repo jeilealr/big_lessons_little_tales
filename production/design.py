@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
-"""Design a story's characters and locations as still images.
+"""Design a story's characters, locations and props as still images (the v1/v2
+method; v4 stills come from character/gemini_image.py).
 
 Wan 2.2 T2V is used as an *image* generator (a 1-frame video). That way every
 design is drawn by the same model, in the same look, that will later animate
 it, so nothing gets lost in translation between an image model and the video
 model.
 
+  python production/design.py STAGE --story <slug> [--entities leo ...] [-n 6] [--seed N]
+
+  prompt      print the prompt and negative per entity (no compute)
   candidates  N stills per character (model-sheet pose on a plain felt
-              backdrop, easy to cut out) and per location (empty plate)
+              backdrop, easy to cut out), location (empty plate) and prop;
+              seeds --seed (default 1000) .. +N-1. GPU.
   sheet       contact sheet per entity, to choose from
-  pick        record the chosen candidate as the entity's canonical still
+  pick        record candidate --seed (required) as the entity's canonical still
   reframe     crop the canonical around a small character and upscale it, so the
               character fills the frame (for pose shots and LoRA training)
 
-Outputs: work/stories/<slug>/design/<entity>/cand_<seed>.png (+ .json sidecar)
-         work/stories/<slug>/design/<entity>/canonical.png   after `pick`
+Inputs: stories/<slug>/story.yaml (style, negative, characters/locations/props
+sheets). Outputs: work/stories/<slug>/design/<entity>/cand_<seed>.png (+ .json
+sidecar), contact_sheet.png, canonical.png (+ .json) after `pick`/`reframe`.
 """
 
 from __future__ import annotations
@@ -65,8 +71,8 @@ POSES = {
 def load_story(slug: str) -> dict:
     import yaml
 
-    story = yaml.safe_load((paths.REPO / "stories" / slug / "story.yaml").read_text())
-    story["_design"] = paths.WORK / "stories" / slug / "design"
+    story = yaml.safe_load((paths.STORIES / slug / "story.yaml").read_text())
+    story["_design"] = paths.story_work(slug) / "design"
     return story
 
 
@@ -205,7 +211,7 @@ def reframe(story: dict, entity: str, fill: float = 0.62) -> None:
     crop = img[y0:y0 + ch, x0:x0 + cw]
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     up = post.upscale(crop[None], 1280, 720, device)[0]
-    bx, by, bw, bh = subject_bbox(up)
+    bh = subject_bbox(up)[3]
     share = bh / up.shape[0]
     assert 0.3 < share < 0.95, f"after reframing the character fills {share:.0%} of the height"
     Image.fromarray(crop).save(d / "canonical_crop_raw.png")
@@ -226,7 +232,8 @@ def main() -> None:
     ap.add_argument("--entities", nargs="+",
                     help="characters, locations and/or props (default: characters and locations)")
     ap.add_argument("-n", type=int, default=6, help="candidates per entity")
-    ap.add_argument("--seed", type=int, default=1000)
+    ap.add_argument("--seed", type=int,
+                    help="candidates: first seed (default 1000); pick: the chosen candidate (required)")
     args = ap.parse_args()
     story = load_story(args.story)
     entities = args.entities or [*story["characters"], *story["locations"]]
@@ -239,7 +246,7 @@ def main() -> None:
             p, neg = prompt_for(story, e)
             print(f"== {e}\n{p}\nNEGATIVE: {neg}\n")
     elif args.stage == "candidates":
-        candidates(story, entities, args.n, args.seed)
+        candidates(story, entities, args.n, 1000 if args.seed is None else args.seed)
     elif args.stage == "sheet":
         for e in entities:
             sheet(story, e)
@@ -247,8 +254,9 @@ def main() -> None:
         for e in entities:
             reframe(story, e)
     else:
-        if len(entities) != 1:
-            raise SystemExit("pick one entity: --entities leo --seed 1003")
+        # A default seed here would silently record the wrong candidate as canonical.
+        if len(entities) != 1 or args.seed is None:
+            raise SystemExit("pick one entity and its candidate: --entities leo --seed 1003")
         pick(story, entities[0], args.seed)
 
 

@@ -6,16 +6,23 @@
       --story lion_and_mouse_v4 --lang en [--scenes 1 2] [--redo]
 
 Input: a JSON with `lines`: [{id, scene, speaker, performance_direction, text}]
-(the v4 dialogue_coverage.json format). Each line is spoken by its speaker's
-voice (`--voices`, default narrator/lion/mouse -> the saved voices in voice/),
-with its performance direction as Gemini's style note, then the lines of a
-scene are joined with short pauses.
+(the v4 dialogue_coverage.json format; a relative path is taken from the repo
+root). The text is spoken as written: `--lang` only names the output folder,
+so another language needs its own translated lines file. Each line is spoken
+by its speaker's voice (`--voices`, default narrator/lion/mouse -> the saved
+voices in voice/), with its performance direction as Gemini's style note, then
+the lines of a scene are joined with short pauses.
 
 Output (git-ignored), under work/stories/<story>/audio/<lang>/:
   sceneNN.wav       one file per scene (for the animatic and the edit)
   lines/<ID>.wav    every line alone (+ .json: text, voice, style, seconds)
   timing.json       seconds per line and per scene
 Existing line files are reused (delete one, or --redo, to re-render it).
+
+Rate limits (voice/README.md): one call every MIN_GAP s, at most two attempts
+per line (every attempt counts toward the 100 requests/day; past that limit a
+call hangs, so each is cut at CALL_LIMIT s), and the run stops when a line
+fails twice. A rerun continues where it stopped.
 The API key comes from GEMINI_API_KEY (never printed or written).
 """
 
@@ -25,7 +32,6 @@ import argparse
 import io
 import json
 import os
-import signal
 import sys
 import time
 import wave
@@ -37,55 +43,41 @@ from google import genai
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
-from speak import audio_bytes, to_wav  # noqa: E402
+from speak import MIN_GAP, MODEL, synthesize, to_wav  # noqa: E402
 from bllt import paths  # noqa: E402
 
-MODEL = "gemini-3.8-flash-tts"
 VOICES = {"NARRATOR": "narrators/moonlight_storyteller_1", "LION": "cast/leo", "MOUSE": "cast/milo"}
 PAUSE_SAME = 0.45      # seconds between two lines of the same speaker
-PAUSE_CHANGE = 0.70    # seconds when the speaker changes
+PAUSE_CHANGE = 0.70    # seconds when the speaker changes (production/timing_sheet.py repeats both)
 TAIL = 1.0             # silence at the end of each scene
-MIN_GAP = 8.0          # seconds between calls: Tier 1 allows 10 requests/min, 10K tokens/min
-                       # and 100 requests/day for this model (AI Studio > Rate limits)
 _last_call = [0.0]
 
 
 def speak(client, voice: str, text: str, style: str) -> tuple[bytes, int]:
-    """One line -> (PCM16 mono frames, sample rate). Retries on rate limits."""
-    content = {"type": "text", "text": text}
-    if style:
-        content["annotations"] = [{"type": "speech_metadata", "style": style}]
-    def _timeout(*_):
-        raise TimeoutError("no answer in 90 s")
-
-    signal.signal(signal.SIGALRM, _timeout)
-    for attempt in range(2):                       # every retry counts toward the 100/day
+    """One line -> (PCM16 mono frames, sample rate), in at most two attempts."""
+    for attempt in (1, 2):
+        time.sleep(max(0.0, _last_call[0] + MIN_GAP - time.time()))
+        _last_call[0] = time.time()
         try:
-            time.sleep(max(0.0, _last_call[0] + MIN_GAP - time.time()))
-            _last_call[0] = time.time()
-            signal.alarm(90)                       # hard limit: a call once hung for an hour
-            inter = client.interactions.create(
-                model=MODEL, input=[{"type": "user_input", "content": [content]}],
-                response_format={"type": "audio"},
-                generation_config={"speech_config": [{"voice": voice}]},
-                timeout=120)
-            signal.alarm(0)
-            data, mime = audio_bytes(inter)
+            data, mime = synthesize(client, voice, text, style, MODEL)
             with wave.open(io.BytesIO(to_wav(data, mime))) as w:
-                assert w.getnchannels() == 1 and w.getsampwidth() == 2
+                if (w.getnchannels(), w.getsampwidth()) != (1, 2):
+                    raise ValueError(f"expected 16-bit mono, got {w.getnchannels()} channel(s), "
+                                     f"{8 * w.getsampwidth()} bit")
                 return w.readframes(w.getnframes()), w.getframerate()
-        except Exception as e:                     # rate limit / timeout / transient error
-            signal.alarm(0)
-            wait = 20 * (attempt + 1)
-            print(f"    retry in {wait} s ({type(e).__name__}: {str(e)[:120]})", flush=True)
-            time.sleep(wait)
+        except Exception as e:                     # rate limit / timeout / no audio / transient error
+            print(f"    attempt {attempt}/2 failed ({type(e).__name__}: {str(e)[:120]})", flush=True)
+            if attempt == 1:
+                time.sleep(20)
     raise SystemExit(f"giving up on: {text[:60]}")
 
 
 def write_wav(path: Path, frames: bytes, rate: int) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with wave.open(str(path), "wb") as w:
-        w.setnchannels(1); w.setsampwidth(2); w.setframerate(rate)
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(rate)
         w.writeframes(frames)
 
 
@@ -108,39 +100,45 @@ def main() -> None:
     if not os.environ.get("GEMINI_API_KEY"):
         sys.exit("GEMINI_API_KEY is not set: source voice/gemini_env.sh")
 
+    if bad := [v for v in args.voices if "=" not in v]:
+        sys.exit(f"--voices takes SPEAKER=folder, got {bad}")
     voices = {**VOICES, **dict(v.split("=", 1) for v in args.voices)}
     ids = {sp: yaml.safe_load((HERE / f / "voice.yaml").read_text())["voice_id"] for sp, f in voices.items()}
-    lines = json.loads((paths.REPO / args.lines if not args.lines.is_absolute() else args.lines).read_text())["lines"]
+    lines = json.loads((args.lines if args.lines.is_absolute() else paths.REPO / args.lines).read_text())["lines"]
+    todo = [line for line in lines if not args.scenes or line["scene"] in args.scenes]
+    # checked before the first call, so a missing voice does not waste the daily quota
+    if missing := sorted({line["speaker"] for line in todo} - ids.keys()):
+        sys.exit(f"no voice for speaker(s) {missing}: add --voices SPEAKER=folder")
     out = paths.story_audio(args.story, args.lang)
-    client = genai.Client()
+    client = genai.Client()             # keep a reference: an unreferenced client closes itself
 
     timing = json.loads((out / "timing.json").read_text()) if (out / "timing.json").is_file() else {}
-    for scene in sorted({l["scene"] for l in lines}):
-        if args.scenes and scene not in args.scenes:
-            continue
+    for scene in sorted({line["scene"] for line in todo}):
         chunks, rate, rows, prev = [], None, [], None
-        for l in [x for x in lines if x["scene"] == scene]:
-            f = out / "lines" / f"{l['id']}.wav"
+        for line in [x for x in todo if x["scene"] == scene]:
+            f = out / "lines" / f"{line['id']}.wav"
             if f.is_file() and not args.redo:
                 pcm, r = read_wav(f)
             else:
                 t0 = time.time()
-                pcm, r = speak(client, ids[l["speaker"]], l["text"], l.get("performance_direction", ""))
+                style = line.get("performance_direction", "")
+                pcm, r = speak(client, ids[line["speaker"]], line["text"], style)
                 write_wav(f, pcm, r)
                 f.with_suffix(".json").write_text(json.dumps(dict(
-                    id=l["id"], scene=scene, speaker=l["speaker"], voice=ids[l["speaker"]],
-                    voice_folder=voices[l["speaker"]], model=MODEL, text=l["text"],
-                    style=l.get("performance_direction", ""), lang=args.lang,
+                    id=line["id"], scene=scene, speaker=line["speaker"], voice=ids[line["speaker"]],
+                    voice_folder=voices[line["speaker"]], model=MODEL, text=line["text"],
+                    style=style, lang=args.lang,
                     seconds=round(len(pcm) / 2 / r, 2), render_seconds=round(time.time() - t0, 1)), indent=2))
-                print(f"  {l['id']} {l['speaker']:8s} {len(pcm) / 2 / r:5.1f} s", flush=True)
+                print(f"  {line['id']} {line['speaker']:8s} {len(pcm) / 2 / r:5.1f} s", flush=True)
             if rate and r != rate:
-                raise SystemExit(f"sample rate changed ({rate} -> {r}) in {l['id']}")
+                raise SystemExit(f"sample rate changed ({rate} -> {r}) in {line['id']}")
             rate = r
             if prev is not None:
-                gap = PAUSE_SAME if prev == l["speaker"] else PAUSE_CHANGE
+                gap = PAUSE_SAME if prev == line["speaker"] else PAUSE_CHANGE
                 chunks.append(b"\0\0" * int(gap * rate))
-            chunks.append(pcm); prev = l["speaker"]
-            rows.append(dict(id=l["id"], speaker=l["speaker"], seconds=round(len(pcm) / 2 / rate, 2)))
+            chunks.append(pcm)
+            prev = line["speaker"]
+            rows.append(dict(id=line["id"], speaker=line["speaker"], seconds=round(len(pcm) / 2 / rate, 2)))
         chunks.append(b"\0\0" * int(TAIL * rate))
         pcm = b"".join(chunks)
         write_wav(out / f"scene{scene:02d}.wav", pcm, rate)

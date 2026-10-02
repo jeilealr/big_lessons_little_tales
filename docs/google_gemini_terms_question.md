@@ -1,7 +1,12 @@
 # Question to Google: Gemini API narration in Made-for-Kids YouTube videos
 
-Status: draft, not sent (2026-09-27). Record the answer here and in
-`voice/gemini/cast/narrator/voice.yaml` (`licence:`) once it arrives.
+Status: draft, not sent (2026-09-27). Record the answer here and in the
+`voice.yaml` of every voice in use (`licence:` field, as in
+`voice/narrators/golden_hour_storyteller_3/voice.yaml`; the story voices are
+`voice/narrators/moonlight_storyteller_1/`, `voice/cast/leo/`,
+`voice/cast/milo/`) once it arrives. Since 2026-10-02 the same Age
+Requirements question also covers the Gemini image models used for v4 stills
+(`docs/licensing.md`).
 
 ## Where to send it
 

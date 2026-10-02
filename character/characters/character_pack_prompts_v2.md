@@ -1,5 +1,9 @@
 # Leo and Milo v2 character pack prompts
 
+*Historical (v2). Do not reuse for v4: v4 identity text is in
+`stories/lion_and_mouse_v4/visual_bible.json` and the rules in
+`docs/creation-rules.md` (v4 Milo has a smooth crown and no hair tuft).*
+
 For EVERY generation, use that character's selected canonical as the image reference. Generate one image per prompt, never a grid or collage. Always return to the canonical; do not chain outputs. Change only view, expression, or pose.
 
 ## Leo

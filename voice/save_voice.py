@@ -8,32 +8,20 @@ Writes voice/<dir>/voice.yaml (id, name, model, the exact design
 prompt, expiry) and google_sample.wav: the sample Google stores with the
 voice (voices.get), so no new audio is generated. Existing notes in the
 yaml (`notes:`) are kept.
+The API key comes from GEMINI_API_KEY (never printed or written).
 """
 import argparse
 import base64
-import io
+import os
 import sys
-import wave
 from pathlib import Path
 
 import yaml
 from google import genai
 
+from speak import to_wav
+
 HERE = Path(__file__).resolve().parent
-
-
-def to_wav(data: bytes, mime: str) -> bytes:
-    if data[:4] == b"RIFF":
-        return data
-    rate = 24000
-    for part in (mime or "").split(";"):
-        if part.strip().lower().startswith("rate="):
-            rate = int(part.split("=", 1)[1])
-    buf = io.BytesIO()
-    with wave.open(buf, "wb") as w:
-        w.setnchannels(1); w.setsampwidth(2); w.setframerate(rate)
-        w.writeframes(data)
-    return buf.getvalue()
 
 
 def main() -> None:
@@ -44,6 +32,8 @@ def main() -> None:
     ap.add_argument("--role", required=True)
     ap.add_argument("--note", default="")
     args = ap.parse_args()
+    if not os.environ.get("GEMINI_API_KEY"):
+        sys.exit("GEMINI_API_KEY is not set: source voice/gemini_env.sh")
     client = genai.Client()             # keep a reference: an unreferenced client closes itself
     v = client.voices.get(args.id).model_dump()
     out = HERE / args.dir
@@ -79,6 +69,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    if not __import__("os").environ.get("GEMINI_API_KEY"):
-        sys.exit("GEMINI_API_KEY is not set: source voice/gemini_env.sh")
     main()

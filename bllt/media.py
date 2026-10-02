@@ -1,9 +1,10 @@
-"""ffmpeg helpers: locate, concatenate, finish (retime/scale/soundtrack), probe.
+"""ffmpeg helpers shared by every tool: locate ffmpeg, probe and decode clips
+(`read_frames`, `probe_size`, `probe_duration`, `luma_curve` for flash checks),
+and two encoders kept from the LTX-era intro script.
 
-`locate_ffmpeg`, `concat_segments` and `finish` are carried over unchanged from
-the LTX-era intro script, where they were validated; `finish` is what gives
-every deliverable the same PCM-48 kHz-in-MOV audio treatment (Resolve decodes
-AAC-in-MOV unreliably).
+`concat_segments` and `finish` were validated there and have no caller in the
+current pipeline; `finish` documents the deliverable audio treatment (PCM
+48 kHz in MOV, because Resolve decodes AAC-in-MOV unreliably).
 """
 
 from __future__ import annotations
@@ -25,8 +26,7 @@ def locate_ffmpeg() -> str:
         return imageio_ffmpeg.get_ffmpeg_exe()
     except ImportError as error:
         raise RuntimeError(
-            "FFmpeg is unavailable. Install inference extras with: "
-            "python -m pip install -e '.[inference]'"
+            "FFmpeg is unavailable: put ffmpeg on PATH or install imageio-ffmpeg"
         ) from error
 
 
@@ -158,6 +158,7 @@ def finish(
 
 def probe_duration(path: Path) -> float:
     """Seconds, read back from ffmpeg's own report."""
+    # No check=True: `ffmpeg -i` without an output exits 1 but still prints the header.
     proc = subprocess.run([locate_ffmpeg(), "-hide_banner", "-i", str(path)],
                           capture_output=True, text=True)
     for line in proc.stderr.splitlines():

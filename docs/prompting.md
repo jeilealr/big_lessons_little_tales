@@ -13,12 +13,13 @@ Where the tools put your text: every prompt is assembled as
 <ACTION>  <Character> is <frozen character sheet>.  The scene is <location sheet>.  <style bible>.
 ```
 
-`production/shot.py`, `character/character.py` and `production/scene_baseline.py`
-all build it this way from `stories/<slug>/story.yaml`. Runtime recipes supply the ACTION and optional per-shot negative; sheets and
+`production/shot.py` and `character/character.py`
+both build it this way from `stories/<slug>/story.yaml`. Runtime recipes supply the ACTION and optional per-shot negative; sheets and
 style are appended. For v4, save the **entire expanded positive and combined
 negative** in the prompt record, including references and endpoint state, before
 exporting a runtime recipe. Check the actual assembly for duplicated/conflicting
-text. Current dry-run prints the positive, not the complete negative.
+text, positive and combined negative together (the 2026-09-30 dry-run printed
+only the positive).
 
 ---
 

@@ -1,17 +1,19 @@
 #!/bin/bash
-# Rebuild the Python environment this repo runs in (LUMI login node, ~10 min).
-# The venv sits on top of the LUMI PyTorch container; see docs/provenance.md.
+# Create (or update in place) the generation venv, $BLLT_VENV_GEN (LUMI login
+# node, ~10 min). The venv sits on top of the LUMI PyTorch container and uses
+# its PyTorch (--system-site-packages); see docs/provenance.md.
+#   bash lumi/setup_env.sh
 set -euo pipefail
 HERE=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 source "$HERE/site.sh"
-SIF=$BLLT_SIF
 VENV=$BLLT_VENV_GEN
 
-singularity exec -B /scratch,/pfs,/project "$SIF" bash -c "
+# The inner script is expanded twice: $VENV and $HERE here, \$... in the container.
+singularity exec -B "$BLLT_BINDS" "$BLLT_SIF" bash -c "
 set -euo pipefail
 \$WITH_CONDA
-python -m venv --system-site-packages $VENV
-source $VENV/bin/activate
+python -m venv --system-site-packages '$VENV'
+source '$VENV/bin/activate'
 python -m pip install --upgrade pip
 # diffusers 0.39 runs Wan 2.2; transformers 4.51 matches it. The venv folder is
 # still called ltx_env (it once also served LTX-Video); the name does not matter.
