@@ -32,7 +32,7 @@ Not legal advice.
 | Gemini 3.8 Flash TTS (Gemini API) | Gemini API Additional Terms | outputs owned by the user ("Google won't claim ownership"); SynthID watermark; paid ~$0.0135/min of audio (2026). Open question on the Age Requirements for a Made-for-kids channel: `docs/google_gemini_terms_question.md` |
 | google-genai (client) | Apache-2.0 | `gemini_env` venv |
 | Qwen-Image-Edit-2511 (`Qwen/Qwen-Image-Edit-2511`, pinned) | Apache-2.0 | downloaded, not used yet (`production/edit_image.py`) |
-| Gemini Pro image model (`gemini-3-pro-image-preview`, Gemini API) | Gemini API Additional Terms (same as TTS row) | cloud trial only (`character/gemini_canonical_trial.py`, 2026-10-02). **To confirm before any output is used:** output ownership/commercial use for images, the SynthID watermark, preview-model terms, and the same Age Requirements question as the TTS row |
+| Gemini image models (Nano Banana 2 Lite `gemini-3.1-flash-lite-image`, Nano Banana 2 `gemini-3.1-flash-image`, Nano Banana Pro `gemini-3-pro-image[-preview]`; Gemini API) | Gemini API Additional Terms (same as TTS row) | v4 stills since 2026-10-02 (`character/gemini_image.py`; `docs/gemini-images.md`). **To confirm before any output is used:** output ownership/commercial use for images, the SynthID watermark, preview-model terms, and the same Age Requirements question as the TTS row |
 
 ## Considered and rejected
 

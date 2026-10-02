@@ -427,3 +427,41 @@ V3 reference audit for the reopened trap work: `character/characters/Leo/v3/net/
 - `s07_leo_annoyed_end` accepted: `character/characters/interactions/v4/keyframes/s07_leo_annoyed_end_r01.png`; SHA-256 `aac41214fe3b3dd07463fc15be3cdc9dcae2d183ddebe40b77dfcf5d620a1390`. Review: Same Leo body, mane, tail, placement and locked plate; only the face changes to mild gentle annoyance with closed lips.
 
 - `s08_leo_softens_start` accepted: `character/characters/interactions/v4/keyframes/s08_leo_softens_start_r01.png`; SHA-256 `aac41214fe3b3dd07463fc15be3cdc9dcae2d183ddebe40b77dfcf5d620a1390`. Review: exact full-body continuation of approved S07 Leo end, with four paws, one tail, full mane and fixed tree plate.
+
+## r02 revision with Gemini — 2026-10-02
+
+The owner's rejections (S02 leg gap, S05 Milo scale, S07/S08/S12 Milo integration, S10/S11 V3 trap staging) were redone with
+`character/gemini_image.py` using the fix text in `revisions/r02.json` (method and lessons: `docs/gemini-images.md`).
+Every take was reviewed on a contact sheet and at full size before acceptance; review status is `accepted_pending_owner_review`.
+The r01 files stay in place; manifest `superseded` keeps their path, hash and owner review.
+
+| Record | r02 target | Model | Review note |
+|---|---|---|---|
+| `s02_place_acorn_end` | `s02_place_acorn_end_r02.png` | gemini-3.1-flash-image | Full-size check: Milo at start-frame scale (~0.3 frame height), clear taupe gap between legs from crotch to feet, whiskers both sides, smooth crown, brown eyes, one tail; one acorn beside him; sunset stream plate retained. NB2 1K with explicit scale text (Lite and NB2 without it enlarged Milo to ~0.5). |
+| `s05_nose_aftermath_start` | `s05_nose_aftermath_start_r02.png` | gemini-3.1-flash-image | Full-size check: Milo now clearly smaller (head ~ Leo's muzzle size), leaning on Leo's nose with paws on the muzzle, feet on ground, whiskers, smooth crown, one tail; Leo's whole head and mane in frame, eyes closed; tree-dusk plate. |
+| `s05_nose_aftermath_end` | `s05_nose_aftermath_end_r02.png` | gemini-3.1-flash-image | Full-size check: same framing/Milo size as r02 start; Leo's brown eyes open in mild surprise, whole head and mane in frame; Milo leaning on the muzzle, whiskers, one tail. |
+| `s07_milo_sorry_start` | `s07_milo_sorry_start_r02.png` | gemini-3.1-flash-image | Full-size check: cohesive full-body Milo in the tree-dusk scene (no pasted head), whiskers both sides, rounded cheeks, smooth crown, leg gap, one tail, contact shadow. Startled brows and wide eyes; lips very slightly parted (record asks closed): owner to judge. |
+| `s07_milo_sorry_end` | `s07_milo_sorry_end_r02.png` | gemini-3.1-flash-image | Full-size check: same framing/position/body size as r02 start; apologetic raised inner brows, closed mouth; whiskers both sides, smooth crown, leg gap, one tail. |
+| `s08_milo_surprised_start` | `s08_milo_surprised_start_r02.png` | gemini-3.1-flash-image | Full-size check: cohesive full-body Milo in the tree-dusk scene, surprised brows and wide eyes, closed neutral mouth, whiskers both sides, smooth crown, taupe leg gap, one tail, contact shadow. (NB2 returned no image for 7 of 15 attempts on this record.) |
+| `s08_milo_surprised_end` | `s08_milo_surprised_end_r02.png` | gemini-3.1-flash-image | Same framing/scale as r02 start; relieved small closed smile; full body, whiskers, smooth crown, leg gap, one tail. |
+| `s10_curious_step_start` | `s10_curious_step_start_r02.png` | gemini-3-pro-image | V3 staging: single bundled net in the branches at top, Leo mid-step on the path looking down, a step short of the plain leaf-hidden trigger. Full Leo in frame (mane, four paws, one tail), rust-orange mane, brown eyes; trap-path plate retained. Mane volume a little smaller than canonical. NB2 takes leaned red/V3 and marked the trigger with an X. |
+| `s10_curious_step_end` | `s10_curious_step_end_r02.png` | gemini-3.1-flash-image | Same plate/camera and Leo scale as r02 start; near forepaw presses the plain leaf-hidden trigger; bundled net still overhead; rust-orange mane, brown eyes, four paws, one tail. |
+| `s10_net_falls_start` | `s10_net_falls_start_r02.png` | gemini-3.1-flash-image | Continuity with s10_curious_step_end r02: same Leo pose/position, paw on plain trigger; the same bundled net opening and beginning to drop from the branches; full Leo, rust mane, brown eyes, one tail. |
+| `s10_net_falls_end` | `s10_net_falls_end_r02.png` | gemini-3.1-flash-image | V3 staging as requested: the single cream knotted net drapes over standing Leo and spreads on the ground, Leo visible through the gaps, branches above empty, trigger still under him. Full Leo (mane, four paws, one tail), rust mane, brown eyes, surprised upward look; plate retained. This net look is the continuity anchor for S11-S14. |
+| `s11_pull_once_start` | `s11_pull_once_start_r02.png` | gemini-3.1-flash-image | Same draped net and position as s10_net_falls_end r02; one front paw grips a strand (V3 pulling staging), mouth closed, rust mane, brown eyes, four paws, one tail; plate retained. |
+| `s11_pull_once_end` | `s11_pull_once_end_r02.png` | gemini-3.1-flash-image | Same camera, net and Leo position as r02 start; paw still on the strand after one gentle pull, mouth closed; full Leo, rust mane, brown eyes, one tail. |
+| `s11_why_wont_it_break_start` | `s11_why_wont_it_break_start_r02.png` | gemini-3.1-flash-image | Close-up as V3 face close-up: worried Leo seen through the same knotted net strands, whole mane and both ears in frame, closed mouth, brown eyes; trap-path background, no pasted-face look. |
+| `s11_why_wont_it_break_end` | `s11_why_wont_it_break_end_r02.png` | gemini-3.1-flash-image | Same close-up framing, net strands and face scale as r02 start; worry settles slightly, closed mouth, brown eyes, whole mane. |
+| `s11_call_start` | `s11_call_start_r02.png` | gemini-3.1-flash-image | Held close-up continuity with why_wont_it_break_end r02: same net strands and face scale, worried, lips closed; head raise is minimal (owner to judge). |
+| `s11_call_end` | `s11_call_end_r02.png` | gemini-3.1-flash-image | Same close-up framing as r02 call start; brows ease into hopeful listening, closed lips, brown eyes, whole mane. |
+| `s11_waits_start` | `s11_waits_start_r02.png` | gemini-3.1-flash-image | V3 resting staging: Leo lies low under the same draped net, all paws grounded, eyes open and worried, looking toward camera-left where Milo arrives; mane, four paws and one tail in frame; plate retained. |
+| `s11_waits_end` | `s11_waits_end_r02.png` | gemini-3.1-flash-image | Same pose/position/net as r02 waits start; calm breathing, brown eyes, closed mouth, still looking camera-left. |
+| `s12_hears_end` | `s12_hears_end_r02.png` | gemini-3.1-flash-image | Full-size check: same position/scale as start (x~0.78, ~0.28 frame height), one cohesive Milo, head in natural proportion, ears raised, gaze left, poised mid-step; taupe gap between legs, whiskers, smooth crown, one tail; run-plate retained. |
+| `s13_arrives_start` | `s13_arrives_start_r02.png` | gemini-3.1-flash-image | Continuity with s11_waits_end r02: Leo resting under the same draped net looking left; one small Milo (~0.2 frame height) enters at the far left on the ground facing the net; one tail each; plate retained. |
+| `s13_arrives_end` | `s13_arrives_end_r02.png` | gemini-3.1-flash-image | Milo (~0.2 frame height) stopped on the ground beside the net's edge at left, facing Leo; Leo still resting under the same draped net and looking toward him; whiskers, smooth crown, one tail each; plate retained. |
+
+Contact sheet: `docs/img/v4_r02_gemini_accepted.jpg`.
+
+**Stopped** at the Gemini project's monthly spending cap (HTTP 429). Remaining, in dependency order:
+S13 conversation (`s13_milo_confident_*`, `s13_leo_doubtful_*`, `s13_milo_playful_*`), all twelve S14 frames, all eight S15 frames.
+Their r02 fixes are written. Four S13 frames previously accepted at r01 are now `stale` (old net heap) and must be redone before use.
