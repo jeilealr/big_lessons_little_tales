@@ -8,6 +8,7 @@ export BLLT_SIF=${BLLT_SIF:-/appl/local/containers/sif-images/lumi-pytorch-rocm-
 export BLLT_VENV_GEN=$BLLT_PROJECT/ltx_env/venv       # generation venv (diffusers 0.39); legacy name, keep
 export BLLT_VENV_MUSUBI=$BLLT_PROJECT/musubi_env/venv # LoRA training venv (musubi-tuner pins)
 export BLLT_VENV_GEMINI=$BLLT_PROJECT/gemini_env/venv # google-genai client (voices)
+export BLLT_VENV_QWEN=$BLLT_PROJECT/qwen_env/venv     # image-edit venv (Qwen-Image-Edit-2511, transformers >= 4.57)
 export BLLT_MODELS=$BLLT_PROJECT/models               # musubi bf16 weights
 export BLLT_EXT=$BLLT_PROJECT/ext                     # musubi-tuner checkout
 export BLLT_LOGS=$BLLT_PROJECT/slurm_logs

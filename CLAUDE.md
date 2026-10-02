@@ -374,19 +374,16 @@ How it is made (and why):
   channel; the owner's question to Google is drafted in
   `docs/google_gemini_terms_question.md`. Never clone Gemini voices into
   another model (terms forbid replicating components of the Services).
-- **Narration v4 (2026-10-01)**: `voice/narrate_scenes.py` (one WAV per scene
-  + `lines/` + `timing.json` in `work/stories/lion_and_mouse_v4/audio/en/`);
-  scenes 1-12 done (6:57). Scenes 13-16 (59 lines from S13-L005) blocked by
-  the **100 requests/day TTS limit** (Tier 1: also 10 requests/min, 10K
-  tokens/min; resets 09:00 Germany; the API hangs instead of erroring, so the
-  script waits 8 s between calls and tries a line at most twice). Scheduled
-  for 2026-10-02 09:05 Germany (`$BLLT_PROJECT/tmp/v4_narration_0905.sh`,
-  log `tmp/v4_narration_0905.log`); by hand: rerun
-  `source voice/gemini_env.sh && python voice/narrate_scenes.py --lines
-  stories/lion_and_mouse_v4/dialogue_coverage.json --story lion_and_mouse_v4
-  --scenes 13 14 15 16`, then `python3 production/timing_sheet.py --story
-  lion_and_mouse_v4` (TIMING_SHEET.md: which shot covers which line, slow-downs,
-  stills).
+- **Narration v4 done (2026-10-02)**: all 16 scenes, 161 lines, **11:23.7**
+  (en), by `voice/narrate_scenes.py`: `sceneNN.wav` + `lines/` + `timing.json`
+  in `work/stories/lion_and_mouse_v4/audio/en/`. Gemini 3.8 Flash TTS Tier 1
+  limits: **100 requests/day** (resets 09:00 Germany), 10/min, 10K tokens/min;
+  past the daily limit calls hang instead of erroring, so the script waits 8 s
+  between calls and tries a line at most twice. A 160-line story needs two days.
+  `production/timing_sheet.py --story lion_and_mouse_v4` ->
+  `stories/lion_and_mouse_v4/TIMING_SHEET.md` + `timing_plan.json`: which shot
+  covers which line; 42 shots give 3.4 min at normal speed, 8.0 min need
+  slow-downs, stills or extra shots (scenes 8, 15, 16 most).
 - Chatterbox/Parler were tried and **removed** 2026-09-27 (Parler produced a
   hum; Chatterbox clones were noisy and drifted between lines); they are in
   git history before that date.

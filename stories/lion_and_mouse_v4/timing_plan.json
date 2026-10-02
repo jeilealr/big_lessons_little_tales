@@ -555,6 +555,381 @@
       "note": "clip at 50% (10.1 s) + end image still, slow push-in 5.8 s",
       "start_image": "character/characters/interactions/v4/keyframes/s12_runs_start_r01.png",
       "end_image": "character/characters/interactions/v4/keyframes/s12_runs_end_r01.png"
+    },
+    {
+      "scene": 13,
+      "film_start": 417.27,
+      "shot": "s13_arrives",
+      "kind": "clip",
+      "start": 0.0,
+      "seconds": 4.49,
+      "lines": [
+        "S13-L001"
+      ],
+      "note": "clip, normal speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s13_arrives_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s13_arrives_end_r01.png"
+    },
+    {
+      "scene": 13,
+      "film_start": 421.76,
+      "shot": "s13_milo_confident",
+      "kind": "clip",
+      "start": 4.49,
+      "seconds": 3.9799999999999986,
+      "lines": [
+        "S13-L002"
+      ],
+      "note": "clip, normal speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s13_milo_confident_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s13_milo_confident_end_r01.png"
+    },
+    {
+      "scene": 13,
+      "film_start": 425.74,
+      "shot": "s13_leo_doubtful",
+      "kind": "clip",
+      "start": 8.469999999999999,
+      "seconds": 10.599999999999998,
+      "lines": [
+        "S13-L003",
+        "S13-L004",
+        "S13-L005"
+      ],
+      "note": "clip slowed to 48% speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s13_leo_doubtful_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s13_leo_doubtful_end_r01.png"
+    },
+    {
+      "scene": 13,
+      "film_start": 436.34,
+      "shot": "s13_milo_playful",
+      "kind": "clip",
+      "start": 19.069999999999997,
+      "seconds": 18.170000000000005,
+      "lines": [
+        "S13-L006",
+        "S13-L007",
+        "S13-L008",
+        "S13-L009"
+      ],
+      "note": "clip at 50% (10.1 s) + end image still, slow push-in 8.0 s",
+      "start_image": "character/characters/interactions/v4/keyframes/s13_milo_playful_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s13_milo_playful_end_r01.png"
+    },
+    {
+      "scene": 13,
+      "film_start": 454.51,
+      "shot": "s13_milo_playful",
+      "kind": "still",
+      "start": 37.24,
+      "seconds": 7.030000000000008,
+      "lines": [
+        "S13-L010",
+        "S13-L011"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s13_milo_playful_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s13_milo_playful_end_r01.png"
+    },
+    {
+      "scene": 13,
+      "film_start": 461.54,
+      "shot": "s13_leo_doubtful",
+      "kind": "still",
+      "start": 44.27000000000001,
+      "seconds": 2.8200000000000003,
+      "lines": [
+        "S13-L012"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s13_leo_doubtful_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s13_leo_doubtful_end_r01.png"
+    },
+    {
+      "scene": 13,
+      "film_start": 464.36,
+      "shot": "s13_milo_playful",
+      "kind": "still",
+      "start": 47.09000000000001,
+      "seconds": 5.489999999999988,
+      "lines": [
+        "S13-L013",
+        "S13-L014"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s13_milo_playful_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s13_milo_playful_end_r01.png"
+    },
+    {
+      "scene": 14,
+      "film_start": 469.85,
+      "shot": "s14_gnaw_fray",
+      "kind": "clip",
+      "start": 0.0,
+      "seconds": 10.379999999999999,
+      "lines": [
+        "S14-L001",
+        "S14-L002"
+      ],
+      "note": "clip slowed to 49% speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s14_gnaw_fray_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s14_gnaw_fray_end_r01.png"
+    },
+    {
+      "scene": 14,
+      "film_start": 480.23,
+      "shot": "s14_sever_R01",
+      "kind": "clip",
+      "start": 10.379999999999999,
+      "seconds": 7.909999999999997,
+      "lines": [
+        "S14-L003",
+        "S14-L004",
+        "S14-L005"
+      ],
+      "note": "clip slowed to 64% speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s14_sever_R01_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s14_sever_R01_end_r01.png"
+    },
+    {
+      "scene": 14,
+      "film_start": 488.14,
+      "shot": "s14_milo_clear",
+      "kind": "clip",
+      "start": 18.289999999999996,
+      "seconds": 8.699999999999996,
+      "lines": [
+        "S14-L006",
+        "S14-L007"
+      ],
+      "note": "clip slowed to 58% speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s14_milo_clear_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s14_milo_clear_end_r01.png"
+    },
+    {
+      "scene": 14,
+      "film_start": 496.84,
+      "shot": "s14_opening",
+      "kind": "clip",
+      "start": 26.98999999999999,
+      "seconds": 11.11000000000001,
+      "lines": [
+        "S14-L008",
+        "S14-L009",
+        "S14-L010"
+      ],
+      "note": "clip at 50% (10.1 s) + end image still, slow push-in 1.0 s",
+      "start_image": "character/characters/interactions/v4/keyframes/s14_opening_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s14_opening_end_r01.png"
+    },
+    {
+      "scene": 14,
+      "film_start": 507.95,
+      "shot": "s14_step_clear",
+      "kind": "clip",
+      "start": 38.1,
+      "seconds": 6.940000000000005,
+      "lines": [
+        "S14-L011",
+        "S14-L012"
+      ],
+      "note": "clip slowed to 73% speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s14_step_clear_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s14_step_clear_end_r01.png"
+    },
+    {
+      "scene": 14,
+      "film_start": 514.89,
+      "shot": "s14_free_hold",
+      "kind": "clip",
+      "start": 45.040000000000006,
+      "seconds": 8.569999999999993,
+      "lines": [
+        "S14-L013",
+        "S14-L014"
+      ],
+      "note": "clip slowed to 59% speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s14_free_hold_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s14_free_hold_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 523.46,
+      "shot": "s15_leo_amazed",
+      "kind": "clip",
+      "start": 0.0,
+      "seconds": 6.15,
+      "lines": [
+        "S15-L001",
+        "S15-L002"
+      ],
+      "note": "clip slowed to 82% speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_leo_amazed_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_leo_amazed_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 529.61,
+      "shot": "s15_milo_modest",
+      "kind": "clip",
+      "start": 6.15,
+      "seconds": 3.0599999999999987,
+      "lines": [
+        "S15-L003"
+      ],
+      "note": "clip, normal speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_milo_modest_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_milo_modest_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 532.67,
+      "shot": "s15_leo_reflects",
+      "kind": "clip",
+      "start": 9.209999999999999,
+      "seconds": 13.469999999999997,
+      "lines": [
+        "S15-L004",
+        "S15-L005"
+      ],
+      "note": "clip at 50% (10.1 s) + end image still, slow push-in 3.3 s",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_leo_reflects_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_leo_reflects_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 546.14,
+      "shot": "s15_leo_reflects",
+      "kind": "still",
+      "start": 22.679999999999996,
+      "seconds": 6.379999999999999,
+      "lines": [
+        "S15-L006"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_leo_reflects_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_leo_reflects_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 552.52,
+      "shot": "s15_milo_sincere",
+      "kind": "clip",
+      "start": 29.059999999999995,
+      "seconds": 4.140000000000001,
+      "lines": [
+        "S15-L007"
+      ],
+      "note": "clip, normal speed",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_milo_sincere_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_milo_sincere_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 556.66,
+      "shot": "s15_leo_reflects",
+      "kind": "still",
+      "start": 33.199999999999996,
+      "seconds": 4.020000000000003,
+      "lines": [
+        "S15-L008"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_leo_reflects_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_leo_reflects_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 560.68,
+      "shot": "s15_milo_sincere",
+      "kind": "still",
+      "start": 37.22,
+      "seconds": 3.980000000000004,
+      "lines": [
+        "S15-L009"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_milo_sincere_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_milo_sincere_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 564.66,
+      "shot": "s15_leo_reflects",
+      "kind": "still",
+      "start": 41.2,
+      "seconds": 2.1799999999999997,
+      "lines": [
+        "S15-L010"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_leo_reflects_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_leo_reflects_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 566.84,
+      "shot": "s15_milo_sincere",
+      "kind": "still",
+      "start": 43.38,
+      "seconds": 18.06000000000001,
+      "lines": [
+        "S15-L011",
+        "S15-L012",
+        "S15-L013",
+        "S15-L014",
+        "S15-L015"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_milo_sincere_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_milo_sincere_end_r01.png"
+    },
+    {
+      "scene": 15,
+      "film_start": 584.9,
+      "shot": "s15_milo_sincere",
+      "kind": "still",
+      "start": 61.44000000000001,
+      "seconds": 42.02999999999999,
+      "lines": [
+        "S15-L016",
+        "S15-L017",
+        "S15-L018",
+        "S15-L019",
+        "S15-L020",
+        "S15-L021",
+        "S15-L022",
+        "S15-L023"
+      ],
+      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
+      "start_image": "character/characters/interactions/v4/keyframes/s15_milo_sincere_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s15_milo_sincere_end_r01.png"
+    },
+    {
+      "scene": 16,
+      "film_start": 626.93,
+      "shot": "s16_friends",
+      "kind": "clip",
+      "start": 0.0,
+      "seconds": 56.74,
+      "lines": [
+        "S16-L001",
+        "S16-L002",
+        "S16-L003",
+        "S16-L004",
+        "S16-L005",
+        "S16-L006",
+        "S16-L007",
+        "S16-L008",
+        "S16-L009",
+        "S16-L010",
+        "S16-L011",
+        "S16-L012"
+      ],
+      "note": "clip at 50% (10.1 s) + end image still, slow push-in 46.6 s",
+      "start_image": "character/characters/interactions/v4/keyframes/s16_friends_start_r01.png",
+      "end_image": "character/characters/interactions/v4/keyframes/s16_friends_end_r01.png"
     }
   ]
 }
