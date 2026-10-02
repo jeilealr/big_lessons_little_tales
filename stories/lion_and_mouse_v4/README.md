@@ -1,6 +1,6 @@
 # The Lion and the Mouse — v4 review packet
 
-**Image review:** [`IMAGE_REVIEW.md`](IMAGE_REVIEW.md) shows every v4 image with a Keep column for the owner and a diagram of the shot order and framing (rebuild with `python3 production/image_review_md.py`).
+**Image review:** [`IMAGE_REVIEW.md`](IMAGE_REVIEW.md) lists every v4 image file (all revisions) with a yes/no Keep column, plus a diagram of the shot order and framing (rebuild with `python3 production/image_review_md.py`).
 
 **Documentation draft, 2026-09-30. No v4 images or videos generated.**
 
