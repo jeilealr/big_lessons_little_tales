@@ -658,10 +658,10 @@ STATE_ROWS = [
     "| s11 | night: Rosie and Finn on the bench by the bakery, Daisy at his feet | same |",
     "| s12 | another morning: Finn, the flock and Daisy on the pasture; Lena visits | same |"]
 DECISIONS = [
+    "- 2026-10-04: names approved: Finn, Grandma Rosie, Farmer Ben, Lena, Daisy (and the Wolf).",
     "- 2026-10-04: narration 7 to 10 minutes; narrator: reuse the saved narrator voice for now (`voice/narrators/moonlight_storyteller_1`); character voices are decided later.",
     "- Gentle ending as asked: the Wolf is silly, never touches a sheep, and runs from the bell; the sheep are found; Finn apologises and rebuilds trust.",
 ]
 OPEN = ["- Cast style (assumption, owner to confirm): Finn and the villagers are felt-doll humans, as the title needs a boy; an all-animal cast (for example a young goat as shepherd) is possible.",
-        "- Names (Finn, Grandma Rosie, Farmer Ben, Lena, Daisy) are proposals.",
         "- Frames with the whole flock (five sheep and Daisy) and up to four people are the hardest for image models; count sheep on every review."]
 REVISION = "boy_who_cried_wolf_v1-2026-10-04"

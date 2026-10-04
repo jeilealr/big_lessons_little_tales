@@ -50,6 +50,7 @@ Size lineup: At equal depth, with Finn's height as 1.0: Ben 1.5 (1.6 with hat), 
 
 ## Owner decisions
 
+- 2026-10-04: names approved: Finn, Grandma Rosie, Farmer Ben, Lena, Daisy (and the Wolf).
 - 2026-10-04: narration 7 to 10 minutes; narrator: reuse the saved narrator voice for now (`voice/narrators/moonlight_storyteller_1`); character voices are decided later.
 - Gentle ending as asked: the Wolf is silly, never touches a sheep, and runs from the bell; the sheep are found; Finn apologises and rebuilds trust.
 
@@ -58,5 +59,4 @@ Size lineup: At equal depth, with Finn's height as 1.0: Ben 1.5 (1.6 with hat), 
 - Owner review of the script and shot order (CR-01) before the first image.
 - 46 shots give about 3.8 minutes of picture at 5 s each; the narration is longer, so shots will be slowed, held or given extra coverage when the narration is timed (`production/timing_sheet.py`).
 - Cast style (assumption, owner to confirm): Finn and the villagers are felt-doll humans, as the title needs a boy; an all-animal cast (for example a young goat as shepherd) is possible.
-- Names (Finn, Grandma Rosie, Farmer Ben, Lena, Daisy) are proposals.
 - Frames with the whole flock (five sheep and Daisy) and up to four people are the hardest for image models; count sheep on every review.
