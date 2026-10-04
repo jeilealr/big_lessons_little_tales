@@ -341,7 +341,7 @@ def lint(manifest, bible):
                 if p != cur:
                     E(f"{rid}: reference {ref['id']} points to {p}, current target is {cur}")
                 p = cur
-            if p and not (REPO / p).exists():
+            if p and not (REPO / p).exists() and images.get(ref.get("id"), {}).get("status") != "planned":
                 (W if ref.get("id") in images else E)(f"{rid}: reference file missing: {p}")
             if re.search(r"/v[0-9]+/", p) and f"/{bible.get('version', 'v4')}/" not in p \
                     and ref.get("role") not in OLD_VERSION_ROLES:

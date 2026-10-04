@@ -1,0 +1,549 @@
+{
+  "revision": "th-v1-2026-10-04",
+  "version": "tortoise_and_hare_v1",
+  "status": "single_source_of_truth_for_all_prompts",
+  "title": "The Tortoise and the Hare",
+  "moral": "Keep going, step by step, and you can reach places you never thought you could; and a kind friend cheers for you whether you win or lose.",
+  "how_to": "Every prompt in prompt_manifest.json is a template rendered from this file by production/image_prompts.py --story tortoise_and_hare_v1 (build, lint, show, md, review). Character identities are design specs until each canonical image is approved; then rewrite them from the image (hex sampled from it) and rebuild.",
+  "characters": {
+    "hattie": {
+      "name": "Hattie",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Hattie/tortoise_and_hare_v1/canonical/hattie_canonical_r01.png",
+      "canonical_record": "HATTIE_CANON",
+      "identity": "Hattie is one tall, slim young wool-felt hare who stands, walks and runs upright on two long hind legs. Her body felt is warm caramel-tan (#C9955B), with a lighter wheat-beige mask around the eyes (#E2BE8A), a long oval cream belly and chest (#F3E3C6) and one small round white cotton tail (#FAF6EE) at the lower back. Two very long upright ears, each as long as her head and neck together, with dusty-pink inner felt (#E8A3A0) and dark chocolate-brown tips (#4E3426). Her oval head has a short rounded muzzle with two cream muzzle pads (#F5E8D2), a small rose-brown nose (#A86A5E), a small mouth line and four fine pale whiskers (#F0E2CC) on each side. Two large almond-shaped glossy eyes, each about a fifth of the head width: amber-brown irises (#8A5A22), black pupils, one white catch-light at upper right, ivory sclera (#F4ECE4). Two short dark-brown brows (#5A3A22). Two slim arms with small rounded paws; two long hind feet with three toes each, each foot about as long as her shin. Her ears make up about two fifths of her height from feet to ear tips; her head is about one sixth. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
+      "sheet": "one tall slim caramel-tan felt hare standing upright, very long ears with pink insides and chocolate-brown tips, cream belly, two amber-brown eyes, a rose-brown nose and one small round white tail",
+      "short": "Hattie is one tall slim caramel-tan felt hare standing upright, very long ears with pink insides and chocolate-brown tips, cream belly, two amber-brown eyes, a rose-brown nose and one small round white tail.",
+      "mouth": "When Hattie's mouth opens, it is a small rounded opening with a dark warm-brown interior, a soft pink tongue and two small ivory upper front teeth just showing.",
+      "palette": {
+        "body": "#C9955B",
+        "mask": "#E2BE8A",
+        "belly": "#F3E3C6",
+        "tail": "#FAF6EE",
+        "inner_ear": "#E8A3A0",
+        "ear_tips": "#4E3426",
+        "muzzle": "#F5E8D2",
+        "nose": "#A86A5E",
+        "iris": "#8A5A22",
+        "brows": "#5A3A22"
+      },
+      "proportions": {
+        "ears_to_height": 0.4,
+        "head_to_height": 0.17,
+        "eye_to_head_width": 0.2
+      },
+      "checklist": [
+        "one hare standing upright, two arms, two long hind feet",
+        "two very long upright ears with pink insides and chocolate-brown tips",
+        "caramel-tan body with a lighter wheat-beige eye mask",
+        "long oval cream belly",
+        "one small round white cotton tail",
+        "two almond eyes with amber-brown irises and ivory sclera",
+        "two short dark-brown brows",
+        "small rose-brown nose",
+        "four pale whiskers on each side",
+        "cream muzzle pads",
+        "three toes on each long hind foot",
+        "ears about two fifths of her height",
+        "felt texture with visible stitches",
+        "colours not shifted by scene light"
+      ],
+      "drift_phrases": [
+        "rabbit",
+        "bunny",
+        "floppy ears",
+        "lop",
+        "grey hare"
+      ]
+    },
+    "toby": {
+      "name": "Toby",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Toby/tortoise_and_hare_v1/canonical/toby_canonical_r01.png",
+      "canonical_record": "TOBY_CANON",
+      "identity": "Toby is one small, rounded young wool-felt tortoise who walks on four short sturdy legs. His high domed shell is warm olive-green felt (#7A8B3C) divided into large honey-tan hexagonal plates (#C9A15A), each outlined with darker olive-green stitching (#55652A), with a narrow cream-yellow rim (#E6D49A) along the lower edge of the shell. His head, neck, legs and short pointed tail are soft sage-green felt (#A9B97A); his chin and throat are pale cream (#EEEACB). His round head is about one third as long as his shell, with a short blunt snout, two tiny dark nostril dots and a gentle wide mouth line. Two large round glossy eyes, each about a quarter of the head width: warm dark-brown irises (#5A3A22), black pupils, one white catch-light at upper right, ivory sclera (#F2EEE2), softly rounded upper lids that make him look calm. Two short soft olive-green brows (#55652A). Four short legs with three rounded cream toenails each (#EFE6CF). He has no ears, no hair, no teeth and no clothing. His shell is about 1.6 times as long as he is tall at the shell top, and his head sits out in front on a short neck. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
+      "sheet": "one small rounded olive-green felt tortoise with a domed shell of honey-tan hexagonal plates, sage-green head and legs, cream chin, two brown eyes, four short legs and a short pointed tail",
+      "short": "Toby is one small rounded olive-green felt tortoise with a domed shell of honey-tan hexagonal plates, sage-green head and legs, cream chin, two brown eyes, four short legs and a short pointed tail.",
+      "mouth": "When Toby's mouth opens, it is a small rounded opening with a dark warm-brown interior and a soft pink tongue; he has no teeth.",
+      "palette": {
+        "shell": "#7A8B3C",
+        "plates": "#C9A15A",
+        "seams": "#55652A",
+        "rim": "#E6D49A",
+        "skin": "#A9B97A",
+        "chin": "#EEEACB",
+        "iris": "#5A3A22",
+        "sclera": "#F2EEE2",
+        "toenails": "#EFE6CF"
+      },
+      "proportions": {
+        "shell_length_to_height": 1.6,
+        "head_length_to_shell_length": 0.33,
+        "eye_to_head_width": 0.25
+      },
+      "checklist": [
+        "one tortoise, four legs, one short pointed tail",
+        "domed olive-green shell with large honey-tan hexagonal plates",
+        "darker olive stitching around every plate",
+        "cream-yellow shell rim",
+        "sage-green head, neck and legs",
+        "pale cream chin and throat",
+        "two eyes with warm dark-brown irises and ivory sclera",
+        "two short olive brows",
+        "no ears, no hair, no teeth",
+        "three cream toenails per foot",
+        "head about one third of the shell length",
+        "calm, softly rounded upper eyelids",
+        "felt texture with visible stitches",
+        "colours not shifted by scene light"
+      ],
+      "drift_phrases": [
+        "turtle",
+        "flipper",
+        "flippers",
+        "spiky shell",
+        "green eyes"
+      ]
+    },
+    "olive": {
+      "name": "Olive",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Olive/tortoise_and_hare_v1/canonical/olive_canonical_r01.png",
+      "canonical_record": "OLIVE_CANON",
+      "identity": "Olive is one small, round, wise wool-felt tawny owl who stands upright on two feet. Her body feathers are warm tawny-brown felt (#9A6A3C) with small cream speckles (#EAD9B8), and her round chest is lighter buff-cream (#E3CBA0) with soft brown chevron stitches. Her round face is a pale buff-cream disc (#E8D2A8) edged with a thin chocolate-brown rim (#5A3A22), with two short soft feather tufts on top of the head. Two very large round glossy eyes, each about a third of the face width: golden-amber irises (#D69A2A), black pupils, one white catch-light at upper right, ivory sclera only at the edges (#F4ECE0); two small chocolate-brown brow feathers above them; a small hooked dark-brown beak (#4A3426) between and below the eyes. Two folded wings with darker brown bars (#6E4A2A), and two short feet with three ochre-tan toes each (#C9A15A). She is about as wide as she is tall, without the tufts. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
+      "sheet": "one small round tawny-brown felt owl with cream speckles, a buff-cream face disc, two big golden-amber eyes, a small brown beak and two folded wings",
+      "short": "Olive is one small round tawny-brown felt owl with cream speckles, a buff-cream face disc, two big golden-amber eyes, a small brown beak and two folded wings.",
+      "mouth": "When Olive speaks, her small hooked beak opens slightly to show a dark warm-brown inside; she has no teeth and no lips.",
+      "palette": {
+        "feathers": "#9A6A3C",
+        "speckles": "#EAD9B8",
+        "chest": "#E3CBA0",
+        "face_disc": "#E8D2A8",
+        "rim": "#5A3A22",
+        "iris": "#D69A2A",
+        "beak": "#4A3426",
+        "wing_bars": "#6E4A2A",
+        "toes": "#C9A15A"
+      },
+      "proportions": {
+        "width_to_height": 1.0,
+        "eye_to_face_width": 0.33
+      },
+      "checklist": [
+        "one owl, two folded wings, two feet",
+        "tawny-brown body with cream speckles",
+        "buff-cream round face disc with a thin brown rim",
+        "two short feather tufts on the head",
+        "two big eyes with golden-amber irises",
+        "small hooked dark-brown beak",
+        "lighter chest with chevron stitches",
+        "three toes on each foot",
+        "about as wide as tall",
+        "felt texture with visible stitches",
+        "colours not shifted by scene light"
+      ],
+      "drift_phrases": [
+        "spectacles",
+        "glasses",
+        "horned owl",
+        "snowy owl"
+      ]
+    },
+    "pip": {
+      "name": "Pip",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Pip/tortoise_and_hare_v1/canonical/pip_canonical_r01.png",
+      "canonical_record": "PIP_CANON",
+      "identity": "Pip is one small, quick young wool-felt red squirrel who stands upright on two hind feet. His body felt is warm rust-orange (#B5562A), with a cream belly and chest (#F1DFC2) and one big bushy tail (#C2622E) that curls up behind him almost as tall as he is. Two small rounded ears with short darker rust-orange tips (#8E3F1E). His round head has a short muzzle with cream cheeks (#F1DFC2), a tiny dark-brown nose (#4A2E22), a small mouth line and three fine pale whiskers (#F0E2CC) on each side. Two large round glossy eyes: dark-brown irises (#4A2E22), black pupils, one white catch-light at upper right, ivory sclera (#F2EEE2); two short dark-brown brows. Two small arms with tiny paws and two hind feet with four toes each. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
+      "sheet": "one small rust-orange felt squirrel with a cream belly, a big bushy curled tail, small rounded ears and two dark-brown eyes",
+      "short": "Pip is one small rust-orange felt squirrel with a cream belly, a big bushy curled tail, small rounded ears and two dark-brown eyes.",
+      "mouth": "When Pip's mouth opens, it is a tiny rounded opening with a dark warm-brown interior and two small ivory front teeth.",
+      "palette": {
+        "body": "#B5562A",
+        "belly": "#F1DFC2",
+        "tail": "#C2622E",
+        "ear_tips": "#8E3F1E",
+        "nose": "#4A2E22"
+      },
+      "proportions": {
+        "tail_to_height": 0.9
+      },
+      "checklist": [
+        "one squirrel standing upright",
+        "rust-orange body, cream belly and cheeks",
+        "one big bushy curled tail",
+        "two small rounded ears",
+        "two dark-brown eyes",
+        "three whiskers on each side",
+        "felt texture"
+      ],
+      "drift_phrases": [
+        "chipmunk",
+        "grey squirrel",
+        "stripes"
+      ]
+    },
+    "bramble": {
+      "name": "Bramble",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Bramble/tortoise_and_hare_v1/canonical/bramble_canonical_r01.png",
+      "canonical_record": "BRAMBLE_CANON",
+      "identity": "Bramble is one small, round, cosy young wool-felt hedgehog who walks on four short legs and can stand up on two. His back is covered with soft rounded felt spines in chestnut-brown (#6E4A30) with cream tips (#EADBC0), like a round brush; they are soft and friendly, never sharp. His face, tummy and legs are pale biscuit-beige felt (#E7CBA4). His pointed little snout ends in a round black nose (#2A1E18). Two small round ears (#D8B88E). Two small round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light, ivory sclera (#F2EEE2); two short brown brows. A small smiling mouth line. Four short legs with tiny paws. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
+      "sheet": "one small round felt hedgehog with soft chestnut-brown cream-tipped spines, a biscuit-beige face and tummy, a black nose and two small brown eyes",
+      "short": "Bramble is one small round felt hedgehog with soft chestnut-brown cream-tipped spines, a biscuit-beige face and tummy, a black nose and two small brown eyes.",
+      "mouth": "When Bramble's mouth opens, it is a small rounded opening with a dark warm-brown interior and a soft pink tongue.",
+      "palette": {
+        "spines": "#6E4A30",
+        "tips": "#EADBC0",
+        "face": "#E7CBA4",
+        "nose": "#2A1E18"
+      },
+      "proportions": {},
+      "checklist": [
+        "one hedgehog",
+        "soft rounded chestnut-brown spines with cream tips",
+        "biscuit-beige face and tummy",
+        "round black nose",
+        "two small brown eyes",
+        "two small round ears",
+        "felt texture"
+      ],
+      "drift_phrases": [
+        "porcupine",
+        "quills",
+        "sharp spikes"
+      ]
+    }
+  },
+  "cast_scale": {
+    "rule": "At equal depth, with Hattie's height from feet to ear tips as 1.0: Toby's shell top 0.33 and shell length 0.50; Olive 0.40; Pip 0.33 to the ear tips (tail top 0.50); Bramble 0.25.",
+    "anchor_record": "LINEUP",
+    "status": "design targets; measure them on the approved LINEUP image and update every setup's sizes"
+  },
+  "locations": {
+    "meadow_morning": {
+      "location": "meadow",
+      "plate": "character/locations/tortoise_and_hare_v1/meadow/meadow_morning_r01.png",
+      "label": "the sunny meadow in morning light",
+      "description": "A sunny felt meadow at the edge of a wood: a wide flat lane of short green grass fills the lower half, with clumps of white daisies; a mossy tree stump stands at the left; a line of small round grey pebbles crosses the grass as the start line; the forest path opens between two trees at the far right; rounded felt trees and a soft blue sky behind.",
+      "landmarks": [
+        "the forest path entrance between two trees at the far right (x 0.85-0.98)",
+        "the mossy stump at the left (x 0.08-0.22, top near y=0.55)",
+        "the pebble start line across the grass (y 0.80-0.83, x 0.25-0.70)",
+        "daisy clumps at the lower right and lower left corners",
+        "the grass lane where characters stand (y 0.70-0.90)"
+      ],
+      "light": "Fresh morning sunlight from the upper left; soft shadows to the right.",
+      "ambient": "Grass tips and daisies sway gently in a light breeze; leaves flutter; the stump, trees and pebbles stay fixed."
+    },
+    "path_morning": {
+      "location": "forest_path",
+      "plate": "character/locations/tortoise_and_hare_v1/forest_path/path_morning_r01.png",
+      "label": "the forest path in late-morning light",
+      "description": "A side view of a winding felt forest path: a flat earth lane crosses the whole frame left to right in the lower third, with ferns, red-capped mushrooms and mossy stones in front of it and tall felt trees with soft green canopies behind it.",
+      "landmarks": [
+        "the earth lane across the frame (y 0.72-0.86)",
+        "a cluster of red-capped mushrooms at the lower left (x 0.08-0.18)",
+        "a mossy stone at the lower right (x 0.80-0.92, y 0.80-0.92)",
+        "a large trunk behind the lane at the centre (x 0.46-0.54)",
+        "ferns along the bottom edge"
+      ],
+      "light": "Bright late-morning sunlight from the upper left through the leaves, dappled light on the lane.",
+      "ambient": "Fern tips and leaves move gently; sun dapples drift slightly; trunks, stones and mushrooms stay fixed."
+    },
+    "path_sunset": {
+      "location": "forest_path",
+      "plate": "character/locations/tortoise_and_hare_v1/forest_path/path_sunset_r01.png",
+      "label": "the forest path at sunset",
+      "description": "The same side view of the forest path as the late-morning plate, with every tree, stone, fern and mushroom in exactly the same place, in warm golden sunset light.",
+      "landmarks": [
+        "the earth lane across the frame (y 0.72-0.86)",
+        "a cluster of red-capped mushrooms at the lower left (x 0.08-0.18)",
+        "a mossy stone at the lower right (x 0.80-0.92, y 0.80-0.92)",
+        "a large trunk behind the lane at the centre (x 0.46-0.54)"
+      ],
+      "light": "Low warm golden sunset light from the right; long soft shadows to the left; a pink-orange glow between the trunks.",
+      "ambient": "Leaves move gently; warm light flickers softly; trunks, stones and mushrooms stay fixed."
+    },
+    "hill_noon": {
+      "location": "hilltop",
+      "plate": "character/locations/tortoise_and_hare_v1/hilltop/hill_noon_r01.png",
+      "label": "the hilltop with the big shady tree at midday",
+      "description": "A grassy felt hilltop: one big round shady tree stands left of centre with a thick trunk and a wide canopy, soft cool grass beneath it; the path comes up the slope from the lower left and continues over the crest at the right; far below at the right, a small old oak and a tiny daisy ribbon are just visible in the distance.",
+      "landmarks": [
+        "the big tree trunk left of centre (x 0.30-0.40, base near y=0.70)",
+        "its canopy across the upper left (x 0.05-0.65, y 0.00-0.45)",
+        "the path rising from the lower left to the crest at the right (y 0.72-0.88)",
+        "the shady grass under the tree (x 0.15-0.55, y 0.68-0.82)",
+        "the distant old oak at the right edge (x 0.85-0.95, y 0.45-0.55)"
+      ],
+      "light": "Bright midday sunlight from above; a deep cool shadow under the tree.",
+      "ambient": "Canopy leaves and grass sway gently; the shadow stays still; trunk and path stay fixed."
+    },
+    "hill_afternoon": {
+      "location": "hilltop",
+      "plate": "character/locations/tortoise_and_hare_v1/hilltop/hill_afternoon_r01.png",
+      "label": "the hilltop with the big shady tree in late afternoon",
+      "description": "The same hilltop as the midday plate, with the tree, path and distant oak in exactly the same places, in late-afternoon light.",
+      "landmarks": [
+        "the big tree trunk left of centre (x 0.30-0.40, base near y=0.70)",
+        "the path rising from the lower left to the crest at the right (y 0.72-0.88)",
+        "the distant old oak at the right edge (x 0.85-0.95, y 0.45-0.55)"
+      ],
+      "light": "Warm late-afternoon light from the low right; long shadows to the left.",
+      "ambient": "Leaves and grass sway gently; trunk and path stay fixed."
+    },
+    "finish_afternoon": {
+      "location": "finish",
+      "plate": "character/locations/tortoise_and_hare_v1/finish/finish_afternoon_r01.png",
+      "label": "the old oak clearing with the finish ribbon in late afternoon",
+      "description": "A round grassy felt clearing in front of a wide old oak: the path enters from the left; two small upright sticks stand in the grass at the centre, one at each side of the path, ready for the finish ribbon; ferns and flowers around the edges.",
+      "landmarks": [
+        "the old oak trunk at the right (x 0.70-0.92, base near y=0.62)",
+        "the path entering from the left edge (y 0.74-0.88)",
+        "the left finish stick at x=0.42 and the right finish stick at x=0.58, both from y=0.62 to y=0.82",
+        "ferns at the lower left and lower right corners"
+      ],
+      "light": "Warm golden late-afternoon light from the left; soft long shadows to the right.",
+      "ambient": "Ferns, grass and leaves sway gently; sticks, oak and path stay fixed."
+    }
+  },
+  "setups": {
+    "meadow_plate": {
+      "location": "meadow_morning",
+      "framing": "empty_plate",
+      "label": "the empty meadow in morning light",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate."
+    },
+    "meadow_wide": {
+      "location": "meadow_morning",
+      "framing": "scene_wide",
+      "label": "a wide shot of the sunny meadow in morning light",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. The characters stand on the grass lane between y=0.80 and y=0.88.",
+      "size": {
+        "hattie": "Hattie standing measures about 0.42 of the frame height from feet to ear tips, her feet on the ground line.",
+        "toby": "Toby measures about 0.14 of the frame height to the top of his shell and about 0.21 of the frame height long.",
+        "olive": "Olive standing measures about 0.17 of the frame height.",
+        "pip": "Pip standing measures about 0.14 of the frame height to his ear tips, his tail reaching about 0.21.",
+        "bramble": "Bramble measures about 0.10 of the frame height."
+      },
+      "relation": "At the same distance from the camera, Toby's shell top reaches about one third of Hattie's height; every character keeps the story's size lineup.",
+      "anchor_record": "s01_hattie_bounces_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "meadow_hattie_closeup": {
+      "location": "meadow_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Hattie in the meadow",
+      "camera": "Close-up, 16:9: Hattie's head and upper chest are centred, ear tips near y=0.02 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s02_hattie_boasts_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "meadow_toby_closeup": {
+      "location": "meadow_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Toby in the meadow",
+      "camera": "Close-up, 16:9: Toby's head and upper chest are centred, the top of his shell near y=0.12 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s02_toby_replies_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "meadow_olive_closeup": {
+      "location": "meadow_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Olive on her stump in the meadow",
+      "camera": "Close-up, 16:9: Olive's head and upper chest are centred, the top of her head near y=0.08 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s03_olive_announces_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "path_side": {
+      "location": "path_morning",
+      "framing": "scene_wide",
+      "label": "a side-on wide shot of the forest path in late-morning light",
+      "camera": "Fixed normal-height side camera, 16:9, exactly the framing of the locked plate; characters travel left to right along the lane. Feet and shells rest on the lane near y=0.84.",
+      "size": {
+        "hattie": "Hattie standing or running measures about 0.42 of the frame height from feet to ear tips.",
+        "toby": "Toby measures about 0.14 of the frame height to the top of his shell and about 0.21 of the frame height long.",
+        "pip": "Pip standing measures about 0.14 of the frame height to his ear tips, his tail reaching about 0.21."
+      },
+      "relation": "At the same distance from the camera, Toby's shell top reaches about one third of Hattie's height; every character keeps the story's size lineup.",
+      "anchor_record": "s04_hattie_zooms_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "path_hattie_closeup": {
+      "location": "path_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Hattie on the forest path",
+      "camera": "Close-up, 16:9: Hattie's head and upper chest are centred, ear tips near y=0.02 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s05_hattie_smug_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "path_toby_closeup": {
+      "location": "path_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Toby on the forest path",
+      "camera": "Close-up, 16:9: Toby's head and upper chest are centred, the top of his shell near y=0.12 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s07_toby_determined_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "hill_wide": {
+      "location": "hill_noon",
+      "framing": "scene_wide",
+      "label": "a wide shot of the hilltop with the big shady tree at midday",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the path or the shady grass near y=0.80.",
+      "size": {
+        "hattie": "Hattie standing measures about 0.38 of the frame height from feet to ear tips; lying down asleep, she is about 0.42 of the frame width long.",
+        "toby": "Toby measures about 0.13 of the frame height to the top of his shell and about 0.19 of the frame height long."
+      },
+      "relation": "At the same distance from the camera, Toby's shell top reaches about one third of Hattie's height; every character keeps the story's size lineup.",
+      "anchor_record": "s06_hattie_arrives_tree_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "hill_hattie_closeup": {
+      "location": "hill_noon",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Hattie under the shady tree",
+      "camera": "Close-up, 16:9: Hattie's head and upper chest are centred, ear tips near y=0.02 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s06_hattie_sleeps_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "hill_toby_closeup": {
+      "location": "hill_noon",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Toby on the hilltop",
+      "camera": "Close-up, 16:9: Toby's head and upper chest are centred, the top of his shell near y=0.12 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s08_toby_whispers_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "hill_late_wide": {
+      "location": "hill_afternoon",
+      "framing": "scene_wide",
+      "label": "a wide shot of the hilltop in late afternoon",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the path or the shady grass near y=0.80.",
+      "size": {
+        "hattie": "Hattie standing measures about 0.38 of the frame height from feet to ear tips; lying down, she is about 0.42 of the frame width long."
+      },
+      "relation": "At the same distance from the camera, Toby's shell top reaches about one third of Hattie's height; every character keeps the story's size lineup.",
+      "anchor_record": "s09_hattie_sees_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "hill_late_hattie_closeup": {
+      "location": "hill_afternoon",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Hattie on the hilltop in late afternoon",
+      "camera": "Close-up, 16:9: Hattie's head and upper chest are centred, ear tips near y=0.02 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s09_hattie_wakes_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "finish_wide": {
+      "location": "finish_afternoon",
+      "framing": "scene_wide",
+      "label": "a wide shot of the old oak clearing with the finish ribbon",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. The characters stand on the grass near y=0.84.",
+      "size": {
+        "hattie": "Hattie standing measures about 0.42 of the frame height from feet to ear tips, her feet on the ground line.",
+        "toby": "Toby measures about 0.14 of the frame height to the top of his shell and about 0.21 of the frame height long.",
+        "olive": "Olive standing measures about 0.17 of the frame height.",
+        "pip": "Pip standing measures about 0.14 of the frame height to his ear tips, his tail reaching about 0.21.",
+        "bramble": "Bramble measures about 0.10 of the frame height."
+      },
+      "relation": "At the same distance from the camera, Toby's shell top reaches about one third of Hattie's height; every character keeps the story's size lineup.",
+      "anchor_record": "s10_crowd_waits_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "finish_hattie_closeup": {
+      "location": "finish_afternoon",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Hattie at the finish",
+      "camera": "Close-up, 16:9: Hattie's head and upper chest are centred, ear tips near y=0.02 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s11_hattie_admits_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "finish_toby_closeup": {
+      "location": "finish_afternoon",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Toby at the finish",
+      "camera": "Close-up, 16:9: Toby's head and upper chest are centred, the top of his shell near y=0.12 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s11_toby_kind_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "path_sunset_side": {
+      "location": "path_sunset",
+      "framing": "scene_wide",
+      "label": "a side-on wide shot of the forest path at sunset",
+      "camera": "Fixed normal-height side camera, 16:9, exactly the framing of the locked plate; characters travel left to right along the lane. Feet and shells rest on the lane near y=0.84.",
+      "size": {
+        "hattie": "Hattie standing measures about 0.42 of the frame height from feet to ear tips, her feet on the ground line.",
+        "toby": "Toby measures about 0.14 of the frame height to the top of his shell and about 0.21 of the frame height long."
+      },
+      "relation": "At the same distance from the camera, Toby's shell top reaches about one third of Hattie's height; every character keeps the story's size lineup.",
+      "anchor_record": "s12_walk_together_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    }
+  },
+  "blocks": {
+    "style": "Style: handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities; warm child-friendly palette and soft directional light; clear subject silhouettes; faces and contact points sharply readable.",
+    "runtime_style": "Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.",
+    "light_and_colour": "Light and colour: every character keeps exactly the colours, saturation and brightness of its canonical image; the scene light may only tint it the same way it tints the background, with the same exposure and contrast as the background. Characters are lit from the same direction as the plate and cast soft contact shadows on its ground, so they sit in the scene rather than on top of it.",
+    "final_check": "Before finishing, check: each visible character appears exactly once, with exactly two eyes and two eyebrows (one above each eye, drawn once), its canonical ears, limbs, wings and toes, whiskers only where its canonical has them and exactly one tail attached at its root; no text, letters, labels or watermark anywhere.",
+    "edit_end_frame": "This is an edit of the accepted start frame of this shot (the first attached reference): keep its camera, crop, background, light and every character's identity, colours, brightness, size and position exactly; change only what this frame shows below.",
+    "edit_reference": "Edit the first attached reference, the approved parent image: keep the character's identity, colours, brightness and proportions exactly; change only the view or pose stated here.",
+    "edit_expression": "Edit the first attached reference, the approved closed-mouth portrait: keep its crop, head size and position, every feature, colour, the felt texture, the whiskers, the backdrop and the light exactly; change only the brows, eyelids, gaze and mouth.",
+    "studio_full_body": "Studio: plain warm off-white seamless backdrop, soft even neutral light and a small soft contact shadow under the feet; the whole body, ears, paws, mane where present and the single tail inside the frame with about 8% margin on every side.",
+    "studio_portrait": "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, with no room, furniture, floor or horizon, and soft even neutral light; head-and-shoulders crop with the whole head, both ears and any mane inside the frame with a small margin; the head keeps the size and eye-line of the approved closed-mouth portrait.",
+    "plate_rules": "Empty plate: no characters and no story props. Normal-height camera, the whole scene edge to edge, open in-focus ground where characters will stand, distant background slightly soft. Every landmark keeps the position stated above; a different light state of this place reuses exactly the same geometry.",
+    "cast_scale": "Relative size (fixed for the whole story, the same at the same distance from the camera): Hattie standing, from feet to ear tips, is the tallest; Toby's shell top reaches about one third of Hattie's height and his shell is about half her height long; Olive standing is about two fifths of Hattie's height; Pip standing, to his ear tips, is about one third of Hattie's height, his tail reaching about half; Bramble is about one quarter of Hattie's height. Sitting, lying or running changes a silhouette but never the size of a head, shell, ear or limb.",
+    "studio_lineup": "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, soft even neutral light, one flat ground line at y=0.88 where every character stands, with a small soft contact shadow under each; every whole body, every ear tip, foot and tail inside the frame with a margin.",
+    "ribbon_tied": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height. It hangs across the path, whole and unbroken.",
+    "ribbon_parted": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height. It has just parted in the middle where Toby walked through; its two halves hang from the sticks.",
+    "ribbon_down": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height. Its two parted halves hang from the sticks after Toby walked through it.",
+    "ribbon_object": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height."
+  },
+  "generic_blocks": [
+    "style",
+    "runtime_style",
+    "light_and_colour",
+    "final_check",
+    "edit_end_frame",
+    "edit_reference",
+    "edit_expression",
+    "studio_full_body",
+    "studio_portrait",
+    "plate_rules"
+  ],
+  "reference_roles": {
+    "edit_base": "the edit base ({what}): keep everything in it (camera, crop, background, light, every character's identity, colours, brightness, size and position) except what this prompt changes",
+    "identity_root": "{who}'s approved canonical image: copy {who}'s identity exactly, with the same shapes, proportions, colours and brightness",
+    "locked_plate": "the locked location plate ({what}): reproduce this background exactly, with the same landmarks, light and camera",
+    "world_state": "the previous accepted frame ({what}): carry over the world state (props, damage, contacts and positions) unless this prompt changes it; use the framing stated in this prompt",
+    "camera_geometry": "camera and layout reference ({what}): copy only the camera position and the layout of the place; take no character or prop state from it",
+    "expression": "expression reference ({what}): copy only the brows, eyelids, gaze and mouth shape onto {who}'s canonical face",
+    "pose": "pose reference ({what}): copy only {who}'s body pose and proportions, not the background",
+    "prop": "prop reference ({what}): copy the prop's material, colour, shape and size; its state in this frame is the one stated in this prompt",
+    "mouth_design": "mouth design reference ({what}): copy only the mouth opening, the teeth and their size",
+    "staging_only": "older-version staging reference ({what}): copy only the composition, camera and staging; every character's look comes from the canonical images",
+    "size_anchor": "size anchor ({what}): an approved frame of this same camera setup; every character keeps exactly the size it has there, and takes no pose, expression or prop state from it",
+    "framing": "framing reference ({what}): copy only the shot size, where the head sits in the frame and how strongly the background is blurred; take no character, background, light or expression from it",
+    "size_lineup": "the story's size lineup ({what}): copy only the size relation between Leo and Milo, applied at the sizes stated in this prompt; take no camera, background, pose, expression or prop state from it"
+  },
+  "lint": {
+    "allow_phrases": [],
+    "forbidden_in_prompts": [
+      "proposed",
+      "pending",
+      "draft",
+      "TODO",
+      "v3 identity"
+    ],
+    "warn_words": []
+  }
+}

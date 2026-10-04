@@ -94,6 +94,11 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   (canonical, references, expressions), `character/characters/interactions/v5/keyframes/`,
   `character/locations/v5/<place>/`; each v5 root has a README with the file name for
   every record (same stem as v4, `_r01`). Prompts are still the v4 records.
+- **Next stories (owner, 2026-10-04):** *The Tortoise and the Hare*
+  (`stories/tortoise_and_hare_v1/`, documentation packet ready: script, 33 shots,
+  105 image records, lint 0; awaiting owner review of script and shot order before
+  images), then *The Boy Who Cried Wolf* (gentle ending). Both follow CR-01 to CR-18;
+  start from that story's README.
 - **Next:** the owner reviews and replaces images (prompts in `prompts/*.md`); when
   the owner asks, derive the runtime story and render a small clip pilot
   (`docs/v4-preflight.md` gates C-E).

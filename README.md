@@ -15,6 +15,7 @@ Current work: **The Lion and the Mouse, v4: still images under owner review**
 (status 2026-10-02). Start with the [v4 review packet](stories/lion_and_mouse_v4/README.md)
 and its [readable prompts](stories/lion_and_mouse_v4/prompts/).
 V3 has been rendered and reviewed by the owner; v2/v3 remain historical inputs.
+Next story in preparation: [The Tortoise and the Hare](stories/tortoise_and_hare_v1/README.md) (script and shot plan ready for review).
 V4 stills were made from 2026-09-30 to 2026-10-02 with GPT's built-in image
 tool and the Gemini API (139 of 140 image records accepted, one missing); the
 owner now makes new images personally. The English narration exists. **No v4
