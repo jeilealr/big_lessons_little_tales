@@ -34,9 +34,9 @@ script + shot order review -> approved cast/places/props -> paired keyframes
 |---|---|---|
 | Story and prompt plan | v4 `visual_bible.json`, `prompt_manifest.json`; later approved `story.yaml` | complete image/video prompts, state/geometry records and each accepted image's result; current render scripts require story YAML |
 | Narration | v4: `dialogue_coverage.json` + `voice/narrate_scenes.py`; v2: `stories/<slug>/narration/<lang>.yaml`; `voice/` | the spoken lines; one WAV per scene with Gemini voices; `production/timing_sheet.py` maps lines to shots |
-| Cast | v4: `character/characters/<Name>/v4/`; v3: `character/characters/<Name>/v3/` + `production/install_pack.py` | canonical, views, expressions, actions, story states (v4 made with image models, see `docs/gemini-images.md`) |
-| Places | v4: `character/locations/v4/<place>/` (bible `locations`); v3: `character/locations/<place>/` + `stories/<slug>/locations_dna.yaml` | empty plates, one per lighting |
-| Scene stills (v4) | `character/characters/interactions/v4/keyframes/` | the start and end image of every shot, made with image models and recorded in the manifest |
+| Cast | v4: `character/characters/lion_and_mouse_v4/<Name>/`; v3: `character/characters/lion_and_mouse_v3/<Name>/` + `production/install_pack.py` | canonical, views, expressions, actions, story states (v4 made with image models, see `docs/gemini-images.md`) |
+| Places | v4: `character/locations/lion_and_mouse_v4/<place>/` (bible `locations`); v3: `character/locations/lion_and_mouse_v3/<place>/` + `stories/<slug>/locations_dna.yaml` | empty plates, one per lighting |
+| Scene stills (v4) | `character/characters/lion_and_mouse_v4/interactions/keyframes/` | the start and end image of every shot, made with image models and recorded in the manifest |
 | Props (optional) | `production/design.py` | Wan 2.2 stills of places and props (the v1/v2 method) |
 | Poses (optional) | `character/character.py` + `stories/<slug>/packs/*.yaml` | extra poses animated from the canonical |
 | Keyframes | `production/compose_keyframes.py` (`compose:` in each shot) | start/end frames: characters cut out (BiRefNet) and placed; a contact sheet to check |
@@ -136,14 +136,15 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 
 | What | Where |
 |---|---|
+| **All images, by story** (since 2026-10-04) | `character/characters/<story>/<Name>/` (canonical, references, expressions), `character/characters/<story>/interactions/` (scene start/end frames), `character/locations/<story>/<place>/` (plates, props); `<story>` = the `stories/` folder name, e.g. `lion_and_mouse_v5` |
 | V4 prompt records and their results | `stories/lion_and_mouse_v4/prompt_manifest.json`; each record names its image path, hash and review |
-| V4 character images (canonical, references, 11 expressions each) | `character/characters/<Name>/v4/` |
-| V4 scene start/end images | `character/characters/interactions/v4/keyframes/` |
-| V4 location plates and props | `character/locations/v4/` |
-| Existing v3 character packs (canonical, views, expressions, actions, story states) | `character/characters/<Name>/v3/` |
-| Character DNA (the written identity) | `character/characters/<Name>/v3/dna.yaml` |
-| Two-character images | `character/characters/interactions/v3/` |
-| Location plates | `character/locations/<place>/` |
+| V4 character images (canonical, references, 11 expressions each) | `character/characters/lion_and_mouse_v4/<Name>/` |
+| V4 scene start/end images | `character/characters/lion_and_mouse_v4/interactions/keyframes/` |
+| V4 location plates and props | `character/locations/lion_and_mouse_v4/` |
+| Existing v3 character packs (canonical, views, expressions, actions, story states) | `character/characters/lion_and_mouse_v3/<Name>/` |
+| Character DNA (the written identity) | `character/characters/lion_and_mouse_v3/<Name>/dna.yaml` |
+| Two-character images | `character/characters/lion_and_mouse_v3/interactions/` |
+| Location plates and props | `character/locations/<story>/<place>/` |
 | Saved voices (id, design prompt, samples in 6 languages) | `voice/cast/<role>/`, `voice/narrators/<name>/` |
 | Rendered clips, keyframes, animatic (not in git) | `work/stories/<slug>/shots/`, `keyframes/`, `animatic.mp4` |
 | GPU task files and logs | `work/tasks/`, `/scratch/project_465002727/jelealro/slurm_logs/` |

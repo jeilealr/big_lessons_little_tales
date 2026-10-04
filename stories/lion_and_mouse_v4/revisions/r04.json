@@ -2,7 +2,7 @@
   "revision": "r04",
   "date": "2026-10-02",
   "source": "Owner review 2026-10-02: s08/s13 Milo too big (prefer s14 opening/clear scale); S15 Milo in the s15_leo_reflects close-up format using expression references; s07_leo_annoyed_end has extra eyebrows.",
-  "note": "Expression references: character/characters/<Name>/v4/expressions (manifest group 'expressions').",
+  "note": "Expression references: character/characters/lion_and_mouse_v4/<Name>/expressions (manifest group 'expressions').",
   "records": {
     "s07_leo_annoyed_end": {
       "model": "gemini-3.1-flash-image",

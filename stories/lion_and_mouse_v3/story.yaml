@@ -24,8 +24,8 @@ characters:
   leo:
     name: Leo the lion
     role: main
-    canonical: character/characters/Leo/v3/canonical/full-body_leo_neutral_pose.png
-    dna: character/characters/Leo/v3/dna.yaml
+    canonical: character/characters/lion_and_mouse_v3/Leo/canonical/full-body_leo_neutral_pose.png
+    dna: character/characters/lion_and_mouse_v3/Leo/dna.yaml
     sheet: a handcrafted needle-felted lion with a compact sturdy warm golden-ochre body with delicate
       stitched seams, short thick legs, oversized rounded pale-tan paws with stitched toes, a pale-cream
       chest patch, and a very large round rust-red mane of long pointed fuzzy wool locks framing his face;
@@ -38,8 +38,8 @@ characters:
   milo:
     name: Milo the mouse
     role: main
-    canonical: character/characters/Milo/v3/canonical/full-body_milo_neutral_pose.png
-    dna: character/characters/Milo/v3/dna.yaml
+    canonical: character/characters/lion_and_mouse_v3/Milo/canonical/full-body_milo_neutral_pose.png
+    dna: character/characters/lion_and_mouse_v3/Milo/dna.yaml
     sheet: a small handcrafted wool-felt mouse with a slender warm taupe-grey body with delicate stitched
       seams, a long pale-cream belly, a large round head with a small tuft of rust-orange wool hair on
       top, two very large round upright ears with coral-pink inner felt and stitched grey rims, very large
@@ -90,9 +90,9 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving
       keyframe: keyframes/s01_milo_explores_start.png
       compose:
-        plate: ../../../character/locations/stream_bank/stream_bank_wide_afternoon.png
+        plate: ../../../character/locations/lion_and_mouse_v3/stream_bank/stream_bank_wide_afternoon.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_action_walking.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_action_walking.png
           x: 0.3
           y: 0.8
           h: 0.3
@@ -109,9 +109,9 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving
       keyframe: keyframes/s01_milo_acorn_start.png
       compose:
-        plate: ../../../character/locations/stream_bank/stream_bank_wide_afternoon.png
+        plate: ../../../character/locations/lion_and_mouse_v3/stream_bank/stream_bank_wide_afternoon.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_acorn.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_acorn.png
           x: 0.42
           y: 0.84
           h: 0.36
@@ -134,17 +134,17 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving
       keyframe: keyframes/s02_getting_late_start.png
       compose:
-        plate: ../../../character/locations/stream_bank/stream_bank_wide_sunset.png
+        plate: ../../../character/locations/lion_and_mouse_v3/stream_bank/stream_bank_wide_sunset.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_acorn.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_acorn.png
           x: 0.42
           y: 0.84
           h: 0.36
       end_keyframe: keyframes/s02_getting_late_end.png
       end_compose:
-        plate: ../../../character/locations/stream_bank/stream_bank_wide_sunset.png
+        plate: ../../../character/locations/lion_and_mouse_v3/stream_bank/stream_bank_wide_sunset.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_startled_up.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_startled_up.png
           x: 0.42
           y: 0.84
           h: 0.36
@@ -167,17 +167,17 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving
       keyframe: keyframes/s03_two_paths_start.png
       compose:
-        plate: ../../../character/locations/fork/fork_wide_sunset.png
+        plate: ../../../character/locations/lion_and_mouse_v3/fork/fork_wide_sunset.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_look_left.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_look_left.png
           x: 0.52
           y: 0.8
           h: 0.3
       end_keyframe: keyframes/s03_two_paths_end.png
       end_compose:
-        plate: ../../../character/locations/fork/fork_wide_sunset.png
+        plate: ../../../character/locations/lion_and_mouse_v3/fork/fork_wide_sunset.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_look_right.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_look_right.png
           x: 0.52
           y: 0.8
           h: 0.3
@@ -194,17 +194,17 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving
       keyframe: keyframes/s03_decides_start.png
       compose:
-        plate: ../../../character/locations/fork/fork_wide_sunset.png
+        plate: ../../../character/locations/lion_and_mouse_v3/fork/fork_wide_sunset.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_look_right.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_look_right.png
           x: 0.52
           y: 0.8
           h: 0.3
       end_keyframe: keyframes/s03_decides_end.png
       end_compose:
-        plate: ../../../character/locations/fork/fork_wide_sunset.png
+        plate: ../../../character/locations/lion_and_mouse_v3/fork/fork_wide_sunset.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_determined.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_determined.png
           x: 0.52
           y: 0.8
           h: 0.3
@@ -229,9 +229,9 @@ scenes:
         away from the camera, back view
       keyframe: keyframes/s04_shortcut_run_start.png
       compose:
-        plate: ../../../character/locations/shortcut/shortcut_side_track_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/shortcut/shortcut_side_track_dusk.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_run_side.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_run_side.png
           x: 0.12
           y: 0.74
           h: 0.24
@@ -256,9 +256,9 @@ scenes:
         lion
       keyframe: keyframes/s05_leo_sleeps_start.png
       compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         characters:
-        - still: ../../../character/characters/Leo/v3/actions/leo_asleep_paw_forward.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/actions/leo_asleep_paw_forward.png
           x: 0.58
           y: 0.86
           h: 0.42
@@ -276,8 +276,8 @@ scenes:
         still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         second mouse
-      keyframe: ../../../character/characters/interactions/v3/int_milo_runs_to_paw.png
-      end_keyframe: ../../../character/characters/interactions/v3/int_milo_on_nose.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_milo_runs_to_paw.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_milo_on_nose.png
   6:
     title: Caught
     location: great_tree
@@ -298,8 +298,8 @@ scenes:
         beside the tiny mouse, blocking his way; the mouse freezes. The camera stays still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         paw on the mouse
-      keyframe: ../../../character/characters/interactions/v3/int_milo_on_nose.png
-      end_keyframe: ../../../character/characters/interactions/v3/int_barrier_paw.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_milo_on_nose.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_barrier_paw.png
   7:
     title: The finest nap
     location: great_tree
@@ -321,19 +321,19 @@ scenes:
         mouse, sharp background, cut, scene change
       keyframe: keyframes/s07_leo_annoyed_start.png
       compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_neutral.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_neutral.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s07_leo_annoyed_end.png
       end_compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_annoyed.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_annoyed.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -351,19 +351,19 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving, sharp background, cut, scene change
       keyframe: keyframes/s07_milo_sorry_start.png
       compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_startled.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_startled.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s07_milo_sorry_end.png
       end_compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_apologetic.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_apologetic.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -389,19 +389,19 @@ scenes:
         mouse, sharp background, cut, scene change
       keyframe: keyframes/s08_leo_softens_start.png
       compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_annoyed.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_annoyed.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s08_leo_softens_end.png
       end_compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_smile.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_smile.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -419,19 +419,19 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving, sharp background, cut, scene change
       keyframe: keyframes/s08_milo_surprised_start.png
       compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_pleasant_surprise.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_pleasant_surprise.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s08_milo_surprised_end.png
       end_compose:
-        plate: ../../../character/locations/great_tree/great_tree_wide_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_wide_dusk.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_smile.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_smile.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -448,8 +448,8 @@ scenes:
       action: Leo the lion lies down calmly and smiles gently at the tiny mouse, who looks up at him with
         his paws together, grateful. The camera stays still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving
-      keyframe: ../../../character/characters/interactions/v3/int_barrier_paw.png
-      end_keyframe: ../../../character/characters/interactions/v3/int_kindness.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_barrier_paw.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_kindness.png
   9:
     title: Before the stars
     location: great_tree
@@ -466,7 +466,7 @@ scenes:
       action: The first stars twinkle softly in the dusk sky above the great felt tree. The camera stays
         still.
       negative_extra: lion, mouse, animals, camera moving, sun moving
-      keyframe: ../../../character/locations/great_tree/great_tree_sky_dusk.png
+      keyframe: ../../../character/locations/lion_and_mouse_v3/great_tree/great_tree_sky_dusk.png
     - name: s09_milo_hurries
       characters:
       - milo
@@ -481,9 +481,9 @@ scenes:
         the camera, back view
       keyframe: keyframes/s09_milo_hurries_start.png
       compose:
-        plate: ../../../character/locations/shortcut/shortcut_side_track_dusk.png
+        plate: ../../../character/locations/lion_and_mouse_v3/shortcut/shortcut_side_track_dusk.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_hurrying.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_hurrying.png
           x: 0.15
           y: 0.74
           h: 0.24
@@ -500,9 +500,9 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving
       keyframe: keyframes/s09_home_start.png
       compose:
-        plate: ../../../character/locations/milo_home/milo_home_wide_night.png
+        plate: ../../../character/locations/lion_and_mouse_v3/milo_home/milo_home_wide_night.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_action_walking.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_action_walking.png
           x: 0.62
           y: 0.8
           h: 0.24
@@ -528,13 +528,13 @@ scenes:
         mouse, people, hunter
       keyframe: keyframes/s10_leo_walks_in_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         characters:
-        - still: ../../../character/characters/Leo/v3/actions/leo_action_walking.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/actions/leo_action_walking.png
           x: 0.24
           y: 0.84
           h: 0.52
-      end_keyframe: ../../../character/characters/Leo/v3/net/leo_steps_on_trigger.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_steps_on_trigger.png
     - name: s10_net_falls
       characters:
       - leo
@@ -547,8 +547,8 @@ scenes:
         lies down under it, surprised. The camera stays still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         mouse, people, hunter, pain, struggling
-      keyframe: ../../../character/characters/Leo/v3/net/leo_steps_on_trigger.png
-      end_keyframe: ../../../character/characters/Leo/v3/net/leo_net_caught.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_steps_on_trigger.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_caught.png
   11:
     title: Why won't this break?
     location: distant_forest
@@ -567,8 +567,8 @@ scenes:
         closed. The camera stays still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         mouse, people, thrashing, pain
-      keyframe: ../../../character/characters/Leo/v3/net/leo_net_caught.png
-      end_keyframe: ../../../character/characters/Leo/v3/net/leo_net_pulling.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_caught.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_pulling.png
     - name: s11_leo_calls
       characters:
       - leo
@@ -581,8 +581,8 @@ scenes:
         O. The camera stays still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         mouse, people, thrashing, pain
-      keyframe: ../../../character/characters/Leo/v3/net/leo_net_pulling.png
-      end_keyframe: ../../../character/characters/Leo/v3/net/leo_net_calling.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_pulling.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_calling.png
     - name: s11_why_wont_it_break
       characters:
       - leo
@@ -595,7 +595,7 @@ scenes:
         around. The camera stays completely still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         mouse, camera moving, zoom out
-      keyframe: ../../../character/characters/Leo/v3/net/leo_net_face_closeup.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_face_closeup.png
     - name: s11_leo_waits
       characters:
       - leo
@@ -608,8 +608,8 @@ scenes:
         still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         mouse, people
-      keyframe: ../../../character/characters/Leo/v3/net/leo_net_calling.png
-      end_keyframe: ../../../character/characters/Leo/v3/net/leo_net_resting.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_calling.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_resting.png
   12:
     title: The roar
     location: forest_run
@@ -629,17 +629,17 @@ scenes:
       negative_extra: lion, second mouse, crying, scary, camera moving
       keyframe: keyframes/s12_milo_hears_start.png
       compose:
-        plate: ../../../character/locations/forest_run/forest_run_side_track_morning.png
+        plate: ../../../character/locations/lion_and_mouse_v3/forest_run/forest_run_side_track_morning.png
         characters:
-        - still: ../../../character/characters/Milo/v3/views/milo_view_3q.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/views/milo_view_3q.png
           x: 0.62
           y: 0.78
           h: 0.26
       end_keyframe: keyframes/s12_milo_hears_end.png
       end_compose:
-        plate: ../../../character/locations/forest_run/forest_run_side_track_morning.png
+        plate: ../../../character/locations/lion_and_mouse_v3/forest_run/forest_run_side_track_morning.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_listening.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_listening.png
           x: 0.62
           y: 0.78
           h: 0.26
@@ -658,9 +658,9 @@ scenes:
         away from the camera, back view
       keyframe: keyframes/s12_milo_runs_start.png
       compose:
-        plate: ../../../character/locations/forest_run/forest_run_side_track_morning.png
+        plate: ../../../character/locations/lion_and_mouse_v3/forest_run/forest_run_side_track_morning.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_run_side.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_run_side.png
           x: 0.8
           y: 0.78
           h: 0.24
@@ -686,13 +686,13 @@ scenes:
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving
       keyframe: keyframes/s13_milo_arrives_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/leo_net_resting.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_resting.png
         characters:
-        - still: ../../../character/characters/Milo/v3/actions/milo_run_side.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/actions/milo_run_side.png
           x: 0.1
           y: 0.92
           h: 0.2
-      end_keyframe: ../../../character/characters/interactions/v3/int_milo_at_net.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_milo_at_net.png
     - name: s13_milo_confident
       characters:
       - milo
@@ -707,19 +707,19 @@ scenes:
         net
       keyframe: keyframes/s13_milo_confident_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_neutral.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_neutral.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s13_milo_confident_end.png
       end_compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_calm_confident.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_calm_confident.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -738,19 +738,19 @@ scenes:
         mouse, sharp background, cut, scene change
       keyframe: keyframes/s13_leo_doubtful_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_neutral.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_neutral.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s13_leo_doubtful_end.png
       end_compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_doubtful.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_doubtful.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -769,19 +769,19 @@ scenes:
         net
       keyframe: keyframes/s13_milo_playful_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_calm_confident.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_calm_confident.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s13_milo_playful_end.png
       end_compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_playful.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_playful.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -807,7 +807,7 @@ scenes:
         The camera stays completely still.'
       negative_extra: lion teeth, fangs, angry, scary, second mouse, second lion, camera moving, zoom
         out
-      keyframe: ../../../character/characters/interactions/v3/int_gnawing.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_gnawing.png
     - name: s14_net_loosens
       characters:
       - leo
@@ -820,8 +820,8 @@ scenes:
         inside lifts his head, hopeful. The camera stays still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         mouse, people
-      keyframe: ../../../character/characters/Leo/v3/net/leo_net_resting.png
-      end_keyframe: ../../../character/characters/Leo/v3/net/leo_net_loosened.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_resting.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_loosened.png
     - name: s14_steps_out
       characters:
       - leo
@@ -834,8 +834,8 @@ scenes:
         net slipping off his back. The camera stays still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving,
         mouse, people
-      keyframe: ../../../character/characters/Leo/v3/net/leo_net_loosened.png
-      end_keyframe: ../../../character/characters/Leo/v3/net/leo_net_stepping_out.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_loosened.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_stepping_out.png
     - name: s14_free
       characters:
       - leo
@@ -848,8 +848,8 @@ scenes:
       action: Leo the lion steps out of the net onto the path and stands free next to tiny Milo the mouse,
         happy and amazed. The camera stays still.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving
-      keyframe: ../../../character/characters/Leo/v3/net/leo_net_stepping_out.png
-      end_keyframe: ../../../character/characters/interactions/v3/int_free.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/Leo/net/leo_net_stepping_out.png
+      end_keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_free.png
   15:
     title: Kindness is passed on
     location: distant_forest
@@ -871,19 +871,19 @@ scenes:
         mouse, sharp background, cut, scene change
       keyframe: keyframes/s15_leo_amazed_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_pleasant_surprise.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_pleasant_surprise.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s15_leo_amazed_end.png
       end_compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_grateful.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_grateful.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -902,19 +902,19 @@ scenes:
         net
       keyframe: keyframes/s15_milo_modest_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_smile.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_smile.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s15_milo_modest_end.png
       end_compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_relieved-proud.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_relieved-proud.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -933,19 +933,19 @@ scenes:
         mouse, sharp background, cut, scene change
       keyframe: keyframes/s15_leo_reflects_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_grateful.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_grateful.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s15_leo_reflects_end.png
       end_compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Leo/v3/expressions/leo_expression_reflective.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Leo/expressions/leo_expression_reflective.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -964,19 +964,19 @@ scenes:
         net
       keyframe: keyframes/s15_milo_sincere_start.png
       compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_calm_confident.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_calm_confident.png
           x: 0.5
           y: 1.08
           h: 1.05
       end_keyframe: keyframes/s15_milo_sincere_end.png
       end_compose:
-        plate: ../../../character/characters/Leo/v3/net/net_trap_set.png
+        plate: ../../../character/characters/lion_and_mouse_v3/Leo/net/net_trap_set.png
         blur: 14
         characters:
-        - still: ../../../character/characters/Milo/v3/expressions/milo_expression_smile.png
+        - still: ../../../character/characters/lion_and_mouse_v3/Milo/expressions/milo_expression_smile.png
           x: 0.5
           y: 1.08
           h: 1.05
@@ -1000,4 +1000,4 @@ scenes:
       action: Beneath the great tree in the daylight, Leo the lion and tiny Milo the mouse laugh together
         happily. The camera slowly moves closer to them.
       negative_extra: teeth, fangs, angry face, roaring, scary, second lion, second mouse, camera moving
-      keyframe: ../../../character/characters/interactions/v3/int_laughing.png
+      keyframe: ../../../character/characters/lion_and_mouse_v3/interactions/int_laughing.png

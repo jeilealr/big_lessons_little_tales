@@ -9,7 +9,7 @@
     "swans": {
       "name": "the Swans",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Swans/ugly_duckling_v1/canonical/swans_canonical_r01.png",
+      "canonical": "character/characters/ugly_duckling_v1/Swans/canonical/swans_canonical_r01.png",
       "canonical_record": "SWANS_CANON",
       "identity": "Each adult swan of the swan family is the same: one large, graceful wool-felt swan with a snow-white felt body (#F8F6F0), soft pearl-grey shading under the wings (#DCDAD3), a long elegant curved neck, a warm coral-orange beak (#E2784A) with a black knob and base (#1E1E1E), two charcoal-grey webbed feet (#4A4946), two kind round glossy eyes with dark-brown irises (#3E2A1E), black pupils, one white catch-light and ivory sclera, two large folded wings and one short pointed tail. With its neck up, each swan is a little taller than Ollie the swan. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Their pose, facing and expression are the ones this prompt states.",
       "sheet": "a large graceful snow-white felt swan with a long curved neck, a coral-orange beak with a black knob and two kind dark-brown eyes",
@@ -37,7 +37,7 @@
     "ollie_swan": {
       "name": "Ollie the swan",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/OllieSwan/ugly_duckling_v1/canonical/ollie_swan_canonical_r01.png",
+      "canonical": "character/characters/ugly_duckling_v1/OllieSwan/canonical/ollie_swan_canonical_r01.png",
       "canonical_record": "OLLIE_SWAN_CANON",
       "identity": "Ollie the swan is one young, graceful wool-felt swan, Ollie grown up: a snow-white felt body (#F7F5EF) with soft pearl-grey shading under the wings (#DCDAD3), a long elegant curved neck and a small round head. His beak is warm coral-orange (#E2784A) with a black knob and black base (#1E1E1E), and his two webbed feet are charcoal-grey (#4A4946). Two round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2), each framed by a small black patch between eye and beak; two soft pearl-grey brow stitches. Two large folded wings with layered feather stitches and one short pointed tail. With his neck up he is about twice Mama Duck's height. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
       "sheet": "one young graceful snow-white felt swan with a long curved neck, a coral-orange beak with a black knob, charcoal-grey feet and two dark-brown eyes",
@@ -70,7 +70,7 @@
     "ottie": {
       "name": "Ottie",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Ottie/ugly_duckling_v1/canonical/ottie_canonical_r01.png",
+      "canonical": "character/characters/ugly_duckling_v1/Ottie/canonical/ottie_canonical_r01.png",
       "canonical_record": "OTTIE_CANON",
       "identity": "Ottie is one cheerful, round-faced wool-felt river otter who can stand upright on her two hind feet and runs on four. Her fur felt is warm chocolate-brown (#6B4A32) with a creamy-beige face, throat and chest (#E2CBA8). Her round head has two tiny rounded ears, a broad muzzle with a big round dark-brown nose (#2E1E16), a smiling mouth line and four long pale whiskers (#EFE3CF) on each side. Two round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2); two short dark-brown brows. Short arms with small webbed paws, two webbed hind feet and one long thick tapering tail. Standing upright she is a little taller than Mama Duck. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
       "sheet": "one cheerful chocolate-brown felt otter with a creamy-beige face and chest, a big dark-brown nose, long whiskers, two dark-brown eyes and a long thick tail",
@@ -102,7 +102,7 @@
     "mama": {
       "name": "Mama Duck",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/MamaDuck/ugly_duckling_v1/canonical/mama_canonical_r01.png",
+      "canonical": "character/characters/ugly_duckling_v1/MamaDuck/canonical/mama_canonical_r01.png",
       "canonical_record": "MAMA_CANON",
       "identity": "Mama Duck is one plump, gentle wool-felt mother duck who stands on two webbed feet. Her body feathers are soft warm-brown felt (#9C6B43) with lighter speckles of buff-cream (#E3C9A0) and a pale cream chest (#EADBBE). Her head is the same warm-brown with a thin cream stripe above each eye. Her flat rounded beak is warm orange-yellow (#E8A33A) and her two webbed feet are the same orange-yellow. Two round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2); two short soft dark-brown brow stitches. Two folded wings, each with a small teal-blue patch (#3E8A93) edged in white near its back edge, and one short pointed tail of feathers. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
       "sheet": "one plump warm-brown felt mother duck with buff-cream speckles, a pale cream chest, an orange-yellow beak and feet, two dark-brown eyes and a teal-blue wing patch",
@@ -132,7 +132,7 @@
     "ollie": {
       "name": "Ollie",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Ollie/ugly_duckling_v1/canonical/ollie_canonical_r01.png",
+      "canonical": "character/characters/ugly_duckling_v1/Ollie/canonical/ollie_canonical_r01.png",
       "canonical_record": "OLLIE_CANON",
       "identity": "Ollie is one young wool-felt cygnet, a baby swan who looks like a big, gangly duckling and stands on two big flat webbed feet. His fluffy down is soft dove-grey felt (#9A9893) with lighter pale-grey cheeks and chest (#C9C7C1); he is about half of Mama Duck's height, taller and longer-legged than the yellow ducklings, with a slightly longer neck. His beak is flat and slate-grey (#6C6B68) with a darker tip, and his two big webbed feet and long legs are charcoal-grey (#4A4946). Two large round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2); two short soft grey brow stitches. Two small fluffy wings and a short fluffy tail. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
       "sheet": "one gangly young dove-grey felt cygnet with pale-grey cheeks, a slate-grey beak, big charcoal-grey webbed feet and two dark-brown eyes",
@@ -166,7 +166,7 @@
     "ducklings": {
       "name": "the Ducklings",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Ducklings/ugly_duckling_v1/canonical/ducklings_canonical_r01.png",
+      "canonical": "character/characters/ugly_duckling_v1/Ducklings/canonical/ducklings_canonical_r01.png",
       "canonical_record": "DUCKLINGS_CANON",
       "identity": "Each of the three ducklings is the same: one small, round, fluffy wool-felt duckling who stands on two little webbed feet, with bright buttercup-yellow down (#F5D04A), a slightly paler lemon-yellow chest (#F8E27C), a small flat orange beak (#EE9A3A), two tiny orange webbed feet, two little stubby wings and two round glossy eyes with dark-brown irises (#3E2A1E), black pupils, one white catch-light and ivory sclera; two tiny brown brow stitches. Each duckling is about one third of Mama Duck's height. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Their pose, facing and expression are the ones this prompt states.",
       "sheet": "a small round fluffy buttercup-yellow felt duckling with a small orange beak and feet and two dark-brown eyes",

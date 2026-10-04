@@ -12,7 +12,7 @@ reference (for example a canonical), attach the v5 file in its place.
 
 The `.gitkeep` files only keep the empty folders in git; delete one once its folder has images.
 
-## `character/characters/interactions/v5/keyframes/`
+## `character/characters/lion_and_mouse_v5/interactions/keyframes/`
 
 | File | Record | What |
 |---|---|---|

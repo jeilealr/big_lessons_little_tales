@@ -9,7 +9,7 @@
     "ben": {
       "name": "Farmer Ben",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Ben/boy_who_cried_wolf_v1/canonical/ben_canonical_r01.png",
+      "canonical": "character/characters/boy_who_cried_wolf_v1/Ben/canonical/ben_canonical_r01.png",
       "canonical_record": "BEN_CANON",
       "identity": "Farmer Ben is one tall, broad, friendly wool-felt man, a soft storybook doll, about one and a half times Finn's height. His skin is tan felt (#D69A6E) with ruddy cheeks (#C9785E). He has a short bushy chestnut-brown beard (#6B4226) and short chestnut-brown hair under a round straw-yellow hat (#D9B75C) with a brown band. Two friendly round glossy eyes: dark-brown irises (#4A2E1E), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); two thick chestnut-brown brows; a round nose. He wears denim-blue overalls (#4F6F9E) over a cream shirt (#F2E8D5) with rolled-up sleeves, and big dark-brown boots (#4A3020). Two strong arms with large four-fingered hands. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
       "sheet": "one tall broad felt farmer with a chestnut-brown beard, a straw-yellow hat, two dark-brown eyes, denim-blue overalls over a cream shirt and dark-brown boots",
@@ -44,7 +44,7 @@
     "rosie": {
       "name": "Grandma Rosie",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Rosie/boy_who_cried_wolf_v1/canonical/rosie_canonical_r01.png",
+      "canonical": "character/characters/boy_who_cried_wolf_v1/Rosie/canonical/rosie_canonical_r01.png",
       "canonical_record": "ROSIE_CANON",
       "identity": "Grandma Rosie is one round, cosy, elderly wool-felt woman, a soft storybook doll, about one and a third times Finn's height. Her skin is warm peach felt (#EBB896) with rosy-pink cheeks (#E08A7A) and soft smile lines. Her hair is silver-white felt (#E6E2DA) pulled up into a round bun on top of her head. Two kind round glossy eyes: warm brown irises (#6A4228), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); two soft silver-white brows; a small rounded nose and a gentle mouth line. She wears a long lavender-purple dress (#8E7AB5) with short puffed sleeves and a long cream apron (#F2E6CF) with one front pocket, and small dark-brown shoes (#4A3020). Two arms with small four-fingered hands; a round, plump figure. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
       "sheet": "one round elderly felt grandmother with a silver-white bun, rosy cheeks, two kind brown eyes, a long lavender-purple dress and a cream apron",
@@ -80,7 +80,7 @@
     "lena": {
       "name": "Lena",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Lena/boy_who_cried_wolf_v1/canonical/lena_canonical_r01.png",
+      "canonical": "character/characters/boy_who_cried_wolf_v1/Lena/canonical/lena_canonical_r01.png",
       "canonical_record": "LENA_CANON",
       "identity": "Lena is one young wool-felt girl of about nine, a soft storybook doll, a little taller than Finn. Her skin is warm caramel-brown felt (#B07A52) with rosy cheeks (#C97A6A). Her hair is dark-brown felt (#3E2A1E) in two long braids tied with small sunflower-yellow ribbons (#F2C230). Two large round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); two short dark-brown brows; a small nose and a bright mouth line. She wears a sky-blue dress (#7FB2DA) with a white collar (#F8F4EC) and small red shoes (#B8433A). Two arms with small four-fingered hands and two slim legs. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
       "sheet": "one young felt girl with two long dark-brown braids tied with sunflower-yellow ribbons, two dark-brown eyes, a sky-blue dress with a white collar and red shoes",
@@ -114,7 +114,7 @@
     "finn": {
       "name": "Finn",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Finn/boy_who_cried_wolf_v1/canonical/finn_canonical_r01.png",
+      "canonical": "character/characters/boy_who_cried_wolf_v1/Finn/canonical/finn_canonical_r01.png",
       "canonical_record": "FINN_CANON",
       "identity": "Finn is one young wool-felt boy of about eight, a soft storybook doll with a round head about one fifth of his height. His skin is warm peach felt (#F2C29B) with rosy-pink cheeks (#E8907E) and a few tiny cinnamon-brown freckle stitches (#A8653C) across his nose. His hair is a mop of short curly copper-orange felt (#C86A2C) that covers his ears' tops and his forehead. Two large round glossy eyes, each about a fifth of the head width: hazel-green irises (#7A8A3A), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); two short copper-orange brows; a small rounded nose and a small mouth line. He wears a moss-green knitted tunic (#5E7A3A) with a round collar, a short red scarf (#C0392B) knotted at the neck, brown felt trousers (#7A5236) and small dark-brown boots (#4A3020). Two arms with small four-fingered hands and two legs; slim, like a child. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
       "sheet": "one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots",
@@ -154,7 +154,7 @@
     "wolf": {
       "name": "the Wolf",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Wolf/boy_who_cried_wolf_v1/canonical/wolf_canonical_r01.png",
+      "canonical": "character/characters/boy_who_cried_wolf_v1/Wolf/canonical/wolf_canonical_r01.png",
       "canonical_record": "WOLF_CANON",
       "identity": "The Wolf is one long, lanky, rather silly wool-felt wolf who walks on four long legs, more funny than frightening. His fur felt is soft smoke-grey (#8A8D93), lighter pale-grey on the muzzle, chest and belly (#D3D5D8), with darker charcoal-grey tips on his two tall pointed ears and his back (#4E5157). His long rounded muzzle ends in a big round black nose (#222222). Two round glossy eyes: golden-yellow irises (#D9A93A), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2); two expressive charcoal-grey brows. His mouth is a long wavy closed line, and his teeth are hidden. One big bushy smoke-grey tail with a pale-grey tip. Long thin legs with soft round paws. Standing on four legs he is about three quarters of Finn's height to his ear tips. Rounded soft shapes everywhere, no sharp edges. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
       "sheet": "one long lanky smoke-grey felt wolf with a pale-grey muzzle and chest, tall pointed ears, two golden-yellow eyes, a big black nose and a big bushy tail, more silly than scary",
@@ -191,7 +191,7 @@
     "sheep": {
       "name": "the Sheep",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Sheep/boy_who_cried_wolf_v1/canonical/sheep_canonical_r01.png",
+      "canonical": "character/characters/boy_who_cried_wolf_v1/Sheep/canonical/sheep_canonical_r01.png",
       "canonical_record": "SHEEP_CANON",
       "identity": "Each of the flock's sheep is the same: one round, friendly wool-felt ewe who walks on four legs, with a big fluffy body of cream-white curly felt (#EFE6D2), a smooth pale biscuit-beige face and lower legs (#D9C3A0), two small soft ears sticking out sideways with rosy-pink insides (#E3A39A), two round glossy eyes with dark-brown irises (#4A2E1E), black pupils, ivory sclera and one white catch-light, a small rosy-pink nose (#E3A39A), a small smiling mouth line, a short fluffy tail and four little dark hooves. Each sheep is about half of Finn's height to the top of her head and has no horns. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Their pose, facing and expression are the ones this prompt states.",
       "sheet": "a round fluffy cream-white felt sheep with a biscuit-beige face and legs, small ears with rosy-pink insides and two dark-brown eyes",
@@ -222,7 +222,7 @@
     "daisy": {
       "name": "Daisy",
       "status": "design spec: rewrite from the approved canonical image",
-      "canonical": "character/characters/Daisy/boy_who_cried_wolf_v1/canonical/daisy_canonical_r01.png",
+      "canonical": "character/characters/boy_who_cried_wolf_v1/Daisy/canonical/daisy_canonical_r01.png",
       "canonical_record": "DAISY_CANON",
       "identity": "Daisy is one small young wool-felt lamb who walks on four thin legs. Her fleece is a fluffy cloud of cream-white curly felt (#F4EEDF). Her face, ears and lower legs are soft charcoal-black felt (#2E2A28), with one white heart-shaped patch (#FBF8F2) on her forehead above her nose. Two small ears stick out sideways with rosy-pink insides (#E8A3A0). Two large round glossy eyes: warm amber-brown irises (#8A5A22), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); a small rosy-pink nose (#E8A3A0) and a small smiling mouth line. A short fluffy cream-white tail. Four little dark hooves. She is about a third of Finn's height. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
       "sheet": "one small fluffy cream-white felt lamb with a charcoal-black face and legs, a white heart-shaped patch on her forehead, rosy-pink ear insides and two amber-brown eyes",

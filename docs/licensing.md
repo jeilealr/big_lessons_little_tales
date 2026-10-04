@@ -22,7 +22,7 @@ Not legal advice.
 | pillow | MIT-CMU (HPND) | |
 | imageio-ffmpeg | BSD-2-Clause | **the ffmpeg binary it ships is GPLv3** (built with x264). Using a GPL tool does not put the videos under the GPL; do not commit the binary into a repo. |
 | Channel emblem and reference stills | the author's own | kept outside the repo (`Intro/reference_img/`) |
-| v2 character pack (`character/characters/{Leo,Milo}/v2/`) and v2 review frames | owner-made with an external image tool | **to record: which tool, and that its terms allow commercial use of outputs.** The video pipeline only reads these images; Wan outputs made from them are covered by Wan's Apache-2.0 row above |
+| v2 character pack (`character/characters/lion_and_mouse_v2/{Leo,Milo}/`) and v2 review frames | owner-made with an external image tool | **to record: which tool, and that its terms allow commercial use of outputs.** The video pipeline only reads these images; Wan outputs made from them are covered by Wan's Apache-2.0 row above |
 
 ## Added 2026-09-27
 

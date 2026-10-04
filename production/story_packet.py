@@ -27,8 +27,8 @@ D = REPO / "stories" / S.SLUG
 REV = getattr(S, "REVISION", f"{S.SLUG}-r1")
 V4B = json.loads((REPO / "stories/lion_and_mouse_v4/visual_bible.json").read_text())
 C = S.CHARACTERS
-CHAR_DIR = "character/characters/{folder}/" + S.SLUG
-SCENE_DIR = f"character/characters/interactions/{S.SLUG}/keyframes"
+CHAR_DIR = f"character/characters/{S.SLUG}/" + "{folder}"
+SCENE_DIR = f"character/characters/{S.SLUG}/interactions/keyframes"
 LOC_DIR = f"character/locations/{S.SLUG}"
 COUNTS = getattr(S, "COUNTS", {})
 NUM = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
@@ -124,7 +124,7 @@ def foundation():
                 f"body centred with even margins. {{{{block:studio_full_body}}}} {STUDIO}", [],
                 f"{d['name']}'s canonical, full body", f"{d['name']}'s identity root"))
     names = [name(c) for c in S.ORDER]
-    add(rec("LINEUP", "foundation", "character", f"character/characters/interactions/{S.SLUG}/lineup_r01.png", [1920, 1080],
+    add(rec("LINEUP", "foundation", "character", f"character/characters/{S.SLUG}/interactions/lineup_r01.png", [1920, 1080],
             {c: 1 for c in S.ORDER},
             "Create one 1920x1080 16:9 studio size lineup of the whole cast. Visible cast: exactly one each of "
             f"{', '.join(names[:-1])} and {names[-1]}, standing side by side at the same distance from the camera on one "
@@ -352,8 +352,8 @@ def write_docs(m, b, lines):
             + S.SLUG + " --voices SPEAKER=folder ...`.",
             "7. Clips on LUMI (fast mode), owner selects takes; assembly only when asked.", "",
             "## Image folders", "",
-            f"- Characters: `character/characters/{{{','.join(C[c]['folder'] for c in S.ORDER)}}}/{S.SLUG}/{{canonical,references,expressions}}/`",
-            f"- Scene frames: `character/characters/interactions/{S.SLUG}/keyframes/`; size lineup: `character/characters/interactions/{S.SLUG}/lineup_r01.png`",
+            f"- Characters: `character/characters/{S.SLUG}/{{{','.join(C[c]['folder'] for c in S.ORDER)}}}/{{canonical,references,expressions}}/`",
+            f"- Scene frames: `character/characters/{S.SLUG}/interactions/keyframes/`; size lineup: `character/characters/{S.SLUG}/interactions/lineup_r01.png`",
             f"- Plates and props: `character/locations/{S.SLUG}/<place>/`, `.../props/`",
             "- Each record's `target` in `prompt_manifest.json` is the exact file name.", "",
             "## Owner decisions", "", *S.DECISIONS, "", "## Still open", "",

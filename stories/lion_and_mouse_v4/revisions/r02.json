@@ -25,7 +25,7 @@
       "extra_references": [
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         }
       ]
@@ -35,7 +35,7 @@
       "extra_references": [
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         },
         {
@@ -50,7 +50,7 @@
       "extra_references": [
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         }
       ]
@@ -60,7 +60,7 @@
       "extra_references": [
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         },
         {
@@ -81,7 +81,7 @@
       "extra_references": [
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         }
       ]
@@ -91,7 +91,7 @@
       "extra_references": [
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         }
       ]
@@ -101,7 +101,7 @@
       "extra_references": [
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         }
       ]
@@ -111,7 +111,7 @@
       "extra_references": [
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         }
       ]
@@ -154,7 +154,7 @@
       "extra_references": [
         {
           "id": "V3_LEO_NET_FACE_CLOSEUP",
-          "path": "character/characters/Leo/v3/net/leo_net_face_closeup.png",
+          "path": "character/characters/lion_and_mouse_v3/Leo/net/leo_net_face_closeup.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         },
         {
@@ -169,7 +169,7 @@
       "extra_references": [
         {
           "id": "V3_LEO_NET_FACE_CLOSEUP",
-          "path": "character/characters/Leo/v3/net/leo_net_face_closeup.png",
+          "path": "character/characters/lion_and_mouse_v3/Leo/net/leo_net_face_closeup.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -185,12 +185,12 @@
       "extra_references": [
         {
           "id": "V3_LEO_NET_RESTING",
-          "path": "character/characters/Leo/v3/net/leo_net_resting.png",
+          "path": "character/characters/lion_and_mouse_v3/Leo/net/leo_net_resting.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         },
         {
           "id": "V3_INT_MILO_AT_NET",
-          "path": "character/characters/interactions/v3/int_milo_at_net.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_milo_at_net.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -200,7 +200,7 @@
       "extra_references": [
         {
           "id": "V3_INT_MILO_AT_NET",
-          "path": "character/characters/interactions/v3/int_milo_at_net.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_milo_at_net.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -210,12 +210,12 @@
       "extra_references": [
         {
           "id": "V3_INT_GNAWING",
-          "path": "character/characters/interactions/v3/int_gnawing.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_gnawing.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         },
         {
           "id": "V3_MILO_GNAWING",
-          "path": "character/characters/Milo/v3/actions/milo_gnawing.png",
+          "path": "character/characters/lion_and_mouse_v3/Milo/actions/milo_gnawing.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -225,7 +225,7 @@
       "extra_references": [
         {
           "id": "V3_INT_GNAWING",
-          "path": "character/characters/interactions/v3/int_gnawing.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_gnawing.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -235,12 +235,12 @@
       "extra_references": [
         {
           "id": "V3_INT_GNAWING",
-          "path": "character/characters/interactions/v3/int_gnawing.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_gnawing.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         },
         {
           "id": "V3_MILO_GNAWING",
-          "path": "character/characters/Milo/v3/actions/milo_gnawing.png",
+          "path": "character/characters/lion_and_mouse_v3/Milo/actions/milo_gnawing.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -250,7 +250,7 @@
       "extra_references": [
         {
           "id": "V3_INT_GNAWING",
-          "path": "character/characters/interactions/v3/int_gnawing.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_gnawing.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -260,12 +260,12 @@
       "extra_references": [
         {
           "id": "V3_LEO_NET_LOOSENED",
-          "path": "character/characters/Leo/v3/net/leo_net_loosened.png",
+          "path": "character/characters/lion_and_mouse_v3/Leo/net/leo_net_loosened.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         },
         {
           "id": "V3_INT_MILO_AT_NET",
-          "path": "character/characters/interactions/v3/int_milo_at_net.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_milo_at_net.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -275,7 +275,7 @@
       "extra_references": [
         {
           "id": "V3_LEO_NET_LOOSENED",
-          "path": "character/characters/Leo/v3/net/leo_net_loosened.png",
+          "path": "character/characters/lion_and_mouse_v3/Leo/net/leo_net_loosened.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -285,7 +285,7 @@
       "extra_references": [
         {
           "id": "V3_LEO_NET_LOOSENED",
-          "path": "character/characters/Leo/v3/net/leo_net_loosened.png",
+          "path": "character/characters/lion_and_mouse_v3/Leo/net/leo_net_loosened.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -295,7 +295,7 @@
       "extra_references": [
         {
           "id": "V3_LEO_NET_LOOSENED",
-          "path": "character/characters/Leo/v3/net/leo_net_loosened.png",
+          "path": "character/characters/lion_and_mouse_v3/Leo/net/leo_net_loosened.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -305,12 +305,12 @@
       "extra_references": [
         {
           "id": "V3_LEO_NET_STEPPING_OUT",
-          "path": "character/characters/Leo/v3/net/leo_net_stepping_out.png",
+          "path": "character/characters/lion_and_mouse_v3/Leo/net/leo_net_stepping_out.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         },
         {
           "id": "V3_INT_FREE",
-          "path": "character/characters/interactions/v3/int_free.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_free.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -320,7 +320,7 @@
       "extra_references": [
         {
           "id": "V3_INT_FREE",
-          "path": "character/characters/interactions/v3/int_free.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_free.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -330,7 +330,7 @@
       "extra_references": [
         {
           "id": "V3_INT_FREE",
-          "path": "character/characters/interactions/v3/int_free.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_free.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]
@@ -340,7 +340,7 @@
       "extra_references": [
         {
           "id": "V3_INT_FREE",
-          "path": "character/characters/interactions/v3/int_free.png",
+          "path": "character/characters/lion_and_mouse_v3/interactions/int_free.png",
           "role": "owner_requested_staging_and_pose_reference_only_preserve_v3"
         }
       ]

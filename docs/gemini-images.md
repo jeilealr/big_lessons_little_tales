@@ -171,7 +171,7 @@ format, an expression set like V3, and a fix for a doubled brow in
 guide and the close-up format are now `docs/creation-rules.md` **CR-14**.
 
 **Expression references** (22 records, group `expressions`, Lite, about
-$0.03 each): `character/characters/{Milo,Leo}/v4/expressions/`. Each one is
+$0.03 each): `character/characters/lion_and_mouse_v4/{Milo,Leo}/expressions/`. Each one is
 an edit of the V4 closed-mouth portrait that takes only the expression from
 the V3 image of the same name. Six needed a retake: three Milo faces still
 smiled and three Leo backgrounds turned into a room or floor.

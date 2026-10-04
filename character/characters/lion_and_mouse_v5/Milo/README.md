@@ -12,13 +12,13 @@ reference (for example a canonical), attach the v5 file in its place.
 
 The `.gitkeep` files only keep the empty folders in git; delete one once its folder has images.
 
-## `character/characters/Milo/v5/canonical/`
+## `character/characters/lion_and_mouse_v5/Milo/canonical/`
 
 | File | Record | What |
 |---|---|---|
 | `full-body_milo_neutral_pose_r01.png` | `MILO_CANON` | Milo's approved canonical, full body, front view |
 
-## `character/characters/Milo/v5/expressions/`
+## `character/characters/lion_and_mouse_v5/Milo/expressions/`
 
 | File | Record | What |
 |---|---|---|
@@ -34,7 +34,7 @@ The `.gitkeep` files only keep the empty folders in git; delete one once its fol
 | `m_expr_smile_r01.png` | `M_EXPR_SMILE` | Milo's smile expression study |
 | `m_expr_startled_r01.png` | `M_EXPR_STARTLED` | Milo's startled expression study |
 
-## `character/characters/Milo/v5/references/`
+## `character/characters/lion_and_mouse_v5/Milo/references/`
 
 | File | Record | What |
 |---|---|---|

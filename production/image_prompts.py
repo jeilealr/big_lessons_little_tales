@@ -517,7 +517,7 @@ def new_story(slug, template_story):
                   "(one approved plate each), setups (camera + measured size anchor), then manifest records "
                   "with prompt templates. See .claude/skills/consistent-image-prompts/SKILL.md.",
         "characters": {"example_id": {
-            "name": "Example", "canonical": "character/characters/Example/<story>/canonical/<file>.png",
+            "name": "Example", "canonical": "character/characters/<story>/Example/canonical/<file>.png",
             "identity": "Full canonical description written from the approved canonical image: silhouette, "
                         "head, ears, eyes, brows, nose, muzzle, mouth, whiskers, seams, torso, limbs, tail, "
                         "colours with hex codes, proportions, feature counts, surface, brightness.",

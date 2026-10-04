@@ -14,6 +14,9 @@ frame of another shot's render), a `compose:` recipe (built when the keyframe
 is missing or with --recompose), or the `keyframe:` file itself. Optional
 `end_keyframe:` (+ `end_compose:`) pins the last frame.
 
+A shot's own `prompt:` (and `negative:`) is used verbatim instead: v5 runtime
+stories exported from a prompt manifest carry the complete reviewed prompt.
+
 Paths in story.yaml are relative to work/stories/<story>/. Output:
 work/stories/<story>/shots/<shot>_s<seed>[_fast].mp4 + .json sidecar (prompt,
 negative, seed, model revision, LoRAs, settings). An existing output is skipped.
@@ -76,12 +79,12 @@ def main() -> None:
         raise SystemExit(f"{args.story} scene {args.scene}: no shot named {args.shot}")
     work = paths.story_work(args.story)
     keyframe = work / shot["keyframe"]
-    parts = [shot["action"].strip()]
+    parts = [shot.get("action", "").strip()]
     # `lora: true` on a shot: every character in it that has a chosen LoRA
     # (`lora:` under the character) gets it, and its trigger word in the prompt,
     # the way the training captions put it: "<trigger>, <description>".
     loras = []
-    for c in shot.get("characters", scene.get("characters", [])):
+    for c in ([] if shot.get("prompt") else shot.get("characters", scene.get("characters", []))):
         ch = story["characters"][c]
         use = shot.get("lora") and ch.get("lora")
         if use:
@@ -95,13 +98,15 @@ def main() -> None:
     # `background:` replaces the location sheet, for close-ups: the full sheet
     # names landmarks (a tree trunk...) that the model then tries to show,
     # wandering away from the keyframes mid-shot (v2 s04_leo_softens).
-    if shot.get("background"):
+    if shot.get("prompt"):
+        pass
+    elif shot.get("background"):
         parts.append(f"The background is {shot['background'].strip()}.")
     else:
         parts.append(f"The scene is {story['locations'][scene['location']]['sheet']}.")
-    parts.append(story["style"] + ".")
-    prompt = " ".join(parts)
-    negative = story["negative"] + (", " + shot["negative_extra"] if shot.get("negative_extra") else "")
+    prompt = shot["prompt"].strip() if shot.get("prompt") else " ".join(parts + [story["style"] + "."])
+    negative = shot.get("negative") or (
+        story["negative"] + (", " + shot["negative_extra"] if shot.get("negative_extra") else ""))
     seeds = [args.seed] if args.seed is not None else shot["seeds"]
     frames = shot.get("frames", 81)
     print(f"[{args.shot}] keyframe {keyframe.name}, {frames} frames, seeds {seeds}\n{prompt}\n",

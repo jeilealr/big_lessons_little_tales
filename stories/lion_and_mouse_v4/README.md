@@ -111,7 +111,7 @@ tool settings and file hashes must be logged when generation starts (since
 2026-09-30 they are in each image record's `result`).
 
 Scene-keyframe targets live under
-`character/characters/interactions/v4/keyframes/`; these reference PNGs are within
+`character/characters/lion_and_mouse_v4/interactions/keyframes/`; these reference PNGs are within
 the repository's existing media allowlist. Future generated clip candidates and
 runtime composites go under `work/stories/lion_and_mouse_v4/` and require backup.
 
@@ -123,7 +123,7 @@ runtime composites go under `work/stories/lion_and_mouse_v4/` and require backup
 - Milo's top tuft removal is already requested. A new smooth-crown neutral
   canonical still needs to be created and visually approved; all derivatives
   must follow it. Preserve his face, large ears, slim body and brown eyes.
-  *(Done: `character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png`,
+  *(Done: `character/characters/lion_and_mouse_v4/Milo/canonical/full-body_milo_neutral_pose_r01.png`,
   accepted from the owner's list on 2026-10-01.)*
 - Keep Leo's full canonical rust-orange mane and brown eyes. Approve mouth
   families, including Milo's proposed two rounded gnawing incisors, before use.

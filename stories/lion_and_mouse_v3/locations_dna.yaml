@@ -22,7 +22,7 @@
 # - Each lighting state is its own plate set (never ask the video model to
 #   change time of day).
 # Files: character/locations/<id>/<id>_<angle>_<light>.png  (e.g.
-#   character/locations/stream_bank/stream_bank_wide_afternoon.png)
+#   character/locations/lion_and_mouse_v3/stream_bank/stream_bank_wide_afternoon.png)
 
 style: >-
   handcrafted wool-felt stop-motion storybook miniature, matte felt surfaces,

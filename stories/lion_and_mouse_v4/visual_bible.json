@@ -6,7 +6,7 @@
   "characters": {
     "milo": {
       "name": "Milo",
-      "canonical": "character/characters/Milo/v4/canonical/full-body_milo_neutral_pose_r01.png",
+      "canonical": "character/characters/lion_and_mouse_v4/Milo/canonical/full-body_milo_neutral_pose_r01.png",
       "canonical_record": "MILO_CANON",
       "identity": "Milo is one slender young wool-felt mouse who walks upright on two legs. His body felt is warm taupe-brown (#8D624F, lighter on the crown #DBB09C) with looped bouclé texture and a soft halo of loose fibres on every outline. His round head is slightly wider at the cheeks, with a smooth felt crown and a fine dashed rust stitched seam from crown to nose. Two very large oval ears, each nearly as tall as the head is wide and tilted slightly outward, rise far above the crown: coral inner felt (#EF775F) inside a thick taupe-brown rim (#8F614E) with a rust stitched seam. Two short dark brown felt brows (#643426). Two large round glossy eyes, each about a fifth of the head width, centres under half a head width apart: dark brown irises (#723725), black pupils, one white catch-light at upper right, ivory sclera (#F4ECE8). A small rounded dark brown nose (#683629) under a soft peach bridge (#F9AC8C); two compact cream muzzle pads (#EFC5AD) with tiny brown dots; a wide mouth line; five long fine peach whiskers (#EEAE85) on each side. A narrow neck, slim torso and an elongated egg-shaped cream belly (#F8CEB4) with a centre seam, ending above the crotch, with a taupe-brown gap between two slim separated legs. Two slim arms with small curled paws; three rounded toes per foot. One long thin salmon tail (#BC735D), about half his height, attached at the lower back. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them, and the felt stays warm. His pose, facing and expression are the ones this prompt states.",
       "sheet": "a slender upright taupe-brown felt mouse with a smooth crown, huge coral-lined oval ears, two brown eyes, a small brown nose, cream muzzle and belly, slim limbs and one thin salmon tail",
@@ -102,7 +102,7 @@
     },
     "leo": {
       "name": "Leo",
-      "canonical": "character/characters/Leo/v4/canonical/full-body_leo_neutral_pose_r01.png",
+      "canonical": "character/characters/lion_and_mouse_v4/Leo/canonical/full-body_leo_neutral_pose_r01.png",
       "canonical_record": "LEO_CANON",
       "identity": "Leo is one young, compact, sturdy wool-felt lion who walks on four legs. His body felt is warm ochre-orange (#DE7F35), lighter on the forehead (#F99A4A), with fine looped bouclé fibres and thin dashed golden stitching down the centre of the forehead and the front of each front leg. A huge round rust-red mane (#BE3006; lit lock tips vermilion #E14512, inner locks deep rust #A62503) of long tapered teardrop locks surrounds the face; it is about twice the face width and three quarters of his standing height across, and hangs into a pointed bib over a cream chest. The face is a broad rounded disc. Two round ochre ears with a lighter apricot rim and salmon inner felt (#CF7E64), each 0.4 of the face width, sit at its upper corners. Two thick dark brown felt brows (#7A2F15). Two large round glossy eyes, each one fifth of the face width, centres half a face width apart: russet-brown irises (#772E13), black pupils, one white catch-light at upper right, ivory sclera (#F3E4DA). A rounded peach nose pad (#F9905E) above a wide, rounded inverted-triangle dark brown nose (#693120). Two puffed cream muzzle pads (#F7D4BB) with four brown dots each, a gentle mouth line, a large rounded cream chin, and five fine pale cream whiskers on each side. Four large rounded light tan paws (#EDA36C) with four toes each. One ochre tail ending in a rust-red tuft. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them, and the felt stays warm and saturated. His pose, facing and expression are the ones this prompt states.",
       "sheet": "a sturdy ochre-orange felt lion with a huge round rust-red mane, cream muzzle and chest, two brown eyes, a peach nose pad over a dark brown nose, four tan paws and one tail with a rust-red tuft",
@@ -205,7 +205,7 @@
   "locations": {
     "stream_afternoon": {
       "location": "stream_bank",
-      "plate": "character/locations/v4/stream_bank/stream_afternoon_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/stream_bank/stream_afternoon_r01.png",
       "description": "Sunny meadow bank: open grass lane in the foreground, a shallow stream crossing the middle from x=0.38 to the right edge with a small cascade, a hollow log on the right bank, big trunks at both upper corners, rolling hills on the horizon (y 0.22-0.30). Walkable band y=0.62-0.88.",
       "landmarks": [
         "left trunk x=0.00-0.10, y=0.00-0.40",
@@ -220,7 +220,7 @@
     },
     "stream_sunset": {
       "location": "stream_bank",
-      "plate": "character/locations/v4/stream_bank/stream_sunset_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/stream_bank/stream_sunset_r01.png",
       "description": "The exact afternoon stream-bank geometry and camera in low sunset light; sun disc visible over the hills.",
       "landmarks": [
         "sun disc (0.25,0.20) over the hills",
@@ -234,7 +234,7 @@
     },
     "fork_sunset": {
       "location": "fork",
-      "plate": "character/locations/v4/fork/fork_sunset_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/fork/fork_sunset_r01.png",
       "description": "A dirt path from the bottom centre splits around a mossy boulder: safe left branch curves up-left to a sunlit meadow (x 0.25-0.32, y 0.47); shortcut branch goes right (x 0.70-0.85, y 0.47-0.55) into darker trees. Horizon y 0.30-0.33. Walkable band y=0.55-1.00.",
       "landmarks": [
         "sun disc (0.185,0.255) on the left",
@@ -248,7 +248,7 @@
     },
     "shortcut_dusk": {
       "location": "shortcut",
-      "plate": "character/locations/v4/shortcut/shortcut_dusk_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/shortcut/shortcut_dusk_r01.png",
       "description": "Side view of a mossy forest lane at dusk; dirt running lane y 0.60-0.78 across the full width, foreground ferns and berries below y=0.75.",
       "landmarks": [
         "setting sun (0.215,0.30) between left trunks",
@@ -262,7 +262,7 @@
     },
     "tree_dusk": {
       "location": "great_tree",
-      "plate": "character/locations/v4/great_tree/tree_dusk_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/great_tree/tree_dusk_r01.png",
       "description": "Leo's great tree: giant trunk centre-right with flared roots, canopy across the top, a stream at the far left, grass clearing y=0.60-0.72 before the trunk and a dirt path y=0.72-0.82; horizon hills y 0.37-0.42.",
       "landmarks": [
         "trunk x=0.58-0.87 at y=0.35; roots x=0.38-0.98, y=0.50-0.62",
@@ -277,7 +277,7 @@
     },
     "tree_day": {
       "location": "great_tree",
-      "plate": "character/locations/v4/great_tree/tree_day_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/great_tree/tree_day_r01.png",
       "description": "The exact great-tree geometry and camera of the dusk plate in daylight, blue sky with white clouds upper left.",
       "landmarks": [
         "trunk x=0.58-0.87 at y=0.35",
@@ -291,7 +291,7 @@
     },
     "tree_sky": {
       "location": "great_tree",
-      "plate": "character/locations/v4/great_tree/tree_sky_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/great_tree/tree_sky_r01.png",
       "description": "Upward cutaway: trunk rises diagonally from the bottom right, canopy fills the top right, dusk sky with first stars on the left, pine silhouettes along the bottom left.",
       "landmarks": [
         "trunk diagonal x=0.60-1.00, y=0.30-1.00",
@@ -305,7 +305,7 @@
     },
     "home_night": {
       "location": "milo_home",
-      "plate": "character/locations/v4/milo_home/home_night_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/milo_home/home_night_r01.png",
       "description": "Low grassy bank with a round wooden door, lantern and rounded stones; small stream lower right; night sky and distant pines upper right. Ground patch before the door y=0.66-0.75.",
       "landmarks": [
         "round door centre (0.31,0.55), x=0.25-0.37, y=0.43-0.67",
@@ -319,7 +319,7 @@
     },
     "trap_morning": {
       "location": "trap_path",
-      "plate": "character/locations/v4/trap_path/trap_morning_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/trap_path/trap_morning_r01.png",
       "description": "Straight forest path receding to a vanishing point near (0.42,0.28) between purple-grey rounded rocks, red/orange felt leaves along both sides, warm light bands across the path. Walkable path y=0.45-1.00; cast baseline y about 0.83.",
       "landmarks": [
         "left rock x=0.12-0.27, y=0.30-0.53",
@@ -334,7 +334,7 @@
     },
     "run_morning": {
       "location": "forest_run",
-      "plate": "character/locations/v4/forest_run/run_morning_r01.png",
+      "plate": "character/locations/lion_and_mouse_v4/forest_run/run_morning_r01.png",
       "description": "Side-view forest lane: dirt travel lane y 0.62-0.80 crossing the frame, big root/log foreground lower left, mossy rocks centre-left, a long arching branch behind the lane.",
       "landmarks": [
         "left trunk x=0.00-0.22, y=0.00-0.40",

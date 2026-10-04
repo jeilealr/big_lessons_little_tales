@@ -43,8 +43,8 @@ Size lineup: At equal depth, with Finn's height as 1.0: Ben 1.5 (1.6 with hat), 
 
 ## Image folders
 
-- Characters: `character/characters/{Ben,Rosie,Lena,Finn,Wolf,Sheep,Daisy}/boy_who_cried_wolf_v1/{canonical,references,expressions}/`
-- Scene frames: `character/characters/interactions/boy_who_cried_wolf_v1/keyframes/`; size lineup: `character/characters/interactions/boy_who_cried_wolf_v1/lineup_r01.png`
+- Characters: `character/characters/boy_who_cried_wolf_v1/{Ben,Rosie,Lena,Finn,Wolf,Sheep,Daisy}/{canonical,references,expressions}/`
+- Scene frames: `character/characters/boy_who_cried_wolf_v1/interactions/keyframes/`; size lineup: `character/characters/boy_who_cried_wolf_v1/interactions/lineup_r01.png`
 - Plates and props: `character/locations/boy_who_cried_wolf_v1/<place>/`, `.../props/`
 - Each record's `target` in `prompt_manifest.json` is the exact file name.
 

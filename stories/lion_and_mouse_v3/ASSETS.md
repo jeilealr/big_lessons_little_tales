@@ -82,7 +82,7 @@ dialog version). Location DNA: `locations_dna.yaml`. v2 evidence:
 4. Close-ups: the same head-and-shoulders framing as the existing expression
    set (so they pair with it).
 5. Save as `character/characters/<Leo|Milo>/v3/<folder>/<name>.png`,
-   interactions in `character/characters/interactions/v3/<name>.png`,
+   interactions in `character/characters/lion_and_mouse_v3/interactions/<name>.png`,
    locations as in `locations_dna.yaml`. No text, logos, watermarks.
 
 ## Locations (see locations_dna.yaml for the DNA)

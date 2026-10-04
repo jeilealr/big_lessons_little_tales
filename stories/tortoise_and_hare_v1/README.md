@@ -41,8 +41,8 @@ Size lineup: At equal depth, with Hattie's height from feet to ear tips as 1.0: 
 
 ## Image folders
 
-- Characters: `character/characters/{Hattie,Toby,Olive,Pip,Bramble}/tortoise_and_hare_v1/{canonical,references,expressions}/`
-- Scene frames: `character/characters/interactions/tortoise_and_hare_v1/keyframes/`; size lineup: `character/characters/interactions/tortoise_and_hare_v1/lineup_r01.png`
+- Characters: `character/characters/tortoise_and_hare_v1/{Hattie,Toby,Olive,Pip,Bramble}/{canonical,references,expressions}/`
+- Scene frames: `character/characters/tortoise_and_hare_v1/interactions/keyframes/`; size lineup: `character/characters/tortoise_and_hare_v1/interactions/lineup_r01.png`
 - Plates and props: `character/locations/tortoise_and_hare_v1/<place>/`, `.../props/`
 - Each record's `target` in `prompt_manifest.json` is the exact file name.
 

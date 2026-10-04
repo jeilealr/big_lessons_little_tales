@@ -42,8 +42,8 @@ Size lineup: At equal depth, with Mama Duck's height as 1.0: each duckling 0.35,
 
 ## Image folders
 
-- Characters: `character/characters/{Swans,OllieSwan,Ottie,MamaDuck,Ollie,Ducklings}/ugly_duckling_v1/{canonical,references,expressions}/`
-- Scene frames: `character/characters/interactions/ugly_duckling_v1/keyframes/`; size lineup: `character/characters/interactions/ugly_duckling_v1/lineup_r01.png`
+- Characters: `character/characters/ugly_duckling_v1/{Swans,OllieSwan,Ottie,MamaDuck,Ollie,Ducklings}/{canonical,references,expressions}/`
+- Scene frames: `character/characters/ugly_duckling_v1/interactions/keyframes/`; size lineup: `character/characters/ugly_duckling_v1/interactions/lineup_r01.png`
 - Plates and props: `character/locations/ugly_duckling_v1/<place>/`, `.../props/`
 - Each record's `target` in `prompt_manifest.json` is the exact file name.
 

@@ -12,13 +12,13 @@ reference (for example a canonical), attach the v5 file in its place.
 
 The `.gitkeep` files only keep the empty folders in git; delete one once its folder has images.
 
-## `character/characters/Leo/v5/canonical/`
+## `character/characters/lion_and_mouse_v5/Leo/canonical/`
 
 | File | Record | What |
 |---|---|---|
 | `full-body_leo_neutral_pose_r01.png` | `LEO_CANON` | Leo's approved canonical, full body, front view |
 
-## `character/characters/Leo/v5/expressions/`
+## `character/characters/lion_and_mouse_v5/Leo/expressions/`
 
 | File | Record | What |
 |---|---|---|
@@ -34,7 +34,7 @@ The `.gitkeep` files only keep the empty folders in git; delete one once its fol
 | `l_expr_relieved-proud_r01.png` | `L_EXPR_RELIEVED_PROUD` | Leo's relieved proud expression study |
 | `l_expr_smile_r01.png` | `L_EXPR_SMILE` | Leo's smile expression study |
 
-## `character/characters/Leo/v5/references/`
+## `character/characters/lion_and_mouse_v5/Leo/references/`
 
 | File | Record | What |
 |---|---|---|

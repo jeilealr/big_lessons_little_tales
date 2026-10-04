@@ -1,5 +1,5 @@
 # The Lion and the Mouse, v2 -- the owner's retelling (2026-09-27), with the
-# v2 character pack (character/characters/{Leo,Milo}/v2/).
+# v2 character pack (character/characters/lion_and_mouse_v2/{Leo,Milo}/).
 # The single source of truth for this story. v1 (stories/lion_and_mouse/)
 # stays as it was; nothing here refers to v1 assets except as lessons.
 title: The Lion and the Mouse
@@ -39,8 +39,8 @@ characters:
   leo:
     name: Leo the lion
     role: main
-    canonical: character/characters/Leo/v2/canonical/full-body_leo_neutral_pose_01.png
-    dna: character/characters/Leo/v2/dna.yaml
+    canonical: character/characters/lion_and_mouse_v2/Leo/canonical/full-body_leo_neutral_pose_01.png
+    dna: character/characters/lion_and_mouse_v2/Leo/dna.yaml
     sheet: >-
       a handcrafted needle-felted lion with a compact sturdy warm golden-ochre
       body with delicate stitched seams, short thick legs, oversized rounded
@@ -56,8 +56,8 @@ characters:
   milo:
     name: Milo the mouse
     role: main
-    canonical: character/characters/Milo/v2/canonical/full-body_milo_neutral_pose_01.png
-    dna: character/characters/Milo/v2/dna.yaml
+    canonical: character/characters/lion_and_mouse_v2/Milo/canonical/full-body_milo_neutral_pose_01.png
+    dna: character/characters/lion_and_mouse_v2/Milo/dna.yaml
     sheet: >-
       a small handcrafted wool-felt mouse with a slender warm taupe-grey body
       with delicate stitched seams, a long pale-cream belly, a large round head

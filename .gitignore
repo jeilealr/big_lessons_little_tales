@@ -15,7 +15,7 @@ work/
 # references, expressions, scene start/end frames (interactions/v4/keyframes)
 !character/characters/**/*.png
 !character/characters/**/*.jpg
-# location plates and props (v3; v4 in character/locations/v4/)
+# location plates and props, one folder per story: character/locations/<story>/<place>/
 !character/locations/**/*.png
 !character/locations/**/*.jpg
 # python

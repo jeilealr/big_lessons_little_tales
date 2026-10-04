@@ -46,7 +46,7 @@ is not proof that their faces and bodies agree.
 
 Until approved, the new canonical is pending; v3 is reference material for the
 unchanged traits, not an approved v4 asset. (Status 2026-10-02: the v4 roots
-exist, `character/characters/{Milo,Leo}/v4/canonical/full-body_*_neutral_pose_r01.png`,
+exist, `character/characters/lion_and_mouse_v4/{Milo,Leo}/canonical/full-body_*_neutral_pose_r01.png`,
 accepted from the owner's list on 2026-10-01.) Freeze and review:
 
 - Milo: slender taupe-grey torso, elongated cream belly, youthful rounded head,
@@ -408,7 +408,7 @@ centre of the 16:9 frame (ear tips or mane top near y=0.05, chin near
 y=0.70), facing the camera, in front of a strongly blurred version of the
 scene's plate. The face comes from the expression references:
 
-- `character/characters/Milo/v4/expressions/` and `.../Leo/v4/expressions/`
+- `character/characters/lion_and_mouse_v4/Milo/expressions/` and `.../Leo/v4/expressions/`
   each hold 11 head studies (manifest group `expressions`, records
   `M_EXPR_*` / `L_EXPR_*`). They were made from the V4 closed-mouth
   portrait, taking only the expression from the V3 set.
@@ -437,7 +437,7 @@ Decide it before writing a prompt; it controls everything else.
    (`identity_root`), an approved close-up of the same character as
    `close_up_format_reference_framing_only_ignore_its_background`
    (`s15_leo_reflects_end` for Leo, `s15_milo_modest_start` r04 for Milo),
-   and one expression from `character/characters/<Name>/v4/expressions/`
+   and one expression from `character/characters/lion_and_mouse_v4/<Name>/expressions/`
    as `face_and_expression_reference`. Drop full-scene and portrait
    references that disagree with this framing.
 

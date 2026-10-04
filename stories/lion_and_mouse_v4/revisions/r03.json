@@ -10,7 +10,7 @@
       "extra_references": [
         {
           "id": "s05_paw_contact_end",
-          "path": "character/characters/interactions/v4/keyframes/s05_paw_contact_end_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_paw_contact_end_r01.png",
           "role": "approved_previous_shot_exact_camera_and_leo_body"
         }
       ]
@@ -35,7 +35,7 @@
         },
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         }
       ],
@@ -54,7 +54,7 @@
         },
         {
           "id": "M_CLOSED",
-          "path": "character/characters/Milo/v4/references/m_closed_r01.png",
+          "path": "character/characters/lion_and_mouse_v4/Milo/references/m_closed_r01.png",
           "role": "face_identity_exact_copy_only_expression_changes"
         }
       ],
