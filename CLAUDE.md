@@ -94,11 +94,13 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   (canonical, references, expressions), `character/characters/interactions/v5/keyframes/`,
   `character/locations/v5/<place>/`; each v5 root has a README with the file name for
   every record (same stem as v4, `_r01`). Prompts are still the v4 records.
-- **Next stories (owner, 2026-10-04):** *The Tortoise and the Hare*
-  (`stories/tortoise_and_hare_v1/`, documentation packet ready: script, 33 shots,
-  105 image records, lint 0; awaiting owner review of script and shot order before
-  images), then *The Boy Who Cried Wolf* (gentle ending). Both follow CR-01 to CR-18;
-  start from that story's README.
+- **Next stories (owner, 2026-10-04), narration 7-10 min each, narrator reused
+  for now:** *The Tortoise and the Hare* (`stories/tortoise_and_hare_v1/`: 84 lines,
+  about 9 min, 42 shots, 126 image records) and *The Boy Who Cried Wolf*
+  (`stories/boy_who_cried_wolf_v1/`: 78 lines, about 8.5 min, 46 shots, 154 image
+  records, gentle ending). Documentation packets ready, lint 0 each; both wait for
+  owner review of script and shot order (CR-01) before images. Start from each
+  story's README.
 - **Next:** the owner reviews and replaces images (prompts in `prompts/*.md`); when
   the owner asks, derive the runtime story and render a small clip pilot
   (`docs/v4-preflight.md` gates C-E).
@@ -161,7 +163,7 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
 | Need | Read |
 |---|---|
 | **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
-| **Writing or changing any image/video prompt; starting a new story's characters and places** | **`.claude/skills/consistent-image-prompts/SKILL.md`** (repo skill), `docs/image-prompts.md`, `production/image_prompts.py` (`build`, `lint` must be 0 errors, `show`, `md`, `review`, `new-story`); CR-18 |
+| **Writing or changing any image/video prompt; starting a new story's characters and places** | **`.claude/skills/consistent-image-prompts/SKILL.md`** (repo skill), `docs/image-prompts.md`, `production/image_prompts.py` (`build`, `lint` must be 0 errors, `show`, `md`, `review`, `new-story`); a new story's first packet: `production/story_packet.py stories/<slug>/packet_source.py`; CR-18 |
 | V4 packet: status, open issues, script, shot order, repair plan, readable prompts | `stories/lion_and_mouse_v4/README.md`, `SCRIPT_REVIEW.md`, `SHOT_PLAN.md`, `REPAIR_PLAN.md`, `prompts/*.md` |
 | V4 identity, camera setups, size anchors; every image/video record with each image's accepted result | `stories/lion_and_mouse_v4/visual_bible.json`, `prompt_manifest.json` |
 | V4 image history: accepted and rejected takes, hashes, tools, fix texts, Gemini calls | `stories/lion_and_mouse_v4/GENERATION_PROGRESS.md` (dated log), `revisions/*.json`, `revisions/gemini_ledger.csv` |

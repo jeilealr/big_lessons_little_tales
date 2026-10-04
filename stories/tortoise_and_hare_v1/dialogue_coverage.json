@@ -1,8 +1,9 @@
 {
-  "revision": "th-v1-2026-10-04",
+  "revision": "tortoise_and_hare_v1-2026-10-04",
   "status": "script_awaiting_owner_review",
   "title": "The Tortoise and the Hare",
   "moral": "Keep going, step by step, and you can reach places you never thought you could; and a kind friend cheers for you whether you win or lose.",
+  "narrator_voice": "narrators/moonlight_storyteller_1",
   "lines": [
     {
       "id": "S01-L001",
@@ -22,6 +23,20 @@
       "id": "S01-L002",
       "scene": 1,
       "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Every morning the dew sparkled on the grass, the daisies opened their little white faces, and the birds sang their first songs of the day.",
+      "candidate_coverage_shots": [
+        "s01_meadow"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L003",
+      "scene": 1,
+      "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, a little bouncy",
       "text": "Hattie the Hare was quick and bouncy. She could hop over a log before you could even say hop!",
       "candidate_coverage_shots": [
@@ -33,7 +48,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S01-L003",
+      "id": "S01-L004",
       "scene": 1,
       "speaker": "HATTIE",
       "performance_direction": "excited, playful, full of energy, proud but friendly",
@@ -47,7 +62,21 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S01-L004",
+      "id": "S01-L005",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Hattie loved to race the wind. She raced the falling leaves, she raced the bumblebees, and she always, always won.",
+      "candidate_coverage_shots": [
+        "s01_hattie_bounces"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L006",
       "scene": 1,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, slowing down",
@@ -61,11 +90,25 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S01-L005",
+      "id": "S01-L007",
       "scene": 1,
       "speaker": "TOBY",
       "performance_direction": "slow, calm, kind, a gentle smile in the voice",
-      "text": "Good morning, sunshine. Good morning, daisies.",
+      "text": "Good morning, sunshine. Good morning, daisies. What a lovely day to take my time.",
+      "candidate_coverage_shots": [
+        "s01_toby_rests"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L008",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Toby never hurried. He noticed the ladybirds on the leaves and the shapes of the clouds, and he always took one step, and then another.",
       "candidate_coverage_shots": [
         "s01_toby_rests"
       ],
@@ -76,6 +119,20 @@
     },
     {
       "id": "S02-L001",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "One bright morning, Hattie came bouncing across the meadow and stopped right next to Toby.",
+      "candidate_coverage_shots": [
+        "s02_hattie_boasts"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L002",
       "scene": 2,
       "speaker": "HATTIE",
       "performance_direction": "bright, teasing but not mean, a little cheeky",
@@ -89,7 +146,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S02-L002",
+      "id": "S02-L003",
       "scene": 2,
       "speaker": "TOBY",
       "performance_direction": "calm, steady, patient, not hurt",
@@ -103,7 +160,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S02-L003",
+      "id": "S02-L004",
       "scene": 2,
       "speaker": "HATTIE",
       "performance_direction": "laughing lightly, playful",
@@ -117,25 +174,11 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S02-L004",
-      "scene": 2,
-      "speaker": "HATTIE",
-      "performance_direction": "sudden bright idea, excited",
-      "text": "I know! Let's have a race! Then everyone will see who is the fastest.",
-      "candidate_coverage_shots": [
-        "s02_challenge"
-      ],
-      "chosen_shot_intervals": [],
-      "audio_path": null,
-      "measured_duration_seconds": null,
-      "status": "script_awaiting_owner_review"
-    },
-    {
       "id": "S02-L005",
       "scene": 2,
-      "speaker": "NARRATOR",
-      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
-      "text": "Toby thought for a moment. Then he smiled a slow, steady smile.",
+      "speaker": "TOBY",
+      "performance_direction": "gentle, thoughtful",
+      "text": "Being fast is a wonderful thing, Hattie. But being fast isn't the only way to get somewhere.",
       "candidate_coverage_shots": [
         "s02_toby_replies"
       ],
@@ -147,9 +190,51 @@
     {
       "id": "S02-L006",
       "scene": 2,
+      "speaker": "HATTIE",
+      "performance_direction": "sudden bright idea, excited",
+      "text": "Oh really? I know! Let's have a race! Then everyone will see who is the fastest.",
+      "candidate_coverage_shots": [
+        "s02_challenge"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L007",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Toby thought for a moment. He looked at the long path into the wood, and he looked at Hattie's long, strong legs. Then he smiled a slow, steady smile.",
+      "candidate_coverage_shots": [
+        "s02_toby_thinks"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L008",
+      "scene": 2,
       "speaker": "TOBY",
       "performance_direction": "calm, friendly, quietly confident",
       "text": "All right, Hattie. Let's race.",
+      "candidate_coverage_shots": [
+        "s02_challenge"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L009",
+      "scene": 2,
+      "speaker": "HATTIE",
+      "performance_direction": "surprised, then delighted",
+      "text": "Really? Hooray! This is going to be the easiest race ever!",
       "candidate_coverage_shots": [
         "s02_challenge"
       ],
@@ -217,6 +302,34 @@
     {
       "id": "S03-L005",
       "scene": 3,
+      "speaker": "PIP",
+      "performance_direction": "squeaky, giggling",
+      "text": "Hattie is sure to win. She's the fastest in the wood!",
+      "candidate_coverage_shots": [
+        "s03_crowd_gathers"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L006",
+      "scene": 3,
+      "speaker": "BRAMBLE",
+      "performance_direction": "cosy, wise for a little one",
+      "text": "Maybe so, Pip. But a race isn't over until it's over.",
+      "candidate_coverage_shots": [
+        "s03_crowd_gathers"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L007",
+      "scene": 3,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
       "text": "Wise old Olive the Owl fluffed her feathers and hooted for quiet.",
@@ -229,7 +342,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S03-L006",
+      "id": "S03-L008",
       "scene": 3,
       "speaker": "OLIVE",
       "performance_direction": "wise, clear, kind, like a friendly teacher",
@@ -243,7 +356,21 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S03-L007",
+      "id": "S03-L009",
+      "scene": 3,
+      "speaker": "OLIVE",
+      "performance_direction": "kind, firm",
+      "text": "Remember, racers: stay on the path, be kind, and do your very best.",
+      "candidate_coverage_shots": [
+        "s03_olive_announces"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L010",
       "scene": 3,
       "speaker": "OLIVE",
       "performance_direction": "clear and exciting, building up",
@@ -261,7 +388,7 @@
       "scene": 4,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, fast and fun",
-      "text": "Whoosh! Hattie shot off like an arrow.",
+      "text": "Whoosh! Hattie shot off like an arrow. All anyone could see was a puff of dust and the tips of her long ears.",
       "candidate_coverage_shots": [
         "s04_hattie_zooms"
       ],
@@ -299,13 +426,27 @@
       "status": "script_awaiting_owner_review"
     },
     {
+      "id": "S04-L004",
+      "scene": 4,
+      "speaker": "BRAMBLE",
+      "performance_direction": "cheerful, slow",
+      "text": "Good luck, both of you!",
+      "candidate_coverage_shots": [
+        "s04_toby_steps"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
       "id": "S05-L001",
       "scene": 5,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
       "text": "Hattie raced along the forest path, past the ferns and the mushrooms and the mossy stones.",
       "candidate_coverage_shots": [
-        "s05_hattie_looks_back"
+        "s04_hattie_zooms"
       ],
       "chosen_shot_intervals": [],
       "audio_path": null,
@@ -345,9 +486,51 @@
       "scene": 5,
       "speaker": "HATTIE",
       "performance_direction": "smug, relaxed",
-      "text": "This race is too easy.",
+      "text": "This race is too easy. I could stop for a snack and still win.",
       "candidate_coverage_shots": [
         "s05_hattie_smug"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L005",
+      "scene": 5,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Beside the path grew a patch of sweet pink clover, Hattie's very favourite treat.",
+      "candidate_coverage_shots": [
+        "s05_hattie_clover"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L006",
+      "scene": 5,
+      "speaker": "HATTIE",
+      "performance_direction": "happy, munching",
+      "text": "Mmm, yummy! Just one more bite. And maybe one more.",
+      "candidate_coverage_shots": [
+        "s05_hattie_clover"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L007",
+      "scene": 5,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "One bite became ten bites, and ten bites became a whole tummy full of clover.",
+      "candidate_coverage_shots": [
+        "s05_hattie_clover"
       ],
       "chosen_shot_intervals": [],
       "audio_path": null,
@@ -359,7 +542,7 @@
       "scene": 6,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
-      "text": "At the top of the hill stood a big shady tree, with soft cool grass all around it.",
+      "text": "At last Hattie hopped on, up the hill. At the top stood a big shady tree, with soft cool grass all around it.",
       "candidate_coverage_shots": [
         "s06_hattie_arrives_tree"
       ],
@@ -373,7 +556,7 @@
       "scene": 6,
       "speaker": "HATTIE",
       "performance_direction": "sleepy, content, yawning a little",
-      "text": "Mmm, this looks comfy. I have plenty of time. I'll rest my eyes for just one minute.",
+      "text": "Mmm, this looks comfy. My tummy is full, and I have plenty of time. I'll rest my eyes for just one minute.",
       "candidate_coverage_shots": [
         "s06_hattie_lies_down"
       ],
@@ -443,7 +626,35 @@
       "scene": 7,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
-      "text": "The sun climbed high in the sky. Toby's legs felt tired, but he did not stop.",
+      "text": "Soon Toby came to the patch of sweet pink clover. It smelled delicious.",
+      "candidate_coverage_shots": [
+        "s07_toby_clover"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L004",
+      "scene": 7,
+      "speaker": "TOBY",
+      "performance_direction": "tempted, then gently firm",
+      "text": "Oh, that does look tasty. But I'm in a race. I'll come back for some tomorrow.",
+      "candidate_coverage_shots": [
+        "s07_toby_clover"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L005",
+      "scene": 7,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "And on he went. The sun climbed high in the sky. Toby's legs felt tired, but he did not stop.",
       "candidate_coverage_shots": [
         "s07_toby_determined"
       ],
@@ -453,7 +664,35 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S07-L004",
+      "id": "S07-L006",
+      "scene": 7,
+      "speaker": "TOBY",
+      "performance_direction": "singing softly, slow and cheerful",
+      "text": "Slow and steady, step by step, I'm not fast, but I'm not finished yet.",
+      "candidate_coverage_shots": [
+        "s07_toby_song"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L007",
+      "scene": 7,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Pip had raced ahead along the branches to see how Toby was doing.",
+      "candidate_coverage_shots": [
+        "s07_pip_cheers"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L008",
       "scene": 7,
       "speaker": "PIP",
       "performance_direction": "squeaky, encouraging",
@@ -467,7 +706,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S07-L005",
+      "id": "S07-L009",
       "scene": 7,
       "speaker": "TOBY",
       "performance_direction": "warm, grateful, determined",
@@ -485,7 +724,7 @@
       "scene": 8,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
-      "text": "Up, up the hill went Toby, slow and steady.",
+      "text": "Then came the hill. It was steep, and it was long, and for a little tortoise it looked like a mountain.",
       "candidate_coverage_shots": [
         "s08_toby_climbs"
       ],
@@ -496,6 +735,34 @@
     },
     {
       "id": "S08-L002",
+      "scene": 8,
+      "speaker": "TOBY",
+      "performance_direction": "puffing a little, but determined",
+      "text": "Phew. That's a big hill. But a big hill is just a lot of little steps.",
+      "candidate_coverage_shots": [
+        "s08_toby_tired"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L003",
+      "scene": 8,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Up, up the hill went Toby, slow and steady.",
+      "candidate_coverage_shots": [
+        "s08_toby_climbs"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L004",
       "scene": 8,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
@@ -509,7 +776,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S08-L003",
+      "id": "S08-L005",
       "scene": 8,
       "speaker": "TOBY",
       "performance_direction": "whispering softly, kind",
@@ -523,11 +790,11 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S08-L004",
+      "id": "S08-L006",
       "scene": 8,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, quiet",
-      "text": "And so, very quietly, Toby walked on past.",
+      "text": "And so, very quietly, so as not to wake her, Toby walked on past.",
       "candidate_coverage_shots": [
         "s08_toby_passes"
       ],
@@ -555,7 +822,7 @@
       "scene": 9,
       "speaker": "HATTIE",
       "performance_direction": "waking, confused, then worried",
-      "text": "Oh! How long did I sleep?",
+      "text": "Oh! How long did I sleep? The sun is nearly going down!",
       "candidate_coverage_shots": [
         "s09_hattie_wakes"
       ],
@@ -597,7 +864,7 @@
       "scene": 9,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, fast",
-      "text": "Hattie ran faster than she had ever run before.",
+      "text": "Hattie ran faster than she had ever run before. She ran so fast her ears flew out behind her like two flags.",
       "candidate_coverage_shots": [
         "s09_hattie_dashes"
       ],
@@ -669,7 +936,7 @@
       "performance_direction": "proud, joyful announcement",
       "text": "The winner is... Toby the Tortoise!",
       "candidate_coverage_shots": [
-        "s10_toby_crosses"
+        "s10_olive_winner"
       ],
       "chosen_shot_intervals": [],
       "audio_path": null,
@@ -681,7 +948,21 @@
       "scene": 10,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
-      "text": "Everyone cheered. A moment later, Hattie came racing in, puffing and panting.",
+      "text": "Everyone cheered. Pip turned a somersault, and Bramble clapped his little paws.",
+      "candidate_coverage_shots": [
+        "s10_crowd_cheers"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L007",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "A moment later, Hattie came racing in, puffing and panting.",
       "candidate_coverage_shots": [
         "s10_hattie_arrives"
       ],
@@ -709,7 +990,7 @@
       "scene": 11,
       "speaker": "HATTIE",
       "performance_direction": "a little embarrassed, sincere",
-      "text": "I was so sure I was the fastest that I stopped trying. That wasn't very clever, was it?",
+      "text": "I was so sure I was the fastest that I stopped for clover, and then I stopped for a nap. I stopped trying. That wasn't very clever, was it?",
       "candidate_coverage_shots": [
         "s11_hattie_admits"
       ],
@@ -763,6 +1044,20 @@
     {
       "id": "S11-L006",
       "scene": 11,
+      "speaker": "OLIVE",
+      "performance_direction": "wise, warm, like a grandparent",
+      "text": "Well said, both of you. Being fast is a gift, and so is being steady. But the very best gift is being a good friend.",
+      "candidate_coverage_shots": [
+        "s11_olive_wise"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L007",
+      "scene": 11,
       "speaker": "TOBY",
       "performance_direction": "friendly, inviting",
       "text": "Thank you, Hattie. Next time, shall we walk the path together? You can show me all the things you see when you're zooming by.",
@@ -775,11 +1070,11 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S11-L007",
+      "id": "S11-L008",
       "scene": 11,
       "speaker": "HATTIE",
       "performance_direction": "happy, touched",
-      "text": "I'd like that. I'd like that very much.",
+      "text": "I'd like that. I'd like that very much. And you can show me all the things I missed!",
       "candidate_coverage_shots": [
         "s11_friends"
       ],
@@ -807,6 +1102,34 @@
       "scene": 12,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Toby showed Hattie the ladybirds and the cloud shapes, and Hattie showed Toby the best view from the top of the hill.",
+      "candidate_coverage_shots": [
+        "s12_hilltop_view"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L003",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "And yes, they shared the sweet pink clover too.",
+      "candidate_coverage_shots": [
+        "s12_hilltop_view"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L004",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
       "text": "Hattie learned that being fast is wonderful, but it is no good if you stop trying.",
       "candidate_coverage_shots": [
         "s12_walk_together"
@@ -817,7 +1140,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S12-L003",
+      "id": "S12-L005",
       "scene": 12,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
@@ -831,7 +1154,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S12-L004",
+      "id": "S12-L006",
       "scene": 12,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, the moral, slow and clear",
@@ -845,7 +1168,7 @@
       "status": "script_awaiting_owner_review"
     },
     {
-      "id": "S12-L005",
+      "id": "S12-L007",
       "scene": 12,
       "speaker": "NARRATOR",
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, closing",

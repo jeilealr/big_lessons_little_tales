@@ -1,0 +1,1102 @@
+{
+  "revision": "boy_who_cried_wolf_v1-2026-10-04",
+  "status": "script_awaiting_owner_review",
+  "title": "The Boy Who Cried Wolf",
+  "moral": "Always tell the truth, about big things and little things, so that people can believe you when it matters most; and when you make a mistake, saying sorry and telling the truth is the first step back.",
+  "narrator_voice": "narrators/moonlight_storyteller_1",
+  "lines": [
+    {
+      "id": "S01-L001",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Once upon a time, in a little village tucked between green hills, lived a boy called Finn.",
+      "candidate_coverage_shots": [
+        "s01_village"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L002",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Finn lived with his Grandma Rosie, who baked the warmest, softest bread in the whole village.",
+      "candidate_coverage_shots": [
+        "s01_village_life"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L003",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Every morning the village woke up slowly. Farmer Ben fed his hens, Grandma Rosie opened her bakery, and Finn's friend Lena skipped across the square.",
+      "candidate_coverage_shots": [
+        "s01_village_life"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L004",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "And every morning, Finn had a very important job.",
+      "candidate_coverage_shots": [
+        "s01_village_life"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L005",
+      "scene": 1,
+      "speaker": "ROSIE",
+      "performance_direction": "warm, loving grandmother",
+      "text": "Good morning, Finn. Are you ready to look after the sheep today?",
+      "candidate_coverage_shots": [
+        "s01_rosie_reminds"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L006",
+      "scene": 1,
+      "speaker": "FINN",
+      "performance_direction": "bright, eager, about eight years old",
+      "text": "Yes, Grandma! I'll take them up the hill to the sweet green grass.",
+      "candidate_coverage_shots": [
+        "s01_finn_promises"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L007",
+      "scene": 1,
+      "speaker": "ROSIE",
+      "performance_direction": "warm, then serious and clear",
+      "text": "Good boy. And remember: if a wolf ever comes, you shout wolf as loud as you can, and we will all come running to help.",
+      "candidate_coverage_shots": [
+        "s01_rosie_reminds"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L008",
+      "scene": 1,
+      "speaker": "FINN",
+      "performance_direction": "cheerful, a promise",
+      "text": "I'll remember, Grandma.",
+      "candidate_coverage_shots": [
+        "s01_finn_promises"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L001",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "So Finn led the sheep up the winding path to the top of the hill. There were five fluffy sheep, and one little lamb called Daisy, who had a white heart on her nose.",
+      "candidate_coverage_shots": [
+        "s01_finn_leaves",
+        "s02_flock_arrives"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L002",
+      "scene": 2,
+      "speaker": "FINN",
+      "performance_direction": "counting happily, sing-song",
+      "text": "One, two, three, four, five sheep... and Daisy makes six. Everybody's here!",
+      "candidate_coverage_shots": [
+        "s02_counting"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L003",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Daisy was Finn's favourite. She followed him everywhere and nuzzled his hand.",
+      "candidate_coverage_shots": [
+        "s02_daisy_nuzzles"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L004",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, lazy and slow",
+      "text": "The sheep munched the grass. Munch, munch, munch. The clouds drifted by. The sun climbed higher.",
+      "candidate_coverage_shots": [
+        "s02_daisy_nuzzles"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L005",
+      "scene": 2,
+      "speaker": "FINN",
+      "performance_direction": "bored, sighing, a little whiny",
+      "text": "Oh, this is so boring. Nothing ever happens up here.",
+      "candidate_coverage_shots": [
+        "s02_finn_bored"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L006",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Finn sat on the big grey rock and sighed. Then he had an idea. It was not a very good idea.",
+      "candidate_coverage_shots": [
+        "s02_finn_bored"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L007",
+      "scene": 2,
+      "speaker": "FINN",
+      "performance_direction": "mischievous, whispering to himself",
+      "text": "I know! I'll play a trick. That will make things exciting!",
+      "candidate_coverage_shots": [
+        "s02_finn_bored"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L001",
+      "scene": 3,
+      "speaker": "FINN",
+      "performance_direction": "shouting loudly, pretending to be scared",
+      "text": "Wolf! Wolf! A wolf is chasing the sheep!",
+      "candidate_coverage_shots": [
+        "s03_finn_shouts"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L002",
+      "scene": 3,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, quick",
+      "text": "Down in the village, everyone stopped what they were doing, and they ran up the hill path as fast as they could.",
+      "candidate_coverage_shots": [
+        "s03_villagers_run"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L003",
+      "scene": 3,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "But when they reached the top, there was no wolf at all. Just the sheep, munching grass, and Finn, rolling on the grass with laughter.",
+      "candidate_coverage_shots": [
+        "s03_no_wolf"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L004",
+      "scene": 3,
+      "speaker": "FINN",
+      "performance_direction": "laughing, cheeky",
+      "text": "Ha ha! There's no wolf! I tricked you!",
+      "candidate_coverage_shots": [
+        "s03_no_wolf"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L005",
+      "scene": 3,
+      "speaker": "BEN",
+      "performance_direction": "big, deep, kind but cross",
+      "text": "Finn, that's not funny. We left our work to help you.",
+      "candidate_coverage_shots": [
+        "s03_ben_cross"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L006",
+      "scene": 3,
+      "speaker": "ROSIE",
+      "performance_direction": "gentle, serious, disappointed",
+      "text": "A shout for help is not a joke, Finn. Please don't do that again.",
+      "candidate_coverage_shots": [
+        "s03_rosie_serious"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L007",
+      "scene": 3,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "The villagers walked back down the hill, shaking their heads.",
+      "candidate_coverage_shots": [
+        "s03_no_wolf"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L001",
+      "scene": 4,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "The next day, Finn was on the hill again. And again, he felt bored.",
+      "candidate_coverage_shots": [
+        "s04_finn_again"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L002",
+      "scene": 4,
+      "speaker": "FINN",
+      "performance_direction": "mischievous, giggling",
+      "text": "Last time was so funny. I'll do it one more time.",
+      "candidate_coverage_shots": [
+        "s04_finn_again"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L003",
+      "scene": 4,
+      "speaker": "FINN",
+      "performance_direction": "shouting, fake panic",
+      "text": "Wolf! Wolf! Help, help, the wolf is here!",
+      "candidate_coverage_shots": [
+        "s04_finn_again"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L004",
+      "scene": 4,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Once again, the villagers ran up the hill, puffing and panting.",
+      "candidate_coverage_shots": [
+        "s04_villagers_run"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L005",
+      "scene": 4,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "And once again, there was no wolf. Only Finn, giggling behind the big grey rock.",
+      "candidate_coverage_shots": [
+        "s04_finn_giggles"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L006",
+      "scene": 4,
+      "speaker": "LENA",
+      "performance_direction": "a girl of nine, upset, hurt",
+      "text": "Finn! You scared us! I thought the sheep were in danger!",
+      "candidate_coverage_shots": [
+        "s04_lena_upset"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L007",
+      "scene": 4,
+      "speaker": "BEN",
+      "performance_direction": "slow, serious, not shouting",
+      "text": "Finn, if you keep crying wolf when there is no wolf, nobody will believe you when there really is one.",
+      "candidate_coverage_shots": [
+        "s04_ben_warns"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L008",
+      "scene": 4,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, quiet",
+      "text": "The villagers went home, and this time they were not just cross. They were sad.",
+      "candidate_coverage_shots": [
+        "s04_villagers_leave"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L009",
+      "scene": 4,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Finn watched them go. For a moment, his tummy felt a little funny, but he shrugged and looked away.",
+      "candidate_coverage_shots": [
+        "s04_villagers_leave"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L001",
+      "scene": 5,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "That evening, as the sun began to set and the sky turned orange and pink, something moved at the edge of the dark woods.",
+      "candidate_coverage_shots": [
+        "s05_wolf_appears"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L002",
+      "scene": 5,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, a little suspense, never scary",
+      "text": "It was a wolf. A real one. He was long and grey, with a big bushy tail and a very hungry tummy.",
+      "candidate_coverage_shots": [
+        "s05_wolf_appears"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L003",
+      "scene": 5,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "The wolf crept closer, licking his lips and looking at the fluffy sheep.",
+      "candidate_coverage_shots": [
+        "s05_wolf_creeps"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L004",
+      "scene": 5,
+      "speaker": "FINN",
+      "performance_direction": "frightened, a whisper",
+      "text": "Oh no. Oh no! That's a real wolf!",
+      "candidate_coverage_shots": [
+        "s05_finn_sees"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L001",
+      "scene": 6,
+      "speaker": "FINN",
+      "performance_direction": "shouting with all his might, truly scared, begging",
+      "text": "Wolf! Wolf! Please help! There really is a wolf this time!",
+      "candidate_coverage_shots": [
+        "s06_finn_cries_wolf"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L002",
+      "scene": 6,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Down in the village, the villagers heard Finn shouting.",
+      "candidate_coverage_shots": [
+        "s06_village_hears"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L003",
+      "scene": 6,
+      "speaker": "BEN",
+      "performance_direction": "tired, shaking his head",
+      "text": "Not again. That boy is playing another trick.",
+      "candidate_coverage_shots": [
+        "s06_village_hears"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L004",
+      "scene": 6,
+      "speaker": "LENA",
+      "performance_direction": "unsure, worried",
+      "text": "Should we go, Grandma Rosie?",
+      "candidate_coverage_shots": [
+        "s06_village_hears"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L005",
+      "scene": 6,
+      "speaker": "ROSIE",
+      "performance_direction": "sad, torn",
+      "text": "I don't know, Lena. I want to believe him. But he has fooled us twice.",
+      "candidate_coverage_shots": [
+        "s06_rosie_doubts"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L006",
+      "scene": 6,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, sad and slow",
+      "text": "And so, nobody came.",
+      "candidate_coverage_shots": [
+        "s06_rosie_doubts"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L001",
+      "scene": 7,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, fast, never scary",
+      "text": "The wolf leapt toward the flock. The sheep bleated and scattered in every direction, running into the woods to hide.",
+      "candidate_coverage_shots": [
+        "s07_sheep_scatter"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L002",
+      "scene": 7,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Finn was frightened, but he was brave. He ran to the old bell on the hill and rang it with all his might.",
+      "candidate_coverage_shots": [
+        "s07_finn_rings_bell"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L003",
+      "scene": 7,
+      "speaker": "NARRATOR",
+      "performance_direction": "playful sound words, ringing and loud",
+      "text": "Clang! Clang! Clang!",
+      "candidate_coverage_shots": [
+        "s07_finn_rings_bell"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L004",
+      "scene": 7,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, relieved",
+      "text": "The loud clanging startled the wolf. He tucked his tail between his legs and ran back into the woods, far, far away.",
+      "candidate_coverage_shots": [
+        "s07_wolf_runs"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L001",
+      "scene": 8,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, quiet",
+      "text": "The wolf was gone. But so were the sheep.",
+      "candidate_coverage_shots": [
+        "s08_empty_hill"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L002",
+      "scene": 8,
+      "speaker": "FINN",
+      "performance_direction": "calling, worried",
+      "text": "Daisy? Daisy! Where are you? Where is everybody?",
+      "candidate_coverage_shots": [
+        "s08_empty_hill"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L003",
+      "scene": 8,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, tender",
+      "text": "The hill was empty and quiet. Finn sat down on the grass, and big tears rolled down his cheeks.",
+      "candidate_coverage_shots": [
+        "s08_finn_cries"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L004",
+      "scene": 8,
+      "speaker": "FINN",
+      "performance_direction": "crying softly, sorry",
+      "text": "This is all my fault. If I hadn't told those fibs, everyone would have come.",
+      "candidate_coverage_shots": [
+        "s08_finn_cries"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L001",
+      "scene": 9,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Finn ran all the way down to the village as fast as his legs could carry him.",
+      "candidate_coverage_shots": [
+        "s09_finn_runs_home"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L002",
+      "scene": 9,
+      "speaker": "FINN",
+      "performance_direction": "breathless, upset, honest",
+      "text": "Grandma! The wolf came, a real wolf! I rang the bell and he ran away, but the sheep ran into the woods, and Daisy is lost!",
+      "candidate_coverage_shots": [
+        "s09_finn_tells"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L003",
+      "scene": 9,
+      "speaker": "BEN",
+      "performance_direction": "doubtful, gentle",
+      "text": "Is this another trick, Finn?",
+      "candidate_coverage_shots": [
+        "s09_finn_tells"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L004",
+      "scene": 9,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Grandma Rosie looked at Finn's face. She saw his real tears, and she knelt down beside him.",
+      "candidate_coverage_shots": [
+        "s09_rosie_kneels"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L005",
+      "scene": 9,
+      "speaker": "FINN",
+      "performance_direction": "sincere, sorry, through tears",
+      "text": "It's not a trick. I'm so sorry I told fibs before. I won't ever do it again. This time, it's true.",
+      "candidate_coverage_shots": [
+        "s09_finn_sorry"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L006",
+      "scene": 9,
+      "speaker": "ROSIE",
+      "performance_direction": "warm, decisive, kind",
+      "text": "I believe you, Finn. Come on, everyone. Let's find those sheep.",
+      "candidate_coverage_shots": [
+        "s09_rosie_believes"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L001",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "So the whole village went out to the edge of the woods, just as the first stars began to twinkle.",
+      "candidate_coverage_shots": [
+        "s10_search"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L002",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "They searched behind the bushes and under the ferns, calling softly.",
+      "candidate_coverage_shots": [
+        "s10_search"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L003",
+      "scene": 10,
+      "speaker": "LENA",
+      "performance_direction": "excited, happy",
+      "text": "Here's one! And another!",
+      "candidate_coverage_shots": [
+        "s10_found_sheep"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L004",
+      "scene": 10,
+      "speaker": "BEN",
+      "performance_direction": "pleased, deep",
+      "text": "Three more over here!",
+      "candidate_coverage_shots": [
+        "s10_found_sheep"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L005",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "One, two, three, four, five sheep were found. But where was Daisy?",
+      "candidate_coverage_shots": [
+        "s10_found_sheep"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L006",
+      "scene": 10,
+      "speaker": "FINN",
+      "performance_direction": "calling, hopeful",
+      "text": "Daisy! Daisy, where are you?",
+      "candidate_coverage_shots": [
+        "s10_daisy_found"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L007",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, soft",
+      "text": "Then, from under a big leafy bush, came a tiny sound. Baa.",
+      "candidate_coverage_shots": [
+        "s10_daisy_found"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L008",
+      "scene": 10,
+      "speaker": "FINN",
+      "performance_direction": "overjoyed, relieved",
+      "text": "Daisy! There you are!",
+      "candidate_coverage_shots": [
+        "s10_daisy_found"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L009",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Finn hugged Daisy tight, and Daisy nuzzled his cheek.",
+      "candidate_coverage_shots": [
+        "s10_hug"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L001",
+      "scene": 11,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Back home, Grandma Rosie sat with Finn on the step of the little bakery, with Daisy curled up at his feet.",
+      "candidate_coverage_shots": [
+        "s11_together"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L002",
+      "scene": 11,
+      "speaker": "ROSIE",
+      "performance_direction": "wise, gentle, like a bedtime talk",
+      "text": "Finn, trust is like a tower of blocks. Every time you tell the truth, you add a block, and the tower grows tall and strong.",
+      "candidate_coverage_shots": [
+        "s11_rosie_tower"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L003",
+      "scene": 11,
+      "speaker": "ROSIE",
+      "performance_direction": "gentle, honest",
+      "text": "But every fib knocks some blocks down. And it takes a long, long time to build the tower up again.",
+      "candidate_coverage_shots": [
+        "s11_rosie_tower"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L004",
+      "scene": 11,
+      "speaker": "FINN",
+      "performance_direction": "small voice, thoughtful",
+      "text": "I knocked my tower down, didn't I?",
+      "candidate_coverage_shots": [
+        "s11_finn_understands"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L005",
+      "scene": 11,
+      "speaker": "ROSIE",
+      "performance_direction": "kind, encouraging",
+      "text": "A little. But you told the truth tonight, and that was a very good block to start with.",
+      "candidate_coverage_shots": [
+        "s11_rosie_tower"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L006",
+      "scene": 11,
+      "speaker": "FINN",
+      "performance_direction": "determined, hopeful",
+      "text": "Then I'll build it up again. One true word at a time.",
+      "candidate_coverage_shots": [
+        "s11_finn_understands"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L001",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "From that day on, Finn always told the truth, about big things and little things.",
+      "candidate_coverage_shots": [
+        "s12_morning_hill"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L002",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Each morning he led the sheep up the hill, and Daisy trotted right beside him.",
+      "candidate_coverage_shots": [
+        "s12_morning_hill"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L003",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "And if he ever felt bored, he played games that didn't fool anybody, like counting clouds, or teaching Daisy to dance.",
+      "candidate_coverage_shots": [
+        "s12_morning_hill"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L004",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Little by little, block by block, the villagers learned to trust Finn again.",
+      "candidate_coverage_shots": [
+        "s12_lena_waves"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L005",
+      "scene": 12,
+      "speaker": "LENA",
+      "performance_direction": "cheerful, friendly",
+      "text": "Good morning, Finn! How are the sheep today?",
+      "candidate_coverage_shots": [
+        "s12_lena_waves"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L006",
+      "scene": 12,
+      "speaker": "FINN",
+      "performance_direction": "happy, proud, honest",
+      "text": "All six of them are happy and safe. And that's the truth!",
+      "candidate_coverage_shots": [
+        "s12_end"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L007",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, the moral, slow and clear",
+      "text": "Because when you always tell the truth, people will believe you when it matters most.",
+      "candidate_coverage_shots": [
+        "s12_end"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L008",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, closing",
+      "text": "The end.",
+      "candidate_coverage_shots": [
+        "s12_end"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    }
+  ]
+}

@@ -1,0 +1,729 @@
+{
+  "revision": "boy_who_cried_wolf_v1-2026-10-04",
+  "version": "boy_who_cried_wolf_v1",
+  "status": "single_source_of_truth_for_all_prompts",
+  "title": "The Boy Who Cried Wolf",
+  "moral": "Always tell the truth, about big things and little things, so that people can believe you when it matters most; and when you make a mistake, saying sorry and telling the truth is the first step back.",
+  "how_to": "Every prompt in prompt_manifest.json is a template rendered from this file by production/image_prompts.py --story boy_who_cried_wolf_v1 (build, lint, show, md, review). Character identities are design specs until each canonical image is approved; then rewrite them from the image (hex sampled from it) and rebuild.",
+  "characters": {
+    "ben": {
+      "name": "Farmer Ben",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Ben/boy_who_cried_wolf_v1/canonical/ben_canonical_r01.png",
+      "canonical_record": "BEN_CANON",
+      "identity": "Farmer Ben is one tall, broad, friendly wool-felt man, a soft storybook doll, about one and a half times Finn's height. His skin is tan felt (#D69A6E) with ruddy cheeks (#C9785E). He has a short bushy chestnut-brown beard (#6B4226) and short chestnut-brown hair under a round straw-yellow hat (#D9B75C) with a brown band. Two friendly round glossy eyes: dark-brown irises (#4A2E1E), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); two thick chestnut-brown brows; a round nose. He wears denim-blue overalls (#4F6F9E) over a cream shirt (#F2E8D5) with rolled-up sleeves, and big dark-brown boots (#4A3020). Two strong arms with large four-fingered hands. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
+      "sheet": "one tall broad felt farmer with a chestnut-brown beard, a straw-yellow hat, two dark-brown eyes, denim-blue overalls over a cream shirt and dark-brown boots",
+      "short": "Farmer Ben is one tall broad felt farmer with a chestnut-brown beard, a straw-yellow hat, two dark-brown eyes, denim-blue overalls over a cream shirt and dark-brown boots.",
+      "mouth": "When Farmer Ben's mouth opens, it is a rounded opening with a dark warm-brown interior and a soft pink tongue, framed by his beard.",
+      "palette": {
+        "skin": "#D69A6E",
+        "beard": "#6B4226",
+        "hat": "#D9B75C",
+        "overalls": "#4F6F9E",
+        "shirt": "#F2E8D5"
+      },
+      "proportions": {
+        "height_to_finn": 1.5
+      },
+      "checklist": [
+        "one tall man, two arms, two legs",
+        "short bushy chestnut-brown beard",
+        "round straw-yellow hat with a brown band",
+        "two dark-brown eyes",
+        "denim-blue overalls over a cream shirt",
+        "about one and a half of Finn's height",
+        "felt texture",
+        "colours not shifted by scene light"
+      ],
+      "drift_phrases": [
+        "clean-shaven",
+        "pitchfork",
+        "cowboy hat"
+      ]
+    },
+    "rosie": {
+      "name": "Grandma Rosie",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Rosie/boy_who_cried_wolf_v1/canonical/rosie_canonical_r01.png",
+      "canonical_record": "ROSIE_CANON",
+      "identity": "Grandma Rosie is one round, cosy, elderly wool-felt woman, a soft storybook doll, about one and a third times Finn's height. Her skin is warm peach felt (#EBB896) with rosy-pink cheeks (#E08A7A) and soft smile lines. Her hair is silver-white felt (#E6E2DA) pulled up into a round bun on top of her head. Two kind round glossy eyes: warm brown irises (#6A4228), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); two soft silver-white brows; a small rounded nose and a gentle mouth line. She wears a long lavender-purple dress (#8E7AB5) with short puffed sleeves and a long cream apron (#F2E6CF) with one front pocket, and small dark-brown shoes (#4A3020). Two arms with small four-fingered hands; a round, plump figure. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
+      "sheet": "one round elderly felt grandmother with a silver-white bun, rosy cheeks, two kind brown eyes, a long lavender-purple dress and a cream apron",
+      "short": "Grandma Rosie is one round elderly felt grandmother with a silver-white bun, rosy cheeks, two kind brown eyes, a long lavender-purple dress and a cream apron.",
+      "mouth": "When Grandma Rosie's mouth opens, it is a small rounded opening with a dark warm-brown interior and a soft pink tongue.",
+      "palette": {
+        "skin": "#EBB896",
+        "hair": "#E6E2DA",
+        "iris": "#6A4228",
+        "dress": "#8E7AB5",
+        "apron": "#F2E6CF"
+      },
+      "proportions": {
+        "height_to_finn": 1.33
+      },
+      "checklist": [
+        "one elderly woman, two arms, two legs",
+        "silver-white hair in a round bun",
+        "rosy cheeks",
+        "two kind brown eyes",
+        "long lavender-purple dress with puffed sleeves",
+        "long cream apron with one pocket",
+        "about one and a third of Finn's height",
+        "felt texture",
+        "colours not shifted by scene light"
+      ],
+      "drift_phrases": [
+        "spectacles",
+        "walking stick",
+        "shawl"
+      ]
+    },
+    "lena": {
+      "name": "Lena",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Lena/boy_who_cried_wolf_v1/canonical/lena_canonical_r01.png",
+      "canonical_record": "LENA_CANON",
+      "identity": "Lena is one young wool-felt girl of about nine, a soft storybook doll, a little taller than Finn. Her skin is warm caramel-brown felt (#B07A52) with rosy cheeks (#C97A6A). Her hair is dark-brown felt (#3E2A1E) in two long braids tied with small sunflower-yellow ribbons (#F2C230). Two large round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); two short dark-brown brows; a small nose and a bright mouth line. She wears a sky-blue dress (#7FB2DA) with a white collar (#F8F4EC) and small red shoes (#B8433A). Two arms with small four-fingered hands and two slim legs. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
+      "sheet": "one young felt girl with two long dark-brown braids tied with sunflower-yellow ribbons, two dark-brown eyes, a sky-blue dress with a white collar and red shoes",
+      "short": "Lena is one young felt girl with two long dark-brown braids tied with sunflower-yellow ribbons, two dark-brown eyes, a sky-blue dress with a white collar and red shoes.",
+      "mouth": "When Lena's mouth opens, it is a small rounded opening with a dark warm-brown interior, a soft pink tongue and small ivory upper teeth.",
+      "palette": {
+        "skin": "#B07A52",
+        "hair": "#3E2A1E",
+        "ribbons": "#F2C230",
+        "dress": "#7FB2DA",
+        "collar": "#F8F4EC",
+        "shoes": "#B8433A"
+      },
+      "proportions": {
+        "height_to_finn": 1.05
+      },
+      "checklist": [
+        "one girl, two arms, two legs",
+        "two long dark-brown braids with sunflower-yellow ribbons",
+        "two dark-brown eyes",
+        "sky-blue dress with a white collar",
+        "red shoes",
+        "a little taller than Finn",
+        "felt texture"
+      ],
+      "drift_phrases": [
+        "ponytail",
+        "blonde"
+      ]
+    },
+    "finn": {
+      "name": "Finn",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Finn/boy_who_cried_wolf_v1/canonical/finn_canonical_r01.png",
+      "canonical_record": "FINN_CANON",
+      "identity": "Finn is one young wool-felt boy of about eight, a soft storybook doll with a round head about one fifth of his height. His skin is warm peach felt (#F2C29B) with rosy-pink cheeks (#E8907E) and a few tiny cinnamon-brown freckle stitches (#A8653C) across his nose. His hair is a mop of short curly copper-orange felt (#C86A2C) that covers his ears' tops and his forehead. Two large round glossy eyes, each about a fifth of the head width: hazel-green irises (#7A8A3A), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); two short copper-orange brows; a small rounded nose and a small mouth line. He wears a moss-green knitted tunic (#5E7A3A) with a round collar, a short red scarf (#C0392B) knotted at the neck, brown felt trousers (#7A5236) and small dark-brown boots (#4A3020). Two arms with small four-fingered hands and two legs; slim, like a child. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
+      "sheet": "one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots",
+      "short": "Finn is one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots.",
+      "mouth": "When Finn's mouth opens, it is a small rounded opening with a dark warm-brown interior, a soft pink tongue and a neat row of small ivory upper teeth.",
+      "palette": {
+        "skin": "#F2C29B",
+        "cheeks": "#E8907E",
+        "hair": "#C86A2C",
+        "iris": "#7A8A3A",
+        "tunic": "#5E7A3A",
+        "scarf": "#C0392B",
+        "trousers": "#7A5236",
+        "boots": "#4A3020"
+      },
+      "proportions": {
+        "head_to_height": 0.2
+      },
+      "checklist": [
+        "one boy, two arms, two legs, four fingers per hand",
+        "curly copper-orange hair",
+        "rosy cheeks and freckles",
+        "two hazel-green eyes",
+        "moss-green tunic with round collar",
+        "short red scarf",
+        "brown trousers and dark-brown boots",
+        "head about one fifth of his height",
+        "felt texture with visible stitches",
+        "colours not shifted by scene light"
+      ],
+      "drift_phrases": [
+        "blond",
+        "baseball cap",
+        "backpack"
+      ]
+    },
+    "wolf": {
+      "name": "the Wolf",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Wolf/boy_who_cried_wolf_v1/canonical/wolf_canonical_r01.png",
+      "canonical_record": "WOLF_CANON",
+      "identity": "The Wolf is one long, lanky, rather silly wool-felt wolf who walks on four long legs, more funny than frightening. His fur felt is soft smoke-grey (#8A8D93), lighter pale-grey on the muzzle, chest and belly (#D3D5D8), with darker charcoal-grey tips on his two tall pointed ears and his back (#4E5157). His long rounded muzzle ends in a big round black nose (#222222). Two round glossy eyes: golden-yellow irises (#D9A93A), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2); two expressive charcoal-grey brows. His mouth is a long wavy closed line, and his teeth are hidden. One big bushy smoke-grey tail with a pale-grey tip. Long thin legs with soft round paws. Standing on four legs he is about three quarters of Finn's height to his ear tips. Rounded soft shapes everywhere, no sharp edges. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
+      "sheet": "one long lanky smoke-grey felt wolf with a pale-grey muzzle and chest, tall pointed ears, two golden-yellow eyes, a big black nose and a big bushy tail, more silly than scary",
+      "short": "the Wolf is one long lanky smoke-grey felt wolf with a pale-grey muzzle and chest, tall pointed ears, two golden-yellow eyes, a big black nose and a big bushy tail, more silly than scary.",
+      "mouth": "When the Wolf's mouth opens, it is a long rounded opening with a dark warm-brown interior and a long pink tongue; his teeth stay hidden.",
+      "palette": {
+        "fur": "#8A8D93",
+        "muzzle": "#D3D5D8",
+        "tips": "#4E5157",
+        "nose": "#222222",
+        "iris": "#D9A93A"
+      },
+      "proportions": {
+        "height_to_finn": 0.75
+      },
+      "checklist": [
+        "one wolf, four legs, one bushy tail",
+        "soft smoke-grey fur with a pale-grey muzzle and chest",
+        "two tall pointed ears with charcoal tips",
+        "two golden-yellow eyes",
+        "big round black nose",
+        "teeth hidden, rounded soft shapes",
+        "silly rather than scary",
+        "about three quarters of Finn's height"
+      ],
+      "drift_phrases": [
+        "fangs",
+        "snarling",
+        "blood",
+        "red eyes",
+        "drooling"
+      ]
+    },
+    "sheep": {
+      "name": "the Sheep",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Sheep/boy_who_cried_wolf_v1/canonical/sheep_canonical_r01.png",
+      "canonical_record": "SHEEP_CANON",
+      "identity": "Each of the flock's sheep is the same: one round, friendly wool-felt ewe who walks on four legs, with a big fluffy body of cream-white curly felt (#EFE6D2), a smooth pale biscuit-beige face and lower legs (#D9C3A0), two small soft ears sticking out sideways with rosy-pink insides (#E3A39A), two round glossy eyes with dark-brown irises (#4A2E1E), black pupils, ivory sclera and one white catch-light, a small rosy-pink nose (#E3A39A), a small smiling mouth line, a short fluffy tail and four little dark hooves. Each sheep is about half of Finn's height to the top of her head and has no horns. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Their pose, facing and expression are the ones this prompt states.",
+      "sheet": "a round fluffy cream-white felt sheep with a biscuit-beige face and legs, small ears with rosy-pink insides and two dark-brown eyes",
+      "short": "the Sheep is a round fluffy cream-white felt sheep with a biscuit-beige face and legs, small ears with rosy-pink insides and two dark-brown eyes.",
+      "mouth": "When a sheep bleats, its mouth opens in a small rounded shape with a soft pink inside.",
+      "palette": {
+        "fleece": "#EFE6D2",
+        "face_legs": "#D9C3A0",
+        "ears_inside": "#E3A39A",
+        "iris": "#4A2E1E"
+      },
+      "proportions": {
+        "height_to_finn": 0.55
+      },
+      "checklist": [
+        "every sheep identical",
+        "round fluffy cream-white fleece",
+        "biscuit-beige face and legs, no horns",
+        "ears with rosy-pink insides",
+        "two dark-brown eyes",
+        "count matches the cast line"
+      ],
+      "drift_phrases": [
+        "horned",
+        "black sheep"
+      ]
+    },
+    "daisy": {
+      "name": "Daisy",
+      "status": "design spec: rewrite from the approved canonical image",
+      "canonical": "character/characters/Daisy/boy_who_cried_wolf_v1/canonical/daisy_canonical_r01.png",
+      "canonical_record": "DAISY_CANON",
+      "identity": "Daisy is one small young wool-felt lamb who walks on four thin legs. Her fleece is a fluffy cloud of cream-white curly felt (#F4EEDF). Her face, ears and lower legs are soft charcoal-black felt (#2E2A28), with one white heart-shaped patch (#FBF8F2) on her forehead above her nose. Two small ears stick out sideways with rosy-pink insides (#E8A3A0). Two large round glossy eyes: warm amber-brown irises (#8A5A22), black pupils, one white catch-light at upper right, ivory sclera (#F6F0E6); a small rosy-pink nose (#E8A3A0) and a small smiling mouth line. A short fluffy cream-white tail. Four little dark hooves. She is about a third of Finn's height. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
+      "sheet": "one small fluffy cream-white felt lamb with a charcoal-black face and legs, a white heart-shaped patch on her forehead, rosy-pink ear insides and two amber-brown eyes",
+      "short": "Daisy is one small fluffy cream-white felt lamb with a charcoal-black face and legs, a white heart-shaped patch on her forehead, rosy-pink ear insides and two amber-brown eyes.",
+      "mouth": "When Daisy bleats, her mouth opens in a small rounded shape with a soft pink inside.",
+      "palette": {
+        "fleece": "#F4EEDF",
+        "face_legs": "#2E2A28",
+        "heart": "#FBF8F2",
+        "ears_inside": "#E8A3A0",
+        "iris": "#8A5A22"
+      },
+      "proportions": {
+        "height_to_finn": 0.35
+      },
+      "checklist": [
+        "one lamb, four legs, one short tail",
+        "fluffy cream-white fleece",
+        "charcoal-black face and lower legs",
+        "white heart-shaped patch on the forehead",
+        "ears sticking out sideways with pink insides",
+        "two amber-brown eyes",
+        "about a third of Finn's height",
+        "felt texture"
+      ],
+      "drift_phrases": [
+        "white-faced lamb",
+        "goat"
+      ]
+    }
+  },
+  "cast_scale": {
+    "rule": "At equal depth, with Finn's height as 1.0: Ben 1.5 (1.6 with hat), Rosie 1.33, Lena 1.05, Wolf 0.75 (to ear tips, on four legs), each sheep 0.55, Daisy 0.35.",
+    "anchor_record": "LINEUP",
+    "status": "design targets; measure them on the approved LINEUP image and update every setup's sizes"
+  },
+  "locations": {
+    "village_morning": {
+      "location": "village",
+      "plate": "character/locations/boy_who_cried_wolf_v1/village/village_morning_r01.png",
+      "label": "the village square in morning light",
+      "description": "A small felt village square: round cottages with soft thatched roofs around a cobbled square with a stone well in the middle; Grandma Rosie's bakery at the left with a round window and a wooden bench by its door; a low wooden fence and a few hens' feeding trough at the right; the path to the hill leaves the square at the far right; green hills behind.",
+      "landmarks": [
+        "the bakery at the left (x 0.02-0.30) with its door and bench (bench x 0.18-0.30, y 0.74-0.82)",
+        "the stone well in the middle of the square (x 0.44-0.56, y 0.55-0.78)",
+        "the low wooden fence at the right (x 0.70-0.95, y 0.62-0.74)",
+        "the hill path leaving the square at the far right (x 0.88-1.00)",
+        "the cobbled ground where characters stand (y 0.75-0.92)"
+      ],
+      "light": "Fresh morning sunlight from the upper right; soft shadows to the left.",
+      "ambient": "Smoke curls gently from a chimney; grass and flowers sway; buildings, well and fence stay fixed."
+    },
+    "village_evening": {
+      "location": "village",
+      "plate": "character/locations/boy_who_cried_wolf_v1/village/village_evening_r01.png",
+      "label": "the village square at dusk",
+      "description": "The same village square as the morning plate, with every cottage, the well, the bakery and the fence in exactly the same place, at dusk with warm lit windows.",
+      "landmarks": [
+        "the bakery at the left (x 0.02-0.30) with its door and bench (bench x 0.18-0.30, y 0.74-0.82)",
+        "the stone well in the middle of the square (x 0.44-0.56, y 0.55-0.78)",
+        "the low wooden fence at the right (x 0.70-0.95, y 0.62-0.74)",
+        "the hill path leaving the square at the far right (x 0.88-1.00)",
+        "the cobbled ground where characters stand (y 0.75-0.92)"
+      ],
+      "light": "Dusk: deep blue sky with the first stars, warm yellow light from the cottage windows and the bakery door.",
+      "ambient": "Window light flickers softly; buildings, well and fence stay fixed."
+    },
+    "pasture_morning": {
+      "location": "pasture",
+      "plate": "character/locations/boy_who_cried_wolf_v1/pasture/pasture_morning_r01.png",
+      "label": "the hilltop pasture in morning light",
+      "description": "A wide grassy felt hilltop pasture: soft green grass with small flowers; a big round grey rock at the left where Finn sits; a wooden post with a small brass bell hanging from a little roof at the right of centre; far below at the left, the thatched roofs of the village; the dark edge of the woods along the far right.",
+      "landmarks": [
+        "the big grey rock at the left (x 0.08-0.28, top near y=0.62)",
+        "the bell post right of centre (x 0.62-0.67, from y=0.40 to y=0.80), the bell near its top",
+        "the village roofs far below at the left (x 0.00-0.25, y 0.38-0.48)",
+        "the edge of the woods along the far right (x 0.85-1.00)",
+        "the open grass where the flock grazes (y 0.68-0.92)"
+      ],
+      "light": "Bright morning sunlight from the upper left; a clear blue sky with small round clouds.",
+      "ambient": "Grass and flowers sway; clouds drift slowly; rock, post and bell stay fixed."
+    },
+    "pasture_noon": {
+      "location": "pasture",
+      "plate": "character/locations/boy_who_cried_wolf_v1/pasture/pasture_noon_r01.png",
+      "label": "the hilltop pasture at midday",
+      "description": "The same hilltop pasture as the morning plate, every rock, post and tree in exactly the same place, at midday.",
+      "landmarks": [
+        "the big grey rock at the left (x 0.08-0.28, top near y=0.62)",
+        "the bell post right of centre (x 0.62-0.67, from y=0.40 to y=0.80), the bell near its top",
+        "the village roofs far below at the left (x 0.00-0.25, y 0.38-0.48)",
+        "the edge of the woods along the far right (x 0.85-1.00)",
+        "the open grass where the flock grazes (y 0.68-0.92)"
+      ],
+      "light": "Bright midday sunlight from above; short shadows; a warm blue sky.",
+      "ambient": "Grass and flowers sway; clouds drift slowly; rock, post and bell stay fixed."
+    },
+    "pasture_evening": {
+      "location": "pasture",
+      "plate": "character/locations/boy_who_cried_wolf_v1/pasture/pasture_evening_r01.png",
+      "label": "the hilltop pasture at sunset",
+      "description": "The same hilltop pasture as the morning plate, every rock, post and tree in exactly the same place, at sunset.",
+      "landmarks": [
+        "the big grey rock at the left (x 0.08-0.28, top near y=0.62)",
+        "the bell post right of centre (x 0.62-0.67, from y=0.40 to y=0.80), the bell near its top",
+        "the village roofs far below at the left (x 0.00-0.25, y 0.38-0.48)",
+        "the edge of the woods along the far right (x 0.85-1.00)",
+        "the open grass where the flock grazes (y 0.68-0.92)"
+      ],
+      "light": "Sunset: orange and pink sky, warm low light from the left, the woods at the right in soft blue shadow.",
+      "ambient": "Grass sways; the sky glows; rock, post and bell stay fixed."
+    },
+    "path_morning": {
+      "location": "hill_path",
+      "plate": "character/locations/boy_who_cried_wolf_v1/hill_path/path_morning_r01.png",
+      "label": "the hill path in morning light",
+      "description": "A side view of a winding felt path climbing a grassy hillside from the lower left to the upper right, with a low stone wall along it, wildflowers and a lone small tree.",
+      "landmarks": [
+        "the path rising from the lower left (y 0.86) to the upper right (y 0.62)",
+        "the low stone wall below the path along its length",
+        "a lone small tree at the upper middle (x 0.48-0.58, y 0.20-0.60)",
+        "wildflowers along the bottom edge"
+      ],
+      "light": "Morning sunlight from the upper left.",
+      "ambient": "Grass and wildflowers sway; the wall, tree and path stay fixed."
+    },
+    "path_noon": {
+      "location": "hill_path",
+      "plate": "character/locations/boy_who_cried_wolf_v1/hill_path/path_noon_r01.png",
+      "label": "the hill path at midday",
+      "description": "The same hill path as the morning plate, every stone, flower and the tree in exactly the same place, at midday.",
+      "landmarks": [
+        "the path rising from the lower left (y 0.86) to the upper right (y 0.62)",
+        "the low stone wall below the path along its length",
+        "a lone small tree at the upper middle (x 0.48-0.58, y 0.20-0.60)",
+        "wildflowers along the bottom edge"
+      ],
+      "light": "Bright midday sunlight from above.",
+      "ambient": "Grass and wildflowers sway; the wall, tree and path stay fixed."
+    },
+    "path_evening": {
+      "location": "hill_path",
+      "plate": "character/locations/boy_who_cried_wolf_v1/hill_path/path_evening_r01.png",
+      "label": "the hill path at sunset",
+      "description": "The same hill path as the morning plate, every stone, flower and the tree in exactly the same place, at sunset.",
+      "landmarks": [
+        "the path rising from the lower left (y 0.86) to the upper right (y 0.62)",
+        "the low stone wall below the path along its length",
+        "a lone small tree at the upper middle (x 0.48-0.58, y 0.20-0.60)",
+        "wildflowers along the bottom edge"
+      ],
+      "light": "Sunset: warm orange light from the left, long shadows, a pink sky.",
+      "ambient": "Grass sways; the wall, tree and path stay fixed."
+    },
+    "woods_evening": {
+      "location": "woods",
+      "plate": "character/locations/boy_who_cried_wolf_v1/woods/woods_evening_r01.png",
+      "label": "the edge of the woods at dusk",
+      "description": "The edge of a soft felt wood at dusk: big leafy bushes and ferns in front of round-topped trees, a grassy clearing in the middle where characters stand, the first stars in a deep blue sky between the treetops.",
+      "landmarks": [
+        "a big leafy bush at the lower left (x 0.02-0.25, y 0.55-0.90)",
+        "a big leafy bush at the right (x 0.72-0.98, y 0.55-0.90)",
+        "ferns along the bottom edge",
+        "the grassy clearing in the middle (x 0.25-0.72, y 0.70-0.92)"
+      ],
+      "light": "Dusk: deep blue light with a warm glow low on the horizon; soft and calm, not dark.",
+      "ambient": "Leaves and ferns stir gently; stars twinkle; bushes and trees stay fixed."
+    }
+  },
+  "setups": {
+    "village_plate": {
+      "location": "village_morning",
+      "framing": "empty_plate",
+      "label": "the empty village square in morning light",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate."
+    },
+    "village_wide": {
+      "location": "village_morning",
+      "framing": "scene_wide",
+      "label": "a wide shot of the village square in morning light",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the cobbles near y=0.86.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s01_village_life_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "village_rosie_closeup": {
+      "location": "village_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Grandma Rosie in the village square",
+      "camera": "Close-up, 16:9: Grandma Rosie's head and upper chest are centred, the top of her bun near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s01_rosie_reminds_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "village_finn_closeup": {
+      "location": "village_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Finn in the village square",
+      "camera": "Close-up, 16:9: Finn's head and upper chest are centred, the top of his hair near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s01_finn_promises_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_wide": {
+      "location": "pasture_morning",
+      "framing": "scene_wide",
+      "label": "a wide shot of the hilltop pasture in morning light",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the grass near y=0.86.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s02_flock_arrives_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_finn_closeup": {
+      "location": "pasture_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Finn on the hilltop pasture",
+      "camera": "Close-up, 16:9: Finn's head and upper chest are centred, the top of his hair near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s02_counting_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_ben_closeup": {
+      "location": "pasture_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Farmer Ben on the hilltop pasture",
+      "camera": "Close-up, 16:9: Farmer Ben's head and upper chest are centred, the top of his hat near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s03_ben_cross_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_rosie_closeup": {
+      "location": "pasture_morning",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Grandma Rosie on the hilltop pasture",
+      "camera": "Close-up, 16:9: Grandma Rosie's head and upper chest are centred, the top of her bun near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s03_rosie_serious_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "path_side": {
+      "location": "path_morning",
+      "framing": "scene_wide",
+      "label": "a side-on wide shot of the hill path in morning light",
+      "camera": "Fixed normal-height side camera, 16:9, exactly the framing of the locked plate; characters climb the path from left to right and come down from right to left.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s03_villagers_run_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_noon_wide": {
+      "location": "pasture_noon",
+      "framing": "scene_wide",
+      "label": "a wide shot of the hilltop pasture at midday",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the grass near y=0.86.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s04_finn_again_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_noon_lena_closeup": {
+      "location": "pasture_noon",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Lena on the hilltop pasture at midday",
+      "camera": "Close-up, 16:9: Lena's head and upper chest are centred, the top of her head near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s04_lena_upset_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_noon_ben_closeup": {
+      "location": "pasture_noon",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Farmer Ben on the hilltop pasture at midday",
+      "camera": "Close-up, 16:9: Farmer Ben's head and upper chest are centred, the top of his hat near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s04_ben_warns_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "path_noon_side": {
+      "location": "path_noon",
+      "framing": "scene_wide",
+      "label": "a side-on wide shot of the hill path at midday",
+      "camera": "Fixed normal-height side camera, 16:9, exactly the framing of the locked plate; characters climb the path from left to right and come down from right to left.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s04_villagers_run_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_evening_wide": {
+      "location": "pasture_evening",
+      "framing": "scene_wide",
+      "label": "a wide shot of the hilltop pasture at sunset",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the grass near y=0.86.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s05_wolf_appears_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_evening_finn_closeup": {
+      "location": "pasture_evening",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Finn on the hilltop at sunset",
+      "camera": "Close-up, 16:9: Finn's head and upper chest are centred, the top of his hair near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s05_finn_sees_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "pasture_evening_wolf_closeup": {
+      "location": "pasture_evening",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of the Wolf at the edge of the woods at sunset",
+      "camera": "Close-up, 16:9: the Wolf's head and upper chest are centred, his ear tips near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s05_wolf_creeps_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "village_evening_wide": {
+      "location": "village_evening",
+      "framing": "scene_wide",
+      "label": "a wide shot of the village square at dusk",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the cobbles near y=0.86.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s06_village_hears_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "village_evening_rosie_closeup": {
+      "location": "village_evening",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Grandma Rosie in the village at dusk",
+      "camera": "Close-up, 16:9: Grandma Rosie's head and upper chest are centred, the top of her bun near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s06_rosie_doubts_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "village_evening_finn_closeup": {
+      "location": "village_evening",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Finn in the village at dusk",
+      "camera": "Close-up, 16:9: Finn's head and upper chest are centred, the top of his hair near y=0.05 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s09_finn_sorry_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "path_evening_side": {
+      "location": "path_evening",
+      "framing": "scene_wide",
+      "label": "a side-on wide shot of the hill path at sunset",
+      "camera": "Fixed normal-height side camera, 16:9, exactly the framing of the locked plate; characters climb the path from left to right and come down from right to left.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s09_finn_runs_home_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "woods_wide": {
+      "location": "woods_evening",
+      "framing": "scene_wide",
+      "label": "a wide shot of the edge of the woods at dusk",
+      "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand in the clearing near y=0.88.",
+      "size": {
+        "finn": "Finn standing measures about 0.30 of the frame height.",
+        "rosie": "Grandma Rosie standing measures about 0.40 of the frame height.",
+        "ben": "Farmer Ben standing, with his hat, measures about 0.48 of the frame height.",
+        "lena": "Lena standing measures about 0.32 of the frame height.",
+        "wolf": "The Wolf on four legs measures about 0.22 of the frame height to his ear tips.",
+        "sheep": "Each sheep measures about 0.17 of the frame height to the top of her head.",
+        "daisy": "Daisy measures about 0.10 of the frame height."
+      },
+      "relation": "Every character keeps the story's size lineup; the adults are clearly taller than the children, and Daisy is smaller than every sheep.",
+      "anchor_record": "s10_search_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
+    "woods_two_shot": {
+      "location": "woods_evening",
+      "framing": "close_two_shot",
+      "label": "a closer two-shot of Finn and Daisy by the bush at dusk",
+      "camera": "Fixed closer camera at the edge of the woods, 16:9: one shared crop of the wide setup that magnifies Finn, Daisy and the bush equally; the plate is softly blurred behind them.",
+      "size": {
+        "finn": "Finn kneeling fills about 0.70 of the frame height.",
+        "daisy": "Daisy measures about 0.33 of the frame height."
+      },
+      "relation": "Daisy is about a third of Finn's standing height; kneeling, Finn's head stays the same size.",
+      "anchor_record": "s10_daisy_found_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    }
+  },
+  "blocks": {
+    "style": "Style: handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities; warm child-friendly palette and soft directional light; clear subject silhouettes; faces and contact points sharply readable.",
+    "runtime_style": "Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.",
+    "light_and_colour": "Light and colour: every character keeps exactly the colours, saturation and brightness of its canonical image; the scene light may only tint it the same way it tints the background, with the same exposure and contrast as the background. Characters are lit from the same direction as the plate and cast soft contact shadows on its ground, so they sit in the scene rather than on top of it.",
+    "final_check": "Before finishing, check: each named character appears exactly once and the flock has exactly the number of sheep the cast line states; every character has exactly two eyes and two eyebrows (one above each eye, drawn once), its canonical ears, hair, clothes, limbs and hands or hooves, and each animal exactly one tail attached at its root; no text, letters, labels or watermark anywhere.",
+    "edit_end_frame": "This is an edit of the accepted start frame of this shot (the first attached reference): keep its camera, crop, background, light and every character's identity, colours, brightness, size and position exactly; change only what this frame shows below.",
+    "edit_reference": "Edit the first attached reference, the approved parent image: keep the character's identity, colours, brightness and proportions exactly; change only the view or pose stated here.",
+    "edit_expression": "Edit the first attached reference, the approved closed-mouth portrait: keep its crop, head size and position, every feature, colour, the felt texture, the whiskers, the backdrop and the light exactly; change only the brows, eyelids, gaze and mouth.",
+    "studio_full_body": "Studio: plain warm off-white seamless backdrop, soft even neutral light and a small soft contact shadow under the feet; the whole body, ears, paws, mane where present and the single tail inside the frame with about 8% margin on every side.",
+    "studio_portrait": "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, with no room, furniture, floor or horizon, and soft even neutral light; head-and-shoulders crop with the whole head, both ears and any mane inside the frame with a small margin; the head keeps the size and eye-line of the approved closed-mouth portrait.",
+    "plate_rules": "Empty plate: no characters and no story props. Normal-height camera, the whole scene edge to edge, open in-focus ground where characters will stand, distant background slightly soft. Every landmark keeps the position stated above; a different light state of this place reuses exactly the same geometry.",
+    "cast_scale": "Relative size (fixed for the whole story, the same at the same distance from the camera), with Finn's height as 1: Farmer Ben 1.5 (1.6 with his hat), Grandma Rosie 1.33, Lena 1.05, the Wolf 0.75 to his ear tips on four legs, each sheep 0.55 to the top of her head, Daisy 0.35. The adults are clearly taller than the children, and Daisy is clearly smaller than every sheep. Sitting, kneeling, crouching or running changes a silhouette but never the size of a head or limb.",
+    "studio_lineup": "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, soft even neutral light, one flat ground line at y=0.88 where every character stands, with a small soft contact shadow under each; every whole body, every ear tip, foot and tail inside the frame with a margin."
+  },
+  "generic_blocks": [
+    "style",
+    "runtime_style",
+    "light_and_colour",
+    "final_check",
+    "edit_end_frame",
+    "edit_reference",
+    "edit_expression",
+    "studio_full_body",
+    "studio_portrait",
+    "plate_rules"
+  ],
+  "reference_roles": {
+    "edit_base": "the edit base ({what}): keep everything in it (camera, crop, background, light, every character's identity, colours, brightness, size and position) except what this prompt changes",
+    "identity_root": "{who}'s approved canonical image: copy {who}'s identity exactly, with the same shapes, proportions, colours and brightness",
+    "locked_plate": "the locked location plate ({what}): reproduce this background exactly, with the same landmarks, light and camera",
+    "world_state": "the previous accepted frame ({what}): carry over the world state (props, damage, contacts and positions) unless this prompt changes it; use the framing stated in this prompt",
+    "camera_geometry": "camera and layout reference ({what}): copy only the camera position and the layout of the place; take no character or prop state from it",
+    "expression": "expression reference ({what}): copy only the brows, eyelids, gaze and mouth shape onto {who}'s canonical face",
+    "pose": "pose reference ({what}): copy only {who}'s body pose and proportions, not the background",
+    "prop": "prop reference ({what}): copy the prop's material, colour, shape and size; its state in this frame is the one stated in this prompt",
+    "mouth_design": "mouth design reference ({what}): copy only the mouth opening, the teeth and their size",
+    "staging_only": "older-version staging reference ({what}): copy only the composition, camera and staging; every character's look comes from the canonical images",
+    "size_anchor": "size anchor ({what}): an approved frame of this same camera setup; every character keeps exactly the size it has there, and takes no pose, expression or prop state from it",
+    "framing": "framing reference ({what}): copy only the shot size, where the head sits in the frame and how strongly the background is blurred; take no character, background, light or expression from it",
+    "size_lineup": "the story's size lineup ({what}): copy only the size relation between Leo and Milo, applied at the sizes stated in this prompt; take no camera, background, pose, expression or prop state from it"
+  },
+  "lint": {
+    "allow_phrases": [],
+    "forbidden_in_prompts": [
+      "proposed",
+      "pending",
+      "draft",
+      "TODO",
+      "v3 identity"
+    ],
+    "warn_words": []
+  }
+}

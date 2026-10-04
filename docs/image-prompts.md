@@ -97,6 +97,14 @@ Reference roles: `edit_base`, `identity_root`, `locked_plate`, `world_state`,
 - a video prompt uses `{{frame:...}}` of an image other than its shot's start or end;
 - doubled punctuation from a block joined to template text.
 
+## A new story's first packet
+
+`python3 production/story_packet.py stories/<slug>/packet_source.py` turns one source file (script lines,
+characters, size lineup, places, camera setups, shots with start and end frames, expressions, poses, props)
+into the bible, the manifest with every image and video template, `dialogue_coverage.json` and
+SCRIPT/SHOT_PLAN/README. Examples: `stories/tortoise_and_hare_v1/`, `stories/boy_who_cried_wolf_v1/`. It
+overwrites the bible and manifest, so it is for planning only; once images are accepted, edit those files.
+
 ## Commands
 
 ```bash

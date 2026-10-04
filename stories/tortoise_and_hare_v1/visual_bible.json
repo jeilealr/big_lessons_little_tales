@@ -1,5 +1,5 @@
 {
-  "revision": "th-v1-2026-10-04",
+  "revision": "tortoise_and_hare_v1-2026-10-04",
   "version": "tortoise_and_hare_v1",
   "status": "single_source_of_truth_for_all_prompts",
   "title": "The Tortoise and the Hare",
@@ -240,10 +240,11 @@
       "location": "forest_path",
       "plate": "character/locations/tortoise_and_hare_v1/forest_path/path_morning_r01.png",
       "label": "the forest path in late-morning light",
-      "description": "A side view of a winding felt forest path: a flat earth lane crosses the whole frame left to right in the lower third, with ferns, red-capped mushrooms and mossy stones in front of it and tall felt trees with soft green canopies behind it.",
+      "description": "A side view of a winding felt forest path: a flat earth lane crosses the whole frame left to right in the lower third, with ferns, red-capped mushrooms, a patch of clover and mossy stones in front of it and tall felt trees with soft green canopies behind it.",
       "landmarks": [
         "the earth lane across the frame (y 0.72-0.86)",
         "a cluster of red-capped mushrooms at the lower left (x 0.08-0.18)",
+        "a patch of clover with small pink flowers beside the lane at the lower right (x 0.62-0.78, y 0.84-0.94)",
         "a mossy stone at the lower right (x 0.80-0.92, y 0.80-0.92)",
         "a large trunk behind the lane at the centre (x 0.46-0.54)",
         "ferns along the bottom edge"
@@ -255,10 +256,11 @@
       "location": "forest_path",
       "plate": "character/locations/tortoise_and_hare_v1/forest_path/path_sunset_r01.png",
       "label": "the forest path at sunset",
-      "description": "The same side view of the forest path as the late-morning plate, with every tree, stone, fern and mushroom in exactly the same place, in warm golden sunset light.",
+      "description": "The same side view of the forest path as the late-morning plate, with every tree, stone, fern and mushroom and the clover patch in exactly the same place, in warm golden sunset light.",
       "landmarks": [
         "the earth lane across the frame (y 0.72-0.86)",
         "a cluster of red-capped mushrooms at the lower left (x 0.08-0.18)",
+        "a patch of clover with small pink flowers beside the lane at the lower right (x 0.62-0.78, y 0.84-0.94)",
         "a mossy stone at the lower right (x 0.80-0.92, y 0.80-0.92)",
         "a large trunk behind the lane at the centre (x 0.46-0.54)"
       ],
@@ -387,7 +389,7 @@
       "label": "a close-up of Toby on the forest path",
       "camera": "Close-up, 16:9: Toby's head and upper chest are centred, the top of his shell near y=0.12 and chin near y=0.70, facing the camera.",
       "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
-      "anchor_record": "s07_toby_determined_start",
+      "anchor_record": "s07_toby_song_start",
       "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
     },
     "hill_wide": {
@@ -418,7 +420,7 @@
       "label": "a close-up of Toby on the hilltop",
       "camera": "Close-up, 16:9: Toby's head and upper chest are centred, the top of his shell near y=0.12 and chin near y=0.70, facing the camera.",
       "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
-      "anchor_record": "s08_toby_whispers_start",
+      "anchor_record": "s08_toby_tired_start",
       "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
     },
     "hill_late_wide": {
@@ -427,7 +429,8 @@
       "label": "a wide shot of the hilltop in late afternoon",
       "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the path or the shady grass near y=0.80.",
       "size": {
-        "hattie": "Hattie standing measures about 0.38 of the frame height from feet to ear tips; lying down, she is about 0.42 of the frame width long."
+        "hattie": "Hattie standing measures about 0.38 of the frame height from feet to ear tips; lying down, she is about 0.42 of the frame width long; sitting, she keeps the same head and ear size.",
+        "toby": "Toby measures about 0.13 of the frame height to the top of his shell and about 0.19 of the frame height long."
       },
       "relation": "At the same distance from the camera, Toby's shell top reaches about one third of Hattie's height; every character keeps the story's size lineup.",
       "anchor_record": "s09_hattie_sees_start",
@@ -467,6 +470,15 @@
       "anchor_record": "s11_hattie_admits_start",
       "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
     },
+    "finish_olive_closeup": {
+      "location": "finish_afternoon",
+      "framing": "dialogue_close_up",
+      "label": "a close-up of Olive at the finish",
+      "camera": "Close-up, 16:9: Olive's head and upper chest are centred, the top of her head near y=0.08 and chin near y=0.70, facing the camera.",
+      "background_treatment": "The background is the same place, very strongly blurred into soft shapes of colour, as with a portrait lens at f/1.4; nothing stands in front of the character except what this frame states. The blurred place:",
+      "anchor_record": "s10_olive_winner_start",
+      "anchor_note": "The first frame made in this setup; once approved it fixes the camera and the sizes for the rest."
+    },
     "finish_toby_closeup": {
       "location": "finish_afternoon",
       "framing": "dialogue_close_up",
@@ -503,10 +515,10 @@
     "plate_rules": "Empty plate: no characters and no story props. Normal-height camera, the whole scene edge to edge, open in-focus ground where characters will stand, distant background slightly soft. Every landmark keeps the position stated above; a different light state of this place reuses exactly the same geometry.",
     "cast_scale": "Relative size (fixed for the whole story, the same at the same distance from the camera): Hattie standing, from feet to ear tips, is the tallest; Toby's shell top reaches about one third of Hattie's height and his shell is about half her height long; Olive standing is about two fifths of Hattie's height; Pip standing, to his ear tips, is about one third of Hattie's height, his tail reaching about half; Bramble is about one quarter of Hattie's height. Sitting, lying or running changes a silhouette but never the size of a head, shell, ear or limb.",
     "studio_lineup": "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, soft even neutral light, one flat ground line at y=0.88 where every character stands, with a small soft contact shadow under each; every whole body, every ear tip, foot and tail inside the frame with a margin.",
+    "ribbon_object": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height.",
     "ribbon_tied": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height. It hangs across the path, whole and unbroken.",
     "ribbon_parted": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height. It has just parted in the middle where Toby walked through; its two halves hang from the sticks.",
-    "ribbon_down": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height. Its two parted halves hang from the sticks after Toby walked through it.",
-    "ribbon_object": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height."
+    "ribbon_down": "The finish ribbon: one daisy chain of small white felt daisies with yellow centres on a thin green felt stem, tied between the two finish sticks at about two thirds of their height. Its two parted halves hang from the sticks after Toby walked through it."
   },
   "generic_blocks": [
     "style",

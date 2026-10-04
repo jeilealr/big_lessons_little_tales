@@ -6,7 +6,7 @@ Moral: *Keep going, step by step, and you can reach places you never thought you
 
 ## Status (2026-10-04)
 
-- **Documentation done; nothing generated.** Script (61 lines, about 5 minutes), 33 shots, 39 foundation and expression image records and 66 scene frames, every prompt rendered from `visual_bible.json`; `python3 production/image_prompts.py --story tortoise_and_hare_v1 lint` reports 0 errors.
+- **Documentation done; nothing generated.** Script (84 lines, about 9.3 minutes of narration), 42 shots, 42 foundation and expression image records and 84 scene frames, every prompt rendered from `visual_bible.json`; `python3 production/image_prompts.py --story tortoise_and_hare_v1 lint` reports 0 errors.
 - **Gate before images (CR-01):** the owner reviews the script and the shot order.
 - Character descriptions are design specifications until each canonical image is approved; then they are rewritten from the image (colours sampled from it) and the prompts rebuilt.
 
@@ -32,11 +32,11 @@ Size lineup: At equal depth, with Hattie's height from feet to ear tips as 1.0: 
 ## Production order (each step reviewed before the next)
 
 1. Owner approves script and shot order.
-2. Canonicals of the five characters (studio, full body); owner approves; identities rewritten from them.
+2. Canonicals of the 5 characters (studio, full body); owner approves; identities rewritten from them.
 3. Size lineup image (`LINEUP`), then measure it and update the setup sizes.
-4. Plates (6), the ribbon prop, views and poses, portraits, mouth and expression studies.
+4. Plates (6), props, views and poses, portraits, mouth and expression studies.
 5. Scene frames in story order, each start before its end; the first frame of each camera setup is its size anchor.
-6. Voices for Hattie, Toby, Olive, Pip and Bramble (one sample line each, owner picks), then the narration (`voice/narrate_scenes.py --lines stories/tortoise_and_hare_v1/dialogue_coverage.json --story tortoise_and_hare_v1 --voices ...`).
+6. Narration with the saved narrator (`voice/narrators/moonlight_storyteller_1`, the default) and character voices chosen later: `voice/narrate_scenes.py --lines stories/tortoise_and_hare_v1/dialogue_coverage.json --story tortoise_and_hare_v1 --voices SPEAKER=folder ...`.
 7. Clips on LUMI (fast mode), owner selects takes; assembly only when asked.
 
 ## Image folders
@@ -46,10 +46,14 @@ Size lineup: At equal depth, with Hattie's height from feet to ear tips as 1.0: 
 - Plates and props: `character/locations/tortoise_and_hare_v1/<place>/`, `.../props/`
 - Each record's `target` in `prompt_manifest.json` is the exact file name.
 
-## Decisions for the owner
+## Owner decisions
 
-1. Names: Hattie (hare), Toby (tortoise), Olive (owl), Pip (squirrel), Bramble (hedgehog).
-2. Cast size: five characters; the start and finish scenes show all five at once, the hardest frames for image models. A smaller crowd (Olive only) would be safer.
-3. Ending: Toby wins and invites Hattie to walk together; Hattie apologises for teasing. Classic moral kept ("Slow and steady wins the race") plus the channel's kindness message.
-4. Length: about 5 minutes of narration; scene 7 and 11 could take more lines if a longer video is wanted.
-5. Narrator voice: reuse one of the saved narrators (`voice/narrators/`) or design a new one.
+- 2026-10-04: names approved: Hattie (hare), Toby (tortoise), Olive (owl), Pip (squirrel), Bramble (hedgehog).
+- 2026-10-04: cast of five approved, including the start and finish scenes with all five at once (the hardest frames for image models; check counts carefully).
+- 2026-10-04: narration 7 to 10 minutes; the script was expanded to about 9 minutes.
+- 2026-10-04: narrator: reuse the saved narrator voice for now (`voice/narrators/moonlight_storyteller_1`, the default of `voice/narrate_scenes.py`); character voices are decided later.
+
+## Still open
+
+- Owner review of the script and shot order (CR-01) before the first image.
+- 42 shots give about 3.5 minutes of picture at 5 s each; the narration is longer, so shots will be slowed, held or given extra coverage when the narration is timed (`production/timing_sheet.py`).

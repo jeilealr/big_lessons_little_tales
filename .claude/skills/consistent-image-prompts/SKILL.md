@@ -42,6 +42,13 @@ Tool: `production/image_prompts.py` (`lint`, `build`, `show`, `md`, `review`, `n
 
 ## A. Starting a new story (before any scene image)
 
+Fastest start: copy a story's `packet_source.py` (e.g. `stories/tortoise_and_hare_v1/packet_source.py`)
+to `stories/<slug>/packet_source.py`, write the script lines, characters, places, camera setups and
+shots there, and run `python3 production/story_packet.py stories/<slug>/packet_source.py`. It writes the
+bible, every prompt record, the narration line list and SCRIPT/SHOT_PLAN/README; then build, lint, md.
+Use it only until the first image is accepted; afterwards edit the bible and records directly. The
+steps below say what each part must contain.
+
 1. `python3 production/image_prompts.py --story <template story> new-story <slug>` creates
    the bible skeleton and an empty manifest, copying the generic blocks, reference roles and
    lint settings.
