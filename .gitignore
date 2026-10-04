@@ -32,3 +32,6 @@ __pycache__/
 
 # Gemini candidate takes (character/gemini_image.py); accepted ones are copied to the record target
 character/**/gemini/
+
+# Local image review outputs; ignore every .review folder in this repo and future projects
+**/.review/
