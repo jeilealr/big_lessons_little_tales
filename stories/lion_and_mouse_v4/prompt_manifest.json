@@ -15827,35 +15827,34 @@
       "prompt_template": "Create one 1920x1080 16:9 still image: the end frame of shot s13_milo_playful, a wide shot of the trap path in morning light. {{refs}} {{block:edit_end_frame}} Visible cast: exactly one Leo and exactly one Milo; no other character, no duplicates. {{identity:leo}} {{identity:milo}} {{block:cast_scale}} {{setup:trap_wide}} {{block:light_and_colour}} {{block:net_world}} {{block:net_overhead_empty}} This frame shows: {{frame}}. {{block:style}} {{block:final_check}}",
       "v5_result": {
         "output_path": "character/characters/interactions/v5/keyframes/s13_milo_playful_end_r04.png",
-        "sha256": "01cc2d5310d227925d924230c9d1ed4919103cc9b88e2ea38f1de467814d53f5",
-        "tool": "Built-in ImageGen layers with Swift CoreGraphics compositing; close-up pair rendered and edited with built-in ImageGen",
-        "model": "built-in image_gen; Swift/CoreGraphics for locked-plate placement and exact 1920x1080 output",
+        "sha256": "db06a8a59678f6a825467f84f42a0aca0a835987cde716a0cb7c9ec8f1c5c8bf",
+        "tool": "OpenAI ImageGen",
+        "model": "image_gen imagegen",
         "references": [
           {
-            "path": "character/characters/interactions/v5/keyframes/s11_waits_end_r02.png",
-            "sha256": "9f3f38702eef07f771974a35875e118afe747eee4b141f35ab63ce846c621ca0"
+            "path": "character/characters/interactions/v5/keyframes/s13_milo_playful_end_r04.png",
+            "sha256": "596b4184b728ca62f4d767e109dbcd2d99882b1558e1bc345214c634695c0a24"
           },
           {
             "path": "character/characters/Milo/v5/canonical/full-body_milo_neutral_pose_r01.png",
             "sha256": "673055e524631539e59bda887de652f8b1deb2cee8a7b87085e9df3025587d11"
           },
           {
-            "path": "character/characters/Milo/v5/expressions/m_expr_playful_r01.png",
-            "sha256": "e1bb229fd7d4e958a0e643bda268ffd738840fe0a8a76d46987359a35789b96e"
-          },
-          {
-            "path": "character/characters/interactions/v5/keyframes/.review/s13_milo_playful_cutout_r01.png",
-            "sha256": "6fbcfc74b3057ebf296a5d8d9855e5cb5d9fa264b016a62e71b12305153bb9c1"
+            "path": "character/characters/Milo/v5/expressions/m_expr_relieved-proud_r01.png",
+            "sha256": "9c49878900525a8b171d19114ef9b8a52b7b5116a19eaa068f3b268414bc80fa"
           }
         ],
         "review": {
           "status": "accepted_pending_owner_review",
-          "reviewer": "Codex visual review",
+          "reviewer": "agent visual review",
           "date": "2026-10-04",
-          "review_note": "Same position, pose, scale and background as start; one eye slightly narrowed, one brow raised, small cheeky closed smile. Reviewed full resolution and 1280x720; owner review pending."
+          "review_note": "Applied Milo's v5 relieved-proud expression reference to his face; scene and pose retained."
         },
         "preview_path": "character/characters/interactions/v5/keyframes/.review/s13_milo_playful_end_r04_1280x720.png",
-        "preview_sha256": "58d1ea88752cf464ba2ea40b0f1f1f98a0baddca88746c4818ca02b8e27c2b0e"
+        "preview_sha256": "ce363253c4d75b279367ba4f3d6ce4201b16107d5104f1e379f8b52e909d1b47",
+        "prompt_sent": "Change only Milo's facial expression to closely match the relieved-proud face in reference 2, applied to the same head angle in reference 1. Set his brows to relaxed and gently softened; make the eyes calm and slightly softened by upper lids, with relaxed gaze; change the mouth to a small modest closed smile. Use the v5 canonical in reference 3 for his eye color, iris size, muzzle, nose, and face identity. The result should read relieved and quietly proud, not cheeky or excited. Preserve Milo's head angle, gaze direction toward Leo, head size, ears, whiskers, body, pose, and position. Keep Leo, net, crop, background and light unchanged. No text.",
+        "generation_source": "character/characters/interactions/v5/keyframes/.review/s13_milo_playful_end_relieved_proud_gen_r02.png",
+        "generation_source_sha256": "e8eb727836238727f3455e9cf38d3b66ad4016931db8ee60459ba5099c9068ef"
       }
     },
     {
@@ -17109,37 +17108,34 @@
       "prompt_template": "Create one 1920x1080 16:9 still image: the start frame of shot s14_milo_clear, a wide shot of the trap path in morning light. {{refs}} Visible cast: exactly one Leo and exactly one Milo; no other character, no duplicates. {{identity:leo}} {{identity:milo}} {{block:cast_scale}} {{setup:trap_wide}} {{block:light_and_colour}} {{block:net_world}} {{block:net_overhead_empty}} {{block:net_no_reversal}} This frame shows: {{frame}}. {{block:style}} {{block:final_check}}",
       "v5_result": {
         "output_path": "character/characters/interactions/v5/keyframes/s14_milo_clear_start_r02.png",
-        "sha256": "5fd2125ce2652669cc806197f85f652966652cdfc4324478b23dd97da01a40f3",
+        "sha256": "e074539dd3d06aa0d7370c057ad08fadf20e501f8d6c4e0ab6cf665728234527",
         "tool": "OpenAI ImageGen",
         "model": "image_gen imagegen",
         "references": [
           {
-            "path": "character/characters/interactions/v5/keyframes/s13_arrives_end_r02.png",
-            "sha256": "4933d993ffb57ebc4684caa3d8bc7b0f103428cd907265e7251cc001e4f38432"
+            "path": "character/characters/interactions/v5/keyframes/s14_milo_clear_start_r02.png",
+            "sha256": "0d1baf30f950a489209ae4e29c5a4a6520ada0919fdf2fa668c870514172de10"
           },
           {
-            "path": "character/locations/v5/trap_path/trap_morning_r01.png",
-            "sha256": "bd7bac850e64c4c3b78ad4b3e5ed032fe701fd4b1c609a6dc711d0275ec2ff23"
-          },
-          {
-            "path": "character/characters/Leo/v5/canonical/full-body_leo_neutral_pose_r01.png",
-            "sha256": "176b6ae22b604d735982f03b50fe4ad2a2a625acc20ca55f07377fa6fe582200"
+            "path": "character/characters/interactions/v5/keyframes/s14_milo_clear_end_r02.png",
+            "sha256": "62e4ff999cf3e4dab515109dc9052b4e7eabadf9b983206062a571915943edb6"
           },
           {
             "path": "character/characters/Milo/v5/canonical/full-body_milo_neutral_pose_r01.png",
             "sha256": "673055e524631539e59bda887de652f8b1deb2cee8a7b87085e9df3025587d11"
           }
         ],
-        "generation_source": "character/characters/interactions/v5/keyframes/.review/s14_milo_clear_start_gen_r01.png",
-        "generation_source_sha256": "ef44408baefdb2f734e08efa236207d1df50b40132b458f385a9e19eb28fad9d",
+        "generation_source": "character/characters/interactions/v5/keyframes/.review/s14_milo_clear_start_gen_r07.png",
+        "generation_source_sha256": "4947d0da13948c5e961d77a059d4ef3f1790e516a5f974f6024663a6bdfdf258",
         "review": {
           "status": "accepted_pending_owner_review",
           "reviewer": "agent visual review",
           "date": "2026-10-04",
-          "review_note": "Generated for v5 scene 14 from the provided scene prompt and current v5 keyframe references; 1920x1080 output and 1280x720 review preview saved."
+          "review_note": "Milo's start-frame height now matches the end frame while keeping the start pose and ground contact; scene retained."
         },
         "preview_path": "character/characters/interactions/v5/keyframes/.review/s14_milo_clear_start_r02_1280x720.png",
-        "preview_sha256": "50668d720a508f2c22907b3c8e10d56dfff883fceee7d53e1ec807b7a4cc0472"
+        "preview_sha256": "ccb5bf42cb41a43b9167c112154611df6006ea925fc7b45d0df7a10c5a64e783",
+        "prompt_sent": "Edit reference image 1, the start frame. Use reference image 2 only as the exact target for Milo's overall standing size: make Milo in image 1 the same height from ear tips to feet as Milo in image 2 (roughly a 25–30% increase over his current height). Keep Milo at his existing start-frame ground contact and horizontal position, holding the cut net strands as he does now; do not move the feet or change the action. Preserve the start frame's Leo, net, forest plate, lighting, framing, camera, and all other details exactly. Keep Milo's current identity, proportions, face, expression, pose, and tail; scale him uniformly to match the end-frame height. Do not alter anything else. No text."
       }
     },
     {
@@ -17329,29 +17325,34 @@
       "prompt_template": "Create one 1920x1080 16:9 still image: the end frame of shot s14_milo_clear, a wide shot of the trap path in morning light. {{refs}} {{block:edit_end_frame}} Visible cast: exactly one Leo and exactly one Milo; no other character, no duplicates. {{identity:leo}} {{identity:milo}} {{block:cast_scale}} {{setup:trap_wide}} {{block:light_and_colour}} {{block:net_world}} {{block:net_overhead_empty}} {{block:net_no_reversal}} This frame shows: {{frame}}. {{block:style}} {{block:final_check}}",
       "v5_result": {
         "output_path": "character/characters/interactions/v5/keyframes/s14_milo_clear_end_r02.png",
-        "sha256": "5ecd4b319adcc78ab628824a45ca8f9f450285afbf1a1dae05e8d0869e3973e3",
+        "sha256": "62e4ff999cf3e4dab515109dc9052b4e7eabadf9b983206062a571915943edb6",
         "tool": "OpenAI ImageGen",
         "model": "image_gen imagegen",
         "references": [
           {
+            "path": "character/characters/interactions/v5/keyframes/s14_milo_clear_end_r02.png",
+            "sha256": "5ecd4b319adcc78ab628824a45ca8f9f450285afbf1a1dae05e8d0869e3973e3"
+          },
+          {
             "path": "character/characters/interactions/v5/keyframes/s14_milo_clear_start_r02.png",
-            "sha256": "5fd2125ce2652669cc806197f85f652966652cdfc4324478b23dd97da01a40f3"
+            "sha256": "0d1baf30f950a489209ae4e29c5a4a6520ada0919fdf2fa668c870514172de10"
           },
           {
             "path": "character/characters/Milo/v5/canonical/full-body_milo_neutral_pose_r01.png",
             "sha256": "673055e524631539e59bda887de652f8b1deb2cee8a7b87085e9df3025587d11"
           }
         ],
-        "generation_source": "character/characters/interactions/v5/keyframes/.review/s14_milo_clear_end_gen_r01.png",
-        "generation_source_sha256": "9f54d4912b89f384d8e1cf389f2632d5d3e57c306e875217cf12f110ef7f88a3",
+        "generation_source": "character/characters/interactions/v5/keyframes/.review/s14_milo_clear_end_gen_r02.png",
+        "generation_source_sha256": "cb6fc5d12b3ac97f54e7718eab9209a61f26ff9a457508b5f3e4f2d08f8f97cf",
         "review": {
           "status": "accepted_pending_owner_review",
           "reviewer": "agent visual review",
           "date": "2026-10-04",
-          "review_note": "Generated for v5 scene 14 from the provided scene prompt and current v5 keyframe references; 1920x1080 output and 1280x720 review preview saved."
+          "review_note": "Milo scaled down to match corrected start and moved to the documented end position; Leo, net and plate retained."
         },
         "preview_path": "character/characters/interactions/v5/keyframes/.review/s14_milo_clear_end_r02_1280x720.png",
-        "preview_sha256": "77fc8e120a36521398cc0dc40449829330d744fa5dad2a78dcd938bf0ce98f91"
+        "preview_sha256": "0a70aa911ea8eba5997ac28cc5e354421556f2a5bd12acdb45b12dfa55fd9da5",
+        "prompt_sent": "Edit the first image. Keep Leo, the net, knots, background plate, camera, crop and lighting unchanged. Use the second image to match the corrected smaller v5 Milo scale exactly; use the third to preserve Milo's identity. Move Milo to the end-frame position centered near x=.24, with feet on the same ground line y=.83, paws lowered at his sides. Keep him the same reduced standing height as he has in reference 2 (about .23 of frame height). Preserve his pose as stepping back, all body proportions and one attached tail. No other changes."
       }
     },
     {
