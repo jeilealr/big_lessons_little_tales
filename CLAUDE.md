@@ -98,9 +98,10 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   for now:** *The Tortoise and the Hare* (`stories/tortoise_and_hare_v1/`: 84 lines,
   about 9 min, 42 shots, 126 image records) and *The Boy Who Cried Wolf*
   (`stories/boy_who_cried_wolf_v1/`: 78 lines, about 8.5 min, 46 shots, 154 image
-  records, gentle ending). Documentation packets ready, lint 0 each; both wait for
-  owner review of script and shot order (CR-01) before images. Start from each
-  story's README.
+  records, gentle ending); *The Ugly Duckling* (`stories/ugly_duckling_v1/`: 65 lines,
+  about 7.7 min, 43 shots, 140 image records; two Ollie canonicals, cygnet and swan).
+  Documentation packets ready, lint 0 each; all wait for owner review of script and
+  shot order (CR-01) before images. Start from each story's README.
 - **Next:** the owner reviews and replaces images (prompts in `prompts/*.md`); when
   the owner asks, derive the runtime story and render a small clip pilot
   (`docs/v4-preflight.md` gates C-E).

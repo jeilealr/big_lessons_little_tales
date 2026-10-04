@@ -1,0 +1,919 @@
+{
+  "revision": "ugly_duckling_v1-2026-10-04",
+  "status": "script_awaiting_owner_review",
+  "title": "The Ugly Duckling",
+  "moral": "Everyone grows in their own way and in their own time; being different is nothing to be ashamed of, and kindness to someone who feels different can help them find where they belong.",
+  "narrator_voice": "narrators/moonlight_storyteller_1",
+  "lines": [
+    {
+      "id": "S01-L001",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Once upon a time, beside a quiet pond on a little farm, Mama Duck sat on her nest among the tall green reeds.",
+      "candidate_coverage_shots": [
+        "s01_pond"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L002",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "She had been keeping her eggs warm for a long, long time, and today was a very special day.",
+      "candidate_coverage_shots": [
+        "s01_mama_nest"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L003",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, playful sound words",
+      "text": "Crack! Crack! Crack! One, two, three fluffy yellow ducklings popped out of their shells.",
+      "candidate_coverage_shots": [
+        "s01_ducklings_hatch"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L004",
+      "scene": 1,
+      "speaker": "MAMA",
+      "performance_direction": "loving, delighted mother",
+      "text": "Hello, my little darlings! Welcome to the world!",
+      "candidate_coverage_shots": [
+        "s01_mama_closeup"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L005",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "But one egg was still waiting. It was bigger than the others, and a little bit speckled.",
+      "candidate_coverage_shots": [
+        "s01_big_egg"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L006",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, a little suspense, gentle",
+      "text": "Mama Duck waited, and waited. And then... crack!",
+      "candidate_coverage_shots": [
+        "s01_big_egg"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L007",
+      "scene": 1,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Out tumbled a big, grey, fluffy duckling with long legs and big flat feet.",
+      "candidate_coverage_shots": [
+        "s01_ollie_hatches"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S01-L008",
+      "scene": 1,
+      "speaker": "MAMA",
+      "performance_direction": "surprised, then warm and welcoming",
+      "text": "Oh! Well, aren't you a big one! Welcome, little one. I shall call you Ollie.",
+      "candidate_coverage_shots": [
+        "s01_mama_closeup"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L001",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "The next morning, the ducklings looked at Ollie with big round eyes.",
+      "candidate_coverage_shots": [
+        "s02_ducklings_stare"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L002",
+      "scene": 2,
+      "speaker": "DUCKLINGS",
+      "performance_direction": "three small ducklings speaking together, curious and a little rude, not mean",
+      "text": "Why are you so grey? Why are your feet so big? You don't look like us at all!",
+      "candidate_coverage_shots": [
+        "s02_ducklings_stare"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L003",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Ollie looked at his grey feathers, and he looked at their bright yellow ones, and he felt a little lump in his throat.",
+      "candidate_coverage_shots": [
+        "s02_ollie_sad"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L004",
+      "scene": 2,
+      "speaker": "OLLIE",
+      "performance_direction": "a small, soft voice, hurt and unsure",
+      "text": "Maybe there's something wrong with me.",
+      "candidate_coverage_shots": [
+        "s02_ollie_sad"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L005",
+      "scene": 2,
+      "speaker": "MAMA",
+      "performance_direction": "gentle, firm, loving",
+      "text": "There is nothing wrong with you, Ollie. Every one of my ducklings is special in their own way.",
+      "candidate_coverage_shots": [
+        "s02_mama_comforts"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S02-L006",
+      "scene": 2,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Mama Duck tucked him under her wing, and for a little while Ollie felt warm and safe.",
+      "candidate_coverage_shots": [
+        "s02_mama_comforts"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L001",
+      "scene": 3,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "That afternoon, Mama Duck led her ducklings down to the pond for their very first swim.",
+      "candidate_coverage_shots": [
+        "s03_to_the_water"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L002",
+      "scene": 3,
+      "speaker": "MAMA",
+      "performance_direction": "cheerful, encouraging teacher",
+      "text": "Paddle, paddle, little ones! Kick your feet, just like me!",
+      "candidate_coverage_shots": [
+        "s03_to_the_water"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L003",
+      "scene": 3,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "The yellow ducklings wobbled and splashed. But Ollie glided across the water as smoothly as a leaf on the breeze.",
+      "candidate_coverage_shots": [
+        "s03_ollie_glides"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L004",
+      "scene": 3,
+      "speaker": "MAMA",
+      "performance_direction": "proud, delighted",
+      "text": "Look at Ollie! What a wonderful swimmer!",
+      "candidate_coverage_shots": [
+        "s03_ollie_glides"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L005",
+      "scene": 3,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "But when Ollie tried to quack, out came a funny honk instead. Honk!",
+      "candidate_coverage_shots": [
+        "s03_honk"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L006",
+      "scene": 3,
+      "speaker": "DUCKLINGS",
+      "performance_direction": "giggling together, teasing",
+      "text": "Honk? Ducks don't honk! You're a funny-looking, funny-sounding duck!",
+      "candidate_coverage_shots": [
+        "s03_honk"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S03-L007",
+      "scene": 3,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, tender",
+      "text": "Ollie paddled away into the reeds, all by himself. Two big tears dripped off the end of his beak.",
+      "candidate_coverage_shots": [
+        "s03_ollie_alone"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L001",
+      "scene": 4,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "That evening, as the sun went down, Ollie made a big decision.",
+      "candidate_coverage_shots": [
+        "s04_decision"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L002",
+      "scene": 4,
+      "speaker": "OLLIE",
+      "performance_direction": "quiet, brave but sad",
+      "text": "I don't fit in here. I'll go and find a place where I belong.",
+      "candidate_coverage_shots": [
+        "s04_decision"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L003",
+      "scene": 4,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "So while everyone was sleeping, Ollie waddled away along the reedy path, out into the big wide world.",
+      "candidate_coverage_shots": [
+        "s04_leaves"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S04-L004",
+      "scene": 4,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "He looked back just once, at the little pond glowing in the evening light. Then he kept on walking.",
+      "candidate_coverage_shots": [
+        "s04_leaves"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L001",
+      "scene": 5,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Ollie walked for days and days, until he came to a great big lake. The leaves on the trees turned red and gold, and they floated down onto the water.",
+      "candidate_coverage_shots": [
+        "s05_lake"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L002",
+      "scene": 5,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Ollie asked the frogs if he could live with them, but frogs live in the mud. He asked the hens on a farm, but hens don't swim.",
+      "candidate_coverage_shots": [
+        "s05_ollie_lake"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L003",
+      "scene": 5,
+      "speaker": "OLLIE",
+      "performance_direction": "lonely, wondering",
+      "text": "Isn't there anyone like me, anywhere?",
+      "candidate_coverage_shots": [
+        "s05_ollie_lake"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L004",
+      "scene": 5,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, full of wonder",
+      "text": "Then, high above him, came a sound like gentle music. A family of beautiful white swans was flying south, their long necks stretched out and their wings shining in the sun.",
+      "candidate_coverage_shots": [
+        "s05_swans_fly"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S05-L005",
+      "scene": 5,
+      "speaker": "OLLIE",
+      "performance_direction": "amazed, longing, whispering",
+      "text": "Oh... they're the most beautiful birds I've ever seen. I wish I could be like them.",
+      "candidate_coverage_shots": [
+        "s05_ollie_watches"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L001",
+      "scene": 6,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Then winter came. Snow covered the ground, and the river turned to ice.",
+      "candidate_coverage_shots": [
+        "s06_winter"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L002",
+      "scene": 6,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, tender",
+      "text": "Ollie was cold and hungry, and very, very lonely. He curled up in the snow by the frozen river and shivered.",
+      "candidate_coverage_shots": [
+        "s06_ollie_cold"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L003",
+      "scene": 6,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Just then, a little round face popped out of a hole in the riverbank. It was Ottie the Otter.",
+      "candidate_coverage_shots": [
+        "s06_ottie_finds"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L004",
+      "scene": 6,
+      "speaker": "OTTIE",
+      "performance_direction": "kind, bubbly, warm-hearted",
+      "text": "Oh, you poor thing! You're shivering! Come inside, quickly. My burrow is warm and cosy.",
+      "candidate_coverage_shots": [
+        "s06_ottie_closeup"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L005",
+      "scene": 6,
+      "speaker": "OLLIE",
+      "performance_direction": "shy, surprised",
+      "text": "You want me to come in? Even though I'm grey, and gangly, and I honk?",
+      "candidate_coverage_shots": [
+        "s06_ollie_shy"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S06-L006",
+      "scene": 6,
+      "speaker": "OTTIE",
+      "performance_direction": "laughing kindly",
+      "text": "Of course! You don't have to look like anyone else to be my friend. Come on!",
+      "candidate_coverage_shots": [
+        "s06_ottie_closeup"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L001",
+      "scene": 7,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "All winter long, Ollie stayed with Ottie. They shared fish soup, told stories, and slid on the ice together.",
+      "candidate_coverage_shots": [
+        "s07_sliding"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L002",
+      "scene": 7,
+      "speaker": "OTTIE",
+      "performance_direction": "playful, laughing",
+      "text": "Wheee! Your big feet are perfect for sliding, Ollie!",
+      "candidate_coverage_shots": [
+        "s07_sliding"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L003",
+      "scene": 7,
+      "speaker": "OLLIE",
+      "performance_direction": "laughing, happy for the first time",
+      "text": "Honk! Honk! This is the most fun I've ever had!",
+      "candidate_coverage_shots": [
+        "s07_sliding"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S07-L004",
+      "scene": 7,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "And slowly, without even noticing, Ollie grew. His neck grew longer, his wings grew stronger, and his grey feathers began to change.",
+      "candidate_coverage_shots": [
+        "s07_ollie_grows"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L001",
+      "scene": 8,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "At last, spring arrived. The ice melted, the flowers bloomed, and the birds sang again.",
+      "candidate_coverage_shots": [
+        "s08_spring"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L002",
+      "scene": 8,
+      "speaker": "OLLIE",
+      "performance_direction": "grateful, warm",
+      "text": "Thank you, Ottie. You were my friend when I had nobody. I'll never forget it.",
+      "candidate_coverage_shots": [
+        "s08_goodbye"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L003",
+      "scene": 8,
+      "speaker": "OTTIE",
+      "performance_direction": "warm, encouraging",
+      "text": "Go and find your place, Ollie. And come back to visit!",
+      "candidate_coverage_shots": [
+        "s08_goodbye"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S08-L004",
+      "scene": 8,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Ollie stretched his wings, and to his surprise they lifted him up into the sky. He was flying!",
+      "candidate_coverage_shots": [
+        "s08_flies"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L001",
+      "scene": 9,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Ollie flew until he came back to the great lake, sparkling in the spring sunshine. And there, gliding on the water, were the beautiful white swans.",
+      "candidate_coverage_shots": [
+        "s09_swans_lake"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L002",
+      "scene": 9,
+      "speaker": "OLLIE",
+      "performance_direction": "nervous, small voice",
+      "text": "They'll probably laugh at me, like everyone else. But I want to say hello, just once.",
+      "candidate_coverage_shots": [
+        "s09_ollie_nervous"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S09-L003",
+      "scene": 9,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "So Ollie landed softly on the water and bowed his head, waiting for them to laugh.",
+      "candidate_coverage_shots": [
+        "s09_ollie_bows"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L001",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, full of wonder",
+      "text": "But as he bowed his head, he saw his reflection in the clear, still water.",
+      "candidate_coverage_shots": [
+        "s10_reflection"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L002",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "He wasn't a grey, gangly duckling any more. Looking back at him was a beautiful white swan, with a long graceful neck and shining feathers.",
+      "candidate_coverage_shots": [
+        "s10_reflection"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L003",
+      "scene": 10,
+      "speaker": "OLLIE",
+      "performance_direction": "astonished, whispering",
+      "text": "Is that... is that me?",
+      "candidate_coverage_shots": [
+        "s10_ollie_amazed"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L004",
+      "scene": 10,
+      "speaker": "SWAN",
+      "performance_direction": "graceful, kind, welcoming",
+      "text": "Welcome, young swan! We have been waiting for you. Will you swim with us?",
+      "candidate_coverage_shots": [
+        "s10_swan_welcomes"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L005",
+      "scene": 10,
+      "speaker": "OLLIE",
+      "performance_direction": "joyful, emotional",
+      "text": "Yes! Oh yes, I'd love to!",
+      "candidate_coverage_shots": [
+        "s10_swim_together"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S10-L006",
+      "scene": 10,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "For the first time, Ollie knew exactly where he belonged.",
+      "candidate_coverage_shots": [
+        "s10_swim_together"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L001",
+      "scene": 11,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "But Ollie had not forgotten the little pond, or Mama Duck. One sunny morning, he flew home to visit.",
+      "candidate_coverage_shots": [
+        "s11_arrives_home"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L002",
+      "scene": 11,
+      "speaker": "DUCKLINGS",
+      "performance_direction": "amazed, together",
+      "text": "Wow! Look at that beautiful swan!",
+      "candidate_coverage_shots": [
+        "s11_ducklings_amazed"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L003",
+      "scene": 11,
+      "speaker": "MAMA",
+      "performance_direction": "recognising him, overjoyed",
+      "text": "Ollie? Is that you? My Ollie!",
+      "candidate_coverage_shots": [
+        "s11_mama_closeup"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L004",
+      "scene": 11,
+      "speaker": "OLLIE",
+      "performance_direction": "warm, happy",
+      "text": "Hello, Mama. I'm a swan! I was a swan all along.",
+      "candidate_coverage_shots": [
+        "s11_ollie_closeup"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L005",
+      "scene": 11,
+      "speaker": "DUCKLINGS",
+      "performance_direction": "sorry, sincere, together",
+      "text": "We're sorry we teased you, Ollie. We didn't understand that you were just different.",
+      "candidate_coverage_shots": [
+        "s11_ducklings_sorry"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L006",
+      "scene": 11,
+      "speaker": "OLLIE",
+      "performance_direction": "kind, forgiving",
+      "text": "That's all right. Being different isn't wrong. It just means growing in your own way.",
+      "candidate_coverage_shots": [
+        "s11_ollie_closeup"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S11-L007",
+      "scene": 11,
+      "speaker": "MAMA",
+      "performance_direction": "proud, tender",
+      "text": "I always knew you were special, Ollie. Not because you are a swan, but because you are you.",
+      "candidate_coverage_shots": [
+        "s11_mama_closeup"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L001",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "From then on, Ollie spent his days gliding on the great lake with the swans, and visiting the little pond with Mama Duck and the ducklings.",
+      "candidate_coverage_shots": [
+        "s12_family"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L002",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "And Ottie the Otter came to visit too, and they all splashed and played together in the sunshine.",
+      "candidate_coverage_shots": [
+        "s12_family"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L003",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
+      "text": "Because everyone grows in their own way, and in their own time.",
+      "candidate_coverage_shots": [
+        "s12_end"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L004",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, the moral, slow and clear",
+      "text": "And a little kindness can help anyone find the place where they belong.",
+      "candidate_coverage_shots": [
+        "s12_end"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    },
+    {
+      "id": "S12-L005",
+      "scene": 12,
+      "speaker": "NARRATOR",
+      "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling, closing",
+      "text": "The end.",
+      "candidate_coverage_shots": [
+        "s12_end"
+      ],
+      "chosen_shot_intervals": [],
+      "audio_path": null,
+      "measured_duration_seconds": null,
+      "status": "script_awaiting_owner_review"
+    }
+  ]
+}
