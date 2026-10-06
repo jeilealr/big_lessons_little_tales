@@ -71,7 +71,7 @@ Create one 1920x1080 16:9 still image: the end frame of shot s04_toby_steps, a w
 
 - Start `s04_hattie_zooms_start` → end `s04_hattie_zooms_end` · cast: hattie
 
-### s04_hattie_zooms_closed_r01 (closed)
+### s04_hattie_zooms_closed_r01 (closed) · start `s04_hattie_zooms_start` → end `s04_hattie_zooms_end`
 
 Hattie races along the lane from left to right in big upright bounds. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Hattie is one tall slim caramel-tan felt hare standing upright, very long ears with pink insides and chocolate-brown tips, cream belly, two amber-brown eyes, a rose-brown nose and one small round white tail. The background is the forest path in late-morning light, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -79,6 +79,6 @@ Hattie races along the lane from left to right in big upright bounds. Mouths sta
 
 - Start `s04_toby_steps_start` → end `s04_toby_steps_end` · cast: toby, olive, pip, bramble
 
-### s04_toby_steps_closed_r01 (closed)
+### s04_toby_steps_closed_r01 (closed) · start `s04_toby_steps_start` → end `s04_toby_steps_end`
 
 Toby takes one slow, careful step toward the forest path; Pip jumps and cheers. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Toby is one small rounded olive-green felt tortoise with a domed shell of honey-tan hexagonal plates, sage-green head and legs, cream chin, two brown eyes, four short legs and a short pointed tail. Olive is one small round tawny-brown felt owl with cream speckles, a buff-cream face disc, two big golden-amber eyes, a small brown beak and two folded wings. Pip is one small rust-orange felt squirrel with a cream belly, a big bushy curled tail, small rounded ears and two dark-brown eyes. Bramble is one small round felt hedgehog with soft chestnut-brown cream-tipped spines, a biscuit-beige face and tummy, a black nose and two small brown eyes. The background is the sunny meadow in morning light, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.

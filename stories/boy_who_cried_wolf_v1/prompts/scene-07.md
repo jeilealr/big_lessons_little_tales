@@ -112,7 +112,7 @@ Create one 1920x1080 16:9 still image: the end frame of shot s07_wolf_runs, a wi
 
 - Start `s07_sheep_scatter_start` → end `s07_sheep_scatter_end` · cast: finn, wolf, sheep, daisy
 
-### s07_sheep_scatter_closed_r01 (closed)
+### s07_sheep_scatter_closed_r01 (closed) · start `s07_sheep_scatter_start` → end `s07_sheep_scatter_end`
 
 The Wolf leaps and the sheep scatter into the woods while Finn jumps down from the rock. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Finn is one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots. the Wolf is one long lanky smoke-grey felt wolf with a pale-grey muzzle and chest, tall pointed ears, two golden-yellow eyes, a big black nose and a big bushy tail, more silly than scary. the Sheep is a round fluffy cream-white felt sheep with a biscuit-beige face and legs, small ears with rosy-pink insides and two dark-brown eyes. Daisy is one small fluffy cream-white felt lamb with a charcoal-black face and legs, a white heart-shaped patch on her forehead, rosy-pink ear insides and two amber-brown eyes. The background is the hilltop pasture at sunset, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -120,7 +120,7 @@ The Wolf leaps and the sheep scatter into the woods while Finn jumps down from t
 
 - Start `s07_finn_rings_bell_start` → end `s07_finn_rings_bell_end` · cast: finn, wolf
 
-### s07_finn_rings_bell_closed_r01 (closed)
+### s07_finn_rings_bell_closed_r01 (closed) · start `s07_finn_rings_bell_start` → end `s07_finn_rings_bell_end`
 
 Finn rings the bell with all his might and the Wolf jumps in surprise. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Finn is one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots. the Wolf is one long lanky smoke-grey felt wolf with a pale-grey muzzle and chest, tall pointed ears, two golden-yellow eyes, a big black nose and a big bushy tail, more silly than scary. The background is the hilltop pasture at sunset, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -128,6 +128,6 @@ Finn rings the bell with all his might and the Wolf jumps in surprise. Mouths st
 
 - Start `s07_wolf_runs_start` → end `s07_wolf_runs_end` · cast: finn, wolf
 
-### s07_wolf_runs_closed_r01 (closed)
+### s07_wolf_runs_closed_r01 (closed) · start `s07_wolf_runs_start` → end `s07_wolf_runs_end`
 
 The Wolf runs off into the woods with his tail tucked between his legs. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Finn is one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots. the Wolf is one long lanky smoke-grey felt wolf with a pale-grey muzzle and chest, tall pointed ears, two golden-yellow eyes, a big black nose and a big bushy tail, more silly than scary. The background is the hilltop pasture at sunset, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.

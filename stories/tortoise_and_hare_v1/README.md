@@ -6,7 +6,7 @@ Moral: *Keep going, step by step, and you can reach places you never thought you
 
 ## Status (2026-10-04)
 
-- **Documentation done; nothing generated.** Script (84 lines, about 9.3 minutes of narration), 42 shots, 42 foundation and expression image records and 84 scene frames, every prompt rendered from `visual_bible.json`; `python3 production/image_prompts.py --story tortoise_and_hare_v1 lint` reports 0 errors.
+- **Documentation done; nothing generated.** Script (84 lines, about 9.3 minutes of narration), 42 shots, 42 foundation and expression image records and 99 scene frames, every prompt rendered from `visual_bible.json`; `python3 production/image_prompts.py --story tortoise_and_hare_v1 lint` reports 0 errors.
 - **Gate before images (CR-01):** the owner reviews the script and the shot order.
 - Character descriptions are design specifications until each canonical image is approved; then they are rewritten from the image (colours sampled from it) and the prompts rebuilt.
 

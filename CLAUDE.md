@@ -26,7 +26,7 @@ repo out elsewhere (e.g. `/home/user/big_lessons_little_tales`) without
 stills made and under owner review, no clips yet** (`stories/lion_and_mouse_v4/`).
 V3 render review is the evidence for this revision; v2/v3 production data is historical.
 
-## Current state (2026-10-02)
+## Current state (2026-10-05)
 
 - **Owner's current instruction (latest, 2026-10-02):** the owner creates the
   v4 images personally. Agents generate no images, clips, audio or GPU jobs
@@ -122,14 +122,29 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   folder).
 - **Next stories (owner, 2026-10-04), narration 7-10 min each, narrator reused
   for now:** *The Tortoise and the Hare* (`stories/tortoise_and_hare_v1/`: 84 lines,
-  about 9 min, 42 shots, 126 image records) and *The Boy Who Cried Wolf*
-  (`stories/boy_who_cried_wolf_v1/`: 78 lines, about 8.5 min, 46 shots, 154 image
+  about 9 min, 42 shots, 141 image records) and *The Boy Who Cried Wolf*
+  (`stories/boy_who_cried_wolf_v1/`: 78 lines, about 8.5 min, 46 shots, 171 image
   records, gentle ending); *The Ugly Duckling* (`stories/ugly_duckling_v1/`: 65 lines,
-  about 7.7 min, 43 shots, 140 image records; two Ollie canonicals, cygnet and swan).
-  Documentation packets ready, lint 0 each; all wait for owner review of script and
-  shot order (CR-01) before images. Start from each story's README.
-- **Next:** the owner reviews and replaces images (prompts in `prompts/*.md`); when
-  the owner asks, derive the runtime story and render a small clip pilot
+  about 7.7 min, 43 shots, 153 image records; two Ollie canonicals, cygnet and swan).
+  Documentation packets ready, lint 0 each.
+- **Open-mouth key frames for talking clips (owner, 2026-10-05; CR-19):** because Wan only
+  interpolates between a clip's two key frames, every dialogue close-up with a `mouth` variant in
+  these three stories now has a `<shot>_open` record — an edit of the closed start frame that opens
+  only the mouth to the character's one approved `*_OPEN` speech shape — and the `mouth` variant
+  ends on it (per-variant `start_image`/`end_image`). So the open mouth stays identical across
+  renders instead of being invented each time. Added 13 (Ugly Duckling), 15 (Tortoise and Hare) and
+  17 (Boy Who Cried Wolf); `production/story_packet.py` emits them for future stories. Lion and
+  Mouse v4/v5 are deliberately excluded (clips nearly final). The Ugly Duckling script and shot
+  order were approved by the owner on 2026-10-05; the owner asked the agent to
+  create the canonical images using built-in OpenAI `image_gen` (Gemini optional).
+  `SWANS_CANON`, `OLLIE_SWAN_CANON`, `OTTIE_CANON`, `MAMA_CANON`, `OLLIE_CANON`
+  and `DUCKLINGS_CANON` are owner-approved. Their identities were rewritten in
+  the bible and prompts rebuilt. `LINEUP` is owner-approved and measured; the cast scale and all setup sizes
+  were updated. `O_SWIM` and `O_WALK_R` were created at the owner’s direction and await review. At the owner’s latest direction, all 23 remaining foundation records from `stories/ugly_duckling_v1/prompts/foundation.md` (six pose studies, ten mouth studies, seven plates) were generated at their manifest targets and await owner review. After the owner flagged pond-scene drift, pond morning/day were revised as direct lighting edits from the sunset master; the owner renamed the corrected files to r01 and scene references now target those files. The original morning plate had no image reference and later times were separately regenerated from it. CR-06 and the image-prompt skill now require each first approved location plate to serve as the explicit master for all variants. Contact sheets are at `stories/ugly_duckling_v1/review/foundation_characters_contact_sheet.png`, `.../foundation_plates_contact_sheet.png` and `.../expressions_contact_sheet.png`; all 22 expression records were generated at manifest targets from their ordered closed-mouth portrait and canonical references and are pending owner review. Prompt rebuild and lint pass (0 errors, 0 warnings). The Gemini API is an
+  optional image provider, not the default; `character/gemini_image.py` now
+  accepts `--story <slug>` when the owner selects Gemini. Tortoise and Hare and
+  Boy Who Cried Wolf still await CR-01 review. Start from each story's README.
+- **Next:** owner reviews all generated Ugly Duckling foundation and expression images and their three contact sheets. When approved, continue with the next production step in story order. When asked, derive the runtime story and render a small clip pilot
   (`docs/v4-preflight.md` gates C-E).
 
 ## The owner's standing instructions
@@ -195,7 +210,7 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
 | V4 identity, camera setups, size anchors; every image/video record with each image's accepted result | `stories/lion_and_mouse_v4/visual_bible.json`, `prompt_manifest.json` |
 | V4 image history: accepted and rejected takes, hashes, tools, fix texts, Gemini calls | `stories/lion_and_mouse_v4/GENERATION_PROGRESS.md` (dated log), `revisions/*.json`, `revisions/gemini_ledger.csv` |
 | Prompt provenance and review gates | `docs/prompt-records.md`, `docs/v4-preflight.md` |
-| **Making v4 stills with the Gemini API**: workflow, model choice, cost, lessons | **`docs/gemini-images.md`**, `character/gemini_image.py` |
+| **Image generation**: default ImageGen rules in the repo skill; optional Gemini workflow and history | **`.claude/skills/consistent-image-prompts/SKILL.md`**, `docs/gemini-images.md`, `character/gemini_image.py` |
 | V4 narration timing: which shot covers which line | `stories/lion_and_mouse_v4/TIMING_SHEET.md`, `timing_plan.json` (audio on LUMI under `work/`) |
 | Writing any shot prompt, with evidence | `docs/prompting.md`: every measured rule, a checklist, results log |
 | Every problem found and its fix; gaps and risks | **`docs/findings-and-risks.md`** |
@@ -219,7 +234,7 @@ stories/<slug>/     story.yaml (bible, voices, scenes, shots), story.txt, narrat
                     prompts/, revisions/ (no story.yaml yet)
 production/         install_pack, design, keyframe, compose_keyframes, shot, animatic, image_prompts,
                     timing_sheet, edit_image (Qwen, untested)
-character/          character.py (pose clips), gemini_image.py (v4 stills, Gemini API);
+character/          character.py (pose clips), gemini_image.py (optional Gemini stills);
                     one folder per story (since 2026-10-04): characters/<story>/<Name>/ and
                     characters/<story>/interactions/ (scene frames), locations/<story>/<place>/
 voice/              Gemini TTS tools; cast/<role>/ and narrators/<name>/ (voice.yaml + samples)

@@ -1,15 +1,16 @@
-# Gemini image generation for v4 (replacing GPT)
+# Gemini image generation (optional backend)
 
-Since 2026-10-02, v4 stills are made with the Gemini API instead of GPT's
-built-in image tool (owner decision: keep creating in Gemini and spend as
-little as the quality allows). One script does everything:
-`character/gemini_image.py`. It reads the same prompt records GPT used
-(`stories/lion_and_mouse_v4/prompt_manifest.json`), so the documentation
-chain is unchanged: record → candidates → visual review → accepted target +
-manifest result.
+This page documents the optional Gemini API path. For agent-created images,
+the current default is the built-in OpenAI `image_gen` tool; see
+`.claude/skills/consistent-image-prompts/SKILL.md`. Use Gemini only when the
+owner chooses that provider and API access is configured. The script
+`character/gemini_image.py` selects a story packet with `--story <slug>` and
+reads that story's `prompt_manifest.json` and `visual_bible.json`. The default
+story remains `lion_and_mouse_v4` for backward compatibility.
 
-**Status (2026-10-02, latest):** the owner now creates the v4 images
-personally; agents run this workflow only when the owner asks. It produced
+**History:** the owner created most Lion and Mouse v4 images with this
+workflow; agents should run it only when the owner asks specifically for
+Gemini. It produced
 r02 to r05 and the 22 expression studies. After r05 a few in-place repairs
 were made again with GPT's built-in image tool (S07 Milo muzzle, S08 close-ups,
 S06/S08 kindness Leo scale); see
@@ -19,7 +20,8 @@ S06/S08 kindness Leo scale); see
 
 - Python 3 with Pillow (`pip install pillow`); the API calls use the standard library only.
 - Key: `GEMINI_API_KEY` in the environment (never print or commit it). In
-  the Claude Code cloud container, leave it unset: the egress proxy injects it.
+  the Claude Code cloud container, leave it unset only when its egress proxy
+  injects it; elsewhere, configure the key in the process environment.
 - Check access: `python3 character/gemini_image.py models` lists the image
   models the key can use.
 - Billing: the Gemini project has a **monthly spending cap** (AI Studio →
@@ -31,12 +33,16 @@ S06/S08 kindness Leo scale); see
 ```bash
 python3 production/image_prompts.py build && python3 production/image_prompts.py lint   # 0 errors first
 G="python3 character/gemini_image.py"
+STORY=lion_and_mouse_v4
 R=rNN                                                              # revision tag: names the candidates and the accepted file
-$G gen --record s14_gnaw_fray_start --revision $R --dry-run        # print references, model and the text to be sent
-$G gen --record s14_gnaw_fray_start --revision $R --takes 3        # candidates
-$G sheet --record s14_gnaw_fray_start --revision $R                # identity roots + current target + candidates -> work/review/gemini_sheet.jpg
-$G ledger                                                          # images and estimated cost per model
-$G accept s14_gnaw_fray_start_${R}_nb2_t02 --note "what you checked at full size"
+$G gen --story $STORY --record s14_gnaw_fray_start --revision $R --dry-run  # print references, model and the text to be sent
+$G gen --story $STORY --record s14_gnaw_fray_start --revision $R --takes 3  # candidates
+$G sheet --story $STORY --record s14_gnaw_fray_start --revision $R         # identity roots + current target + candidates
+$G ledger --story $STORY                                             # images and estimated cost per model
+$G accept --story $STORY s14_gnaw_fray_start_${R}_nb2_t02 --note "what you checked at full size"
+
+# New project example:
+$G gen --story ugly_duckling_v1 --record SWANS_CANON --revision r01
 ```
 
 `--revision` is required: the candidate names and the accepted file name come from it.

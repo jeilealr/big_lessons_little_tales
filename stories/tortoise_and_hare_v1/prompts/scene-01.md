@@ -91,7 +91,7 @@ Create one 1920x1080 16:9 still image: the end frame of shot s01_toby_rests, a w
 
 - Start `s01_meadow_start` → end `s01_meadow_end` · cast: none
 
-### s01_meadow_closed_r01 (closed)
+### s01_meadow_closed_r01 (closed) · start `s01_meadow_start` → end `s01_meadow_end`
 
 A gentle breeze moves the grass and daisies; nothing else moves. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. The background is the sunny meadow in morning light, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -99,7 +99,7 @@ A gentle breeze moves the grass and daisies; nothing else moves. Mouths stay clo
 
 - Start `s01_hattie_bounces_start` → end `s01_hattie_bounces_end` · cast: hattie
 
-### s01_hattie_bounces_closed_r01 (closed)
+### s01_hattie_bounces_closed_r01 (closed) · start `s01_hattie_bounces_start` → end `s01_hattie_bounces_end`
 
 Hattie bounds from the left to the centre of the meadow in one big upright hop and lands proudly. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Hattie is one tall slim caramel-tan felt hare standing upright, very long ears with pink insides and chocolate-brown tips, cream belly, two amber-brown eyes, a rose-brown nose and one small round white tail. The background is the sunny meadow in morning light, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -107,6 +107,6 @@ Hattie bounds from the left to the centre of the meadow in one big upright hop a
 
 - Start `s01_toby_rests_start` → end `s01_toby_rests_end` · cast: toby
 
-### s01_toby_rests_closed_r01 (closed)
+### s01_toby_rests_closed_r01 (closed) · start `s01_toby_rests_start` → end `s01_toby_rests_end`
 
 Toby slowly lifts his head and opens his eyes, enjoying the sunshine. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Toby is one small rounded olive-green felt tortoise with a domed shell of honey-tan hexagonal plates, sage-green head and legs, cream chin, two brown eyes, four short legs and a short pointed tail. The background is the sunny meadow in morning light, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.

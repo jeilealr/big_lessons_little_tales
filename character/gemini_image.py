@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Generate, review and accept v4 manifest images with the Gemini API.
+"""Generate, review and accept story manifest images with the Gemini API.
 
 Workflow (docs/gemini-images.md):
 
     # 0. the prompt is the record's rendered template: edit the bible or the template, then
     #    python3 production/image_prompts.py build && python3 production/image_prompts.py lint
     # 1. candidates for one or more records (Lite for studio refs, Nano Banana 2 for scenes; 1K)
-    python3 character/gemini_image.py gen --record s02_place_acorn_end --revision r06 --takes 2
+    python3 character/gemini_image.py gen --story ugly_duckling_v1 --record SWANS_CANON --revision r01
     # 2. look at them next to the current target
     python3 character/gemini_image.py sheet --record s02_place_acorn_end --revision r06
     # 3. promote the chosen take: copies it to <stem>_r06.png and updates the manifest
@@ -54,9 +54,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "production"))
 import image_prompts  # noqa: E402
 
 REPO = paths.REPO
-MANIFEST = paths.STORIES / "lion_and_mouse_v4/prompt_manifest.json"
-BIBLE = paths.STORIES / "lion_and_mouse_v4/visual_bible.json"
-REVISIONS = paths.STORIES / "lion_and_mouse_v4/revisions"
+STORY_SLUG = "lion_and_mouse_v4"
+MANIFEST = paths.STORIES / STORY_SLUG / "prompt_manifest.json"
+BIBLE = paths.STORIES / STORY_SLUG / "visual_bible.json"
+REVISIONS = paths.STORIES / STORY_SLUG / "revisions"
 # One row per generated take (ok or failed), so cost per model can be reported from data.
 LEDGER = REVISIONS / "gemini_ledger.csv"
 LEDGER_COLS = ["date", "record", "revision", "candidate", "model", "size", "outcome", "retries", "est_usd"]
@@ -80,6 +81,21 @@ PRICE = {
 }
 TAG = {"gemini-3.1-flash-lite-image": "nb2lite", "gemini-3.1-flash-image": "nb2",
        "gemini-3-pro-image": "nbpro", "gemini-3-pro-image-preview": "nbpro"}
+
+
+def configure_story(slug):
+    """Select the story packet for every manifest and ledger operation."""
+    global STORY_SLUG, MANIFEST, BIBLE, REVISIONS, LEDGER
+    story_dir = paths.STORIES / slug
+    manifest = story_dir / "prompt_manifest.json"
+    bible = story_dir / "visual_bible.json"
+    if not manifest.is_file() or not bible.is_file():
+        sys.exit(f"story {slug!r} needs prompt_manifest.json and visual_bible.json under {story_dir}")
+    STORY_SLUG = slug
+    MANIFEST = manifest
+    BIBLE = bible
+    REVISIONS = story_dir / "revisions"
+    LEDGER = REVISIONS / "gemini_ledger.csv"
 
 
 # ---------------------------------------------------------------- API
@@ -239,7 +255,7 @@ def cmd_gen(args):
         for take in range(start + 1, start + args.takes + 1):
             stem = f"{prefix}{take:02d}"
             record = {
-                "id": rid, "candidate": stem, "revision": args.revision,
+                "id": rid, "story": STORY_SLUG, "candidate": stem, "revision": args.revision,
                 "status": "candidate_for_review",
                 "canvas": rec["canvas"], "ordered_references": refs,
                 "tool": "Gemini API generateContent (character/gemini_image.py)",
@@ -328,7 +344,7 @@ def cmd_sheet(args):
             else:
                 label += " (missing)"
             d.text((x + 3, y + h + 3), label, fill="black", font=font)
-    out = Path(args.out)
+    out = Path(args.out) if args.out else paths.WORK / "stories" / STORY_SLUG / "review/gemini_sheet.jpg"
     out.parent.mkdir(parents=True, exist_ok=True)
     sheet.save(out, quality=85)
     print(out)
@@ -336,7 +352,8 @@ def cmd_sheet(args):
 
 def cmd_accept(args):
     """Copy a reviewed candidate to the record's new target and record it in the manifest."""
-    hits = list(REPO.glob(f"character/**/gemini/{args.candidate}.json"))
+    hits = list((REPO / "character" / "characters" / STORY_SLUG).glob(
+        f"**/gemini/{args.candidate}.json"))
     if len(hits) != 1:
         sys.exit(f"candidate {args.candidate}: {len(hits)} matches")
     cand = json.loads(hits[0].read_text())
@@ -419,14 +436,19 @@ def main():
     s = sub.add_parser("sheet", help="contact sheet: current target + candidates")
     s.add_argument("--record", nargs="+", required=True)
     s.add_argument("--revision", required=True)
-    s.add_argument("--out", default=str(paths.WORK / "review/gemini_sheet.jpg"))
+    s.add_argument("--out", help="contact sheet path (default: work/stories/<story>/review/gemini_sheet.jpg)")
     a = sub.add_parser("accept", help="promote a candidate to the record target")
     a.add_argument("candidate", help="candidate stem, e.g. s02_place_acorn_end_r02_nb2lite_t01")
     a.add_argument("--note", required=True, help="what was checked at full size")
     a.add_argument("--reviewer", default="agent visual review")
-    sub.add_parser("models", help="list image models visible to the key")
-    sub.add_parser("ledger", help="cost table per model from revisions/gemini_ledger.csv")
+    mdls = sub.add_parser("models", help="list image models visible to the key")
+    led = sub.add_parser("ledger", help="cost table per model from the selected story's ledger")
+    for parser in (g, s, a, led):
+        parser.add_argument("--story", default="lion_and_mouse_v4",
+                            help="story slug (default: lion_and_mouse_v4)")
     args = ap.parse_args()
+    if args.cmd != "models":
+        configure_story(args.story)
     if args.cmd == "gen" and (args.takes < 1 or args.retries < 0):
         ap.error("--takes must be at least 1 and --retries at least 0")
     {"gen": cmd_gen, "sheet": cmd_sheet, "accept": cmd_accept, "models": cmd_models, "ledger": cmd_ledger}[args.cmd](args)
