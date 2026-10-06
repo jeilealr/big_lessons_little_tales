@@ -5,7 +5,7 @@ a background and a size relation are described with the same words everywhere. T
 the reference for the data and the tool; the step-by-step workflow (new story, writing,
 generating, review gate) is the repo skill
 [`.claude/skills/consistent-image-prompts/SKILL.md`](../.claude/skills/consistent-image-prompts/SKILL.md),
-and the rules with their evidence are in [`creation-rules.md`](creation-rules.md) CR-11 to CR-18.
+and the rules with their evidence are in [`creation-rules.md`](creation-rules.md) CR-11 to CR-19.
 
 ## Why
 
@@ -49,7 +49,7 @@ what a tool receives. Video variants store `positive_prompt_template` and
 |---|---|
 | `{{identity:<char>}}` | the full canonical description |
 | `{{short:<char>}}` | the one-sentence description (video) |
-| `{{mouth:<char>}}` | the approved open-mouth design (mouth studies) |
+| `{{mouth:<char>}}` | the approved open-mouth design (open-mouth studies and `<shot>_open` key frames) |
 | `{{setup:<id>}}` | camera, background (plate description, landmarks and light; close-ups get the blur treatment and no landmark list) and the measured sizes of the characters in this frame |
 | `{{plate:<loc>}}` | the location alone (plates, video backgrounds) |
 | `{{block:<name>}}` | a shared block |
@@ -72,6 +72,19 @@ Reference roles: `edit_base`, `identity_root`, `locked_plate`, `world_state`,
 `camera_geometry`, `framing`, `expression`, `pose`, `prop`, `mouth_design`, `staging_only`,
 `size_anchor`.
 
+## Open-mouth key frames for talking clips (CR-19)
+
+A `mouth` (talking) video variant animates between two key frames only, so the open mouth must
+be one of them or the model invents a different open shape each render. Every dialogue close-up
+with a `mouth` variant therefore has an extra scene record `<shot>_open`: an edit of the shot's
+closed start frame (`{{block:edit_open_mouth}}`, so the start frame is the `edit_base`) that
+opens only the mouth to the character's approved speech shape. It attaches the closed start
+(`edit_base`), the character's canonical (`identity_root`) and the character's open-mouth study
+`*_OPEN` (`mouth_design`), and repeats `{{mouth:<char>}}`. Each variant carries its own
+`start_image`/`end_image`: `closed` runs start→end; `mouth` runs start→`<shot>_open`.
+`production/export_runtime.py` reads these per-variant endpoints and freezes both key frames per
+variant, so the talking clip always resolves to the one approved open mouth.
+
 ## Lint rules
 
 `python3 production/image_prompts.py lint` exits 1 on any error:
@@ -91,10 +104,12 @@ Reference roles: `edit_base`, `identity_root`, `locked_plate`, `world_state`,
   character's canonical is not attached; a canonical is attached for a character that is not in
   the frame; a referenced record points to an old revision; a file is missing; an older-version
   (`/v3/`) image is attached other than as `staging_only`, `expression` or `camera_geometry`;
-- a template edits the first image (an edit block) but that reference is not `edit_base`;
+- a template edits the first image (an edit block, including `edit_open_mouth`) but that reference
+  is not `edit_base`;
 - a scene record lacks its `frame` text, or its wide or two-shot setup has no measured size for a
   visible character; a setup's `anchor_record` is missing or belongs to another setup;
-- a video prompt uses `{{frame:...}}` of an image other than its shot's start or end;
+- a video prompt uses `{{frame:...}}` of an image other than its own variant's start or end
+  (the `mouth` variant's end is the shot's `<shot>_open` key frame, not `<shot>_end`);
 - doubled punctuation from a block joined to template text.
 
 ## A new story's first packet
@@ -120,10 +135,12 @@ python3 production/image_prompts.py --story <slug> new-story <new_slug>
 setup's size anchor, the locked plate and the previous shot's end frame above, and the candidate
 with a 0.1 grid below, for the side-by-side gate in the skill.
 
-Generation itself happens elsewhere: an image tool you drive yourself (copy the rendered prompt
-from `show` or `prompts/*.md` and attach the listed references in that order), or
-`character/gemini_image.py`, which sends exactly the rendered `positive_prompt` with the
-references in their recorded order, appends nothing, and refuses to run while lint has errors.
+When the owner asks the agent to generate, the built-in OpenAI `image_gen` tool is the default;
+Gemini via `character/gemini_image.py` is optional when the owner selects it and API access is
+configured. In either case, start from the rendered prompt and attach only the record's listed
+references in order. Record the actual tool, exact prompts, references, output path and hash in
+the manifest. For ImageGen, copy the selected output from its generated-images cache to the
+record's exact target; keep a raw source in `.review/` if normalization is needed.
 
 ## Decisions recorded in the bible
 

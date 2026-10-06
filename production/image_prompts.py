@@ -41,7 +41,7 @@ CHARACTER_KINDS = {"scene", "character", "expression"}  # kinds that must descri
 # An older version's image may leak its identity, so it may only supply composition or an expression.
 OLD_VERSION_ROLES = {"staging_only", "expression", "camera_geometry"}
 # Blocks that tell the model to edit the first attached image: that image must be the edit base.
-EDIT_BLOCKS = {"edit_end_frame", "edit_reference", "edit_expression"}
+EDIT_BLOCKS = {"edit_end_frame", "edit_reference", "edit_expression", "edit_open_mouth"}
 
 # Conflict detector: a sentence written outside the canonical blocks that names a colour together
 # with a body feature is a second, competing character description.
@@ -302,7 +302,7 @@ def lint(manifest, bible):
                         E(f"{rid}: setup {sid} has no measured size for visible character {c}")
             plate = bible["locations"][s["location"]].get("plate")
             refs = [r["path"] for r in rec.get("ordered_references", [])]
-            if plate and plate not in refs and not rid.endswith("_end"):
+            if plate and plate not in refs and not rid.endswith(("_end", "_open")):
                 W(f"{rid}: locked plate {plate} is not among the references")
             if rid in shot_of:
                 shot, which = shot_of[rid]
@@ -321,6 +321,8 @@ def lint(manifest, bible):
             E(f"{rid}: {len(refs)} reference images but {n_refs} {{{{refs}}}} placeholders; the prompt must name them")
         canon_of = {c.get("canonical_record"): cid for cid, c in bible["characters"].items()}
         attached = {canon_of[r["id"]] for r in refs if r.get("id") in canon_of}
+        for ref in refs:
+            attached.update(c for c in ref.get("covers_characters", []) if c in bible["characters"])
         if kind in CHARACTER_KINDS:
             for c in vis:
                 if c not in attached and bible["characters"][c].get("canonical_record") != rid:
@@ -367,9 +369,10 @@ def lint(manifest, bible):
                     continue
                 if rendered != v.get(key):
                     E(f"{vid}: {key} differs from its rendered template (run build)")
+                endpoints = (v.get("start_image", shot["start_image"]), v.get("end_image", shot["end_image"]))
                 for k, a in placeholders(tpl):
-                    if k == "frame" and a not in (shot["start_image"], shot["end_image"]):
-                        E(f"{vid}: {{{{frame:{a}}}}} is not this shot's start or end image")
+                    if k == "frame" and a not in endpoints:
+                        E(f"{vid}: {{{{frame:{a}}}}} is not this variant's start or end image")
                 got = [a for k, a in placeholders(tpl) if k == want]
                 for c in cast:
                     if got.count(c) != 1:
@@ -412,7 +415,8 @@ def md_shot(shot):
     lines = [f"## Video {shot['id']}", "",
              f"- Start `{shot['start_image']}` → end `{shot['end_image']}` · cast: {', '.join(shot.get('cast', [])) or 'none'}", ""]
     for v in shot["variants"]:
-        lines += [f"### {v['id']} ({v.get('mode')})", "", v["positive_prompt"], ""]
+        ends = f" · start `{v['start_image']}` → end `{v['end_image']}`" if v.get("start_image") else ""
+        lines += [f"### {v['id']} ({v.get('mode')}){ends}", "", v["positive_prompt"], ""]
     return lines
 
 

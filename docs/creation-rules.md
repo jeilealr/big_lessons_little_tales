@@ -162,6 +162,23 @@ not fix it. Freeze trunk centres, roots, rocks, horizon, path edges, ground plan
 and light direction. Record at least three static landmarks. Preserve identical
 protected background pixels in still pairs where possible.
 
+**Seed plate and variants:** For a new location and camera, the first plate is a
+seed: generate it without a location-image reference only because no approved
+plate exists yet. Review and approve that seed before creating variants. Register
+its record ID in `visual_bible.json` as `composition_master_record`; its target path
+is the location's composition master. Every later plate
+for that same location and camera—including another time of day—must attach that
+master explicitly in `ordered_references` as `edit_base` and change only the
+registered light/time/weather delta. Generate each variant directly from the
+master, not from the previous variant, so small differences do not accumulate.
+A written `{{plate:...}}` description is not an attached visual reference. If a
+master exists but is missing from the reference list, do not generate; fix the
+record first. If a prompt has no attached reference, treat it as a new scene,
+never as an implicit continuation of the first image. Inspect each variant next
+to the master and compare the fixed landmarks before accepting it. If a new
+season or camera intentionally changes the geometry, register that as a distinct
+profile and state the permitted changes explicitly.
+
 Each place has an ambient profile reused across its shots:
 
 - Gentle leaf/grass-tip movement; stems, roots and trunk bases stay fixed. Canopy
@@ -323,7 +340,9 @@ or misaligned seam before acceptance.
 
 ## CR-13. Generated-image gates (lessons from the Gemini r02/r03 pass, 2026-10-02)
 
-Each rule names the defect that made it necessary. Tooling: `character/gemini_image.py`
+Each rule names the defect that made it necessary. When the owner asks the agent
+to generate, use the built-in OpenAI `image_gen` tool by default; Gemini through
+`character/gemini_image.py` is optional when the owner selects it
 (`docs/gemini-images.md`). These rules apply to any image model.
 
 1. **Whole bodies unless the shot is a face close-up.** In a wide, medium or
@@ -584,3 +603,38 @@ Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
 `s05_nose_aftermath_start` (Milo 0.20 of the frame, mane 0.36). This replaces the per-setup
 ratios of CR-14 and CR-16 (great tree about 0.47, trap path about 0.85): sizes still come from each
 setup, but every setup now applies this one ratio (`visual_bible.json` `cast_scale`).
+
+## CR-19. An open-mouth key frame anchors every talking clip (owner, 2026-10-05)
+
+**Why:** a `mouth` (talking) clip renders with the lips moving, but Wan only interpolates
+between its two key frames — it has no separate reference slot. When both key frames are the
+closed close-up (the pattern used through Lion and Mouse v4), the open-mouth shape is invented
+fresh each render, so the same character's open beak or mouth looks different from clip to clip
+and from the approved [mouth study](creation-rules.md) (CR-05). CR-05 already requires compatible
+endpoints ("a closed clip cannot end on an open mouth"); this rule supplies the missing endpoint.
+
+**Rule (every new story; Lion and Mouse v4 is excluded, its clips are nearly final):** every
+dialogue close-up that has a `mouth` variant also gets one **open-mouth key frame**, record
+`<shot>_open`, and the talking clip ends on it:
+
+- It is an **edit of that shot's closed start frame**: the mouth opens to the character's
+  approved speech shape; pose, head size and position, gaze, backdrop and light stay identical.
+  Generated with `{{block:edit_open_mouth}}`, so the start frame is the edit base.
+- It attaches, in order, the closed start frame (`edit_base`), the character's canonical
+  (`identity_root`) and the character's approved open-mouth study `*_OPEN` (`mouth_design`,
+  "copy only the mouth opening, the teeth and their size"), and repeats the bible's
+  `{{mouth:<char>}}` design in words. One character per frame (close-ups are single-character).
+- One open shape per character for the whole story: the open-mouth study `*_OPEN`
+  (`characters.<id>.mouth` in the bible) is the single approved speech mouth; every `<shot>_open`
+  reproduces it. Do not design a new open mouth per shot.
+- Each video variant now carries its own `start_image`/`end_image`: the `closed` variant runs
+  start→end, the `mouth` variant runs start→`<shot>_open`, so one shot can serve both without a
+  wide-to-closeup zoom. `production/export_runtime.py` reads these per-variant endpoints.
+
+`production/story_packet.py` creates the `<shot>_open` records and the per-variant endpoints for
+new stories automatically; for a story whose packet already exists, add them in place and rebuild
+(`build`, `lint` 0 errors, `md`). Review an `<shot>_open` candidate against the closed start
+frame and the `*_OPEN` study: only the mouth may differ.
+
+Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
+`.claude/skills/consistent-image-prompts/SKILL.md`.

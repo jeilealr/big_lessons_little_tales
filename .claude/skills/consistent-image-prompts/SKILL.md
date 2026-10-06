@@ -24,7 +24,7 @@ Prompts are **templates**. Shared facts enter only through placeholders:
 |---|---|
 | `{{identity:<char>}}` | the full canonical description (image prompts, video full specification) |
 | `{{short:<char>}}` | the one-sentence description (video runtime prompt) |
-| `{{mouth:<char>}}` | the approved open-mouth design (mouth studies only) |
+| `{{mouth:<char>}}` | the approved open-mouth design (open-mouth studies and `<shot>_open` talking key frames) |
 | `{{setup:<id>}}` | camera, background (plate text, blurred for close-ups) and measured sizes |
 | `{{plate:<loc>}}` | location description, fixed landmarks and light |
 | `{{block:<name>}}` | shared text, e.g. `style`, `cast_scale`, `light_and_colour`, `net_world` |
@@ -75,13 +75,24 @@ steps below say what each part must contain.
 4. **Locations.** One approved empty plate per place, camera and light, each its own record.
    Record `description`, at least three `landmarks` with frame positions, `light` (direction,
    time of day, colour temperature) and `plate`. A new light state reuses the same geometry.
+   For a new location/camera, the first plate is the seed and is the only plate generated with no
+   location-image reference, because no approved master exists yet. After owner approval, register
+   its record ID as `composition_master_record` in the location entry; its manifest target path is the composition master. Every same-location/camera variant must attach
+   that master as `edit_base` in `ordered_references`, even when only time of day changes; always
+   derive variants directly from the master, not from one another. If the master is omitted, stop
+   and repair the record—text describing a plate is not an image reference. No reference means a
+   fresh scene, never an implicit link to an earlier image. Compare the result beside the master
+   and check its landmarks. If season or camera changes intentionally alter geometry, register a
+   distinct profile and state the allowed changes.
 5. **Setups.** Every camera setup (location + framing) gets `camera`, `background_treatment`
    for close-ups, `size` (measured frame fractions per character at its depth plane, plus a
    comparison sentence such as "Milo's whole body is about as tall as Leo's mane is wide") and
    `anchor_record`, the approved frame the numbers were measured on. Use the four framings of
    CR-15: `dialogue_close_up`, `close_two_shot`, `scene_wide`, `empty_plate`.
 6. Make the expression set before close-ups: one studio head study per needed emotion, each an
-   edit of the approved closed-mouth portrait (only brows, eyelids, gaze and mouth change).
+   edit of the approved closed-mouth portrait (only brows, eyelids, gaze and mouth change). Approve
+   the single open-mouth study `*_OPEN` per speaking character too (`characters.<id>.mouth`): it is
+   the one speech-mouth shape every talking clip reuses (CR-19).
 
 ## B. Writing or changing a prompt
 
@@ -109,12 +120,35 @@ steps below say what each part must contain.
 6. Sizes are numbers plus a comparison and come from the setup; never estimate them per record.
 7. `python3 production/image_prompts.py build && python3 production/image_prompts.py lint`
    must end with **0 errors**. Then `md` refreshes `prompts/*.md`; `show <record>` prints one.
+8. **Talking clips need an open-mouth key frame (CR-19).** A `mouth` video variant only
+   interpolates between its two key frames, so the open mouth must be one of them. Every
+   dialogue close-up with a `mouth` variant gets a scene record `<shot>_open`: an edit of the
+   closed start frame (`{{block:edit_open_mouth}}`, first reference `edit_base`) that opens only
+   the mouth to the character's approved speech shape, attaching the start frame, the canonical
+   (`identity_root`) and the character's `*_OPEN` study (`mouth_design`), with `{{mouth:<char>}}`.
+   Each variant has its own `start_image`/`end_image`: `closed` runs start→end, `mouth` runs
+   start→`<shot>_open`. `story_packet.py` emits these for new stories; keep them when editing by
+   hand (Lion and Mouse v4 is exempt — its clips are nearly final).
 
 ## C. Generating
 
-- Send exactly the rendered `positive_prompt` with exactly the `ordered_references`, in order;
-  nothing appended. A correction goes into the template or the bible first, then build and lint.
-  `character/gemini_image.py gen` does this (and refuses to run while lint has errors).
+- The owner remains the default image maker. When the owner asks the agent to create an image,
+  use the built-in OpenAI `image_gen` tool by default. Gemini is an optional provider; use
+  `character/gemini_image.py` only when the owner chooses Gemini and API access is configured.
+- Send the rendered `positive_prompt` and only its `ordered_references`, in order. Do not add
+  unstated character, scene or reference details. If an image needs a correction, record the
+  correction as a separate edit prompt with its parent image and tool in the manifest result;
+  do not leave generation or edit prompts undocumented. Changes to the intended image prompt
+  itself go into the bible or record template first, then `build` and `lint`.
+- Built-in `image_gen` saves generated files under `$CODEX_HOME/generated_images/`; copy the
+  selected output into the record's exact `target` under this story's folder. Preserve the raw
+  generated source under that target directory's `.review/` folder when normalization is needed.
+  Record the tool, model/version when exposed, exact prompt(s), ordered reference paths and hashes,
+  output hash, normalization and review note. Never leave a project-referenced image only in
+  the generated-images cache.
+- `character/gemini_image.py gen --story <slug>` is the optional API workflow; it refuses to run
+  while lint has errors. Gemini candidates and accepts stay within the selected story's target
+  folders and manifest.
 - Never pass a rejected or unreviewed image as a reference.
 - One change per edit. To change an expression or a pose, edit the approved same-setup frame;
   do not regenerate the character.
@@ -155,3 +189,5 @@ upstream, mark dependent frames stale and redo them in story order.
 - End frames re-enlarged a character that the start had fixed; compare each end with its start.
 - Expressions drift to a smile unless brows, eyes and mouth are named.
 - A wide start with a close-up end becomes a zoom in video; keep one framing per shot.
+- A talking clip with two closed key frames invents a different open mouth each render; give the
+  `mouth` variant a `<shot>_open` end key frame built from the one approved `*_OPEN` study (CR-19).

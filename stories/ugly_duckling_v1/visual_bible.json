@@ -1,5 +1,5 @@
 {
-  "revision": "ugly_duckling_v1-2026-10-04",
+  "revision": "ugly_duckling_v1-2026-10-05",
   "version": "ugly_duckling_v1",
   "status": "single_source_of_truth_for_all_prompts",
   "title": "The Ugly Duckling",
@@ -8,17 +8,19 @@
   "characters": {
     "swans": {
       "name": "the Swans",
-      "status": "design spec: rewrite from the approved canonical image",
+      "status": "owner approved 2026-10-05; image-derived identity",
       "canonical": "character/characters/ugly_duckling_v1/Swans/canonical/swans_canonical_r01.png",
       "canonical_record": "SWANS_CANON",
-      "identity": "Each adult swan of the swan family is the same: one large, graceful wool-felt swan with a snow-white felt body (#F8F6F0), soft pearl-grey shading under the wings (#DCDAD3), a long elegant curved neck, a warm coral-orange beak (#E2784A) with a black knob and base (#1E1E1E), two charcoal-grey webbed feet (#4A4946), two kind round glossy eyes with dark-brown irises (#3E2A1E), black pupils, one white catch-light and ivory sclera, two large folded wings and one short pointed tail. With its neck up, each swan is a little taller than Ollie the swan. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Their pose, facing and expression are the ones this prompt states.",
-      "sheet": "a large graceful snow-white felt swan with a long curved neck, a coral-orange beak with a black knob and two kind dark-brown eyes",
-      "short": "the Swans is a large graceful snow-white felt swan with a long curved neck, a coral-orange beak with a black knob and two kind dark-brown eyes.",
+      "identity": "Each adult swan of the swan family is identical: a large handcrafted wool-felt swan with a softly rounded warm ivory-white body (#F4F1EA), gentle pearl-grey shading beneath the folded wings (#DCDAD3), a long curved neck and rounded head. The broad coral-orange bill (#E2784A) has a dark charcoal base and rounded knob (#292725); two charcoal webbed feet (#4A4946), two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, two short brown eyebrow stitches, two layered folded wings and one short pointed tail. With its neck up, each adult swan is slightly taller than Ollie the swan. Fine looped felt fibres and visible stitching. Keep these identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt.",
+      "sheet": "a large warm ivory-white wool-felt swan with a long curved neck, coral-orange bill with dark knob, folded wings and charcoal webbed feet",
+      "short": "the Swans is a large warm ivory-white wool-felt swan with a long curved neck, coral-orange bill with dark knob, folded wings and charcoal webbed feet.",
       "mouth": "When a swan speaks, its beak opens slightly to show a soft pink inside.",
       "palette": {
-        "body": "#F8F6F0",
+        "body": "#F4F1EA",
+        "wing_shading": "#DCDAD3",
         "beak": "#E2784A",
-        "knob": "#1E1E1E"
+        "knob": "#292725",
+        "feet": "#4A4946"
       },
       "proportions": {
         "height_to_mama": 2.1
@@ -36,18 +38,18 @@
     },
     "ollie_swan": {
       "name": "Ollie the swan",
-      "status": "design spec: rewrite from the approved canonical image",
+      "status": "owner approved 2026-10-05; image-derived identity",
       "canonical": "character/characters/ugly_duckling_v1/OllieSwan/canonical/ollie_swan_canonical_r01.png",
       "canonical_record": "OLLIE_SWAN_CANON",
-      "identity": "Ollie the swan is one young, graceful wool-felt swan, Ollie grown up: a snow-white felt body (#F7F5EF) with soft pearl-grey shading under the wings (#DCDAD3), a long elegant curved neck and a small round head. His beak is warm coral-orange (#E2784A) with a black knob and black base (#1E1E1E), and his two webbed feet are charcoal-grey (#4A4946). Two round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2), each framed by a small black patch between eye and beak; two soft pearl-grey brow stitches. Two large folded wings with layered feather stitches and one short pointed tail. With his neck up he is about twice Mama Duck's height. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
-      "sheet": "one young graceful snow-white felt swan with a long curved neck, a coral-orange beak with a black knob, charcoal-grey feet and two dark-brown eyes",
-      "short": "Ollie the swan is one young graceful snow-white felt swan with a long curved neck, a coral-orange beak with a black knob, charcoal-grey feet and two dark-brown eyes.",
+      "identity": "Ollie the swan is one young wool-felt swan, the grown-up form of Ollie: a softly rounded warm ivory-white body (#F4F1EA), subtle pearl-grey shading beneath the layered folded wings (#DCDAD3), a long curved neck, a rounded head and a short pointed tail. His coral-orange bill (#E2784A) has a dark charcoal knob and base (#292725); two charcoal webbed feet (#4A4946). He has two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, small dark patches beside the bill and two soft grey-brown eyebrow stitches. Fine looped felt fibres and visible feather stitching. With his neck up he is about 1.9 times Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt.",
+      "sheet": "one young warm ivory-white wool-felt swan with a long curved neck, coral-orange bill with dark knob, folded layered wings and charcoal webbed feet",
+      "short": "Ollie the swan is one young warm ivory-white wool-felt swan with a long curved neck, coral-orange bill with dark knob, folded layered wings and charcoal webbed feet.",
       "mouth": "When Ollie the swan speaks, his beak opens slightly to show a soft pink inside; he has no teeth.",
       "palette": {
-        "body": "#F7F5EF",
-        "shading": "#DCDAD3",
+        "body": "#F4F1EA",
+        "wing_shading": "#DCDAD3",
         "beak": "#E2784A",
-        "knob": "#1E1E1E",
+        "knob": "#292725",
         "feet": "#4A4946"
       },
       "proportions": {
@@ -69,17 +71,18 @@
     },
     "ottie": {
       "name": "Ottie",
-      "status": "design spec: rewrite from the approved canonical image",
+      "status": "owner approved 2026-10-05; image-derived identity",
       "canonical": "character/characters/ugly_duckling_v1/Ottie/canonical/ottie_canonical_r01.png",
       "canonical_record": "OTTIE_CANON",
-      "identity": "Ottie is one cheerful, round-faced wool-felt river otter who can stand upright on her two hind feet and runs on four. Her fur felt is warm chocolate-brown (#6B4A32) with a creamy-beige face, throat and chest (#E2CBA8). Her round head has two tiny rounded ears, a broad muzzle with a big round dark-brown nose (#2E1E16), a smiling mouth line and four long pale whiskers (#EFE3CF) on each side. Two round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2); two short dark-brown brows. Short arms with small webbed paws, two webbed hind feet and one long thick tapering tail. Standing upright she is a little taller than Mama Duck. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
-      "sheet": "one cheerful chocolate-brown felt otter with a creamy-beige face and chest, a big dark-brown nose, long whiskers, two dark-brown eyes and a long thick tail",
-      "short": "Ottie is one cheerful chocolate-brown felt otter with a creamy-beige face and chest, a big dark-brown nose, long whiskers, two dark-brown eyes and a long thick tail.",
+      "identity": "Ottie is one cheerful upright wool-felt river otter with a round head, compact body and a long thick tail curled to one side. Her fur is warm medium chocolate-brown (#875A3E), with a cream-beige muzzle, throat and oval chest (#E2C39E). She has two small round ears, a broad muzzle, a large dark-brown nose (#493024), a stitched smiling mouth, four fine pale whiskers on each side, two glossy dark-brown eyes (#3E2A1E) with white catchlights and two short brown brow stitches. Her short forearms meet at her chest; she has two hind feet and one long tapering tail. Fine looped felt fibres and visible stitches. Upright, she is slightly taller than Mama Duck. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose and expression follow each prompt.",
+      "sheet": "one upright chocolate-brown wool-felt otter with cream muzzle and chest, round dark nose, pale whiskers and a long curled tail",
+      "short": "Ottie is one upright chocolate-brown wool-felt otter with cream muzzle and chest, round dark nose, pale whiskers and a long curled tail.",
       "mouth": "When Ottie's mouth opens, it is a rounded opening with a dark warm-brown interior, a soft pink tongue and small ivory teeth.",
       "palette": {
-        "fur": "#6B4A32",
-        "face_chest": "#E2CBA8",
-        "nose": "#2E1E16"
+        "fur": "#875A3E",
+        "muzzle_chest": "#E2C39E",
+        "nose": "#493024",
+        "whiskers": "#EFE3CF"
       },
       "proportions": {
         "height_to_mama": 1.1
@@ -101,19 +104,19 @@
     },
     "mama": {
       "name": "Mama Duck",
-      "status": "design spec: rewrite from the approved canonical image",
+      "status": "owner approved 2026-10-05; image-derived identity",
       "canonical": "character/characters/ugly_duckling_v1/MamaDuck/canonical/mama_canonical_r01.png",
       "canonical_record": "MAMA_CANON",
-      "identity": "Mama Duck is one plump, gentle wool-felt mother duck who stands on two webbed feet. Her body feathers are soft warm-brown felt (#9C6B43) with lighter speckles of buff-cream (#E3C9A0) and a pale cream chest (#EADBBE). Her head is the same warm-brown with a thin cream stripe above each eye. Her flat rounded beak is warm orange-yellow (#E8A33A) and her two webbed feet are the same orange-yellow. Two round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2); two short soft dark-brown brow stitches. Two folded wings, each with a small teal-blue patch (#3E8A93) edged in white near its back edge, and one short pointed tail of feathers. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Her pose, facing and expression are the ones this prompt states.",
-      "sheet": "one plump warm-brown felt mother duck with buff-cream speckles, a pale cream chest, an orange-yellow beak and feet, two dark-brown eyes and a teal-blue wing patch",
-      "short": "Mama Duck is one plump warm-brown felt mother duck with buff-cream speckles, a pale cream chest, an orange-yellow beak and feet, two dark-brown eyes and a teal-blue wing patch.",
+      "identity": "Mama Duck is one plump, gentle wool-felt mother duck standing on two orange webbed feet. Her softly rounded body and head are warm medium brown (#9C6844), with buff-cream feather speckles (#E3C9A0), a pale cream chest (#EADBBE) and thin cream markings above her eyes. Her broad flat bill and feet are golden orange (#EBA13A). Two glossy dark-brown eyes (#3E2A1E) have black pupils, ivory sclera and white catchlights; two short dark-brown brow stitches sit above them. Her two folded wings have layered feather stitching and each has one deep teal-blue patch (#247783) edged in cream; one short pointed feather tail. Fine looped felt fibres and visible stitches. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt.",
+      "sheet": "one plump warm-brown felt mother duck with cream speckles and chest, golden-orange bill and feet, and teal patches on folded wings",
+      "short": "Mama Duck is one plump warm-brown felt mother duck with cream speckles and chest, golden-orange bill and feet, and teal patches on folded wings.",
       "mouth": "When Mama Duck speaks, her flat beak opens slightly to show a soft pink inside; she has no teeth.",
       "palette": {
-        "body": "#9C6B43",
+        "body": "#9C6844",
         "speckles": "#E3C9A0",
         "chest": "#EADBBE",
-        "beak_feet": "#E8A33A",
-        "wing_patch": "#3E8A93"
+        "beak_feet": "#EBA13A",
+        "wing_patch": "#247783"
       },
       "proportions": {},
       "checklist": [
@@ -131,17 +134,17 @@
     },
     "ollie": {
       "name": "Ollie",
-      "status": "design spec: rewrite from the approved canonical image",
+      "status": "owner approved 2026-10-05; image-derived identity",
       "canonical": "character/characters/ugly_duckling_v1/Ollie/canonical/ollie_canonical_r01.png",
       "canonical_record": "OLLIE_CANON",
-      "identity": "Ollie is one young wool-felt cygnet, a baby swan who looks like a big, gangly duckling and stands on two big flat webbed feet. His fluffy down is soft dove-grey felt (#9A9893) with lighter pale-grey cheeks and chest (#C9C7C1); he is about half of Mama Duck's height, taller and longer-legged than the yellow ducklings, with a slightly longer neck. His beak is flat and slate-grey (#6C6B68) with a darker tip, and his two big webbed feet and long legs are charcoal-grey (#4A4946). Two large round glossy eyes: dark-brown irises (#3E2A1E), black pupils, one white catch-light at upper right, ivory sclera (#F4EEE2); two short soft grey brow stitches. Two small fluffy wings and a short fluffy tail. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. His pose, facing and expression are the ones this prompt states.",
-      "sheet": "one gangly young dove-grey felt cygnet with pale-grey cheeks, a slate-grey beak, big charcoal-grey webbed feet and two dark-brown eyes",
-      "short": "Ollie is one gangly young dove-grey felt cygnet with pale-grey cheeks, a slate-grey beak, big charcoal-grey webbed feet and two dark-brown eyes.",
+      "identity": "Ollie is one young wool-felt cygnet with a large softly rounded head, a slightly long neck and a fluffy, compact body. His dove-grey down is a warm grey (#9A928B), with lighter pale-grey cheeks and chest (#C9C3BB). He has a flat slate-grey bill (#77716C) with a darker rounded tip, two long charcoal-grey legs and two broad flat webbed feet (#4A4946), two small folded fluffy wings and a short fluffy tail. Two large glossy dark-brown eyes (#3E2A1E) have black pupils, ivory sclera and white catchlights; two short grey-brown brow stitches. Fine looped felt fibres and visible stitching. He is about 0.55 times Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt.",
+      "sheet": "one young warm dove-grey wool-felt cygnet with pale cheeks and chest, slate-grey bill, long charcoal legs and broad webbed feet",
+      "short": "Ollie is one young warm dove-grey wool-felt cygnet with pale cheeks and chest, slate-grey bill, long charcoal legs and broad webbed feet.",
       "mouth": "When Ollie speaks, his flat beak opens slightly to show a soft pink inside; he has no teeth.",
       "palette": {
-        "down": "#9A9893",
-        "cheeks_chest": "#C9C7C1",
-        "beak": "#6C6B68",
+        "down": "#9A928B",
+        "cheeks_chest": "#C9C3BB",
+        "beak": "#77716C",
         "feet": "#4A4946"
       },
       "proportions": {
@@ -165,12 +168,12 @@
     },
     "ducklings": {
       "name": "the Ducklings",
-      "status": "design spec: rewrite from the approved canonical image",
+      "status": "owner approved 2026-10-05; image-derived identity",
       "canonical": "character/characters/ugly_duckling_v1/Ducklings/canonical/ducklings_canonical_r01.png",
       "canonical_record": "DUCKLINGS_CANON",
-      "identity": "Each of the three ducklings is the same: one small, round, fluffy wool-felt duckling who stands on two little webbed feet, with bright buttercup-yellow down (#F5D04A), a slightly paler lemon-yellow chest (#F8E27C), a small flat orange beak (#EE9A3A), two tiny orange webbed feet, two little stubby wings and two round glossy eyes with dark-brown irises (#3E2A1E), black pupils, one white catch-light and ivory sclera; two tiny brown brow stitches. Each duckling is about one third of Mama Duck's height. Fine looped felt fibres and small visible stitches. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them. Their pose, facing and expression are the ones this prompt states.",
-      "sheet": "a small round fluffy buttercup-yellow felt duckling with a small orange beak and feet and two dark-brown eyes",
-      "short": "the Ducklings is a small round fluffy buttercup-yellow felt duckling with a small orange beak and feet and two dark-brown eyes.",
+      "identity": "Each of the three ducklings is identical: one small, round, fluffy wool-felt duckling with bright golden buttercup-yellow down (#F5D04A) and a slightly paler lemon-yellow chest (#F8E27C). Each has a small flat orange bill (#EE9A3A), two tiny orange webbed feet, two stubby wings, two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, and two short brown brow stitches. Fine looped felt fibres and visible stitching. Each duckling is about one third of Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt.",
+      "sheet": "a small round buttercup-yellow wool-felt duckling with pale-yellow chest, orange bill and feet, stubby wings and dark-brown eyes",
+      "short": "the Ducklings is a small round buttercup-yellow wool-felt duckling with pale-yellow chest, orange bill and feet, stubby wings and dark-brown eyes.",
       "mouth": "When a duckling speaks, its little beak opens slightly to show a soft pink inside.",
       "palette": {
         "down": "#F5D04A",
@@ -192,16 +195,16 @@
     }
   },
   "cast_scale": {
-    "rule": "At equal depth, with Mama Duck's height as 1.0: each duckling 0.35, Ollie the cygnet 0.55, Ottie upright 1.1, Ollie the swan 1.9 (neck up), each adult swan 2.1.",
+    "rule": "Measured on the owner-approved LINEUP r01 at equal depth, with Mama Duck's standing height as 1.0: each duckling 0.37, Ollie the cygnet 0.58, Ottie upright 1.08, Ollie the swan with neck up 1.68, each adult swan 1.97.",
     "anchor_record": "LINEUP",
-    "status": "design targets; measure them on the approved LINEUP image and update every setup's sizes"
+    "status": "measured from owner-approved LINEUP r01 on 2026-10-05; use these proportions across setups"
   },
   "locations": {
     "pond_morning": {
       "location": "pond",
       "plate": "character/locations/ugly_duckling_v1/pond/pond_morning_r01.png",
       "label": "the farm pond in spring morning light",
-      "description": "A quiet felt farm pond in spring: a cosy reed nest on the bank at the left, calm water with lily pads across the middle and right, tall reeds and soft round trees on the far bank, a little wooden fence and a red barn roof far behind at the right, a grassy bank in front.",
+      "description": "The exact same farm pond composition as pond_evening: preserve the master plate’s nest, reeds, lily pads, trees, fence, barn, rocks, shoreline and camera; vary only time-of-day lighting.",
       "landmarks": [
         "the reed nest at the left (x 0.08-0.32, y 0.58-0.80)",
         "the pond water across the middle and right (x 0.35-1.00, y 0.55-0.80)",
@@ -210,13 +213,14 @@
         "the grassy bank in front where characters stand (y 0.78-0.92)"
       ],
       "light": "Soft fresh morning light from the left; gentle mist on the water.",
-      "ambient": "Reeds sway; the water ripples softly; lily pads bob; nest, fence and barn stay fixed."
+      "ambient": "Reeds sway; the water ripples softly; lily pads bob; nest, fence and barn stay fixed.",
+      "composition_master_record": "PL_pond_evening"
     },
     "pond_day": {
       "location": "pond",
       "plate": "character/locations/ugly_duckling_v1/pond/pond_day_r01.png",
       "label": "the farm pond on a sunny afternoon",
-      "description": "The same farm pond as the morning plate, with the nest, reeds, fence and barn in exactly the same places, on a sunny afternoon.",
+      "description": "The exact same farm pond composition as pond_evening: preserve the master plate’s nest, reeds, lily pads, trees, fence, barn, rocks, shoreline and camera; vary only time-of-day lighting.",
       "landmarks": [
         "the reed nest at the left (x 0.08-0.32, y 0.58-0.80)",
         "the pond water across the middle and right (x 0.35-1.00, y 0.55-0.80)",
@@ -225,13 +229,14 @@
         "the grassy bank in front where characters stand (y 0.78-0.92)"
       ],
       "light": "Warm bright afternoon sunlight from above; sparkles on the water.",
-      "ambient": "Reeds sway; the water sparkles and ripples; nest, fence and barn stay fixed."
+      "ambient": "Reeds sway; the water sparkles and ripples; nest, fence and barn stay fixed.",
+      "composition_master_record": "PL_pond_evening"
     },
     "pond_evening": {
       "location": "pond",
       "plate": "character/locations/ugly_duckling_v1/pond/pond_evening_r01.png",
       "label": "the farm pond at sunset",
-      "description": "The same farm pond as the morning plate, with the nest, reeds, fence and barn in exactly the same places, at sunset.",
+      "description": "The canonical fixed composition for the farm pond: cosy reed nest on the left bank, calm water and lily pads across the middle and right, tall reeds and soft round trees on the far bank, a little wooden fence and red barn roof far behind at the right, rocks and grassy bank in front. Morning and daytime versions retain these exact objects, positions, shapes and camera; only the time-of-day lighting changes.",
       "landmarks": [
         "the reed nest at the left (x 0.08-0.32, y 0.58-0.80)",
         "the pond water across the middle and right (x 0.35-1.00, y 0.55-0.80)",
@@ -240,7 +245,8 @@
         "the grassy bank in front where characters stand (y 0.78-0.92)"
       ],
       "light": "Sunset: golden-pink light low from the right, long shadows, the water glowing.",
-      "ambient": "Reeds sway slowly; the water glows; nest, fence and barn stay fixed."
+      "ambient": "Reeds sway slowly; the water glows; nest, fence and barn stay fixed.",
+      "composition_master_record": "PL_pond_evening"
     },
     "reed_path": {
       "location": "reed_path",
@@ -254,7 +260,8 @@
         "the first stars in the sky"
       ],
       "light": "Dusk: soft blue light with a warm glow at the left.",
-      "ambient": "Reeds and cattails sway; stars twinkle; the path stays fixed."
+      "ambient": "Reeds and cattails sway; stars twinkle; the path stays fixed.",
+      "composition_master_record": "PL_reed_path"
     },
     "lake_autumn": {
       "location": "lake",
@@ -268,7 +275,8 @@
         "a few rounded stones at the water's edge at the lower right (x 0.80-0.95, y 0.82-0.92)"
       ],
       "light": "Golden autumn afternoon light from the right; soft warm reflections.",
-      "ambient": "Leaves drift down and float; the water ripples gently; trees and shore stay fixed."
+      "ambient": "Leaves drift down and float; the water ripples gently; trees and shore stay fixed.",
+      "composition_master_record": "PL_lake_autumn"
     },
     "lake_spring": {
       "location": "lake",
@@ -282,7 +290,8 @@
         "a few rounded stones at the water's edge at the lower right (x 0.80-0.95, y 0.82-0.92)"
       ],
       "light": "Bright fresh spring sunlight from the upper left; sparkles on the water.",
-      "ambient": "Blossoms drift; the water sparkles; trees and shore stay fixed."
+      "ambient": "Blossoms drift; the water sparkles; trees and shore stay fixed.",
+      "composition_master_record": "PL_lake_autumn"
     },
     "river_winter": {
       "location": "river",
@@ -296,7 +305,8 @@
         "bare trees on the far bank"
       ],
       "light": "Soft cool winter daylight, gently falling snow; warm light from the burrow.",
-      "ambient": "Snow falls gently; the burrow glow flickers; ice, trees and bank stay fixed."
+      "ambient": "Snow falls gently; the burrow glow flickers; ice, trees and bank stay fixed.",
+      "composition_master_record": "PL_river_winter"
     }
   },
   "setups": {
@@ -314,10 +324,10 @@
       "size": {
         "mama": "Mama Duck measures about 0.26 of the frame height.",
         "ducklings": "Each duckling measures about 0.09 of the frame height.",
-        "ollie": "Ollie the cygnet measures about 0.14 of the frame height.",
-        "ottie": "Ottie standing upright measures about 0.29 of the frame height.",
-        "ollie_swan": "Ollie the swan with his neck up measures about 0.49 of the frame height.",
-        "swans": "Each adult swan with its neck up measures about 0.55 of the frame height."
+        "ollie": "Ollie the cygnet measures about 0.15 of the frame height.",
+        "ottie": "Ottie standing upright measures about 0.28 of the frame height.",
+        "ollie_swan": "Ollie the swan with his neck up measures about 0.43 of the frame height.",
+        "swans": "Each adult swan with its neck up measures about 0.52 of the frame height."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck.",
       "anchor_record": "s01_mama_nest_start",
@@ -330,8 +340,8 @@
       "camera": "Fixed closer camera at the nest, 16:9: one shared crop of the wide setup that magnifies the nest, Mama Duck and the eggs equally; the plate is softly blurred behind them.",
       "size": {
         "mama": "Mama Duck measures about 0.60 of the frame height.",
-        "ducklings": "Each duckling measures about 0.21 of the frame height.",
-        "ollie": "Ollie the cygnet measures about 0.33 of the frame height."
+        "ducklings": "Each duckling measures about 0.22 of the frame height.",
+        "ollie": "Ollie the cygnet measures about 0.35 of the frame height."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck.",
       "anchor_record": "s01_ducklings_hatch_start",
@@ -354,10 +364,10 @@
       "size": {
         "mama": "Mama Duck measures about 0.26 of the frame height.",
         "ducklings": "Each duckling measures about 0.09 of the frame height.",
-        "ollie": "Ollie the cygnet measures about 0.14 of the frame height.",
-        "ottie": "Ottie standing upright measures about 0.29 of the frame height.",
-        "ollie_swan": "Ollie the swan with his neck up measures about 0.49 of the frame height.",
-        "swans": "Each adult swan with its neck up measures about 0.55 of the frame height."
+        "ollie": "Ollie the cygnet measures about 0.15 of the frame height.",
+        "ottie": "Ottie standing upright measures about 0.28 of the frame height.",
+        "ollie_swan": "Ollie the swan with his neck up measures about 0.43 of the frame height.",
+        "swans": "Each adult swan with its neck up measures about 0.52 of the frame height."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck.",
       "anchor_record": "s03_to_the_water_start",
@@ -387,10 +397,10 @@
       "size": {
         "mama": "Mama Duck measures about 0.26 of the frame height.",
         "ducklings": "Each duckling measures about 0.09 of the frame height.",
-        "ollie": "Ollie the cygnet measures about 0.14 of the frame height.",
-        "ottie": "Ottie standing upright measures about 0.29 of the frame height.",
-        "ollie_swan": "Ollie the swan with his neck up measures about 0.49 of the frame height.",
-        "swans": "Each adult swan with its neck up measures about 0.55 of the frame height."
+        "ollie": "Ollie the cygnet measures about 0.15 of the frame height.",
+        "ottie": "Ottie standing upright measures about 0.28 of the frame height.",
+        "ollie_swan": "Ollie the swan with his neck up measures about 0.43 of the frame height.",
+        "swans": "Each adult swan with its neck up measures about 0.52 of the frame height."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck."
     },
@@ -409,7 +419,7 @@
       "label": "a side-on wide shot of the reedy path at dusk",
       "camera": "Fixed normal-height side camera, 16:9, exactly the framing of the locked plate; Ollie walks along the path from left to right.",
       "size": {
-        "ollie": "Ollie the cygnet measures about 0.22 of the frame height."
+        "ollie": "Ollie the cygnet measures about 0.23 of the frame height."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck.",
       "anchor_record": "s04_leaves_start",
@@ -421,7 +431,7 @@
       "label": "a wide shot of the great lake in autumn",
       "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the shore at the lower left or swim on the water.",
       "size": {
-        "ollie": "Ollie the cygnet measures about 0.17 of the frame height.",
+        "ollie": "Ollie the cygnet measures about 0.18 of the frame height.",
         "swans": "The flying swans are small in the sky, each about 0.10 of the frame width."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck.",
@@ -443,8 +453,8 @@
       "label": "a wide shot of the frozen river in winter",
       "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the snow bank near y=0.88 or slide on the ice.",
       "size": {
-        "ollie": "Ollie the cygnet measures about 0.15 of the frame height.",
-        "ottie": "Ottie standing upright measures about 0.31 of the frame height."
+        "ollie": "Ollie the cygnet measures about 0.16 of the frame height.",
+        "ottie": "Ottie standing upright measures about 0.30 of the frame height."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck.",
       "anchor_record": "s06_ollie_cold_start",
@@ -474,9 +484,9 @@
       "label": "a wide shot of the great lake in spring",
       "camera": "Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the shore at the lower left or swim on the water near y=0.70.",
       "size": {
-        "ollie": "Ollie the cygnet measures about 0.12 of the frame height.",
-        "ollie_swan": "Ollie the swan with his neck up measures about 0.42 of the frame height.",
-        "swans": "Each adult swan with its neck up measures about 0.46 of the frame height."
+        "ollie": "Ollie the cygnet measures about 0.13 of the frame height.",
+        "ollie_swan": "Ollie the swan with his neck up measures about 0.37 of the frame height.",
+        "swans": "Each adult swan with its neck up measures about 0.43 of the frame height."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck.",
       "anchor_record": "s08_flies_start",
@@ -488,7 +498,7 @@
       "label": "a closer shot of Ollie and his reflection on the spring lake",
       "camera": "Fixed closer camera low over the water, 16:9: Ollie the swan in the upper half, his clear mirror reflection in the still water in the lower half; the far shore softly blurred.",
       "size": {
-        "ollie_swan": "Ollie the swan, head bowed, fills about 0.45 of the frame height above the waterline, and his reflection the same below it."
+        "ollie_swan": "Ollie the swan, head bowed, fills about 0.40 of the frame height above the waterline, and his reflection the same below it."
       },
       "relation": "The reflection is the same swan, mirrored, at the same size.",
       "anchor_record": "s10_reflection_start",
@@ -520,7 +530,7 @@
       "size": {
         "mama": "Mama Duck measures about 0.20 of the frame height.",
         "ducklings": "Each duckling measures about 0.07 of the frame height.",
-        "ollie_swan": "Ollie the swan with his neck up measures about 0.38 of the frame height.",
+        "ollie_swan": "Ollie the swan with his neck up measures about 0.34 of the frame height.",
         "ottie": "Ottie standing upright measures about 0.22 of the frame height."
       },
       "relation": "Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck.",
@@ -558,7 +568,10 @@
     "studio_portrait": "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, with no room, furniture, floor or horizon, and soft even neutral light; head-and-shoulders crop with the whole head, both ears and any mane inside the frame with a small margin; the head keeps the size and eye-line of the approved closed-mouth portrait.",
     "plate_rules": "Empty plate: no characters and no story props. Normal-height camera, the whole scene edge to edge, open in-focus ground where characters will stand, distant background slightly soft. Every landmark keeps the position stated above; a different light state of this place reuses exactly the same geometry.",
     "cast_scale": "Relative size (fixed for the whole story, the same at the same distance from the camera), with Mama Duck's height as 1: each yellow duckling 0.35, Ollie the grey cygnet 0.55, Ottie standing upright 1.1, Ollie the grown swan with his neck up 1.9, each adult swan 2.1. The cygnet Ollie is clearly bigger than the yellow ducklings and clearly smaller than Mama Duck. Swimming, sitting or curling up changes a silhouette but never the size of a head, beak or wing.",
-    "studio_lineup": "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, soft even neutral light, one flat ground line at y=0.88 where every character stands, with a small soft contact shadow under each; every whole body, every ear tip, foot and tail inside the frame with a margin."
+    "studio_lineup": "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, soft even neutral light, one flat ground line at y=0.88 where every character stands, with a small soft contact shadow under each; every whole body, every ear tip, foot and tail inside the frame with a margin.",
+    "edit_open_mouth": "This is an edit of the accepted closed-mouth start frame of this shot (the first attached reference): keep its camera, crop, background, light and the character's identity, colours, brightness, size, pose, head position and gaze exactly; open only the mouth into the approved rounded speech shape shown in the attached mouth-design reference, with the same interior and any teeth as in that reference. This is the single open-mouth key frame the talking clip animates to, so the open shape stays identical to the character's approved speech mouth.",
+    "studio_water_reference": "Studio: plain warm off-white seamless backdrop edge to edge, soft even neutral light. A minimal hint of still water touches only the bottom of the frame around Ollie’s floating lower body; show a small soft waterline and a few subtle ripples. No land, shoreline, rocks, scenery, props, sky, floor, horizon or foot-ground contact shadow. Keep Ollie’s full neck, head, bill, wings, back and tail inside the square with clear backdrop around them; his lower body and feet may be naturally at or below the low waterline.",
+    "light_and_colour_water": "Light and colour: Ollie keeps exactly the colours, saturation, brightness and exposure of his approved canonical image; the soft studio light remains even and neutral. The small water hint receives the same light as the backdrop and creates only subtle water contact ripples, with no ground shadow."
   },
   "generic_blocks": [
     "style",
@@ -585,7 +598,8 @@
     "staging_only": "older-version staging reference ({what}): copy only the composition, camera and staging; every character's look comes from the canonical images",
     "size_anchor": "size anchor ({what}): an approved frame of this same camera setup; every character keeps exactly the size it has there, and takes no pose, expression or prop state from it",
     "framing": "framing reference ({what}): copy only the shot size, where the head sits in the frame and how strongly the background is blurred; take no character, background, light or expression from it",
-    "size_lineup": "the story's size lineup ({what}): copy only the size relation between Leo and Milo, applied at the sizes stated in this prompt; take no camera, background, pose, expression or prop state from it"
+    "size_lineup": "the story's size lineup ({what}): copy only the size relation between Leo and Milo, applied at the sizes stated in this prompt; take no camera, background, pose, expression or prop state from it",
+    "character_guide_board": "the labeled character guide board ({what}): use the panel labelled canonical for identity and the named expression and pose panels only for those features; do not copy the board layout or labels"
   },
   "lint": {
     "allow_phrases": [],

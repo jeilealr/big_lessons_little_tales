@@ -6,7 +6,7 @@ Moral: *Always tell the truth, about big things and little things, so that peopl
 
 ## Status (2026-10-04)
 
-- **Documentation done; nothing generated.** Script (78 lines, about 8.5 minutes of narration), 46 shots, 62 foundation and expression image records and 92 scene frames, every prompt rendered from `visual_bible.json`; `python3 production/image_prompts.py --story boy_who_cried_wolf_v1 lint` reports 0 errors.
+- **Documentation done; nothing generated.** Script (78 lines, about 8.5 minutes of narration), 46 shots, 62 foundation and expression image records and 109 scene frames, every prompt rendered from `visual_bible.json`; `python3 production/image_prompts.py --story boy_who_cried_wolf_v1 lint` reports 0 errors.
 - **Gate before images (CR-01):** the owner reviews the script and the shot order.
 - Character descriptions are design specifications until each canonical image is approved; then they are rewritten from the image (colours sampled from it) and the prompts rebuilt.
 

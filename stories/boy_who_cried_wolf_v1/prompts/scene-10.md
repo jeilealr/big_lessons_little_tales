@@ -148,7 +148,7 @@ Create one 1920x1080 16:9 still image: the end frame of shot s10_hug, a closer t
 
 - Start `s10_search_start` → end `s10_search_end` · cast: ben, rosie, lena, finn
 
-### s10_search_closed_r01 (closed)
+### s10_search_closed_r01 (closed) · start `s10_search_start` → end `s10_search_end`
 
 Everyone searches behind the bushes and under the ferns. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Farmer Ben is one tall broad felt farmer with a chestnut-brown beard, a straw-yellow hat, two dark-brown eyes, denim-blue overalls over a cream shirt and dark-brown boots. Grandma Rosie is one round elderly felt grandmother with a silver-white bun, rosy cheeks, two kind brown eyes, a long lavender-purple dress and a cream apron. Lena is one young felt girl with two long dark-brown braids tied with sunflower-yellow ribbons, two dark-brown eyes, a sky-blue dress with a white collar and red shoes. Finn is one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots. The background is the edge of the woods at dusk, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -156,7 +156,7 @@ Everyone searches behind the bushes and under the ferns. Mouths stay closed thro
 
 - Start `s10_found_sheep_start` → end `s10_found_sheep_end` · cast: ben, rosie, lena, finn, sheep
 
-### s10_found_sheep_closed_r01 (closed)
+### s10_found_sheep_closed_r01 (closed) · start `s10_found_sheep_start` → end `s10_found_sheep_end`
 
 The five sheep come out of the bushes and gather in the clearing. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Farmer Ben is one tall broad felt farmer with a chestnut-brown beard, a straw-yellow hat, two dark-brown eyes, denim-blue overalls over a cream shirt and dark-brown boots. Grandma Rosie is one round elderly felt grandmother with a silver-white bun, rosy cheeks, two kind brown eyes, a long lavender-purple dress and a cream apron. Lena is one young felt girl with two long dark-brown braids tied with sunflower-yellow ribbons, two dark-brown eyes, a sky-blue dress with a white collar and red shoes. Finn is one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots. the Sheep is a round fluffy cream-white felt sheep with a biscuit-beige face and legs, small ears with rosy-pink insides and two dark-brown eyes. The background is the edge of the woods at dusk, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -164,7 +164,7 @@ The five sheep come out of the bushes and gather in the clearing. Mouths stay cl
 
 - Start `s10_daisy_found_start` → end `s10_daisy_found_end` · cast: finn, daisy
 
-### s10_daisy_found_closed_r01 (closed)
+### s10_daisy_found_closed_r01 (closed) · start `s10_daisy_found_start` → end `s10_daisy_found_end`
 
 Daisy peeks out from under the bush and steps toward Finn, who lights up with joy. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Finn is one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots. Daisy is one small fluffy cream-white felt lamb with a charcoal-black face and legs, a white heart-shaped patch on her forehead, rosy-pink ear insides and two amber-brown eyes. The background is the edge of the woods at dusk, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -172,6 +172,6 @@ Daisy peeks out from under the bush and steps toward Finn, who lights up with jo
 
 - Start `s10_hug_start` → end `s10_hug_end` · cast: finn, daisy
 
-### s10_hug_closed_r01 (closed)
+### s10_hug_closed_r01 (closed) · start `s10_hug_start` → end `s10_hug_end`
 
 Finn hugs Daisy and she nuzzles his cheek. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Finn is one young felt boy with curly copper-orange hair, rosy cheeks and freckles, two hazel-green eyes, a moss-green tunic, a short red scarf, brown trousers and dark-brown boots. Daisy is one small fluffy cream-white felt lamb with a charcoal-black face and legs, a white heart-shaped patch on her forehead, rosy-pink ear insides and two amber-brown eyes. The background is the edge of the woods at dusk, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.

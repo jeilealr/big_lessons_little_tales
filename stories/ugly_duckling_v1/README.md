@@ -1,14 +1,16 @@
 # The Ugly Duckling (ugly_duckling_v1)
 
-Fourth story of *Big Lessons, Little Tales*: Hans Christian Andersen's ugly duckling (public domain) for ages 3 to 7, retold gently: the ducklings' teasing is mild and they say sorry, a kind otter shelters Ollie through the winter, and Ollie finds both the swans and his first family again. Felt storybook style of the channel, made with the consistency rules of `docs/creation-rules.md` CR-01 to CR-18.
+Fourth story of *Big Lessons, Little Tales*: Hans Christian Andersen's ugly duckling (public domain) for ages 3 to 7, retold gently: the ducklings' teasing is mild and they say sorry, a kind otter shelters Ollie through the winter, and Ollie finds both the swans and his first family again. Felt storybook style of the channel, made with the consistency rules of `docs/creation-rules.md` CR-01 to CR-19.
 
 Moral: *Everyone grows in their own way and in their own time; being different is nothing to be ashamed of, and kindness to someone who feels different can help them find where they belong.*
 
-## Status (2026-10-04)
+## Status (2026-10-05)
 
-- **Documentation done; nothing generated.** Script (65 lines, about 7.7 minutes of narration), 43 shots, 54 foundation and expression image records and 86 scene frames, every prompt rendered from `visual_bible.json`; `python3 production/image_prompts.py --story ugly_duckling_v1 lint` reports 0 errors.
-- **Gate before images (CR-01):** the owner reviews the script and the shot order.
-- Character descriptions are design specifications until each canonical image is approved; then they are rewritten from the image (colours sampled from it) and the prompts rebuilt.
+- Documentation packet is complete: 65 script lines (about 7.7 minutes of narration), 43 shots, 54 foundation and expression image records and 99 scene frames (including 13 `<shot>_open` talking key frames, CR-19). Prompts are rendered from `visual_bible.json`; lint reports 0 errors.
+- **CR-01 approved:** the owner confirmed reading and approved the script and shot order on 2026-10-05. The first canonical is `SWANS_CANON`.
+- **Image status:** all six character canonicals are owner-approved (2026-10-05). Their identity text and palettes were updated from the images in `visual_bible.json`; rendered prompts rebuilt and lint passes with 0 errors and 0 warnings. `LINEUP` was generated with all six canonical identities represented as references and saved at `character/characters/ugly_duckling_v1/interactions/lineup_r01.png` (1920×1080). The saved lineup was reopened and checked for cast count, left-to-right order, shared baseline and relative sizes; the owner approved it on 2026-10-05. The lineup is the full-cast comparison image; the two swan references are paired left/right at `character/characters/ugly_duckling_v1/interactions/.review/lineup_swans_reference_pair.png` to fit the image tool's five-reference limit.
+- Measured on the owner-approved LINEUP: adult swans 0.75 and 0.64 of frame height, Ottie 0.41, Mama Duck 0.38, cygnet Ollie 0.22 and duckling 0.14. Cast proportions and every setup size were updated from these measurements. At the owner’s direction, `O_SWIM` and `O_WALK_R` were generated and are awaiting review. The owner then directed generation of all remaining foundation records from `prompts/foundation.md`, continuing at line 121. All 23 records after `O_WALK_R` were generated at their manifest targets: six pose studies, ten mouth studies and seven environment plates. They are marked `accepted_pending_owner_review`. After owner feedback that the pond variants changed the nest and scenery, the corrected morning and day variants were made as direct lighting edits from `pond_evening_r01.png`. The owner replaced the earlier files and renamed the corrected variants `pond_morning_r01.png` and `pond_day_r01.png`; all scene-frame references and bible plate paths now point to those current r01 files. The earlier drift happened because morning was generated without an image reference, then day and evening were independently generated from it; the model reinterpreted the scene despite geometry instructions. Final prompt rebuild and lint report 0 errors and 0 warnings. Review sheets: [character studies](review/foundation_characters_contact_sheet.png) and [environment plates](review/foundation_plates_contact_sheet.png). At the owner’s direction, all 22 expression records in `prompts/expressions.md` were generated from their ordered closed-mouth portrait and canonical identity references, saved to manifest targets, and marked `accepted_pending_owner_review`; [expression contact sheet](review/expressions_contact_sheet.png).
+- Character descriptions and palettes now follow the six owner-approved canonical images; further changes require owner review.
 
 ## Read in this order
 
@@ -50,10 +52,15 @@ Size lineup: At equal depth, with Mama Duck's height as 1.0: each duckling 0.35,
 ## Owner decisions
 
 - 2026-10-04: owner chose The Ugly Duckling as the fourth story; narration 7 to 10 minutes; narrator: the saved narrator voice for now.
+- 2026-10-05: owner confirmed reading and approved `SCRIPT.md` and `SHOT_PLAN.md` (CR-01); canonical-image work may begin.
+- 2026-10-05: owner directed the agent to create the Ugly Duckling canonical images with built-in ImageGen and asked that Gemini remain an optional provider rather than a dependency. The owner supplied all six canonical records in sequence, then approved all six canonicals on 2026-10-05. The owner also authorized their use as identity references for `LINEUP`, approved the completed lineup on 2026-10-05, and requested `O_SWIM` and then `O_WALK_R`. The owner subsequently directed generation of all remaining foundation images from `prompts/foundation.md`, starting at line 121, and authorized proceeding through completion. The owner selected `pond_evening_r01.png` as the composition master for the pond lighting variants, replaced the earlier morning/day images with the corrected versions, and reset their filenames to r01. The owner then directed continuation through `prompts/expressions.md`; all 22 records were generated with built-in ImageGen from their listed portrait and canonical references and saved at their manifest targets, pending owner review.
+
+- Documentation update: CR-06 and the consistent-image-prompts skill now require a first approved location plate to become the explicit composition master for later variants; a missing reference is treated as a new scene, not an implicit continuation.
 
 ## Still open
 
-- Owner review of the script and shot order (CR-01) before the first image.
+- Owner review of the generated foundation and expression sets, including the corrected pond morning/day r01 plates, `O_SWIM`, `O_WALK_R`, all 22 expression studies, and the three contact sheets. The seven environment plates are complete. Confirm the applicable OpenAI account and service terms for monetised use before using the output downstream; see `docs/licensing.md`.
+- The review sheets were built with the system image framework because Pillow is unavailable in the active Python environment.
 - 43 shots give about 3.6 minutes of picture at 5 s each; the narration is longer, so shots will be slowed, held or given extra coverage when the narration is timed (`production/timing_sheet.py`).
 - Names (Ollie, Mama Duck, Ottie) are proposals.
 - Ollie has two canonicals: the grey cygnet (scenes 1-7) and the white swan (scenes 8-12); the change happens off-screen over the winter.

@@ -1,0 +1,3 @@
+date,record,revision,candidate,model,size,outcome,retries,est_usd
+2026-10-05,SWANS_CANON,r01,swans_canonical_r01_nb2lite_t01,gemini-3.1-flash-lite-image,1K,failed,4,
+2026-10-05,SWANS_CANON,r01,swans_canonical_r01_nb2lite_t02,gemini-3.1-flash-lite-image,1K,failed,0,

@@ -73,6 +73,12 @@ def bible():
         "(one above each eye, drawn once), its canonical ears, limbs, wings and toes, whiskers only where its canonical "
         "has them and exactly one tail attached at its root; no text, letters, labels or watermark anywhere.")
     blocks["cast_scale"] = S.CAST_SCALE_BLOCK
+    blocks["edit_open_mouth"] = (
+        "This is an edit of the accepted closed-mouth start frame of this shot (the first attached reference): keep its "
+        "camera, crop, background, light and the character's identity, colours, brightness, size, pose, head position and "
+        "gaze exactly; open only the mouth into the approved rounded speech shape shown in the attached mouth-design "
+        "reference, with the same interior and any teeth as in that reference. This is the single open-mouth key frame the "
+        "talking clip animates to, so the open shape stays identical to the character's approved speech mouth.")
     blocks["studio_lineup"] = (
         "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, soft even neutral light, one flat "
         "ground line at y=0.88 where every character stands, with a small soft contact shadow under each; every whole "
@@ -268,18 +274,43 @@ def scenes(by):
         shorts = " ".join(f"{{{{short:{c}}}}}" for c in cast)
         idents = " ".join(f"{{{{identity:{c}}}}}" for c in cast)
         modes = [("closed", "Mouths stay closed throughout; expressions come from the eyes and brows.")]
+        # A dialogue close-up gets a talking variant. Wan only interpolates between its two keyframes, so the
+        # open mouth must be one of them: make an open-mouth key frame (an edit of the closed start that opens
+        # only the mouth to the character's approved speech shape) and let the talking clip end on it, so the
+        # open mouth stays identical across every render instead of being invented by the model (CR-19).
         if st["framing"] == "dialogue_close_up":
-            modes.append(("mouth", "The mouth opens and closes softly in small rounded shapes, as in gentle speech."))
-        variants = [{
-            "id": f"{sid}_{mode}_r01", "mode": mode, "action_text": action,
-            "positive_prompt_template": re.sub(r"\s+", " ", f"{action} {mouth} Fixed camera; the background stays still "
-                                               f"apart from gentle natural motion. {shorts} The background is {L['label']}, "
-                                               "unchanged framing and light. {{block:runtime_style}}").strip(),
-            "full_prompt_specification_template": re.sub(r"\s+", " ", (
-                f"{action} {mouth} The camera stays fixed in framing, crop and background scale for the whole clip. "
-                f"{idents} Start frame: {{{{frame:{sid}_start}}}}. End frame: {{{{frame:{sid}_end}}}}. "
-                f"Ambient: {L['ambient']} {{{{plate:{loc}}}}} {{{{block:style}}}}")).strip(),
-            "frames": 81, "fps": 16, "seeds": [], "result": None} for mode, mouth in modes]
+            modes.append(("mouth", "The mouth opens and closes softly in small rounded shapes, as in gentle speech, "
+                                   "ending on the approved open-mouth shape."))
+            c = cast[0]
+            oid = f"{sid}_open"
+            open_frame = (f"Exactly the closed-mouth start frame of {sid} in every detail, with the same pose, head size "
+                          f"and position, gaze, backdrop and light, except {name(c)} opens the mouth into the approved "
+                          "rounded speech shape shown in the mouth-design reference.")
+            open_parts = [f"Create one 1920x1080 16:9 still image: the open-mouth key frame of shot {sid}, {st['label']}.",
+                          "{{block:edit_open_mouth}}", cast_line(counts), f"{{{{identity:{c}}}}}",
+                          f"{{{{setup:{setup}}}}}", "{{block:light_and_colour}}", f"{{{{mouth:{c}}}}}",
+                          "This frame shows: {{frame}}.", "{{block:style}}", "{{block:final_check}}"]
+            open_refs = [ref(f"{sid}_start", "edit_base", by), ref(C[c]["canon_id"], "identity_root", by),
+                         ref(f"{S.PREFIX[c]}_OPEN", "mouth_design", by)]
+            r_open = rec(oid, f"scene-{scene:02d}", "scene", f"{SCENE_DIR}/{oid}_r01.png", [1920, 1080], counts,
+                         " ".join(open_parts), open_refs, f"open-mouth key frame of shot {sid}",
+                         f"Open-mouth key frame of {sid}", setup=setup, framing=st["framing"], frame=open_frame)
+            recs.append(r_open)
+            by[oid] = r_open
+        variants = []
+        for mode, mouth in modes:
+            end_rec = f"{sid}_open" if mode == "mouth" else f"{sid}_end"
+            variants.append({
+                "id": f"{sid}_{mode}_r01", "mode": mode, "action_text": action,
+                "start_image": f"{sid}_start", "end_image": end_rec,
+                "positive_prompt_template": re.sub(r"\s+", " ", f"{action} {mouth} Fixed camera; the background stays still "
+                                                   f"apart from gentle natural motion. {shorts} The background is {L['label']}, "
+                                                   "unchanged framing and light. {{block:runtime_style}}").strip(),
+                "full_prompt_specification_template": re.sub(r"\s+", " ", (
+                    f"{action} {mouth} The camera stays fixed in framing, crop and background scale for the whole clip. "
+                    f"{idents} Start frame: {{{{frame:{sid}_start}}}}. End frame: {{{{frame:{end_rec}}}}}. "
+                    f"Ambient: {L['ambient']} {{{{plate:{loc}}}}} {{{{block:style}}}}")).strip(),
+                "frames": 81, "fps": 16, "seeds": [], "result": None})
         shots.append({"id": sid, "scene": scene, "order": n + 1, "status": "planned", "bible_revision": REV,
                       "location_profile": loc, "setup": setup, "cast": cast, "start_image": f"{sid}_start",
                       "end_image": f"{sid}_end", "previous_shot": S.SHOTS[n - 1][0] if n else None,

@@ -108,7 +108,7 @@ Create one 1920x1080 16:9 still image: the end frame of shot s12_friends_end, a 
 
 - Start `s12_walk_together_start` → end `s12_walk_together_end` · cast: hattie, toby
 
-### s12_walk_together_closed_r01 (closed)
+### s12_walk_together_closed_r01 (closed) · start `s12_walk_together_start` → end `s12_walk_together_end`
 
 Hattie and Toby walk slowly along the path together, chatting happily. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Hattie is one tall slim caramel-tan felt hare standing upright, very long ears with pink insides and chocolate-brown tips, cream belly, two amber-brown eyes, a rose-brown nose and one small round white tail. Toby is one small rounded olive-green felt tortoise with a domed shell of honey-tan hexagonal plates, sage-green head and legs, cream chin, two brown eyes, four short legs and a short pointed tail. The background is the forest path at sunset, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -116,7 +116,7 @@ Hattie and Toby walk slowly along the path together, chatting happily. Mouths st
 
 - Start `s12_hilltop_view_start` → end `s12_hilltop_view_end` · cast: hattie, toby
 
-### s12_hilltop_view_closed_r01 (closed)
+### s12_hilltop_view_closed_r01 (closed) · start `s12_hilltop_view_start` → end `s12_hilltop_view_end`
 
 Hattie points out the view and the two friends laugh together. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Hattie is one tall slim caramel-tan felt hare standing upright, very long ears with pink insides and chocolate-brown tips, cream belly, two amber-brown eyes, a rose-brown nose and one small round white tail. Toby is one small rounded olive-green felt tortoise with a domed shell of honey-tan hexagonal plates, sage-green head and legs, cream chin, two brown eyes, four short legs and a short pointed tail. The background is the hilltop with the big shady tree in late afternoon, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
@@ -124,6 +124,6 @@ Hattie points out the view and the two friends laugh together. Mouths stay close
 
 - Start `s12_friends_end_start` → end `s12_friends_end_end` · cast: hattie, toby
 
-### s12_friends_end_closed_r01 (closed)
+### s12_friends_end_closed_r01 (closed) · start `s12_friends_end_start` → end `s12_friends_end_end`
 
 Hattie and Toby sit together and smile in the sunset. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Hattie is one tall slim caramel-tan felt hare standing upright, very long ears with pink insides and chocolate-brown tips, cream belly, two amber-brown eyes, a rose-brown nose and one small round white tail. Toby is one small rounded olive-green felt tortoise with a domed shell of honey-tan hexagonal plates, sage-green head and legs, cream chin, two brown eyes, four short legs and a short pointed tail. The background is the forest path at sunset, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
