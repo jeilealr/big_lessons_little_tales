@@ -200,14 +200,6 @@ Leo remains peacefully asleep with minimal breathing; his extended paw stays on 
 
 Milo approaches the sleeping lion and his leading foot meets the extended paw. End at the first small stumble, before a tumble. Lips stay closed throughout. Paws and tail remain settled except for the stated body action. Fixed camera; trunks, roots and rocks remain fixed. Preserve anatomical scale, eye colour and endpoint contacts. Leaf and grass tips move gently; shadows vary subtly. Leo is a sturdy ochre-orange felt lion with a huge round rust-red mane, cream muzzle and chest, two brown eyes, a peach nose pad over a dark brown nose, four tan paws and one tail with a rust-red tuft, pale cream whiskers on both sides. Milo is a slender upright taupe-brown felt mouse with a smooth crown, huge coral-lined oval ears, two brown eyes, a small brown nose, cream muzzle and belly, slim limbs and one thin salmon tail, peach whiskers on both sides. The background is the approved great tree at dusk plate, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 
-## Video s05_tumble
-
-- Start `s05_paw_contact_end` → end `s05_nose_aftermath_start` · cast: leo, milo
-
-### s05_tumble_closed_r01 (closed)
-
-Leo sleeps on with his eyes closed and his body still. Milo trips over the tip of Leo's extended front paw, tumbles forward in one small roll along the grass beside the paw, and comes up standing right against Leo's nose, a little surprised. Lips stay closed throughout. Leo's paws, mane and tail stay still. Fixed camera; trunks, roots and rocks remain fixed. Preserve anatomical scale, eye colour and endpoint contacts. Leaf and grass tips move gently; shadows vary subtly. Leo is a sturdy ochre-orange felt lion with a huge round rust-red mane, cream muzzle and chest, two brown eyes, a peach nose pad over a dark brown nose, four tan paws and one tail with a rust-red tuft, pale cream whiskers on both sides. Milo is a slender upright taupe-brown felt mouse with a smooth crown, huge coral-lined oval ears, two brown eyes, a small brown nose, cream muzzle and belly, slim limbs and one thin salmon tail, peach whiskers on both sides. The background is the approved great tree at dusk plate, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
-
 ## Video s05_nose_aftermath
 
 - Start `s05_nose_aftermath_start` → end `s05_nose_aftermath_end` · cast: leo, milo

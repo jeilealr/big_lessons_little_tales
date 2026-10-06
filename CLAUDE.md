@@ -106,10 +106,20 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   umT5 tokens (limit 512, none truncated). Rendering in fast mode, 3 seeds each, with
   `lumi/render_story.sh lion_and_mouse_v5` (log `$BLLT_PROJECT/tmp/render_v5.log`); clips in
   `work/stories/lion_and_mouse_v5/shots/`. Owner selects takes; no animatic.
-  Measured 2026-10-05 with 4 tasks per dev-g node: model load ~30 min per `shot.py` call, then
-  ~17 min per fast seed (v3 measured ~9), so one shot with 3 seeds is ~80 min and a task line
-  with 3 shots overruns 3 h; the driver's one-shot-per-task catch-up rounds finish the rest.
-  Use PER_TASK=2 next time.
+  **Done 2026-10-05 09:31: 186 clips** (62 shots x 3 seeds), review in
+  `stories/lion_and_mouse_v5/RENDER_REVIEW.md` (contact sheets `work/.../review/sceneNN.jpg`).
+  Measured: ~30 min model load per `shot.py` call, median 9.2 min per fast seed (the first
+  jobs ~17); 3 shots per task line can overrun 3 h, the catch-up round finished the one late
+  shot. Finding: in fast mode (CFG 1) naming an absent object pulls it in ("the overhead branch
+  stays empty", "paws stay outside the portrait" put a branch, leaves and paws into the S15
+  close-ups): describe only what is in frame.
+- **Bridge shot `s05_tumble` (owner, 2026-10-05):** the cut `s05_paw_contact` -> `s05_nose_aftermath`
+  jumped Milo from the paw to the nose. Added to the v4 manifest as a shot with `"bridge": true`
+  (start = `s05_paw_contact_end`, end = `s05_nose_aftermath_start`, no new images; lint skips the
+  image-pair rules for bridge shots); Leo wakes only in `s05_nose_aftermath`. Scene 5 lines in
+  `dialogue_coverage.json` now map in story order (L001-4 sleeps, L005-7 paw, L008-9 tumble,
+  L010-11 eyes open). `timing_sheet.py` takes `--audio-story lion_and_mouse_v5` (the v4 audio's
+  folder).
 - **Next stories (owner, 2026-10-04), narration 7-10 min each, narrator reused
   for now:** *The Tortoise and the Hare* (`stories/tortoise_and_hare_v1/`: 84 lines,
   about 9 min, 42 shots, 126 image records) and *The Boy Who Cried Wolf*
@@ -384,7 +394,7 @@ the negative). A draft manifest is not accepted by the renderer.
   another model (terms forbid replicating components of the Services).
 - **Narration v4 done (2026-10-02)**: all 16 scenes, 161 lines, **11:23.7**
   (en), by `voice/narrate_scenes.py`: `sceneNN.wav` + `lines/` + `timing.json`
-  in `work/stories/lion_and_mouse_v4/audio/en/`. Gemini 3.8 Flash TTS Tier 1
+  in `work/stories/lion_and_mouse_v5/audio/en/` (rendered as v4; the folder became v5 on 2026-10-04). Gemini 3.8 Flash TTS Tier 1
   limits: **100 requests/day** (resets 09:00 Germany), 10/min, 10K tokens/min;
   past the daily limit calls hang instead of erroring, so the script waits 8 s
   between calls and tries a line at most twice. A 160-line story needs two days.

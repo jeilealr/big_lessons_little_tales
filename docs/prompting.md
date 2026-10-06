@@ -440,3 +440,10 @@ Update this when a rule is confirmed, refuted or refined.
   frame identical to the start pins the action too; for an action that must
   change the scene (a rope parting), the end keyframe must show the result.
 
+- **2026-10-05, Lion and Mouse v5 (186 fast clips, `stories/lion_and_mouse_v5/RENDER_REVIEW.md`).**
+  Owner-made start and end images held identity in every clip, and the net fall and the walk
+  out of the net worked in all takes. Close-up prompts that named absent things ("the overhead
+  branch stays empty", "paws and tail stay outside the portrait") made Wan draw them: a
+  branch and leaves over the heads and paws rising into frame in most S15 takes. With fast
+  mode's CFG 1 there is no negative pass, so a named object is a requested object: describe
+  only what is in frame.

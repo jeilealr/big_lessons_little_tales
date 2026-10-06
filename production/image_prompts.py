@@ -238,6 +238,10 @@ def lint(manifest, bible):
 
     shot_of = {}
     for s in manifest["shots"]:
+        # a bridge shot reuses the end of one shot and the start of the next (same camera):
+        # its endpoints are checked as images of their own shots, not as a new pair
+        if s.get("bridge"):
+            continue
         shot_of[s["start_image"]] = (s, "start")
         shot_of[s["end_image"]] = (s, "end")
 

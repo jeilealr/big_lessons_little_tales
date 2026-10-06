@@ -55,9 +55,11 @@ def main() -> None:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--story", default="lion_and_mouse_v4")
     ap.add_argument("--lang", default="en")
+    ap.add_argument("--audio-story", help="story whose work/ folder holds the narration "
+                    "(default: --story; lion_and_mouse_v4's audio lives under lion_and_mouse_v5)")
     args = ap.parse_args()
     sd = paths.STORIES / args.story
-    timing = json.loads((paths.story_audio(args.story, args.lang) / "timing.json").read_text())
+    timing = json.loads((paths.story_audio(args.audio_story or args.story, args.lang) / "timing.json").read_text())
     lines = json.loads((sd / "dialogue_coverage.json").read_text(encoding="utf-8"))["lines"]
     man = json.loads((sd / "prompt_manifest.json").read_text(encoding="utf-8"))
     img = {i["id"]: i.get("target") for i in man["images"]}

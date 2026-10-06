@@ -123,75 +123,62 @@
       "shot": "s05_leo_sleeps",
       "kind": "clip",
       "start": 0.0,
-      "seconds": 9.37,
+      "seconds": 20.52,
       "lines": [
-        "S05-L001"
+        "S05-L001",
+        "S05-L002",
+        "S05-L003",
+        "S05-L004"
       ],
-      "note": "clip slowed to 54% speed",
+      "note": "clip at 50% (10.1 s) + end image still, slow push-in 10.4 s",
       "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_leo_sleeps_start_r01.png",
       "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_leo_sleeps_end_r01.png"
     },
     {
       "scene": 5,
-      "film_start": 127.99,
+      "film_start": 139.14,
       "shot": "s05_paw_contact",
       "kind": "clip",
-      "start": 9.37,
-      "seconds": 11.15,
+      "start": 20.52,
+      "seconds": 5.210000000000001,
       "lines": [
-        "S05-L002",
-        "S05-L003",
-        "S05-L004"
+        "S05-L005",
+        "S05-L006",
+        "S05-L007"
       ],
-      "note": "clip at 50% (10.1 s) + end image still, slow push-in 1.0 s",
+      "note": "clip, normal speed",
       "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_paw_contact_start_r01.png",
       "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_paw_contact_end_r01.png"
     },
     {
       "scene": 5,
-      "film_start": 139.14,
-      "shot": "s05_nose_aftermath",
-      "kind": "clip",
-      "start": 20.52,
-      "seconds": 3.75,
-      "lines": [
-        "S05-L005",
-        "S05-L006"
-      ],
-      "note": "clip, normal speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_end_r01.png"
-    },
-    {
-      "scene": 5,
-      "film_start": 142.89,
-      "shot": "s05_nose_aftermath",
-      "kind": "still",
-      "start": 24.27,
-      "seconds": 1.4600000000000009,
-      "lines": [
-        "S05-L007"
-      ],
-      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_end_r01.png"
-    },
-    {
-      "scene": 5,
       "film_start": 144.35,
-      "shot": "s05_nose_aftermath",
-      "kind": "still",
+      "shot": "s05_tumble",
+      "kind": "clip",
       "start": 25.73,
-      "seconds": 18.48,
+      "seconds": 11.620000000000001,
       "lines": [
         "S05-L008",
-        "S05-L009",
+        "S05-L009"
+      ],
+      "note": "clip at 50% (10.1 s) + end image still, slow push-in 1.5 s",
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_paw_contact_end_r01.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_start_r05.png"
+    },
+    {
+      "scene": 5,
+      "film_start": 155.97,
+      "shot": "s05_nose_aftermath",
+      "kind": "clip",
+      "start": 37.35,
+      "seconds": 6.859999999999999,
+      "lines": [
         "S05-L010",
         "S05-L011"
       ],
-      "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_end_r01.png"
+      "note": "clip slowed to 74% speed",
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_start_r05.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s05_nose_aftermath_end_r05.png"
     },
     {
       "scene": 6,
@@ -223,8 +210,8 @@
         "S07-L002"
       ],
       "note": "clip at 50% (10.1 s) + end image still, slow push-in 0.7 s",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s07_leo_annoyed_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s07_leo_annoyed_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s07_leo_annoyed_start_r05.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s07_leo_annoyed_end_r05.png"
     },
     {
       "scene": 7,
@@ -239,8 +226,8 @@
         "S07-L005"
       ],
       "note": "clip at 50% (10.1 s) + end image still, slow push-in 2.8 s",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s07_milo_sorry_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s07_milo_sorry_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s07_milo_sorry_start_r05.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s07_milo_sorry_end_r05.png"
     },
     {
       "scene": 8,
@@ -271,8 +258,8 @@
         "S08-L006"
       ],
       "note": "clip at 50% (10.1 s) + end image still, slow push-in 4.1 s",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s08_milo_surprised_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s08_milo_surprised_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s08_milo_surprised_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s08_milo_surprised_end_r04.png"
     },
     {
       "scene": 8,
@@ -442,8 +429,8 @@
         "S10-L003"
       ],
       "note": "clip at 50% (10.1 s) + end image still, slow push-in 7.7 s",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s10_curious_step_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s10_curious_step_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s10_curious_step_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s10_curious_step_end_r02.png"
     },
     {
       "scene": 10,
@@ -456,8 +443,8 @@
         "S10-L004"
       ],
       "note": "clip slowed to 82% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s10_net_falls_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s10_net_falls_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s10_net_falls_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s10_net_falls_end_r02.png"
     },
     {
       "scene": 11,
@@ -472,8 +459,8 @@
         "S11-L003"
       ],
       "note": "clip slowed to 62% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_pull_once_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_pull_once_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_pull_once_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_pull_once_end_r02.png"
     },
     {
       "scene": 11,
@@ -488,8 +475,8 @@
         "S11-L006"
       ],
       "note": "clip slowed to 61% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_why_wont_it_break_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_why_wont_it_break_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_why_wont_it_break_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_why_wont_it_break_end_r02.png"
     },
     {
       "scene": 11,
@@ -503,8 +490,8 @@
         "S11-L008"
       ],
       "note": "clip slowed to 49% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_call_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_call_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_call_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_call_end_r02.png"
     },
     {
       "scene": 11,
@@ -517,8 +504,8 @@
         "S11-L009"
       ],
       "note": "clip, normal speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_waits_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_waits_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_waits_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s11_waits_end_r02.png"
     },
     {
       "scene": 12,
@@ -536,7 +523,7 @@
       ],
       "note": "clip at 50% (10.1 s) + end image still, slow push-in 6.0 s",
       "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s12_hears_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s12_hears_end_r01.png"
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s12_hears_end_r02.png"
     },
     {
       "scene": 12,
@@ -567,8 +554,8 @@
         "S13-L001"
       ],
       "note": "clip, normal speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_arrives_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_arrives_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_arrives_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_arrives_end_r02.png"
     },
     {
       "scene": 13,
@@ -581,8 +568,8 @@
         "S13-L002"
       ],
       "note": "clip, normal speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_confident_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_confident_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_confident_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_confident_end_r04.png"
     },
     {
       "scene": 13,
@@ -597,8 +584,8 @@
         "S13-L005"
       ],
       "note": "clip slowed to 48% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_leo_doubtful_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_leo_doubtful_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_leo_doubtful_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_leo_doubtful_end_r02.png"
     },
     {
       "scene": 13,
@@ -614,8 +601,8 @@
         "S13-L009"
       ],
       "note": "clip at 50% (10.1 s) + end image still, slow push-in 8.0 s",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_end_r04.png"
     },
     {
       "scene": 13,
@@ -629,8 +616,8 @@
         "S13-L011"
       ],
       "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_end_r04.png"
     },
     {
       "scene": 13,
@@ -643,8 +630,8 @@
         "S13-L012"
       ],
       "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_leo_doubtful_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_leo_doubtful_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_leo_doubtful_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_leo_doubtful_end_r02.png"
     },
     {
       "scene": 13,
@@ -658,8 +645,8 @@
         "S13-L014"
       ],
       "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s13_milo_playful_end_r04.png"
     },
     {
       "scene": 14,
@@ -673,8 +660,8 @@
         "S14-L002"
       ],
       "note": "clip slowed to 49% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_gnaw_fray_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_gnaw_fray_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_gnaw_fray_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_gnaw_fray_end_r02.png"
     },
     {
       "scene": 14,
@@ -689,8 +676,8 @@
         "S14-L005"
       ],
       "note": "clip slowed to 64% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_sever_R01_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_sever_R01_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_sever_R01_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_sever_R01_end_r02.png"
     },
     {
       "scene": 14,
@@ -704,8 +691,8 @@
         "S14-L007"
       ],
       "note": "clip slowed to 58% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_milo_clear_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_milo_clear_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_milo_clear_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_milo_clear_end_r02.png"
     },
     {
       "scene": 14,
@@ -720,8 +707,8 @@
         "S14-L010"
       ],
       "note": "clip at 50% (10.1 s) + end image still, slow push-in 1.0 s",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_opening_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_opening_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_opening_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_opening_end_r02.png"
     },
     {
       "scene": 14,
@@ -735,8 +722,8 @@
         "S14-L012"
       ],
       "note": "clip slowed to 73% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_step_clear_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_step_clear_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_step_clear_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_step_clear_end_r02.png"
     },
     {
       "scene": 14,
@@ -750,8 +737,8 @@
         "S14-L014"
       ],
       "note": "clip slowed to 59% speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_free_hold_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_free_hold_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_free_hold_start_r02.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s14_free_hold_end_r02.png"
     },
     {
       "scene": 15,
@@ -779,8 +766,8 @@
         "S15-L003"
       ],
       "note": "clip, normal speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_modest_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_modest_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_modest_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_modest_end_r04.png"
     },
     {
       "scene": 15,
@@ -822,8 +809,8 @@
         "S15-L007"
       ],
       "note": "clip, normal speed",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_end_r04.png"
     },
     {
       "scene": 15,
@@ -850,8 +837,8 @@
         "S15-L009"
       ],
       "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_end_r04.png"
     },
     {
       "scene": 15,
@@ -882,8 +869,8 @@
         "S15-L015"
       ],
       "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_end_r04.png"
     },
     {
       "scene": 15,
@@ -903,8 +890,8 @@
         "S15-L023"
       ],
       "note": "end image of the shot as a still, slow push-in (or reuse its clip)",
-      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_start_r01.png",
-      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_end_r01.png"
+      "start_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_start_r04.png",
+      "end_image": "character/characters/lion_and_mouse_v4/interactions/keyframes/s15_milo_sincere_end_r04.png"
     },
     {
       "scene": 16,
