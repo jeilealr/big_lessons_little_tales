@@ -39,11 +39,11 @@ Create one 1920x1080 16:9 still image: the end frame of shot s10_reflection, a c
 - Kind: `scene` · setup `lake_spring_ollie_closeup` · framing `dialogue_close_up`
 - Canvas: 1920 × 1080
 - Ordered references:
-  1. `character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_nervous_end_r01.png` — world_state (missing)
+  1. `character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_nervous_end_r01.png` — world_state
   2. `character/locations/ugly_duckling_v1/lake/lake_spring_r01.png` — locked_plate
   3. `character/characters/ugly_duckling_v1/OllieSwan/canonical/ollie_swan_canonical_r01.png` — identity_root
   4. `character/characters/ugly_duckling_v1/OllieSwan/expressions/os_expr_amazed_r01.png` — expression
-  5. `character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_nervous_start_r01.png` — size_anchor (missing)
+  5. `character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_nervous_start_r01.png` — size_anchor
 
 **Prompt (rendered from the template)**
 
@@ -130,14 +130,14 @@ Create one 1920x1080 16:9 still image: the open-mouth key frame of shot s10_swan
 - Kind: `scene` · setup `lake_spring_wide` · framing `scene_wide`
 - Canvas: 1920 × 1080
 - Ordered references:
-  1. `character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_bows_end_r01.png` — world_state (missing)
+  1. `character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_bows_end_r01.png` — world_state
   2. `character/locations/ugly_duckling_v1/lake/lake_spring_r01.png` — locked_plate
   3. `character/characters/ugly_duckling_v1/Swans/canonical/swans_canonical_r01.png` — identity_root
   4. `character/characters/ugly_duckling_v1/OllieSwan/canonical/ollie_swan_canonical_r01.png` — identity_root
   5. `character/characters/ugly_duckling_v1/OllieSwan/references/os_swim_r01.png` — pose
   6. `character/characters/ugly_duckling_v1/Swans/references/s_swim_r01.png` — pose
   7. `character/characters/ugly_duckling_v1/OllieSwan/expressions/os_expr_happy_r01.png` — expression
-  8. `character/characters/ugly_duckling_v1/interactions/keyframes/s08_flies_start_r01.png` — size_anchor (missing)
+  8. `character/characters/ugly_duckling_v1/interactions/keyframes/s08_flies_start_r01.png` — size_anchor
 
 **Prompt (rendered from the template)**
 

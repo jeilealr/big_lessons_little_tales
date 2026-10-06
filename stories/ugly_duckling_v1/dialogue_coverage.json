@@ -460,7 +460,8 @@
       "performance_direction": "warm, gentle storyteller for small children, unhurried, smiling",
       "text": "Just then, a little round face popped out of a hole in the riverbank. It was Ottie the Otter.",
       "candidate_coverage_shots": [
-        "s06_ottie_finds"
+        "s06_ottie_finds",
+        "s06_ottie_approaches"
       ],
       "chosen_shot_intervals": [],
       "audio_path": null,

@@ -26,13 +26,14 @@ repo out elsewhere (e.g. `/home/user/big_lessons_little_tales`) without
 stills made and under owner review, no clips yet** (`stories/lion_and_mouse_v4/`).
 V3 render review is the evidence for this revision; v2/v3 production data is historical.
 
-## Current state (2026-10-05)
+## Current state (2026-10-06)
 
 - **Owner's current instruction (latest, 2026-10-02):** the owner creates the
   v4 images personally. Agents generate no images, clips, audio or GPU jobs
   unless the owner asks for it in that session; audits, documentation and code
   work continue. Superseded task statements are listed under the standing
   instructions below.
+- **Ugly Duckling v1 scenes:** at the owner’s direction, scene keyframes through Scene 08 are generated with built-in ImageGen and saved at manifest targets; all remain pending owner review. Scene 06 has 14 active frames across 6 shots after the owner split `s06_ottie_finds` into a burrow-watch shot and an approach/help shot. The owner renamed the help image to `s06_ottie_approaches_end_r01.png` and duplicated the original start as `s06_ottie_finds_end_r01.png`; the earlier generated hold-end is superseded. Scene 06 contact sheet: `stories/ugly_duckling_v1/review/contact_sheets/scene-06_contact_sheet.png`; Scene 07’s four frames and contact sheet are `stories/ugly_duckling_v1/review/contact_sheets/scene-07_contact_sheet.png`. Scene 08’s six keyframes are generated and pending owner review at `stories/ugly_duckling_v1/review/contact_sheets/scene-08_contact_sheet.png`; its empty spring start is copied from the locked plate, goodbye and flight mouths are closed per shot descriptions. The goodbye prompt’s “snow has nearly melted” state conflicts with the fully snowy locked winter plate and needs owner review. Scene prompt lint is 0 errors and 0 warnings. Details and outstanding review are in `stories/ugly_duckling_v1/README.md`.
 - **V4 stills** (counted from `stories/lion_and_mouse_v4/prompt_manifest.json`):
   140 image records, the 118 planned ones (32 foundation: 2 canonicals,
   18 references, 10 plates, 2 props; 86 scene start/end frames) plus 22
