@@ -1,0 +1,23 @@
+# Gemini designed voice. Google deletes it at `expires`: recreate it from
+# `prompt` with the same model before then, compare with the samples,
+# and update voice_id.
+role: Ottie
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_i1odi373fxko
+display_name: Ottie the Otter 1
+type: prompted
+model: models/gemini-3.8-flash-tts
+expires: '2027-10-05 23:01:49.617216+00:00'
+prompt: Speak with a warm, inviting, and gentle male Southern United States accent.
+  Utilize a relaxed, mid-low register that feels like a soft woolen blanket, possessing
+  a rounded, smooth, and naturally resonant texture. The persona is a wise, seasoned
+  friend; maintain an unhurried, steady, and easygoing pace with natural, conversational
+  cadences that feel intimate. Infuse the delivery with a sense of quiet, twinkling
+  humor and a deep, reassuring kindness that sounds genuinely dependable and grounded.
+  The tone must remain present and steady, projecting safety and calm encouragement
+  without becoming lethargic. Articulate with a soft-edged clarity characteristic
+  of a fireside chat, acting as a steady, comforting anchor. The acoustic setting
+  should be intimate and close-mic’d, as if sitting across a small wooden table, with
+  a touch of warmth in the recording to emphasize the richness of the voice.
+google_sample: google_sample.wav
+notes: null

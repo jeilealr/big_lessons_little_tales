@@ -1,0 +1,13 @@
+# The Ugly Duckling: who speaks with which Gemini voice (owner, 2026-10-06).
+# Folders are relative to voice/ and hold each voice's voice.yaml (id, design prompt, expiry).
+# Used by: voice/narrate_scenes.py --voices-file stories/ugly_duckling_v1/voices.yaml
+voices:
+  NARRATOR: narrators/cheery_tale_keeper_2        # The Cheery Tale Keeper 2, voice_8tnxrhfqk3ur
+  OLLIE: cast/ugly_duckling_v1/ollie              # Ollie 1, voice_07kspefjri22 (cygnet and swan)
+  MAMA: cast/ugly_duckling_v1/mama_duck           # Gemini prebuilt Gacrux
+  OTTIE: cast/ugly_duckling_v1/ottie              # Ottie the Otter 1, voice_i1odi373fxko
+  SWAN: cast/ugly_duckling_v1/swan                # Gemini prebuilt Algieba
+  # the three ducklings speak as one voice (owner, 2026-10-06: the three voices spoke at
+  # different speeds). duckling_3 chosen: highest pitch (median 321 Hz), steadiest pace,
+  # "HONK?!" read as written. duckling_1 and _2 stay saved in voice/cast/ugly_duckling_v1/.
+  DUCKLINGS: cast/ugly_duckling_v1/duckling_3     # The 3 Ducklings 3, voice_mep0f54paagg

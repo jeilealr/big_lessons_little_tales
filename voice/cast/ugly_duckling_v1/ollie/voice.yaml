@@ -1,0 +1,25 @@
+# Gemini designed voice. Google deletes it at `expires`: recreate it from
+# `prompt` with the same model before then, compare with the samples,
+# and update voice_id.
+role: Ollie
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_07kspefjri22
+display_name: Ollie 1
+type: prompted
+model: models/gemini-3.8-flash-tts
+expires: '2027-10-05 22:23:11.371573+00:00'
+prompt: Adopt a gentle, light-timbered young male voice with an open, airy resonance
+  and a clear, youthful English accent. Begin the narration with a soft, cautious
+  vocal quality, incorporating subtle breathiness and micro-hesitations to convey
+  vulnerability and uncertainty. As the story progresses, gradually shift the delivery
+  to become more grounded, resonant, and steady. By the time the character transitions
+  into his swan form, adopt a settled, self-assured cadence that retains the initial
+  warmth but replaces the earlier hesitancy with a smooth, flowing confidence. Maintain
+  a natural, conversational prosody throughout; ensure the vulnerability is conveyed
+  through gentle inflection rather than sounding whiny or overly fragile. Keep the
+  pace measured and thoughtful, allowing the warmth of the character’s growth to define
+  the performance rather than dramatic flair. The acoustic environment should be intimate,
+  like a clean studio recording with no background noise, allowing the nuances of
+  the breath and the shift in vocal weight to be clearly audible.
+google_sample: google_sample.wav
+notes: null

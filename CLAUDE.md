@@ -121,6 +121,14 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   `dialogue_coverage.json` now map in story order (L001-4 sleeps, L005-7 paw, L008-9 tumble,
   L010-11 eyes open). `timing_sheet.py` takes `--audio-story lion_and_mouse_v5` (the v4 audio's
   folder).
+- **Ugly Duckling voices (owner, 2026-10-06):** cast in `stories/ugly_duckling_v1/voices.yaml`
+  (narrator Cheery Tale Keeper 2; Ollie, Ottie and three duckling designed voices in
+  `voice/cast/ugly_duckling_v1/`; Mama = prebuilt Gacrux, Swan = prebuilt Algieba, used by name).
+  Ducklings: one voice, duckling_3 (the three voices spoke at different speeds; chosen by pitch
+  and steady pace); the unused takes are in `lines/unused_duckling_voices/`.
+  `narrate_scenes.py --voices-file`; a speaker with a list of voices gets one file per voice
+  (`lines/<ID>_v1.wav`...) and a mix in the scene file. Narration rendered 2026-10-06 (65 lines, 73 calls, 10.1 min; TIMING_SHEET.md built) into
+  `work/stories/ugly_duckling_v1/audio/en/`.
 - **Next stories (owner, 2026-10-04), narration 7-10 min each, narrator reused
   for now:** *The Tortoise and the Hare* (`stories/tortoise_and_hare_v1/`: 84 lines,
   about 9 min, 42 shots, 141 image records) and *The Boy Who Cried Wolf*

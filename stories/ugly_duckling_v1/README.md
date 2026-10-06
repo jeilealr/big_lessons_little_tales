@@ -40,7 +40,7 @@ Size lineup: At equal depth, with Mama Duck's height as 1.0: each duckling 0.35,
 3. Size lineup image (`LINEUP`), then measure it and update the setup sizes.
 4. Plates (7), props, views and poses, portraits, mouth and expression studies.
 5. Scene frames in story order, each start before its end; the first frame of each camera setup is its size anchor.
-6. Narration with the saved narrator (`voice/narrators/moonlight_storyteller_1`, the default) and character voices chosen later: `voice/narrate_scenes.py --lines stories/ugly_duckling_v1/dialogue_coverage.json --story ugly_duckling_v1 --voices SPEAKER=folder ...`.
+6. Narration (voices chosen by the owner 2026-10-06, in [voices.yaml](voices.yaml): narrator The Cheery Tale Keeper 2, one duckling voice for the three ducklings): `voice/narrate_scenes.py --lines stories/ugly_duckling_v1/dialogue_coverage.json --story ugly_duckling_v1 --voices-file stories/ugly_duckling_v1/voices.yaml`; audio in `work/stories/ugly_duckling_v1/audio/en/`.
 7. Clips on LUMI (fast mode), owner selects takes; assembly only when asked.
 
 ## Image folders

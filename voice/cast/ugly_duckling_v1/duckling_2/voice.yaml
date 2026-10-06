@@ -1,0 +1,23 @@
+# Gemini designed voice. Google deletes it at `expires`: recreate it from
+# `prompt` with the same model before then, compare with the samples,
+# and update voice_id.
+role: Duckling-2
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: voice_jtbo57dz6457
+display_name: The 3 Ducklings 2
+type: prompted
+model: models/gemini-3.8-flash-tts
+expires: '2027-10-05 22:57:18.035437+00:00'
+prompt: Adopt a bright, youthful, and energetic American female voice in her early
+  20s. Deliver the lines with a rapid, bouncy cadence, characterized by frequent,
+  playful upward inflections that sound like a spontaneous, teasing giggle. Periodically
+  interject sudden, exaggerated, mock-serious drops in pitch and volume to signal
+  a humorous shift in tone, as if sharing an inside joke. The performance should be
+  saturated with mischievous energy, incorporating audible, barely suppressed laughter,
+  light breathy chuckles between phrases, and an informal, conversational spontaneity.
+  Maintain a clear, crisp, and high-pitched timbre throughout, sounding like a best
+  friend caught in a lighthearted prank. The overall acoustic quality should feel
+  intimate and close-mic'd, capturing the nuance of a relaxed, spirited, and authentic
+  performance.
+google_sample: google_sample.wav
+notes: null

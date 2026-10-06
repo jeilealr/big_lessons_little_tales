@@ -1,0 +1,9 @@
+# Gemini prebuilt voice (owner's choice 2026-10-06). Prebuilt voices do not
+# expire and have no design prompt; voices.get does not return them.
+role: Mama-Duck
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: gacrux
+display_name: Gacrux
+type: prebuilt
+gender: female
+model: models/gemini-3.8-flash-tts

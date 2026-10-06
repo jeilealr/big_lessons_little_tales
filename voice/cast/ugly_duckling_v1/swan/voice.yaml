@@ -1,0 +1,9 @@
+# Gemini prebuilt voice (owner's choice 2026-10-06). Prebuilt voices do not
+# expire and have no design prompt; voices.get does not return them.
+role: Swan
+provider: Gemini 3.8 Flash TTS (Gemini API)
+voice_id: algieba
+display_name: Algieba
+type: prebuilt
+gender: male
+model: models/gemini-3.8-flash-tts

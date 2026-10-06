@@ -53,10 +53,27 @@ voice; no audio was generated for it). Save a voice with
 | narrator (alternative) | The Fireside Grandfather 2 (`voice_4rdl7hydi35v`) | `narrators/fireside_grandfather_2/` |
 | **narrator (Lion and Mouse v2)** | Moonlight Storyteller 1 (`voice_v5bpq98uj7qh`) | `narrators/moonlight_storyteller_1/` |
 | narrator (alternative) | Golden Hour Storyteller 3 (`voice_g00mo8cbdefq`) | `narrators/golden_hour_storyteller_3/` |
-| narrator (alternative) | The Cheery Tale Keeper 2 (`voice_8tnxrhfqk3ur`) | `narrators/cheery_tale_keeper_2/` |
+| **narrator (The Ugly Duckling)** | The Cheery Tale Keeper 2 (`voice_8tnxrhfqk3ur`) | `narrators/cheery_tale_keeper_2/` |
 | narrator (alternative) | Bright Trail Narrator 2 (`voice_tcrjw3ney7q8`) | `narrators/bright_trail_narrator_2/` |
 
-`cast/` holds character voices; `narrators/` is the pool of narrator voices.
+**The Ugly Duckling** (owner, 2026-10-06; cast file `stories/ugly_duckling_v1/voices.yaml`):
+
+| Role | Voice | Folder |
+|---|---|---|
+| Ollie (cygnet and swan) | Ollie 1 (`voice_07kspefjri22`) | `cast/ugly_duckling_v1/ollie/` |
+| Mama Duck | Gacrux (Gemini prebuilt, no expiry) | `cast/ugly_duckling_v1/mama_duck/` |
+| Ottie | Ottie the Otter 1 (`voice_i1odi373fxko`) | `cast/ugly_duckling_v1/ottie/` |
+| the Swan | Algieba (Gemini prebuilt, no expiry) | `cast/ugly_duckling_v1/swan/` |
+| the Ducklings (one voice for all three) | The 3 Ducklings 3 (`voice_mep0f54paagg`); 1 and 2 (`voice_wkpdjuv6njc9`, `voice_jtbo57dz6457`) saved, unused | `cast/ugly_duckling_v1/duckling_3/` |
+
+Prebuilt voices (Gacrux, Algieba) are used by name; `voices.get` does not return them, so
+their `voice.yaml` is written by hand. The ducklings first spoke with three voices at once, but the
+three spoke at different speeds, so the owner chose one voice (2026-10-06; duckling_3: highest
+pitch, steadiest pace). `narrate_scenes.py` still supports it: a speaker with a list of voices is
+rendered once per voice into `lines/<ID>_v1.wav`, `_v2`, `_v3` for layering in the edit;
+the scene file has their mix. The Ugly Duckling's designed voices expire on 2027-10-05.
+
+`cast/` holds character voices (Lion and Mouse at the top, other stories in `cast/<story>/`); `narrators/` is the pool of narrator voices.
 A story picks its voices in its `story.yaml` (`voices:`), e.g. the Lion and
 Mouse v2 narrator is `narrators/moonlight_storyteller_1`. Samples:
 `google_sample.wav` (Google's own) and `sample_scene*.wav` (story lines). All designed voices

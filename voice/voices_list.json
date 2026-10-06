@@ -1,6 +1,258 @@
 {
-  "listed_at": "2026-09-27T13:28:40+00:00",
+  "listed_at": "2026-10-06T05:08:00+00:00",
   "voices": [
+    {
+      "id": "voice_nyjvldu8x8nm",
+      "display_name": "The Late-Night DJ 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_v83qt9a32vfe",
+      "display_name": "The Late-Night DJ 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_98klwjp4owcu",
+      "display_name": "The Late-Night DJ 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_i1odi373fxko",
+      "display_name": "Ottie the Otter 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_me64rer8i9yx",
+      "display_name": "Ottie the Otter 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_qnsef1dhxpqa",
+      "display_name": "Ottie the Otter 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_zpqzs88zoho7",
+      "display_name": "Ottie the Otter 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_3hsrbi3a0ta8",
+      "display_name": "Ottie the Otter 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_yddtz2jegrz6",
+      "display_name": "Ottie the Otter 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_jtbo57dz6457",
+      "display_name": "The 3 Ducklings 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_mep0f54paagg",
+      "display_name": "The 3 Ducklings 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_wkpdjuv6njc9",
+      "display_name": "The 3 Ducklings 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_114yl15x1wyf",
+      "display_name": "The Cheeky Sidekick 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_icd641w1z66r",
+      "display_name": "The Cheeky Sidekick 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_fcf6do9k2ir2",
+      "display_name": "The Cheeky Sidekick 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_fl59l29wy82w",
+      "display_name": "The Cheeky Sidekick 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_1ipjysmqpqmz",
+      "display_name": "The Cheeky Sidekick 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_btrcxvugov2j",
+      "display_name": "The Cheeky Sidekick 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_6horuy561xnm",
+      "display_name": "The Ducklings 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_n606klqu5c2y",
+      "display_name": "The Ducklings 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_24g03ewp0236",
+      "display_name": "The Ducklings 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_o09umgtqcbjg",
+      "display_name": "The Ducklings 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_dkhq87vo3cd5",
+      "display_name": "The Ducklings 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_vquz13fsbynr",
+      "display_name": "The Ducklings 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_eqmqj6om4xyz",
+      "display_name": "Mama Duck 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_7ttpqc5lc4hm",
+      "display_name": "Mama Duck 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_fpwjscpr4oeu",
+      "display_name": "Mama Duck 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_zpd3yyvxgm9a",
+      "display_name": "Mama Duck 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_ezouc0ezjmbj",
+      "display_name": "Mama Duck 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_c12glvj03vp9",
+      "display_name": "Mama Duck 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_4jk7hjnw9pdg",
+      "display_name": "Ollie 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_07kspefjri22",
+      "display_name": "Ollie 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_ysjtayhvhc5u",
+      "display_name": "Ollie 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_x9vyjfxbb2ea",
+      "display_name": "Ollie 1",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_3q1ovxim4wpm",
+      "display_name": "Ollie 3",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
+    {
+      "id": "voice_ifnuiis5tcc7",
+      "display_name": "Ollie 2",
+      "type": "prompted",
+      "language_code": null,
+      "gender": null
+    },
     {
       "id": "voice_ge1bnt693l6z",
       "display_name": "The Brave Little Mouse 3",
@@ -98,258 +350,6 @@
       "type": "prompted",
       "language_code": null,
       "gender": null
-    },
-    {
-      "id": "voice_gefpch6euk17",
-      "display_name": "The Cheery Tale Keeper 1",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_tcrjw3ney7q8",
-      "display_name": "Bright Trail Narrator 2",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_i2ybgnh7xio6",
-      "display_name": "Bright Trail Narrator 3",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_4gpn8akibal1",
-      "display_name": "Bright Trail Narrator 1",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_gnfrv216eopl",
-      "display_name": "The Gentle Sage 3",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_wll2l7cbya9x",
-      "display_name": "The Gentle Sage 2",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_oiobd9vnjru6",
-      "display_name": "The Gentle Sage 1",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_g00mo8cbdefq",
-      "display_name": "Golden Hour Storyteller 3",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_p45574twm5l2",
-      "display_name": "Golden Hour Storyteller 1",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "voice_z378zop1mqc7",
-      "display_name": "Golden Hour Storyteller 2",
-      "type": "prompted",
-      "language_code": null,
-      "gender": null
-    },
-    {
-      "id": "achernar",
-      "display_name": "Achernar",
-      "type": "prebuilt",
-      "language_code": "en-US",
-      "gender": "female"
-    },
-    {
-      "id": "achird",
-      "display_name": "Achird",
-      "type": "prebuilt",
-      "language_code": "en-US",
-      "gender": "male"
-    },
-    {
-      "id": "algenib",
-      "display_name": "Algenib",
-      "type": "prebuilt",
-      "language_code": "en-US",
-      "gender": "male"
-    },
-    {
-      "id": "algieba",
-      "display_name": "Algieba",
-      "type": "prebuilt",
-      "language_code": "en-US",
-      "gender": "male"
-    },
-    {
-      "id": "alnilam",
-      "display_name": "Alnilam",
-      "type": "prebuilt",
-      "language_code": "en-US",
-      "gender": "male"
-    },
-    {
-      "id": "aoede",
-      "display_name": "Aoede",
-      "type": "prebuilt",
-      "language_code": "en-US",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-advisor-1",
-      "display_name": "Authoritative Advisor 1",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-advisor-10",
-      "display_name": "Authoritative Advisor 10",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-advisor-2",
-      "display_name": "Authoritative Advisor 2",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-advisor-3",
-      "display_name": "Authoritative Advisor 3",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-assistant-2",
-      "display_name": "Digital Assistant 2",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-assistant-4",
-      "display_name": "Digital Assistant 4",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-commercial-12",
-      "display_name": "Commercial Voiceover 12",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-commercial-2",
-      "display_name": "Commercial Voiceover 2",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-commercial-3",
-      "display_name": "Commercial Voiceover 3",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-commercial-4",
-      "display_name": "Commercial Voiceover 4",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-commercial-5",
-      "display_name": "Commercial Voiceover 5",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-commercial-7",
-      "display_name": "Commercial Voiceover 7",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-concierge-11",
-      "display_name": "Concierge 11",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-concierge-2",
-      "display_name": "Concierge 2",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-csagent-10",
-      "display_name": "Call Center Agent 10",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-csagent-11",
-      "display_name": "Call Center Agent 11",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-csagent-4",
-      "display_name": "Call Center Agent 4",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-csagent-8",
-      "display_name": "Call Center Agent 8",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
-    },
-    {
-      "id": "ar-001-techagent-10",
-      "display_name": "Tech Advisor 10",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "male"
-    },
-    {
-      "id": "ar-001-techagent-11",
-      "display_name": "Tech Advisor 11",
-      "type": "prebuilt",
-      "language_code": "ar-001",
-      "gender": "female"
     }
   ]
 }
