@@ -549,7 +549,7 @@ def new_story(slug, template_story):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--story", default="lion_and_mouse_v4")
+    ap.add_argument("--story", default="lion_and_mouse_v5")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("lint", help="check every prompt; exit 1 on errors")
     b = sub.add_parser("build", help="render templates into the prompt fields")

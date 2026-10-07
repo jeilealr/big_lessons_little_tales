@@ -36,6 +36,13 @@ Not legal advice.
 | OpenAI built-in `image_gen` (Codex) | OpenAI Europe Terms of Use, updated 2026-01-16 ([official terms](https://openai.com/policies/eu-terms-of-use/)) | Checked 2026-10-05. Terms state that, as between the user and OpenAI and to the extent allowed by law, the user owns Output; output may not be unique and the user is responsible for its use. Before production use on the monetised channel, confirm the applicable Codex/account plan and Service Terms cover that use. First Ugly Duckling swan canonical awaits owner review and this check before downstream use. |
 | Older GPT built-in image-tool calls (pre-2026-10-05, historical v4 `image_gen` workflow) | **not yet verified for the product/plan used at the time** | Made the v4 r01 stills (2026-09-30 to 2026-10-02) and in-place repairs after r05. Check applicable historical product and plan terms before using those outputs. |
 
+## Added 2026-10-06
+
+| Component | Licence / terms | Notes |
+|---|---|---|
+| ChatGPT Pro image generation (owner's individual account) | OpenAI Europe Terms of Use, updated 2026-01-16 ([official terms](https://openai.com/policies/eu-terms-of-use/)); date re-confirmed by the owner 2026-10-06 | Made the owner-made v5 Lion-and-Mouse stills and the Ugly Duckling stills. Terms: as between the user and OpenAI, the user owns Output; output may not be unique. Individual plan, so OpenAI may use content to improve its services unless the owner opts out in ChatGPT's data controls. |
+| ElevenLabs (music, sound effects, voices) | **Not used in BLLT so far.** [Terms of Service (EEA)](https://elevenlabs.io/terms-of-use-eu), updated 2026-03-31; [Eleven Music terms](https://elevenlabs.io/eleven-music-model-specific-terms), updated 2026-05-26; both read 2026-10-06 | Kept as a later option. Free plan: non-commercial only, music needs attribution. Paid plans: commercial use; music allowed online except film, TV, radio and studio games; music on streaming platforms only from Creator up (unclear whether a podcast counts). The owner is on Free now (was Creator), so generate any BLLT audio on a paid plan. Training on content: opt out in account settings. |
+
 ## Considered and rejected
 
 | Component | Why not |

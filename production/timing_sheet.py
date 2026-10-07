@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Plan how the pictures cover the narration: a timing sheet for the edit.
 
-  python production/timing_sheet.py --story lion_and_mouse_v4 [--lang en]
+  python production/timing_sheet.py --story lion_and_mouse_v5 [--lang en]
 
 Reads the narration timing (work/stories/<story>/audio/<lang>/timing.json,
 from voice/narrate_scenes.py), the spoken lines with their candidate shots
@@ -53,10 +53,10 @@ def fmt(t: float) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--story", default="lion_and_mouse_v4")
+    ap.add_argument("--story", default="lion_and_mouse_v5")
     ap.add_argument("--lang", default="en")
     ap.add_argument("--audio-story", help="story whose work/ folder holds the narration "
-                    "(default: --story; lion_and_mouse_v4's audio lives under lion_and_mouse_v5)")
+                    "(default: --story)")
     args = ap.parse_args()
     sd = paths.STORIES / args.story
     timing = json.loads((paths.story_audio(args.audio_story or args.story, args.lang) / "timing.json").read_text())

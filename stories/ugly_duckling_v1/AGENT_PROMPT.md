@@ -9,7 +9,7 @@ always from the repo root.
 2. `docs/creation-rules.md` CR-01 to CR-18, and `.claude/skills/consistent-image-prompts/SKILL.md`.
 3. This story's packet: `README.md`, `SCRIPT.md`, `SHOT_PLAN.md`, `prompts/`, `visual_bible.json`,
    `prompt_manifest.json`, `dialogue_coverage.json`.
-4. How the Lion and the Mouse was done end to end: `stories/lion_and_mouse_v4/README.md`,
+4. How the Lion and the Mouse was done end to end: `stories/lion_and_mouse_v5/README.md`,
    `docs/gemini-images.md`, `voice/README.md`, `docs/v4-preflight.md` (gates A to E).
 
 ## Rules for this task

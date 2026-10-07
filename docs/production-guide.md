@@ -1,5 +1,11 @@
 # Producing a felt-animal fable: the complete guide
 
+> **2026-10-06:** the tools for the older method (`production/design.py`, `install_pack.py`,
+> `compose_keyframes.py`, `character/character.py`, `lora/`, `edit_image.py`) and the Lion and Mouse
+> v2-v4 folders were removed (they remain in git history). Sections that use them describe how
+> earlier versions were made. Current flow: owner-made stills -> `production/export_runtime.py` ->
+> `production/shot.py --fast` (see `CLAUDE.md`).
+
 How to go from a story idea to a finished, consistent, monetisable children's
 video with this repo. Worked example throughout: **The Lion and the Mouse**.
 The measured examples below come from its first version (v1, whose files
@@ -7,7 +13,7 @@ were removed on 2026-09-27). V3 was reviewed by the owner; current work is
 [v4](../stories/lion_and_mouse_v4/README.md): its stills were made from
 2026-09-30 to 2026-10-02 and are under owner review; no v4 clip exists yet.
 Narration and character voices: Gemini TTS (`voice/`); music and sound
-effects: ElevenLabs; final mix: DaVinci Resolve.
+effects: none used yet (ElevenLabs kept as a later option); final mix: DaVinci Resolve.
 
 ## Current production policy (2026-09-30; status updated 2026-10-02)
 

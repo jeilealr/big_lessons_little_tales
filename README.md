@@ -8,18 +8,16 @@ Every story is a data file (`stories/<slug>/story.yaml`): a style bible,
 frozen character and location descriptions, the narration, and scenes broken
 into shots. The tools compose references and generate candidate clips; visual
 review checks that the same characters and forest remain consistent across shots. Narration and character
-voices come from Gemini TTS (`voice/`); music and sound effects from
-ElevenLabs; the final mix is done in DaVinci Resolve.
+voices come from Gemini TTS (`voice/`); music and sound effects (none used yet)
+may come from ElevenLabs later; the final mix is done in DaVinci Resolve.
 
-Current work: **The Lion and the Mouse, v4: still images under owner review**
-(status 2026-10-02). Start with the [v4 review packet](stories/lion_and_mouse_v4/README.md)
-and its [readable prompts](stories/lion_and_mouse_v4/prompts/).
-V3 has been rendered and reviewed by the owner; v2/v3 remain historical inputs.
+Current work: **The Lion and the Mouse, v5: all 186 clips rendered, owner selecting takes**
+(status 2026-10-06). Start with the [v5 folder](stories/lion_and_mouse_v5/README.md)
+and its [readable prompts](stories/lion_and_mouse_v5/prompts/). Versions v2 to v4 were removed on
+2026-10-06 (they remain in git history); v5's script, bible and prompt records came from v4.
 Next stories in preparation (script and shot plan ready for review): [The Tortoise and the Hare](stories/tortoise_and_hare_v1/README.md), [The Boy Who Cried Wolf](stories/boy_who_cried_wolf_v1/README.md) and [The Ugly Duckling](stories/ugly_duckling_v1/README.md).
-V4 stills were made from 2026-09-30 to 2026-10-02 with GPT's built-in image
-tool and the Gemini API (139 of 140 image records accepted, one missing); the
-owner now makes new images personally. The English narration exists. **No v4
-clip has been rendered**; there is no runnable v4 `story.yaml` yet.
+The v5 stills are owner-made (ChatGPT Pro); the English narration exists; the runtime
+`story.yaml` is exported by `production/export_runtime.py`.
 
 **New here? See [Where to find things](#where-to-find-things) below.**
 
@@ -32,14 +30,11 @@ script + shot order review -> approved cast/places/props -> paired keyframes
 
 | Stage | Tool | What it produces |
 |---|---|---|
-| Story and prompt plan | v4 `visual_bible.json`, `prompt_manifest.json`; later approved `story.yaml` | complete image/video prompts, state/geometry records and each accepted image's result; current render scripts require story YAML |
-| Narration | v4: `dialogue_coverage.json` + `voice/narrate_scenes.py`; v2: `stories/<slug>/narration/<lang>.yaml`; `voice/` | the spoken lines; one WAV per scene with Gemini voices; `production/timing_sheet.py` maps lines to shots |
-| Cast | v4: `character/characters/lion_and_mouse_v4/<Name>/`; v3: `character/characters/lion_and_mouse_v3/<Name>/` + `production/install_pack.py` | canonical, views, expressions, actions, story states (v4 made with image models, see `docs/gemini-images.md`) |
-| Places | v4: `character/locations/lion_and_mouse_v4/<place>/` (bible `locations`); v3: `character/locations/lion_and_mouse_v3/<place>/` + `stories/<slug>/locations_dna.yaml` | empty plates, one per lighting |
-| Scene stills (v4) | `character/characters/lion_and_mouse_v4/interactions/keyframes/` | the start and end image of every shot, made with image models and recorded in the manifest |
-| Props (optional) | `production/design.py` | Wan 2.2 stills of places and props (the v1/v2 method) |
-| Poses (optional) | `character/character.py` + `stories/<slug>/packs/*.yaml` | extra poses animated from the canonical |
-| Keyframes | `production/compose_keyframes.py` (`compose:` in each shot) | start/end frames: characters cut out (BiRefNet) and placed; a contact sheet to check |
+| Story and prompt plan | `visual_bible.json`, `prompt_manifest.json`; runtime `story.yaml` from `production/export_runtime.py` | complete image/video prompts, state/geometry records and each accepted image's result; current render scripts require story YAML |
+| Narration | `dialogue_coverage.json` + `voice/narrate_scenes.py`; `voice/` | the spoken lines; one WAV per scene with Gemini voices; `production/timing_sheet.py` maps lines to shots |
+| Cast | `character/characters/<story>/<Name>/` | canonical, references, expressions |
+| Places | `character/locations/<story>/<place>/` (bible `locations`) | empty plates, one per lighting; props |
+| Scene stills | `character/characters/<story>/interactions/keyframes/` | the start and end image of every shot, recorded in the manifest |
 | Shots | `production/shot.py` (`--fast`) | Wan 2.2 image-to-video between keyframes, one action per shot |
 | Animatic (separate owner request) | `production/animatic.py` | assembly after actual take selection; source choices and dialogue timing need manual review |
 | Post | `bllt/post.py` | RIFE 16->30 fps, Real-ESRGAN to 1080p, grade |
@@ -56,7 +51,7 @@ python3 production/image_prompts.py build   # render the templates
 python3 production/image_prompts.py lint    # must report 0 errors
 python3 production/image_prompts.py md      # readable prompts in stories/<slug>/prompts/
 python3 production/image_prompts.py review <record> --image <candidate>   # side-by-side gate
-python3 production/image_prompts.py --story lion_and_mouse_v4 new-story <slug>   # skeleton for a new story
+python3 production/image_prompts.py --story lion_and_mouse_v5 new-story <slug>   # skeleton for a new story
 ```
 
 Claude Code loads the repo skill `consistent-image-prompts` (`.claude/skills/`) for any image
@@ -71,10 +66,9 @@ order.
 
 ```
 stories/     one folder per story: story.yaml, story.txt, narration/, packs/
-production/  install_pack, design, keyframe, shot, animatic, image_prompts
-character/   character.py (pose clips) and characters/ (owner-made packs)
+production/  image_prompts, story_packet, export_runtime, shot, keyframe, timing_sheet, animatic
+character/   characters/ and locations/ per story; gemini_image.py (optional)
 voice/       Gemini TTS: tools, saved voices (cast/, narrators/), samples
-lora/        LoRA dataset builder, training, evaluation (musubi-tuner)
 bllt/        shared package: paths, ffmpeg helpers, Wan wrapper, post-processing
 lumi/        site.sh (machine paths), container wrapper, venvs, task runner
 docs/        guides, measured rules, findings, licensing, LUMI, provenance
@@ -86,7 +80,7 @@ work/        everything generated (git-ignored)
 ```bash
 cd /scratch/project_465002727/jelealro/big_lessons_little_tales   # always from the repo root
 W=lumi/run_in_container.sh
-$W python production/shot.py --story lion_and_mouse_v3 --scene 1 --shot s01_milo_explores --fast --dry-run
+$W python production/shot.py --story lion_and_mouse_v5 --scene 1 --shot s01_explores --fast --dry-run
 # GPU work: one command per line in a task file (commands run from the repo root)
 sbatch --ntasks=3 --gpus-per-node=3 --mem=330G lumi/run_tasks.sbatch work/tasks/<name>.txt
 # voices (no GPU)
@@ -105,9 +99,9 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 
 | I want to... | Read |
 |---|---|
-| **review the next iteration** | **[V4 packet](stories/lion_and_mouse_v4/README.md)**: status, open issues, owner observations, proposed sequence and complete prompts |
-| **make or remake a v4 image** | **[Readable prompts](stories/lion_and_mouse_v4/prompts/)**: every image's exact prompt and references; `python3 production/image_prompts.py show <record>` |
-| make v4 still images with the Gemini API | [docs/gemini-images.md](docs/gemini-images.md): workflow, model choice, cost, lessons |
+| **see the current Lion and Mouse** | **[v5 folder](stories/lion_and_mouse_v5/README.md)**: script, shot plan, prompts, render review |
+| **make or remake an image** | **Readable prompts** in `stories/<slug>/prompts/`: every image's exact prompt and references; `python3 production/image_prompts.py --story <slug> show <record>` |
+| make still images with the Gemini API (optional) | [docs/gemini-images.md](docs/gemini-images.md): workflow, model choice, cost, lessons |
 | preserve exact prompts and references | [Prompt records](docs/prompt-records.md) |
 | approve images and prepare clip jobs | [V4 preflight](docs/v4-preflight.md): manual gates and current tooling gaps |
 | **write a script, an image prompt or a shot description** | **[docs/creation-rules.md](docs/creation-rules.md)**: rules for scripts, character and location images, interactions and shots, identity, scale, pair, prop, motion and review requirements |
@@ -121,30 +115,12 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 | read the first consistency experiments | [docs/character-consistency.md](docs/character-consistency.md) |
 | know where code came from | [docs/provenance.md](docs/provenance.md) |
 
-### Historical runtime story files (example: `stories/lion_and_mouse_v3/`)
-
-| File | What it is |
-|---|---|
-| `script_dialog_en.txt` | the story text, with narrator and character lines |
-| `story.yaml` | the story bible: style, characters, places, voices, scenes and every shot |
-| `locations_dna.yaml` | each place: description, what must never change, lighting, plates |
-| `TODO_images.md` | historical short prompts plus shared style blocks; not a complete executed prompt log |
-| `ASSETS.md` | why those images, and the beat-by-beat shot plan |
-| `../lion_and_mouse_v2/owner_review.yaml` | the owner's verdict on every v2 clip |
-
 ### Existing images, voices and generated files
 
 | What | Where |
 |---|---|
 | **All images, by story** (since 2026-10-04) | `character/characters/<story>/<Name>/` (canonical, references, expressions), `character/characters/<story>/interactions/` (scene start/end frames), `character/locations/<story>/<place>/` (plates, props); `<story>` = the `stories/` folder name, e.g. `lion_and_mouse_v5` |
-| V4 prompt records and their results | `stories/lion_and_mouse_v4/prompt_manifest.json`; each record names its image path, hash and review |
-| V4 character images (canonical, references, 11 expressions each) | `character/characters/lion_and_mouse_v4/<Name>/` |
-| V4 scene start/end images | `character/characters/lion_and_mouse_v4/interactions/keyframes/` |
-| V4 location plates and props | `character/locations/lion_and_mouse_v4/` |
-| Existing v3 character packs (canonical, views, expressions, actions, story states) | `character/characters/lion_and_mouse_v3/<Name>/` |
-| Character DNA (the written identity) | `character/characters/lion_and_mouse_v3/<Name>/dna.yaml` |
-| Two-character images | `character/characters/lion_and_mouse_v3/interactions/` |
-| Location plates and props | `character/locations/<story>/<place>/` |
+| Prompt records and their results | `stories/<slug>/prompt_manifest.json`; each record names its image path, hash and review |
 | Saved voices (id, design prompt, samples in 6 languages) | `voice/cast/<role>/`, `voice/narrators/<name>/` |
 | Rendered clips, keyframes, animatic (not in git) | `work/stories/<slug>/shots/`, `keyframes/`, `animatic.mp4` |
 | GPU task files and logs | `work/tasks/`, `/scratch/project_465002727/jelealro/slurm_logs/` |
@@ -152,8 +128,7 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 
 ## All docs
 
-- [V4 review packet](stories/lion_and_mouse_v4/README.md): start here for the fourth iteration
-- [V4 prompts](stories/lion_and_mouse_v4/prompts/): every v4 image and video prompt, rendered from the bible
+- [Lion and Mouse v5](stories/lion_and_mouse_v5/README.md): the current Lion and Mouse
 - [Prompt records](docs/prompt-records.md): exact text, references, revisions and execution provenance
 - [V4 preflight](docs/v4-preflight.md): image, pair, clip and assembly gates
 - [Gemini images](docs/gemini-images.md): making v4 stills with the Gemini API

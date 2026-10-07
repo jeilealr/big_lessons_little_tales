@@ -1,5 +1,5 @@
 # Machine-specific locations for LUMI (the only file to edit on another
-# machine or project). Sourced by every script in lumi/, lora/ and voice/.
+# machine or project). Sourced by every script in lumi/ and voice/.
 # Nothing here depends on the repo's name: the repo location is derived.
 # Always derived, never inherited: this file is sourced into interactive shells
 # (voice/gemini_env.sh), and an exported value from another clone, or from
@@ -12,10 +12,6 @@ export BLLT_SIF=${BLLT_SIF:-/appl/local/containers/sif-images/lumi-pytorch-rocm-
 export BLLT_BINDS=${BLLT_BINDS:-/scratch,/pfs,/project,/flash}              # host folders visible in the container
 export BLLT_SSH_HOST=${BLLT_SSH_HOST:-lumi.csc.fi}                          # for rsync from your computer (backup_assets.sh)
 export BLLT_VENV_GEN=$BLLT_PROJECT/ltx_env/venv       # generation venv (diffusers 0.39); legacy name, keep
-export BLLT_VENV_MUSUBI=$BLLT_PROJECT/musubi_env/venv # LoRA training venv (musubi-tuner pins)
 export BLLT_VENV_GEMINI=$BLLT_PROJECT/gemini_env/venv # google-genai client (voices)
-export BLLT_VENV_QWEN=$BLLT_PROJECT/qwen_env/venv     # image-edit venv (Qwen-Image-Edit-2511); not created yet
-export BLLT_MODELS=$BLLT_PROJECT/models               # musubi bf16 weights
-export BLLT_EXT=$BLLT_PROJECT/ext                     # musubi-tuner checkout
 export BLLT_LOGS=$BLLT_PROJECT/slurm_logs
 export HF_HOME=${HF_HOME:-$BLLT_PROJECT/hf_cache}

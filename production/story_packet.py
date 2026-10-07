@@ -25,7 +25,7 @@ _spec.loader.exec_module(S)
 REPO = Path(__file__).resolve().parents[1]
 D = REPO / "stories" / S.SLUG
 REV = getattr(S, "REVISION", f"{S.SLUG}-r1")
-V4B = json.loads((REPO / "stories/lion_and_mouse_v4/visual_bible.json").read_text())
+V4B = json.loads((REPO / "stories/lion_and_mouse_v5/visual_bible.json").read_text())
 C = S.CHARACTERS
 CHAR_DIR = f"character/characters/{S.SLUG}/" + "{folder}"
 SCENE_DIR = f"character/characters/{S.SLUG}/interactions/keyframes"

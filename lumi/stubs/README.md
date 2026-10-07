@@ -18,8 +18,6 @@ packages on `sys.path`:
 | venv | gets | installed by |
 |---|---|---|
 | generation (`ltx_env`, transformers 4.51) | the two stubs | `../setup_env.sh` |
-| LoRA (`musubi_env`, transformers 4.57, accelerate 1.6) | `sitecustomize.py` | by hand: no setup script for this venv is in the repo |
-| image edit (`qwen_env`, transformers 4.57; not created yet) | both | `../setup_env_qwen.sh` |
 
 A rebuilt generation venv gets the newest accelerate (`setup_env.sh` does not
 pin it); if model imports then fail with "cannot import name

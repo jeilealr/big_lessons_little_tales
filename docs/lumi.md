@@ -6,7 +6,7 @@ container through `lumi/run_in_container.sh`, which activates the venv at
 
 ```bash
 W=lumi/run_in_container.sh   # from the repo root
-$W python character/character.py prompt      # anything, on a login node
+$W python production/shot.py --help          # anything, on a login node
 ```
 
 ## GPU jobs

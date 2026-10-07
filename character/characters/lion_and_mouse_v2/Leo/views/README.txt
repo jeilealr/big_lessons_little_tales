@@ -1,1 +1,0 @@
-Add separate single-image views of the same approved Leo here: full-body three-quarter (leo_view_3q_01.png), full-body side profile (leo_view_side_01.png), neutral face close-up (leo_view_face_neutral_01.png), and optional full-body back view (leo_view_back_01.png). Use the canonical image as the identity reference for each.

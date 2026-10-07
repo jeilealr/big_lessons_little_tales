@@ -18,7 +18,7 @@ cached next to the plate) and a background blur.
       --char STILL.png:x=0.5,y=0.82,h=0.45[,flip]  [--char ...] [--plate-crop x,y,w]
 
 Output: KEY.png + KEY.json (where each character went). story.yaml `compose:`
-recipes are built through `compose_recipe` (shot.py, compose_keyframes.py).
+recipes are built through `compose_recipe` (shot.py).
 """
 
 from __future__ import annotations

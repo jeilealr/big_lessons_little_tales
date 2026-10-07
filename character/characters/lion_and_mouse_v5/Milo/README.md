@@ -6,7 +6,7 @@ v5 take (`_r02`, `_r03` for later ones). PNG, 1920x1080 for scene frames and pla
 for studio references and expressions.
 
 The prompt for each image, with the references to attach in order:
-`python3 production/image_prompts.py show <record>` or `stories/lion_and_mouse_v4/prompts/*.md`.
+`python3 production/image_prompts.py show <record>` or `stories/lion_and_mouse_v5/prompts/*.md`.
 Those prompts and references still point at the v4 files; when a v5 image replaces a
 reference (for example a canonical), attach the v5 file in its place.
 

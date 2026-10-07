@@ -1,1 +1,0 @@
-Add separate full-body Leo action-pose references here: walk, indicate/point with one rounded front paw, and hold a small object. Keep his quadrupedal anatomy, mane, and tail consistent. Example: leo_action_walk.png. Use the canonical as the identity reference.

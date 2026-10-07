@@ -1,12 +1,13 @@
 # Question to Google: Gemini API narration in Made-for-Kids YouTube videos
 
-Status: draft, not sent (2026-09-27). Record the answer here and in the
+Status: ready to send (updated 2026-10-07: the podcast and the channel's own website were added,
+the owner's details filled in). Not sent yet (2026-09-27 first draft). Record the answer here and in the
 `voice.yaml` of every voice in use (`licence:` field, as in
 `voice/narrators/golden_hour_storyteller_3/voice.yaml`; the story voices are
 `voice/narrators/moonlight_storyteller_1/`, `voice/cast/leo/`,
 `voice/cast/milo/`) once it arrives. Since 2026-10-02 the same Age
-Requirements question also covers the Gemini image models used for v4 stills
-(`docs/licensing.md`).
+Requirements question also covers the Gemini image models used for the (deleted) v4 stills
+(`docs/licensing.md`); current stills are made with ChatGPT Pro, so the question is now about TTS only.
 
 ## Where to send it
 
@@ -24,9 +25,12 @@ so no address is invented here. The official routes, most direct first:
 
 For routes 1 and 2 use the subject and message below as they are.
 
+Send it from the Google account that owns the API key (sign in to aistudio.google.com with it).
+If that account is not jei.leal.r@gmail.com, put the key-owning address in the last line instead.
+
 ## Subject
 
-Gemini API Terms (Age Requirements): pre-rendered TTS narration in Made-for-Kids YouTube videos
+Gemini API Terms (Age Requirements): pre-rendered TTS narration in children's videos and a podcast
 
 ## Message
 
@@ -38,18 +42,23 @@ under the Gemini API Additional Terms of Service, specifically the section
 
 I am an adult (over 18). I produce animated fables for children and publish
 them on my YouTube channel, where the videos are set as "Made for Kids". I
-would like to use Gemini 3.8 Flash TTS (with a voice designed in Google AI
-Studio) to generate the narration for these videos.
+also plan to publish the same stories as an audio podcast (hosted on Spotify
+for Creators and listed in podcast apps such as Apple Podcasts) and on a
+simple static website. I use Gemini 3.8 Flash TTS (with voices designed in
+Google AI Studio) to generate the narration.
 
 How the API would be used:
 
 - Only I call the API, from my own computer, using my own API key.
 - The API generates audio files (narration). I edit them into the finished
-  videos myself, and then upload the finished videos to YouTube.
-- Viewers, including children, only watch the finished videos. They never
-  interact with the Gemini API, and there is no website, app or other service
-  that sends their input to the API or shows them live API output.
-- I disclose in the video description that AI tools were used.
+  videos and podcast episodes myself, and then upload the finished files to
+  YouTube and the podcast host.
+- Viewers and listeners, including children, only watch or listen to the
+  finished recordings. They never interact with the Gemini API: no website,
+  app or other service sends their input to the API or shows them live API
+  output. The website only shows finished pages and recordings.
+- I disclose that the voices are AI-generated, both spoken at the start of
+  each episode and in the descriptions.
 
 The Age Requirements say that the Services must not be used "as part of a
 website, application, or other service (collectively, 'API Clients') that is
@@ -59,9 +68,11 @@ directed towards or is likely to be accessed by individuals under the age of
 My questions:
 
 1. Is producing pre-rendered narration with the Gemini API, and publishing
-   it inside finished videos on a YouTube channel for children, permitted
-   under these terms? In other words, is a YouTube channel that shows such
-   videos not considered an "API Client" under the Age Requirements?
+   it inside finished videos on a YouTube channel for children, in podcast
+   episodes and on a static website, permitted under these terms? In other
+   words, are a YouTube channel, a podcast and a website that only publish
+   such finished recordings not considered "API Clients" under the Age
+   Requirements?
 2. If this use is permitted, does it make any difference whether I use the
    unpaid tier or the paid tier?
 3. Are there any additional requirements (for example attribution,
@@ -71,8 +82,8 @@ Thank you for your help.
 
 Kind regards,
 [Your name]
-[Channel name and URL]
-[Email address of the Google account that owns the API key]
+Big Lessons, Little Tales (YouTube channel: [channel URL])
+jei.leal.r@gmail.com
 
 ## Why this is asked (for the record)
 

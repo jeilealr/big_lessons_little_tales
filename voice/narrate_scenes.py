@@ -2,8 +2,8 @@
 """Render a story's narration with the Gemini voices: one WAV per scene.
 
   source voice/gemini_env.sh
-  python voice/narrate_scenes.py --lines stories/lion_and_mouse_v4/dialogue_coverage.json \\
-      --story lion_and_mouse_v4 --lang en [--scenes 1 2] [--redo]
+  python voice/narrate_scenes.py --lines stories/lion_and_mouse_v5/dialogue_coverage.json \\
+      --story lion_and_mouse_v5 --lang en [--scenes 1 2] [--redo]
 
 Input: a JSON with `lines`: [{id, scene, speaker, performance_direction, text}]
 (the v4 dialogue_coverage.json format; a relative path is taken from the repo
