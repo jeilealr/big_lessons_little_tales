@@ -12,7 +12,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 # Generated files (designs, keyframes, shots, audio, LoRAs). Git-ignored.
-WORK = Path(os.environ.get("BLLT_WORK", REPO / "work")).resolve()
+WORK = Path(os.environ.get("FELTWILLOW_WORK", REPO / "work")).resolve()
 STORIES = REPO / "stories"          # story bibles (tracked)
 VOICE = REPO / "voice"              # Gemini voice tools and saved voices (tracked)
 CHARACTERS = REPO / "character" / "characters"   # owner-made character packs

@@ -1,15 +1,15 @@
 #!/bin/bash
-# Create (or update in place) the generation venv, $BLLT_VENV_GEN (LUMI login
+# Create (or update in place) the generation venv, $FELTWILLOW_VENV_GEN (LUMI login
 # node, ~10 min). The venv sits on top of the LUMI PyTorch container and uses
 # its PyTorch (--system-site-packages); see docs/provenance.md.
 #   bash lumi/setup_env.sh
 set -euo pipefail
 HERE=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 source "$HERE/site.sh"
-VENV=$BLLT_VENV_GEN
+VENV=$FELTWILLOW_VENV_GEN
 
 # The inner script is expanded twice: $VENV and $HERE here, \$... in the container.
-singularity exec -B "$BLLT_BINDS" "$BLLT_SIF" bash -c "
+singularity exec -B "$FELTWILLOW_BINDS" "$FELTWILLOW_SIF" bash -c "
 set -euo pipefail
 \$WITH_CONDA
 python -m venv --system-site-packages '$VENV'

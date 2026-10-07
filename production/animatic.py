@@ -40,7 +40,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from bllt import media, paths, wan  # noqa: E402
+from feltwillow import media, paths, wan  # noqa: E402
 
 FPS = 24
 SR = 48000

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Render every shot of a runtime story in fast mode on dev-g, unattended.
-#   setsid nohup bash lumi/render_story.sh lion_and_mouse_v5 > $BLLT_PROJECT/tmp/render_v5.log 2>&1 &
+#   setsid nohup bash lumi/render_story.sh lion_and_mouse_v5 > $FELTWILLOW_PROJECT/tmp/render_v5.log 2>&1 &
 # Round 1: PER_TASK shots per GPU task, 4 tasks per job (host RAM limit), jobs
 # submitted while dev-g has fewer than 2 of the user's jobs (pending ones count).
 # Catch-up rounds: every shot still missing a seed, one shot per task (a task
@@ -11,7 +11,7 @@ STORY=${1:?story slug}
 PER_TASK=${PER_TASK:-3}
 cd "$(dirname "$0")/.."
 source lumi/site.sh
-NAME=bllt_${STORY##*_}           # e.g. bllt_v5
+NAME=feltwillow_${STORY##*_}           # e.g. feltwillow_v5
 
 missing() {   # one shot.py command per shot that lacks a seed
 python3 - "$STORY" <<'PY'

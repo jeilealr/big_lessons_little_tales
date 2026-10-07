@@ -28,7 +28,7 @@ Not legal advice.
 
 | Component | Licence / terms | Notes |
 |---|---|---|
-| Wan2.2-Lightning 4-step LoRAs (`lightx2v/Wan2.2-Lightning`, revision pinned in `bllt/wan.py`) | Apache-2.0 | fast mode (`--fast`) |
+| Wan2.2-Lightning 4-step LoRAs (`lightx2v/Wan2.2-Lightning`, revision pinned in `feltwillow/wan.py`) | Apache-2.0 | fast mode (`--fast`) |
 | Gemini 3.8 Flash TTS (Gemini API) | Gemini API Additional Terms | outputs owned by the user ("Google won't claim ownership"); SynthID watermark; paid ~$0.0135/min of audio (2026). Open question on the Age Requirements for a Made-for-kids channel: `docs/google_gemini_terms_question.md` |
 | google-genai (client) | Apache-2.0 | `gemini_env` venv |
 | Qwen-Image-Edit-2511 (`Qwen/Qwen-Image-Edit-2511`, pinned) | Apache-2.0 | downloaded, not used yet (`production/edit_image.py`) |
@@ -41,7 +41,7 @@ Not legal advice.
 | Component | Licence / terms | Notes |
 |---|---|---|
 | ChatGPT Pro image generation (owner's individual account) | OpenAI Europe Terms of Use, updated 2026-01-16 ([official terms](https://openai.com/policies/eu-terms-of-use/)); date re-confirmed by the owner 2026-10-06 | Made the owner-made v5 Lion-and-Mouse stills and the Ugly Duckling stills. Terms: as between the user and OpenAI, the user owns Output; output may not be unique. Individual plan, so OpenAI may use content to improve its services unless the owner opts out in ChatGPT's data controls. |
-| ElevenLabs (music, sound effects, voices) | **Not used in BLLT so far.** [Terms of Service (EEA)](https://elevenlabs.io/terms-of-use-eu), updated 2026-03-31; [Eleven Music terms](https://elevenlabs.io/eleven-music-model-specific-terms), updated 2026-05-26; both read 2026-10-06 | Kept as a later option. Free plan: non-commercial only, music needs attribution. Paid plans: commercial use; music allowed online except film, TV, radio and studio games; music on streaming platforms only from Creator up (unclear whether a podcast counts). The owner is on Free now (was Creator), so generate any BLLT audio on a paid plan. Training on content: opt out in account settings. |
+| ElevenLabs (music, sound effects, voices) | **Not used in Feltwillow so far.** [Terms of Service (EEA)](https://elevenlabs.io/terms-of-use-eu), updated 2026-03-31; [Eleven Music terms](https://elevenlabs.io/eleven-music-model-specific-terms), updated 2026-05-26; both read 2026-10-06 | Kept as a later option. Free plan: non-commercial only, music needs attribution. Paid plans: commercial use; music allowed online except film, TV, radio and studio games; music on streaming platforms only from Creator up (unclear whether a podcast counts). The owner is on Free now (was Creator), so generate any Feltwillow audio on a paid plan. Training on content: opt out in account settings. |
 
 ## Considered and rejected
 

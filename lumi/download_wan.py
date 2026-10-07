@@ -5,7 +5,7 @@
   lumi/run_in_container.sh python lumi/download_wan.py t2v      # T2V: design stills
   lumi/run_in_container.sh python lumi/download_wan.py i2v t2v
 
-Run on a login node (network). Repos and pinned revisions come from bllt/wan.py,
+Run on a login node (network). Repos and pinned revisions come from feltwillow/wan.py,
 so the download always matches what the pipeline loads offline.
 """
 import sys
@@ -14,7 +14,7 @@ from pathlib import Path
 from huggingface_hub import snapshot_download
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from bllt.wan import MODELS, REVISIONS  # noqa: E402
+from feltwillow.wan import MODELS, REVISIONS  # noqa: E402
 
 kinds = sys.argv[1:] or ["i2v"]
 if unknown := [k for k in kinds if k not in MODELS]:

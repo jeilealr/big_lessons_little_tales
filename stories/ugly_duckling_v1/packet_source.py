@@ -557,7 +557,7 @@ PROP_BLOCKS = {}
 PROP_STATE_PREFIX = ""
 PROPS = []
 PROP_REF = None
-INTRO = ("Fourth story of *Big Lessons, Little Tales*: Hans Christian Andersen's ugly duckling (public domain) for "
+INTRO = ("Fourth story of *Feltwillow*: Hans Christian Andersen's ugly duckling (public domain) for "
          "ages 3 to 7, retold gently: the ducklings' teasing is mild and they say sorry, a kind otter shelters Ollie "
          "through the winter, and Ollie finds both the swans and his first family again. Felt storybook style of the "
          "channel, made with the consistency rules of `docs/creation-rules.md` CR-01 to CR-18.")

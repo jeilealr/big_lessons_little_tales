@@ -1,8 +1,8 @@
-# Big Lessons, Little Tales
+# Feltwillow
 
 Felt-animal fables for children, each with a kind message, made with open
 video models on the LUMI supercomputer, for the YouTube channel
-*Big Lessons, Little Tales*.
+*Feltwillow*.
 
 Every story is a data file (`stories/<slug>/story.yaml`): a style bible,
 frozen character and location descriptions, the narration, and scenes broken
@@ -37,7 +37,7 @@ script + shot order review -> approved cast/places/props -> paired keyframes
 | Scene stills | `character/characters/<story>/interactions/keyframes/` | the start and end image of every shot, recorded in the manifest |
 | Shots | `production/shot.py` (`--fast`) | Wan 2.2 image-to-video between keyframes, one action per shot |
 | Animatic (separate owner request) | `production/animatic.py` | assembly after actual take selection; source choices and dialogue timing need manual review |
-| Post | `bllt/post.py` | RIFE 16->30 fps, Real-ESRGAN to 1080p, grade |
+| Post | `feltwillow/post.py` | RIFE 16->30 fps, Real-ESRGAN to 1080p, grade |
 
 ## Consistent images (start here before any image)
 
@@ -67,9 +67,10 @@ order.
 ```
 stories/     one folder per story: story.yaml, story.txt, narration/, packs/
 production/  image_prompts, story_packet, export_runtime, shot, keyframe, timing_sheet, animatic
+production/contracts/  pinned publishing contract (CONTRACT.lock + feltwillow-contracts/<version>/); never edit by hand
 character/   characters/ and locations/ per story; gemini_image.py (optional)
 voice/       Gemini TTS: tools, saved voices (cast/, narrators/), samples
-bllt/        shared package: paths, ffmpeg helpers, Wan wrapper, post-processing
+feltwillow/        shared package: paths, ffmpeg helpers, Wan wrapper, post-processing
 lumi/        site.sh (machine paths), container wrapper, venvs, task runner
 docs/        guides, measured rules, findings, licensing, LUMI, provenance
 work/        everything generated (git-ignored)
@@ -78,7 +79,7 @@ work/        everything generated (git-ignored)
 ## Quick start (LUMI; existing v3 example)
 
 ```bash
-cd /scratch/project_465002727/jelealro/big_lessons_little_tales   # always from the repo root
+cd /scratch/project_465002727/jelealro/feltwillow-production   # always from the repo root
 W=lumi/run_in_container.sh
 $W python production/shot.py --story lion_and_mouse_v5 --scene 1 --shot s01_explores --fast --dry-run
 # GPU work: one command per line in a task file (commands run from the repo root)
@@ -108,6 +109,7 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 | understand the whole pipeline, story to finished shots | [docs/production-guide.md](docs/production-guide.md) |
 | check a video-prompt rule and the evidence behind it | [docs/prompting.md](docs/prompting.md): every measured rule, a checklist, the results log |
 | know what went wrong before and how it was fixed | [docs/findings-and-risks.md](docs/findings-and-risks.md) |
+| hand finished stories to the publishing repository | [docs/publishing-handoff.md](docs/publishing-handoff.md): selection file, `production/export_handoff.py`, what it refuses |
 | work with voices (Gemini TTS) | [voice/README.md](voice/README.md) |
 | run things on LUMI (jobs, times, gotchas) | [docs/lumi.md](docs/lumi.md) |
 | check a model's or service's licence | [docs/licensing.md](docs/licensing.md), [docs/google_gemini_terms_question.md](docs/google_gemini_terms_question.md) |

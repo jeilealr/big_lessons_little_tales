@@ -51,7 +51,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
 from speak import MIN_GAP, MODEL, synthesize, to_wav  # noqa: E402
-from bllt import paths  # noqa: E402
+from feltwillow import paths  # noqa: E402
 
 VOICES = {"NARRATOR": "narrators/moonlight_storyteller_1", "LION": "cast/leo", "MOUSE": "cast/milo"}
 PAUSE_SAME = 0.45      # seconds between two lines of the same speaker

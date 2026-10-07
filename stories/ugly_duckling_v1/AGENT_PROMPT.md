@@ -1,6 +1,6 @@
 # Prompt for an agent: start producing The Ugly Duckling (ugly_duckling_v1)
 
-Written 2026-10-04. Work on LUMI in `/scratch/project_465002727/jelealro/big_lessons_little_tales`,
+Written 2026-10-04. Work on LUMI in `/scratch/project_465002727/jelealro/feltwillow-production`,
 always from the repo root.
 
 ## Read first
@@ -48,7 +48,7 @@ always from the repo root.
      (it expects README tables in the image folders, as in `character/characters/lion_and_mouse_v5/*/README.md`;
      generate them first, or extend the exporter to read the manifest `target`s).
    - Then a token check, a `--dry-run` of every shot, and
-     `setsid nohup bash lumi/render_story.sh ugly_duckling_v1 > $BLLT_PROJECT/tmp/render_ugly_duckling.log 2>&1 &`.
+     `setsid nohup bash lumi/render_story.sh ugly_duckling_v1 > $FELTWILLOW_PROJECT/tmp/render_ugly_duckling.log 2>&1 &`.
    - The owner selects the takes. Assembly only when asked.
 
 ## Report

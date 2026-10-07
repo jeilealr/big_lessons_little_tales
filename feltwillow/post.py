@@ -2,7 +2,7 @@
 
 A library (no command line): `retime`/`interpolate` (RIFE), `upscale`
 (Real-ESRGAN), `encode` (frames -> H.264) and `grade` (ffmpeg look pass).
-Callers decode clips with `bllt.media.read_frames`.
+Callers decode clips with `feltwillow.media.read_frames`.
 
 Wan renders 16 fps at 1280x720. Getting from there to 1080p30 was previously
 ffmpeg's `minterpolate` (block matching, warps on fast motion) plus a lanczos
@@ -28,7 +28,7 @@ from pathlib import Path
 
 import numpy as np
 
-from bllt.media import locate_ffmpeg
+from feltwillow.media import locate_ffmpeg
 
 RIFE_REPO = "TensorForger/RIFE-safetensors"
 RIFE_REV = "78a62b7c2dd910536432d6c2c3a25e76f14fbf78"          # pinned

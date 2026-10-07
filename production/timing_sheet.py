@@ -32,7 +32,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from bllt import paths  # noqa: E402
+from feltwillow import paths  # noqa: E402
 
 CLIP = 81 / 16
 PAUSE_SAME, PAUSE_CHANGE = 0.45, 0.70      # must match voice/narrate_scenes.py

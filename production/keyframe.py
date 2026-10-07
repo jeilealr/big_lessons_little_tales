@@ -192,7 +192,7 @@ def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None 
             sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
             import torch
 
-            from bllt import post
+            from feltwillow import post
 
             piece = frame[y0:y0 + ch, x0:x0 + cw].astype(np.uint8)
             dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")

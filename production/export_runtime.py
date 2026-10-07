@@ -37,7 +37,7 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from bllt import paths  # noqa: E402
+from feltwillow import paths  # noqa: E402
 
 
 def image_map(image_set: str) -> dict[str, Path]:

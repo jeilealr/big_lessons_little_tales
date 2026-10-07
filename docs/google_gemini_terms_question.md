@@ -82,7 +82,7 @@ Thank you for your help.
 
 Kind regards,
 [Your name]
-Big Lessons, Little Tales (YouTube channel: [channel URL])
+Feltwillow (YouTube channel: [channel URL])
 jei.leal.r@gmail.com
 
 ## Why this is asked (for the record)

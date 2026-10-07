@@ -57,7 +57,7 @@ while preserving action, identity, endpoint/prop state and camera priority.
 Never silently truncate or discard critical state constraints. Token counts and
 encoder limit remain null until checked on the actual runtime.
 
-**Fast-mode caveat:** `bllt/wan.py` configures Lightning guidance 1.0/1.0 and
+**Fast-mode caveat:** `feltwillow/wan.py` configures Lightning guidance 1.0/1.0 and
 explicitly documents no negative CFG pass. Negative text is still saved, but
 must not be treated as an active fast-mode control. Put the required state in
 the positive and approved images (one mouse, closed lips, empty branch, fixed

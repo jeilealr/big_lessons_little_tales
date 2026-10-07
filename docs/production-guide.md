@@ -92,7 +92,7 @@ story.yaml ──► design ──► characters ──► locations ──► s
 | Character pack | `character/character.py` (turns, angles, dataset) | a pose/angle library, and the LoRA dataset |
 | LoRA | `lora/` (musubi-tuner) | a small model per main character |
 | Shots | Wan 2.2 image-to-video from keyframes | 5 s clips, one action each |
-| Post | `bllt/post.py` | 1080p30, learned interpolation and upscaling, grade |
+| Post | `feltwillow/post.py` | 1080p30, learned interpolation and upscaling, grade |
 | Edit | your editor + ElevenLabs | the finished episode |
 
 ## 2. The story bible (`story.yaml`)
@@ -398,7 +398,7 @@ the I2V model), so the same files load into it. A shot opts in with
 `lora: true`; each character in it with a chosen checkpoint (`lora: {name,
 step}` under the character) gets its adapter, and its trigger word enters the
 prompt the way the captions had it ("Leo the lion is twcleo, a large ...").
-`bllt/wan.py` asserts the adapters are active on both experts.
+`feltwillow/wan.py` asserts the adapters are active on both experts.
 
 **Measured: in keyframe shots the LoRA does more harm than good.** Same shots,
 same seeds, with and without (rows: Scene 3 plain, Scene 3 + LoRAs, Scene 2
@@ -489,7 +489,7 @@ Scene audio lives under `work/stories/<slug>/audio/<lang>/sceneNN.wav`.
 Plan more coverage when a line exceeds a usable clip; do not loop a five-second
 shot or play mouth alternatives consecutively just to fill narration.
 
-The selected edit goes to DaVinci Resolve. Post-processing (`bllt/post.py`) uses
+The selected edit goes to DaVinci Resolve. Post-processing (`feltwillow/post.py`) uses
 interpolation/upscaling; inspect the result for newly warped paws, faces and rope.
 Back up chosen media, exact prompt logs and source references together.
 
