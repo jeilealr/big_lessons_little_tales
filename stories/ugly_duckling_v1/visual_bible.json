@@ -595,7 +595,7 @@
     "pose": "pose reference ({what}): copy only {who}'s body pose and proportions, not the background",
     "prop": "prop reference ({what}): copy the prop's material, colour, shape and size; its state in this frame is the one stated in this prompt",
     "mouth_design": "mouth design reference ({what}): copy only the mouth opening, the teeth and their size",
-    "staging_only": "older-version staging reference ({what}): copy only the composition, camera and staging; every character's look comes from the canonical images",
+    "staging_only": "staging reference ({what}): copy only the character positions, relative sizes and composition; use the locked plate for all background geometry, and use the canonical images for identity",
     "size_anchor": "size anchor ({what}): an approved frame of this same camera setup; every character keeps exactly the size it has there, and takes no pose, expression or prop state from it",
     "framing": "framing reference ({what}): copy only the shot size, where the head sits in the frame and how strongly the background is blurred; take no character, background, light or expression from it",
     "size_lineup": "the story's size lineup ({what}): copy only the size relation between Leo and Milo, applied at the sizes stated in this prompt; take no camera, background, pose, expression or prop state from it",

@@ -68,7 +68,19 @@ steps below say what each part must contain.
      approved mouth study.
    - `palette`, `proportions`, `checklist` (12–20 checkable review items) and `drift_phrases`
      (observed or likely drift, e.g. "cool grey", "crimson"; lint rejects any prompt that
-     contains one).
+      contains one).
+   - **Identity-set consistency gate:** before creating or accepting any expression, mouth,
+     pose, portrait or other character reference, compare it side by side at full size with the
+     approved canonical and the character's existing `expressions/` and `references/` images.
+     Check head silhouette and proportions, eye size and spacing, eye patches, brows, muzzle or
+     bill shape, material and stitching, intrinsic colours, saturation and brightness. The
+     canonical is the identity authority; expression images may change only their named facial
+     expression, and pose/view references may change only their named pose or view. A filename
+     or manifest role does not prove a match. If any feature differs, stop using the mismatched
+     image as a reference. Rebuild it as a focused edit of the approved canonical (or its
+     approved parent); if the canonical itself needs revision, get owner approval and then
+     rebuild the dependent expression and reference set from that approved revision. Do not
+     generate scene keyframes for that character until this comparison passes.
 3. **Size lineup** (`cast_scale` and `blocks.cast_scale`). Put all characters side by side at
    the same depth, or measure them against a shared reference. Record standing heights and head
    or mane widths as ratios between every pair. A pose change never rescales a head, mane or limb.
@@ -188,6 +200,16 @@ upstream, mark dependent frames stale and redo them in story order.
 - A canonical attached for a character who is not in the frame drew that character in.
 - End frames re-enlarged a character that the start had fixed; compare each end with its start.
 - Expressions drift to a smile unless brows, eyes and mouth are named.
+- Canonical and expression/reference images for Ollie the swan disagreed in head and face design;
+  that identity drift carried into close-ups and scene frames. Audit each character's complete
+  canonical, expression and reference set against the approved canonical before building
+  keyframes; stop and reconcile mismatched assets first.
 - A wide start with a close-up end becomes a zoom in video; keep one framing per shot.
+- An end frame's start image does not replace its locked location plate. Keep the start first
+  as `edit_base`, then attach the same locked plate as `locked_plate` on every frame, including
+  end frames. The pond sequence drifted when end records referenced only their composite start;
+  the model redrew the nest and water while changing character poses. If a generated frame still
+  changes plate geometry, do not accept it as fixed: composite reviewed isolated character layers
+  over the plate and compare the result against the fixed landmarks.
 - A talking clip with two closed key frames invents a different open mouth each render; give the
   `mouth` variant a `<shot>_open` end key frame built from the one approved `*_OPEN` study (CR-19).
