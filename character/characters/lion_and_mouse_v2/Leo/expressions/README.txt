@@ -1,1 +1,0 @@
-Add separate single-image Leo facial expression references here, all with the same head framing and studio background: neutral, gentle smile, curious, pleasantly surprised, concerned-but-kind, and relieved/proud. Example: leo_expression_curious_01.png. Use the canonical as the identity reference.

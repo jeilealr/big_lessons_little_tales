@@ -49,12 +49,12 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from bllt import paths  # noqa: E402
+from feltwillow import paths  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "production"))
 import image_prompts  # noqa: E402
 
 REPO = paths.REPO
-STORY_SLUG = "lion_and_mouse_v4"
+STORY_SLUG = "lion_and_mouse_v5"
 MANIFEST = paths.STORIES / STORY_SLUG / "prompt_manifest.json"
 BIBLE = paths.STORIES / STORY_SLUG / "visual_bible.json"
 REVISIONS = paths.STORIES / STORY_SLUG / "revisions"
@@ -444,8 +444,8 @@ def main():
     mdls = sub.add_parser("models", help="list image models visible to the key")
     led = sub.add_parser("ledger", help="cost table per model from the selected story's ledger")
     for parser in (g, s, a, led):
-        parser.add_argument("--story", default="lion_and_mouse_v4",
-                            help="story slug (default: lion_and_mouse_v4)")
+        parser.add_argument("--story", default="lion_and_mouse_v5",
+                            help="story slug (default: lion_and_mouse_v5)")
     args = ap.parse_args()
     if args.cmd != "models":
         configure_story(args.story)

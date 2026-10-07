@@ -9,22 +9,39 @@ history and the sections above differ, the sections above win).
 
 ## What this repo is
 
-**Big Lessons, Little Tales**: felt-animal fables for children, each with a
+**Feltwillow**: felt-animal fables for children, each with a
 kind message, for the monetised YouTube channel of the same name (Made for
 kids). Pictures: open video models (Wan 2.2) on the LUMI supercomputer animate
 approved still images; the v4 stills were made with GPT's built-in image tool
 and the Gemini API (2026-09-30 to 2026-10-02) and are now made by the owner.
 Narration and character voices: Gemini 3.8 Flash TTS (`voice/`). Music and
-sound effects: ElevenLabs (owner, paid plan). Final mix: DaVinci Resolve
+sound effects: none used yet; ElevenLabs is the option kept for later (needs a paid
+plan at generation time, see `docs/licensing.md`). Final mix: DaVinci Resolve
 (owner).
 
-Repo: `/scratch/project_465002727/jelealro/big_lessons_little_tales` on LUMI
-(renamed from `twc_video` on 2026-09-27; GitHub
-`jeilealr/big_lessons_little_tales`, private). Cloud sessions check the same
-repo out elsewhere (e.g. `/home/user/big_lessons_little_tales`) without
-`work/`, the LUMI venvs or Slurm. Current story: **The Lion and the Mouse, v4:
-stills made and under owner review, no clips yet** (`stories/lion_and_mouse_v4/`).
-V3 render review is the evidence for this revision; v2/v3 production data is historical.
+Repo: `/scratch/project_465002727/jelealro/feltwillow-production` on LUMI
+(renamed from `twc_video` on 2026-09-27 and from `big_lessons_little_tales` / Big Lessons, Little
+Tales to `feltwillow-production` / Feltwillow on 2026-10-07: package `bllt/` -> `feltwillow/`, settings
+`BLLT_*` -> `FELTWILLOW_*`, Slurm job names `bllt_*` -> `feltwillow_*`; `work/` sidecars and git history
+keep the old names; GitHub
+`jeilealr/feltwillow-production`, private). Cloud sessions check the same
+repo out elsewhere (e.g. `/home/user/feltwillow-production`) without
+`work/`, the LUMI venvs or Slurm. Current story: **The Lion and the Mouse, v5: 186 clips rendered, owner selecting takes**
+(`stories/lion_and_mouse_v5/`). Ugly Duckling v1 scenes 1-9 rendered (126 takes, owner selecting).
+**Cleanup 2026-10-06 (owner):** Lion and Mouse v2, v3 and v4 (stories, character and location
+folders) were deleted; they remain in git history (`git show b880c23:<path>`). v4's working records
+(`visual_bible.json`, `prompt_manifest.json`, `dialogue_coverage.json`, `timing_plan.json`,
+`SCRIPT_REVIEW.md`, `SHOT_PLAN.md`, `TIMING_SHEET.md`) now live in `stories/lion_and_mouse_v5/` with
+`lion_and_mouse_v4` paths rewritten to `lion_and_mouse_v5` (v5 images keep v4's file names and
+revisions). Not carried over: v4 README, REPAIR_PLAN, GENERATION_PROGRESS, `revisions/`. The tools
+used only by v1-v3 or never used were removed too: `production/install_pack.py`, `design.py`,
+`compose_keyframes.py`, `edit_image.py`, `character/character.py`, `lora/`, the musubi and Qwen
+venv scripts (`lumi/env_musubi.sh`, `env_qwen.sh`, `setup_env_qwen.sh`, `download_musubi_weights.py`,
+`convert_dit_bf16.py`) and `docs/reviews/`. `shot.py` still accepts `lora:` and `compose:` (keyframe.py).
+`image_prompts.py --story lion_and_mouse_v5 lint` now reports 70 errors, all missing v3 reference
+images named by the v4 expression records (history; they matter only for regenerating those
+expressions), plus 8 warnings for owner-renamed v5 files; renders use `export_runtime.py --images`.
+Sections below that name v2-v4 paths describe history.
 
 ## Current state (2026-10-07)
 
@@ -106,7 +123,7 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   v5 images (frozen copies in `work/stories/lion_and_mouse_v5/keyframes/`, hashes in
   `runtime_inputs.json`); `shot.py` uses its `prompt:`/`negative:` verbatim. Prompts 124-346
   umT5 tokens (limit 512, none truncated). Rendering in fast mode, 3 seeds each, with
-  `lumi/render_story.sh lion_and_mouse_v5` (log `$BLLT_PROJECT/tmp/render_v5.log`); clips in
+  `lumi/render_story.sh lion_and_mouse_v5` (log `$FELTWILLOW_PROJECT/tmp/render_v5.log`); clips in
   `work/stories/lion_and_mouse_v5/shots/`. Owner selects takes; no animatic.
   **Done 2026-10-05 09:31: 186 clips** (62 shots x 3 seeds), review in
   `stories/lion_and_mouse_v5/RENDER_REVIEW.md` (contact sheets `work/.../review/sceneNN.jpg`).
@@ -130,6 +147,17 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
   `narrate_scenes.py --voices-file`; a speaker with a list of voices gets one file per voice
   (`lines/<ID>_v1.wav`...) and a mix in the scene file. Narration rendered 2026-10-06 (65 lines, 73 calls, 10.1 min; TIMING_SHEET.md built) into
   `work/stories/ugly_duckling_v1/audio/en/`.
+- **Ugly Duckling clips, scenes 1-9 (owner, 2026-10-06):** runtime story
+  `stories/ugly_duckling_v1/story.yaml` from `export_runtime.py --manifest
+  stories/ugly_duckling_v1/prompt_manifest.json --story ugly_duckling_v1 --scenes 1 ... 9`
+  (no `--images`: the manifest targets are the files; seeds 1-3 and 1280x720 by default):
+  33 shots, 42 clips, 126 takes, rendered by `PER_TASK=2 lumi/render_story.sh ugly_duckling_v1`
+  (log `$FELTWILLOW_PROJECT/tmp/render_ugly_duckling.log`). Fixed on the way: the
+  `s06_ottie_finds_closed_r01` clip pointed at the superseded `s06_ottie_stays_end`. Scenes 10-12
+  wait for images; rerun the export with all scenes, then the same driver (it skips done takes).
+  **Done 2026-10-07: 126 takes**; review in `stories/ugly_duckling_v1/RENDER_REVIEW.md` (sheets
+  `work/stories/ugly_duckling_v1/review/sceneNN.jpg`). Finding: several `_closed` close-ups open the beak
+  mid-clip (prompts saying "speaks", and fast-mode drift); `s04_decision_closed` throws its wings up.
 - **Next stories (owner, 2026-10-04), narration 7-10 min each, narrator reused
   for now:** *The Tortoise and the Hare* (`stories/tortoise_and_hare_v1/`: 84 lines,
   about 9 min, 42 shots, 141 image records) and *The Boy Who Cried Wolf*
@@ -216,47 +244,42 @@ V3 render review is the evidence for this revision; v2/v3 production data is his
 |---|---|
 | **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
 | **Writing or changing any image/video prompt; starting a new story's characters and places** | **`.claude/skills/consistent-image-prompts/SKILL.md`** (repo skill), `docs/image-prompts.md`, `production/image_prompts.py` (`build`, `lint` must be 0 errors, `show`, `md`, `review`, `new-story`); a new story's first packet: `production/story_packet.py stories/<slug>/packet_source.py`; CR-18 |
-| V4 packet: status, open issues, script, shot order, repair plan, readable prompts | `stories/lion_and_mouse_v4/README.md`, `SCRIPT_REVIEW.md`, `SHOT_PLAN.md`, `REPAIR_PLAN.md`, `prompts/*.md` |
-| V4 identity, camera setups, size anchors; every image/video record with each image's accepted result | `stories/lion_and_mouse_v4/visual_bible.json`, `prompt_manifest.json` |
-| V4 image history: accepted and rejected takes, hashes, tools, fix texts, Gemini calls | `stories/lion_and_mouse_v4/GENERATION_PROGRESS.md` (dated log), `revisions/*.json`, `revisions/gemini_ledger.csv` |
+| Lion and Mouse (v5): script, shot order, readable prompts, render review | `stories/lion_and_mouse_v5/`: `SCRIPT_REVIEW.md`, `SHOT_PLAN.md`, `prompts/*.md`, `RENDER_REVIEW.md` |
+| Identity, camera setups, size anchors; every image/video record | `stories/<slug>/visual_bible.json`, `prompt_manifest.json` |
+| V4 image history (deleted 2026-10-06, in git history) | `git show b880c23:stories/lion_and_mouse_v4/GENERATION_PROGRESS.md`, `.../revisions/` |
 | Prompt provenance and review gates | `docs/prompt-records.md`, `docs/v4-preflight.md` |
 | **Image generation**: default ImageGen rules in the repo skill; optional Gemini workflow and history | **`.claude/skills/consistent-image-prompts/SKILL.md`**, `docs/gemini-images.md`, `character/gemini_image.py` |
-| V4 narration timing: which shot covers which line | `stories/lion_and_mouse_v4/TIMING_SHEET.md`, `timing_plan.json` (audio on LUMI under `work/`) |
+| Narration timing: which shot covers which line | `stories/<slug>/TIMING_SHEET.md`, `timing_plan.json` (audio on LUMI under `work/`) |
 | Writing any shot prompt, with evidence | `docs/prompting.md`: every measured rule, a checklist, results log |
 | Every problem found and its fix; gaps and risks | **`docs/findings-and-risks.md`** |
 | The whole pipeline, story to shots | `docs/production-guide.md` |
 | Voices (Gemini TTS) | **`voice/README.md`** |
+| Handing a story to publishing (separate repo `jeilealr/feltwillow-publishing`) | `docs/publishing-handoff.md`, `production/export_handoff.py`, `production/contracts/README.md` |
 | LUMI jobs, times, solved gotchas | `docs/lumi.md` |
 | Licences and service terms | `docs/licensing.md`, `docs/google_gemini_terms_question.md` |
 | Where code came from | `docs/provenance.md` |
-| Story facts and runtime export | V4: the bible and manifest above are the authority; a runtime `story.yaml` is derived from them later. V2/v3 `story.yaml` remain historical. |
-| The owner's story text | v4: `stories/lion_and_mouse_v4/SCRIPT_REVIEW.md` and its line list `dialogue_coverage.json`; v3: `stories/lion_and_mouse_v3/script_dialog_en.txt`; v2: `stories/lion_and_mouse_v2/story.txt`, narration per language `narration/<lang>.yaml` |
-| V4 character, scene and location images | `character/characters/lion_and_mouse_v4/<Name>/` (canonical, references, expressions); `character/characters/lion_and_mouse_v4/interactions/keyframes/` (scene start/end frames); `character/locations/lion_and_mouse_v4/` (plates, props) |
-| Historical character packs (not v4 approval) | `character/characters/lion_and_mouse_v3/<Name>/` (v2 kept for the v2 story), prompts in `character/characters/*.md`. v3 file names have no `_01` suffix (renamed 2026-09-29, `.png.png` fixed too); extra takes get `_02`, `_03` |
-| Location DNA and plates (v3) | `stories/lion_and_mouse_v3/locations_dna.yaml`; plates in `character/locations/lion_and_mouse_v3/<id>/` (v4 locations: `visual_bible.json` `locations`) |
-| Owner's verdicts on renders | v2: `stories/lion_and_mouse_v2/owner_review.yaml`; v3: `docs/reviews/lion_and_mouse_v3_owner_notes_2026-09-30.txt` (and `stories/lion_and_mouse_v3/RENDER_REVIEW.md`) |
+| Story facts and runtime export | the bible and manifest are the authority; the runtime `story.yaml` is exported from them by `production/export_runtime.py` |
+| The owner's story text | `stories/<slug>/SCRIPT_REVIEW.md` (or `SCRIPT.md`) and its line list `dialogue_coverage.json` |
+| Character, scene and location images | `character/characters/<slug>/<Name>/`, `character/characters/<slug>/interactions/keyframes/`, `character/locations/<slug>/` |
 
 ## Layout and paths
 
 ```
-stories/<slug>/     story.yaml (bible, voices, scenes, shots), story.txt, narration/, packs/
-                    v4 instead: visual_bible.json, prompt_manifest.json, dialogue_coverage.json,
-                    prompts/, revisions/ (no story.yaml yet)
-production/         install_pack, design, keyframe, compose_keyframes, shot, animatic, image_prompts,
-                    timing_sheet, edit_image (Qwen, untested)
-character/          character.py (pose clips), gemini_image.py (optional Gemini stills);
+stories/<slug>/     visual_bible.json, prompt_manifest.json, dialogue_coverage.json, prompts/,
+                    runtime story.yaml + runtime_inputs.json (exported), voices.yaml
+production/         image_prompts, story_packet, export_runtime, shot, keyframe, timing_sheet, animatic
+character/          gemini_image.py (optional Gemini stills);
                     one folder per story (since 2026-10-04): characters/<story>/<Name>/ and
                     characters/<story>/interactions/ (scene frames), locations/<story>/<place>/
 voice/              Gemini TTS tools; cast/<role>/ and narrators/<name>/ (voice.yaml + samples)
-lora/               LoRA dataset/training/eval (musubi-tuner); datasets/ is empty (v1 removed)
-bllt/               package: paths, media (ffmpeg), wan (model wrapper), post (RIFE/ESRGAN/grade)
-lumi/               site.sh, env*.sh, run_in_container.sh, run_tasks.sbatch, task_exec.sh, setup_env*.sh
+feltwillow/               package: paths, media (ffmpeg), wan (model wrapper), post (RIFE/ESRGAN/grade)
+lumi/               site.sh, env.sh, run_in_container.sh, run_tasks.sbatch, task_exec.sh, render_story.sh, setup_env.sh
 docs/               guides; docs/img/ evidence images
 work/               everything generated (git-ignored); every output has a .json sidecar
 ```
 
 - **Paths never depend on the repo's folder name.** Python derives them from
-  `bllt/paths.py` (`REPO`, `WORK`, `story_work(slug)`, `story_audio(slug,
+  `feltwillow/paths.py` (`REPO`, `WORK`, `story_work(slug)`, `story_audio(slug,
   lang)`); shell scripts from `lumi/site.sh`, the only file with
   machine-specific locations (project dir, venvs, HF cache, container, Slurm
   account, log dir). Moving or renaming the repo needs no edit; another
@@ -269,39 +292,34 @@ work/               everything generated (git-ignored); every output has a .json
   props, installed canonicals), `characters/<name>/` (pack, pack16x9, poses,
   shots), `keyframes/`, `shots/`, `audio/<lang>/sceneNN.wav` (narration, for
   the animatic), `animatic*.mp4`. Task files: `work/tasks/` (old ones in
-  `work/tasks/archive/`, with pre-rename paths). LoRAs: `work/lora/`.
+  `work/tasks/archive/`, with pre-rename paths). Old LoRAs (v1/v2 characters): `work/lora/`.
 - V4 images are not in `work/`: they are tracked PNGs under `character/`
   (allowed by `.gitignore`). Gemini candidate takes (`character/**/gemini/`)
   are git-ignored.
-- Outside the repo (in `$BLLT_PROJECT`, `/scratch/project_465002727/jelealro`):
+- Outside the repo (in `$FELTWILLOW_PROJECT`, `/scratch/project_465002727/jelealro`):
   venvs `ltx_env/venv` (generation; legacy name, do not move: venvs hold
-  absolute paths), `musubi_env/venv`, `gemini_env/venv` (and `qwen_env/venv`,
-  defined in `lumi/site.sh`; its build is not recorded); `hf_cache/`,
-  `models/`, `ext/musubi-tuner`, `slurm_logs/`.
+  absolute paths), `gemini_env/venv`; `hf_cache/`, `slurm_logs/`. Left over from
+  the removed LoRA tools: `musubi_env/`, `models/`, `ext/musubi-tuner`.
 
 ## Running things
 
 ```bash
-cd /scratch/project_465002727/jelealro/big_lessons_little_tales
+cd /scratch/project_465002727/jelealro/feltwillow-production
 W=lumi/run_in_container.sh                     # LUMI PyTorch ROCm container + venv
-$W python production/shot.py --story lion_and_mouse_v3 --scene 1 --shot s01_milo_explores --fast --dry-run
-BLLT_ENV=musubi $W python ...                  # the LoRA-training venv instead
+$W python production/shot.py --story lion_and_mouse_v5 --scene 1 --shot s01_explores --fast --dry-run
 source voice/gemini_env.sh && python voice/list_voices.py   # voices, no container
 ```
 
-- **Container venvs** + one plain venv. `ltx_env/venv` (default):
-  diffusers 0.39, transformers 4.51 (generation, design, keyframes, post).
-  `musubi_env/venv` (`BLLT_ENV=musubi`): musubi-tuner pins, LoRA only.
-  `qwen_env/venv` (`BLLT_ENV=qwen`, built by `lumi/setup_env_qwen.sh`):
-  transformers 4.57 for `production/edit_image.py`; a build or successful run
-  is not recorded. `gemini_env/venv`: google-genai, outside the container.
+- **One container venv** + one plain venv. `ltx_env/venv`:
+  diffusers 0.39, transformers 4.51 (generation, keyframes, post).
+  `gemini_env/venv`: google-genai, outside the container.
   `character/gemini_image.py` needs only Python 3 and Pillow
   (`docs/gemini-images.md`).
 - Pass `--story` explicitly: some tools default to v2 or v3.
 - **GPU work = a task file + `lumi/run_tasks.sbatch`**, one command per line,
   one GCD each, from the repo root:
   `sbatch --ntasks=3 --gpus-per-node=3 --mem=330G lumi/run_tasks.sbatch work/tasks/<name>.txt`
-  Logs: `$BLLT_LOGS/bllt_tasks_<job>_<task>.log`.
+  Logs: `$FELTWILLOW_LOGS/feltwillow_tasks_<job>_<task>.log`.
 - **Fast mode (Wan2.2-Lightning, `--fast`) is the default way to iterate**:
   ~9-16 min per clip instead of ~2 h 10, same look (docs/prompting.md "Fast
   mode"). Several seeds of one shot in one task share one model load (first
@@ -338,6 +356,7 @@ the negative). A draft manifest is not accepted by the renderer.
 - **accelerate + multi-task Slurm steps:** Cray sets `PMI_SIZE` etc.;
   accelerate reads it as an MPI world and aborts ("MASTER_ADDR"). `lora/musubi_env.sh`
   unsets PMI/PMIX/OMPI/MV2 variables for every musubi script.
+- (LoRA lessons below: the tools were removed on 2026-10-06; see git history.)
 - musubi-tuner: `--timestep_boundary` is an integer 0-1000 in training;
   generation takes `--lora_weight` / `--lora_weight_high_noise`, not
   `--network_weights`; `--save_path` is a directory; merging a LoRA on the GPU
@@ -368,6 +387,9 @@ the negative). A draft manifest is not accepted by the renderer.
   you have looked at.
 - A `yaml` value with a colon inside (`language: en (xx, yy: zz)`) breaks the
   file: quote such values.
+- Edits on this scratch filesystem (sed -i, scripted rewrites) left files at mode 600 on 2026-10-07,
+  so `lumi/run_in_container.sh` lost its execute bit ("Permission denied"). After bulk edits run
+  `find . -path ./work -prune -o -type f -perm 600 -print` and restore (`chmod 750` scripts, `640` files).
 - A `google-genai` client created inline and discarded (`genai.Client().x()`)
   closes itself before the call: keep it in a variable.
 
@@ -449,6 +471,22 @@ exists only on scratch: remind the owner to back it up
 `docs/findings-and-risks.md` B1). Gemini candidate takes
 (`character/**/gemini/`) are git-ignored too and exist only where they were
 made. Gemini voices expire 2027-09-27 (recreate from the prompts in `voice/`).
+
+## Publishing handoff (proposed 2026-10-07)
+
+- Production does not publish. The only thing it gives the publishing repository is a handoff tar
+  built by `production/export_handoff.py` from an explicit, committed `stories/<slug>/handoff_selection.yaml`.
+  A handoff is not a publication approval.
+- Agents may run `export_handoff.py --dry-run` (read-only on the repo; writes only to `--out`, which must be
+  outside the repo, e.g. `/scratch/project_465002727/jelealro/tmp/`). Agents do not run a real export,
+  move packages, or import them unless the owner asks in that session.
+- A handoff carries images, audio (WAV/FLAC master) and video; never MP3/M4A, never reading text (publishing
+  writes the reading edition). Video needs ffprobe (LUMI: `module load LUMI/25.09 partition/L
+  FFmpeg/7.1.3-cpeGNU-25.09`).
+- Never edit files under `production/contracts/`; they are a pinned copy of the publishing contract
+  (`CONTRACT.lock`). Never write a selection with patterns or "latest"; name each file.
+- Uncommitted files are recorded in every handoff (names only). Do not leave stray files, and avoid spaces
+  in file names: such a path blocks a real export (`DIRTY_PATH_UNREPRESENTABLE`).
 
 ## Character and scene design: reusable guidance
 
@@ -532,9 +570,8 @@ the workflow ideas below; the project's measured rules take precedence.
 ### Apply these principles to this codebase
 
 The current pipeline implements the same separation of design, composition,
-and motion: `production/design.py` makes candidate stills and canonicals;
-`character/character.py` creates poses from a canonical; `lora/` trains and
-evaluates optional character adapters; `production/keyframe.py` and each
+and motion (the design, pose and LoRA tools named in older notes were removed on
+2026-10-06): `production/keyframe.py` and each
 shot's `compose:` recipe place pose stills on a location plate; and
 `production/shot.py` animates the composed keyframe with Wan image-to-video.
 For v4 the stills (canonicals, plates and the scene start/end frames) were
@@ -651,7 +688,7 @@ another machine (N-07/08/09 included); do not generate them here.
 `hf_cache`) exists but is **untested**: its first run failed because the
 generation venv's transformers 4.51 cannot load its Qwen2.5-VL text encoder;
 it needs its own venv with transformers >= 4.57 (not created then; since then
-`lumi/setup_env_qwen.sh` and `BLLT_ENV=qwen` define it, with no recorded build
+`lumi/setup_env_qwen.sh` and `FELTWILLOW_ENV=qwen` define it, with no recorded build
 or test run).
 
 **v3 planning (2026-09-27; v3 was later rendered and reviewed on 2026-09-30)**:

@@ -128,7 +128,7 @@ since.
 | `compose` uses only plate, crop, blur, still, x/y/h/flip; cache keys include path/crop, not input-content hashes | record calibration externally, version inputs and invalidate caches manually; new manifest fields do not auto-enforce geometry |
 | `compose_keyframes.py` skips entries with `variant_of` | do not use that field for unbuilt mouth alternates and assume their frames will be composed |
 | `shot.py` skips a render if its output exists | a changed prompt/input needs a new revisioned shot name or an explicit rebuild |
-| `bllt/wan.py LIGHTNING` sets guidance 1.0/1.0 and documents no negative pass | fast-mode exclusions must also have positive desired-state wording and correct anchors; logging a negative is not enforcing it |
+| `feltwillow/wan.py LIGHTNING` sets guidance 1.0/1.0 and documents no negative pass | fast-mode exclusions must also have positive desired-state wording and correct anchors; logging a negative is not enforcing it |
 | `wan.generate` passes text without an explicit encoder length setting | count tokens with deployed tokenizer, check real limit/truncation; use the compact runtime candidate and preserve full specification in records |
 | `shot.py` appends `negative_extra` to global negative | v3's blanket visible-teeth negative conflicts with gnawing; make v4 global terms mode-neutral |
 | `shot.py --dry-run` checks some files and prints positive prompt | not a visual/negative/state/approval gate; no guarantee end plate or semantic contents are correct |

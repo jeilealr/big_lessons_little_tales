@@ -38,7 +38,7 @@ canonical. Lint rejects any sentence that pairs a colour word with a body-featur
 the bible's character text.
 
 Tool: `production/image_prompts.py` (`lint`, `build`, `show`, `md`, `review`, `new-story`;
-`--story <slug>`, default `lion_and_mouse_v4`).
+`--story <slug>`, default `lion_and_mouse_v5`).
 
 ## A. Starting a new story (before any scene image)
 

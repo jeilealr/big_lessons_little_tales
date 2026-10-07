@@ -1,5 +1,11 @@
 # Producing a felt-animal fable: the complete guide
 
+> **2026-10-06:** the tools for the older method (`production/design.py`, `install_pack.py`,
+> `compose_keyframes.py`, `character/character.py`, `lora/`, `edit_image.py`) and the Lion and Mouse
+> v2-v4 folders were removed (they remain in git history). Sections that use them describe how
+> earlier versions were made. Current flow: owner-made stills -> `production/export_runtime.py` ->
+> `production/shot.py --fast` (see `CLAUDE.md`).
+
 How to go from a story idea to a finished, consistent, monetisable children's
 video with this repo. Worked example throughout: **The Lion and the Mouse**.
 The measured examples below come from its first version (v1, whose files
@@ -7,7 +13,7 @@ were removed on 2026-09-27). V3 was reviewed by the owner; current work is
 [v4](../stories/lion_and_mouse_v4/README.md): its stills were made from
 2026-09-30 to 2026-10-02 and are under owner review; no v4 clip exists yet.
 Narration and character voices: Gemini TTS (`voice/`); music and sound
-effects: ElevenLabs; final mix: DaVinci Resolve.
+effects: none used yet (ElevenLabs kept as a later option); final mix: DaVinci Resolve.
 
 ## Current production policy (2026-09-30; status updated 2026-10-02)
 
@@ -86,7 +92,7 @@ story.yaml ──► design ──► characters ──► locations ──► s
 | Character pack | `character/character.py` (turns, angles, dataset) | a pose/angle library, and the LoRA dataset |
 | LoRA | `lora/` (musubi-tuner) | a small model per main character |
 | Shots | Wan 2.2 image-to-video from keyframes | 5 s clips, one action each |
-| Post | `bllt/post.py` | 1080p30, learned interpolation and upscaling, grade |
+| Post | `feltwillow/post.py` | 1080p30, learned interpolation and upscaling, grade |
 | Edit | your editor + ElevenLabs | the finished episode |
 
 ## 2. The story bible (`story.yaml`)
@@ -392,7 +398,7 @@ the I2V model), so the same files load into it. A shot opts in with
 `lora: true`; each character in it with a chosen checkpoint (`lora: {name,
 step}` under the character) gets its adapter, and its trigger word enters the
 prompt the way the captions had it ("Leo the lion is twcleo, a large ...").
-`bllt/wan.py` asserts the adapters are active on both experts.
+`feltwillow/wan.py` asserts the adapters are active on both experts.
 
 **Measured: in keyframe shots the LoRA does more harm than good.** Same shots,
 same seeds, with and without (rows: Scene 3 plain, Scene 3 + LoRAs, Scene 2
@@ -483,7 +489,7 @@ Scene audio lives under `work/stories/<slug>/audio/<lang>/sceneNN.wav`.
 Plan more coverage when a line exceeds a usable clip; do not loop a five-second
 shot or play mouth alternatives consecutively just to fill narration.
 
-The selected edit goes to DaVinci Resolve. Post-processing (`bllt/post.py`) uses
+The selected edit goes to DaVinci Resolve. Post-processing (`feltwillow/post.py`) uses
 interpolation/upscaling; inspect the result for newly warped paws, faces and rope.
 Back up chosen media, exact prompt logs and source references together.
 

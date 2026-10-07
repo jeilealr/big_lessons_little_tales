@@ -100,7 +100,7 @@ External policy, prices and storage figures were not re-checked in this pass.
 | Finding | Solution |
 |---|---|
 | deepspeed/apex/aiter in the container break model imports | stubs (default venv), `sitecustomize.py` hider (musubi venv) |
-| musubi-tuner and the generation code need incompatible library versions | two venvs in one container (`BLLT_ENV=musubi`) |
+| musubi-tuner and the generation code need incompatible library versions | two venvs in one container (`FELTWILLOW_ENV=musubi`) |
 | training both Wan experts in one run: 11-13 s/step (28 GB swapped per expert change) | one LoRA per expert, trained in parallel: 2.6-3.5 s/step |
 | accelerate aborted in multi-task jobs ("MASTER_ADDR") | unset Cray PMI variables (`lora/musubi_env.sh`) |
 | work launched with `srun --overlap` died when the host job ended | submit every workload as its own job's task |
@@ -228,7 +228,7 @@ a different image. Revisions in use on 2026-09-26:
 | Comfy-Org/Real-ESRGAN_repackaged | `5fd49b7b278836f48af63ecd314d0f98ab336105` |
 | ZhengPeng7/BiRefNet | `e2bf8e4460fc8fa32bba5ea4d94b3233d367b0e4` (pinned in code) |
 
-**Done:** `bllt/wan.py` (`REVISIONS`), `bllt/post.py`, the download scripts and
+**Done:** `feltwillow/wan.py` (`REVISIONS`), `feltwillow/post.py`, the download scripts and
 BiRefNet load these commits; sidecars record `repo@commit`. Verified that all
 of them resolve offline from the local cache. Changing a revision is a
 deliberate edit: re-render one known shot and compare before relying on it.

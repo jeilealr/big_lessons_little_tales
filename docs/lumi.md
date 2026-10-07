@@ -6,7 +6,7 @@ container through `lumi/run_in_container.sh`, which activates the venv at
 
 ```bash
 W=lumi/run_in_container.sh   # from the repo root
-$W python character/character.py prompt      # anything, on a login node
+$W python production/shot.py --help          # anything, on a login node
 ```
 
 ## GPU jobs
@@ -41,7 +41,7 @@ $W python character/character.py prompt      # anything, on a login node
 
 ## Gotchas already solved
 
-- No ffmpeg on PATH: `bllt.media.locate_ffmpeg` falls back to imageio-ffmpeg's binary.
+- No ffmpeg on PATH: `feltwillow.media.locate_ffmpeg` falls back to imageio-ffmpeg's binary.
 - `deepspeed`/`apex` import failures: see `lumi/stubs/` and the "LUMI and
   training" table in `docs/findings-and-risks.md`.
 - `Cannot open database file: /tmp/gfx90a…ukdb`: MIOpen cache moved to scratch,

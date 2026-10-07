@@ -636,7 +636,7 @@ PROP_BLOCKS = {}
 PROP_STATE_PREFIX = ""
 PROPS = []
 PROP_REF = None
-INTRO = ("Third story of *Big Lessons, Little Tales*: Aesop's boy who cried wolf for ages 3 to 7, with a gentle ending "
+INTRO = ("Third story of *Feltwillow*: Aesop's boy who cried wolf for ages 3 to 7, with a gentle ending "
          "(the wolf is silly rather than scary and runs away from a bell; no animal is hurt; the lost sheep are found "
          "and Finn learns to rebuild trust). Felt storybook style of the channel, made with the consistency rules of "
          "`docs/creation-rules.md` CR-01 to CR-18.")

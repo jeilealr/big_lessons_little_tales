@@ -255,7 +255,7 @@ before its first render.
 ### Fast mode (Wan2.2-Lightning), measured 2026-09-27
 
 `shot.py --fast` / `character.py shots --fast`: the lightx2v 4-step
-distillation LoRAs (Apache-2.0, revision pinned in `bllt/wan.py LIGHTNING`),
+distillation LoRAs (Apache-2.0, revision pinned in `feltwillow/wan.py LIGHTNING`),
 4 Euler steps, shift 5, CFG 1. At CFG 1 the code documents **no negative pass**:
 a saved negative prompt does not establish that those terms constrained fast
 inference. Put required states positively and in the endpoints; review output.

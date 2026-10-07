@@ -1,6 +1,6 @@
 # The Ugly Duckling (ugly_duckling_v1)
 
-Fourth story of *Big Lessons, Little Tales*: Hans Christian Andersen's ugly duckling (public domain) for ages 3 to 7, retold gently: the ducklings' teasing is mild and they say sorry, a kind otter shelters Ollie through the winter, and Ollie finds both the swans and his first family again. Felt storybook style of the channel, made with the consistency rules of `docs/creation-rules.md` CR-01 to CR-19.
+Fourth story of *Feltwillow*: Hans Christian Andersen's ugly duckling (public domain) for ages 3 to 7, retold gently: the ducklings' teasing is mild and they say sorry, a kind otter shelters Ollie through the winter, and Ollie finds both the swans and his first family again. Felt storybook style of the channel, made with the consistency rules of `docs/creation-rules.md` CR-01 to CR-19.
 
 Moral: *Everyone grows in their own way and in their own time; being different is nothing to be ashamed of, and kindness to someone who feels different can help them find where they belong.*
 

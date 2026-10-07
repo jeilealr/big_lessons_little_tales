@@ -628,7 +628,7 @@ PROP_STATE_PREFIX = "ribbon_"
 PROPS = [("PROP_RIBBON", "prop_ribbon", "the finish ribbon",
           "{{block:ribbon_object}} Show it tied between its two sticks.")]
 COUNTS = {}          # character -> number of identical members (a flock); default 1
-INTRO = ("Second story of *Big Lessons, Little Tales*: Aesop's tortoise and hare for ages 3 to 7, in the felt "
+INTRO = ("Second story of *Feltwillow*: Aesop's tortoise and hare for ages 3 to 7, in the felt "
          "stop-motion style of the channel, made with the consistency rules learnt on The Lion and the Mouse "
          "(`docs/creation-rules.md` CR-01 to CR-18).")
 ROLES = {"hattie": "the hare, fast and proud, learns not to stop trying", "toby": "the tortoise, slow, calm and kind, wins by keeping going",

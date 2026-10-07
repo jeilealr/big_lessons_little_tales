@@ -1,0 +1,377 @@
+{
+  "s01_big_egg_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_big_egg_end_r01.png",
+    "frozen": "keyframes/s01_big_egg_end_r01.png",
+    "sha256": "639f89cbab45beac9899e316fd00325b9bedf7f8a2cf11d94e014df5aa501184"
+  },
+  "s01_big_egg_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_big_egg_start_r01.png",
+    "frozen": "keyframes/s01_big_egg_start_r01.png",
+    "sha256": "bd51fd450fc466881ab78b6d1a9cb9dc3dc76969c60ec71c2394b76e7cadb323"
+  },
+  "s01_ducklings_hatch_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_ducklings_hatch_end_r01.png",
+    "frozen": "keyframes/s01_ducklings_hatch_end_r01.png",
+    "sha256": "65e7ad0ec4409af103c7055cd52ad51b7faf6e8b4f494873da486ede78fb44d2"
+  },
+  "s01_ducklings_hatch_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_ducklings_hatch_start_r01.png",
+    "frozen": "keyframes/s01_ducklings_hatch_start_r01.png",
+    "sha256": "65e7ad0ec4409af103c7055cd52ad51b7faf6e8b4f494873da486ede78fb44d2"
+  },
+  "s01_mama_closeup_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_mama_closeup_end_r01.png",
+    "frozen": "keyframes/s01_mama_closeup_end_r01.png",
+    "sha256": "fc3a9fff8e3ff90e412a8bd61306792f603a34697efabfafa9ff59f793e313d1"
+  },
+  "s01_mama_closeup_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_mama_closeup_open_r01.png",
+    "frozen": "keyframes/s01_mama_closeup_open_r01.png",
+    "sha256": "4e06d10a1cf0e05e668754f1d72b4a5eaaf962b612e8e684f9b54932109248d6"
+  },
+  "s01_mama_closeup_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_mama_closeup_start_r01.png",
+    "frozen": "keyframes/s01_mama_closeup_start_r01.png",
+    "sha256": "814407dd0c0320fda19bb59a11f3dfae7abdfe6b94967fb5b76beb713794f288"
+  },
+  "s01_mama_nest_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_mama_nest_end_r01.png",
+    "frozen": "keyframes/s01_mama_nest_end_r01.png",
+    "sha256": "33d1fba15ac9f545a84da632160758a63f4bd214710b5e949a7cff9eeef47895"
+  },
+  "s01_mama_nest_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_mama_nest_start_r01.png",
+    "frozen": "keyframes/s01_mama_nest_start_r01.png",
+    "sha256": "4e46034383ee278d0d3363db485373689508a6f1a0f7ef6e702cc1c0b16b6dce"
+  },
+  "s01_ollie_hatches_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_ollie_hatches_end_r01.png",
+    "frozen": "keyframes/s01_ollie_hatches_end_r01.png",
+    "sha256": "37285b08413944a19bcd601f16f4f54e04d84ad91160a3141c6e6509b04a71f2"
+  },
+  "s01_ollie_hatches_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_ollie_hatches_start_r01.png",
+    "frozen": "keyframes/s01_ollie_hatches_start_r01.png",
+    "sha256": "3d686ead2b8d0059e6981665dd52f8c724551085d4fcb874993c7824e73146ff"
+  },
+  "s01_pond_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_pond_end_r01.png",
+    "frozen": "keyframes/s01_pond_end_r01.png",
+    "sha256": "178d3d662446599e961914650b3291f30e19a67d083031c67c8ac29dd1368beb"
+  },
+  "s01_pond_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s01_pond_start_r01.png",
+    "frozen": "keyframes/s01_pond_start_r01.png",
+    "sha256": "565dfdcb39a9d2e034e33592a9585052c3ff60b675170aa60f0db69d5086a59d"
+  },
+  "s02_ducklings_stare_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s02_ducklings_stare_end_r01.png",
+    "frozen": "keyframes/s02_ducklings_stare_end_r01.png",
+    "sha256": "1d8b8bd070f3d6c9ba7e8808a424d007820ddd5f6eab06ca6a81db819609071b"
+  },
+  "s02_ducklings_stare_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s02_ducklings_stare_start_r01.png",
+    "frozen": "keyframes/s02_ducklings_stare_start_r01.png",
+    "sha256": "fffb87e571418ddf583ef409cdcadcc62261185fac859c42103f925f3701dbc6"
+  },
+  "s02_mama_comforts_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s02_mama_comforts_end_r01.png",
+    "frozen": "keyframes/s02_mama_comforts_end_r01.png",
+    "sha256": "6628688d5d362082752f73410fb5032046e461a49050e3e4dc466620b0a986bd"
+  },
+  "s02_mama_comforts_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s02_mama_comforts_start_r01.png",
+    "frozen": "keyframes/s02_mama_comforts_start_r01.png",
+    "sha256": "dcf42e154295c0cdd6870b5e4721642184ffae91f6b093362fd8a779616533bd"
+  },
+  "s02_ollie_sad_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s02_ollie_sad_end_r01.png",
+    "frozen": "keyframes/s02_ollie_sad_end_r01.png",
+    "sha256": "fd33af624700b3a6cf1ed9c2d539a72e9bc106604c8ca7c9de1740ac76fd6787"
+  },
+  "s02_ollie_sad_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s02_ollie_sad_open_r01.png",
+    "frozen": "keyframes/s02_ollie_sad_open_r01.png",
+    "sha256": "bbd629a004d9b2fe1c18273a63a566b3b8805667e640b627539aa8bf3f8896da"
+  },
+  "s02_ollie_sad_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s02_ollie_sad_start_r01.png",
+    "frozen": "keyframes/s02_ollie_sad_start_r01.png",
+    "sha256": "dc5c51bb6bc700c5f520313eacd7d64ea680a39e399652da5ec1e28dcf99f583"
+  },
+  "s03_honk_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_honk_end_r01.png",
+    "frozen": "keyframes/s03_honk_end_r01.png",
+    "sha256": "4ab710395056fc72414048f3ba6176923bd2b1f87361a8347832d960c09743a9"
+  },
+  "s03_honk_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_honk_start_r01.png",
+    "frozen": "keyframes/s03_honk_start_r01.png",
+    "sha256": "1f9eb1d2051907487091d71a226ca0597c6645083f59d268da65139c8b73790f"
+  },
+  "s03_ollie_alone_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_ollie_alone_end_r01.png",
+    "frozen": "keyframes/s03_ollie_alone_end_r01.png",
+    "sha256": "4a55cf5beaf478cb276fd49e83e325a9cb4aba132a1ed5b065f3148d789f399a"
+  },
+  "s03_ollie_alone_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_ollie_alone_open_r01.png",
+    "frozen": "keyframes/s03_ollie_alone_open_r01.png",
+    "sha256": "c6db5418eaea4ab7aa1af657f4d82268d0f0a9bf0461ddb1316107e8d3f9a48d"
+  },
+  "s03_ollie_alone_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_ollie_alone_start_r01.png",
+    "frozen": "keyframes/s03_ollie_alone_start_r01.png",
+    "sha256": "d6c83c1b3f81ded739a5a2846aab9e05d25eba0bb05ef55faae2c51f81fd0a56"
+  },
+  "s03_ollie_glides_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_ollie_glides_end_r01.png",
+    "frozen": "keyframes/s03_ollie_glides_end_r01.png",
+    "sha256": "676409f3587f655ec66ae45e40d64495fc70efe0c1030ec686afa2e25fbe8fcc"
+  },
+  "s03_ollie_glides_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_ollie_glides_start_r01.png",
+    "frozen": "keyframes/s03_ollie_glides_start_r01.png",
+    "sha256": "d6d34e766b6b227628c4cc4d1eab97db4709fcb74f7daffcb9c7dd8ceece8d6e"
+  },
+  "s03_to_the_water_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_to_the_water_end_r01.png",
+    "frozen": "keyframes/s03_to_the_water_end_r01.png",
+    "sha256": "676409f3587f655ec66ae45e40d64495fc70efe0c1030ec686afa2e25fbe8fcc"
+  },
+  "s03_to_the_water_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s03_to_the_water_start_r01.png",
+    "frozen": "keyframes/s03_to_the_water_start_r01.png",
+    "sha256": "acb3033b61039b70cd37567bd2b6988d17470d6bec550228c57cbe90e04d166f"
+  },
+  "s04_decision_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s04_decision_end_r01.png",
+    "frozen": "keyframes/s04_decision_end_r01.png",
+    "sha256": "027a5ce6f81985df1c5bfd4cec4781a3bf191dcdf2124061235ddaadf264852b"
+  },
+  "s04_decision_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s04_decision_open_r01.png",
+    "frozen": "keyframes/s04_decision_open_r01.png",
+    "sha256": "92d32f475e785a074ac7f2fc5093d59642b7457f16fbd79e5268caa77bc432f7"
+  },
+  "s04_decision_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s04_decision_start_r01.png",
+    "frozen": "keyframes/s04_decision_start_r01.png",
+    "sha256": "cbb04389adcf4f5490e1c5c0afcd95d002f91a4c3675f472944a7209f43cbca4"
+  },
+  "s04_leaves_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s04_leaves_end_r01.png",
+    "frozen": "keyframes/s04_leaves_end_r01.png",
+    "sha256": "f4b333b39dfc29dd28b6ea6dc0c8544fd8d9e20b8bf2ea8d5839b023685d9ec0"
+  },
+  "s04_leaves_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s04_leaves_start_r01.png",
+    "frozen": "keyframes/s04_leaves_start_r01.png",
+    "sha256": "f60466bf0a46448043899026abce7aa6b0c1c640e09eee328afd14cfda956c32"
+  },
+  "s05_lake_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_lake_end_r01.png",
+    "frozen": "keyframes/s05_lake_end_r01.png",
+    "sha256": "d71ad958bd8b6862d5bfdc3198618285601c1428db1f14253d5de7ab61f8eab0"
+  },
+  "s05_lake_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_lake_start_r01.png",
+    "frozen": "keyframes/s05_lake_start_r01.png",
+    "sha256": "d39cb5083c5ae875c8526aabd04099da58718d7bf2d26c9707f22806474b596e"
+  },
+  "s05_ollie_lake_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_ollie_lake_end_r01.png",
+    "frozen": "keyframes/s05_ollie_lake_end_r01.png",
+    "sha256": "f993765105b73341fdd347ae440c1ed032fd89a5ad1a2d9cea5630f38a6e289d"
+  },
+  "s05_ollie_lake_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_ollie_lake_open_r01.png",
+    "frozen": "keyframes/s05_ollie_lake_open_r01.png",
+    "sha256": "30c67147a47d5aa8904a60993fc3900eac601ba85eeb7dc6eb8bde968c05c445"
+  },
+  "s05_ollie_lake_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_ollie_lake_start_r01.png",
+    "frozen": "keyframes/s05_ollie_lake_start_r01.png",
+    "sha256": "da53e6f237e8441499de7892a8d9f7c56763f64c4b0f2dcaf193b7b969f32cd7"
+  },
+  "s05_ollie_watches_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_ollie_watches_end_r01.png",
+    "frozen": "keyframes/s05_ollie_watches_end_r01.png",
+    "sha256": "723f15af90bc6f733ad9f9cecb9d31bc624aa8ceed0c449394ec5c538caf5945"
+  },
+  "s05_ollie_watches_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_ollie_watches_open_r01.png",
+    "frozen": "keyframes/s05_ollie_watches_open_r01.png",
+    "sha256": "0290a288511849c05a8adea2c95024b38a8de8a4adc7bb3e0adcb625785e8d87"
+  },
+  "s05_ollie_watches_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_ollie_watches_start_r01.png",
+    "frozen": "keyframes/s05_ollie_watches_start_r01.png",
+    "sha256": "273489a2f86569269829d009f86707aae481d8998c2dd74ca1978e400ce47423"
+  },
+  "s05_swans_fly_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_swans_fly_end_r01.png",
+    "frozen": "keyframes/s05_swans_fly_end_r01.png",
+    "sha256": "2d010af0df270823bb10dc6bf8f24f0f3f9e8b7f059defb3270b8a0667de7789"
+  },
+  "s05_swans_fly_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s05_swans_fly_start_r01.png",
+    "frozen": "keyframes/s05_swans_fly_start_r01.png",
+    "sha256": "62981553ccf83d60cfad34e7e40afd8cad94b0e5fb4d74017003c6410124f4d4"
+  },
+  "s06_ollie_cold_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ollie_cold_end_r01.png",
+    "frozen": "keyframes/s06_ollie_cold_end_r01.png",
+    "sha256": "888c4b12eea4125960ba0a34fcbdc7cd53f25a098ffada5bd4d2e9fbdf3953cc"
+  },
+  "s06_ollie_cold_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ollie_cold_start_r01.png",
+    "frozen": "keyframes/s06_ollie_cold_start_r01.png",
+    "sha256": "74e7809878014069429209daef931389ffa6f729a04a1bdd0d631c29155792fc"
+  },
+  "s06_ollie_shy_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ollie_shy_end_r01.png",
+    "frozen": "keyframes/s06_ollie_shy_end_r01.png",
+    "sha256": "26cc1db48a5058fee9ad84287862ac42a606052fcd5dd29f343736a330cd68dc"
+  },
+  "s06_ollie_shy_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ollie_shy_open_r01.png",
+    "frozen": "keyframes/s06_ollie_shy_open_r01.png",
+    "sha256": "6eb0d49fb25c93ae68ba7a0de762aaf7448c474cd9a569675d50b3e6e3b012e5"
+  },
+  "s06_ollie_shy_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ollie_shy_start_r01.png",
+    "frozen": "keyframes/s06_ollie_shy_start_r01.png",
+    "sha256": "7879bfbb60488702c3f99c26f2610276cdc16059df5d2520d82b94bf581da4c3"
+  },
+  "s06_ottie_approaches_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ottie_approaches_end_r01.png",
+    "frozen": "keyframes/s06_ottie_approaches_end_r01.png",
+    "sha256": "20b33a78161a3d15fb28e3d7dcb207fd48322cce745cc919d0ef2a24f8256a75"
+  },
+  "s06_ottie_approaches_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ottie_approaches_start_r01.png",
+    "frozen": "keyframes/s06_ottie_approaches_start_r01.png",
+    "sha256": "2f7041364ae60404e290b4c37d0ab7186ebc5084041d02c31a104a511826d2af"
+  },
+  "s06_ottie_closeup_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ottie_closeup_end_r01.png",
+    "frozen": "keyframes/s06_ottie_closeup_end_r01.png",
+    "sha256": "cdf8a763c8352e194837126e5d9ebf7e97c188fafac77112b87b754966e83b70"
+  },
+  "s06_ottie_closeup_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ottie_closeup_open_r01.png",
+    "frozen": "keyframes/s06_ottie_closeup_open_r01.png",
+    "sha256": "2bce6901fa9fdb2f2c597530979e1a78f13e5023c0a1139c351d5d3fd8d8b9e3"
+  },
+  "s06_ottie_closeup_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ottie_closeup_start_r01.png",
+    "frozen": "keyframes/s06_ottie_closeup_start_r01.png",
+    "sha256": "b8acbd69511bb52da09f31da11213ae3b1ef677623e04563a017c8aba5fd8d67"
+  },
+  "s06_ottie_finds_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ottie_finds_end_r01.png",
+    "frozen": "keyframes/s06_ottie_finds_end_r01.png",
+    "sha256": "c11a2434bcaf88da2124f69e3901302df862308dcf2fe8c688762e1153c5fae5"
+  },
+  "s06_ottie_finds_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_ottie_finds_start_r01.png",
+    "frozen": "keyframes/s06_ottie_finds_start_r01.png",
+    "sha256": "c11a2434bcaf88da2124f69e3901302df862308dcf2fe8c688762e1153c5fae5"
+  },
+  "s06_winter_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_winter_end_r01.png",
+    "frozen": "keyframes/s06_winter_end_r01.png",
+    "sha256": "8e1860faa77bcd6b84a1571604e014b2472283d5f5a28720436517d30dd47f3e"
+  },
+  "s06_winter_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s06_winter_start_r01.png",
+    "frozen": "keyframes/s06_winter_start_r01.png",
+    "sha256": "2bfb693a58c74143284bcf0690c9b68d72e4014a833145ea48849397608b7337"
+  },
+  "s07_ollie_grows_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s07_ollie_grows_end_r01.png",
+    "frozen": "keyframes/s07_ollie_grows_end_r01.png",
+    "sha256": "d5cadce8aae574d82417a7a5af39205d78cd4e90117b487a577fa7fea8121ffe"
+  },
+  "s07_ollie_grows_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s07_ollie_grows_start_r01.png",
+    "frozen": "keyframes/s07_ollie_grows_start_r01.png",
+    "sha256": "bc7808b1572dab7039d3e34bf91a9bf6970be5dd7fe7151fde02e04fbce6ba83"
+  },
+  "s07_sliding_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s07_sliding_end_r01.png",
+    "frozen": "keyframes/s07_sliding_end_r01.png",
+    "sha256": "a05589a176608e24d2ee50c80168f816d5a437c6f50c7f6f69ec0b67b8ce150c"
+  },
+  "s07_sliding_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s07_sliding_start_r01.png",
+    "frozen": "keyframes/s07_sliding_start_r01.png",
+    "sha256": "dfce3f12912fff5f8da94bb916b45bd4a45ab3069c9e011ea6697bc413b00765"
+  },
+  "s08_flies_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s08_flies_end_r01.png",
+    "frozen": "keyframes/s08_flies_end_r01.png",
+    "sha256": "cf3e7b00db0ef865170c0ac4d80e7fb2c152b35fc756fb566f0ae4b955b1b8b4"
+  },
+  "s08_flies_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s08_flies_start_r01.png",
+    "frozen": "keyframes/s08_flies_start_r01.png",
+    "sha256": "63f9908c41a2c2a4a3328154eb3ccf004a50c4d36891e33e9ffe83becaaaca69"
+  },
+  "s08_goodbye_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s08_goodbye_end_r01.png",
+    "frozen": "keyframes/s08_goodbye_end_r01.png",
+    "sha256": "1b71bd29818c3c5439d5e2b09a627e062d55dd2a8542d26018b0e8c7ad693123"
+  },
+  "s08_goodbye_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s08_goodbye_start_r01.png",
+    "frozen": "keyframes/s08_goodbye_start_r01.png",
+    "sha256": "5bc2ada8e794fdfc25969c1e5accbe44de293611e5da9c93e41ed9540c2ddedf"
+  },
+  "s08_spring_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s08_spring_end_r01.png",
+    "frozen": "keyframes/s08_spring_end_r01.png",
+    "sha256": "16a0a7af88a81b0d6213e48b4079243d245258ca7641c12278823c94c9e5392a"
+  },
+  "s08_spring_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s08_spring_start_r01.png",
+    "frozen": "keyframes/s08_spring_start_r01.png",
+    "sha256": "94df5629e74f22b81990f8fdadc588137111ac8c6074cadc86107d489ddebc05"
+  },
+  "s09_ollie_bows_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_bows_end_r01.png",
+    "frozen": "keyframes/s09_ollie_bows_end_r01.png",
+    "sha256": "f6ecee581a47b4bd7d342d20732ececbd45bd22e94ba77f20fb18452b0fc7fcd"
+  },
+  "s09_ollie_bows_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_bows_start_r01.png",
+    "frozen": "keyframes/s09_ollie_bows_start_r01.png",
+    "sha256": "99ff3c6221d3c9c637ecada81f93154bfb9b7451938f7b33a5ec9d4b411291a9"
+  },
+  "s09_ollie_nervous_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_nervous_end_r01.png",
+    "frozen": "keyframes/s09_ollie_nervous_end_r01.png",
+    "sha256": "374781e9593e912c033edafdb7de33e3d009e59f33e45dd2a56f1f609e7fabfc"
+  },
+  "s09_ollie_nervous_open": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_nervous_open_r01.png",
+    "frozen": "keyframes/s09_ollie_nervous_open_r01.png",
+    "sha256": "c81e2f044fb2b1e9669d08f4551548e96970ce6c092ff02715d0d30bbab8890d"
+  },
+  "s09_ollie_nervous_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s09_ollie_nervous_start_r01.png",
+    "frozen": "keyframes/s09_ollie_nervous_start_r01.png",
+    "sha256": "bc108db0c4c03b04afb0c43a11a0aacbe5b9e64a3b1560806e19facafac5c7bb"
+  },
+  "s09_swans_lake_end": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s09_swans_lake_end_r01.png",
+    "frozen": "keyframes/s09_swans_lake_end_r01.png",
+    "sha256": "05f73e3666c78509e072b8a250af53aabac494ac4ff62550198cfc0d04aa0eaf"
+  },
+  "s09_swans_lake_start": {
+    "file": "character/characters/ugly_duckling_v1/interactions/keyframes/s09_swans_lake_start_r01.png",
+    "frozen": "keyframes/s09_swans_lake_start_r01.png",
+    "sha256": "e28a1e4befd3ffc6dcdadb6477eb437ec10dd0b3e9b1d0de4fd74284331764bb"
+  }
+}

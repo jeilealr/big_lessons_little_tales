@@ -11,4 +11,4 @@ story's folder holds only its own cast and places. Each image's exact file name 
 `stories/<story>/prompt_manifest.json` (v5 uses the v4 manifest; the READMEs in its folders list
 the file names). Since 2026-10-04; before that the layout was `characters/<Name>/<version>/`.
 
-Tools: `character.py` (pose clips from a canonical), `gemini_image.py` (v4 stills via the Gemini API).
+Tools: `gemini_image.py` (optional stills via the Gemini API).

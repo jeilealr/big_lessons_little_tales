@@ -1,6 +1,6 @@
 # The Tortoise and the Hare (tortoise_and_hare_v1)
 
-Second story of *Big Lessons, Little Tales*: Aesop's tortoise and hare for ages 3 to 7, in the felt stop-motion style of the channel, made with the consistency rules learnt on The Lion and the Mouse (`docs/creation-rules.md` CR-01 to CR-18).
+Second story of *Feltwillow*: Aesop's tortoise and hare for ages 3 to 7, in the felt stop-motion style of the channel, made with the consistency rules learnt on The Lion and the Mouse (`docs/creation-rules.md` CR-01 to CR-18).
 
 Moral: *Keep going, step by step, and you can reach places you never thought you could; and a kind friend cheers for you whether you win or lose.*
 

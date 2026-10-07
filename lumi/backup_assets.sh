@@ -11,12 +11,12 @@
 # checkpoints (default 500); every image under character/ (tracked or not) and
 # the git-ignored Gemini candidates with their .json sidecars
 # (character/**/gemini/). Model weights are re-downloadable (revisions pinned
-# in bllt/wan.py) and not listed.
+# in feltwillow/wan.py) and not listed.
 # Run the printed rsync on your computer (LUMI cannot connect out to it); it
 # is incremental.
 set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/site.sh"
-cd "$BLLT_REPO"
+cd "$FELTWILLOW_REPO"
 KEEP_STEPS=${KEEP_STEPS:-500}
 LIST=work/backup_files.txt
 {
@@ -33,7 +33,7 @@ LIST=work/backup_files.txt
 } | grep -v '^work/backup_files.txt$' | sort -u > "$LIST"
 N=$(wc -l < "$LIST")
 SIZE=$(tr '\n' '\0' < "$LIST" | du -ch --files0-from=- | tail -1 | cut -f1)
-echo "$N files, $SIZE -> $BLLT_REPO/$LIST"
+echo "$N files, $SIZE -> $FELTWILLOW_REPO/$LIST"
 echo
 echo "On your computer:"
-echo "  rsync -av --files-from=:$BLLT_REPO/$LIST ${USER:-$(id -un)}@$BLLT_SSH_HOST:$BLLT_REPO/ ./$(basename "$BLLT_REPO")_backup/"
+echo "  rsync -av --files-from=:$FELTWILLOW_REPO/$LIST ${USER:-$(id -un)}@$FELTWILLOW_SSH_HOST:$FELTWILLOW_REPO/ ./$(basename "$FELTWILLOW_REPO")_backup/"

@@ -18,7 +18,7 @@ cached next to the plate) and a background blur.
       --char STILL.png:x=0.5,y=0.82,h=0.45[,flip]  [--char ...] [--plate-crop x,y,w]
 
 Output: KEY.png + KEY.json (where each character went). story.yaml `compose:`
-recipes are built through `compose_recipe` (shot.py, compose_keyframes.py).
+recipes are built through `compose_recipe` (shot.py).
 """
 
 from __future__ import annotations
@@ -192,7 +192,7 @@ def compose(plate: Path, chars: list[dict], out: Path, crop: list[float] | None 
             sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
             import torch
 
-            from bllt import post
+            from feltwillow import post
 
             piece = frame[y0:y0 + ch, x0:x0 + cw].astype(np.uint8)
             dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
