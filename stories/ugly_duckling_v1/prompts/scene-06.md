@@ -248,7 +248,7 @@ Ollie shivers in the snow and lifts his head weakly. Mouths stay closed througho
 
 - Start `s06_ottie_finds_start` → end `s06_ottie_finds_end` · cast: ottie, ollie
 
-### s06_ottie_finds_closed_r01 (closed) · start `s06_ottie_finds_start` → end `s06_ottie_stays_end`
+### s06_ottie_finds_closed_r01 (closed) · start `s06_ottie_finds_start` → end `s06_ottie_finds_end`
 
 Ottie watches Ollie shiver from the burrow, staying safely inside while Ollie keeps his gaze down. Mouths stay closed throughout; expressions come from the eyes and brows. Fixed camera; the background stays still apart from gentle natural motion. Ottie is one upright chocolate-brown wool-felt otter with cream muzzle and chest, round dark nose, pale whiskers and a long curled tail. Ollie is one young warm dove-grey wool-felt cygnet with pale cheeks and chest, slate-grey bill, long charcoal legs and broad webbed feet. The background is the frozen river in winter, unchanged framing and light. Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.
 

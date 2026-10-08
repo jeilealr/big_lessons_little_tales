@@ -14515,7 +14515,7 @@
       "id": "s12_family_start",
       "group": "scene-12",
       "revision": "r01",
-      "status": "planned",
+      "status": "accepted",
       "bible_revision": "ugly_duckling_v1-2026-10-05",
       "target": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_family_start_r01.png",
       "canvas": [
@@ -14555,7 +14555,57 @@
         }
       ],
       "prompt_template": "Create one 1920x1080 16:9 still image: the start frame of shot s12_family, a wide shot of the farm pond on a sunny spring day. {{refs}} Visible cast: exactly one Ollie the swan and exactly one Ottie and exactly one Mama Duck and exactly three ducklings; no other character, no duplicates. {{identity:ollie_swan}} {{identity:ottie}} {{identity:mama}} {{identity:ducklings}} {{block:cast_scale}} {{setup:pond_spring_wide}} {{block:light_and_colour}} This frame shows: {{frame}}. {{block:style}} {{block:final_check}}",
-      "result": null,
+      "result": {
+        "output_path": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_family_start_r01.png",
+        "sha256": "2ac568255b70e46b60d179666be1813d4e6bc2ab6eda9f15949ac2743a015e6e",
+        "tool": "OpenAI built-in image_gen (Codex)",
+        "model": "image_gen imagegen",
+        "model_details": "Model version not exposed by the built-in tool",
+        "seed": null,
+        "imageConfig": {
+          "aspectRatio": "16:9",
+          "rawSize": "1672x941",
+          "canvas": [
+            1920,
+            1080
+          ]
+        },
+        "normalised": "1672x941 -> 1920x1080 using sips; no crop or stretch.",
+        "ordered_references": [
+          {
+            "id": "PL_pond_day",
+            "role": "locked_plate",
+            "path": "character/locations/ugly_duckling_v1/pond/pond_day_r01.png",
+            "sha256": "908b368daacbce898e1ea96004b0c583e636eb4db6ca10b4c00ea8a12a9ee511"
+          },
+          {
+            "id": "s11_arrives_home_start",
+            "role": "size_anchor",
+            "path": "character/characters/ugly_duckling_v1/interactions/keyframes/s11_arrives_home_start_r01.png",
+            "sha256": "d66652d3f62e97a9d8f068114e584b3b98fd4186ca8f6ac3e113eead10aafea3"
+          },
+          {
+            "id": "s12_canonical_identity_board",
+            "role": "character_guide_board",
+            "path": "stories/ugly_duckling_v1/review/reference_boards/s12_family_canonicals_only.png",
+            "sha256": "bc04a8d97a4f960f3738e1121ec8e01d572fff9211d1c231c97308d6f0c385ca"
+          }
+        ],
+        "prompt_sent": "Create one 1920x1080 16:9 still image: the start frame of shot s12_family, a wide shot of the farm pond on a sunny spring day. Attached reference images, in this order: (1) the locked location plate (empty plate of the farm pond on a sunny afternoon): reproduce this background exactly, with the same landmarks, light and camera [pond_day_r01.png]. (2) size anchor (start frame of shot s11_arrives_home): an approved frame of this same camera setup; every character keeps exactly the size it has there, and takes no pose, expression or prop state from it [s11_arrives_home_start_r01.png]. (3) the labeled character guide board (s12_canonical_identity_board): use the panel labelled canonical for identity and the named expression and pose panels only for those features; do not copy the board layout or labels [s12_family_canonicals_only.png]. Visible cast: exactly one Ollie the swan and exactly one Ottie and exactly one Mama Duck and exactly three ducklings; no other character, no duplicates. Ollie the swan is one young wool-felt swan, the grown-up form of Ollie: a softly rounded warm ivory-white body (#F4F1EA), subtle pearl-grey shading beneath the layered folded wings (#DCDAD3), a long curved neck, a rounded head and a short pointed tail. His coral-orange bill (#E2784A) has a dark charcoal knob and base (#292725); two charcoal webbed feet (#4A4946). He has two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, small dark patches beside the bill and two soft grey-brown eyebrow stitches. Fine looped felt fibres and visible feather stitching. With his neck up he is about 1.9 times Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Ottie is one cheerful upright wool-felt river otter with a round head, compact body and a long thick tail curled to one side. Her fur is warm medium chocolate-brown (#875A3E), with a cream-beige muzzle, throat and oval chest (#E2C39E). She has two small round ears, a broad muzzle, a large dark-brown nose (#493024), a stitched smiling mouth, four fine pale whiskers on each side, two glossy dark-brown eyes (#3E2A1E) with white catchlights and two short brown brow stitches. Her short forearms meet at her chest; she has two hind feet and one long tapering tail. Fine looped felt fibres and visible stitches. Upright, she is slightly taller than Mama Duck. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose and expression follow each prompt. Mama Duck is one plump, gentle wool-felt mother duck standing on two orange webbed feet. Her softly rounded body and head are warm medium brown (#9C6844), with buff-cream feather speckles (#E3C9A0), a pale cream chest (#EADBBE) and thin cream markings above her eyes. Her broad flat bill and feet are golden orange (#EBA13A). Two glossy dark-brown eyes (#3E2A1E) have black pupils, ivory sclera and white catchlights; two short dark-brown brow stitches sit above them. Her two folded wings have layered feather stitching and each has one deep teal-blue patch (#247783) edged in cream; one short pointed feather tail. Fine looped felt fibres and visible stitches. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Each of the three ducklings is identical: one small, round, fluffy wool-felt duckling with bright golden buttercup-yellow down (#F5D04A) and a slightly paler lemon-yellow chest (#F8E27C). Each has a small flat orange bill (#EE9A3A), two tiny orange webbed feet, two stubby wings, two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, and two short brown brow stitches. Fine looped felt fibres and visible stitching. Each duckling is about one third of Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Relative size (fixed for the whole story, the same at the same distance from the camera), with Mama Duck's height as 1: each yellow duckling 0.35, Ollie the grey cygnet 0.55, Ottie standing upright 1.1, Ollie the grown swan with his neck up 1.9, each adult swan 2.1. The cygnet Ollie is clearly bigger than the yellow ducklings and clearly smaller than Mama Duck. Swimming, sitting or curling up changes a silhouette but never the size of a head, beak or wing. Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the bank near y=0.86 or swim on the water near y=0.70. The exact same farm pond composition as pond_evening: preserve the master plate’s nest, reeds, lily pads, trees, fence, barn, rocks, shoreline and camera; vary only time-of-day lighting. Fixed landmarks: the reed nest at the left (x 0.08-0.32, y 0.58-0.80); the pond water across the middle and right (x 0.35-1.00, y 0.55-0.80); tall reeds along the far bank (y 0.35-0.55); a small wooden farm fence and barn roof far behind at the right (x 0.70-0.95, y 0.20-0.40); the grassy bank in front where characters stand (y 0.78-0.92). Warm bright afternoon sunlight from above; sparkles on the water. Each duckling measures about 0.07 of the frame height. Mama Duck measures about 0.20 of the frame height. Ollie the swan with his neck up measures about 0.34 of the frame height. Ottie standing upright measures about 0.22 of the frame height. Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck. Light and colour: every character keeps exactly the colours, saturation and brightness of its canonical image; the scene light may only tint it the same way it tints the background, with the same exposure and contrast as the background. Characters are lit from the same direction as the plate and cast soft contact shadows on its ground, so they sit in the scene rather than on top of it. This frame shows: Ollie the swan swims on the pond with the three ducklings riding on his back; Mama Duck swims beside him; Ottie splashes in the water at the right. All bills and mouths stay closed; happy expressions come from eyes and brows. Style: handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities; warm child-friendly palette and soft directional light; clear subject silhouettes; faces and contact points sharply readable. Before finishing, check: each named character appears exactly once and every group has exactly the number the cast line states; every bird has exactly two eyes, one beak, two wings and two webbed feet, Ottie has four limbs and one tail, and every character has two eyebrow stitches, one above each eye; no text, letters, labels or watermark anywhere.",
+        "generation_sources": [
+          {
+            "path": "character/characters/ugly_duckling_v1/interactions/keyframes/.review/s12_family_start_r01_raw.png",
+            "sha256": "fe01510be4c8c8660414a4f08882b617e82bbbaebba195f62959841707f7c200",
+            "role": "raw generated image before 1920x1080 normalization"
+          }
+        ],
+        "review": {
+          "status": "accepted_pending_owner_review",
+          "reviewer": "agent visual review",
+          "date": "2026-10-08",
+          "review_note": "Generated in shot order with the locked pond plate and canonical-only identity board attached. The planned s11_ducklings_sorry_end carry-forward frame was missing because Scene 11 is paused; the existing s11_arrives_home_start was used only as a size anchor for s12_family_start. All four frames were regenerated after review to require closed bills/mouths, matching the dialogue-free video variants. The final contact sheet was checked for cast count, closed bills and pair continuity; pending owner review."
+        }
+      },
       "allowed_delta": "Only the explicitly specified view, pose, expression, framing or state may change; preserve every other visible feature.",
       "protected": "Identity, anatomical scale, unchanged objects, static landmarks, camera/crop/light outside the stated delta.",
       "setup": "pond_spring_wide",
@@ -14567,7 +14617,7 @@
       "id": "s12_family_end",
       "group": "scene-12",
       "revision": "r01",
-      "status": "planned",
+      "status": "accepted",
       "bible_revision": "ugly_duckling_v1-2026-10-05",
       "target": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_family_end_r01.png",
       "canvas": [
@@ -14607,7 +14657,57 @@
         }
       ],
       "prompt_template": "Create one 1920x1080 16:9 still image: the end frame of shot s12_family, a wide shot of the farm pond on a sunny spring day. {{refs}} {{block:edit_end_frame}} Visible cast: exactly one Ollie the swan and exactly one Ottie and exactly one Mama Duck and exactly three ducklings; no other character, no duplicates. {{identity:ollie_swan}} {{identity:ottie}} {{identity:mama}} {{identity:ducklings}} {{block:cast_scale}} {{setup:pond_spring_wide}} {{block:light_and_colour}} This frame shows: {{frame}}. {{block:style}} {{block:final_check}}",
-      "result": null,
+      "result": {
+        "output_path": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_family_end_r01.png",
+        "sha256": "d48ee502cb0b6b0107524c4ea6fc1faf821f01053a42bb624af44d98b7db2072",
+        "tool": "OpenAI built-in image_gen (Codex)",
+        "model": "image_gen imagegen",
+        "model_details": "Model version not exposed by the built-in tool",
+        "seed": null,
+        "imageConfig": {
+          "aspectRatio": "16:9",
+          "rawSize": "1672x941",
+          "canvas": [
+            1920,
+            1080
+          ]
+        },
+        "normalised": "1672x941 -> 1920x1080 using sips; no crop or stretch.",
+        "ordered_references": [
+          {
+            "id": "s12_family_start",
+            "role": "edit_base",
+            "path": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_family_start_r01.png",
+            "sha256": "2ac568255b70e46b60d179666be1813d4e6bc2ab6eda9f15949ac2743a015e6e"
+          },
+          {
+            "id": "PL_pond_day",
+            "role": "locked_plate",
+            "path": "character/locations/ugly_duckling_v1/pond/pond_day_r01.png",
+            "sha256": "908b368daacbce898e1ea96004b0c583e636eb4db6ca10b4c00ea8a12a9ee511"
+          },
+          {
+            "id": "s12_canonical_identity_board",
+            "role": "character_guide_board",
+            "path": "stories/ugly_duckling_v1/review/reference_boards/s12_family_canonicals_only.png",
+            "sha256": "bc04a8d97a4f960f3738e1121ec8e01d572fff9211d1c231c97308d6f0c385ca"
+          }
+        ],
+        "prompt_sent": "Create one 1920x1080 16:9 still image: the end frame of shot s12_family, a wide shot of the farm pond on a sunny spring day. Attached reference images, in this order: (1) the edit base (start frame of shot s12_family): keep everything in it (camera, crop, background, light, every character's identity, colours, brightness, size and position) except what this prompt changes [s12_family_start_r01.png]. (2) the locked location plate (empty plate of the farm pond on a sunny afternoon): reproduce this background exactly, with the same landmarks, light and camera [pond_day_r01.png]. (3) the labeled character guide board (s12_canonical_identity_board): use the panel labelled canonical for identity and the named expression and pose panels only for those features; do not copy the board layout or labels [s12_family_canonicals_only.png]. This is an edit of the accepted start frame of this shot (the first attached reference): keep its camera, crop, background, light and every character's identity, colours, brightness, size and position exactly; change only what this frame shows below. Visible cast: exactly one Ollie the swan and exactly one Ottie and exactly one Mama Duck and exactly three ducklings; no other character, no duplicates. Ollie the swan is one young wool-felt swan, the grown-up form of Ollie: a softly rounded warm ivory-white body (#F4F1EA), subtle pearl-grey shading beneath the layered folded wings (#DCDAD3), a long curved neck, a rounded head and a short pointed tail. His coral-orange bill (#E2784A) has a dark charcoal knob and base (#292725); two charcoal webbed feet (#4A4946). He has two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, small dark patches beside the bill and two soft grey-brown eyebrow stitches. Fine looped felt fibres and visible feather stitching. With his neck up he is about 1.9 times Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Ottie is one cheerful upright wool-felt river otter with a round head, compact body and a long thick tail curled to one side. Her fur is warm medium chocolate-brown (#875A3E), with a cream-beige muzzle, throat and oval chest (#E2C39E). She has two small round ears, a broad muzzle, a large dark-brown nose (#493024), a stitched smiling mouth, four fine pale whiskers on each side, two glossy dark-brown eyes (#3E2A1E) with white catchlights and two short brown brow stitches. Her short forearms meet at her chest; she has two hind feet and one long tapering tail. Fine looped felt fibres and visible stitches. Upright, she is slightly taller than Mama Duck. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose and expression follow each prompt. Mama Duck is one plump, gentle wool-felt mother duck standing on two orange webbed feet. Her softly rounded body and head are warm medium brown (#9C6844), with buff-cream feather speckles (#E3C9A0), a pale cream chest (#EADBBE) and thin cream markings above her eyes. Her broad flat bill and feet are golden orange (#EBA13A). Two glossy dark-brown eyes (#3E2A1E) have black pupils, ivory sclera and white catchlights; two short dark-brown brow stitches sit above them. Her two folded wings have layered feather stitching and each has one deep teal-blue patch (#247783) edged in cream; one short pointed feather tail. Fine looped felt fibres and visible stitches. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Each of the three ducklings is identical: one small, round, fluffy wool-felt duckling with bright golden buttercup-yellow down (#F5D04A) and a slightly paler lemon-yellow chest (#F8E27C). Each has a small flat orange bill (#EE9A3A), two tiny orange webbed feet, two stubby wings, two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, and two short brown brow stitches. Fine looped felt fibres and visible stitching. Each duckling is about one third of Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Relative size (fixed for the whole story, the same at the same distance from the camera), with Mama Duck's height as 1: each yellow duckling 0.35, Ollie the grey cygnet 0.55, Ottie standing upright 1.1, Ollie the grown swan with his neck up 1.9, each adult swan 2.1. The cygnet Ollie is clearly bigger than the yellow ducklings and clearly smaller than Mama Duck. Swimming, sitting or curling up changes a silhouette but never the size of a head, beak or wing. Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the bank near y=0.86 or swim on the water near y=0.70. The exact same farm pond composition as pond_evening: preserve the master plate’s nest, reeds, lily pads, trees, fence, barn, rocks, shoreline and camera; vary only time-of-day lighting. Fixed landmarks: the reed nest at the left (x 0.08-0.32, y 0.58-0.80); the pond water across the middle and right (x 0.35-1.00, y 0.55-0.80); tall reeds along the far bank (y 0.35-0.55); a small wooden farm fence and barn roof far behind at the right (x 0.70-0.95, y 0.20-0.40); the grassy bank in front where characters stand (y 0.78-0.92). Warm bright afternoon sunlight from above; sparkles on the water. Each duckling measures about 0.07 of the frame height. Mama Duck measures about 0.20 of the frame height. Ollie the swan with his neck up measures about 0.34 of the frame height. Ottie standing upright measures about 0.22 of the frame height. Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck. Light and colour: every character keeps exactly the colours, saturation and brightness of its canonical image; the scene light may only tint it the same way it tints the background, with the same exposure and contrast as the background. Characters are lit from the same direction as the plate and cast soft contact shadows on its ground, so they sit in the scene rather than on top of it. This frame shows: Everyone splashes and laughs together on the sunny pond. All bills and mouths stay closed; happy expressions come from eyes and brows. Style: handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities; warm child-friendly palette and soft directional light; clear subject silhouettes; faces and contact points sharply readable. Before finishing, check: each named character appears exactly once and every group has exactly the number the cast line states; every bird has exactly two eyes, one beak, two wings and two webbed feet, Ottie has four limbs and one tail, and every character has two eyebrow stitches, one above each eye; no text, letters, labels or watermark anywhere.",
+        "generation_sources": [
+          {
+            "path": "character/characters/ugly_duckling_v1/interactions/keyframes/.review/s12_family_end_r01_raw.png",
+            "sha256": "4cd4f3ebcf835fac65ac3f922391707992353506fea85eee01856d84d4588b77",
+            "role": "raw generated image before 1920x1080 normalization"
+          }
+        ],
+        "review": {
+          "status": "accepted_pending_owner_review",
+          "reviewer": "agent visual review",
+          "date": "2026-10-08",
+          "review_note": "Generated in shot order with the locked pond plate and canonical-only identity board attached. The planned s11_ducklings_sorry_end carry-forward frame was missing because Scene 11 is paused; the existing s11_arrives_home_start was used only as a size anchor for s12_family_start. All four frames were regenerated after review to require closed bills/mouths, matching the dialogue-free video variants. The final contact sheet was checked for cast count, closed bills and pair continuity; pending owner review."
+        }
+      },
       "allowed_delta": "Only the explicitly specified view, pose, expression, framing or state may change; preserve every other visible feature.",
       "protected": "Identity, anatomical scale, unchanged objects, static landmarks, camera/crop/light outside the stated delta.",
       "setup": "pond_spring_wide",
@@ -14619,7 +14719,7 @@
       "id": "s12_end_start",
       "group": "scene-12",
       "revision": "r01",
-      "status": "planned",
+      "status": "accepted",
       "bible_revision": "ugly_duckling_v1-2026-10-05",
       "target": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_end_start_r01.png",
       "canvas": [
@@ -14659,7 +14759,57 @@
         }
       ],
       "prompt_template": "Create one 1920x1080 16:9 still image: the start frame of shot s12_end, a wide shot of the farm pond on a sunny spring day. {{refs}} Visible cast: exactly one Ollie the swan and exactly one Ottie and exactly one Mama Duck and exactly three ducklings; no other character, no duplicates. {{identity:ollie_swan}} {{identity:ottie}} {{identity:mama}} {{identity:ducklings}} {{block:cast_scale}} {{setup:pond_spring_wide}} {{block:light_and_colour}} This frame shows: {{frame}}. {{block:style}} {{block:final_check}}",
-      "result": null,
+      "result": {
+        "output_path": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_end_start_r01.png",
+        "sha256": "0b8be1213866aa5af8fea0d32d944bf156f230e8dcb9dfa62961316374ebcc95",
+        "tool": "OpenAI built-in image_gen (Codex)",
+        "model": "image_gen imagegen",
+        "model_details": "Model version not exposed by the built-in tool",
+        "seed": null,
+        "imageConfig": {
+          "aspectRatio": "16:9",
+          "rawSize": "1672x941",
+          "canvas": [
+            1920,
+            1080
+          ]
+        },
+        "normalised": "1672x941 -> 1920x1080 using sips; no crop or stretch.",
+        "ordered_references": [
+          {
+            "id": "s12_family_end",
+            "role": "world_state",
+            "path": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_family_end_r01.png",
+            "sha256": "d48ee502cb0b6b0107524c4ea6fc1faf821f01053a42bb624af44d98b7db2072"
+          },
+          {
+            "id": "PL_pond_day",
+            "role": "locked_plate",
+            "path": "character/locations/ugly_duckling_v1/pond/pond_day_r01.png",
+            "sha256": "908b368daacbce898e1ea96004b0c583e636eb4db6ca10b4c00ea8a12a9ee511"
+          },
+          {
+            "id": "s12_canonical_identity_board",
+            "role": "character_guide_board",
+            "path": "stories/ugly_duckling_v1/review/reference_boards/s12_family_canonicals_only.png",
+            "sha256": "bc04a8d97a4f960f3738e1121ec8e01d572fff9211d1c231c97308d6f0c385ca"
+          }
+        ],
+        "prompt_sent": "Create one 1920x1080 16:9 still image: the start frame of shot s12_end, a wide shot of the farm pond on a sunny spring day. Attached reference images, in this order: (1) the previous accepted frame (end frame of shot s12_family): carry over the world state (props, damage, contacts and positions) unless this prompt changes it; use the framing stated in this prompt [s12_family_end_r01.png]. (2) the locked location plate (empty plate of the farm pond on a sunny afternoon): reproduce this background exactly, with the same landmarks, light and camera [pond_day_r01.png]. (3) the labeled character guide board (s12_canonical_identity_board): use the panel labelled canonical for identity and the named expression and pose panels only for those features; do not copy the board layout or labels [s12_family_canonicals_only.png]. Visible cast: exactly one Ollie the swan and exactly one Ottie and exactly one Mama Duck and exactly three ducklings; no other character, no duplicates. Ollie the swan is one young wool-felt swan, the grown-up form of Ollie: a softly rounded warm ivory-white body (#F4F1EA), subtle pearl-grey shading beneath the layered folded wings (#DCDAD3), a long curved neck, a rounded head and a short pointed tail. His coral-orange bill (#E2784A) has a dark charcoal knob and base (#292725); two charcoal webbed feet (#4A4946). He has two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, small dark patches beside the bill and two soft grey-brown eyebrow stitches. Fine looped felt fibres and visible feather stitching. With his neck up he is about 1.9 times Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Ottie is one cheerful upright wool-felt river otter with a round head, compact body and a long thick tail curled to one side. Her fur is warm medium chocolate-brown (#875A3E), with a cream-beige muzzle, throat and oval chest (#E2C39E). She has two small round ears, a broad muzzle, a large dark-brown nose (#493024), a stitched smiling mouth, four fine pale whiskers on each side, two glossy dark-brown eyes (#3E2A1E) with white catchlights and two short brown brow stitches. Her short forearms meet at her chest; she has two hind feet and one long tapering tail. Fine looped felt fibres and visible stitches. Upright, she is slightly taller than Mama Duck. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose and expression follow each prompt. Mama Duck is one plump, gentle wool-felt mother duck standing on two orange webbed feet. Her softly rounded body and head are warm medium brown (#9C6844), with buff-cream feather speckles (#E3C9A0), a pale cream chest (#EADBBE) and thin cream markings above her eyes. Her broad flat bill and feet are golden orange (#EBA13A). Two glossy dark-brown eyes (#3E2A1E) have black pupils, ivory sclera and white catchlights; two short dark-brown brow stitches sit above them. Her two folded wings have layered feather stitching and each has one deep teal-blue patch (#247783) edged in cream; one short pointed feather tail. Fine looped felt fibres and visible stitches. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Each of the three ducklings is identical: one small, round, fluffy wool-felt duckling with bright golden buttercup-yellow down (#F5D04A) and a slightly paler lemon-yellow chest (#F8E27C). Each has a small flat orange bill (#EE9A3A), two tiny orange webbed feet, two stubby wings, two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, and two short brown brow stitches. Fine looped felt fibres and visible stitching. Each duckling is about one third of Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Relative size (fixed for the whole story, the same at the same distance from the camera), with Mama Duck's height as 1: each yellow duckling 0.35, Ollie the grey cygnet 0.55, Ottie standing upright 1.1, Ollie the grown swan with his neck up 1.9, each adult swan 2.1. The cygnet Ollie is clearly bigger than the yellow ducklings and clearly smaller than Mama Duck. Swimming, sitting or curling up changes a silhouette but never the size of a head, beak or wing. Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the bank near y=0.86 or swim on the water near y=0.70. The exact same farm pond composition as pond_evening: preserve the master plate’s nest, reeds, lily pads, trees, fence, barn, rocks, shoreline and camera; vary only time-of-day lighting. Fixed landmarks: the reed nest at the left (x 0.08-0.32, y 0.58-0.80); the pond water across the middle and right (x 0.35-1.00, y 0.55-0.80); tall reeds along the far bank (y 0.35-0.55); a small wooden farm fence and barn roof far behind at the right (x 0.70-0.95, y 0.20-0.40); the grassy bank in front where characters stand (y 0.78-0.92). Warm bright afternoon sunlight from above; sparkles on the water. Each duckling measures about 0.07 of the frame height. Mama Duck measures about 0.20 of the frame height. Ollie the swan with his neck up measures about 0.34 of the frame height. Ottie standing upright measures about 0.22 of the frame height. Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck. Light and colour: every character keeps exactly the colours, saturation and brightness of its canonical image; the scene light may only tint it the same way it tints the background, with the same exposure and contrast as the background. Characters are lit from the same direction as the plate and cast soft contact shadows on its ground, so they sit in the scene rather than on top of it. This frame shows: Ollie the swan, Mama Duck, the three ducklings and Ottie sit together on the grassy bank in the sunshine, all facing the camera and smiling with their bills and mouths closed. Style: handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities; warm child-friendly palette and soft directional light; clear subject silhouettes; faces and contact points sharply readable. Before finishing, check: each named character appears exactly once and every group has exactly the number the cast line states; every bird has exactly two eyes, one beak, two wings and two webbed feet, Ottie has four limbs and one tail, and every character has two eyebrow stitches, one above each eye; no text, letters, labels or watermark anywhere.",
+        "generation_sources": [
+          {
+            "path": "character/characters/ugly_duckling_v1/interactions/keyframes/.review/s12_end_start_r01_raw.png",
+            "sha256": "1159041941a6f9d73ba5948c99d300f0622c5b33199855d31ee8b515bc2c417a",
+            "role": "raw generated image before 1920x1080 normalization"
+          }
+        ],
+        "review": {
+          "status": "accepted_pending_owner_review",
+          "reviewer": "agent visual review",
+          "date": "2026-10-08",
+          "review_note": "Generated in shot order with the locked pond plate and canonical-only identity board attached. The planned s11_ducklings_sorry_end carry-forward frame was missing because Scene 11 is paused; the existing s11_arrives_home_start was used only as a size anchor for s12_family_start. All four frames were regenerated after review to require closed bills/mouths, matching the dialogue-free video variants. The final contact sheet was checked for cast count, closed bills and pair continuity; pending owner review."
+        }
+      },
       "allowed_delta": "Only the explicitly specified view, pose, expression, framing or state may change; preserve every other visible feature.",
       "protected": "Identity, anatomical scale, unchanged objects, static landmarks, camera/crop/light outside the stated delta.",
       "setup": "pond_spring_wide",
@@ -14671,7 +14821,7 @@
       "id": "s12_end_end",
       "group": "scene-12",
       "revision": "r01",
-      "status": "planned",
+      "status": "accepted",
       "bible_revision": "ugly_duckling_v1-2026-10-05",
       "target": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_end_end_r01.png",
       "canvas": [
@@ -14711,7 +14861,57 @@
         }
       ],
       "prompt_template": "Create one 1920x1080 16:9 still image: the end frame of shot s12_end, a wide shot of the farm pond on a sunny spring day. {{refs}} {{block:edit_end_frame}} Visible cast: exactly one Ollie the swan and exactly one Ottie and exactly one Mama Duck and exactly three ducklings; no other character, no duplicates. {{identity:ollie_swan}} {{identity:ottie}} {{identity:mama}} {{identity:ducklings}} {{block:cast_scale}} {{setup:pond_spring_wide}} {{block:light_and_colour}} This frame shows: {{frame}}. {{block:style}} {{block:final_check}}",
-      "result": null,
+      "result": {
+        "output_path": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_end_end_r01.png",
+        "sha256": "0af50bbf4f19a8f19fd8778ac32ef7ff8b469becb2dbab6bcf8a6fa1ea7cf812",
+        "tool": "OpenAI built-in image_gen (Codex)",
+        "model": "image_gen imagegen",
+        "model_details": "Model version not exposed by the built-in tool",
+        "seed": null,
+        "imageConfig": {
+          "aspectRatio": "16:9",
+          "rawSize": "1672x941",
+          "canvas": [
+            1920,
+            1080
+          ]
+        },
+        "normalised": "1672x941 -> 1920x1080 using sips; no crop or stretch.",
+        "ordered_references": [
+          {
+            "id": "s12_end_start",
+            "role": "edit_base",
+            "path": "character/characters/ugly_duckling_v1/interactions/keyframes/s12_end_start_r01.png",
+            "sha256": "0b8be1213866aa5af8fea0d32d944bf156f230e8dcb9dfa62961316374ebcc95"
+          },
+          {
+            "id": "PL_pond_day",
+            "role": "locked_plate",
+            "path": "character/locations/ugly_duckling_v1/pond/pond_day_r01.png",
+            "sha256": "908b368daacbce898e1ea96004b0c583e636eb4db6ca10b4c00ea8a12a9ee511"
+          },
+          {
+            "id": "s12_canonical_identity_board",
+            "role": "character_guide_board",
+            "path": "stories/ugly_duckling_v1/review/reference_boards/s12_family_canonicals_only.png",
+            "sha256": "bc04a8d97a4f960f3738e1121ec8e01d572fff9211d1c231c97308d6f0c385ca"
+          }
+        ],
+        "prompt_sent": "Create one 1920x1080 16:9 still image: the end frame of shot s12_end, a wide shot of the farm pond on a sunny spring day. Attached reference images, in this order: (1) the edit base (start frame of shot s12_end): keep everything in it (camera, crop, background, light, every character's identity, colours, brightness, size and position) except what this prompt changes [s12_end_start_r01.png]. (2) the locked location plate (empty plate of the farm pond on a sunny afternoon): reproduce this background exactly, with the same landmarks, light and camera [pond_day_r01.png]. (3) the labeled character guide board (s12_canonical_identity_board): use the panel labelled canonical for identity and the named expression and pose panels only for those features; do not copy the board layout or labels [s12_family_canonicals_only.png]. This is an edit of the accepted start frame of this shot (the first attached reference): keep its camera, crop, background, light and every character's identity, colours, brightness, size and position exactly; change only what this frame shows below. Visible cast: exactly one Ollie the swan and exactly one Ottie and exactly one Mama Duck and exactly three ducklings; no other character, no duplicates. Ollie the swan is one young wool-felt swan, the grown-up form of Ollie: a softly rounded warm ivory-white body (#F4F1EA), subtle pearl-grey shading beneath the layered folded wings (#DCDAD3), a long curved neck, a rounded head and a short pointed tail. His coral-orange bill (#E2784A) has a dark charcoal knob and base (#292725); two charcoal webbed feet (#4A4946). He has two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, small dark patches beside the bill and two soft grey-brown eyebrow stitches. Fine looped felt fibres and visible feather stitching. With his neck up he is about 1.9 times Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Ottie is one cheerful upright wool-felt river otter with a round head, compact body and a long thick tail curled to one side. Her fur is warm medium chocolate-brown (#875A3E), with a cream-beige muzzle, throat and oval chest (#E2C39E). She has two small round ears, a broad muzzle, a large dark-brown nose (#493024), a stitched smiling mouth, four fine pale whiskers on each side, two glossy dark-brown eyes (#3E2A1E) with white catchlights and two short brown brow stitches. Her short forearms meet at her chest; she has two hind feet and one long tapering tail. Fine looped felt fibres and visible stitches. Upright, she is slightly taller than Mama Duck. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose and expression follow each prompt. Mama Duck is one plump, gentle wool-felt mother duck standing on two orange webbed feet. Her softly rounded body and head are warm medium brown (#9C6844), with buff-cream feather speckles (#E3C9A0), a pale cream chest (#EADBBE) and thin cream markings above her eyes. Her broad flat bill and feet are golden orange (#EBA13A). Two glossy dark-brown eyes (#3E2A1E) have black pupils, ivory sclera and white catchlights; two short dark-brown brow stitches sit above them. Her two folded wings have layered feather stitching and each has one deep teal-blue patch (#247783) edged in cream; one short pointed feather tail. Fine looped felt fibres and visible stitches. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Each of the three ducklings is identical: one small, round, fluffy wool-felt duckling with bright golden buttercup-yellow down (#F5D04A) and a slightly paler lemon-yellow chest (#F8E27C). Each has a small flat orange bill (#EE9A3A), two tiny orange webbed feet, two stubby wings, two glossy dark-brown eyes (#3E2A1E) with black pupils, ivory sclera and white catchlights, and two short brown brow stitches. Fine looped felt fibres and visible stitching. Each duckling is about one third of Mama Duck’s height. Keep identity colours and mid-brightness stable; scene lighting may tint them consistently with the background. Pose, facing and expression follow each prompt. Relative size (fixed for the whole story, the same at the same distance from the camera), with Mama Duck's height as 1: each yellow duckling 0.35, Ollie the grey cygnet 0.55, Ottie standing upright 1.1, Ollie the grown swan with his neck up 1.9, each adult swan 2.1. The cygnet Ollie is clearly bigger than the yellow ducklings and clearly smaller than Mama Duck. Swimming, sitting or curling up changes a silhouette but never the size of a head, beak or wing. Fixed normal-height wide camera, 16:9, exactly the framing of the locked plate. Characters stand on the bank near y=0.86 or swim on the water near y=0.70. The exact same farm pond composition as pond_evening: preserve the master plate’s nest, reeds, lily pads, trees, fence, barn, rocks, shoreline and camera; vary only time-of-day lighting. Fixed landmarks: the reed nest at the left (x 0.08-0.32, y 0.58-0.80); the pond water across the middle and right (x 0.35-1.00, y 0.55-0.80); tall reeds along the far bank (y 0.35-0.55); a small wooden farm fence and barn roof far behind at the right (x 0.70-0.95, y 0.20-0.40); the grassy bank in front where characters stand (y 0.78-0.92). Warm bright afternoon sunlight from above; sparkles on the water. Each duckling measures about 0.07 of the frame height. Mama Duck measures about 0.20 of the frame height. Ollie the swan with his neck up measures about 0.34 of the frame height. Ottie standing upright measures about 0.22 of the frame height. Every character keeps the story's size lineup; the yellow ducklings are the smallest, and the grey cygnet is bigger than them and smaller than Mama Duck. Light and colour: every character keeps exactly the colours, saturation and brightness of its canonical image; the scene light may only tint it the same way it tints the background, with the same exposure and contrast as the background. Characters are lit from the same direction as the plate and cast soft contact shadows on its ground, so they sit in the scene rather than on top of it. This frame shows: Same places; they all close their eyes in happy smiles, with every bill and mouth closed. Style: handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities; warm child-friendly palette and soft directional light; clear subject silhouettes; faces and contact points sharply readable. Before finishing, check: each named character appears exactly once and every group has exactly the number the cast line states; every bird has exactly two eyes, one beak, two wings and two webbed feet, Ottie has four limbs and one tail, and every character has two eyebrow stitches, one above each eye; no text, letters, labels or watermark anywhere.",
+        "generation_sources": [
+          {
+            "path": "character/characters/ugly_duckling_v1/interactions/keyframes/.review/s12_end_end_r01_raw.png",
+            "sha256": "fc1cc008037696652c12983a8850dfdccbca2b2e77a6ee937c4b8fcb48490c51",
+            "role": "raw generated image before 1920x1080 normalization"
+          }
+        ],
+        "review": {
+          "status": "accepted_pending_owner_review",
+          "reviewer": "agent visual review",
+          "date": "2026-10-08",
+          "review_note": "Generated in shot order with the locked pond plate and canonical-only identity board attached. The planned s11_ducklings_sorry_end carry-forward frame was missing because Scene 11 is paused; the existing s11_arrives_home_start was used only as a size anchor for s12_family_start. All four frames were regenerated after review to require closed bills/mouths, matching the dialogue-free video variants. The final contact sheet was checked for cast count, closed bills and pair continuity; pending owner review."
+        }
+      },
       "allowed_delta": "Only the explicitly specified view, pose, expression, framing or state may change; preserve every other visible feature.",
       "protected": "Identity, anatomical scale, unchanged objects, static landmarks, camera/crop/light outside the stated delta.",
       "setup": "pond_spring_wide",
