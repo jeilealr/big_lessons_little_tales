@@ -675,3 +675,74 @@ untouched.
 
 Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
 `.claude/skills/consistent-image-prompts/SKILL.md`.
+
+## CR-21. Audio-driven chained coverage (owner, 2026-10-08)
+
+**Why:** Lion and Mouse v5 has 11:23.7 of narration but 43 shots of 5.06 s, about 3.5 min of
+picture; the timing sheet filled 7.9 min with slow-downs and stills, and the clips are too short
+for the audio. The shot list was written from the story's actions, not from the narration. From
+v6 on the narration is the timeline: there are as many clips as the audio needs, and the end of
+one clip is the start of the next.
+
+**Rule (opt-in per story via `visual_bible.json` `"chained_coverage": true`):**
+
+1. **Audio first.** The rendered narration (`work/stories/<slug>/audio/<lang>/timing.json`) is the
+   timeline. Every second of it (lines, pauses and the scene tail) is covered by exactly one
+   **piece**, in order. A piece is a manifest shot with one video variant.
+2. **One piece, one clip, 49 to 81 frames.** Clips longer than 81 frames cost quadratically and
+   drift more (`docs/lumi.md`), so a long line is covered by several pieces, never by one long
+   clip. `production/chain_plan.py` gives each piece its seconds from the lines it lists and
+   picks the frame count (4k+1, 49 to 81 at 16 fps) closest to them; the small rest is a retime
+   between 80% and 125% speed (RIFE in post). A piece shorter than 2.45 s or longer than 6.33 s
+   is an error: merge or split lines. Pieces are never trimmed, because the trimmed part would
+   be the shared end image.
+3. **Chain.** A piece with `"join_in": "chain"` starts on exactly the image record its
+   predecessor ended on (same record id, same file). So every handoff is an approved still that
+   both clips are pinned to.
+4. **Marked cuts only.** A piece that cannot chain says `"join_in": "cut"` and why, in
+   `cut_reason`; lint checks that the reason is true:
+   - `film_start`: the first piece of the film.
+   - `close_up`: a cut into or out of a `dialogue_close_up` or `close_two_shot` setup.
+   - `camera_change`: another setup at the same place (place = the plate's folder, e.g. the
+     great tree's wide, close-up and upward sky views).
+   - `time_change`: the same place in another light (day, dusk, night, another season).
+   - `location_change`: another place.
+   - `dissolve`: time passes; needs `transition` `crossfade` or `dip`, and is the only cut
+     allowed inside one setup (e.g. the empty tree after the friends rested there).
+   Any other cut between two pieces of the **same setup** is an error: on a fixed camera it is
+   a jump cut (a character pops in or out). A cut may carry `transition` (`cut`, `crossfade`,
+   `dip`) for the edit; time changes read best as a crossfade.
+5. **Landscape pieces** cover narration that has no action, e.g. the opening of Lion and Mouse
+   over the empty stream plate or the season plates of The Ugly Duckling. Mode `ambient`, no
+   cast; start and end are the location's approved plate record (`PL_<loc>`), or an approved
+   empty scene frame of that setup when a prop belongs in the view (the trap path with the net
+   bundled in the branches), so start = end and only the ambient motion of CR-06 moves (water,
+   leaves, clouds, light). To bring a character
+   in on the same camera, chain an **entrance** piece: start = the empty plate, end = the
+   character just inside the frame edge. Never cut from the empty plate to the same camera with
+   the character already there.
+6. **Holds and living pieces.** Start = end is allowed only for a planned hold (`"hold": true`
+   or mode `ambient`): breathing, a blink, ears, tail tip, ambient motion. It must not depict a
+   state change (CR-04).
+7. **Talking chains.** A run of dialogue close-up pieces alternates the closed frame and its
+   `<shot>_open` key frame (CR-19): closed → open, open → closed, and so on. Every hand-off is
+   one of the two approved images.
+8. **Boundary images** are reviewed against both pieces that use them: the end of the earlier
+   piece and the start of the later one (identity, size, plate, prop state, pose that a single
+   action can reach from both sides). A boundary image first created as an end frame is an edit
+   of its piece's start frame (`edit_base`); later uses do not change that.
+9. **Reuse.** A piece whose endpoints and prompt equal an earlier version's variant may name it
+   in `"reuse": {"story": ..., "variant": ...}`; its renders are reused, not re-rendered.
+10. **Join test.** Before the full render, `production/chain_preview.py --stills` plays the
+    planned images against the narration (no GPU) to check pacing and the chain. After a pilot
+    of the first scenes is rendered and the owner has chosen takes, `chain_preview.py` assembles
+    that start of the film from the chosen takes and measures every join (the jump between the
+    last frame of one piece and the first frame of the next, compared with the normal
+    frame-to-frame motion inside the clips). `continue_from` (start a piece on the actual last
+    frame of the chosen previous take) is the **repair** for a bad join, not the default: it
+    forces rendering in sequence, waiting for each take choice.
+
+Tools: `production/chain_plan.py` (timing, frame counts, coverage checks, `TIMING_SHEET.md`),
+`production/image_prompts.py lint` (chain, cut and landscape rules when the flag is on),
+`production/chain_preview.py` (join test). Workflow: the repo skill
+`.claude/skills/audio-chained-coverage/SKILL.md`. The first chained story is Lion and Mouse v6.

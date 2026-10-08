@@ -220,3 +220,17 @@ upstream, mark dependent frames stale and redo them in story order.
   over the plate and compare the result against the fixed landmarks.
 - A talking clip with two closed key frames invents a different open mouth each render; give the
   `mouth` variant a `<shot>_open` end key frame built from the one approved `*_OPEN` study (CR-19).
+
+## F. Chained stories (CR-21)
+
+A story with `"chained_coverage": true` (Lion and Mouse v6 onward) is planned with the repo skill
+`audio-chained-coverage`; everything above still applies to each image. In addition:
+
+- One image is the end of one clip and the start of the next. Review a **boundary image** against both
+  pieces that use it (the earlier piece's start, the later piece's end): one small action must reach it
+  from each side.
+- A new chain frame is an edit of the frame before it in the chain (`edit_base`, block
+  `edit_chain_frame`), with the locked plate attached next; open-mouth frames follow B.8.
+- Landscape pieces use the approved plate itself (`PL_<loc>`) as start and end. When a prop must be in
+  the empty view, make an empty scene frame with the prop's frame attached as `empty_copy`.
+- New keyframe files are `sNN_KK_<name>_rNN.png` with `KK` = first use in the scene; lint checks it.

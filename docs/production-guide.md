@@ -495,6 +495,14 @@ Back up chosen media, exact prompt logs and source references together.
 
 ## 9. Current workflow, step by step
 
+**From Lion and Mouse v6 (2026-10-08) the shot list is planned from the narration** (CR-21): narration
+first, then pieces of 49 to 81 frames that cover every second of it, each starting on the image the
+previous piece ended on unless a checked cut is planned; landscapes and holds cover narration with no
+action. Tools: `production/chain_plan.py` (timing, frame counts, timing sheet), `production/chain_packet.py`
+(packet from a source file), `production/chain_preview.py` (join test, stills or chosen takes). Workflow:
+the repo skill `.claude/skills/audio-chained-coverage/SKILL.md`. The steps below still apply to every image
+and clip; step 7's pilot is followed by the join test before the full render.
+
 1. **Review story order:** map every owner observation to a rule and image/shot
    record. Review contact, trigger and rescue causality before making images.
 2. **Freeze identity:** revised v4 smooth-crown Milo, full canonical Leo mane,

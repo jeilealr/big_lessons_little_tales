@@ -39,11 +39,28 @@ used only by v1-v3 or never used were removed too: `production/install_pack.py`,
 venv scripts (`lumi/env_musubi.sh`, `env_qwen.sh`, `setup_env_qwen.sh`, `download_musubi_weights.py`,
 `convert_dit_bf16.py`) and `docs/reviews/`. `shot.py` still accepts `lora:` and `compose:` (keyframe.py).
 `image_prompts.py --story lion_and_mouse_v5 lint` now reports 70 errors, all missing v3 reference
-images named by the v4 expression records (history; they matter only for regenerating those
-expressions), plus 8 warnings for owner-renamed v5 files; renders use `export_runtime.py --images`.
+images (deleted history): named by the v4 expression records and, as `staging_only`, by scene
+records s10 to s14 (checked 2026-10-08); they matter only for regenerating those images. Plus 8
+warnings for owner-renamed v5 files; renders use `export_runtime.py --images`.
 Sections below that name v2-v4 paths describe history.
 
 ## Current state (2026-10-08)
+
+- **The Lion and the Mouse v6: chained coverage (owner, 2026-10-08; CR-21).** The v5 audio (11:23.7)
+  was far longer than its 5 s clips (43 shots, 3.5 min). v6 is planned from the narration: **154
+  pieces** of 2.45 to 6.33 s (49 to 81 frames) cover it exactly; each starts on the image the previous
+  one ended on unless a checked cut is planned (close-up, camera, time or place change, dissolve);
+  landscapes and holds cover narration with nothing happening. 25 pieces reuse v5 renders, 129 need
+  new renders; **33 new images** are needed (16 open-mouth frames, 3 entrances, the empty trap, 13 new
+  beats), all `planned`. Defaults the agent took, owner to confirm: reuse the v5 English narration and
+  the v5 images. Lint 0 errors, 0 warnings; nothing generated except a stills join test
+  (`work/stories/lion_and_mouse_v6/review/chain_preview_0-64_stills.mp4`). Start at
+  `stories/lion_and_mouse_v6/README.md`; the workflow is the skill
+  `.claude/skills/audio-chained-coverage/SKILL.md`; every change of that day, with reasons and checks,
+  is in **`docs/changelog.md`** (keep logging changes there). Next: owner reviews `SHOT_PLAN.md`, then
+  the new images in film order, then a pilot (scenes 1 to 3) and the join test.
+- **Lint state found 2026-10-08:** Ugly Duckling v1 lint reports 22 errors (missing `.review/` raw
+  files and `review/reference_boards/*_character_guide.png` references), not 0 as the bullet below says.
 
 **Live work:** the Ugly Duckling v1 scene images (the two Ugly Duckling bullets
 below) and The Lion and the Mouse v5 take selection (see "What this repo is").
@@ -261,6 +278,9 @@ image folders) remain current.
 |---|---|
 | **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
 | **Writing or changing any image/video prompt; starting a new story's characters and places** | **`.claude/skills/consistent-image-prompts/SKILL.md`** (repo skill), `docs/image-prompts.md`, `production/image_prompts.py` (`build`, `lint` must be 0 errors, `show`, `md`, `review`, `new-story`); a new story's first packet: `production/story_packet.py stories/<slug>/packet_source.py`; CR-18 |
+| **Video as long as the narration; chained pieces, cuts, landscapes, join test** | **`.claude/skills/audio-chained-coverage/SKILL.md`**, `docs/creation-rules.md` CR-21, `production/chain_plan.py`, `chain_packet.py`, `chain_preview.py` |
+| Lion and Mouse (v6, chained): plan, timing, new images | `stories/lion_and_mouse_v6/`: `README.md`, `SHOT_PLAN.md`, `TIMING_SHEET.md`, `prompts/*.md`, `chain_source.py` |
+| Why a rule or tool changed (dated, with checks) | `docs/changelog.md` |
 | Lion and Mouse (v5): script, shot order, readable prompts, render review | `stories/lion_and_mouse_v5/`: `SCRIPT_REVIEW.md`, `SHOT_PLAN.md`, `prompts/*.md`, `RENDER_REVIEW.md` |
 | Identity, camera setups, size anchors; every image/video record | `stories/<slug>/visual_bible.json`, `prompt_manifest.json` |
 | V4 image history (deleted 2026-10-06, in git history) | `git show b880c23:stories/lion_and_mouse_v4/GENERATION_PROGRESS.md`, `.../revisions/` |
@@ -284,7 +304,8 @@ image folders) remain current.
 ```
 stories/<slug>/     visual_bible.json, prompt_manifest.json, dialogue_coverage.json, prompts/,
                     runtime story.yaml + runtime_inputs.json (exported), voices.yaml
-production/         image_prompts, story_packet, export_runtime, shot, keyframe, timing_sheet, animatic
+production/         image_prompts, story_packet, export_runtime, shot, keyframe, timing_sheet, animatic,
+                    chain_plan, chain_packet, chain_preview (chained stories, CR-21)
 character/          gemini_image.py (optional Gemini stills);
                     one folder per story (since 2026-10-04): characters/<story>/<Name>/ and
                     characters/<story>/interactions/ (scene frames), locations/<story>/<place>/

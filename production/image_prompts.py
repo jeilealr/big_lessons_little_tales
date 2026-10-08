@@ -41,7 +41,7 @@ CHARACTER_KINDS = {"scene", "character", "expression"}  # kinds that must descri
 # An older version's image may leak its identity, so it may only supply composition or an expression.
 OLD_VERSION_ROLES = {"staging_only", "expression", "camera_geometry"}
 # Blocks that tell the model to edit the first attached image: that image must be the edit base.
-EDIT_BLOCKS = {"edit_end_frame", "edit_reference", "edit_expression", "edit_open_mouth"}
+EDIT_BLOCKS = {"edit_end_frame", "edit_reference", "edit_expression", "edit_open_mouth", "edit_chain_frame"}
 
 # Conflict detector: a sentence written outside the canonical blocks that names a colour together
 # with a body feature is a second, competing character description.
@@ -203,6 +203,139 @@ def drift_hits(bible, text):
     return hits
 
 
+# ---------------------------------------------------------------- chained coverage (CR-21)
+
+CUT_REASONS = {"film_start", "close_up", "camera_change", "time_change", "location_change", "dissolve"}
+CLOSE_FRAMINGS = {"dialogue_close_up", "close_two_shot"}
+HOLD_MODES = {"ambient"}
+
+
+def place_of(bible, loc_id):
+    """The physical place of a location profile: its `location`, else its plate's folder, so the
+    afternoon and sunset plates of the stream bank are one place in two lights."""
+    loc = bible["locations"][loc_id]
+    return loc.get("location") or Path(loc.get("plate", loc_id)).parent.name
+
+
+def wan_frames_ok(n):
+    return isinstance(n, int) and 49 <= n <= 81 and (n - 1) % 4 == 0
+
+
+def lint_chain(manifest, bible, images):
+    """CR-21: pieces in film order; each piece chains onto its predecessor's end image or is a cut
+    whose stated reason is true; landscape pieces use the setup's empty plate; holds are explicit."""
+    errs = []
+    plate_rec = {r["target"]: r["id"] for r in manifest["images"] if r.get("prompt_kind") == "plate"}
+    others = {}
+    prev = None
+    for s in sorted(manifest["shots"], key=lambda x: x.get("order", 0)):
+        sid = s["id"]
+        setup = bible["setups"].get(s.get("setup") or "")
+        if setup is None:
+            errs.append(f"{sid}: piece needs a `setup` from the bible (found {s.get('setup')!r})")
+            prev = s
+            continue
+        if len(s["variants"]) != 1:
+            errs.append(f"{sid}: a chained piece has exactly one video variant (found {len(s['variants'])})")
+        if not s.get("lines"):
+            errs.append(f"{sid}: piece lists no narration `lines` (chain_plan.py times pieces from them)")
+        own_plate = plate_rec.get(bible["locations"][setup["location"]].get("plate"))
+        for which in ("start_image", "end_image"):
+            rid = s[which]
+            rec = images.get(rid)
+            if rec is None:
+                errs.append(f"{sid}: {which} {rid} is not an image record")
+            elif rec.get("prompt_kind") == "plate":
+                if rid != own_plate:
+                    errs.append(f"{sid}: {which} {rid} is not the plate of setup {s['setup']} ({own_plate})")
+            elif rec.get("setup") != s["setup"]:
+                errs.append(f"{sid}: {which} {rid} is in setup {rec.get('setup')}, the piece in {s['setup']}")
+        for v in s["variants"]:
+            if v.get("start_image", s["start_image"]) != s["start_image"] or \
+                    v.get("end_image", s["end_image"]) != s["end_image"]:
+                errs.append(f"{v['id']}: variant endpoints differ from the piece's; a chained piece has one pair")
+            if not wan_frames_ok(v.get("frames")):
+                errs.append(f"{v['id']}: frames {v.get('frames')} must be 4k+1 between 49 and 81 (run chain_plan.py apply)")
+            if s["start_image"] == s["end_image"] and not (s.get("hold") or v.get("mode") in HOLD_MODES):
+                errs.append(f"{sid}: start = end without `hold: true` or an ambient mode (CR-04: holds are planned)")
+            if v.get("mode") == "ambient" and s.get("cast"):
+                errs.append(f"{sid}: an ambient (landscape) piece has no cast")
+            reuse = s.get("reuse")
+            if reuse:
+                try:
+                    om, _ = load(reuse["story"])
+                    ov = next(x for sh in om["shots"] for x in sh["variants"] if x["id"] == reuse["variant"])
+                    osh = next(sh for sh in om["shots"] if ov in sh["variants"])
+                except (OSError, StopIteration, KeyError):
+                    errs.append(f"{sid}: reuse {reuse} names no variant")
+                else:
+                    ends = (ov.get("start_image", osh["start_image"]), ov.get("end_image", osh["end_image"]))
+                    if ends != (s["start_image"], s["end_image"]):
+                        errs.append(f"{sid}: reuse {reuse['variant']} has endpoints {ends}, the piece "
+                                    f"{(s['start_image'], s['end_image'])}")
+                    if ov.get("positive_prompt") != v.get("positive_prompt"):
+                        errs.append(f"{sid}: reuse {reuse['variant']} but the runtime prompt differs; "
+                                    "its renders do not show this piece")
+                    if ov.get("frames") != v.get("frames"):
+                        errs.append(f"{sid}: reuse {reuse['variant']} rendered {ov.get('frames')} frames, the piece "
+                                    f"plans {v.get('frames')}")
+        join, reason = s.get("join_in"), s.get("cut_reason")
+        if prev is None:
+            if (join, reason) != ("cut", "film_start"):
+                errs.append(f"{sid}: the first piece is join_in 'cut' with cut_reason 'film_start'")
+        elif join == "chain":
+            if s["start_image"] != prev["end_image"]:
+                errs.append(f"{sid}: chains on {prev['id']} but starts on {s['start_image']}, "
+                            f"not its end image {prev['end_image']}")
+        elif join == "cut":
+            psetup = bible["setups"].get(prev.get("setup") or "")
+            if reason not in CUT_REASONS - {"film_start"}:
+                errs.append(f"{sid}: cut_reason {reason!r} must be one of {sorted(CUT_REASONS - {'film_start'})}")
+            elif psetup is None:
+                pass
+            elif reason == "dissolve":
+                if s.get("transition") not in ("crossfade", "dip"):
+                    errs.append(f"{sid}: a dissolve needs transition crossfade or dip")
+            elif prev["setup"] == s["setup"]:
+                errs.append(f"{sid}: cut from {prev['id']} in the same setup {s['setup']} is a jump cut; "
+                            "chain it, or make it a dissolve (time passes)")
+            else:
+                a, b = psetup["location"], setup["location"]
+                truth = {"close_up": psetup["framing"] in CLOSE_FRAMINGS or setup["framing"] in CLOSE_FRAMINGS,
+                         "camera_change": place_of(bible, a) == place_of(bible, b),
+                         "time_change": a != b and place_of(bible, a) == place_of(bible, b),
+                         "location_change": place_of(bible, a) != place_of(bible, b)}
+                if not truth[reason]:
+                    errs.append(f"{sid}: cut_reason {reason} does not hold between {prev['setup']} ({a}) "
+                                f"and {s['setup']} ({b})")
+            if s.get("transition", "cut") not in ("cut", "crossfade", "dip"):
+                errs.append(f"{sid}: transition {s.get('transition')!r} must be cut, crossfade or dip")
+        else:
+            errs.append(f"{sid}: join_in must be 'chain' or 'cut' (found {join!r})")
+        prev = s
+    return errs
+
+
+def chain_chrono_names(manifest, bible, images):
+    """Chained stories: a new scene image (one in this story's own folders) is named
+    sNN_KK_<name>_rNN.png, KK = the order in which the scene's pieces first use it. Images reused
+    from an earlier version keep their names."""
+    errs, own = [], f"/{bible.get('version', '')}/"
+    seen = {}
+    for s in sorted(manifest["shots"], key=lambda x: x.get("order", 0)):
+        scene = f"s{s['scene']:02d}"
+        for rid in (s["start_image"], s["end_image"]):
+            rec = images.get(rid)
+            if not rec or rec.get("prompt_kind") != "scene" or rid in seen:
+                continue
+            k = sum(1 for v in seen.values() if v[0] == scene) + 1
+            seen[rid] = (scene, k)
+            if own in rec["target"] and not Path(rec["target"]).name.startswith(f"{scene}_{k:02d}_"):
+                errs.append(f"{rid}: chained keyframe file '{Path(rec['target']).name}' must start with "
+                            f"'{scene}_{k:02d}_' (its first use in the scene)")
+    return errs
+
+
 def lint(manifest, bible):
     errors, warnings = [], []
     E, W = errors.append, warnings.append
@@ -236,8 +369,16 @@ def lint(manifest, bible):
             if c not in bible["characters"]:
                 E(f"bible setups.{sid}: size for unknown character {c}")
 
+    chained = bible.get("chained_coverage")
     shot_of = {}
-    for s in manifest["shots"]:
+    if chained:
+        # an image is shared by consecutive pieces; the pair rules apply where it first appears
+        for s in sorted(manifest["shots"], key=lambda x: x.get("order", 0)):
+            for which in ("start", "end"):
+                shot_of.setdefault(s[f"{which}_image"], (s, which))
+        for e in lint_chain(manifest, bible, images):
+            E(e)
+    for s in [] if chained else manifest["shots"]:
         # a bridge shot reuses the end of one shot and the start of the next (same camera):
         # its endpoints are checked as images of their own shots, not as a new pair
         if s.get("bridge"):
@@ -248,7 +389,11 @@ def lint(manifest, bible):
     # Keyframe chronological-order file names (opt-in per story via bible.keyframe_chrono_naming).
     # Each scene keyframe FILE is sNN_CC_name_<which>_rNN.png, CC counting shots in story order
     # within the scene, so they sort chronologically on disk; the record id stays <shot>_<which>.
-    if bible.get("keyframe_chrono_naming"):
+    # A chained story numbers its own new images by first appearance instead (chain_chrono_names).
+    if bible.get("keyframe_chrono_naming") and chained:
+        for e in chain_chrono_names(manifest, bible, images):
+            E(e)
+    elif bible.get("keyframe_chrono_naming"):
         pos = {}
         for s in sorted(manifest["shots"], key=lambda x: x.get("order", 0)):
             if s.get("bridge"):
@@ -336,10 +481,14 @@ def lint(manifest, bible):
             if rid in shot_of:
                 shot, which = shot_of[rid]
                 other = images.get(shot["end_image" if which == "start" else "start_image"])
-                if other and other.get("setup") != rec.get("setup"):
+                # an empty plate has no setup: lint_chain checks it is the piece's plate
+                if other and other.get("setup") and other.get("setup") != rec.get("setup"):
                     E(f"{rid}: start and end of {shot['id']} use different setups "
                       f"({rec.get('setup')} / {other.get('setup')})")
-                if which == "end":
+                # chained stories: only a new image (in this story's own folders) must be an edit of
+                # its first piece's start; an earlier version's accepted image keeps its provenance
+                if which == "end" and shot["start_image"] != rid and \
+                        (not chained or f"/{bible.get('version', '')}/" in rec["target"]):
                     first = (rec.get("ordered_references") or [{}])[0]
                     if first.get("id") != shot["start_image"]:
                         E(f"{rid}: first reference must be its start frame {shot['start_image']} (edit base)")
@@ -359,7 +508,7 @@ def lint(manifest, bible):
                       f"is not attached")
         for ref in refs:
             shown = visible_characters(images[ref["id"]], bible) if ref.get("id") in images else []
-            if ref.get("role") != "staging_only" and set(shown) - set(vis):
+            if ref.get("role") not in ("staging_only", "empty_copy") and set(shown) - set(vis):
                 E(f"{rid}: reference {ref['id']} shows {sorted(set(shown) - set(vis))}, who is not in this frame")
         for c in sorted(attached - set(vis)):
             E(f"{rid}: canonical of {c} attached although {c} is not visible (it may be drawn into the frame)")
@@ -372,7 +521,9 @@ def lint(manifest, bible):
                 if p != cur:
                     E(f"{rid}: reference {ref['id']} points to {p}, current target is {cur}")
                 p = cur
-            if p and not (REPO / p).exists() and images.get(ref.get("id"), {}).get("status") != "planned":
+            # a record carried over from an earlier story keeps its provenance; that story's lint checks it
+            if p and not (REPO / p).exists() and images.get(ref.get("id"), {}).get("status") != "planned" \
+                    and not rec.get("carried_from"):
                 (W if ref.get("id") in images else E)(f"{rid}: reference file missing: {p}")
             if re.search(r"/v[0-9]+/", p) and f"/{bible.get('version', 'v4')}/" not in p \
                     and ref.get("role") not in OLD_VERSION_ROLES:
