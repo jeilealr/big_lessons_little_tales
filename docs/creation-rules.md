@@ -480,7 +480,7 @@ acceptance; changes in pose may change the silhouette but must keep the head,
 mane, torso and paw size consistent at the same depth. A close-up with a blurred
 plate is a deliberate editorial cut and uses its separate close-up framing.
 
-**Great-tree dusk wide-shot anchor:** use `s05_paw_contact_end_r01.png` for
+**Great-tree dusk wide-shot anchor:** use `s05_02_paw_contact_end_r01.png` for
 Leo's anatomical and mane scale and Milo's small same-depth scale. S06 barrier
 and S08 kindness are on the same plate and ground plane. Leo's mane must not
 shrink between them; use the S05 mane diameter and body proportions as the
@@ -635,6 +635,43 @@ dialogue close-up that has a `mouth` variant also gets one **open-mouth key fram
 new stories automatically; for a story whose packet already exists, add them in place and rebuild
 (`build`, `lint` 0 errors, `md`). Review an `<shot>_open` candidate against the closed start
 frame and the `*_OPEN` study: only the mouth may differ.
+
+Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
+`.claude/skills/consistent-image-prompts/SKILL.md`.
+
+## CR-20. Scene keyframe file names carry the per-scene chronological order (owner, 2026-10-08)
+
+**Why:** within one scene a file browser sorts shots alphabetically, which is not story order
+(`s01_acorn_…` sorted before `s01_explores_…` even though "explores" comes first). Baking the
+chronological position into the file name makes the stills sort in story order on disk, which is
+how the owner reviews them.
+
+**Rule (opt-in per story via `visual_bible.json` `"keyframe_chrono_naming": true`):** each scene
+keyframe **file** is named
+
+```
+sNN_CC_<shot-name>_<start|end|open>_rNN.png
+```
+
+where `CC` is a two-digit counter that **restarts at 01 inside each scene** and counts the scene's
+shots in story order (the manifest `shots[].order`; a `bridge` shot has no images and is not
+counted). Only the **file name** changes: the manifest record `id` stays `<shot>_<which>` and all
+cross-references resolve by id, so ids, `start_image`/`end_image` and prose shot names are
+untouched.
+
+- `production/story_packet.py` sets the flag and emits chrono file names for every **new** story
+  automatically. Stories generated before 2026-10-08 (Tortoise and Hare, Boy Who Cried Wolf, Ugly
+  Duckling) are **grandfathered**: they keep the old `<shot>_<which>_rNN.png` names and the flag is
+  off, so the check does not fire. To adopt it in one of them, rename its keyframe files, update
+  every reference (manifest `target`/`output_path`/`ordered_references[].path`, the embedded
+  `[file.png]` in prompts, the per-story README tables, `story.yaml`, `runtime_inputs.json`,
+  `timing_plan.json`, `TIMING_SHEET.md`), then set the flag; file bytes are unchanged, so stored
+  `sha256` stay valid.
+- `image_prompts.py lint` enforces the convention only when the flag is on: it recomputes the
+  expected `sNN_CC_` prefix from the shot order and flags any scene keyframe whose file name does
+  not match.
+- Lion and Mouse v5 was converted on 2026-10-08 (the first story to use it); videos under `work/`
+  (git-ignored) and per-line narration audio (`SNN-LNNN.wav`, already in order) are out of scope.
 
 Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
 `.claude/skills/consistent-image-prompts/SKILL.md`.

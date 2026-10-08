@@ -49,6 +49,13 @@ bible, every prompt record, the narration line list and SCRIPT/SHOT_PLAN/README;
 Use it only until the first image is accepted; afterwards edit the bible and records directly. The
 steps below say what each part must contain.
 
+New stories get `"keyframe_chrono_naming": true` in the bible, so every scene keyframe **file** is
+named `sNN_CC_<shot-name>_<start|end|open>_rNN.png` — `CC` is a two-digit counter that restarts at
+01 each scene and counts shots in story order, so the stills sort chronologically on disk. Only the
+file name carries it; the record `id` stays `<shot>_<which>`. `story_packet.py` emits these names
+and `lint` enforces them when the flag is on (CR-20). Do not hand-name a scene keyframe target
+without the `_CC_` segment while the flag is on.
+
 1. `python3 production/image_prompts.py --story <template story> new-story <slug>` creates
    the bible skeleton and an empty manifest, copying the generic blocks, reference roles and
    lint settings.

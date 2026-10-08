@@ -245,6 +245,31 @@ def lint(manifest, bible):
         shot_of[s["start_image"]] = (s, "start")
         shot_of[s["end_image"]] = (s, "end")
 
+    # Keyframe chronological-order file names (opt-in per story via bible.keyframe_chrono_naming).
+    # Each scene keyframe FILE is sNN_CC_name_<which>_rNN.png, CC counting shots in story order
+    # within the scene, so they sort chronologically on disk; the record id stays <shot>_<which>.
+    if bible.get("keyframe_chrono_naming"):
+        pos = {}
+        for s in sorted(manifest["shots"], key=lambda x: x.get("order", 0)):
+            if s.get("bridge"):
+                continue
+            sid = s["id"]
+            prefix, _, name = sid.partition("_")
+            pos[prefix] = pos.get(prefix, 0) + 1
+            stem = f"{prefix}_{pos[prefix]:02d}_{name}"
+            checks = [(s.get("start_image"), "start"), (s.get("end_image"), "end")]
+            if f"{sid}_open" in images:
+                checks.append((f"{sid}_open", "open"))
+            for key, which in checks:
+                krec = images.get(key)
+                if not krec:
+                    continue
+                base = Path(krec["target"]).name
+                want = f"{stem}_{which}_"
+                if not base.startswith(want):
+                    E(f"{key}: keyframe file name '{base}' must start with '{want}' "
+                      f"(keyframe_chrono_naming: per-scene order from the shot order)")
+
     for rec in manifest["images"]:
         rid = rec["id"]
         tpl = rec.get("prompt_template")

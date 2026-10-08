@@ -49,25 +49,25 @@ assets:
     role: illustration
     media_type: image/png
     store: production-git
-    path: character/characters/lion_and_mouse_v5/interactions/keyframes/s01_explores_start_r01.png
+    path: character/characters/lion_and_mouse_v5/interactions/keyframes/s01_01_explores_start_r01.png
     selection_note: "EXAMPLE ONLY: tracked v5 video keyframe, not an owner-selected illustration."
   - asset_id: illus-s01-explores-end
     role: illustration
     media_type: image/png
     store: production-git
-    path: character/characters/lion_and_mouse_v5/interactions/keyframes/s01_explores_end_r01.png
+    path: character/characters/lion_and_mouse_v5/interactions/keyframes/s01_01_explores_end_r01.png
     selection_note: "EXAMPLE ONLY: tracked v5 video keyframe, not an owner-selected illustration."
   - asset_id: illus-s01-acorn-start
     role: illustration
     media_type: image/png
     store: production-git
-    path: character/characters/lion_and_mouse_v5/interactions/keyframes/s01_acorn_start_r01.png
+    path: character/characters/lion_and_mouse_v5/interactions/keyframes/s01_02_acorn_start_r01.png
     selection_note: "EXAMPLE ONLY: tracked v5 video keyframe, not an owner-selected illustration."
   - asset_id: illus-s01-acorn-end
     role: illustration
     media_type: image/png
     store: production-git
-    path: character/characters/lion_and_mouse_v5/interactions/keyframes/s01_acorn_end_r01.png
+    path: character/characters/lion_and_mouse_v5/interactions/keyframes/s01_02_acorn_end_r01.png
     selection_note: "EXAMPLE ONLY: tracked v5 video keyframe, not an owner-selected illustration."
 
 components:

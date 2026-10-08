@@ -85,7 +85,7 @@ def bible():
         "body, every ear tip, foot and tail inside the frame with a margin.")
     blocks.update(S.PROP_BLOCKS)
     return {"revision": REV, "version": S.SLUG, "status": "single_source_of_truth_for_all_prompts",
-            "title": S.TITLE, "moral": S.MORAL,
+            "title": S.TITLE, "moral": S.MORAL, "keyframe_chrono_naming": True,
             "how_to": ("Every prompt in prompt_manifest.json is a template rendered from this file by "
                        "production/image_prompts.py --story " + S.SLUG + " (build, lint, show, md, review). Character "
                        "identities are design specs until each canonical image is approved; then rewrite them from the "
@@ -221,6 +221,17 @@ def pose_refs(cast, setup, text):
 def scenes(by):
     recs, shots = [], []
     last_end = {}  # setup -> latest end frame made with that camera (world state for the next shot there)
+    # Per-scene chronological number baked into keyframe FILE names (bible.keyframe_chrono_naming):
+    # sNN_CC_name_<which>_rNN.png, CC counting shots in story order within each scene. The record id
+    # stays <shot>_<which>; only the file name carries the order, so shots sort chronologically on disk.
+    _pos, _seen = {}, {}
+    for _sid, *_ in S.SHOTS:
+        _p = _sid.partition("_")[0]
+        _seen[_p] = _seen.get(_p, 0) + 1
+        _pos[_sid] = _seen[_p]
+    def kf_stem(sid):
+        p, _, nm = sid.partition("_")
+        return f"{p}_{_pos[sid]:02d}_{nm}"
     for n, (sid, scene, setup, cast, start, end, action, prop, exprs) in enumerate(S.SHOTS):
         st = SETUPS[setup]
         loc = st["location"]
@@ -264,7 +275,7 @@ def scenes(by):
             parts += ["This frame shows: {{frame}}.", "{{block:style}}"]
             if cast:
                 parts.append("{{block:final_check}}")
-            r = rec(rid, f"scene-{scene:02d}", "scene", f"{SCENE_DIR}/{rid}_r01.png", [1920, 1080], counts,
+            r = rec(rid, f"scene-{scene:02d}", "scene", f"{SCENE_DIR}/{kf_stem(sid)}_{which}_r01.png", [1920, 1080], counts,
                     " ".join(parts), refs, f"{which} frame of shot {sid}", f"{which.capitalize()} of {sid}",
                     setup=setup, framing=st["framing"], frame=text)
             recs.append(r)
@@ -292,7 +303,7 @@ def scenes(by):
                           "This frame shows: {{frame}}.", "{{block:style}}", "{{block:final_check}}"]
             open_refs = [ref(f"{sid}_start", "edit_base", by), ref(C[c]["canon_id"], "identity_root", by),
                          ref(f"{S.PREFIX[c]}_OPEN", "mouth_design", by)]
-            r_open = rec(oid, f"scene-{scene:02d}", "scene", f"{SCENE_DIR}/{oid}_r01.png", [1920, 1080], counts,
+            r_open = rec(oid, f"scene-{scene:02d}", "scene", f"{SCENE_DIR}/{kf_stem(sid)}_open_r01.png", [1920, 1080], counts,
                          " ".join(open_parts), open_refs, f"open-mouth key frame of shot {sid}",
                          f"Open-mouth key frame of {sid}", setup=setup, framing=st["framing"], frame=open_frame)
             recs.append(r_open)

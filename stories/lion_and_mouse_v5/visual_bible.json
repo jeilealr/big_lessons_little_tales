@@ -2,6 +2,7 @@
   "revision": "v4-consistency-2026-10-02",
   "version": "v4",
   "status": "single_source_of_truth_for_all_v4_prompts",
+  "keyframe_chrono_naming": true,
   "how_to": "Every prompt in prompt_manifest.json is a template rendered from this file by production/image_prompts.py (build, lint, md, review). Change shared text here, never in a rendered prompt. Workflow: .claude/skills/consistent-image-prompts/SKILL.md; rules: docs/creation-rules.md.",
   "characters": {
     "milo": {
