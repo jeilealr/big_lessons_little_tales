@@ -131,11 +131,18 @@ reference from his asleep pose; opening the eyes must reveal the same brown eyes
 
 For **every speaking or expressive character beat**, render separate named modes:
 
-- `closed`: preferred edit-safe baseline. Lips closed, jaw steady; eyes/expression
-  carry the beat. Paws and tail stay anchored.
-- `mouth`: gentle mouth movement using the approved mouth family, with onset,
-  offset, opening limit and quiet lead/tail specified. This is editorial coverage,
-  **not phoneme-synchronised audio**. Record usable motion intervals and speaker.
+- `closed`: preferred edit-safe baseline when no mouth animation is intended.
+  Hold the approved mouth pose steady, whether the audio is narrator voice-over
+  or character dialogue over a distant wide shot. Paws and tail stay anchored.
+- `mouth`: only for audio lines explicitly assigned to the visible character. The
+  video render supplies body, face and subtle head/eye motion; timed mouth movement
+  is composited afterward from that character's forced word alignment (`production/lip_sync.py`).
+  Narrator lines never drive a character's mouth, including lines that describe
+  what the character says or does. During narration, use a silent hold/reaction
+  and keep the approved mouth pose still.
+  The current compositor uses one approved open shape and broad syllable pulses,
+  so it is word-timed but not phoneme/viseme-accurate. Record the speaker and
+  endpoint states. Review every processed close-up against the narration.
 
 A different seed is not a different mode. Both modes need compatible endpoint
 images: a closed clip cannot end on an open mouth. Sleep, silent locomotion and
@@ -604,37 +611,25 @@ Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
 ratios of CR-14 and CR-16 (great tree about 0.47, trap path about 0.85): sizes still come from each
 setup, but every setup now applies this one ratio (`visual_bible.json` `cast_scale`).
 
-## CR-19. An open-mouth key frame anchors every talking clip (owner, 2026-10-05)
+## CR-19. A separate open-mouth image calibrates dialogue (owner, 2026-10-05; revised 2026-10-09)
 
-**Why:** a `mouth` (talking) clip renders with the lips moving, but Wan only interpolates
-between its two key frames — it has no separate reference slot. When both key frames are the
-closed close-up (the pattern used through Lion and Mouse v4), the open-mouth shape is invented
-fresh each render, so the same character's open beak or mouth looks different from clip to clip
-and from the approved [mouth study](creation-rules.md) (CR-05). CR-05 already requires compatible
-endpoints ("a closed clip cannot end on an open mouth"); this rule supplies the missing endpoint.
+For each character dialogue close-up, create one approved open-mouth calibration image by editing
+an approved closed-mouth endpoint. Only the mouth differs: pose, head size and position, gaze,
+background, camera and light remain identical. Attach the closed frame as `edit_base`, the location
+plate, the character canonical, and the approved `*_OPEN` mouth study. Keep one speech-mouth design
+per character throughout the story.
 
-**Rule (every new story; Lion and Mouse v4 is excluded, its clips are nearly final):** every
-dialogue close-up that has a `mouth` variant also gets one **open-mouth key frame**, record
-`<shot>_open`, and the talking clip ends on it:
+Both video boundaries must use approved closed-mouth images. Record the separate open image as
+`mouth_open_image` on the `mode: mouth` variant, with one explicit audio `speaker`; map its visual
+character ID to that speaker via `characters.<id>.voice_speaker` in the bible. `production/lip_sync.py`
+uses the image only during that character's aligned words. It rejects open-mouth boundaries,
+which would otherwise open during silent gaps while preserving chain continuity. Narrator-only
+close-ups receive only a `closed` variant. `production/story_packet.py` applies this to new stories;
+`production/chain_packet.py` applies it to chained stories. Review every open image against its
+closed edit base and the `*_OPEN` study before rendering.
 
-- It is an **edit of that shot's closed start frame**: the mouth opens to the character's
-  approved speech shape; pose, head size and position, gaze, backdrop and light stay identical.
-  Generated with `{{block:edit_open_mouth}}`, so the start frame is the edit base.
-- It attaches, in order, the closed start frame (`edit_base`), the character's canonical
-  (`identity_root`) and the character's approved open-mouth study `*_OPEN` (`mouth_design`,
-  "copy only the mouth opening, the teeth and their size"), and repeats the bible's
-  `{{mouth:<char>}}` design in words. One character per frame (close-ups are single-character).
-- One open shape per character for the whole story: the open-mouth study `*_OPEN`
-  (`characters.<id>.mouth` in the bible) is the single approved speech mouth; every `<shot>_open`
-  reproduces it. Do not design a new open mouth per shot.
-- Each video variant now carries its own `start_image`/`end_image`: the `closed` variant runs
-  start→end, the `mouth` variant runs start→`<shot>_open`, so one shot can serve both without a
-  wide-to-closeup zoom. `production/export_runtime.py` reads these per-variant endpoints.
-
-`production/story_packet.py` creates the `<shot>_open` records and the per-variant endpoints for
-new stories automatically; for a story whose packet already exists, add them in place and rebuild
-(`build`, `lint` 0 errors, `md`). Review an `<shot>_open` candidate against the closed start
-frame and the `*_OPEN` study: only the mouth may differ.
+Earlier Lion and Mouse versions used an open image as a video endpoint. Those existing media are
+historical; future packets use closed endpoints and post-render mouth animation (CR-23/24).
 
 Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
 `.claude/skills/consistent-image-prompts/SKILL.md`.
@@ -675,6 +670,17 @@ untouched.
 
 Reference: [`image-prompts.md`](image-prompts.md); workflow: the repo skill
 `.claude/skills/consistent-image-prompts/SKILL.md`.
+
+
+## CR-22. Lock the visible silhouette in dialogue close-up video (owner, 2026-10-09)
+
+Dialogue close-ups must preserve the approved head-and-shoulders crop for the full clip. Their video
+prompts use a portrait-only character description, then explicitly lock the approved crop and visible
+silhouette from the start and end frames. They do not repeat full-body identity text, because details
+outside the frame can prompt the video model to invent those parts. Lint requires the portrait
+placeholder and crop lock for every newly generated dialogue close-up variant. Approved reused
+renders keep their original prompt and provenance.
+
 
 ## CR-21. Audio-driven chained coverage (owner, 2026-10-08)
 
@@ -735,14 +741,55 @@ one clip is the start of the next.
    in `"reuse": {"story": ..., "variant": ...}`; its renders are reused, not re-rendered.
 10. **Join test.** Before the full render, `production/chain_preview.py --stills` plays the
     planned images against the narration (no GPU) to check pacing and the chain. After a pilot
-    of the first scenes is rendered and the owner has chosen takes, `chain_preview.py` assembles
-    that start of the film from the chosen takes and measures every join (the jump between the
-    last frame of one piece and the first frame of the next, compared with the normal
-    frame-to-frame motion inside the clips). `continue_from` (start a piece on the actual last
-    frame of the chosen previous take) is the **repair** for a bad join, not the default: it
-    forces rendering in sequence, waiting for each take choice.
+    of the first scenes is rendered and the owner has chosen takes, use
+    `chain_preview.py --require-takes` to assemble only exact-length chosen takes and measure
+    joins on the retimed preview frames. A bad join can be repaired with
+    `production/chain_repair.py --story <slug> --piece <later> --previous-piece <earlier>`;
+    this records the chosen source clip and hash, and `export_runtime.py` adds a separately named
+    candidate whose first frame comes from that clip. The original candidate and take remain
+    untouched. Choose the repair in `takes.yaml` and run the strict join test again.
+11. **Image approval.** After visual review, record approval for the exact manifest target with
+    `production/image_prompts.py --story <slug> approve <image-id> --reviewed-by <name>`.
+    The approval records the image hash, rendered prompt/specification hash, and hashes of ordered references.
+    Runtime export refuses v6-owned scene images with missing or stale approvals.
+12. **Edit handoff.** When every piece has an owner-chosen take, run
+    `production/edit_manifest.py --story <slug>`. It writes a hash-bound film-order manifest for
+    DaVinci or another editor; it does not assemble or render the final film.
+13. **Localize reused assets.** `production/chain_packet.py` copies every resolved base-story image
+    asset used by the new packet into the matching versioned character/location folders, rewrites
+    the new bible and manifest paths, and leaves the base story untouched. Accepted inherited
+    expression studies are indexed in `prompt_manifest.json` and generated as
+    `prompts/expressions.md`; they are references, not new image jobs. Carried assets keep their
+    source filenames and `carried_from` provenance, while chronology and edit-base checks apply to
+    newly created images.
 
 Tools: `production/chain_plan.py` (timing, frame counts, coverage checks, `TIMING_SHEET.md`),
 `production/image_prompts.py lint` (chain, cut and landscape rules when the flag is on),
-`production/chain_preview.py` (join test). Workflow: the repo skill
+`production/chain_preview.py` (strict join test), `production/chain_repair.py` (hash-bound
+continuation repair), `production/edit_manifest.py` (chosen-take handoff), and the image `approve`
+command (hash-bound approval). Workflow: the repo skill
 `.claude/skills/audio-chained-coverage/SKILL.md`. The first chained story is Lion and Mouse v6.
+
+## CR-23. Dialogue mouth motion is timed in post (owner, 2026-10-09)
+
+For every new narrated project, retain the exact line audio and transcript, create
+word timings with the isolated WhisperX aligner, and apply mouth animation only
+after a take is selected. The compositor may only use reviewed, matched closed/open
+endpoint frames and must preserve the source clip's first and last frames exactly
+so the scene chain remains continuous. Final edit export rejects dialogue mouth
+variants without a current hash-bound lip-sync output. Use `docs/lip-sync.md` for
+the commands, review steps and limitations. This implementation approximates
+syllabic opening within word intervals; it does not claim phoneme-level visemes.
+
+## CR-24. Narration never drives character lip sync (owner, 2026-10-09)
+
+A character's mouth moves only for audio explicitly assigned to that character in
+`dialogue_coverage.json`. `NARRATOR` lines are voice-over: they never produce
+character mouth cues, even when the narration describes a call, speech or reaction.
+Every `mode: mouth` variant must carry one explicit character speaker, and the
+compositor must ignore narrator/other-character lines and fail closed if that speaker
+is missing or mismatched. During voice-over, hold the character's approved mouth
+pose still. If two visible characters speak in one piece, split the coverage into
+speaker-specific shots (or use a reviewed multi-speaker compositor); never apply one
+character's timing to another character. A non-verbal vocalization is lip-synced only
+when its audio is separately assigned to that character.

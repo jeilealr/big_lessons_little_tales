@@ -498,8 +498,14 @@ Back up chosen media, exact prompt logs and source references together.
 **From Lion and Mouse v6 (2026-10-08) the shot list is planned from the narration** (CR-21): narration
 first, then pieces of 49 to 81 frames that cover every second of it, each starting on the image the
 previous piece ended on unless a checked cut is planned; landscapes and holds cover narration with no
-action. Tools: `production/chain_plan.py` (timing, frame counts, timing sheet), `production/chain_packet.py`
-(packet from a source file), `production/chain_preview.py` (join test, stills or chosen takes). Workflow:
+action. `chain_packet.py` localizes reused base images into the new version folders and writes the
+inherited expression-study inventory to `prompts/expressions.md`; the base story remains intact. V6 dialogue uses forced word alignment plus a separate post-render mouth composite; see
+[the lip-sync workflow](lip-sync.md). The current mouth shapes are broad syllable-timed approximations,
+not phoneme-accurate visemes. Tools: `production/chain_plan.py` (timing, frame counts, timing sheet), `production/chain_packet.py`
+(packet from a source file), `production/chain_preview.py` (stills or strict chosen-take join test),
+`production/chain_repair.py` (hash-bound continuation repair), and `production/edit_manifest.py`
+(hash-bound DaVinci handoff). New v6 images require an explicit file-and-hash approval before runtime export.
+Workflow:
 the repo skill `.claude/skills/audio-chained-coverage/SKILL.md`. The steps below still apply to every image
 and clip; step 7's pilot is followed by the join test before the full render.
 
@@ -539,7 +545,7 @@ limitations. These are manual production gates, not newly implemented code.
 
 See **[findings-and-risks.md](findings-and-risks.md)**: every problem found and
 its fix, and the gaps not yet covered (backups before the project's data is
-deleted, narration-first timing and animatics, dialogue without lip-sync,
+deleted, narration-first timing and animatics, dialogue without phoneme-level visemes,
 two-character contact shots, props, the trap scene and YouTube's policy,
 Made-for-kids settings, pinning model versions, render throughput, a shared
 style for the series).

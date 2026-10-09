@@ -4,6 +4,85 @@ Dated record of changes to the rules, tools and story packets, newest first with
 Each entry says what changed, why, which files, and how it was checked. Owner instructions
 are quoted or summarised with their date. Git history has the diffs; this file has the reasons.
 
+## 2026-10-09 — Owner image-status follow-up
+
+Owner instruction: mark existing Lion and Mouse v5 missing-after-review output accepted, and do the same for Ugly Duckling v1. The v5 `s02_place_acorn_end` r02 image exists and its SHA-256 matches the recorded accepted result; its v5 record and byte-identical v6 carryover are now `accepted`, with the owner's instruction and digest recorded. The v6 carried-image export gate remains fail-closed for every other non-accepted record.
+
+- Restored the already-accepted v5 `s08_milo_surprised_start`, `s08_milo_surprised_end` and `s12_runs_end` target files from runtime-input copies whose hashes match both the manifest's recorded image result and the frozen runtime inputs. No existing file was overwritten.
+- Three accepted v5 Milo reference targets (`M_SIDE_R`, `M_SIDE_L`, `M_BACK`) remain absent; no exact hash-matching source exists in the v5 character assets or runtime keyframes. Their records were already marked accepted. Ugly Duckling v1 has 152 accepted image records and no accepted record with a missing target; its absent Scene 11 images are planned and its deleted `s06_ottie_stays_end` record remains superseded. No status was changed for v1.
+- Checked exact SHA-256 values before recording acceptance/restoring files. No new images or media were generated.
+
+## 2026-10-09 — Final approval-state gate and deferred image phase
+
+The owner selected full Lion and Mouse v6 image regeneration as a later phase and instructed that
+no images be created before the audit and code work are reported. The current packet remains an
+interim baseline with 118 carried v5 images, 22 inherited expression studies, 33 planned new
+images and 25 render reuses; it is
+not the all-new image packet.
+
+- **Review status is authoritative:** `s02_place_acorn_end` is carried from v5 with status
+  `missing_after_owner_review`, although a byte-identical file and a v5 render exist. Runtime
+  export now rejects non-accepted carried endpoints even in reused pieces. Edit-manifest export
+  checks the same state before selecting takes. A file or hash cannot reverse owner review.
+- **Checked:** a focused regression rejected the bad carried image in both exporters; a copied
+  manifest with its status changed to `accepted` passed the pure edit check. The failed runtime
+  export produced no partial v6 `story.yaml`. No images, audio or video were generated.
+
+## 2026-10-09: v6 readiness audit remediations
+
+Executed the owner-provided v6 readiness audit findings before image generation or the pilot.
+No images/audio were generated and no GPU job was launched.
+
+- **Version-local inherited assets:** `chain_packet.py` copies resolved v5 character, location and
+  expression assets used by v6 into matching v6 folders and rewrites v6 bible/manifest references;
+  the v5 source files remain intact. The v6 manifest and generated `prompts/expressions.md` now index
+  all 22 accepted inherited expression studies, so the expression group is visible in the new version.
+  Lint identifies inherited records by `carried_from`, preserving their source filenames and provenance.
+- **Lip-sync expectation:** the v6 README and production guide state that mouth clips use the approved
+  open/closed shapes with generic speech motion; they do not claim word- or phoneme-level sync.
+- **Files:** `production/chain_packet.py`, `production/image_prompts.py`, the v6 source, packet and
+  generated prompt markdown, CR-21, the chained-coverage skill, production guide and this log.
+- **Checked:** 118 carried manifest images and 22 expression studies have v6-local assets matching
+  their v5 sources byte-for-byte; only the 33 planned v6 keyframes are absent. Prompt lint reports
+  0 errors and 0 warnings; `git diff --check` is clean. No new image generation was run.
+
+- **Prompt consistency:** all 16 v6 open-mouth frames now attach the closed edit base, locked plate, canonical,
+  and mouth study in that order; chain lint errors if a v6-owned image lacks its locked plate. The Scene 9
+  resting frame now attaches `s16_friends_start` as a size anchor. CR-19 now states that open-mouth anchors
+  are required for readable dialogue close-ups; wide shots may keep small mouth motion without extra keyframes.
+- **Safe packet rebuild:** `chain_packet.py` preserves a new image's result, approval, review, hash and extra
+  provenance fields when its structural specification is unchanged. If a record with production state changes,
+  rebuild stops until the owner explicitly names it with `--invalidate <image-id>`; the old record is retained
+  under `superseded` in the regenerated manifest.
+- **Approval gate:** `image_prompts.py approve` records the exact manifest target, image SHA-256,
+  rendered-prompt/specification SHA-256, ordered reference paths and hashes, reviewer and time.
+  `export_runtime.py` refuses v6-owned endpoint images without a matching approval file and all hashes.
+  Carried v5 assets retain their original approval/provenance path; selected v6 files come from the
+  approval record, not highest-revision lookup.
+- **Pilot gate and repair:** `chain_preview.py --require-takes` checks every chosen clip exists and has the planned
+  frame count before encoding. Join motion and pace use the retimed preview frames. `chain_repair.py` records the
+  exact preceding selected take and hash; runtime export creates a separately named continuation candidate, and
+  `shot.py` resolves and hash-checks the source without replacing the original keyframe or render. It also works
+  when the preceding chosen piece is a v5 reuse.
+- **Edit handoff:** `edit_manifest.py` exports a hash-bound film-order contract with exact selected clips, retiming,
+  transitions and narration intervals for external editing. It does not render the final film; DaVinci assembly
+  remains the production boundary.
+- **Planner robustness:** `chain_plan.py` now rejects duplicate/missing line IDs, timing mismatches, invalid line or
+  scene durations, and duplicate/non-contiguous piece order values with named errors.
+- **Close-up silhouette lock:** new v6 dialogue-video prompts use face-only portrait descriptions and an explicit
+  endpoint crop/silhouette lock; lint checks the prompt and rejects body-part mentions outside that crop.
+  Reused v5 clips retain their original prompts. Added CR-22 and updated the chained-coverage skill.
+- **Files:** `production/chain_packet.py`, `image_prompts.py`, `image_approval.py`, `export_runtime.py`,
+  `chain_preview.py`, `chain_repair.py`, `edit_manifest.py`, `chain_plan.py`, `shot.py`, the v6 source/packet
+  and prompt skills, CR-19/CR-21, `CLAUDE.md`, `docs/production-guide.md`, and this log.
+- **Checked:** documented v6 lint and chain timing checks; legacy lint summaries unchanged; Python compilation;
+  strict preview missing-take failure; approval file/spec/reference hash creation and mismatch rejection;
+  packet-state preservation and changed-spec refusal; chain-repair/export integration for both new and reused pieces;
+  edit-manifest serialization and source/audio hash handoff (frame probe stubbed); malformed planner-input cases;
+  `git diff --check`.
+  CPU-only preview remains available;
+  no image generation, audio generation or GPU rendering was run.
+
 ## 2026-10-08: Lion and Mouse v6, audio-driven chained coverage
 
 Owner, 2026-10-08: the v5 audio is far longer than the 5 s clips; for v6, create as many
@@ -180,3 +259,38 @@ record them. Defaults taken by the agent (no owner answer yet): reuse the v5 Eng
   the generated shot plan. `image_prompts.py --story lion_and_mouse_v6 lint` reports 0 errors
   and 0 warnings; `chain_plan.py ... check` covers all 154 pieces and all 11:23.7 with 0 errors;
   `git diff --check` is clean.
+
+
+### 2026-10-09 — Word-timed mouth animation for chained stories
+
+- Added isolated WhisperX forced alignment and a post-render mouth compositor. The timing comes from the exact line WAVs and dialogue transcript; the compositor uses approved open/closed endpoint images, preserves first/last frames, and stores hash-bound outputs separately.
+- Chained previews prefer current lip-sync clips; final edit handoff refuses unsynced `mouth` variants and validates source/output hashes.
+- Added reusable workflow documentation and wired Lion and Mouse v6 to align its reused v5 narration and process dialogue takes.
+- The compositor currently makes broad syllable-timed openings from one approved mouth shape. It is not phoneme/viseme-accurate and requires visual review.
+- Checked Python syntax and CLI help, reviewed commands/docs, and checked the worktree diff. Audio alignment and rendered clips were not generated here because WhisperX and its model are not present in the current environment.
+
+
+### 2026-10-09 — Production environments and v6 audio preparation
+
+- Prepared the requested checkout in `/scratch/project_465002727/jelealro/feltwillow-production`; this path is the same checkout as the active `/pfs/lustrep4/...` path, so no duplicate clone was needed.
+- Installed isolated CPU PyTorch 2.8.0 + WhisperX 3.8.6 and bundled FFmpeg in `.venv-lipsync`; downloaded the English wav2vec2 alignment model.
+- Created the LUMI Wan render venv at `/scratch/project_465002727/jelealro/ltx_env/venv` using the configured ROCm container. The Wan 2.2 I2V and Lightning model snapshots were already cached.
+- Generated v6 word timings from the v5 English line audio: 161/161 lines and 1,238 words aligned; no review flags.
+- `image_prompts.py lint`: 0 errors, 0 warnings. LUMI renderer dry-run reached prompt assembly; a video cannot run until v6 image approvals are exported into runtime `story.yaml` and keyframes. No images or videos were generated.
+
+
+### 2026-10-09 — Character-only lip-sync enforcement
+
+- Added CR-24 and updated the chained-coverage skill: narrator voice-over never drives character mouths; only audio lines explicitly assigned to one visible character can be lip-synced. Silent narration shots hold the approved mouth pose, and mixed-speaker shots sync only the explicitly selected speaker.
+- The readiness check found four unsafe v6 variants: three narrator-only pieces and one piece covering both Leo and Milo. Changed the narrator pieces to silent mouth holds, removed the unused call open-mouth image, and explicitly assigned the mixed close-up to Leo; Milo's line now leaves Leo closed. After checking dialogue-frame scale, wide-shot character lines were set to keep mouths still; the close Leo line gained a separate approved mouth anchor that does not alter chain start/end frames. The final plan has 33 new images, including 16 dialogue mouth anchors.
+- Added `mouth_character` to generated endpoint records (required by the compositor), made packet generation reject ambiguous `mode: mouth` speakers, and made the compositor reject missing speaker metadata and always exclude `NARRATOR`/other-character lines.
+- Rebuilt v6 prompts and timing sheet; lint reports 0 errors and 0 warnings, and the 154-piece timing plan reports 0 errors.
+
+## 2026-10-09 — Lip-sync boundary and attribution audit
+
+- Fixed selected-variant speaker lookup and stale alignment reuse; narrator and other-character lines cannot provide mouth cues, and changed line recordings fail closed.
+- Replanned Lion and Mouse v6 dialogue so all 37 mouth clips have closed chain endpoints and separate open-mouth calibration images. This removes open-mouth boundary poses during silent pauses without adding image jobs.
+- Bound synced-take reuse and edit handoff to the current timing, speaker metadata, line audio and approved mouth images. Added checks for open-mouth boundaries and focused attribution tests.
+- Regenerated the v6 packet, prompts and timing sheet; v6 prompt lint reports 0 errors/0 warnings and timing covers 11:23.7 with 0 errors. V5 source still regeneration remains unverified because its prompt lint reports 70 errors/8 warnings from missing deleted v3 references. No v6 media was generated.
+
+The owner selected full v6 image regeneration for a later phase. The current 33-new-image packet and carried v5 assets/renders remain an interim audit baseline; image migration and generation await the completed audit report. No images were created during this pass.

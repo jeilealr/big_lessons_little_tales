@@ -139,14 +139,15 @@ without the `_CC_` segment while the flag is on.
 6. Sizes are numbers plus a comparison and come from the setup; never estimate them per record.
 7. `python3 production/image_prompts.py build && python3 production/image_prompts.py lint`
    must end with **0 errors**. Then `md` refreshes `prompts/*.md`; `show <record>` prints one.
-8. **Talking clips need an open-mouth key frame (CR-19).** A `mouth` video variant only
-   interpolates between its two key frames, so the open mouth must be one of them. Every
-   dialogue close-up with a `mouth` variant gets a scene record `<shot>_open`: an edit of the
-   closed start frame (`{{block:edit_open_mouth}}`, first reference `edit_base`) that opens only
-   the mouth to the character's approved speech shape, attaching the start frame, the canonical
-   (`identity_root`) and the character's `*_OPEN` study (`mouth_design`), with `{{mouth:<char>}}`.
-   Each variant has its own `start_image`/`end_image`: `closed` runs start→end, `mouth` runs
-   start→`<shot>_open`. `story_packet.py` emits these for new stories; keep them when editing by
+8. **Dialogue close-ups need a separate open-mouth calibration image (CR-19).** Every
+   `mouth` variant starts and ends on approved closed-mouth scene frames. Create a scene record
+   `<shot>_open` as an edit of one closed boundary frame (`{{block:edit_open_mouth}}`, first
+   reference `edit_base`) that opens only the mouth to the character's approved speech shape.
+   Attach the closed frame, locked plate, canonical (`identity_root`) and the character's
+   `*_OPEN` study (`mouth_design`), with `{{mouth:<char>}}`. Mark its `mouth_character` and set
+   `mouth_open_image` on the `mouth` variant. Assign exactly one audio `speaker` matching the
+   visible character's `voice_speaker` in the bible. Narrator-only close-ups get no mouth
+   variant. `story_packet.py` emits this structure for new stories; keep it when editing by
    hand (Lion and Mouse v4 is exempt — its clips are nearly final).
 
 ## C. Generating
@@ -195,7 +196,16 @@ delivery size:
 
 Record the result in the manifest (tool, model, the references actually sent with their
 hashes, the prompt actually sent, output hash, review note), and if an identity, plate, size or prop state changed
-upstream, mark dependent frames stale and redo them in story order.
+upstream, mark dependent frames stale and redo them in story order. For chained stories, only after the review
+passes and the exact candidate has been copied to its manifest `target`, record the human approval:
+
+```bash
+python3 production/image_prompts.py --story <slug> approve <record> --reviewed-by <name> --note "<review note>"
+```
+
+This writes `stories/<slug>/image_approvals.json` with the target path, image SHA-256, rendered prompt/specification SHA-256,
+and SHA-256 values for every ordered reference. Runtime export checks all of them;
+changing or replacing the approved file requires review and a new approval.
 
 ## E. Pitfalls already paid for
 
@@ -218,8 +228,10 @@ upstream, mark dependent frames stale and redo them in story order.
   the model redrew the nest and water while changing character poses. If a generated frame still
   changes plate geometry, do not accept it as fixed: composite reviewed isolated character layers
   over the plate and compare the result against the fixed landmarks.
-- A talking clip with two closed key frames invents a different open mouth each render; give the
-  `mouth` variant a `<shot>_open` end key frame built from the one approved `*_OPEN` study (CR-19).
+- A talking clip with no separate approved open-mouth calibration image has no stable speech
+  shape. Give the `mouth` variant a `mouth_open_image` edited from a closed endpoint and the one
+  approved `*_OPEN` study (CR-19), with the locked plate attached after the edit base. Keep the
+  clip boundaries closed so the mouth stays still during narration and silent pauses.
 
 ## F. Chained stories (CR-21)
 
@@ -230,7 +242,8 @@ A story with `"chained_coverage": true` (Lion and Mouse v6 onward) is planned wi
   pieces that use it (the earlier piece's start, the later piece's end): one small action must reach it
   from each side.
 - A new chain frame is an edit of the frame before it in the chain (`edit_base`, block
-  `edit_chain_frame`), with the locked plate attached next; open-mouth frames follow B.8.
+  `edit_chain_frame`), with the locked plate attached next; mouth calibration images follow B.8
+  and are never chain boundaries.
 - Landscape pieces use the approved plate itself (`PL_<loc>`) as start and end. When a prop must be in
   the empty view, make an empty scene frame with the prop's frame attached as `empty_copy`.
 - New keyframe files are `sNN_KK_<name>_rNN.png` with `KK` = first use in the scene; lint checks it.

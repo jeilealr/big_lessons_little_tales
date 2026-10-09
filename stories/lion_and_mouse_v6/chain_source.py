@@ -28,13 +28,26 @@ BLOCKS = {
         "background, light and the character's identity, colours, brightness, size, pose, head position, gaze and "
         "expression exactly; open only the mouth into the approved rounded speech shape shown in the attached "
         "mouth-design reference, with the same interior and any teeth as in that reference. This is the single "
-        "open-mouth key frame the talking clips animate to and from, so the open shape stays identical to the "
+        "open-mouth calibration image for the post-render compositor, so the open shape stays identical to the "
         "character's approved speech mouth."),
 }
 REFERENCE_ROLES = {
     "empty_copy": ("the frame to reproduce without its characters ({what}): copy its camera, background, light, "
                    "every prop and the exact position of each prop, and leave out every character, so this frame "
                    "shows the place empty"),
+}
+VOICE_SPEAKERS = {"leo": "LION", "milo": "MOUSE"}
+PORTRAITS = {
+    "leo": "Leo is a sturdy ochre-orange felt lion with a huge round rust-red mane framing his broad face, two ochre ears, thick dark brown brows, large russet-brown eyes, peach nose pad above a dark brown nose, cream muzzle and chin, and pale cream whiskers on both sides.",
+    "milo": "Milo is a slender taupe-brown felt mouse with a smooth crown, huge coral-lined oval ears, two brown eyes, a small brown nose, cream muzzle, and peach whiskers on both sides.",
+}
+LOCKED_PLATES = {
+    "fork_milo_closeup": "PL_fork_sunset",
+    "tree_dusk_leo_closeup": "PL_tree_dusk",
+    "tree_dusk_contact": "PL_tree_dusk",
+    "tree_dusk_milo_closeup": "PL_tree_dusk",
+    "trap_leo_closeup": "PL_trap_morning",
+    "trap_milo_closeup": "PL_trap_morning",
 }
 REVIEW_NEGATIVE = ("Review only (fast mode has no negative pass): duplicate characters, extra or missing limbs, "
                    "extra tails, changed face or colours, a character growing or shrinking, a cut, zoom or camera "
@@ -46,11 +59,14 @@ def L(scene, *nums):
 
 
 # ---------------------------------------------------------------- new images
-def open_frame(iid, setup, closed, char, why, extra=""):
+def open_frame(iid, setup, closed, char, why, extra="", other_chars=()):
     canon, study, name = {"milo": ("MILO_CANON", "M_OPEN", "Milo"), "leo": ("LEO_CANON", "L_OPEN", "Leo")}[char]
+    identity_roots = {"milo": "MILO_CANON", "leo": "LEO_CANON"}
+    refs = [(closed, "edit_base"), (LOCKED_PLATES[setup], "locked_plate"),
+            (canon, "identity_root"), (study, "mouth_design")]
+    refs.extend((identity_roots[c], "identity_root") for c in other_chars)
     return dict(id=iid, setup=setup, world_from=closed, mouth=char, why=why,
-                what=f"the open-mouth key frame after {closed}",
-                refs=[(closed, "edit_base"), (canon, "identity_root"), (study, "mouth_design")],
+                what=f"the open-mouth key frame after {closed}", refs=refs,
                 frame=(f"Exactly the frame {closed} in every detail, with the same expression, pose, head size and "
                        f"position, gaze, backdrop and light, except {name} opens the mouth into the approved rounded "
                        f"speech shape shown in the mouth-design reference{extra}"))
@@ -107,7 +123,7 @@ NEW_IMAGES = [
     edit_frame("s09_leo_rests", "tree_day_wide", "PL_tree_day", "PL_tree_day", ["leo"],
                "Leo lies relaxed alone beneath the great tree in daylight, in the same place, pose and size as in the "
                "friends frames, head up, eyes soft, mouth closed", "'the lion returned to his favorite shady tree' (S09-L006)",
-               world_from="s16_friends_start"),
+               world_from="s16_friends_start", more=[("s16_friends_start", "size_anchor")]),
     dict(id="s10_trap_set", setup="trap_wide", what="the empty trap path with the net set", world_from="s10_curious_step_start",
          why="landscape of the trap before Leo comes (S10-L001); also the 'hunter's net' memory (S16-L008)",
          refs=[("s10_curious_step_start", "empty_copy"), ("PL_trap_morning", "locked_plate"), ("PROP_NET", "prop")],
@@ -115,9 +131,9 @@ NEW_IMAGES = [
          frame="The straight forest path in morning light with nobody on it; the single net hangs bundled in the "
                "branches above the path exactly where it is before Leo arrives, and the small trigger disc lies "
                "partly hidden under the leaves on the path"),
+    open_frame("s05_leo_what_was_that_open", "tree_dusk_contact", "s05_nose_aftermath_end", "leo",
+               "Leo's spoken line (S05-L011)", other_chars=("milo",)),
     open_frame("s11_leo_worried_open", "trap_leo_closeup", "s11_why_wont_it_break_start", "leo", "'No... Come on!' (S11-L003/4)"),
-    open_frame("s11_leo_call_open", "trap_leo_closeup", "s11_call_start", "leo", "Leo's call for help (S11-L008)",
-               extra=", held open as in one long deep call"),
     open_frame("s13_leo_warns_open", "trap_leo_closeup", "s13_leo_doubtful_start", "leo", "'Little one? You should stay back.' (S13-L003/5)"),
     edit_frame("s13_milo_at_net", "trap_wide", "s13_milo_confident_end", "PL_trap_morning", ["leo", "milo"],
                "Milo has stepped forward to about x=0.33, right beside the left edge of the draped net, looking up at Leo "
@@ -163,12 +179,30 @@ NEW_IMAGES = [
 ]
 
 # ---------------------------------------------------------------- pieces, in film order
+# Speech shapes are calibration images only. All scene-chain boundaries are closed
+# mouth poses, including holds under narration and the pauses around dialogue.
+OPEN_TO_CLOSED = {r["id"]: r["world_from"] for r in NEW_IMAGES if r.get("mouth")}
+
+
 def P(pid, scene, setup, start, end, lines, action="", mode="closed", join="chain", cut=None, transition=None,
-      hold=None, reuse=None):
+      hold=None, reuse=None, mouth_speaker=None, mouth_image=None):
+    open_anchors = {rid for rid in (start, end) if rid in OPEN_TO_CLOSED}
+    if mode == "mouth":
+        if mouth_image:
+            open_anchors.add(mouth_image)
+        if len(open_anchors) != 1:
+            raise ValueError(f"{pid}: mouth piece needs one approved open-mouth calibration image")
+        mouth_image = next(iter(open_anchors))
+    elif mouth_image or open_anchors:
+        if mouth_image:
+            raise ValueError(f"{pid}: silent piece cannot use a mouth calibration image")
+    start = OPEN_TO_CLOSED.get(start, start)
+    end = OPEN_TO_CLOSED.get(end, end)
     if start == end and mode != "ambient" and hold is None:
         hold = True
     return dict(id=pid, scene=scene, setup=setup, start=start, end=end, lines=lines, action=action, mode=mode,
-                join=join, cut=cut, transition=transition, hold=hold, reuse=reuse)
+                join=join, cut=cut, transition=transition, hold=hold, reuse=reuse,
+                mouth_speaker=mouth_speaker, mouth_image=mouth_image)
 
 
 def CUT(reason, transition=None):
@@ -180,7 +214,7 @@ SR, TW, TC, TL, TM, TS = "shortcut_run", "tree_dusk_wide", "tree_dusk_contact", 
     "tree_dusk_milo_closeup", "tree_sky_plate"
 HW, RW, DW = "home_night_wide", "trap_wide", "tree_day_wide"
 RL, RM, RB, FR = "trap_leo_closeup", "trap_milo_closeup", "trap_bite", "forest_run"
-TALK = "speaks gently"
+TALK = "makes only subtle head and eye motion while holding the approved mouth shape; word-timed mouth motion is added in post"
 
 PIECES = [
     # Scene 1: the stream bank in the afternoon
@@ -206,8 +240,8 @@ PIECES = [
       "twitch and he breathes calmly.", **CUT("time_change", "crossfade")),
     P("s02_notice", 2, SS, "s02_notice_start", "s02_notice_end", L(2, 1, 2), reuse="s02_notice_closed_r01"),
     P("s02_oh_late", 2, SS, "s02_notice_end", "s02_stand_with_acorn_end", L(2, 2, 3),
-      "Milo's ears go up, he says a short startled line, and he rises from sitting to standing on the same spot, "
-      "holding the acorn steadily in both paws.", mode="mouth"),
+      "Milo's ears go up and he rises from sitting to standing on the same spot, holding the acorn steadily in both "
+      "paws; his distant mouth stays still.", mode="closed"),
     P("s02_turn_to_stone", 2, SS, "s02_stand_with_acorn_end", "s02_place_acorn_start", L(2, 4),
       "Milo turns toward the feeding stone and takes one small step to it, holding the acorn."),
     P("s02_place_acorn", 2, SS, "s02_place_acorn_start", "s02_place_acorn_end", L(2, 4), reuse="s02_place_acorn_closed_r01"),
@@ -259,7 +293,8 @@ PIECES = [
       "Milo sits dazed against Leo's nose and blinks; Leo sleeps on, breathing slowly.", **CUT("close_up")),
     P("s05_eyes_open", 5, TC, "s05_nose_aftermath_start", "s05_nose_aftermath_end", L(5, 9, 10), reuse="s05_nose_aftermath_closed_r01"),
     P("s05_what_was_that", 5, TC, "s05_nose_aftermath_end", "s05_nose_aftermath_end", L(5, 11),
-      "Leo, eyes open in surprise, says one short line; Milo stays still against his nose.", mode="mouth"),
+      "Leo, eyes open in surprise, says one short line; Milo stays still against his nose.", mode="mouth",
+      mouth_image="s05_leo_what_was_that_open"),
     # Scene 6: blocked
     P("s06_lifts_head", 6, TC, "s05_nose_aftermath_end", "s06_leo_head_up", L(6, 1),
       "Leo lifts his head from his paws in surprise; Milo slides down from his nose onto the path and stands looking up."),
@@ -312,8 +347,9 @@ PIECES = [
     P("s08_mistake", 8, TL, "s08_leo_softens_open", "s08_leo_softens_end", L(8, 13, 14), f"Leo {TALK} with a kind smile.",
       mode="mouth", **CUT("close_up")),
     P("s08_no_reason", 8, TL, "s08_leo_softens_end", "s08_leo_softens_open", L(8, 15), f"Leo {TALK} with a kind smile.", mode="mouth"),
-    P("s08_stares", 8, TM, "s08_milo_surprised_open", "s08_milo_surprised_start", L(8, 16),
-      "Milo closes his mouth and stares up in surprise, eyes wide.", mode="mouth", **CUT("close_up")),
+    P("s08_stares", 8, TM, "s08_milo_surprised_open", "s08_milo_surprised_open", L(8, 16),
+      "Milo holds still and stares up in surprise, eyes wide; keep his mouth in the approved closed pose.",
+      mode="closed", **CUT("close_up")),
     P("s08_expected_anger", 8, TW, "s08_kindness_start", "s08_kindness_start", L(8, 17),
       "Leo lies calmly beside the little mouse; both look at each other with soft eyes, breathing gently.",
       **CUT("close_up")),
@@ -360,15 +396,16 @@ PIECES = [
       "Leo lets go of the strand and lies down low under the net, all paws on the ground, looking to the left.",
       **CUT("close_up")),
     P("s11_waits", 11, RW, "s11_waits_start", "s11_waits_end", L(11, 7), reuse="s11_waits_closed_r01"),
-    P("s11_calls", 11, RL, "s11_call_start", "s11_leo_call_open", L(11, 8),
-      "Leo raises his head a little and calls out with one deep, long call.", mode="mouth", **CUT("close_up")),
-    P("s11_echo", 11, RL, "s11_leo_call_open", "s11_call_end", L(11, 9),
-      "Leo's call fades; he closes his mouth and listens hopefully, brows eased.", mode="mouth"),
+    P("s11_calls", 11, RL, "s11_call_start", "s11_call_end", L(11, 8),
+      "Leo lifts his head slightly and looks out urgently; keep his mouth closed because this is narrator audio.",
+      mode="closed", **CUT("close_up")),
+    P("s11_echo", 11, RL, "s11_call_end", "s11_call_end", L(11, 9),
+      "Leo listens hopefully, brows eased; keep his mouth closed because this is narrator audio.", mode="closed"),
     # Scene 12: the mouse hears
     P("s12_hears", 12, FR, "s12_hears_start", "s12_hears_end", L(12, 1), reuse="s12_hears_closed_r01",
       **CUT("location_change")),
     P("s12_the_lion", 12, FR, "s12_hears_end", "s12_hears_end", L(12, 2, 3),
-      "Milo stands poised with his ears raised and says two short words.", mode="mouth"),
+      "Milo stands poised with his ears raised; his distant mouth stays still.", mode="closed"),
     P("s12_runs", 12, FR, "s12_hears_end", "s12_runs_end", L(12, 4, 5),
       "Milo starts running from his listening position across the lane to the left in one continuous run."),
     P("s12_runs_out", 12, FR, "s12_runs_end", "PL_run_morning", L(12, 6, 7),
@@ -452,7 +489,7 @@ PIECES = [
     P("s15_not_like_that", 15, RM, "s15_milo_sincere_start", "s15_milo_sincere_open", L(15, 9),
       f"Milo, calm and sincere, {TALK}.", mode="mouth", **CUT("close_up")),
     P("s15_what_mean", 15, RL, "s15_leo_grateful_open", "s15_leo_amazed_end", L(15, 10, 11),
-      f"Leo {TALK}, then listens with soft eyes.", mode="mouth", **CUT("close_up")),
+      f"Leo {TALK}, then listens with soft eyes.", mode="mouth", mouth_speaker="LION", **CUT("close_up")),
     P("s15_no_debt", 15, RM, "s15_milo_sincere_open", "s15_milo_sincere_start", L(15, 11, 12),
       f"Milo, calm and sincere, {TALK}.", mode="mouth", **CUT("close_up")),
     P("s15_saw_someone", 15, RM, "s15_milo_sincere_start", "s15_milo_sincere_open", L(15, 13),
@@ -484,11 +521,11 @@ PIECES = [
       "The great old tree in daylight: leaves sway softly, light and shadows move gently on the grass.",
       mode="ambient", **CUT("location_change", "crossfade")),
     P("s16_you_know", 16, DW, "s16_friends_start", "s16_friends_start", L(16, 2, 3),
-      f"Leo {TALK} with a happy closed smile between words; Milo listens.", mode="mouth", **CUT("dissolve", "crossfade")),
+      "Leo and Milo rest together; neither mouth moves in this wide shot.", mode="closed", **CUT("dissolve", "crossfade")),
     P("s16_large_ideas", 16, DW, "s16_friends_start", "s16_friends_start", L(16, 3),
-      f"Leo {TALK} with a happy smile; Milo listens.", mode="mouth"),
+      "Leo and Milo rest together; neither mouth moves in this wide shot.", mode="closed"),
     P("s16_useful_teeth", 16, DW, "s16_friends_start", "s16_friends_start", L(16, 4),
-      f"Milo {TALK} with a cheeky smile; Leo listens.", mode="mouth"),
+      "Leo and Milo rest together; neither mouth moves in this wide shot.", mode="closed"),
     P("s16_laugh", 16, DW, "s16_friends_start", "s16_friends_end", L(16, 5, 6), reuse="s16_friends_closed_r01"),
     P("s16_laughter_settles", 16, DW, "s16_friends_end", "s16_friends_end", L(16, 6, 7),
       "Leo and Milo rest together with happy faces, breathing calmly; leaves sway softly."),
@@ -524,20 +561,24 @@ Rules: `docs/creation-rules.md` CR-21; workflow: `.claude/skills/audio-chained-c
 
 ## Status (2026-10-08)
 
-- **Plan only: nothing generated.** {pieces} pieces: {reuse} reuse a v5 render (same endpoints, prompt and 81 frames),
+- **No v6 images or videos have been generated.** {pieces} pieces: {reuse} reuse a v5 render (same endpoints, prompt and 81 frames),
   {renders} need new renders; {holds} are holds or landscapes (start = end: breathing, blinking, ambient motion).
-- **{new} new images** are needed (bold in `SHOT_PLAN.md`): open-mouth key frames for the talking chains (CR-19),
-  entrances onto empty plates, the empty trap path with the net, and a few new beats (Leo's sleeping face, Leo
-  sitting and bowing, the friends resting). Everything else reuses the v5 images, which keep their files.
-- **Defaults the agent took (owner to confirm):** reuse the v5 English narration (no new TTS) and the v5 images.
+- **{new} new images** are needed (bold in `SHOT_PLAN.md`): 16 approved open-mouth calibration images for close-up character dialogue, 3 entrances onto empty plates, the empty trap path with the net, and 13 new story beats. Every clip boundary stays on an approved closed mouth; open-mouth images calibrate timed dialogue only. Narrator-only audio never animates a character's mouth (CR-24). Everything else reuses v5 images through local copies under the v6 character folders; v5 stays intact. Accepted expression studies are listed in `prompts/expressions.md`.
+- **Current packet is an interim baseline.** It carries localized v5 assets and 25 reused v5 renders. The owner selected full v6 image regeneration as a later phase; migrate this packet to all-new v6 image records before generating them. The owner instructed that no images be created until the audit, code and documentation are complete and reported. The v5 English narration remains the timing source.
+- **Narration alignment ready:** `work/stories/lion_and_mouse_v5/audio/en/word_timings.json` contains word timings for all 161 lines (1,238 words); all lines are marked `aligned`, with no review flags.
+- The 37 dialogue close-ups use closed start/end frames plus one separate approved open-mouth anchor each. Silent pauses and narrator-only coverage hold mouths closed.
+- V5 source-still regeneration is not certified by the v6 lint: the v5 prompt lint currently reports 70 errors and 8 warnings from missing deleted v3 references.
 - Prompts: `python3 production/image_prompts.py --story lion_and_mouse_v6 lint` must report 0 errors.
+  Every accepted new image needs a hash-bound approval before runtime export.
 
 ## Read in this order
 
 1. `SHOT_PLAN.md`: every piece, its join (chain or the reason for the cut), its images and lines; the new images.
 2. `TIMING_SHEET.md`: when each piece plays, its length, frame count and speed (from `chain_plan.py`).
 3. `prompts/scene-NN.md`: the exact prompt and ordered references of every new image and every clip.
-4. `chain_source.py`: the source of the plan (edit this, then rebuild; see its docstring).
+4. `chain_source.py`: the source of the plan. Before generating images, edit this and rebuild. After an image has
+   production/review state, rebuilding preserves it only when the image specification is unchanged; changed records
+   require explicit `--invalidate <image-id>` and preserve the old record under `superseded`.
 
 ## Rebuild after a change to `chain_source.py`
 
@@ -552,10 +593,15 @@ python3 production/chain_plan.py --story lion_and_mouse_v6 --audio-story lion_an
 ## Next steps (each needs the owner)
 
 1. Owner reviews `SHOT_PLAN.md` (the sequence, the holds and landscapes, the cuts).
-2. The {new} new images, made in film order; each reviewed against both pieces it joins (CR-21 item 8).
+2. Generate the {new} new images in film order; review each against both pieces it joins. Approve the exact
+   target and SHA-256 with `python3 production/image_prompts.py --story lion_and_mouse_v6 approve <image-id> --reviewed-by <name>`.
 3. Join test before any GPU time: `production/chain_preview.py --story lion_and_mouse_v6 --stills` (CPU).
-4. Pilot: render scenes 1 to 3, owner chooses takes, then `chain_preview.py --until 104` measures every join of
-   the start of the film; repair flagged joins (`continue_from`) before rendering the rest.
+4. Export and render scenes 1 to 3, choose takes, then run `chain_preview.py --until 104 --require-takes`.
+   Repair a flagged join with `production/chain_repair.py --story lion_and_mouse_v6 --piece <later> --previous-piece <earlier>`,
+   render its separate candidate, choose it in `takes.yaml`, and rerun the strict join test. Only then render the rest.
+5. Align the existing v5 narration after confirming the dialogue transcript: `bash voice/setup_lipsync_env.sh`, then `.venv-lipsync/bin/python production/lip_sync.py align --story lion_and_mouse_v6 --audio-story lion_and_mouse_v5 --lang en --device cpu`. Review every line marked `review` in `work/stories/lion_and_mouse_v5/audio/en/word_timings.json`.
+6. After selecting video takes, run `.venv-lipsync/bin/python production/lip_sync.py apply --story lion_and_mouse_v6`; review mouth motion, pauses and joins. See `docs/lip-sync.md` for the limits of this word-timed approximation.
+7. Once every piece has a chosen and, where dialogue is present, lip-synced take, create the DaVinci handoff with `production/edit_manifest.py --story lion_and_mouse_v6`.
 
 ## Known risks carried from v5
 

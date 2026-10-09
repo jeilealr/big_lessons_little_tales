@@ -59,7 +59,8 @@ def bible():
     chars = {}
     for c in S.ORDER:
         d = C[c]
-        chars[c] = {"name": d["name"], "status": "design spec: rewrite from the approved canonical image",
+        chars[c] = {"name": d["name"], "voice_speaker": getattr(S, "VOICE_SPEAKERS", {}).get(c, c.upper()),
+                    "status": "design spec: rewrite from the approved canonical image",
                     "canonical": f"{CHAR_DIR.format(folder=d['folder'])}/canonical/{c}_canonical_r01.png",
                     "canonical_record": d["canon_id"], "identity": d["identity"], "sheet": d["sheet"],
                     "short": f"{d['name']} is {d['sheet']}.", "mouth": d["mouth"], "palette": d["palette"],
@@ -77,8 +78,8 @@ def bible():
         "This is an edit of the accepted closed-mouth start frame of this shot (the first attached reference): keep its "
         "camera, crop, background, light and the character's identity, colours, brightness, size, pose, head position and "
         "gaze exactly; open only the mouth into the approved rounded speech shape shown in the attached mouth-design "
-        "reference, with the same interior and any teeth as in that reference. This is the single open-mouth key frame the "
-        "talking clip animates to, so the open shape stays identical to the character's approved speech mouth.")
+        "reference, with the same interior and any teeth as in that reference. This is the single open-mouth calibration image for post-render lip sync, so the shape stays identical "
+        "to the character's approved speech mouth.")
     blocks["studio_lineup"] = (
         "Studio: plain warm off-white seamless backdrop filling the frame edge to edge, soft even neutral light, one flat "
         "ground line at y=0.88 where every character stands, with a small soft contact shadow under each; every whole "
@@ -218,6 +219,34 @@ def pose_refs(cast, setup, text):
     return out
 
 
+def mouth_speaker_for_shot(sid, cast):
+    """Select one visible character's actual dialogue; narrator-only shots stay silent."""
+    speakers = {speaker for _, speaker, _, _, coverage in S.LINES
+                if sid in coverage and speaker != "NARRATOR"}
+    if not speakers:
+        return None
+    chosen = getattr(S, "MOUTH_SPEAKERS", {}).get(sid)
+    if chosen is None and len(speakers) == 1:
+        chosen = next(iter(speakers))
+    if chosen not in speakers:
+        raise SystemExit(f"{sid}: assign one covered character speaker with MOUTH_SPEAKERS")
+    if len(cast) != 1:
+        raise SystemExit(f"{sid}: a dialogue close-up needs one visible character")
+    voice_speaker = getattr(S, "VOICE_SPEAKERS", {}).get(cast[0], cast[0].upper())
+    if chosen != voice_speaker:
+        raise SystemExit(f"{sid}: speaker {chosen} does not match visible {cast[0]} ({voice_speaker})")
+    return chosen
+
+
+def line_ids_for_shot(sid):
+    counts, ids = {}, []
+    for scene, _, _, _, coverage in S.LINES:
+        counts[scene] = counts.get(scene, 0) + 1
+        if sid in coverage:
+            ids.append(f"S{scene:02d}-L{counts[scene]:03d}")
+    return ids
+
+
 def scenes(by):
     recs, shots = [], []
     last_end = {}  # setup -> latest end frame made with that camera (world state for the next shot there)
@@ -285,13 +314,14 @@ def scenes(by):
         shorts = " ".join(f"{{{{short:{c}}}}}" for c in cast)
         idents = " ".join(f"{{{{identity:{c}}}}}" for c in cast)
         modes = [("closed", "Mouths stay closed throughout; expressions come from the eyes and brows.")]
-        # A dialogue close-up gets a talking variant. Wan only interpolates between its two keyframes, so the
-        # open mouth must be one of them: make an open-mouth key frame (an edit of the closed start that opens
-        # only the mouth to the character's approved speech shape) and let the talking clip end on it, so the
-        # open mouth stays identical across every render instead of being invented by the model (CR-19).
-        if st["framing"] == "dialogue_close_up":
-            modes.append(("mouth", "The mouth opens and closes softly in small rounded shapes, as in gentle speech, "
-                                   "ending on the approved open-mouth shape."))
+        # Only an assigned character line gets an open-mouth calibration image. Both
+        # rendered clip boundaries stay closed; the aligned mouth motion is added in post.
+        mouth_speaker = mouth_speaker_for_shot(sid, cast) if st["framing"] == "dialogue_close_up" else None
+        if mouth_speaker:
+            modes.append(("mouth", "Keep both boundary mouths closed in their approved poses. "
+                                   "Animate only the specified head and eye motion; word-timed mouth movement "
+                                   "is composited afterward from the separate approved calibration image. "
+                                   "Keep the mouth closed during narration and silent pauses."))
             c = cast[0]
             oid = f"{sid}_open"
             open_frame = (f"Exactly the closed-mouth start frame of {sid} in every detail, with the same pose, head size "
@@ -305,15 +335,19 @@ def scenes(by):
                          ref(f"{S.PREFIX[c]}_OPEN", "mouth_design", by)]
             r_open = rec(oid, f"scene-{scene:02d}", "scene", f"{SCENE_DIR}/{kf_stem(sid)}_open_r01.png", [1920, 1080], counts,
                          " ".join(open_parts), open_refs, f"open-mouth key frame of shot {sid}",
-                         f"Open-mouth key frame of {sid}", setup=setup, framing=st["framing"], frame=open_frame)
+                         f"Open-mouth calibration image of {sid}", setup=setup, framing=st["framing"],
+                         frame=open_frame, mouth_character=c)
             recs.append(r_open)
             by[oid] = r_open
         variants = []
         for mode, mouth in modes:
-            end_rec = f"{sid}_open" if mode == "mouth" else f"{sid}_end"
+            end_rec = f"{sid}_end"
             variants.append({
                 "id": f"{sid}_{mode}_r01", "mode": mode, "action_text": action,
                 "start_image": f"{sid}_start", "end_image": end_rec,
+                "mouth_open_image": f"{sid}_open" if mode == "mouth" else None,
+                "speaker": mouth_speaker if mode == "mouth" else None,
+                "dialogue_line_ids": line_ids_for_shot(sid),
                 "positive_prompt_template": re.sub(r"\s+", " ", f"{action} {mouth} Fixed camera; the background stays still "
                                                    f"apart from gentle natural motion. {shorts} The background is {L['label']}, "
                                                    "unchanged framing and light. {{block:runtime_style}}").strip(),

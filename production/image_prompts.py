@@ -30,13 +30,15 @@ The rendered fields are what an image or video tool receives; never edit them by
 Workflow and review rules: .claude/skills/consistent-image-prompts/SKILL.md.
 """
 import argparse
+import datetime as dt
+import hashlib
 import json
 import re
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-PLACEHOLDER = re.compile(r"\{\{(identity|short|mouth|setup|plate|block|refs|frame):?([A-Za-z0-9_]*)\}\}")
+PLACEHOLDER = re.compile(r"\{\{(identity|short|portrait|mouth|setup|plate|block|refs|frame):?([A-Za-z0-9_]*)\}\}")
 CHARACTER_KINDS = {"scene", "character", "expression"}  # kinds that must describe every visible character
 # An older version's image may leak its identity, so it may only supply composition or an expression.
 OLD_VERSION_ROLES = {"staging_only", "expression", "camera_geometry"}
@@ -123,6 +125,8 @@ def resolve(bible, kind, arg, rec=None, images=None):
         return bible["characters"][arg]["identity"]
     if kind == "short":
         return bible["characters"][arg]["short"]
+    if kind == "portrait":
+        return bible["characters"][arg]["portrait"]
     if kind == "mouth":
         return bible["characters"][arg]["mouth"]
     if kind == "frame":
@@ -320,17 +324,22 @@ def chain_chrono_names(manifest, bible, images):
     """Chained stories: a new scene image (one in this story's own folders) is named
     sNN_KK_<name>_rNN.png, KK = the order in which the scene's pieces first use it. Images reused
     from an earlier version keep their names."""
-    errs, own = [], f"/{bible.get('version', '')}/"
-    seen = {}
+    version = bible.get("version", "")
+    own = f"/{version}/"
+    own_folder = f"character/characters/{version}/interactions/keyframes/"
+    errs, seen = [], {}
     for s in sorted(manifest["shots"], key=lambda x: x.get("order", 0)):
         scene = f"s{s['scene']:02d}"
-        for rid in (s["start_image"], s["end_image"]):
+        used = [s["start_image"], s["end_image"]]
+        used.extend(v["mouth_open_image"] for v in s.get("variants", []) if v.get("mouth_open_image"))
+        for rid in used:
             rec = images.get(rid)
             if not rec or rec.get("prompt_kind") != "scene" or rid in seen:
                 continue
             k = sum(1 for v in seen.values() if v[0] == scene) + 1
             seen[rid] = (scene, k)
-            if own in rec["target"] and not Path(rec["target"]).name.startswith(f"{scene}_{k:02d}_"):
+            if own in rec["target"] and not rec.get("carried_from") and \
+                    not Path(rec["target"]).name.startswith(f"{scene}_{k:02d}_"):
                 errs.append(f"{rid}: chained keyframe file '{Path(rec['target']).name}' must start with "
                             f"'{scene}_{k:02d}_' (its first use in the scene)")
     return errs
@@ -476,8 +485,12 @@ def lint(manifest, bible):
                         E(f"{rid}: setup {sid} has no measured size for visible character {c}")
             plate = bible["locations"][s["location"]].get("plate")
             refs = [r["path"] for r in rec.get("ordered_references", [])]
-            if plate and plate not in refs and not rid.endswith(("_end", "_open")):
-                W(f"{rid}: locked plate {plate} is not among the references")
+            if plate and plate not in refs and not (rid.endswith(("_end", "_open")) and not chained):
+                own_image = (f"/{bible.get('version', '')}/" in rec.get("target", "")
+                             and not rec.get("carried_from"))
+                if own_image or not chained:
+                    (E if own_image and chained else W)(
+                        f"{rid}: locked plate {plate} is not among the references")
             if rid in shot_of:
                 shot, which = shot_of[rid]
                 other = images.get(shot["end_image" if which == "start" else "start_image"])
@@ -488,7 +501,7 @@ def lint(manifest, bible):
                 # chained stories: only a new image (in this story's own folders) must be an edit of
                 # its first piece's start; an earlier version's accepted image keeps its provenance
                 if which == "end" and shot["start_image"] != rid and \
-                        (not chained or f"/{bible.get('version', '')}/" in rec["target"]):
+                        (not chained or not rec.get("carried_from")):
                     first = (rec.get("ordered_references") or [{}])[0]
                     if first.get("id") != shot["start_image"]:
                         E(f"{rid}: first reference must be its start frame {shot['start_image']} (edit base)")
@@ -508,7 +521,7 @@ def lint(manifest, bible):
                       f"is not attached")
         for ref in refs:
             shown = visible_characters(images[ref["id"]], bible) if ref.get("id") in images else []
-            if ref.get("role") not in ("staging_only", "empty_copy") and set(shown) - set(vis):
+            if ref.get("role") not in ("staging_only", "empty_copy", "size_anchor") and set(shown) - set(vis):
                 E(f"{rid}: reference {ref['id']} shows {sorted(set(shown) - set(vis))}, who is not in this frame")
         for c in sorted(attached - set(vis)):
             E(f"{rid}: canonical of {c} attached although {c} is not visible (it may be drawn into the frame)")
@@ -536,8 +549,13 @@ def lint(manifest, bible):
         cast = shot.get("cast", [])
         for v in shot["variants"]:
             vid = v["id"]
-            for tkey, key, want in (("positive_prompt_template", "positive_prompt", "short"),
-                                    ("full_prompt_specification_template", "full_prompt_specification", "identity")):
+            close_variant = (shot.get("setup") in bible.get("setups", {})
+                             and bible["setups"][shot["setup"]].get("framing") == "dialogue_close_up")
+            # The crop-safe portrait schema was introduced with chained coverage. Older
+            # packets have no portrait blocks and keep their existing prompt contract.
+            uses_portrait = bool(chained and close_variant and not shot.get("reuse"))
+            for tkey, key, want in (("positive_prompt_template", "positive_prompt", "portrait" if uses_portrait else "short"),
+                                    ("full_prompt_specification_template", "full_prompt_specification", "portrait" if uses_portrait else "identity")):
                 tpl = v.get(tkey)
                 if tpl is None:
                     E(f"{vid}: no {tkey}")
@@ -563,6 +581,17 @@ def lint(manifest, bible):
                     E(f"{vid}.{key}: drift phrase {h}")
                 if PUNCTUATION_SLIP.search(rendered):
                     E(f"{vid}.{key}: doubled punctuation: '{PUNCTUATION_SLIP.search(rendered).group(0)}'")
+            if uses_portrait:
+                for tkey, key in (("positive_prompt_template", "positive_prompt"),
+                                  ("full_prompt_specification_template", "full_prompt_specification")):
+                    tpl = v.get(tkey, "")
+                    rendered = v.get(key, "")
+                    if not re.search(r"\{\{portrait:[A-Za-z0-9_]+\}\}", tpl):
+                        E(f"{vid}: dialogue close-up must use a crop-safe {{portrait:character}} description")
+                    if re.search(r"\b(?:paws?|tails?|legs?|limbs?)\b", rendered, re.I):
+                        E(f"{vid}.{key}: dialogue close-up prompt names anatomy outside the approved crop")
+                    if not re.search(r"exact approved crop|visible silhouette", rendered, re.I):
+                        E(f"{vid}.{key}: dialogue close-up needs an explicit crop and silhouette lock")
     return errors, warnings
 
 
@@ -623,6 +652,27 @@ def write_md(story, manifest):
             lines += md_shot(shot)
         (out_dir / f"{group}.md").write_text("\n".join(lines).rstrip() + "\n")
         written.append(group)
+    studies = manifest.get("expression_studies", [])
+    if studies and not groups.get("expressions"):
+        lines = ["# expressions: accepted inherited studies", "",
+                 f"Generated by `python3 production/image_prompts.py --story {story} md` from `../prompt_manifest.json`. "
+                 "These approved v5 expression images are carried into this story as references; no new expression image is required.", "",
+                 "| Study | Character | Asset | Status | Source |", "|---|---|---|---|---|"]
+        for rec in studies:
+            lines.append(f"| `{rec['id']}` | {rec.get('character') or '—'} | `{rec['target']}` | "
+                         f"{rec.get('status', 'accepted')} | `{rec.get('carried_from', manifest.get('base_story', 'base story'))}` |")
+        (out_dir / "expressions.md").write_text("\n".join(lines) + "\n")
+        written.append("expressions")
+    elif studies and groups.get("expressions"):
+        # Prompt records are primary; append the carried approved references for context.
+        path = out_dir / "expressions.md"
+        lines = ["", "## Accepted inherited v5 studies (reference assets)", "",
+                 "These remain available as visual references. New v6 outputs use the prompts above and separate `_r02` targets.", "",
+                 "| Study | Character | Asset | Status | Source |", "|---|---|---|---|---|"]
+        for rec in studies:
+            lines.append(f"| `{rec['id']}` | {rec.get('character') or '—'} | `{rec['target']}` | "
+                         f"{rec.get('status', 'accepted')} | `{rec.get('carried_from', manifest.get('base_story', 'base story'))}` |")
+        path.write_text(path.read_text() + "\n".join(lines) + "\n")
     return written
 
 
@@ -737,6 +787,10 @@ def main():
     r.add_argument("record")
     r.add_argument("--image", help="candidate file to review instead of the record's current target")
     r.add_argument("--out")
+    a = sub.add_parser("approve", help="record explicit approval for the exact current image file")
+    a.add_argument("record")
+    a.add_argument("--reviewed-by", required=True)
+    a.add_argument("--note", default="")
     n = sub.add_parser("new-story", help="create stories/<slug>/ with an empty manifest and a bible skeleton")
     n.add_argument("slug")
     args = ap.parse_args()
@@ -744,6 +798,30 @@ def main():
         print("created", new_story(args.slug, args.story).relative_to(REPO))
         return
     manifest, bible = load(args.story)
+    if args.cmd == "approve":
+        from image_approval import reference_files, spec_sha256
+        errors, _ = lint(manifest, bible)
+        if errors:
+            sys.exit("cannot approve an image while prompt lint has errors; run lint and fix them first")
+        rec = next((r for r in manifest["images"] if r["id"] == args.record), None)
+        if rec is None:
+            sys.exit(f"no image record {args.record}")
+        path = REPO / rec["target"]
+        if not path.is_file():
+            sys.exit(f"cannot approve missing target image: {path}")
+        approvals_path = REPO / "stories" / args.story / "image_approvals.json"
+        data = json.loads(approvals_path.read_text()) if approvals_path.exists() else {"images": {}}
+        try:
+            refs = reference_files(rec, REPO)
+        except FileNotFoundError as error:
+            sys.exit(f"cannot approve image with a missing prompt reference: {error}")
+        data.setdefault("images", {})[args.record] = {
+            "file": rec["target"], "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "spec_sha256": spec_sha256(rec), "references": refs, "reviewed_by": args.reviewed_by, "reviewed_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+            "note": args.note}
+        approvals_path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+        print(f"approved {args.record}: {rec['target']} (sha256 bound) -> {approvals_path.relative_to(REPO)}")
+        return
 
     if args.cmd == "lint":
         errors, warnings = lint(manifest, bible)

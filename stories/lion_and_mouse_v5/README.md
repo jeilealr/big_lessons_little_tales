@@ -32,3 +32,20 @@ python3 production/export_runtime.py --manifest stories/lion_and_mouse_v5/prompt
 Known lint state: `python3 production/image_prompts.py --story lion_and_mouse_v5 lint` reports 70
 errors for v3 reference images named by the expression records (deleted history; only needed to
 regenerate those expressions) and 8 warnings for images the owner renamed in v5.
+
+Runtime audit (2026-10-09): the 86 frozen `work/.../keyframes/` copies named by
+`runtime_inputs.json` were missing after the owner renamed working copies. Their
+86 source images all existed and matched the recorded SHA-256 values, so the exact
+frozen copies were restored. All 126 runtime shot endpoints now exist; `shot.py
+--dry-run` passes in scenes 1, 8 and 16. Re-export with the command above resolves
+those exact hash-verified sources and now names the v5 manifest in `story.yaml`.
+It does not generate or alter the 189 existing takes. The old take sidecars lack
+input-image hashes; the renderer now refuses to silently treat them as a match
+on a future render run. Review and preserve an existing take before replacing it.
+
+The prompt packet still has six `accepted` records whose named target files are
+absent: `M_SIDE_R`, `M_SIDE_L`, `M_BACK`, `s08_milo_surprised_start`,
+`s08_milo_surprised_end`, and `s12_runs_end`. The three shot endpoints have
+separately recorded, hash-verified source files in `runtime_inputs.json`; this
+does not make the missing manifest targets available for prompt regeneration.
+The 70 legacy-reference lint errors and 8 rename warnings above also remain.

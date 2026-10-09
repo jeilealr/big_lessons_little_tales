@@ -44,7 +44,9 @@ records s10 to s14 (checked 2026-10-08); they matter only for regenerating those
 warnings for owner-renamed v5 files; renders use `export_runtime.py --images`.
 Sections below that name v2-v4 paths describe history.
 
-## Current state (2026-10-08)
+## Current state (2026-10-09)
+
+- **Dialogue lip sync (CR-23/24):** for narrated stories, align the finalized line audio to its transcript and apply timed mouth motion after selecting video takes. This is a required workflow for new projects, including Lion and Mouse v6. The current implementation is for chained stories and creates word-timed, broad syllable pulses with approved open/closed mouth shapes; it is not phoneme-level viseme synthesis. Only the explicitly assigned character speaker is animated; `NARRATOR` voice-over never drives character lips, and ambiguous speakers fail closed. Read `docs/lip-sync.md`; final chained edit export rejects dialogue mouth clips without a current hash-bound sync output.
 
 - **The Lion and the Mouse v6: chained coverage (owner, 2026-10-08; CR-21).** The v5 audio (11:23.7)
   was far longer than its 5 s clips (43 shots, 3.5 min). v6 is planned from the narration: **154
@@ -52,13 +54,19 @@ Sections below that name v2-v4 paths describe history.
   one ended on unless a checked cut is planned (close-up, camera, time or place change, dissolve);
   landscapes and holds cover narration with nothing happening. 25 pieces reuse v5 renders, 129 need
   new renders; **33 new images** are needed (16 open-mouth frames, 3 entrances, the empty trap, 13 new
-  beats), all `planned`. Defaults the agent took, owner to confirm: reuse the v5 English narration and
-  the v5 images. Lint 0 errors, 0 warnings; nothing generated except a stills join test
+  beats), all `planned`. Each accepted image needs a SHA-256 approval before runtime export; packet rebuilds
+  preserve reviewed state or require explicit invalidation. This is an interim packet: the owner selected
+  full v6 image regeneration for a later phase and retained the v5 English narration for timing. No new images
+  were generated during this audit. `s02_place_acorn_end` is now accepted in v5 and its hash-identical v6 carryover
+  by explicit owner instruction; exporters reject other non-accepted carried images. Lint 0 errors, 0 warnings;
+  nothing generated except a stills join test
   (`work/stories/lion_and_mouse_v6/review/chain_preview_0-64_stills.mp4`). Start at
   `stories/lion_and_mouse_v6/README.md`; the workflow is the skill
-  `.claude/skills/audio-chained-coverage/SKILL.md`; every change of that day, with reasons and checks,
-  is in **`docs/changelog.md`** (keep logging changes there). Next: owner reviews `SHOT_PLAN.md`, then
-  the new images in film order, then a pilot (scenes 1 to 3) and the join test.
+  `.claude/skills/audio-chained-coverage/SKILL.md` (approval, strict take gate, repair and edit handoff);
+  every change of that day, with reasons and checks,
+  is in **`docs/changelog.md`** (keep logging changes there). Next: migrate the interim packet to
+  all-new v6 image records, review/approve new canonicals and plates, then generate scene images in film order;
+  run a scenes 1 to 3 pilot and the join test after image approval.
 - **Lint state found 2026-10-08:** Ugly Duckling v1 lint reports 22 errors (missing `.review/` raw
   files and `review/reference_boards/*_character_guide.png` references), not 0 as the bullet below says.
 
@@ -70,11 +78,10 @@ deleted (recover from git history, `git show b880c23:<path>`) and v5 clips are
 rendered. The guidance bullets (creation rules, prompt templates, per-story
 image folders) remain current.
 
-- **Owner's current instruction (latest, 2026-10-02):** the owner creates the
-  v4 images personally. Agents generate no images, clips, audio or GPU jobs
-  unless the owner asks for it in that session; audits, documentation and code
-  work continue. Superseded task statements are listed under the standing
-  instructions below.
+- **Owner's current instruction (2026-10-09):** finish the audit, code and documentation and
+  report back before creating any v6 images. The owner selected full v6 image regeneration for the
+  later creation phase. No images, clips, audio or GPU jobs were authorized for this audit phase.
+  Earlier image instructions are retained under the standing instructions below.
 - **Ugly Duckling v1 scenes:** at the owner’s direction, scene keyframes through Scene 10 are generated with built-in ImageGen and saved at manifest targets; all remain pending owner review. Scene 06 has 14 active frames across 6 shots after the owner split `s06_ottie_finds` into a burrow-watch shot and an approach/help shot. The owner renamed the help image to `s06_ottie_approaches_end_r01.png` and duplicated the original start as `s06_ottie_finds_end_r01.png`; the earlier generated hold-end is superseded. Scene 06 contact sheet: `stories/ugly_duckling_v1/review/contact_sheets/scene-06_contact_sheet.png`; Scene 07’s four frames and contact sheet are `stories/ugly_duckling_v1/review/contact_sheets/scene-07_contact_sheet.png`. Scene 08’s six keyframes are generated and pending owner review at `stories/ugly_duckling_v1/review/contact_sheets/scene-08_contact_sheet.png`; its empty spring start is copied from the locked plate, goodbye and flight mouths are closed per shot descriptions. The goodbye prompt’s “snow has nearly melted” state conflicts with the fully snowy locked winter plate and needs owner review. Scene 09’s seven keyframes and contact sheet are `stories/ugly_duckling_v1/review/contact_sheets/scene-09_contact_sheet.png`; its swan lake start/end face in different directions. Scene 10’s ten keyframes and contact sheet are `stories/ugly_duckling_v1/review/contact_sheets/scene-10_contact_sheet.png`; the reflection end is a clear vertical mirror, speech mouth keys are separate from closed-bill expressions, and the swim-together start explicitly keeps all three bills closed. Scene 12’s four frames are generated and pending owner review at `stories/ugly_duckling_v1/review/contact_sheets/scene-12_contact_sheet.png`; bills and mouths are closed per the video variants. Because `s11_ducklings_sorry_end` is missing while Scene 11 is paused, `s11_arrives_home_start` served only as the first Scene 12 frame’s size anchor, with the locked pond plate and canonical-only identity board attached. Scene 11 was started, then paused when the owner identified a head-shape mismatch between Ollie the swan’s canonical and expression/mouth references. An r02 canonical candidate and comparison sheet are staged in `character/characters/ugly_duckling_v1/OllieSwan/canonical/.review/`; generated Scene 11 keyframes must be redone after canonical approval, and `os_open_r01.png` currently duplicates the closed happy expression pending a proper open-mouth replacement. The superseded `s06_ottie_stays_end_r01.png` target file was removed at the owner’s request; its manifest record and raw `.review` source remain for provenance. `s09_ollie_bows_start_r01.png` remains active because the video and end frame use it. Scene prompt lint is 0 errors and 0 warnings. Details and outstanding review are in `stories/ugly_duckling_v1/README.md`.
 - **Ugly Duckling Scene 03 pond continuity:** on 2026-10-07 the owner flagged pond/nest drift and directed all six frames in `to_the_water`, `ollie_glides` and `honk` to be deleted and recreated. The old files are archived in `character/characters/ugly_duckling_v1/interactions/keyframes/.review/s03_background_drift_before_recreation/`; six replacements were generated with `pond_day_r01.png` attached and saved to the active manifest targets. Their landmarks are visually consistent across the sequence but small background redraw/crop differences remain because ImageGen does not pixel-lock a supplied plate. They are pending owner review; see `stories/ugly_duckling_v1/review/contact_sheets/s03_pond_keyframes_recreated_2026-10-07.png` and `stories/ugly_duckling_v1/README.md`. For exact plate preservation, composite character layers onto the original plate.
 - **V4 stills** (counted from `stories/lion_and_mouse_v4/prompt_manifest.json`):
@@ -199,8 +206,8 @@ image folders) remain current.
   records, gentle ending); *The Ugly Duckling* (`stories/ugly_duckling_v1/`: 65 lines,
   about 7.7 min, 43 shots, 153 image records; two Ollie canonicals, cygnet and swan).
   Documentation packets ready, lint 0 each.
-- **Open-mouth key frames for talking clips (owner, 2026-10-05; CR-19):** because Wan only
-  interpolates between a clip's two key frames, every dialogue close-up with a `mouth` variant in
+- **Open-mouth key frames for readable dialogue close-ups (owner, 2026-10-05; CR-19):** because Wan only
+  interpolates between a clip's two key frames, every readable dialogue close-up with a `mouth` variant in
   these three stories now has a `<shot>_open` record — an edit of the closed start frame that opens
   only the mouth to the character's one approved `*_OPEN` speech shape — and the `mouth` variant
   ends on it (per-variant `start_image`/`end_image`). So the open mouth stays identical across
@@ -277,8 +284,8 @@ image folders) remain current.
 | Need | Read |
 |---|---|
 | **Rules for scripts, images and shots (start here)** | **`docs/creation-rules.md`**: the one guide to read before writing a script, generating an image or describing a shot |
-| **Writing or changing any image/video prompt; starting a new story's characters and places** | **`.claude/skills/consistent-image-prompts/SKILL.md`** (repo skill), `docs/image-prompts.md`, `production/image_prompts.py` (`build`, `lint` must be 0 errors, `show`, `md`, `review`, `new-story`); a new story's first packet: `production/story_packet.py stories/<slug>/packet_source.py`; CR-18 |
-| **Video as long as the narration; chained pieces, cuts, landscapes, join test** | **`.claude/skills/audio-chained-coverage/SKILL.md`**, `docs/creation-rules.md` CR-21, `production/chain_plan.py`, `chain_packet.py`, `chain_preview.py` |
+| **Writing or changing any image/video prompt; starting a new story's characters and places** | **`.claude/skills/consistent-image-prompts/SKILL.md`** (repo skill), `docs/image-prompts.md`, `production/image_prompts.py` (`build`, `lint` must be 0 errors, `show`, `md`, `review`, hash-bound `approve`, `new-story`); a new story's first packet: `production/story_packet.py stories/<slug>/packet_source.py`; CR-18 |
+| **Video as long as the narration; chained pieces, cuts, landscapes, strict join test and repair** | **`.claude/skills/audio-chained-coverage/SKILL.md`**, `docs/creation-rules.md` CR-21, `production/chain_plan.py`, `chain_packet.py`, `chain_preview.py`, `chain_repair.py`, `edit_manifest.py` |
 | Lion and Mouse (v6, chained): plan, timing, new images | `stories/lion_and_mouse_v6/`: `README.md`, `SHOT_PLAN.md`, `TIMING_SHEET.md`, `prompts/*.md`, `chain_source.py` |
 | Why a rule or tool changed (dated, with checks) | `docs/changelog.md` |
 | Lion and Mouse (v5): script, shot order, readable prompts, render review | `stories/lion_and_mouse_v5/`: `SCRIPT_REVIEW.md`, `SHOT_PLAN.md`, `prompts/*.md`, `RENDER_REVIEW.md` |
@@ -305,7 +312,7 @@ image folders) remain current.
 stories/<slug>/     visual_bible.json, prompt_manifest.json, dialogue_coverage.json, prompts/,
                     runtime story.yaml + runtime_inputs.json (exported), voices.yaml
 production/         image_prompts, story_packet, export_runtime, shot, keyframe, timing_sheet, animatic,
-                    chain_plan, chain_packet, chain_preview (chained stories, CR-21)
+                    chain_plan, chain_packet, chain_preview, chain_repair, edit_manifest (chained stories, CR-21)
 character/          gemini_image.py (optional Gemini stills);
                     one folder per story (since 2026-10-04): characters/<story>/<Name>/ and
                     characters/<story>/interactions/ (scene frames), locations/<story>/<place>/

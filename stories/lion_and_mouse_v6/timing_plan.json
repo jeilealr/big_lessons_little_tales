@@ -219,8 +219,8 @@
     {
       "piece": "s02_oh_late",
       "scene": 2,
-      "variant": "s02_oh_late_mouth_r01",
-      "mode": "mouth",
+      "variant": "s02_oh_late_closed_r01",
+      "mode": "closed",
       "film_start": 50.01,
       "seconds": 4.71,
       "frames": 77,
@@ -460,7 +460,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s03_decides_start",
-      "end_image": "s03_decides_open",
+      "end_image": "s03_decides_start",
       "reuse": null,
       "first_line_start": 96.09
     },
@@ -479,7 +479,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s03_decides_open",
+      "start_image": "s03_decides_start",
       "end_image": "s03_decides_end",
       "reuse": null,
       "first_line_start": 99.78
@@ -925,7 +925,7 @@
       "cut_reason": null,
       "transition": "cut",
       "start_image": "s07_leo_annoyed_end",
-      "end_image": "s07_leo_annoyed_open",
+      "end_image": "s07_leo_annoyed_end",
       "reuse": null,
       "first_line_start": 199.59
     },
@@ -944,7 +944,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s07_leo_annoyed_open",
+      "start_image": "s07_leo_annoyed_end",
       "end_image": "s07_leo_annoyed_end",
       "reuse": null,
       "first_line_start": 205.32
@@ -965,7 +965,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s07_milo_sorry_start",
-      "end_image": "s07_milo_sorry_open",
+      "end_image": "s07_milo_sorry_start",
       "reuse": null,
       "first_line_start": 210.46
     },
@@ -984,7 +984,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s07_milo_sorry_open",
+      "start_image": "s07_milo_sorry_start",
       "end_image": "s07_milo_sorry_end",
       "reuse": null,
       "first_line_start": 215.67
@@ -1005,7 +1005,7 @@
       "cut_reason": null,
       "transition": "cut",
       "start_image": "s07_milo_sorry_end",
-      "end_image": "s07_milo_apology_open",
+      "end_image": "s07_milo_sorry_end",
       "reuse": null,
       "first_line_start": 219.56
     },
@@ -1149,7 +1149,7 @@
       "cut_reason": null,
       "transition": "cut",
       "start_image": "s08_leo_softens_end",
-      "end_image": "s08_leo_softens_open",
+      "end_image": "s08_leo_softens_end",
       "reuse": null,
       "first_line_start": 251.24
     },
@@ -1168,7 +1168,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s08_leo_softens_open",
+      "start_image": "s08_leo_softens_end",
       "end_image": "s08_leo_softens_end",
       "reuse": null,
       "first_line_start": 256.62
@@ -1189,7 +1189,7 @@
       "cut_reason": null,
       "transition": "cut",
       "start_image": "s08_leo_softens_end",
-      "end_image": "s08_leo_softens_open",
+      "end_image": "s08_leo_softens_end",
       "reuse": null,
       "first_line_start": 259.99
     },
@@ -1209,7 +1209,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s08_milo_surprised_start",
-      "end_image": "s08_milo_surprised_open",
+      "end_image": "s08_milo_surprised_start",
       "reuse": null,
       "first_line_start": 263.93
     },
@@ -1229,7 +1229,7 @@
       "join_in": "cut",
       "cut_reason": "close_up",
       "transition": "cut",
-      "start_image": "s08_leo_softens_open",
+      "start_image": "s08_leo_softens_end",
       "end_image": "s08_leo_softens_end",
       "reuse": null,
       "first_line_start": 267.75
@@ -1250,15 +1250,15 @@
       "cut_reason": null,
       "transition": "cut",
       "start_image": "s08_leo_softens_end",
-      "end_image": "s08_leo_softens_open",
+      "end_image": "s08_leo_softens_end",
       "reuse": null,
       "first_line_start": 272.13
     },
     {
       "piece": "s08_stares",
       "scene": 8,
-      "variant": "s08_stares_mouth_r01",
-      "mode": "mouth",
+      "variant": "s08_stares_closed_r01",
+      "mode": "closed",
       "film_start": 275.63,
       "seconds": 3.77,
       "frames": 61,
@@ -1269,7 +1269,7 @@
       "join_in": "cut",
       "cut_reason": "close_up",
       "transition": "cut",
-      "start_image": "s08_milo_surprised_open",
+      "start_image": "s08_milo_surprised_start",
       "end_image": "s08_milo_surprised_start",
       "reuse": null,
       "first_line_start": 275.63
@@ -1334,7 +1334,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s08_milo_surprised_end",
-      "end_image": "s08_milo_grateful_open",
+      "end_image": "s08_milo_surprised_end",
       "reuse": null,
       "first_line_start": 287.15
     },
@@ -1353,7 +1353,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s08_milo_grateful_open",
+      "start_image": "s08_milo_surprised_end",
       "end_image": "s08_milo_surprised_end",
       "reuse": null,
       "first_line_start": 291.29
@@ -1375,7 +1375,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s08_leo_softens_end",
-      "end_image": "s08_leo_softens_open",
+      "end_image": "s08_leo_softens_end",
       "reuse": null,
       "first_line_start": 296.11
     },
@@ -1394,7 +1394,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s08_leo_softens_open",
+      "start_image": "s08_leo_softens_end",
       "end_image": "s08_leo_softens_end",
       "reuse": null,
       "first_line_start": 302.37
@@ -1674,7 +1674,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s11_why_wont_it_break_start",
-      "end_image": "s11_leo_worried_open",
+      "end_image": "s11_why_wont_it_break_start",
       "reuse": null,
       "first_line_start": 361.09
     },
@@ -1693,7 +1693,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s11_leo_worried_open",
+      "start_image": "s11_why_wont_it_break_start",
       "end_image": "s11_why_wont_it_break_end",
       "reuse": null,
       "first_line_start": 364.35
@@ -1744,8 +1744,8 @@
     {
       "piece": "s11_calls",
       "scene": 11,
-      "variant": "s11_calls_mouth_r01",
-      "mode": "mouth",
+      "variant": "s11_calls_closed_r01",
+      "mode": "closed",
       "film_start": 375.59,
       "seconds": 5.61,
       "frames": 81,
@@ -1757,15 +1757,15 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s11_call_start",
-      "end_image": "s11_leo_call_open",
+      "end_image": "s11_call_end",
       "reuse": null,
       "first_line_start": 375.59
     },
     {
       "piece": "s11_echo",
       "scene": 11,
-      "variant": "s11_echo_mouth_r01",
-      "mode": "mouth",
+      "variant": "s11_echo_closed_r01",
+      "mode": "closed",
       "film_start": 381.2,
       "seconds": 4.0,
       "frames": 65,
@@ -1776,7 +1776,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s11_leo_call_open",
+      "start_image": "s11_call_end",
       "end_image": "s11_call_end",
       "reuse": null,
       "first_line_start": 381.2
@@ -1807,8 +1807,8 @@
     {
       "piece": "s12_the_lion",
       "scene": 12,
-      "variant": "s12_the_lion_mouth_r01",
-      "mode": "mouth",
+      "variant": "s12_the_lion_closed_r01",
+      "mode": "closed",
       "film_start": 391.25,
       "seconds": 5.28,
       "frames": 81,
@@ -1987,7 +1987,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s13_leo_doubtful_start",
-      "end_image": "s13_leo_warns_open",
+      "end_image": "s13_leo_doubtful_start",
       "reuse": null,
       "first_line_start": 425.74
     },
@@ -2007,7 +2007,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s13_leo_warns_open",
+      "start_image": "s13_leo_doubtful_start",
       "end_image": "s13_leo_doubtful_start",
       "reuse": null,
       "first_line_start": 427.87
@@ -2128,7 +2128,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s13_milo_cu",
-      "end_image": "s13_milo_cu_open",
+      "end_image": "s13_milo_cu",
       "reuse": null,
       "first_line_start": 454.51
     },
@@ -2147,7 +2147,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s13_milo_cu_open",
+      "start_image": "s13_milo_cu",
       "end_image": "s13_milo_cu",
       "reuse": null,
       "first_line_start": 457.52
@@ -2168,7 +2168,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s13_leo_doubtful_end",
-      "end_image": "s13_leo_doubtful_open",
+      "end_image": "s13_leo_doubtful_end",
       "reuse": null,
       "first_line_start": 461.54
     },
@@ -2188,7 +2188,7 @@
       "join_in": "cut",
       "cut_reason": "close_up",
       "transition": "cut",
-      "start_image": "s13_milo_cu_open",
+      "start_image": "s13_milo_cu",
       "end_image": "s13_milo_cu",
       "reuse": null,
       "first_line_start": 464.36
@@ -2463,7 +2463,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s15_leo_amazed_start",
-      "end_image": "s15_leo_amazed_open",
+      "end_image": "s15_leo_amazed_start",
       "reuse": null,
       "first_line_start": 523.46
     },
@@ -2483,7 +2483,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s15_milo_modest_start",
-      "end_image": "s15_milo_modest_open",
+      "end_image": "s15_milo_modest_start",
       "reuse": null,
       "first_line_start": 529.61
     },
@@ -2566,7 +2566,7 @@
       "cut_reason": null,
       "transition": "cut",
       "start_image": "s15_leo_amazed_end",
-      "end_image": "s15_leo_grateful_open",
+      "end_image": "s15_leo_amazed_end",
       "reuse": null,
       "first_line_start": 546.14
     },
@@ -2585,7 +2585,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s15_leo_grateful_open",
+      "start_image": "s15_leo_amazed_end",
       "end_image": "s15_leo_amazed_end",
       "reuse": null,
       "first_line_start": 546.14
@@ -2605,7 +2605,7 @@
       "join_in": "cut",
       "cut_reason": "close_up",
       "transition": "cut",
-      "start_image": "s15_milo_modest_open",
+      "start_image": "s15_milo_modest_start",
       "end_image": "s15_milo_modest_end",
       "reuse": null,
       "first_line_start": 552.52
@@ -2626,7 +2626,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s15_leo_amazed_end",
-      "end_image": "s15_leo_grateful_open",
+      "end_image": "s15_leo_amazed_end",
       "reuse": null,
       "first_line_start": 556.66
     },
@@ -2646,7 +2646,7 @@
       "cut_reason": "close_up",
       "transition": "cut",
       "start_image": "s15_milo_sincere_start",
-      "end_image": "s15_milo_sincere_open",
+      "end_image": "s15_milo_sincere_start",
       "reuse": null,
       "first_line_start": 560.68
     },
@@ -2666,7 +2666,7 @@
       "join_in": "cut",
       "cut_reason": "close_up",
       "transition": "cut",
-      "start_image": "s15_leo_grateful_open",
+      "start_image": "s15_leo_amazed_end",
       "end_image": "s15_leo_amazed_end",
       "reuse": null,
       "first_line_start": 564.66
@@ -2687,7 +2687,7 @@
       "join_in": "cut",
       "cut_reason": "close_up",
       "transition": "cut",
-      "start_image": "s15_milo_sincere_open",
+      "start_image": "s15_milo_sincere_start",
       "end_image": "s15_milo_sincere_start",
       "reuse": null,
       "first_line_start": 566.84
@@ -2708,7 +2708,7 @@
       "cut_reason": null,
       "transition": "cut",
       "start_image": "s15_milo_sincere_start",
-      "end_image": "s15_milo_sincere_open",
+      "end_image": "s15_milo_sincere_start",
       "reuse": null,
       "first_line_start": 575.02
     },
@@ -2728,7 +2728,7 @@
       "join_in": "chain",
       "cut_reason": null,
       "transition": "cut",
-      "start_image": "s15_milo_sincere_open",
+      "start_image": "s15_milo_sincere_start",
       "end_image": "s15_milo_sincere_end",
       "reuse": null,
       "first_line_start": 578.87
@@ -2958,8 +2958,8 @@
     {
       "piece": "s16_you_know",
       "scene": 16,
-      "variant": "s16_you_know_mouth_r01",
-      "mode": "mouth",
+      "variant": "s16_you_know_closed_r01",
+      "mode": "closed",
       "film_start": 633.23,
       "seconds": 4.8,
       "frames": 77,
@@ -2979,8 +2979,8 @@
     {
       "piece": "s16_large_ideas",
       "scene": 16,
-      "variant": "s16_large_ideas_mouth_r01",
-      "mode": "mouth",
+      "variant": "s16_large_ideas_closed_r01",
+      "mode": "closed",
       "film_start": 638.03,
       "seconds": 3.31,
       "frames": 53,
@@ -2999,8 +2999,8 @@
     {
       "piece": "s16_useful_teeth",
       "scene": 16,
-      "variant": "s16_useful_teeth_mouth_r01",
-      "mode": "mouth",
+      "variant": "s16_useful_teeth_closed_r01",
+      "mode": "closed",
       "film_start": 641.34,
       "seconds": 3.5,
       "frames": 57,

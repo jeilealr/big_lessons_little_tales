@@ -35,6 +35,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import subprocess
 import sys
 import wave
@@ -82,8 +83,15 @@ def small_grey(f: np.ndarray) -> np.ndarray:
     return g @ np.array([0.299, 0.587, 0.114], dtype=np.float32)
 
 
-def find_take(story: str, row: dict, takes: dict, any_seed: int | None) -> tuple[Path | None, str]:
-    """(clip, how): the owner's chosen take, else seed --any-seed (UNSELECTED), else none."""
+def find_take(story: str, row: dict, takes: dict, any_seed: int | None,
+              prefer_lipsync: bool = True) -> tuple[Path | None, str]:
+    """Chosen take (preferring its current hash-bound mouth animation), else an optional seed."""
+    def selected(path: Path, how: str):
+        if prefer_lipsync and row.get("mode") == "mouth":
+            synced = resolve_synced_take(story, row["piece"], path)
+            if synced:
+                return synced, "lip-synced take"
+        return path, how
     src_story, variant = story, row["variant"]
     if row.get("reuse"):
         src_story, variant = row["reuse"]["story"], row["reuse"]["variant"]
@@ -94,22 +102,56 @@ def find_take(story: str, row: dict, takes: dict, any_seed: int | None) -> tuple
             for pre in ("best_", ""):
                 f = shots / f"{pre}{variant}_s{choice}{sfx}.mp4"
                 if f.is_file():
-                    return f, f"take s{choice}"
+                    return selected(f, f"take s{choice}")
         return None, f"takes.yaml seed {choice} not found"
     if isinstance(choice, str):
         f = paths.REPO / choice
-        return (f, "take file") if f.is_file() else (None, f"takes.yaml file {choice} not found")
+        return selected(f, "take file") if f.is_file() else (None, f"takes.yaml file {choice} not found")
     best = sorted(shots.glob(f"best_{variant}_s*.mp4"))
     if len(best) == 1:
-        return best[0], f"take {best[0].stem.split('_s')[-1]}"
+        return selected(best[0], f"take {best[0].stem.split('_s')[-1]}")
     if len(best) > 1:
         return None, f"{len(best)} best_ takes; choose one in takes.yaml"
     if any_seed is not None:
         for sfx in ("_fast", ""):
             f = shots / f"{variant}_s{any_seed}{sfx}.mp4"
             if f.is_file():
-                return f, f"UNSELECTED seed {any_seed}"
+                return selected(f, f"UNSELECTED seed {any_seed}")
     return None, "no chosen take"
+
+
+def probe_frames(path: Path) -> int:
+    """Read a clip's decoded video frame count without loading its frames into memory."""
+    ffprobe = shutil.which("ffprobe")
+    ffmpeg = None
+    if not ffprobe:
+        try:
+            ffmpeg = Path(media.locate_ffmpeg())
+        except RuntimeError as error:
+            raise SystemExit(f"cannot validate take length: {error}") from error
+        sibling = ffmpeg.with_name("ffprobe")
+        if sibling.is_file():
+            ffprobe = str(sibling)
+    if ffprobe:
+        result = subprocess.run([ffprobe, "-v", "error", "-count_frames", "-select_streams", "v:0",
+                                 "-show_entries", "stream=nb_read_frames", "-of", "default=nokey=1:noprint_wrappers=1",
+                                 str(path)], capture_output=True, text=True)
+        if result.returncode:
+            raise SystemExit(f"cannot inspect take {path}: {result.stderr.strip()}")
+        try:
+            return int(result.stdout.strip().splitlines()[0])
+        except (ValueError, IndexError):
+            raise SystemExit(f"ffprobe returned no video frame count for {path}")
+    # Some imageio-ffmpeg bundles ship ffmpeg without ffprobe; use its progress counter.
+    result = subprocess.run([str(ffmpeg), "-v", "error", "-nostats", "-progress", "pipe:1", "-i", str(path),
+                             "-map", "0:v:0", "-f", "null", "-"], capture_output=True, text=True)
+    if result.returncode:
+        raise SystemExit(f"cannot inspect take {path}: {result.stderr.strip()}")
+    frames = [line.partition("=")[2] for line in result.stdout.splitlines() if line.startswith("frame=")]
+    try:
+        return int(frames[-1])
+    except (ValueError, IndexError):
+        raise SystemExit(f"ffmpeg returned no video frame count for {path}")
 
 
 def narration(story: str, lang: str, scenes: list[int]) -> np.ndarray:
@@ -131,6 +173,8 @@ def main() -> None:
     ap.add_argument("--until", type=float, help="film seconds (default: the end)")
     ap.add_argument("--stills", action="store_true", help="planned images only, no clips")
     ap.add_argument("--any-seed", type=int, help="show this seed where no take is chosen (captioned UNSELECTED)")
+    ap.add_argument("--require-takes", action="store_true",
+                    help="fail unless every selected piece has a chosen take with the planned frame count")
     ap.add_argument("--size", default="960x540")
     ap.add_argument("--no-captions", action="store_true")
     args = ap.parse_args()
@@ -148,6 +192,22 @@ def main() -> None:
     rows = [r for r in tp["segments"] if r["film_start"] + r["seconds"] > args.t0 and r["film_start"] < t1]
     if not rows:
         sys.exit("no pieces in that time range")
+    if args.require_takes and args.stills:
+        sys.exit("--require-takes cannot be combined with --stills")
+    if args.require_takes and args.any_seed is not None:
+        sys.exit("--require-takes requires owner-chosen takes; remove --any-seed")
+    if args.require_takes:
+        missing_takes = []
+        for row in rows:
+            clip, why = find_take(args.story, row, takes, None)
+            if clip is None:
+                missing_takes.append(f"{row['piece']}: {why}")
+                continue
+            count = probe_frames(clip)
+            if count != row["frames"]:
+                missing_takes.append(f"{row['piece']}: {clip} has {count} frames; plan requires {row['frames']}")
+        if missing_takes:
+            sys.exit("required chosen takes are missing or invalid:\n  " + "\n  ".join(missing_takes))
     t0 = rows[0]["film_start"]                      # start on a piece boundary
     t1 = min(t1, rows[-1]["film_start"] + rows[-1]["seconds"])
 
@@ -195,21 +255,23 @@ def main() -> None:
             f8 = np.clip(f, 0, 255).astype(np.uint8)
             enc.stdin.write((f8 if args.no_captions else caption(f8, label)).tobytes())
         written += n
+        grey_out = [small_grey(f) for f in out_frames]
         if prev is not None and r["join_in"] == "chain" and frames is not None and prev["frames"] is not None:
-            a, b = prev["frames"], frames
-            jump = float(np.abs(small_grey(a[-1]) - small_grey(b[0])).mean())
-            steps_a = [float(np.abs(small_grey(a[k]) - small_grey(a[k - 1])).mean()) for k in range(max(1, len(a) - 8), len(a))]
-            steps_b = [float(np.abs(small_grey(b[k]) - small_grey(b[k - 1])).mean()) for k in range(1, min(9, len(b)))]
+            a, b = prev["grey_tail"], grey_out[:9]
+            jump = float(np.abs(a[-1] - b[0]).mean())
+            steps_a = [float(np.abs(a[k] - a[k - 1]).mean()) for k in range(1, len(a))]
+            steps_b = [float(np.abs(b[k] - b[k - 1]).mean()) for k in range(1, len(b))]
             motion = max(float(np.median(steps_a + steps_b)), 0.5)
             pace = (np.mean(steps_a[-4:]) + 0.25) / (np.mean(steps_b[:4]) + 0.25)
             joins.append(dict(before=prev["piece"], after=r["piece"], image=r["start_image"],
                               jump=round(jump, 2), motion=round(motion, 2), ratio=round(jump / motion, 2),
                               pace=round(float(pace), 2), flagged=jump / motion > FLAG,
-                              last=a[-1], first=b[0]))
+                              last=out_frames[-1], first=out_frames[0]))
         report.append(dict(piece=r["piece"], film_start=r["film_start"], seconds=r["seconds"], frames=r["frames"],
                            speed=r["speed"], join_in=r["join_in"], cut_reason=r.get("cut_reason"), shown=how,
                            clip=str(clip.relative_to(paths.WORK)) if clip else None))
-        prev = dict(piece=r["piece"], frames=frames, last_out=out_frames[-1] if out_frames else end_img)
+        prev = dict(piece=r["piece"], frames=frames, last_out=out_frames[-1] if out_frames else end_img,
+                    grey_tail=grey_out[-9:])
     enc.stdin.close()
     if enc.wait():
         raise RuntimeError("ffmpeg encode failed")
@@ -239,6 +301,8 @@ def main() -> None:
     print(f"{len(report)} pieces, {written / FPS:.1f} s -> {out}")
     if missing:
         print(f"{len(missing)} pieces shown as stills (no chosen take): " + ", ".join(p["piece"] for p in missing))
+        if args.require_takes:
+            raise SystemExit("strict take preview cannot pass with missing clips")
     for j in joins:
         flag = "  <-- visible jump: repair candidate" if j["flagged"] else ""
         print(f"join {j['before']} -> {j['after']}: jump {j['jump']:.1f}, motion {j['motion']:.1f}, "

@@ -67,7 +67,7 @@ Size lineup: At equal depth, with Mama Duck's height as 1.0: each duckling 0.35,
 
 ## Still open
 
-
+- **2026-10-09 audit:** `image_prompts.py --story ugly_duckling_v1 lint` reports 22 missing-reference errors for 18 distinct files (14 character guide boards and 4 archived `.review/` images). Those files are absent from this checkout; `.review/` folders are ignored by Git. Restore the exact original references from the owner archive, or revise the affected prompt records with fresh references and re-review their dependent images before treating this packet as reproducible or using it as the basis for v2. The new chained-story portrait lint has been limited to chained packets; these 22 errors are actual missing inputs.
 
 - Owner review of the generated foundation, expression, and Scenes 01–10 image sets and the Ollie the swan canonical r02 candidate before Scene 11 resumes, including the corrected pond morning/day r01 plates, `O_SWIM`, `O_WALK_R`, and all contact sheets. The seven environment plates are complete. Confirm the applicable OpenAI account and service terms for monetised use before using the output downstream; see `docs/licensing.md`.
 - The review sheets were built with the system image framework because Pillow is unavailable in the active Python environment.

@@ -21,6 +21,7 @@ work/
 # python
 __pycache__/
 *.pyc
+.venv*/
 # never commit weights, keys or binaries
 *.safetensors
 *.pkl

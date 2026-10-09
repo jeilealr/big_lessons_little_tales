@@ -19,12 +19,14 @@ stories exported from a prompt manifest carry the complete reviewed prompt.
 
 Paths in story.yaml are relative to work/stories/<story>/. Output:
 work/stories/<story>/shots/<shot>_s<seed>[_fast].mp4 + .json sidecar (prompt,
-negative, seed, model revision, LoRAs, settings). An existing output is skipped.
+negative, seed, model revision, LoRAs, settings and input hashes). An existing
+output is reused only when its sidecar proves the recipe and inputs still match.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 import time
@@ -34,6 +36,28 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from feltwillow import media, paths, wan  # noqa: E402
 
 RENDER = dict(width=1280, height=720, steps=40, guidance=3.5, guidance_2=3.5)
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for block in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def check_existing_render(out: Path, expected: dict) -> None:
+    """Never silently reuse a clip made from different or unrecorded inputs."""
+    sidecar = out.with_suffix(".json")
+    try:
+        recorded = json.loads(sidecar.read_text())
+    except (OSError, ValueError) as error:
+        raise SystemExit(f"{out}: existing clip has no readable render sidecar ({error}); "
+                         "review it and move it aside before rendering again") from error
+    changed = [key for key, value in expected.items() if recorded.get(key) != value]
+    if changed:
+        raise SystemExit(f"{out}: existing clip has stale or unrecorded render inputs "
+                         f"({', '.join(changed)}); review it and move it aside before rendering again")
 
 
 def check_recipe(work: Path, recipe: dict, what: str) -> None:
@@ -119,12 +143,20 @@ def main() -> None:
     cont = shot.get("continue_from")
     src = None
     if cont:
-        src = work / "shots" / f"{cont['shot']}_s{cont['take']}.mp4"
+        if cont.get("file"):
+            src = Path(cont["file"])
+            if not src.is_absolute():
+                src = paths.WORK / src
+        else:
+            src_work = paths.story_work(cont.get("story", args.story))
+            src = src_work / "shots" / f"{cont['shot']}_s{cont['take']}.mp4"
         if not src.is_file():
-            # A fast take is never picked silently: the owner names it explicitly.
-            fast = src.with_name(f"{src.stem}_fast.mp4")
-            hint = f" ({fast.name} exists: write take: {cont['take']}_fast)" if fast.is_file() else ""
-            raise SystemExit(f"continue_from: missing render {src}{hint}")
+            raise SystemExit(f"continue_from: missing render {src}")
+        expected_hash = cont.get("sha256")
+        if expected_hash:
+            actual_hash = sha256(src)
+            if actual_hash != expected_hash:
+                raise SystemExit(f"continue_from: source hash changed for {src}; recreate the repair override")
         print(f"keyframe = frame {cont.get('frame', -1)} of {src.name}")
     recipe = shot.get("compose")
     if recipe and not cont:
@@ -151,7 +183,7 @@ def main() -> None:
     if args.dry_run:
         print("dry run: inputs ok" + (" (keyframe will be composed)" if recipe else ""))
         return
-    if cont and (args.recompose or not keyframe.is_file()):
+    if cont:
         frames_ = media.read_frames(src)
         keyframe.parent.mkdir(parents=True, exist_ok=True)
         Image.fromarray(frames_[int(cont.get("frame", -1))]).save(keyframe)
@@ -160,27 +192,40 @@ def main() -> None:
         compose_recipe(work, recipe, keyframe)
     if build_end:
         compose_recipe(work, end_recipe, end_key)
-    pipe = wan.load("i2v", frames, loras=loras, fast=args.fast)
     render = {**RENDER, **(wan.LIGHTNING["render"] if args.fast else {})}
     if shot.get("size"):          # e.g. [1248, 832] to match 3:2 reference images
         render["width"], render["height"] = (int(v) for v in shot["size"])
-    print("model loaded", flush=True)
+    lora_details = [{k: str(v) for k, v in lo.items()} for lo in loras]
+    lora_hashes = [{"high": sha256(lo["high"]), "low": sha256(lo["low"])} for lo in loras]
+    expected = dict(
+        stage="shot", scene=args.scene, shot=args.shot, keyframe=str(keyframe),
+        end_keyframe=str(end_key) if end_key else None,
+        keyframe_sha256=sha256(keyframe),
+        end_keyframe_sha256=sha256(end_key) if end_key else None,
+        continuation_sha256=sha256(src) if src else None,
+        model=wan.model_id("i2v"), frames=frames, prompt=prompt,
+        negative=negative, loras=lora_details, lora_sha256=lora_hashes,
+        fast=args.fast, **render)
+    pending = []
     for seed in seeds:
         out = work / "shots" / f"{args.shot}_s{seed}{'_fast' if args.fast else ''}.mp4"
         if out.is_file():
-            print(f"exists, skipping {out.name}")
-            continue
+            check_existing_render(out, {**expected, "seed": seed})
+            print(f"verified existing render {out.name}")
+        else:
+            pending.append((seed, out))
+    if not pending:
+        return
+    pipe = wan.load("i2v", frames, loras=loras, fast=args.fast)
+    print("model loaded", flush=True)
+    for seed, out in pending:
         t0 = time.time()
         video = wan.generate(pipe, prompt, negative=negative, frames=frames, seed=seed,
                              image=Image.open(keyframe),
                              last_image=Image.open(end_key) if end_key else None, **render)
         wan.save(video, out)
-        out.with_suffix(".json").write_text(json.dumps(dict(
-            stage="shot", scene=args.scene, shot=args.shot, keyframe=str(keyframe),
-            end_keyframe=str(end_key) if end_key else None,
-            model=wan.model_id("i2v"), seed=seed, frames=frames, prompt=prompt,
-            negative=negative, loras=[{k: str(v) for k, v in lo.items()} for lo in loras],
-            fast=args.fast, seconds=round(time.time() - t0), **render), indent=2))
+        out.with_suffix(".json").write_text(json.dumps(
+            {**expected, "seed": seed, "seconds": round(time.time() - t0)}, indent=2))
         print(f"saved {out} ({time.time() - t0:.0f} s)", flush=True)
 
 

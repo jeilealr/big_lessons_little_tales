@@ -1,7 +1,7 @@
 title: lion_and_mouse_v5
 slug: lion_and_mouse_v5
 source:
-  manifest: stories/lion_and_mouse_v4/prompt_manifest.json
+  manifest: stories/lion_and_mouse_v5/prompt_manifest.json
   manifest_revision: v4-consistency-2026-10-02
   images: lion_and_mouse_v5
   scenes: all

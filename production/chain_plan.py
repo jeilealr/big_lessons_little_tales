@@ -54,6 +54,74 @@ def frames_for(seconds: float) -> tuple[int, float]:
     return n, (n / FPS) / seconds
 
 
+def validate_timing_input(lines: list[dict], timing: dict) -> list[str]:
+    """Validate line/timing identity, durations, and the narration writer's pauses/tail."""
+    errors = []
+    if not isinstance(lines, list) or any(not isinstance(ln, dict) for ln in lines):
+        return ["dialogue_coverage.json lines must be a list of objects"]
+    if not isinstance(timing, dict):
+        return ["timing.json must be an object keyed by scene"]
+    ids = [ln.get("id") for ln in lines]
+    if any(not isinstance(i, str) for i in ids) or len(ids) != len(set(ids)):
+        errors.append("dialogue_coverage.json has a missing, non-string or duplicate line id")
+    if any(not ln.get("speaker") for ln in lines):
+        errors.append("dialogue_coverage.json has a line with no speaker")
+    scenes = sorted({ln.get("scene") for ln in lines})
+    expected_scene_keys = {str(scene) for scene in scenes}
+    extra_scenes = set(timing) - expected_scene_keys
+    if extra_scenes:
+        errors.append(f"timing.json has scenes absent from dialogue_coverage.json: {sorted(extra_scenes)}")
+    for scene in scenes:
+        key = str(scene)
+        t = timing.get(key)
+        if t is None:
+            errors.append(f"scene {scene}: missing timing entry {key!r}")
+            continue
+        if not isinstance(t, dict):
+            errors.append(f"scene {scene}: timing entry must be an object")
+            continue
+        rows = t.get("lines", [])
+        if not isinstance(rows, list):
+            errors.append(f"scene {scene}: timing lines must be a list")
+            continue
+        if any(not isinstance(r, dict) for r in rows):
+            errors.append(f"scene {scene}: timing line records must be objects")
+            continue
+        tids = [r.get("id") for r in rows]
+        if any(not isinstance(i, str) for i in tids) or len(tids) != len(set(tids)):
+            errors.append(f"scene {scene}: timing.json has a missing, non-string or duplicate line id")
+            continue
+        expected = [ln["id"] for ln in lines if ln.get("scene") == scene]
+        if set(tids) != set(expected):
+            errors.append(f"scene {scene}: timing line IDs differ (missing {sorted(set(expected)-set(tids))}; "
+                          f"extra {sorted(set(tids)-set(expected))})")
+            continue
+        durations = []
+        invalid = False
+        for row in rows:
+            value = row.get("seconds")
+            if not isinstance(value, (int, float)) or not math.isfinite(value) or value <= 0:
+                errors.append(f"scene {scene}: line {row['id']} duration must be finite and positive")
+                invalid = True
+            else:
+                durations.append((row["id"], float(value)))
+        scene_seconds = t.get("seconds")
+        if not isinstance(scene_seconds, (int, float)) or not math.isfinite(scene_seconds) or scene_seconds <= 0:
+            errors.append(f"scene {scene}: scene duration must be finite and positive")
+            invalid = True
+        if not invalid:
+            by_id = dict(durations)
+            ordered = [ln for ln in lines if ln.get("scene") == scene]
+            total = sum(by_id[ln["id"]] for ln in ordered) + 1.0
+            for before, after in zip(ordered, ordered[1:]):
+                total += PAUSE_SAME if before["speaker"] == after["speaker"] else PAUSE_CHANGE
+            tolerance = max(0.05, 0.005 * len(ordered) + 0.02)
+            if abs(total - float(scene_seconds)) > tolerance:
+                errors.append(f"scene {scene}: line durations + pauses + 1 s tail total {total:.2f}s, "
+                              f"but timing.json says {scene_seconds:.2f}s (tolerance {tolerance:.2f}s)")
+    return errors
+
+
 def line_spans(lines: list[dict], timing: dict) -> dict[int, list[tuple[dict, float, float]]]:
     """Per scene: (line, start, span) with span = start of the next line (or the scene end) - start."""
     out = {}
@@ -78,7 +146,18 @@ def line_spans(lines: list[dict], timing: dict) -> dict[int, list[tuple[dict, fl
 def plan(manifest: dict, spans: dict) -> tuple[list[dict], list[str]]:
     """Seconds, frames and speed for every piece; errors for gaps, order and bounds."""
     errors, rows = [], []
-    pieces = sorted(manifest["shots"], key=lambda s: s.get("order", 0))
+    raw_pieces = manifest["shots"]
+    valid_orders = all(isinstance(p, dict) and type(p.get("order")) is int for p in raw_pieces)
+    if not valid_orders:
+        errors.append("piece order values must be integers")
+    pieces = sorted(raw_pieces, key=lambda s: s.get("order") if isinstance(s, dict) and
+                    type(s.get("order")) is int else 0)
+    orders = [p.get("order") for p in pieces]
+    if valid_orders:
+        if len(orders) != len(set(orders)):
+            errors.append("piece order values must be unique")
+        if orders != list(range(1, len(pieces) + 1)):
+            errors.append("piece order values must be contiguous from 1 through the number of pieces")
     film_t = 0.0
     for scene, sp in spans.items():
         order = {ln["id"]: k for k, (ln, _, _) in enumerate(sp)}
@@ -187,6 +266,11 @@ def main() -> None:
     sd = paths.STORIES / args.story
     timing = json.loads((paths.story_audio(audio_story, args.lang) / "timing.json").read_text())
     lines = json.loads((sd / "dialogue_coverage.json").read_text(encoding="utf-8"))["lines"]
+    input_errors = validate_timing_input(lines, timing)
+    if input_errors:
+        for error in input_errors:
+            print("ERROR:", error)
+        sys.exit(1)
     spans = line_spans(lines, timing)
 
     if args.cmd == "suggest":

@@ -21,11 +21,17 @@ record or accepting an image.
 |---|---|
 | How many pieces each line needs | `python3 production/chain_plan.py --story <slug> --audio-story <audio slug> suggest` |
 | Build the packet from its source | `python3 production/chain_packet.py stories/<slug>/chain_source.py` |
+| Carry base assets into the new version | Included in `chain_packet.py`: resolved reused images get local versioned copies; accepted expression studies appear in `prompts/expressions.md` |
 | Render prompts, check them | `python3 production/image_prompts.py --story <slug> build`, then `lint` (0 errors), then `md` |
 | Time the pieces, set frame counts, timing sheet | `python3 production/chain_plan.py --story <slug> --audio-story <audio slug> apply` |
 | Join test without clips (CPU) | `lumi/run_in_container.sh python production/chain_preview.py --story <slug> --stills [--until S]` |
+| Record a reviewed image approval | `python3 production/image_prompts.py --story <slug> approve <image-id> --reviewed-by <name>` |
 | Runtime story for the GPU | `python3 production/export_runtime.py --manifest stories/<slug>/prompt_manifest.json --story <slug> [--scenes ...]` |
-| Join test with chosen takes | `lumi/run_in_container.sh python production/chain_preview.py --story <slug> --until S` |
+| Strict join test with chosen takes | `lumi/run_in_container.sh python production/chain_preview.py --story <slug> --until S --require-takes` |
+| Align narration words (after audio is final) | `bash voice/setup_lipsync_env.sh`, then `.venv-lipsync/bin/python production/lip_sync.py align --story <slug> --audio-story <audio slug> --lang <lang> --device cpu` |
+| Apply timed mouth animation after take selection | `python3 production/lip_sync.py apply --story <slug>` (use the isolated `.venv-lipsync/bin/python`) |
+| Repair a bad join from the selected previous take | `python3 production/chain_repair.py --story <slug> --piece <later> --previous-piece <earlier>` |
+| Export complete edit handoff | `python3 production/edit_manifest.py --story <slug>` |
 
 `chain_preview.py` and `animatic.py` assemble pictures: run them when the owner asks for a preview or
 join test, never automatically after a render (CR-01).
@@ -56,14 +62,24 @@ join test, never automatically after a render (CR-01).
    (same place, another light: use `crossfade`), `location_change`, `dissolve` (time passes on the
    same camera; needs `crossfade` or `dip`; the only cut allowed within one setup). The first piece is
    `film_start`. Lint checks that each reason is true; any other same-setup cut is a jump cut.
-7. **Talking chains.** A run of dialogue pieces in a close-up alternates the closed frame and its
-   `_open` frame (CR-19): closed → open, open → closed. The `mouth` sentence is chosen from the
-   endpoints (ends open / starts open / both closed). One open frame per expression that speaks.
+7. **Talking chains.** Every clip starts and ends on approved closed-mouth frames. A `mouth`
+   variant uses one separate approved `_open` calibration image edited from one of its closed
+   endpoints (CR-19, CR-23/24). Use `mode: mouth` only when a covered audio line is explicitly
+   assigned to the visible character; give the variant one `speaker` matching that character's
+   `voice_speaker` in the bible. Narrator voice-over never moves a character's mouth, even if it
+   describes speech or a call. Keep mouths closed during narration, other characters' lines and
+   silent pauses. Mixed-speaker pieces sync only the named visible character, or split into
+   speaker-specific shots. Wide shots keep mouths still because they are too small to review.
+   Forced-align final audio, then run the timed mouth compositor on owner-selected takes.
+   `edit_manifest.py` requires a current hash-bound result for every `mouth` variant. Review
+   speaker timing and joins. See `docs/lip-sync.md` for the single-shape approximation.
 8. **Reuse.** If a piece's endpoints are exactly an earlier variant's and its length fits 81 frames
    at 0.80 to 1.25 speed (4.05 to 6.33 s), set `reuse="<variant id>"`: its prompt is copied verbatim
    and it is not re-rendered. Do not reuse takes the render review rejected.
 9. **Video prompts describe only what is in frame** (fast mode, CFG 1: a named absent object is drawn
-   in; v5 scene 15). Never write "stays outside", "stays empty" or name paws in a portrait.
+   in; v5 scene 15). In dialogue close-ups, use `{{portrait:<char>}}` and lock the approved crop and
+   visible silhouette from the endpoint frames. Do not include full-body identity text or mention body
+   parts outside the crop. `image_prompts.py lint` enforces this for new close-up variants (CR-22).
 10. Build, `lint` 0 errors, `md`, `apply`. Read `SHOT_PLAN.md` and `TIMING_SHEET.md` as the owner will.
     Log the change in `docs/changelog.md`.
 

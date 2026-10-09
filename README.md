@@ -15,6 +15,9 @@ Current work: **The Lion and the Mouse, v5: all 186 clips rendered, owner select
 (status 2026-10-06). Start with the [v5 folder](stories/lion_and_mouse_v5/README.md)
 and its [readable prompts](stories/lion_and_mouse_v5/prompts/). Versions v2 to v4 were removed on
 2026-10-06 (they remain in git history); v5's script, bible and prompt records came from v4.
+A [v6 chained coverage plan](stories/lion_and_mouse_v6/README.md) is in preparation to match the
+full narration; it still needs new approved images, rendered and selected clips, and strict
+lip-sync and join review before editing.
 Next stories in preparation (script and shot plan ready for review): [The Tortoise and the Hare](stories/tortoise_and_hare_v1/README.md), [The Boy Who Cried Wolf](stories/boy_who_cried_wolf_v1/README.md) and [The Ugly Duckling](stories/ugly_duckling_v1/README.md).
 The v5 stills are owner-made (ChatGPT Pro); the English narration exists; the runtime
 `story.yaml` is exported by `production/export_runtime.py`.
@@ -47,10 +50,10 @@ and camera setups with measured character sizes. All image and video prompts in
 `prompt_manifest.json` are templates built from it:
 
 ```bash
-python3 production/image_prompts.py build   # render the templates
-python3 production/image_prompts.py lint    # must report 0 errors
-python3 production/image_prompts.py md      # readable prompts in stories/<slug>/prompts/
-python3 production/image_prompts.py review <record> --image <candidate>   # side-by-side gate
+python3 production/image_prompts.py --story lion_and_mouse_v6 build   # render the templates
+python3 production/image_prompts.py --story lion_and_mouse_v6 lint    # must report 0 errors
+python3 production/image_prompts.py --story lion_and_mouse_v6 md      # readable prompts in stories/<slug>/prompts/
+python3 production/image_prompts.py --story lion_and_mouse_v6 review <record> --image <candidate>   # side-by-side gate
 python3 production/image_prompts.py --story lion_and_mouse_v5 new-story <slug>   # skeleton for a new story
 ```
 

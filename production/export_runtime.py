@@ -10,16 +10,17 @@ an owner-made image set.
 One runtime shot per video variant of the manifest (name = variant id, e.g.
 `s03_two_paths_closed_r01`), with
   keyframe / end_keyframe  copies of the image set's files for the variant's
-                           start/end records (highest `_rNN` revision on disk),
-                           frozen in work/stories/<story>/keyframes/ so that
+                           start/end records (exact hash-recorded file when
+                           available; exact hash-approved target for chained stories), frozen in
+                           work/stories/<story>/keyframes/ so that
                            moving or replacing source images cannot change a run
   prompt / negative        the variant's reviewed runtime prompts, verbatim
   frames, size, seeds      from the variant
 Without --images each record's `target` in the manifest is its file. With
---images the record -> file map comes from the image set's READMEs
-(character/characters/<set>/{Leo,Milo,interactions}/README.md and
-character/locations/<set>/README.md). Also writes stories/<story>/runtime_inputs.json: every
-endpoint file with its sha256, so a later change of an image is visible.
+--images, exact hash-verified sources from an existing runtime_inputs.json take
+priority, then existing manifest targets, then an unambiguous README file. Also
+writes stories/<story>/runtime_inputs.json: every endpoint file with its sha256,
+so a later change of an image is visible.
 Variants without seeds get 1 2 3; without size, 1280x720. --scenes limits the
 export to scenes whose images exist (the others are listed as skipped).
 A chained story's piece with `reuse` (CR-21) is not exported: its renders are the
@@ -40,28 +41,64 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from feltwillow import paths  # noqa: E402
+from image_approval import reference_files, spec_sha256  # noqa: E402
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for block in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def image_map(image_set: str) -> dict[str, Path]:
-    """Record id -> newest file of that record in the image set."""
+    """Resolve exact, previously frozen sources before manifest and README fallbacks.
+
+    A README supplies a candidate only when it has one matching revision. Never
+    silently change an already recorded input to a newer image revision.
+    """
     roots = [paths.REPO / "character/characters" / image_set / n for n in ("Leo", "Milo", "interactions")]
     roots.append(paths.REPO / "character/locations" / image_set)
-    out = {}
+    out: dict[str, Path] = {}
+    recorded_path = paths.STORIES / image_set / "runtime_inputs.json"
+    if recorded_path.is_file():
+        recorded = json.loads(recorded_path.read_text())
+        for rid, row in recorded.items():
+            file = paths.REPO / row["file"]
+            if not file.is_file():
+                raise FileNotFoundError(f"recorded source for {rid} is missing: {file}")
+            if file_sha256(file) != row["sha256"]:
+                raise ValueError(f"recorded source for {rid} changed hash: {file}; "
+                                 "review it before exporting a new runtime")
+            out[rid] = file
+    manifest_path = paths.STORIES / image_set / "prompt_manifest.json"
+    if manifest_path.is_file():
+        for rec in json.loads(manifest_path.read_text())["images"]:
+            target = rec.get("target")
+            if rec["id"] not in out and target and (paths.REPO / target).is_file():
+                out[rec["id"]] = paths.REPO / target
     for root in roots:
+        readme = root / "README.md"
+        if not readme.is_file():
+            continue
         folder = None
-        for line in (root / "README.md").read_text().splitlines():
+        for line in readme.read_text().splitlines():
             m = re.match(r"## `(.+?)/?`", line)
             if m:
                 folder = paths.REPO / m.group(1)
                 continue
             m = re.match(r"\| `([^`]+)_r01\.png` \| `([^`]+)`", line)
-            if m and folder:
-                # exact stem only: `l_side_r01.png` must not pick up `l_side_r_r01.png`
+            if m and folder and m.group(2) not in out:
+                # Exact stem only: l_side_r01 must not select l_side_r_r01.
                 rev = re.compile(rf"{re.escape(m.group(1))}_r(\d+)\.png")
-                found = sorted((int(r.group(1)), f) for f in folder.glob("*.png")
-                               if (r := rev.fullmatch(f.name)))
+                found = [f for f in folder.glob("*.png") if rev.fullmatch(f.name)]
+                if len(found) > 1:
+                    raise ValueError(f"{m.group(2)} has multiple README image revisions: "
+                                     f"{', '.join(str(f) for f in sorted(found))}; "
+                                     "record an exact source before runtime export")
                 if found:
-                    out[m.group(2)] = found[-1][1]
+                    out[m.group(2)] = found[0]
     return out
 
 
@@ -69,8 +106,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--manifest", type=Path, required=True)
-    ap.add_argument("--images", help="image set with README file lists (story folder under character/), "
-                    "e.g. lion_and_mouse_v5; default: the manifest's record targets")
+    ap.add_argument("--images", help="image set with hash-recorded sources, manifest targets and README "
+                    "fallbacks, e.g. lion_and_mouse_v5; default: the manifest's record targets")
     ap.add_argument("--story", required=True)
     ap.add_argument("--scenes", nargs="+", type=int)
     args = ap.parse_args()
@@ -81,38 +118,105 @@ def main() -> None:
         files = {i["id"]: paths.REPO / i["target"] for i in man["images"]
                  if i.get("target") and (paths.REPO / i["target"]).is_file()}
     work = paths.story_work(args.story)
+    sd = paths.STORIES / args.story
+    bible_path = sd / "visual_bible.json"
+    chained = bible_path.is_file() and json.loads(bible_path.read_text()).get("chained_coverage")
+    approval_file = sd / "image_approvals.json"
+    approvals = json.loads(approval_file.read_text()).get("images", {}) if approval_file.is_file() else {}
+    image_records = {i["id"]: i for i in man["images"]}
+    repair_path = sd / "repair_overrides.json"
+    repair_doc = json.loads(repair_path.read_text()) if repair_path.is_file() else {"repairs": {}}
+    repairs = repair_doc.get("repairs", {})
     scenes, inputs, missing, reused = {}, {}, [], {}
+    pending_copies: dict[Path, Path] = {}
+    invalid_carried: set[str] = set()
     for s in sorted(man["shots"], key=lambda s: (s["scene"], s["order"])):
         if args.scenes and s["scene"] not in args.scenes:
             continue
-        if s.get("reuse"):
+        if chained:
+            for v in s["variants"]:
+                for rid in (v["start_image"], v["end_image"]):
+                    rec = image_records[rid]
+                    if rec.get("carried_from") and rec.get("status") != "accepted" and rid not in invalid_carried:
+                        invalid_carried.add(rid)
+                        missing.append(f"{s['id']}: carried image {rid} has status "
+                                       f"{rec.get('status')!r}, not accepted")
+        is_reuse = bool(s.get("reuse"))
+        if is_reuse:
             reused[s["id"]] = s["reuse"]
-            continue
+            if not repairs.get(s["id"]):
+                continue
         for v in s["variants"]:
             ends = {}
             for key in ("start_image", "end_image"):
                 f = files.get(v[key])
+                rec = image_records[v[key]]
+                if chained and not rec.get("carried_from") and rec.get("prompt_kind") == "scene":
+                    approval = approvals.get(v[key])
+                    if not approval:
+                        missing.append(f"{v['id']}: image {v[key]} has no explicit approval in {approval_file}")
+                        continue
+                    if approval.get("file") != rec["target"]:
+                        missing.append(f"{v['id']}: approval for {v[key]} names a different manifest target")
+                        continue
+                    f = paths.REPO / approval["file"]
+                    if not f.is_file():
+                        missing.append(f"{v['id']}: approved image file is missing: {f}")
+                        continue
+                    digest = hashlib.sha256(f.read_bytes()).hexdigest()
+                    if approval.get("sha256") != digest:
+                        missing.append(f"{v['id']}: approval for {v[key]} does not match current file hash")
+                        continue
+                    if approval.get("spec_sha256") != spec_sha256(rec):
+                        missing.append(f"{v['id']}: approval for {v[key]} is stale for the current image prompt/specification")
+                        continue
+                    try:
+                        refs_now = reference_files(rec, paths.REPO)
+                    except FileNotFoundError as error:
+                        missing.append(f"{v['id']}: {error}")
+                        continue
+                    if approval.get("references") != refs_now:
+                        missing.append(f"{v['id']}: approval for {v[key]} is stale because a prompt reference changed")
+                        continue
                 if f is None:
                     missing.append(f"{v['id']}: {v[key]}")
                     continue
                 frozen = work / "keyframes" / f.name
-                frozen.parent.mkdir(parents=True, exist_ok=True)
-                if not frozen.is_file() or frozen.read_bytes() != f.read_bytes():
-                    shutil.copy2(f, frozen)
+                previous = pending_copies.get(frozen)
+                if previous is not None and previous != f:
+                    missing.append(f"{v['id']}: frozen keyframe name collision: {previous} and {f}")
+                    continue
+                pending_copies[frozen] = f
                 ends[key] = f"keyframes/{f.name}"
                 inputs[v[key]] = dict(file=str(f.relative_to(paths.REPO)), frozen=ends[key],
-                                      sha256=hashlib.sha256(f.read_bytes()).hexdigest())
+                                      sha256=file_sha256(f))
             if len(ends) < 2:
                 continue
-            scenes.setdefault(s["scene"], {"shots": []})["shots"].append(dict(
+            runtime = dict(
                 name=v["id"], shot=s["id"], mode=v["mode"], speaker=v.get("speaker"),
                 dialogue_line_ids=v.get("dialogue_line_ids", []),
                 keyframe=ends["start_image"], end_keyframe=ends["end_image"],
                 prompt=v["positive_prompt"], negative=v.get("negative_prompt", ""),
-                frames=v["frames"], size=v.get("size") or [1280, 720], seeds=v.get("seeds") or [1, 2, 3]))
+                frames=v["frames"], size=v.get("size") or [1280, 720], seeds=v.get("seeds") or [1, 2, 3])
+            if not is_reuse:
+                scenes.setdefault(s["scene"], {"shots": []})["shots"].append(runtime)
+            for repair in repairs.get(s["id"], []):
+                candidate = dict(runtime)
+                candidate_name = f"{v['id']}_repair{int(repair['revision']):02d}"
+                candidate.update(name=candidate_name,
+                                 keyframe=f"keyframes/repairs/{candidate_name}.png",
+                                 continue_from={"file": repair["source_file"], "sha256": repair["sha256"],
+                                                "frame": repair.get("frame", -1),
+                                                "story": repair["source_story"],
+                                                "piece": repair["source_piece"]},
+                                 repair_revision=int(repair["revision"]), seeds=[1])
+                scenes.setdefault(s["scene"], {"shots": []})["shots"].append(candidate)
     if missing:
-        sys.exit("missing images:\n  " + "\n  ".join(missing))
-    sd = paths.STORIES / args.story
+        sys.exit("missing or unapproved images:\n  " + "\n  ".join(missing))
+    for frozen, source in pending_copies.items():
+        frozen.parent.mkdir(parents=True, exist_ok=True)
+        if not frozen.is_file() or file_sha256(frozen) != file_sha256(source):
+            shutil.copy2(source, frozen)
     sd.mkdir(parents=True, exist_ok=True)
     story = dict(
         title=man.get("title") or args.story, slug=args.story,
