@@ -350,6 +350,24 @@ def lint(manifest, bible):
     E, W = errors.append, warnings.append
     images = {r["id"]: r for r in manifest["images"]}
     allow = bible.get("lint", {}).get("allow_phrases", [])
+    if bible.get("asset_revision_policy") == "v6_native_assets":
+        from image_handoff import scene_reference_cycles
+        for cycle in scene_reference_cycles(images):
+            E("scene references form a generation cycle: " + " -> ".join(cycle))
+        version = bible.get("version")
+        if manifest.get("base_story") or manifest.get("audio_story") != version:
+            E(f"{version}: independent packet must use its own audio story and no base story")
+        for shot in manifest["shots"]:
+            if shot.get("reuse") or any(v.get("reused_from") for v in shot.get("variants", [])):
+                E(f"{shot['id']}: independent packet cannot reuse an older render")
+        for rec in manifest["images"]:
+            if rec.get("carried_from"):
+                E(f"{rec['id']}: independent packet cannot carry an older image record")
+            active_paths = [rec.get("target", "")] + [r.get("path", "") for r in rec.get("ordered_references", [])]
+            for path in active_paths:
+                match = re.search(r"lion_and_mouse_v\d+", path)
+                if match and match.group() != version:
+                    E(f"{rec['id']}: active asset path crosses into {match.group()}: {path}")
 
     # The bible itself must be coherent: the short description may not introduce colour words that
     # the full canonical description does not use, and no block may contain a drift phrase.
@@ -377,6 +395,9 @@ def lint(manifest, bible):
         for c in s.get("size", {}):
             if c not in bible["characters"]:
                 E(f"bible setups.{sid}: size for unknown character {c}")
+        if bible.get("asset_revision_policy") == "v6_native_assets" and s.get("framing") in ("scene_wide", "close_two_shot"):
+            if not s.get("numeric_size_targets") or not s.get("walkable_surface"):
+                E(f"bible setups.{sid}: sharp scene setup needs numeric size targets and walkable surface")
 
     chained = bible.get("chained_coverage")
     shot_of = {}
@@ -483,6 +504,25 @@ def lint(manifest, bible):
                 for c in vis:
                     if c not in s.get("size", {}):
                         E(f"{rid}: setup {sid} has no measured size for visible character {c}")
+            # Sharp/recognizable-background cast frames need a concrete same-setup size guide.
+            # Numeric prompt text alone is not evidence that the generator kept scale stable.
+            if bible.get("scale_anchor_gate") and vis and not s.get("background_treatment") \
+                    and s["framing"] in ("scene_wide", "close_two_shot") \
+                    and rid not in s.get("bootstrap_records", []):
+                anchor_id = s.get("anchor_record")
+                if not anchor_id or anchor_id not in images:
+                    E(f"{rid}: setup {sid} needs a valid anchor_record before sharp-background frames can be generated")
+                elif anchor_id != rid:
+                    anchor = images[anchor_id]
+                    if anchor.get("setup") != sid:
+                        E(f"{rid}: size anchor {anchor_id} belongs to setup {anchor.get('setup')}, not {sid}")
+                    missing_anchor_chars = set(vis) - set(visible_characters(anchor, bible))
+                    if missing_anchor_chars:
+                        E(f"{rid}: size anchor {anchor_id} does not show visible character(s) {sorted(missing_anchor_chars)}")
+                    attached_anchor = [r for r in rec.get("ordered_references", [])
+                                       if r.get("role") == "size_anchor" and r.get("id") == anchor_id]
+                    if not attached_anchor:
+                        E(f"{rid}: sharp-background frame must attach setup size anchor {anchor_id} (role size_anchor)")
             plate = bible["locations"][s["location"]].get("plate")
             refs = [r["path"] for r in rec.get("ordered_references", [])]
             if plate and plate not in refs and not (rid.endswith(("_end", "_open")) and not chained):
@@ -747,6 +787,7 @@ def new_story(slug, template_story):
     tb = json.loads(tbp.read_text())
     bible = {
         "revision": f"{slug}-draft",
+        "scale_anchor_gate": True,
         "how_to": "Fill in order: characters (from approved prop-free canonicals), cast_scale, locations "
                   "(one approved plate each), setups (camera + measured size anchor), then manifest records "
                   "with prompt templates. See .claude/skills/consistent-image-prompts/SKILL.md.",
@@ -806,6 +847,14 @@ def main():
         rec = next((r for r in manifest["images"] if r["id"] == args.record), None)
         if rec is None:
             sys.exit(f"no image record {args.record}")
+        if rec.get("prompt_kind") == "scene":
+            from image_handoff import scene_errors
+            approvals_path = REPO / "stories" / args.story / "image_approvals.json"
+            existing = json.loads(approvals_path.read_text()).get("images", {}) if approvals_path.exists() else {}
+            problems = scene_errors(rec, {r["id"]: r for r in manifest["images"]}, bible,
+                                    existing, for_approval=True)
+            if problems:
+                sys.exit("cannot approve scene image:\n" + "\n".join(problems))
         path = REPO / rec["target"]
         if not path.is_file():
             sys.exit(f"cannot approve missing target image: {path}")

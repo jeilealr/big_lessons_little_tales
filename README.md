@@ -112,6 +112,7 @@ in `lumi/site.sh`; nothing depends on the repo's folder name.
 | understand the whole pipeline, story to finished shots | [docs/production-guide.md](docs/production-guide.md) |
 | check a video-prompt rule and the evidence behind it | [docs/prompting.md](docs/prompting.md): every measured rule, a checklist, the results log |
 | know what went wrong before and how it was fixed | [docs/findings-and-risks.md](docs/findings-and-risks.md) |
+| audit repository-wide consistency before image or video production | [Reusable consistency audit prompt](docs/repository-consistency-audit-prompt.md) |
 | hand finished stories to the publishing repository | [docs/publishing-handoff.md](docs/publishing-handoff.md): selection file, `production/export_handoff.py`, what it refuses |
 | work with voices (Gemini TTS) | [voice/README.md](voice/README.md) |
 | run things on LUMI (jobs, times, gotchas) | [docs/lumi.md](docs/lumi.md) |

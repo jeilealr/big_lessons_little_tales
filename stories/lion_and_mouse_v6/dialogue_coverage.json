@@ -1,8 +1,8 @@
 {
-  "revision": "v6-chain-2026-10-08",
-  "status": "draft_no_audio_or_edit_created",
-  "source": "../lion_and_mouse_v3/script_dialog_en.txt",
-  "note": "Line list of lion_and_mouse_v5 (narration rendered there); candidate_coverage_shots = the v6 pieces that cover each line.",
+  "revision": "v6-native-r02-2026-10-10",
+  "status": "v6_audio_pending",
+  "source": "SCRIPT.md",
+  "note": "V6-local dialogue line list and piece coverage. Narration WAV and word timing must be staged under the v6 audio path before final timing verification.",
   "lines": [
     {
       "id": "S01-L001",
@@ -17,7 +17,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S01-L002",
@@ -32,7 +32,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S01-L003",
@@ -46,7 +46,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S01-L004",
@@ -62,7 +62,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S02-L001",
@@ -77,7 +77,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S02-L002",
@@ -92,7 +92,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S02-L003",
@@ -106,7 +106,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S02-L004",
@@ -121,7 +121,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L001",
@@ -135,7 +135,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L002",
@@ -149,7 +149,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L003",
@@ -163,7 +163,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L004",
@@ -177,7 +177,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L005",
@@ -192,7 +192,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L006",
@@ -206,7 +206,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L007",
@@ -220,7 +220,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L008",
@@ -234,7 +234,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L009",
@@ -248,7 +248,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S03-L010",
@@ -262,7 +262,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S04-L001",
@@ -276,7 +276,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S04-L002",
@@ -290,7 +290,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S04-L003",
@@ -304,7 +304,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S04-L004",
@@ -318,7 +318,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S04-L005",
@@ -332,7 +332,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L001",
@@ -347,7 +347,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L002",
@@ -361,7 +361,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L003",
@@ -375,7 +375,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L004",
@@ -389,7 +389,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L005",
@@ -403,7 +403,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L006",
@@ -417,7 +417,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L007",
@@ -431,7 +431,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L008",
@@ -445,7 +445,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L009",
@@ -461,7 +461,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L010",
@@ -475,7 +475,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S05-L011",
@@ -489,7 +489,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S06-L001",
@@ -504,7 +504,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S06-L002",
@@ -519,7 +519,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S06-L003",
@@ -533,7 +533,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S06-L004",
@@ -548,7 +548,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S06-L005",
@@ -562,7 +562,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S07-L001",
@@ -576,7 +576,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S07-L002",
@@ -590,7 +590,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S07-L003",
@@ -604,7 +604,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S07-L004",
@@ -618,7 +618,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S07-L005",
@@ -632,7 +632,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L001",
@@ -646,7 +646,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L002",
@@ -660,7 +660,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L003",
@@ -674,7 +674,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L004",
@@ -688,7 +688,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L005",
@@ -703,7 +703,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L006",
@@ -718,7 +718,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L007",
@@ -732,7 +732,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L008",
@@ -746,7 +746,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L009",
@@ -760,7 +760,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing",
+      "status": "v6_audio_timing_pending",
       "pause_after": "short pause"
     },
     {
@@ -775,7 +775,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L011",
@@ -789,7 +789,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L012",
@@ -803,7 +803,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L013",
@@ -817,7 +817,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L014",
@@ -831,7 +831,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L015",
@@ -845,7 +845,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L016",
@@ -859,7 +859,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L017",
@@ -873,7 +873,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L018",
@@ -887,7 +887,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L019",
@@ -901,7 +901,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L020",
@@ -915,7 +915,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L021",
@@ -929,7 +929,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L022",
@@ -943,7 +943,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L023",
@@ -957,7 +957,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S08-L024",
@@ -971,7 +971,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S09-L001",
@@ -985,7 +985,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S09-L002",
@@ -999,7 +999,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S09-L003",
@@ -1013,7 +1013,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S09-L004",
@@ -1027,7 +1027,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S09-L005",
@@ -1041,7 +1041,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S09-L006",
@@ -1055,7 +1055,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S09-L007",
@@ -1069,7 +1069,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S10-L001",
@@ -1084,7 +1084,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S10-L002",
@@ -1098,7 +1098,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S10-L003",
@@ -1113,7 +1113,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S10-L004",
@@ -1127,7 +1127,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S11-L001",
@@ -1141,7 +1141,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S11-L002",
@@ -1155,7 +1155,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S11-L003",
@@ -1169,7 +1169,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S11-L004",
@@ -1183,7 +1183,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing",
+      "status": "v6_audio_timing_pending",
       "pause_after": "breath"
     },
     {
@@ -1198,7 +1198,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S11-L006",
@@ -1212,7 +1212,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S11-L007",
@@ -1226,7 +1226,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S11-L008",
@@ -1240,7 +1240,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S11-L009",
@@ -1254,7 +1254,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L001",
@@ -1268,7 +1268,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L002",
@@ -1282,7 +1282,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L003",
@@ -1296,7 +1296,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L004",
@@ -1310,7 +1310,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L005",
@@ -1324,7 +1324,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L006",
@@ -1338,7 +1338,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L007",
@@ -1352,7 +1352,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L008",
@@ -1366,7 +1366,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L009",
@@ -1380,7 +1380,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S12-L010",
@@ -1394,7 +1394,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L001",
@@ -1408,7 +1408,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L002",
@@ -1422,7 +1422,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L003",
@@ -1436,7 +1436,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L004",
@@ -1451,7 +1451,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L005",
@@ -1465,7 +1465,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L006",
@@ -1479,7 +1479,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L007",
@@ -1493,7 +1493,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L008",
@@ -1508,7 +1508,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L009",
@@ -1522,7 +1522,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L010",
@@ -1536,7 +1536,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L011",
@@ -1550,7 +1550,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L012",
@@ -1564,7 +1564,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L013",
@@ -1578,7 +1578,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S13-L014",
@@ -1592,7 +1592,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L001",
@@ -1607,7 +1607,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L002",
@@ -1621,7 +1621,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L003",
@@ -1635,7 +1635,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L004",
@@ -1649,7 +1649,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L005",
@@ -1663,7 +1663,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L006",
@@ -1677,7 +1677,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L007",
@@ -1692,7 +1692,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L008",
@@ -1706,7 +1706,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L009",
@@ -1720,7 +1720,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L010",
@@ -1734,7 +1734,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L011",
@@ -1748,7 +1748,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L012",
@@ -1762,7 +1762,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L013",
@@ -1776,7 +1776,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S14-L014",
@@ -1790,7 +1790,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L001",
@@ -1804,7 +1804,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing",
+      "status": "v6_audio_timing_pending",
       "pause_after": "short pause"
     },
     {
@@ -1819,7 +1819,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L003",
@@ -1833,7 +1833,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L004",
@@ -1847,7 +1847,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L005",
@@ -1862,7 +1862,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L006",
@@ -1877,7 +1877,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L007",
@@ -1891,7 +1891,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L008",
@@ -1905,7 +1905,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L009",
@@ -1919,7 +1919,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L010",
@@ -1933,7 +1933,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L011",
@@ -1948,7 +1948,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L012",
@@ -1962,7 +1962,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L013",
@@ -1976,7 +1976,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L014",
@@ -1990,7 +1990,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L015",
@@ -2004,7 +2004,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L016",
@@ -2018,7 +2018,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L017",
@@ -2033,7 +2033,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L018",
@@ -2047,7 +2047,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L019",
@@ -2062,7 +2062,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L020",
@@ -2077,7 +2077,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L021",
@@ -2092,7 +2092,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L022",
@@ -2106,7 +2106,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S15-L023",
@@ -2120,7 +2120,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L001",
@@ -2134,7 +2134,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L002",
@@ -2148,7 +2148,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L003",
@@ -2163,7 +2163,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L004",
@@ -2177,7 +2177,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L005",
@@ -2191,7 +2191,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L006",
@@ -2206,7 +2206,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L007",
@@ -2221,7 +2221,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L008",
@@ -2235,7 +2235,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L009",
@@ -2249,7 +2249,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L010",
@@ -2263,7 +2263,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     },
     {
       "id": "S16-L011",
@@ -2277,7 +2277,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing",
+      "status": "v6_audio_timing_pending",
       "pause_after": "short pause"
     },
     {
@@ -2293,7 +2293,7 @@
       "chosen_shot_intervals": [],
       "audio_path": null,
       "measured_duration_seconds": null,
-      "status": "draft_script_requires_owner_review_and_timing"
+      "status": "v6_audio_timing_pending"
     }
   ]
 }

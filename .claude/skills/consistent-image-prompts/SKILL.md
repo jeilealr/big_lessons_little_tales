@@ -108,6 +108,19 @@ without the `_CC_` segment while the flag is on.
    comparison sentence such as "Milo's whole body is about as tall as Leo's mane is wide") and
    `anchor_record`, the approved frame the numbers were measured on. Use the four framings of
    CR-15: `dialogue_close_up`, `close_two_shot`, `scene_wide`, `empty_plate`.
+   - Every scene image with visible characters against a sharp or recognizable environment must
+     attach that setup's approved `anchor_record` with role `size_anchor`, on **both start and end
+     frames**. The anchor must use the same camera/setup and show every visible character whose scale
+     it locks. A self-reference, different setup, blurred portrait, or frame already known to have a
+     scale defect is invalid. If no valid anchor exists, stop and create/review one before dependent
+     frames.
+   - Keep the anchor in the actual attachment list after applying the generator's image-reference
+     limit. Drop optional staging/pose references first; never silently drop the anchor. For end-frame
+     edits, retain the edit base first and include the same setup anchor as another reference.
+   - Before staging a result, measure each visible character's bounding box on the review grid and
+     compare it with the setup's frame-fraction target and approved anchor. Reject any material scale
+     or Leo:Milo ratio mismatch. Record the measured fractions and comparison in the review note;
+     prompt numbers alone do not pass this gate.
 6. Make the expression set before close-ups: one studio head study per needed emotion, each an
    edit of the approved closed-mouth portrait (only brows, eyelids, gaze and mouth change). Approve
    the single open-mouth study `*_OPEN` per speaking character too (`characters.<id>.mouth`): it is
@@ -137,6 +150,8 @@ without the `_CC_` segment while the flag is on.
 5. Positive wording only: fast video mode has no negative pass, and image models follow positive
    specifics better. Exclusions live in `negative_prompt` as review criteria.
 6. Sizes are numbers plus a comparison and come from the setup; never estimate them per record.
+   Lint requires the setup anchor on every eligible scene frame; size text without an attached
+   anchor is incomplete.
 7. `python3 production/image_prompts.py build && python3 production/image_prompts.py lint`
    must end with **0 errors**. Then `md` refreshes `prompts/*.md`; `show <record>` prints one.
 8. **Dialogue close-ups need a separate open-mouth calibration image (CR-19).** Every
@@ -161,15 +176,27 @@ without the `_CC_` segment while the flag is on.
   do not leave generation or edit prompts undocumented. Changes to the intended image prompt
   itself go into the bible or record template first, then `build` and `lint`.
 - Built-in `image_gen` saves generated files under `$CODEX_HOME/generated_images/`; copy the
-  selected output into the record's exact `target` under this story's folder. Preserve the raw
-  generated source under that target directory's `.review/` folder when normalization is needed.
+  selected output as one candidate in the record's `.review/` folder. Copy it to the manifest
+  `target` only after visual review passes; `approve` checks that target and reviewed candidate
+  have the same SHA-256. Preserve a materially different raw source only when needed for review.
   Record the tool, model/version when exposed, exact prompt(s), ordered reference paths and hashes,
   output hash, normalization and review note. Never leave a project-referenced image only in
   the generated-images cache.
+- Keep one review PNG per record: the latest candidate. Do not leave a visually redundant
+  `_source.png` beside its `_candidate.png`; record source path/hash and edit history in the
+  Markdown sidecar. Retain a separate source image only when it materially differs and is needed
+  for review, or when the owner asks for side-by-side comparison.
 - `character/gemini_image.py gen --story <slug>` is the optional API workflow; it refuses to run
   while lint has errors. Gemini candidates and accepts stay within the selected story's target
   folders and manifest.
 - Never pass a rejected or unreviewed image as a reference.
+- Before generating a scene image, run `python3 production/image_handoff.py --story <slug> check <record>`.
+  The command verifies approved reference files, their hashes, the locked plate, and the setup's
+  approved size anchor. Generate the setup's anchor first; dependent frames wait for its approval.
+  If the first scene frames show only one character and the planned anchor shows both, list those
+  earlier frames under `setups.<id>.bootstrap_records`. They use numeric size targets and visual
+  review without the future anchor; after approval, create the shared-cast anchor. Never attach
+  a future or self-referential scene frame as a size reference. Lint rejects reference cycles.
 - One change per edit. To change an expression or a pose, edit the approved same-setup frame;
   do not regenerate the character.
 - If the tool cannot keep the plate, use a focused edit or a reviewed isolated layer on the
@@ -193,6 +220,31 @@ delivery size:
 4. **Pair:** the end frame equals the start except for the stated change.
 5. **World state and counts:** props, damage, contacts; exactly the counted characters; two
    eyes and two brows each; one tail each; no text.
+6. **Ground contact and support:** identify the actual walkable surface in the locked plate before
+   placing a character. Every planted foot must meet that surface at the correct depth and baseline;
+   use a shadow and occlusion that agree with the plate. Do not place feet on water, flower heads,
+   bushes, or other decorative foliage unless the action explicitly shows climbing or perching on a
+   stable surface. For sitting, lying, climbing, jumping, or touching a prop, verify the stated body
+   or paw contact is physically supported. Reject floating, sinking, or vegetation-top placement.
+
+**Scale gate:** for sharp-background scene frames, measure every visible character's full silhouette
+on the grid and compare it with the setup's size fractions and attached same-setup anchor. Shared
+frames must preserve the measured Leo:Milo ratio. A mismatch fails review and must be corrected
+before staging or use as a reference.
+
+**Ground-contact gate:** before staging a scene image, compare each visible foot/paw contact with the
+locked plate and the frame's walkable-surface map. The support surface must be plausible and
+continuous at that depth. Verify contact shadows and occlusion; reject a character standing on water,
+the top of a bush or flower, or any surface not explicitly established as walkable. Record the
+surface and normalized contact point in the review note.
+
+For a sharp scene frame, save the measurements in `result.review_checks` before approval:
+`identity_match`, `plate_match`, `pair_match` as true after visual inspection;
+`measured_size.<character>` with the applicable `height`, `head`, `mane` or `face` frame fractions
+from `setups.<id>.numeric_size_targets`; and `ground_contact.<character>` with a named `surface`
+and normalized `x`,`y` support point. `image_handoff.py check <record> --for-approval` checks
+these fields and the candidate/target hash; `image_prompts.py approve` enforces the same gate.
+Numbers and a passed script check do not replace visual review of anatomy, occlusion and support.
 
 Record the result in the manifest (tool, model, the references actually sent with their
 hashes, the prompt actually sent, output hash, review note), and if an identity, plate, size or prop state changed
@@ -222,6 +274,11 @@ changing or replacing the approved file requires review and a new approval.
   canonical, expression and reference set against the approved canonical before building
   keyframes; stop and reconcile mismatched assets first.
 - A wide start with a close-up end becomes a zoom in video; keep one framing per shot.
+- Numeric size instructions without a valid same-setup reference did not hold character scale: some
+  anchors were self-referential, oversized, or showed only one character, and no post-generation
+  measurement blocked the result. Require the approved size anchor on every sharp-background start
+  and end frame, preserve it under attachment limits, and measure generated silhouettes before
+  staging. A missing anchor or failed measurement is a hard stop.
 - An end frame's start image does not replace its locked location plate. Keep the start first
   as `edit_base`, then attach the same locked plate as `locked_plate` on every frame, including
   end frames. The pond sequence drifted when end records referenced only their composite start;

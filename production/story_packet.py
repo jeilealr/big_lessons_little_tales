@@ -287,7 +287,8 @@ def scenes(by):
             if ps and which == "start" and getattr(S, "PROP_REF", None):
                 refs.append(ref(S.PROP_REF, "prop", by))
             anchor = st.get("anchor_record")
-            if which == "start" and anchor and anchor != rid and anchor in by and set(by[anchor]["counts"]) <= set(cast):
+            if cast and not st.get("background_treatment") and st.get("framing") in ("scene_wide", "close_two_shot") \
+                    and anchor and anchor != rid and anchor in by:
                 refs.append(ref(anchor, "size_anchor", by))
             parts = [f"Create one 1920x1080 16:9 still image: the {which} frame of shot {sid}, {st['label']}."]
             if which == "end":

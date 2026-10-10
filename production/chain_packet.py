@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Write a chained story's packet (CR-21) from its source file and an earlier version.
 
-    python3 production/chain_packet.py stories/lion_and_mouse_v6/chain_source.py
-    python3 production/image_prompts.py --story lion_and_mouse_v6 build && ... lint && ... md
-    python3 production/chain_plan.py --story lion_and_mouse_v6 --audio-story lion_and_mouse_v5 apply
+    python3 production/chain_packet.py stories/<new-inherited-story>/chain_source.py
+    python3 production/image_prompts.py --story <new-inherited-story> build
 
-The source (see stories/lion_and_mouse_v6/chain_source.py) names the BASE story whose bible and
+The source names the BASE story whose bible and
 accepted images are reused, the NEW_IMAGES the chain still needs (boundary frames, open-mouth
 frames, entrances, empty views) and the PIECES in film order. This writes stories/<slug>/:
 visual_bible.json (the base bible with `chained_coverage` on), prompt_manifest.json (the base
@@ -19,7 +18,8 @@ variant verbatim, so its renders can be reused (lint checks endpoints, prompt an
 pieces get new video prompts that describe only what is in frame (the v5 scene 15 lesson: in fast
 mode a named absent object is drawn in).
 
-It rebuilds the structural packet and generated docs. Unchanged image records retain their
+It rebuilds the structural packet and generated docs for an explicitly inherited story. It must
+not be run for an independent asset revision such as Lion and Mouse v6. Unchanged image records retain their
 review/production state; a changed record with generated state requires explicit `--invalidate
 <image-id>` and carries its old record forward under `superseded`. Once image review begins, edit
 source templates and packet records carefully and inspect the complete diff before generation.
@@ -161,6 +161,10 @@ def new_image(spec, images, b):
         counts = {k: v for k, v in counts.items() if k not in CHARS} | {c: 1 for c in spec["chars"]}
     vis = [c for c in CHARS if counts.get(c)]
     refs = [ref(rid, role, images) for rid, role in spec["refs"]]
+    anchor = setup.get("anchor_record")
+    if vis and not setup.get("background_treatment") and setup.get("framing") in ("scene_wide", "close_two_shot") \
+            and anchor and anchor != spec["id"] and not any(r.get("id") == anchor and r.get("role") == "size_anchor" for r in refs):
+        refs.append(ref(anchor, "size_anchor", images))
     parts = [f"Create one 1920x1080 16:9 still image: {spec['what']}, {setup['label']}.", "{{refs}}"]
     if refs and refs[0]["role"] == "edit_base":
         parts.append("{{block:edit_open_mouth}}" if spec.get("mouth") else "{{block:edit_chain_frame}}")
@@ -267,6 +271,16 @@ def piece(p, order, prev, images, b):
 
 
 def main():
+    existing_bible = D / "visual_bible.json"
+    if existing_bible.is_file():
+        current = json.loads(existing_bible.read_text())
+        if current.get("asset_revision_policy") == "v6_native_assets":
+            raise SystemExit(
+                f"{S.SLUG} now uses its own approved character and plate assets. "
+                "chain_packet.py still copies the older story's image records and would overwrite "
+                "the current v6 visual bible. Edit the v6 bible/manifest directly; use "
+                "image_prompts.py build, lint, and md after a prompt change."
+            )
     b = bible()
     base_files = resolve_base_files()
     # Resolve records first, then copy all existing referenced v5 assets into the v6 tree.

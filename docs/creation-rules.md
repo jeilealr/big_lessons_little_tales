@@ -395,55 +395,19 @@ to generate, use the built-in OpenAI `image_gen` tool by default; Gemini through
     in the manifest stores its prompt, references, model and review note, and
     the replaced result stays under `superseded`.
 
-## CR-14. Character size guide and expression close-ups (owner, 2026-10-02)
+## CR-14. Character scale and expression close-ups
 
-**Relative size.** The story bible fixes Milo's standing height at one third of
-Leo's. The owner chose `s14_opening_start_r02` and `s14_milo_clear_*_r02` as
-the reference look. Measured on them (fractions of frame height, 16:9):
+Use each story version's own approved canonicals, expression studies, location plates and setup
+anchors. Never borrow an earlier version's image to define current identity or scale. Record
+standing-equivalent cast ratios at the same depth, then record apparent frame fractions for each
+setup and depth plane. A seated or lying pose changes silhouette height while head, mane and limb
+anatomy stays fixed. For Lion and Mouse v6 the current values are in its `visual_bible.json`
+(CR-28); the former experimental measurements are historical and are not active rules.
 
-| What | Measured | Use as |
-|---|---|---|
-| Milo, ear tips to feet | 0.34–0.36 (ears y≈0.48, feet y≈0.83) | Milo in the measured S14 setup and matching closer/solo shots |
-| Leo's mane, top to bottom | ≈0.40 | Milo's whole body ≈ Leo's mane diameter |
-| Milo's head, ear tips to chin | ≈0.14 | Milo's head ≈ Leo's face from brow to chin, a little smaller |
-| Leo lying or crouched, mane top to paws | ≈0.50–0.52 | |
-
-- Milo alone in the measured closer/solo wide or medium setup keeps the size
-  he would have if Leo stood in the same place: about 0.30–0.36 of the frame.
-  Other depth planes use their own approved setup anchor (CR-16); for example,
-  S05's small same-depth Milo is about 0.18 of frame height. Never enlarge
-  him solely because Leo is absent. (s08 and s13 r02 had Milo at 0.6–0.75
-  of the frame, which the owner rejected.)
-- *Which number applies (clarified 2026-10-02):* the table and the 0.30–0.36
-  range describe the S14 trap-path setup only. The current rule is CR-16:
-  every setup uses its own approved anchor, and no frame fraction or
-  Leo-to-Milo ratio is carried from one setup to another. The two owner-chosen
-  anchors differ: at the great tree (S05) Leo's mane is also about 0.39 of the
-  frame high but Milo is about 0.18, half the mane and one third of Leo's
-  standing-equivalent height (CR-02); in the S14 look Milo is about the mane's
-  height. Which ratio the trap scenes should keep is an open owner decision.
-  The draft `geometry_profiles` numbers of 2026-09-30 (e.g. `trap_pair` Milo 0.18) were
-  replaced on 2026-10-02 by the measured `setups` in `visual_bible.json` (CR-18).
-- Write the size into the prompt as frame fractions plus a comparison (CR-13
-  rule 4), and pass one of the reference frames above as
-  `camera_and_character_scale_reference`.
-
-**Dialogue and expression close-ups.** When a character speaks or reacts
-alone, use the `s15_leo_reflects` format: head and upper chest fill the
-centre of the 16:9 frame (ear tips or mane top near y=0.05, chin near
-y=0.70), facing the camera, in front of a strongly blurred version of the
-scene's plate. The face comes from the expression references:
-
-- `character/characters/lion_and_mouse_v4/Milo/expressions/` and `.../Leo/v4/expressions/`
-  each hold 11 head studies (manifest group `expressions`, records
-  `M_EXPR_*` / `L_EXPR_*`). They were made from the V4 closed-mouth
-  portrait, taking only the expression from the V3 set.
-- Pass the matching `*_EXPR_*` record as `face_and_expression_reference`
-  (close-ups) or `expression_reference_copy_brows_eyes_mouth_only` (wide
-  shots). An expression missing from the set is added as a new record first
-  (about $0.03 on Lite), never improvised in a scene.
-- Every face keeps exactly two brows and two eyes. (`s07_leo_annoyed_end_r01`
-  had a second brow line painted over the first.)
+Dialogue close-ups follow their own setup crop: a single sharp face and upper chest against the
+same location, strongly blurred. Use the approved current-version expression image for brows,
+eyelids, gaze and mouth only; the canonical remains the identity authority. Review the face and
+background beside their approved sources before accepting the frame.
 
 ## CR-15. Which shots are face close-ups (dialogue format) and which are scene shots
 
@@ -453,19 +417,15 @@ Decide it before writing a prompt; it controls everything else.
 | `framing` | When | Look | Size rule |
 |---|---|---|---|
 | `dialogue_close_up` | One character speaks, listens or reacts alone; the line is about feelings | Head and upper chest centred in 16:9 (ear tips or mane top y≈0.05, chin y≈0.70), facing the camera, the scene's plate strongly blurred behind, nothing in front (except the net when the character is inside it) | Close-up; no size relation needed |
-| `close_two_shot` | A contact action needs both characters readable (nose contact, gnawing) | Both characters, plate softly blurred | Use one shared crop of the approved same-depth pair; preserve the measured actor ratio for that setup |
+| `close_two_shot` | A contact action needs both characters readable (nose contact, gnawing) | Both characters on the setup's locked plate; blur only if that setup specifies it | Preserve each actor's measured setup size and depth |
 | `scene_wide` | Arrivals, exits, travel, actions, any shot that shows where we are | Whole bodies on the sharp plate, fixed normal-height camera | Use the approved setup and depth anchor in CR-16; the CR-14 0.30–0.36 range applies to its measured solo/closer setup |
 | `empty_plate` | Establishing or time-passing shots | Plate only | n/a |
 
 **Recipe for a `dialogue_close_up` (what fixed s07 and S15):**
-1. References, in this order: the record's previous state (for an end frame,
-   the accepted start = `approved_start_exact_edit_base`), the canonical
-   (`identity_root`), an approved close-up of the same character as
-   `close_up_format_reference_framing_only_ignore_its_background`
-   (`s15_leo_reflects_end` for Leo, `s15_milo_modest_start` r04 for Milo),
-   and one expression from `character/characters/lion_and_mouse_v4/<Name>/expressions/`
-   as `face_and_expression_reference`. Drop full-scene and portrait
-   references that disagree with this framing.
+1. References, in order: the approved current-version edit base where applicable, the locked
+   current-version plate, the current-version canonical (`identity_root`), and one approved
+   current-version expression study. A framing reference may be attached only when it shares
+   the intended crop and cannot replace the canonical or plate.
 
 2. The prompt names the location plate and asks for it "very strongly
    blurred (like a portrait lens at f/1.4)". Without that phrase Nano Banana 2
@@ -487,24 +447,10 @@ acceptance; changes in pose may change the silhouette but must keep the head,
 mane, torso and paw size consistent at the same depth. A close-up with a blurred
 plate is a deliberate editorial cut and uses its separate close-up framing.
 
-**Great-tree dusk wide-shot anchor:** use `s05_02_paw_contact_end_r01.png` for
-Leo's anatomical and mane scale and Milo's small same-depth scale. S06 barrier
-and S08 kindness are on the same plate and ground plane. Leo's mane must not
-shrink between them; use the S05 mane diameter and body proportions as the
-visual ruler while changing pose. Keep Milo at the same apparent height unless
-the shot explicitly moves him in depth. The smaller Leo in the first S06 and
-S08 kindness images was repaired on 2026-10-02 (S06 recomposed at the S05
-scale; all four S06/S08 kindness endpoints now use that composite; see
-`stories/lion_and_mouse_v4/GENERATION_PROGRESS.md`). Compare both start and
-end of each pair.
-
-**Trap-path anchor:** use one owner-approved S11 or S14 wide frame to measure
-each actor on its stated depth plane. The owner chose `s14_opening_start_r02`
-and `s14_milo_clear_*_r02` as the trap-path look (CR-14). If S13 Milo walks
-toward the camera, save start and end positions and scale progression; if he
-only moves sideways, keep
-his ear-to-foot height constant. Preserve Leo's mane and muzzle dimensions
-through S11 to S14 unless a shot changes camera or depth.
+For an independent version, every setup anchor must be an approved image from that same version.
+Lion and Mouse v6 has no approved sharp-background anchor yet; generate and approve the anchor
+named by each setup before dependent scene frames. Its owner-selected numeric targets remain in
+`stories/lion_and_mouse_v6/visual_bible.json`. Compare both start and end of each pair.
 
 When an actor moves forward or backward, annotate the initial and final depth
 and resulting size in the manifest. A scale jump with no visible depth move or
@@ -793,3 +739,53 @@ pose still. If two visible characters speak in one piece, split the coverage int
 speaker-specific shots (or use a reviewed multi-speaker compositor); never apply one
 character's timing to another character. A non-verbal vocalization is lip-synced only
 when its audio is separately assigned to that character.
+
+## CR-25. Scene scale requires an attached anchor and measured review (owner, 2026-10-10)
+
+For every scene frame with visible characters against a sharp or recognizable background,
+attach the setup's approved same-camera `anchor_record` with role `size_anchor` to both
+start and end frames. The anchor must show each character whose scale it is meant to lock;
+it cannot be the frame being generated, a blurred portrait, or a known scale-defective frame.
+When a setup begins with single-character frames before its first shared-cast anchor, list those
+specific earlier frames as `bootstrap_records`. Measure them against the setup's numeric targets
+and approve them before making the shared-cast anchor; do not attach the future anchor to them.
+Reference cycles and self-anchors fail the generation-order check.
+Keep the anchor in the references actually sent after provider limits are applied, dropping
+optional staging references first. Before staging, measure each character's silhouette against
+the setup's frame-fraction target and anchor, and compare the shared-cast ratio. Missing anchors
+or material scale mismatches block staging and downstream use. Numeric prompt instructions alone
+do not count as a scale check.
+
+## CR-26. Lion and Mouse v6 revised scale and trapped-net composition (owner, 2026-10-10)
+
+The v6 `visual_bible.json` is the source of truth for its current numeric size targets (CR-28).
+Close-ups retain their own crop. Measure against the approved v6 setup anchor once it exists.
+
+For trapped-Leo close-ups, the net must conform to Leo's mane, head and shoulders and read as
+supported by his body, not as a flat web between Leo and the viewer. Leave a clear opening over
+both eyes, nose and muzzle. Remove the central vertical strand that crossed the forehead and nose;
+do not leave a loose end. Every remaining strand must join the continuous mesh at a knot or crossing.
+
+In `.review`, keep one PNG candidate per record. Preserve prompt and source hashes in the Markdown
+sidecar when the redundant source PNG is removed; do not leave visually redundant source/candidate
+copies in the review folder.
+
+## CR-27. Walkable ground and supported character contact (owner, 2026-10-10)
+
+Before generating or reviewing a scene frame, identify the walkable surface and ground baseline at
+that character's position and depth from the locked plate. Record the support surface and normalized
+foot/contact point. A character's planted feet or paws must meet continuous visible ground with
+matching shadow and occlusion. Do not stand a character on water, flowers, bush canopies, or other
+decorative foliage unless the story explicitly establishes stable footing or perching there. For
+sitting, lying, climbing, jumping, or prop contact, verify the stated contact is physically supported.
+Reject floating, sinking, or implausible plant-top placements before staging.
+
+## CR-28. Lion and Mouse v6 scale reset (owner, 2026-10-10)
+
+The owner reset Milo's scene-wide size to 0.21 of the frame height from ear tips to planted feet
+in wide and two-character shots. Apply this target
+to all scene-wide setups, with pose-height adjusted for sitting while preserving head size. Keep
+portrait close-ups at their established framing. In start/end pairs, hold Leo's size and position
+steady unless the prompt explicitly moves him, and keep Milo on the same walkable depth plane unless
+the story action changes depth. This owner decision supersedes the half-size target recorded in
+CR-26; update the bible, rendered prompts and candidates together.

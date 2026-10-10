@@ -20,8 +20,8 @@ record or accepting an image.
 | Step | Command (from the repo root) |
 |---|---|
 | How many pieces each line needs | `python3 production/chain_plan.py --story <slug> --audio-story <audio slug> suggest` |
-| Build the packet from its source | `python3 production/chain_packet.py stories/<slug>/chain_source.py` |
-| Carry base assets into the new version | Included in `chain_packet.py`: resolved reused images get local versioned copies; accepted expression studies appear in `prompts/expressions.md` |
+| Build an explicitly inherited packet | `python3 production/chain_packet.py stories/<slug>/chain_source.py` (only before that story adopts independent assets) |
+| Check the current story's image handoff | `python3 production/image_handoff.py --story <slug> audit`; `check <image-id>` before generating |
 | Render prompts, check them | `python3 production/image_prompts.py --story <slug> build`, then `lint` (0 errors), then `md` |
 | Time the pieces, set frame counts, timing sheet | `python3 production/chain_plan.py --story <slug> --audio-story <audio slug> apply` |
 | Join test without clips (CPU) | `lumi/run_in_container.sh python production/chain_preview.py --story <slug> --stills [--until S]` |
@@ -42,8 +42,9 @@ join test, never automatically after a render (CR-01).
    `suggest`: every line's span (the line plus the pause after it; the last line also owns the 1 s
    scene tail) and how many pieces it needs alone. A piece covers **2.45 to 6.33 s** (49 to 81
    frames at 16 fps, retimed 0.80 to 1.25).
-2. **Write `chain_source.py`** (copy `stories/lion_and_mouse_v6/chain_source.py`): `BASE` (the story
-   whose bible and images are reused), `NEW_IMAGES`, `PIECES` in film order. Each piece: id
+2. **Write the shot plan in the current story's manifest.** `chain_packet.py` is only for a new,
+   explicitly inherited packet. An independent story such as Lion and Mouse v6 owns its bible,
+   images, narration and render plan; never rebuild it from an older version. Each piece: id
    (`sNN_<name>`), scene, setup, start and end image ids, `lines`, one action sentence, mode
    (`closed`, `mouth`, `ambient`), and either `join="chain"` (default) or a cut.
 3. **Fit the lines.** Consecutive pieces may share a line (its span is split evenly). If a piece
@@ -73,9 +74,9 @@ join test, never automatically after a render (CR-01).
    Forced-align final audio, then run the timed mouth compositor on owner-selected takes.
    `edit_manifest.py` requires a current hash-bound result for every `mouth` variant. Review
    speaker timing and joins. See `docs/lip-sync.md` for the single-shape approximation.
-8. **Reuse.** If a piece's endpoints are exactly an earlier variant's and its length fits 81 frames
-   at 0.80 to 1.25 speed (4.05 to 6.33 s), set `reuse="<variant id>"`: its prompt is copied verbatim
-   and it is not re-rendered. Do not reuse takes the render review rejected.
+8. **Reuse only within the same approved asset version.** A reuse entry imports the earlier
+   render and its character design. For Lion and Mouse v6, every piece is a new v6 render;
+   no older-version `reuse`, `carried_from`, or base-story path is allowed.
 9. **Video prompts describe only what is in frame** (fast mode, CFG 1: a named absent object is drawn
    in; v5 scene 15). In dialogue close-ups, use `{{portrait:<char>}}` and lock the approved crop and
    visible silhouette from the endpoint frames. Do not include full-body identity text or mention body
@@ -91,14 +92,18 @@ join test, never automatically after a render (CR-01).
 - A **boundary image** serves two clips: review it against the earlier piece's start and the later
   piece's end (the pose must be reachable by one small action from both), plus the usual gate
   (canonical, size anchor, plate) of `consistent-image-prompts` D.
-- New images are named `sNN_KK_<name>_r01.png`, `KK` = first use in the scene (lint checks it);
-  reused images keep their names.
+- For every sharp-background scene endpoint with visible characters, `size_anchor` is mandatory on
+  both start and end. Keep the same-setup approved anchor in the actual attachment list after any
+  provider reference limit; preserve the edit base first and drop optional staging references first.
+  Measure the generated character bounds and shared-cast ratio against the setup target and anchor
+  before staging. Missing anchor or failed size check means the endpoint is not ready for the chain.
+- New images are named `sNN_KK_<name>_rNN.png`, `KK` = first use in the scene (lint checks it).
 - An empty view that must keep a prop where a scene frame has it (the net in the branches) uses the
   role `empty_copy` on that frame, not `edit_base`.
 
 ## Before rendering
 
-- `export_runtime.py` skips reused pieces and refuses while any endpoint image is missing; use
+- `export_runtime.py` refuses while any endpoint image is missing; use
   `--scenes` for a pilot of scenes whose images exist.
 - Run `chain_preview.py --stills` first: pacing, cuts and the chain against the narration, minutes on
   a CPU.

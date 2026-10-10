@@ -1,13 +1,13 @@
 {
-  "revision": "v6-chain-2026-10-08",
+  "revision": "v6-native-r02-2026-10-10",
   "version": "lion_and_mouse_v6",
   "status": "single_source_of_truth_for_all_prompts",
   "keyframe_chrono_naming": true,
-  "how_to": "Chained story (CR-21), built by production/chain_packet.py from lion_and_mouse_v5. Every prompt in prompt_manifest.json is a template rendered from this file by production/image_prompts.py --story lion_and_mouse_v6; piece timing comes from production/chain_plan.py.",
+  "how_to": "Independent v6 image and video packet. Edit this bible and prompt_manifest.json directly; then run image_prompts.py build, lint and md. Use image_handoff.py for asset and scene checks. V6 audio and renders live under v6 paths.",
   "characters": {
     "milo": {
       "name": "Milo",
-      "canonical": "character/characters/lion_and_mouse_v6/Milo/canonical/full-body_milo_neutral_pose_r01.png",
+      "canonical": "character/characters/lion_and_mouse_v6/Milo/canonical/full-body_milo_neutral_pose_r02.png",
       "canonical_record": "MILO_CANON",
       "identity": "Milo is one slender young wool-felt mouse who walks upright on two legs. His body felt is warm taupe-brown (#8D624F, lighter on the crown #DBB09C) with looped bouclé texture and a soft halo of loose fibres on every outline. His round head is slightly wider at the cheeks, with a smooth felt crown and a fine dashed rust stitched seam from crown to nose. Two very large oval ears, each nearly as tall as the head is wide and tilted slightly outward, rise far above the crown: coral inner felt (#EF775F) inside a thick taupe-brown rim (#8F614E) with a rust stitched seam. Two short dark brown felt brows (#643426). Two large round glossy eyes, each about a fifth of the head width, centres under half a head width apart: dark brown irises (#723725), black pupils, one white catch-light at upper right, ivory sclera (#F4ECE8). A small rounded dark brown nose (#683629) under a soft peach bridge (#F9AC8C); two compact cream muzzle pads (#EFC5AD) with tiny brown dots; a wide mouth line; five long fine peach whiskers (#EEAE85) on each side. A narrow neck, slim torso and an elongated egg-shaped cream belly (#F8CEB4) with a centre seam, ending above the crotch, with a taupe-brown gap between two slim separated legs. Two slim arms with small curled paws; three rounded toes per foot. One long thin salmon tail (#BC735D), about half his height, attached at the lower back. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them, and the felt stays warm. His pose, facing and expression are the ones this prompt states.",
       "sheet": "a slender upright taupe-brown felt mouse with a smooth crown, huge coral-lined oval ears, two brown eyes, a small brown nose, cream muzzle and belly, slim limbs and one thin salmon tail",
@@ -105,7 +105,7 @@
     },
     "leo": {
       "name": "Leo",
-      "canonical": "character/characters/lion_and_mouse_v6/Leo/canonical/full-body_leo_neutral_pose_r01.png",
+      "canonical": "character/characters/lion_and_mouse_v6/Leo/canonical/full-body_leo_neutral_pose_r02.png",
       "canonical_record": "LEO_CANON",
       "identity": "Leo is one young, compact, sturdy wool-felt lion who walks on four legs. His body felt is warm ochre-orange (#DE7F35), lighter on the forehead (#F99A4A), with fine looped bouclé fibres and thin dashed golden stitching down the centre of the forehead and the front of each front leg. A huge round rust-red mane (#BE3006; lit lock tips vermilion #E14512, inner locks deep rust #A62503) of long tapered teardrop locks surrounds the face; it is about twice the face width and three quarters of his standing height across, and hangs into a pointed bib over a cream chest. The face is a broad rounded disc. Two round ochre ears with a lighter apricot rim and salmon inner felt (#CF7E64), each 0.4 of the face width, sit at its upper corners. Two thick dark brown felt brows (#7A2F15). Two large round glossy eyes, each one fifth of the face width, centres half a face width apart: russet-brown irises (#772E13), black pupils, one white catch-light at upper right, ivory sclera (#F3E4DA). A rounded peach nose pad (#F9905E) above a wide, rounded inverted-triangle dark brown nose (#693120). Two puffed cream muzzle pads (#F7D4BB) with four brown dots each, a gentle mouth line, a large rounded cream chin, and five fine pale cream whiskers on each side. Four large rounded light tan paws (#EDA36C) with four toes each. One ochre tail ending in a rust-red tuft. These intrinsic colours and this mid brightness stay identical in every image; scene light only tints and shades them, and the felt stays warm and saturated. His pose, facing and expression are the ones this prompt states.",
       "sheet": "a sturdy ochre-orange felt lion with a huge round rust-red mane, cream muzzle and chest, two brown eyes, a peach nose pad over a dark brown nose, four tan paws and one tail with a rust-red tuft",
@@ -196,22 +196,19 @@
     }
   },
   "cast_scale": {
-    "rule": "Milo standing = 0.55 of Leo's mane height (about 1:2.4 of Leo's estimated standing height); Milo's head with ears = about 0.4 of Leo's face height. A pose change never rescales a head, mane or limb.",
-    "decided": "owner, 2026-10-02",
-    "anchor_record": "s05_nose_aftermath_start",
-    "measured_on_anchor": "Milo 0.20 of the frame height, Leo's mane 0.36, Leo's face 0.24, Milo's head 0.10",
-    "setups_measured_before": {
-      "tree_dusk_wide": "Milo 0.18, mane 0.38 (0.47)",
-      "trap_wide": "Milo 0.35, mane 0.42 (0.85)",
-      "trap_bite": "Milo 0.76, Leo's face 0.50",
-      "tree_day_wide": "Milo sitting 0.13, mane 0.37"
-    }
+    "rule": "Milo's standing silhouette is 0.21 of frame height in the v6 wide and two-character setups at their documented depth planes, with head and ears about 0.10. At the same depth his standing height is about 0.55 of Leo's mane height and his head about 0.42 of Leo's face height. Keep each character's anatomical size fixed within a setup; any apparent-size change requires a documented depth or camera change. Seated poses preserve head size and have a shorter whole-body silhouette. Dialogue portraits retain their separate crop.",
+    "owner_decision": "2026-10-10: use the size selected from the prior s01_explores_end review image, not the earlier half-size experiment",
+    "milo_standing_frame_fraction": 0.21,
+    "milo_head_frame_fraction": 0.1,
+    "same_depth_milo_to_leo_mane": 0.55,
+    "same_depth_milo_head_to_leo_face": 0.42,
+    "anchor_status": "No approved sharp-background v6 size anchor remains. Approve one anchor per setup before generating dependent scene frames."
   },
   "locations": {
     "stream_afternoon": {
       "location": "stream_bank",
-      "plate": "character/locations/lion_and_mouse_v6/stream_bank/stream_afternoon_r01.png",
-      "description": "Sunny meadow bank: open grass lane in the foreground, a shallow stream crossing the middle from x=0.38 to the right edge with a small cascade, a hollow log on the right bank, big trunks at both upper corners, rolling hills on the horizon (y 0.22-0.30). Walkable band y=0.62-0.88.",
+      "plate": "character/locations/lion_and_mouse_v6/stream_bank/stream_afternoon_r02.png",
+      "description": "Sunny meadow bank: open grass lane in the foreground, a shallow stream crossing the middle from x=0.38 to the right edge with a small cascade, a hollow log on the right bank, big trunks at both upper corners, rolling hills on the horizon (y 0.22-0.30). Walkable band y=0.62-0.88. The clear walkable grass lane runs between foreground foliage and the farther berry bush; the berry bush at x=0.00-0.13 and the stream are not walkable.",
       "landmarks": [
         "left trunk x=0.00-0.10, y=0.00-0.40",
         "right trunk x=0.70-0.79, base y=0.33",
@@ -225,8 +222,8 @@
     },
     "stream_sunset": {
       "location": "stream_bank",
-      "plate": "character/locations/lion_and_mouse_v6/stream_bank/stream_sunset_r01.png",
-      "description": "The exact afternoon stream-bank geometry and camera in low sunset light; sun disc visible over the hills.",
+      "plate": "character/locations/lion_and_mouse_v6/stream_bank/stream_sunset_r02.png",
+      "description": "The exact afternoon stream-bank geometry and camera in low sunset light; sun disc visible over the hills. The open grass lane is the walkable surface; the stream and berry/flower foliage are not walkable.",
       "landmarks": [
         "sun disc (0.25,0.20) over the hills",
         "right trunk x=0.70-0.79, base y=0.33",
@@ -239,7 +236,7 @@
     },
     "fork_sunset": {
       "location": "fork",
-      "plate": "character/locations/lion_and_mouse_v6/fork/fork_sunset_r01.png",
+      "plate": "character/locations/lion_and_mouse_v6/fork/fork_sunset_r02.png",
       "description": "A dirt path from the bottom centre splits around a mossy boulder: safe left branch curves up-left to a sunlit meadow (x 0.25-0.32, y 0.47); shortcut branch goes right (x 0.70-0.85, y 0.47-0.55) into darker trees. Horizon y 0.30-0.33. Walkable band y=0.55-1.00.",
       "landmarks": [
         "sun disc (0.185,0.255) on the left",
@@ -253,7 +250,7 @@
     },
     "shortcut_dusk": {
       "location": "shortcut",
-      "plate": "character/locations/lion_and_mouse_v6/shortcut/shortcut_dusk_r01.png",
+      "plate": "character/locations/lion_and_mouse_v6/shortcut/shortcut_dusk_r02.png",
       "description": "Side view of a mossy forest lane at dusk; dirt running lane y 0.60-0.78 across the full width, foreground ferns and berries below y=0.75.",
       "landmarks": [
         "setting sun (0.215,0.30) between left trunks",
@@ -267,7 +264,7 @@
     },
     "tree_dusk": {
       "location": "great_tree",
-      "plate": "character/locations/lion_and_mouse_v6/great_tree/tree_dusk_r01.png",
+      "plate": "character/locations/lion_and_mouse_v6/great_tree/tree_dusk_r02.png",
       "description": "Leo's great tree: giant trunk centre-right with flared roots, canopy across the top, a stream at the far left, grass clearing y=0.60-0.72 before the trunk and a dirt path y=0.72-0.82; horizon hills y 0.37-0.42.",
       "landmarks": [
         "trunk x=0.58-0.87 at y=0.35; roots x=0.38-0.98, y=0.50-0.62",
@@ -282,7 +279,7 @@
     },
     "tree_day": {
       "location": "great_tree",
-      "plate": "character/locations/lion_and_mouse_v6/great_tree/tree_day_r01.png",
+      "plate": "character/locations/lion_and_mouse_v6/great_tree/tree_day_r02.png",
       "description": "The exact great-tree geometry and camera of the dusk plate in daylight, blue sky with white clouds upper left.",
       "landmarks": [
         "trunk x=0.58-0.87 at y=0.35",
@@ -296,7 +293,7 @@
     },
     "tree_sky": {
       "location": "great_tree",
-      "plate": "character/locations/lion_and_mouse_v6/great_tree/tree_sky_r01.png",
+      "plate": "character/locations/lion_and_mouse_v6/great_tree/tree_sky_r02.png",
       "description": "Upward cutaway: trunk rises diagonally from the bottom right, canopy fills the top right, dusk sky with first stars on the left, pine silhouettes along the bottom left.",
       "landmarks": [
         "trunk diagonal x=0.60-1.00, y=0.30-1.00",
@@ -310,7 +307,7 @@
     },
     "home_night": {
       "location": "milo_home",
-      "plate": "character/locations/lion_and_mouse_v6/milo_home/home_night_r01.png",
+      "plate": "character/locations/lion_and_mouse_v6/milo_home/home_night_r02.png",
       "description": "Low grassy bank with a round wooden door, lantern and rounded stones; small stream lower right; night sky and distant pines upper right. Ground patch before the door y=0.66-0.75.",
       "landmarks": [
         "round door centre (0.31,0.55), x=0.25-0.37, y=0.43-0.67",
@@ -324,7 +321,7 @@
     },
     "trap_morning": {
       "location": "trap_path",
-      "plate": "character/locations/lion_and_mouse_v6/trap_path/trap_morning_r01.png",
+      "plate": "character/locations/lion_and_mouse_v6/trap_path/trap_morning_r02.png",
       "description": "Straight forest path receding to a vanishing point near (0.42,0.28) between purple-grey rounded rocks, red/orange felt leaves along both sides, warm light bands across the path. Walkable path y=0.45-1.00; cast baseline y about 0.83.",
       "landmarks": [
         "left rock x=0.12-0.27, y=0.30-0.53",
@@ -339,7 +336,7 @@
     },
     "run_morning": {
       "location": "forest_run",
-      "plate": "character/locations/lion_and_mouse_v6/forest_run/run_morning_r01.png",
+      "plate": "character/locations/lion_and_mouse_v6/forest_run/run_morning_r02.png",
       "description": "Side-view forest lane: dirt travel lane y 0.62-0.80 crossing the frame, big root/log foreground lower left, mossy rocks centre-left, a long arching branch behind the lane.",
       "landmarks": [
         "left trunk x=0.00-0.22, y=0.00-0.40",
@@ -358,30 +355,52 @@
       "framing": "scene_wide",
       "label": "a wide shot of the stream bank in afternoon light",
       "camera": "Fixed normal-height wide camera on the stream bank, 16:9, exactly the framing of the locked plate.",
-      "anchor_record": "s01_explores_start",
+      "anchor_record": "s01_milo_at_edge",
       "size": {
-        "milo": "Milo standing measures 0.30 of the frame height from ear tips (y=0.55) to feet (y=0.85), his head about 0.10 of the frame height; sitting, he keeps exactly the same head size and measures about 0.24."
-      }
+        "milo": "Milo standing measures about 0.21 of the frame height from ear tips to feet; keep his head about 0.10 of the frame height. His feet meet the clear grass lane at y=0.84, around x=0.18 on the entry frame, between the foreground foliage and the farther berry bush; neither bush nor the stream is walkable. Sitting, keep the same head size and use a pose-height near 0.17."
+      },
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        }
+      },
+      "walkable_surface": "clear grass lane between front foliage and berry bush"
     },
     "stream_sunset_wide": {
       "location": "stream_sunset",
       "framing": "scene_wide",
       "label": "a wide shot of the stream bank at sunset",
       "camera": "Fixed normal-height wide camera on the stream bank, 16:9, exactly the framing of the locked plate.",
-      "anchor_record": "s02_stand_with_acorn_end",
+      "anchor_record": "s02_notice_start",
       "size": {
-        "milo": "Milo standing measures 0.31 of the frame height from ear tips (y=0.54) to feet (y=0.85), centred near x=0.55; sitting, he keeps exactly the same head size and measures about 0.24."
-      }
+        "milo": "Milo standing measures about 0.21 of the frame height from ear tips to feet, centred near x=0.55 on the clear grass lane; neither stream water nor decorative foliage is walkable. Sitting, keep the same head size and use a pose-height near 0.17."
+      },
+      "anchor_status": "owner_review_pending",
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        }
+      },
+      "walkable_surface": "clear grass lane"
     },
     "fork_wide": {
       "location": "fork_sunset",
       "framing": "scene_wide",
       "label": "a wide shot of the fork in the path at sunset",
       "camera": "Fixed normal-height wide camera at the fork, 16:9, exactly the framing of the locked plate.",
-      "anchor_record": "s03_two_paths_start",
+      "anchor_record": "s03_milo_at_fork_edge",
       "size": {
-        "milo": "Milo standing measures 0.31 of the frame height from ear tips (y=0.54) to feet (y=0.85), centred near x=0.51."
-      }
+        "milo": "Milo standing measures about 0.21 of the frame height from ear tips to feet, centred near x=0.51, with both feet planted on the visible dirt path, not on rocks or berry foliage."
+      },
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        }
+      },
+      "walkable_surface": "visible dirt path"
     },
     "fork_milo_closeup": {
       "location": "fork_sunset",
@@ -398,21 +417,43 @@
       "camera": "Fixed normal-height side camera on the shortcut, 16:9, exactly the framing of the locked plate; the running lane crosses the frame horizontally.",
       "anchor_record": "s04_shortcut_run_start",
       "size": {
-        "milo": "Milo running measures 0.30 of the frame height from ear tips (y=0.52) to feet on the lane (y=0.82), the same size along the whole lane."
-      }
+        "milo": "Milo running measures about 0.21 of the frame height from ear tips to planted foot and stays this size along this fixed-depth lane; every planted foot lands on the visible dirt path, not the verge or foliage."
+      },
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        }
+      },
+      "walkable_surface": "visible dirt path"
     },
     "tree_dusk_wide": {
       "location": "tree_dusk",
       "framing": "scene_wide",
       "label": "a wide shot of Leo's great tree at dusk",
       "camera": "Fixed normal-height wide camera at the great tree, 16:9, exactly the framing of the locked plate.",
-      "anchor_record": "s05_leo_sleeps_end",
+      "anchor_record": "s05_paw_contact_start",
       "size": {
         "leo": "Leo lying: his mane spans about x=0.375-0.70 and y=0.30-0.68 (0.38 of the frame height), his face about 0.24 of the frame height, his whole body x=0.36-0.91 with his paws on y=0.73.",
-        "milo": "Milo standing measures 0.21 of the frame height from ear tips (y=0.635) to feet (y=0.845), on the ground in front of Leo, nearer the camera."
+        "milo": "Milo standing measures about 0.21 of the frame height from ear tips to feet, on the clear path in front of Leo, nearer the camera; keep both feet on the path at y=0.80 and out of foreground rocks."
       },
-      "relation": "Milo's whole standing body is 0.55 of the height of Leo's mane, and his head with ears is about 0.4 of the height of Leo's face.",
-      "anchor_note": "Leo-only approved frame of this setup: it fixes the camera and Leo's size; Milo's size follows the story lineup (cast_scale), not an older frame."
+      "relation": "At equal depth Milo's 0.21 standing height is about 0.55 of Leo's 0.38 mane height; keep their documented depth planes and stable head/mane sizes.",
+      "anchor_note": "Owner-selected two-character setup image after the requested Milo reduction; current review candidate s05_paw_contact_end measures Milo at 0.105 of frame height. Keep this measurement for draft generation while awaiting owner review.",
+      "anchor_status": "owner_review_pending",
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        },
+        "leo": {
+          "mane": 0.38
+        }
+      },
+      "walkable_surface": "clear path in front of the tree",
+      "bootstrap_records": [
+        "s05_leo_sleeps_start",
+        "s05_leo_sleeps_end"
+      ]
     },
     "tree_dusk_contact": {
       "location": "tree_dusk",
@@ -422,9 +463,19 @@
       "anchor_record": "s05_nose_aftermath_start",
       "size": {
         "leo": "Leo lying keeps the wide-shot size: his mane spans about x=0.375-0.70 and y=0.30-0.68.",
-        "milo": "Milo standing at Leo's nose measures about 0.20 of the frame height from ear tips (y=0.56) to feet (y=0.76), centred near x=0.49."
+        "milo": "Milo standing at Leo's nose measures about 0.21 of the frame height from ear tips to feet, centred near x=0.49; his feet are planted on the path beside Leo's paw, not on roots or rocks."
       },
-      "relation": "Milo's whole standing body is 0.55 of the height of Leo's mane (this frame is the size lineup), and his head with ears is about 0.4 of the height of Leo's face."
+      "relation": "At equal depth Milo's whole standing body is about 0.55 of Leo's mane height and his head with ears about 0.42 of Leo's face height.",
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        },
+        "leo": {
+          "mane": 0.38
+        }
+      },
+      "walkable_surface": "path beside Leo’s paw"
     },
     "tree_dusk_leo_closeup": {
       "location": "tree_dusk",
@@ -455,21 +506,49 @@
       "camera": "Fixed normal-height wide camera at Milo's home, 16:9, exactly the framing of the locked plate.",
       "anchor_record": "s09_home_start",
       "size": {
-        "milo": "Milo standing at the open door measures about 0.30 of the frame height from ear tips (y=0.38) to feet (y=0.69), a little taller than the door."
-      }
+        "milo": "Milo standing at the open door measures about 0.21 of the frame height from ear tips to feet, with both feet planted on the clear doorway path surface."
+      },
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        }
+      },
+      "walkable_surface": "clear doorway path"
     },
     "trap_wide": {
       "location": "trap_morning",
       "framing": "scene_wide",
       "label": "a wide shot of the trap path in morning light",
       "camera": "Fixed normal-height wide camera on the trap path, 16:9, exactly the framing of the locked plate.",
-      "anchor_record": "s11_waits_end",
+      "anchor_record": "s13_arrives_start",
       "size": {
         "leo": "Leo crouching or lying: his mane spans about x=0.465-0.705 and y=0.245-0.665 (0.42 of the frame height), his face about 0.21 of the frame height; standing free, he measures 0.68 of the frame height from mane top (y=0.155) to paws (y=0.835).",
-        "milo": "Milo standing measures 0.23 of the frame height from ear tips (y=0.60) to feet (y=0.83), his head about 0.11 of the frame height."
+        "milo": "Milo standing measures about 0.21 of the frame height from ear tips to feet, his head about 0.10 of the frame height; his feet stay on the visible path outside the supported net area. Leo's size and position remain fixed across a shot."
       },
-      "relation": "Milo's whole standing body is 0.55 of the height of Leo's mane and about one third of Leo's standing height; his head with ears is about 0.4 of the height of Leo's face.",
-      "anchor_note": "Leo-only approved frame of this setup: it fixes the camera and Leo's size; Milo's size follows the story lineup (cast_scale), not an older frame."
+      "relation": "At equal depth Milo is about 0.55 of Leo's mane height; the specified screen sizes also depend on each character's depth plane.",
+      "anchor_note": "Leo-only approved frame of this setup: it fixes the camera and Leo's size; Milo's size follows the story lineup (cast_scale), not an older frame.",
+      "anchor_status": "owner_review_pending",
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        },
+        "leo": {
+          "mane": 0.42
+        }
+      },
+      "walkable_surface": "visible path and supported net area",
+      "bootstrap_records": [
+        "s10_curious_step_start",
+        "s10_curious_step_end",
+        "s10_net_falls_start",
+        "s10_net_falls_end",
+        "s11_pull_once_start",
+        "s11_pull_once_end",
+        "s11_waits_start",
+        "s11_waits_end"
+      ]
     },
     "trap_leo_closeup": {
       "location": "trap_morning",
@@ -492,13 +571,23 @@
       "framing": "close_two_shot",
       "label": "a closer two-shot at the net on the trap path",
       "camera": "Fixed closer camera at the net, 16:9: one shared crop of the wide trap setup that magnifies Milo, Leo and the net equally; the plate is softly blurred behind them.",
-      "anchor_record": "s14_gnaw_fray_start",
+      "anchor_record": "s14_milo_holds_rope",
       "size": {
-        "milo": "Milo measures about 0.40 of the frame height from ear tips (y=0.48) to feet (y=0.88), centred near x=0.22, his head about 0.20 of the frame height.",
+        "milo": "Milo measures about 0.21 of the frame height from ear tips to feet, centred near x=0.22, his head about 0.10 of the frame height; both feet contact the path beside the net.",
         "leo": "Leo's face behind the net spans about x=0.55-0.75 and y=0.05-0.55."
       },
-      "relation": "Milo's head with ears is about 0.4 of the height of Leo's face; his whole body is about 0.8 of Leo's face height.",
-      "anchor_note": "The anchor_record keeps this setup's camera and Leo's size; its Milo predates the 2026-10-02 lineup (Milo = 0.55 of Leo's mane height) and is not a size reference for Milo."
+      "relation": "Milo stands on the near path while Leo is behind the net; preserve each actor's setup measurements and do not infer anatomical size from their different screen depths.",
+      "anchor_note": "The anchor_record keeps this setup's camera and Leo's size; its Milo predates the 2026-10-02 lineup (Milo = 0.55 of Leo's mane height) and is not a size reference for Milo.",
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        },
+        "leo": {
+          "face": 0.5
+        }
+      },
+      "walkable_surface": "path beside the net"
     },
     "forest_run": {
       "location": "run_morning",
@@ -507,8 +596,15 @@
       "camera": "Fixed normal-height side camera on the forest run, 16:9, exactly the framing of the locked plate; the travel lane runs right to left.",
       "anchor_record": "s12_hears_start",
       "size": {
-        "milo": "Milo measures 0.30 of the frame height from ear tips (y=0.525) to feet on the lane (y=0.825), the same size along the whole lane."
-      }
+        "milo": "Milo measures about 0.21 of the frame height from ear tips to planted foot, the same size along the whole visible dirt lane; never place a foot on the stream or foliage."
+      },
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.21,
+          "head": 0.1
+        }
+      },
+      "walkable_surface": "visible dirt lane"
     },
     "tree_day_wide": {
       "location": "tree_day",
@@ -518,18 +614,28 @@
       "anchor_record": "s16_friends_start",
       "size": {
         "leo": "Leo lying: his mane spans about x=0.50-0.68 and y=0.40-0.77, his whole body x=0.50-0.89 with his paws near y=0.83.",
-        "milo": "Milo sitting measures about 0.16 of the frame height from ear tips (y=0.67) to the ground (y=0.83), centred near x=0.52; standing he would measure 0.20."
+        "milo": "Milo sitting measures about 0.17 of the frame height from ear tips to the ground, centred near x=0.52; keep his head size consistent with the 0.21 standing target and ground him on the clear grass beside Leo's paw. Standing he measures about 0.21."
       },
-      "relation": "Milo standing would be 0.55 of the height of Leo's mane; sitting, he keeps exactly the same head size.",
-      "anchor_note": "The anchor_record keeps this setup's camera and Leo's size; its Milo predates the 2026-10-02 lineup (Milo = 0.55 of Leo's mane height) and is not a size reference for Milo."
+      "relation": "Milo's standing equivalent is 0.21 of frame height; seated, keep his head size and shorten the whole silhouette to about 0.17.",
+      "anchor_note": "The anchor_record keeps this setup's camera and Leo's size; its Milo predates the 2026-10-02 lineup (Milo = 0.55 of Leo's mane height) and is not a size reference for Milo.",
+      "numeric_size_targets": {
+        "milo": {
+          "height": 0.17,
+          "head": 0.1
+        },
+        "leo": {
+          "mane": 0.37
+        }
+      },
+      "walkable_surface": "clear grass beside Leo’s paw"
     }
   },
   "blocks": {
     "style": "Style: handcrafted wool-felt stop-motion storybook miniature; softly stuffed matte forms, tactile looped wool fibres, fine visible stitching and gentle handmade irregularities; warm child-friendly palette and soft directional light; clear subject silhouettes; faces and contact points sharply readable.",
     "runtime_style": "Handcrafted matte wool-felt stop-motion miniature, tactile fibres and stitching, softly lit, sharp readable subjects.",
     "light_and_colour": "Light and colour: every character keeps exactly the colours, saturation and brightness of its canonical image; the scene light may only tint it the same way it tints the background, with the same exposure and contrast as the background. Characters are lit from the same direction as the plate and cast soft contact shadows on its ground, so they sit in the scene rather than on top of it.",
-    "cast_scale": "Relative size (fixed for the whole story): Milo standing is 0.55 of the height of Leo's mane, and Milo's head with ears is about 0.4 of the height of Leo's face; the measured sizes for this camera setup are stated below. Lying down, crouching or sitting changes a silhouette but never the size of a head, mane, body or limb.",
-    "final_check": "Before finishing, check: each visible character appears exactly once, with exactly two eyes and two eyebrows (one above each eye, drawn once), its canonical ears and limbs, whiskers on both sides of the muzzle and exactly one tail attached at its root; no text, letters, labels or watermark anywhere.",
+    "cast_scale": "NON-NEGOTIABLE CHARACTER SCALE: Preserve Milo's approved anatomy. In scene-wide and two-character shots, Milo's standing silhouette measures about 0.21 of frame height, matching the owner-selected s01_01_explores_end size; at equal depth this is about 0.55 of Leo's mane height. Keep Milo's head with ears around 0.10 of frame height and about 0.42 of Leo's face height at equal depth. Follow each setup's written pose-size and depth measurements. Close-up portraits keep their established crop. Never scale a character merely to fill blank space. A pose changes silhouette only, not the head, mane, body or limb proportions. In paired frames, preserve the other character's exact scale and position unless the shot explicitly moves them.",
+    "final_check": "Before finishing, check: each visible character appears exactly once, with exactly two eyes and two eyebrows (one above each eye, drawn once), its canonical ears and limbs, whiskers on both sides of the muzzle and exactly one tail attached at its root; no text, letters, labels or watermark anywhere. Check every planted foot or paw against the frame's named walkable surface: it must rest on continuous ground at the correct depth, never on water, flower heads, a bush canopy or unsupported foliage. Confirm contact shadows and occlusion agree with the plate.",
     "edit_end_frame": "This is an edit of the accepted start frame of this shot (the first attached reference): keep its camera, crop, background, light and every character's identity, colours, brightness, size and position exactly; change only what this frame shows below.",
     "edit_reference": "Edit the first attached reference, the approved parent image: keep the character's identity, colours, brightness and proportions exactly; change only the view or pose stated here.",
     "edit_expression": "Edit the first attached reference, the approved closed-mouth portrait: keep its crop, head size and position, every feature, colour, the felt texture, the whiskers, the backdrop and the light exactly; change only the brows, eyelids, gaze and mouth.",
@@ -544,7 +650,8 @@
     "acorn_world": "World state of the acorn: exactly one story acorn exists in the whole story. The story acorn: one small felt acorn with a warm-brown oval nut and one darker brown textured cap, always the same size and cap-to-nut proportion. Its holder or ground contact is the one stated here. The flat feeding stone by the stream keeps its place in the plate. No other acorns, ropes or nets are in this place.",
     "acorn_offscreen": "The single story acorn stays at the stream feeding stone, outside this location; no acorn is visible here.",
     "edit_chain_frame": "This is an edit of the first attached reference, an accepted frame of the same camera setup: keep its camera, crop, background, light and every character's identity, colours, brightness and size exactly; change only what this frame shows below. It is the hand-off between two clips, so the pose must be one a single small action reaches from the neighbouring frames.",
-    "edit_open_mouth": "This is an edit of the accepted closed-mouth frame (the first attached reference): keep its camera, crop, background, light and the character's identity, colours, brightness, size, pose, head position, gaze and expression exactly; open only the mouth into the approved rounded speech shape shown in the attached mouth-design reference, with the same interior and any teeth as in that reference. This is the single open-mouth calibration image for the post-render compositor, so the open shape stays identical to the character's approved speech mouth."
+    "edit_open_mouth": "This is an edit of the accepted closed-mouth frame (the first attached reference): keep its camera, crop, background, light and the character's identity, colours, brightness, size, pose, head position, gaze and expression exactly; open only the mouth into the approved rounded speech shape shown in the attached mouth-design reference, with the same interior and any teeth as in that reference. This is the single open-mouth calibration image for the post-render compositor, so the open shape stays identical to the character's approved speech mouth.",
+    "net_closeup_face": "NET ON TRAPPED LEO IN CLOSE-UP: The net conforms around Leo's actual mane, head and upper shoulders; it is physically supported by and wrapped around him, not stretched as a flat web between Leo and the camera. Keep an open face window: no rope crosses his eyes, nose or muzzle. Remove the single central vertical strand over the forehead and nose completely, with no dangling stump. The remaining cream ropes curve around the outer mane and shoulders and visibly connect into the continuous square mesh at chunky knots; no loose or unexplained ends. Keep the net close to Leo, with some strands in front of the mane edge and others passing behind his head so it visibly surrounds him."
   },
   "generic_blocks": [
     "style",
@@ -568,7 +675,7 @@
     "pose": "pose reference ({what}): copy only {who}'s body pose and proportions, not the background",
     "prop": "prop reference ({what}): copy the prop's material, colour, shape and size; its state in this frame is the one stated in this prompt",
     "mouth_design": "mouth design reference ({what}): copy only the mouth opening, the teeth and their size",
-    "staging_only": "older-version staging reference ({what}): copy only the composition, camera and staging; every character's look comes from the canonical images",
+    "staging_only": "staging-only reference ({what}): copy only the composition, camera and staging; every character's look comes from the canonical images",
     "size_anchor": "size anchor ({what}): an approved frame of this same camera setup; every character keeps exactly the size it has there, and takes no pose, expression or prop state from it",
     "framing": "framing reference ({what}): copy only the shot size, where the head sits in the frame and how strongly the background is blurred; take no character, background, light or expression from it",
     "size_lineup": "the story's size lineup ({what}): copy only the size relation between Leo and Milo, applied at the sizes stated in this prompt; take no camera, background, pose, expression or prop state from it",
@@ -580,8 +687,7 @@
       "proposed",
       "pending",
       "draft",
-      "TODO",
-      "v3 identity"
+      "TODO"
     ],
     "warn_words": []
   },
@@ -631,5 +737,7 @@
     "negative_conditioning": "fast Lightning guidance 1.0/1.0: no negative CFG pass; exclusions are review criteria, not reliable fast-mode controls",
     "token_budget_status": "pending deployed tokenizer and effective encoder limit; wrapper sets no explicit max_sequence_length"
   },
-  "chained_coverage": true
+  "chained_coverage": true,
+  "scale_anchor_gate": true,
+  "asset_revision_policy": "v6_native_assets"
 }

@@ -4,6 +4,46 @@ Dated record of changes to the rules, tools and story packets, newest first with
 Each entry says what changed, why, which files, and how it was checked. Owner instructions
 are quoted or summarised with their date. Git history has the diffs; this file has the reasons.
 
+## 2026-10-10 — v6 independent LUMI handoff and image gates
+
+Owner direction: keep Lion and Mouse v6 fully separate from earlier versions and prepare the
+documentation and code so later scene generation keeps the approved characters, scale, plate
+geometry and believable ground contact.
+
+- Removed the inherited packet source and all active older-version image, render and audio links
+  from v6. Its 154 pieces are new render jobs. V6 narration files must be staged under the v6
+  audio path before audio timing can be verified; saved durations remain a draft planning value.
+- Reconciled 54 accepted r02 foundation images with hash-bound records, retained 42 blurred
+  portrait candidates, and left 71 scene frames planned. Removed six scene records no shot uses.
+  Renamed active v6 scene targets and portrait candidates by their first use in film order.
+- Fixed edit-base, locked-plate and size-anchor references; added explicit numeric size and
+  walkable-surface targets to the v6 bible. Earlier single-character frames at the tree and trap
+  are explicit bootstrap records. The scene reference graph has no cycles.
+- Added `production/image_handoff.py` and an approval gate for measured scale, support points,
+  candidate/target identity and approved references. Updated the two repository skills,
+  `docs/creation-rules.md`, and the v6 README/LUMI handoff.
+- Checked prompt lint at 0 errors; the remaining 39 warnings identify scene target files that
+  are intentionally absent until generation. The handoff audit reports zero foundation approval
+  issues and zero reference cycles; first-frame, tree bootstrap and empty-trap checks pass.
+
+## 2026-10-10 — superseded v6 scene-scale and trapped-net experiment
+
+Owner direction: reduce Milo to half his size in the approved great-tree paw-contact reference,
+keep the revised scale through the scene set, make the trapped net physically wrap Leo instead of
+reading as a web between him and the viewer, remove the unexplained strand crossing his face, and
+keep one review image per candidate.
+
+- Updated v6 `cast_scale` and every scene-wide setup measurement in `visual_bible.json`; the
+  tree-dusk two-character reference now targets Milo at 0.105 of frame height. Added a close-up
+  net rule with a clear face opening and continuous, supported rope paths.
+- Updated the affected trapped-Leo prompt records and rebuilt their rendered prompt fields.
+- Replaced 10 `.review` candidates (the Milo scale reference and nine trapped-Leo close-ups) with
+  edited 1920x1080 candidates. Removed all 45 paired `_source.png` files, retaining candidate
+  images and their prompt/hash sidecars as requested. The images remain pending owner review.
+- Checked the image outputs' dimensions and visually reviewed the Milo scale and net/face openings.
+  `image_prompts.py lint` reports 75 size-anchor attachment errors and 19 missing-target warnings;
+  those setup/reference links must be corrected before staging a full regenerated scene set.
+
 ## 2026-10-09 — Owner image-status follow-up
 
 Owner instruction: mark existing Lion and Mouse v5 missing-after-review output accepted, and do the same for Ugly Duckling v1. The v5 `s02_place_acorn_end` r02 image exists and its SHA-256 matches the recorded accepted result; its v5 record and byte-identical v6 carryover are now `accepted`, with the owner's instruction and digest recorded. The v6 carried-image export gate remains fail-closed for every other non-accepted record.
@@ -294,3 +334,18 @@ record them. Defaults taken by the agent (no owner answer yet): reuse the v5 Eng
 - Regenerated the v6 packet, prompts and timing sheet; v6 prompt lint reports 0 errors/0 warnings and timing covers 11:23.7 with 0 errors. V5 source still regeneration remains unverified because its prompt lint reports 70 errors/8 warnings from missing deleted v3 references. No v6 media was generated.
 
 The owner selected full v6 image regeneration for a later phase. The current 33-new-image packet and carried v5 assets/renders remain an interim audit baseline; image migration and generation await the completed audit report. No images were created during this pass.
+
+## 2026-10-10 — Scene character-scale anchor gate
+
+- Added CR-25: sharp-background scene frames require the same-setup size anchor on both endpoints, kept in the actual provider reference set, plus a measured visual scale and shared-cast ratio check before staging.
+- Updated the consistent-image-prompts and audio-chained-coverage skills. Prompt lint now rejects sharp-background scene frames without their setup anchor or when the anchor does not show each visible character; packet builders attach the anchor to generated starts and ends.
+- Checked Python syntax and prompt lint behavior; v6 still needs its deleted scene anchors restored or regenerated before its sharp-background frames can pass lint.
+
+## 2026-10-10 — v6 scene scale and ground-contact review
+
+- Added a skill and creation-rule gate that checks actual walkable surfaces, planted foot baselines,
+  contact shadows and support; water, flowers and bush canopies are not standing surfaces by default.
+- Reset v6 wide/two-character Milo scale to the size selected in the scene-1 review image (0.21 of
+  frame height), and rebuilt the rendered image prompts. Close-up crops retain their framing.
+- Re-review and regenerate wide-frame candidates for scale, ground contact and paired-character
+  continuity before presenting the revised scene set.

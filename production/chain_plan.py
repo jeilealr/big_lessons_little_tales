@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Time a chained story's pieces from its narration (CR-21): the audio is the timeline.
 
-  python3 production/chain_plan.py --story lion_and_mouse_v6 --audio-story lion_and_mouse_v5 suggest
-  python3 production/chain_plan.py --story lion_and_mouse_v6 --audio-story lion_and_mouse_v5 check
-  python3 production/chain_plan.py --story lion_and_mouse_v6 --audio-story lion_and_mouse_v5 apply
+  python3 production/chain_plan.py --story lion_and_mouse_v6 --audio-story lion_and_mouse_v6 suggest
+  python3 production/chain_plan.py --story lion_and_mouse_v6 --audio-story lion_and_mouse_v6 check
+  python3 production/chain_plan.py --story lion_and_mouse_v6 --audio-story lion_and_mouse_v6 apply
 
 Reads the narration timing (work/stories/<audio story>/audio/<lang>/timing.json, from
 voice/narrate_scenes.py), the line list (stories/<story>/dialogue_coverage.json) and the pieces
